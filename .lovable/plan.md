@@ -1,76 +1,78 @@
 
-# Godforge Hub — Game Information Hub
 
-A Wowhead-style data-driven information hub for the upcoming gacha game **Godforge** by Fateless Games. Built with a clean modern dark theme, mock data structure ready to be populated as the game approaches launch.
+# Admin Panel with Authentication and CRUD
 
-## Pages & Features
+## Overview
+Build a full admin panel behind authentication. Includes email auth (signup/login), an admin role system, and CRUD forms for all 9 content tables.
 
-### 1. Homepage / Dashboard
-- Hero section with game branding and countdown to launch (if date is known)
-- **Recent News** feed with timestamps
-- **Official Post Tracker** section (simulating Discord/dev post tracking)
-- **Featured Guides** carousel
-- Quick-access category icons (like Wowhead's class/expansion icons row)
+## Database Changes (Migration)
 
-### 2. Navigation Bar
-- Sticky top nav with logo, search bar, and main sections: **News**, **Database**, **Guides**, **Tools**, **Community**
-- User account menu (login/signup, bookmarks)
-- Dark themed with subtle accent colors
+1. **`profiles` table** -- auto-created on signup via trigger
+   - `id` (uuid, FK to auth.users), `email` (text), `display_name` (text), `created_at`
 
-### 3. News Section
-- News article listing with thumbnails, dates, categories, and tags
-- Individual article detail pages
-- Filter by category (Patch Notes, Events, Dev Updates, etc.)
+2. **`user_roles` table** -- stores admin roles
+   - `id` (uuid), `user_id` (uuid FK to auth.users), `role` (app_role enum: admin, moderator, user)
+   - Unique on (user_id, role)
 
-### 4. Database Section
-- Browsable categories for game entities (placeholder structure):
-  - **Characters / Heroes** — rarity, element, class, stats
-  - **Items / Equipment** — type, stats, how to obtain
-  - **Skills / Abilities** — descriptions, scaling
-  - **Materials / Resources** — drop locations, usage
-- Each entity has a detail page with structured info cards
-- Search and filter functionality across all database entries
+3. **`app_role` enum** -- `admin`, `moderator`, `user`
 
-### 5. Guides Section
-- Guide listing with categories (Beginner, Tier Lists, Team Building, Farming, etc.)
-- Individual guide pages with rich text content
-- Bookmark/favorite guides (requires login)
+4. **`has_role` security definer function** -- prevents RLS recursion
 
-### 6. Tools Section
-- Placeholder tool pages ready for future interactive tools:
-  - **Tier List Viewer** — tier rankings display
-  - **Team Builder** — drag-and-drop team composition (placeholder)
-  - **Resource Calculator** — material planning (placeholder)
+5. **RLS policies on profiles** -- users read/update own profile
 
-### 7. Community Section
-- Links to official Discord, Reddit, social channels
-- Community spotlight / fan content area
+6. **Add INSERT/UPDATE/DELETE policies** on all content tables (heroes, items, skills, materials, news_articles, guides, official_posts, site_changelog, roadmap_items) gated by `has_role(auth.uid(), 'admin')`
 
-### 8. Official Post Tracker
-- Feed displaying official developer posts (mock data)
-- Filter by source (Discord, Twitter/X, Forums)
-- Timestamps and region tags (like Wowhead's Blue Tracker)
+7. **Trigger** on `auth.users` to auto-create profile row -- wait, can't attach triggers to auth schema. Instead: use `profiles` insert from the client on signup, or use a Postgres function on `auth.users` via event triggers. Actually, the standard approach is a trigger on `auth.users` using a function in public schema -- this is the accepted Supabase pattern (trigger on auth.users INSERT calling a public function). Let me reconsider -- the instructions say "do not attach triggers to tables in reserved schemas." So I'll handle profile creation client-side on signup.
 
-### 9. Authentication
-- Sign up / Login with email (via Supabase)
-- Basic user profiles
-- Bookmark/favorite system for guides and database entries
+## Frontend: Authentication
 
-### 10. Search
-- Global search bar in the nav
-- Searches across news, database entries, and guides
-- Auto-suggest dropdown with categorized results
+1. **`src/pages/Auth.tsx`** -- Login/Signup page with email + password tabs
+2. **`src/hooks/useAuth.tsx`** -- Auth context provider with `onAuthStateChange`, session state, sign-in/up/out functions
+3. **`src/hooks/useAdmin.tsx`** -- Hook that checks `user_roles` table for admin role
+4. **Route `/auth`** in App.tsx
 
-## Design
-- **Dark background** with clean, minimal UI — no heavy fantasy ornaments
-- Accent color TBD (can match game branding when available)
-- Card-based layouts for content sections
-- Responsive for mobile and desktop
-- Consistent icon system using Lucide icons
+## Frontend: Admin Panel
 
-## Backend (Supabase via Lovable Cloud)
-- Database tables for: news articles, database entries (heroes, items, skills, materials), guides, bookmarks, official posts
-- Authentication with email
-- User profiles with bookmarks
-- Row-level security for user data
-- All content admin-managed initially (no user-generated content)
+1. **`src/pages/admin/AdminLayout.tsx`** -- Sidebar nav with links to each content section, wraps admin pages. Checks admin role and redirects if not admin.
+
+2. **CRUD pages** (one per table, all under `/admin/*`):
+   - `/admin/heroes` -- list + create/edit dialog
+   - `/admin/items`
+   - `/admin/skills`
+   - `/admin/materials`
+   - `/admin/news`
+   - `/admin/guides`
+   - `/admin/official-posts`
+   - `/admin/changelog`
+   - `/admin/roadmap`
+
+3. Each CRUD page pattern:
+   - Table listing all rows with edit/delete buttons
+   - Dialog/sheet form for create and edit
+   - Uses `@tanstack/react-query` for fetching, mutations with `supabase` client
+   - Form fields match the table columns
+   - Delete with confirmation dialog
+
+4. **Reusable `AdminCrudPage` component** to reduce duplication -- accepts table name, column config, and renders list + form automatically.
+
+## Routing
+
+```
+/auth           -- Login/Signup
+/admin          -- Admin dashboard (redirect to /admin/heroes)
+/admin/heroes   -- Heroes CRUD
+/admin/items    -- Items CRUD
+...etc
+```
+
+Protected via `useAdmin` hook -- if not admin, show "Access Denied" or redirect to home.
+
+## Implementation Order
+
+1. Migration: profiles, user_roles, has_role, RLS policies
+2. Auth context + Auth page
+3. Admin layout + route protection
+4. Generic CRUD component
+5. Wire up all 9 content tables
+6. Add "Admin" link in navbar (visible only to admins)
+
