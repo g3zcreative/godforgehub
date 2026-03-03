@@ -84,7 +84,9 @@ export default function NewsDetail() {
             </div>
             <h1 className="text-3xl font-display font-bold mb-6">{article.title}</h1>
             {article.image_url && (
-              <img src={article.image_url} alt={article.title} className="w-full rounded-lg mb-6 object-cover max-h-80" />
+              <div className="aspect-video w-full rounded-lg overflow-hidden mb-6">
+                <img src={article.image_url} alt={article.title} className="w-full h-full object-cover" />
+              </div>
             )}
             {article.content && (
               <div data-color-mode="dark">
