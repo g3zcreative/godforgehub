@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 const MDEditor = lazy(() => import("@uiw/react-md-editor"));
 import { supabase } from "@/integrations/supabase/client";
@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { Plus, Pencil, Trash2, CalendarIcon } from "lucide-react";
+import { Plus, Pencil, Trash2, CalendarIcon, Upload, X, Loader2, Image as ImageIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Switch } from "@/components/ui/switch";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -17,13 +17,49 @@ import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 
+function ImageUploadButton({ bucket, onUploaded }: { bucket: string; onUploaded: (url: string) => void }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const { toast } = useToast();
+
+  const handleFile = async (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      toast({ title: "Invalid file", description: "Please select an image file.", variant: "destructive" });
+      return;
+    }
+    setUploading(true);
+    try {
+      const ext = file.name.split(".").pop() || "png";
+      const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+      const { error } = await supabase.storage.from(bucket).upload(path, file);
+      if (error) throw error;
+      const { data: urlData } = supabase.storage.from(bucket).getPublicUrl(path);
+      onUploaded(urlData.publicUrl);
+    } catch (err: any) {
+      toast({ title: "Upload failed", description: err.message, variant: "destructive" });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <>
+      <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={e => e.target.files?.[0] && handleFile(e.target.files[0])} />
+      <Button type="button" variant="outline" size="icon" onClick={() => inputRef.current?.click()} disabled={uploading} title="Upload image">
+        {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
+      </Button>
+    </>
+  );
+}
+
 export interface ColumnConfig {
   key: string;
   label: string;
-  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime";
+  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime" | "image";
   required?: boolean;
   showInTable?: boolean;
   editable?: boolean;
+  storageBucket?: string;
 }
 
 interface AdminCrudPageProps {
@@ -185,6 +221,40 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
               height={300}
             />
           </Suspense>
+        </div>
+      );
+    }
+    if (col.type === "image") {
+      const imageUrl = value ? String(value) : "";
+      const fileInputId = `file-upload-${col.key}`;
+      return (
+        <div key={col.key} className="space-y-2">
+          <Label>{col.label}</Label>
+          {imageUrl && (
+            <div className="relative inline-block">
+              <img src={imageUrl} alt="Preview" className="h-32 rounded-md border border-border object-cover" />
+              <button
+                type="button"
+                onClick={() => setFormData(p => ({ ...p, [col.key]: "" }))}
+                className="absolute -top-2 -right-2 rounded-full bg-destructive text-destructive-foreground h-5 w-5 flex items-center justify-center"
+              >
+                <X className="h-3 w-3" />
+              </button>
+            </div>
+          )}
+          <div className="flex gap-2">
+            <Input
+              type="text"
+              placeholder="Paste image URL or upload a file"
+              value={imageUrl}
+              onChange={e => setFormData(p => ({ ...p, [col.key]: e.target.value }))}
+              className="flex-1"
+            />
+            <ImageUploadButton
+              bucket={col.storageBucket || "news-images"}
+              onUploaded={(url) => setFormData(p => ({ ...p, [col.key]: url }))}
+            />
+          </div>
         </div>
       );
     }
