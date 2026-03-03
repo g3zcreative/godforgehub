@@ -35,6 +35,7 @@ const insightItems = [
 
 const platformItems = [
   { title: "Users", url: "/admin/platform", icon: Users },
+  { title: "Settings", url: "/admin/settings", icon: Settings },
 ];
 
 function AdminSidebar() {
