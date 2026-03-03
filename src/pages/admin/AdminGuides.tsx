@@ -8,7 +8,7 @@ const columns: ColumnConfig[] = [
   { key: "published", label: "Published", type: "boolean", showInTable: true },
   { key: "excerpt", label: "Excerpt", type: "textarea" },
   { key: "content", label: "Content", type: "markdown" },
-  { key: "published_at", label: "Published At" },
+  { key: "published_at", label: "Published At", type: "datetime" },
 ];
 
 export default function AdminGuides() {
