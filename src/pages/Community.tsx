@@ -51,10 +51,16 @@ const CommunityPage = () => {
                     {post.author_role && <span className="text-xs text-muted-foreground">· {post.author_role}</span>}
                   </div>
                   <p className="text-sm text-foreground mb-3">{post.content}</p>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <Badge variant="outline" className="text-xs">{post.source}</Badge>
+                    {post.channel_name && <Badge variant="secondary" className="text-xs">#{post.channel_name}</Badge>}
                     {post.region && <Badge variant="outline" className="text-xs">{post.region}</Badge>}
-                    <span className="text-xs text-muted-foreground ml-auto">
+                    <span className="text-xs text-muted-foreground ml-auto flex items-center gap-2">
+                      {post.message_url && (
+                        <a href={post.message_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                          View original
+                        </a>
+                      )}
                       {format(new Date(post.posted_at), "PPP")}
                     </span>
                   </div>

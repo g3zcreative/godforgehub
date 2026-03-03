@@ -228,9 +228,12 @@ export type Database = {
         Row: {
           author: string
           author_role: string | null
+          channel_name: string | null
           content: string
           created_at: string
+          discord_message_id: string | null
           id: string
+          message_url: string | null
           posted_at: string
           region: string | null
           source: string
@@ -238,9 +241,12 @@ export type Database = {
         Insert: {
           author: string
           author_role?: string | null
+          channel_name?: string | null
           content: string
           created_at?: string
+          discord_message_id?: string | null
           id?: string
+          message_url?: string | null
           posted_at?: string
           region?: string | null
           source?: string
@@ -248,9 +254,12 @@ export type Database = {
         Update: {
           author?: string
           author_role?: string | null
+          channel_name?: string | null
           content?: string
           created_at?: string
+          discord_message_id?: string | null
           id?: string
+          message_url?: string | null
           posted_at?: string
           region?: string | null
           source?: string
