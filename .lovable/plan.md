@@ -1,78 +1,45 @@
 
 
-# Admin Panel with Authentication and CRUD
+## Plan: Discord-First Official Post Tracker
 
-## Overview
-Build a full admin panel behind authentication. Includes email auth (signup/login), an admin role system, and CRUD forms for all 9 content tables.
+### Current State
+The Official Posts system already works well — the `official_posts` table has fields for `author`, `author_role`, `source`, `content`, `region`, and `posted_at`. The admin panel (`AdminOfficialPosts`) lets you manually create posts. The public Community page and homepage both display them.
 
-## Database Changes (Migration)
+### What to Build Now
 
-1. **`profiles` table** -- auto-created on signup via trigger
-   - `id` (uuid, FK to auth.users), `email` (text), `display_name` (text), `created_at`
+Since you want manual entry now with automation later, the focus is on making the manual workflow as smooth as possible and preparing the data model for future Discord bot integration.
 
-2. **`user_roles` table** -- stores admin roles
-   - `id` (uuid), `user_id` (uuid FK to auth.users), `role` (app_role enum: admin, moderator, user)
-   - Unique on (user_id, role)
+**1. Improve the admin entry flow for Discord posts**
+- Pre-fill `source` as "Discord" by default
+- Add a `channel_name` field to track which Discord channel the post came from (e.g. #announcements, #dev-updates)
+- Add a `message_url` field so you can link back to the original Discord message
+- Add a `discord_message_id` field (hidden from UI for now) to prevent duplicates when automation arrives
 
-3. **`app_role` enum** -- `admin`, `moderator`, `user`
+**2. Database migration**
+Add three columns to `official_posts`:
+- `channel_name` (text, nullable)
+- `message_url` (text, nullable) 
+- `discord_message_id` (text, nullable, unique) — for future dedup
 
-4. **`has_role` security definer function** -- prevents RLS recursion
+**3. Update the public Community page**
+- Show channel name as a tag (e.g. "#announcements")
+- Make posts linkable back to the original Discord message when `message_url` is set
 
-5. **RLS policies on profiles** -- users read/update own profile
+**4. Update the admin form**
+- Add the new fields to `AdminOfficialPosts` column config
+- Default `source` to "Discord"
 
-6. **Add INSERT/UPDATE/DELETE policies** on all content tables (heroes, items, skills, materials, news_articles, guides, official_posts, site_changelog, roadmap_items) gated by `has_role(auth.uid(), 'admin')`
+### Future Automation Path (not built now)
+When you're ready to automate, the approach would be:
+- Create a backend webhook endpoint that accepts Discord bot payloads
+- Build or configure a Discord bot that watches specific channels and POSTs to your webhook
+- The webhook inserts into `official_posts`, using `discord_message_id` to prevent duplicates
 
-7. **Trigger** on `auth.users` to auto-create profile row -- wait, can't attach triggers to auth schema. Instead: use `profiles` insert from the client on signup, or use a Postgres function on `auth.users` via event triggers. Actually, the standard approach is a trigger on `auth.users` using a function in public schema -- this is the accepted Supabase pattern (trigger on auth.users INSERT calling a public function). Let me reconsider -- the instructions say "do not attach triggers to tables in reserved schemas." So I'll handle profile creation client-side on signup.
+The schema changes made now will make that transition seamless.
 
-## Frontend: Authentication
-
-1. **`src/pages/Auth.tsx`** -- Login/Signup page with email + password tabs
-2. **`src/hooks/useAuth.tsx`** -- Auth context provider with `onAuthStateChange`, session state, sign-in/up/out functions
-3. **`src/hooks/useAdmin.tsx`** -- Hook that checks `user_roles` table for admin role
-4. **Route `/auth`** in App.tsx
-
-## Frontend: Admin Panel
-
-1. **`src/pages/admin/AdminLayout.tsx`** -- Sidebar nav with links to each content section, wraps admin pages. Checks admin role and redirects if not admin.
-
-2. **CRUD pages** (one per table, all under `/admin/*`):
-   - `/admin/heroes` -- list + create/edit dialog
-   - `/admin/items`
-   - `/admin/skills`
-   - `/admin/materials`
-   - `/admin/news`
-   - `/admin/guides`
-   - `/admin/official-posts`
-   - `/admin/changelog`
-   - `/admin/roadmap`
-
-3. Each CRUD page pattern:
-   - Table listing all rows with edit/delete buttons
-   - Dialog/sheet form for create and edit
-   - Uses `@tanstack/react-query` for fetching, mutations with `supabase` client
-   - Form fields match the table columns
-   - Delete with confirmation dialog
-
-4. **Reusable `AdminCrudPage` component** to reduce duplication -- accepts table name, column config, and renders list + form automatically.
-
-## Routing
-
-```
-/auth           -- Login/Signup
-/admin          -- Admin dashboard (redirect to /admin/heroes)
-/admin/heroes   -- Heroes CRUD
-/admin/items    -- Items CRUD
-...etc
-```
-
-Protected via `useAdmin` hook -- if not admin, show "Access Denied" or redirect to home.
-
-## Implementation Order
-
-1. Migration: profiles, user_roles, has_role, RLS policies
-2. Auth context + Auth page
-3. Admin layout + route protection
-4. Generic CRUD component
-5. Wire up all 9 content tables
-6. Add "Admin" link in navbar (visible only to admins)
+### Files to Change
+- **Database migration**: Add `channel_name`, `message_url`, `discord_message_id` columns to `official_posts`
+- `src/pages/admin/AdminOfficialPosts.tsx` — add new fields, default source to Discord
+- `src/pages/Community.tsx` — show channel name, link to original message
+- `src/pages/Index.tsx` — optionally show channel name in post tracker cards
 
