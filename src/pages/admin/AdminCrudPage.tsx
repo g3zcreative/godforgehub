@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+const MDEditor = lazy(() => import("@uiw/react-md-editor"));
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,7 +16,7 @@ import { Switch } from "@/components/ui/switch";
 export interface ColumnConfig {
   key: string;
   label: string;
-  type?: "text" | "number" | "textarea" | "boolean" | "json";
+  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown";
   required?: boolean;
   showInTable?: boolean;
   editable?: boolean;
@@ -134,6 +135,20 @@ export function AdminCrudPage({ tableName, title, columns }: AdminCrudPageProps)
         </div>
       );
     }
+    if (col.type === "markdown") {
+      return (
+        <div key={col.key} className="space-y-1" data-color-mode="dark">
+          <Label>{col.label}</Label>
+          <Suspense fallback={<Textarea rows={6} value={String(value ?? "")} onChange={e => setFormData(p => ({ ...p, [col.key]: e.target.value }))} />}>
+            <MDEditor
+              value={String(value ?? "")}
+              onChange={v => setFormData(p => ({ ...p, [col.key]: v ?? "" }))}
+              height={300}
+            />
+          </Suspense>
+        </div>
+      );
+    }
     if (col.type === "textarea" || col.type === "json") {
       return (
         <div key={col.key} className="space-y-1">
@@ -202,7 +217,7 @@ export function AdminCrudPage({ tableName, title, columns }: AdminCrudPageProps)
       )}
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-h-[80vh] overflow-y-auto">
+        <DialogContent className="max-h-[80vh] overflow-y-auto max-w-2xl">
           <DialogHeader>
             <DialogTitle>{editingRow ? "Edit" : "Create"} {title}</DialogTitle>
           </DialogHeader>
