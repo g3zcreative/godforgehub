@@ -11,7 +11,7 @@ import { NavLink } from "@/components/NavLink";
 import {
   Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
   BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle, BarChart3,
-  RefreshCw,
+  RefreshCw, Users, Settings,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -31,6 +31,10 @@ const contentItems = [
 const insightItems = [
   { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
   { title: "Feedback", url: "/admin/feedback", icon: MessageCircle },
+];
+
+const platformItems = [
+  { title: "Users", url: "/admin/platform", icon: Users },
 ];
 
 function AdminSidebar() {
@@ -64,6 +68,23 @@ function AdminSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {insightItems.map((item) => (
+                <SidebarMenuItem key={item.url}>
+                  <SidebarMenuButton asChild>
+                    <NavLink to={item.url} className="hover:bg-muted/50" activeClassName="bg-muted text-primary font-medium">
+                      <item.icon className="mr-2 h-4 w-4" />
+                      {!collapsed && <span>{item.title}</span>}
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Platform</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {platformItems.map((item) => (
                 <SidebarMenuItem key={item.url}>
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} className="hover:bg-muted/50" activeClassName="bg-muted text-primary font-medium">
