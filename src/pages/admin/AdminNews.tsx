@@ -8,7 +8,7 @@ const columns: ColumnConfig[] = [
   { key: "excerpt", label: "Excerpt", type: "textarea" },
   { key: "content", label: "Content", type: "markdown" },
   { key: "image_url", label: "Image URL" },
-  { key: "published_at", label: "Published At" },
+  { key: "published_at", label: "Published At", type: "datetime" },
 ];
 
 export default function AdminNews() {

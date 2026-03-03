@@ -6,7 +6,7 @@ const columns: ColumnConfig[] = [
   { key: "source", label: "Source", showInTable: true },
   { key: "content", label: "Content", type: "textarea", required: true, showInTable: true },
   { key: "region", label: "Region" },
-  { key: "posted_at", label: "Posted At" },
+  { key: "posted_at", label: "Posted At", type: "datetime" },
 ];
 
 export default function AdminOfficialPosts() {

@@ -5,7 +5,7 @@ const columns: ColumnConfig[] = [
   { key: "description", label: "Description", type: "textarea", required: true, showInTable: true },
   { key: "change_type", label: "Type", showInTable: true },
   { key: "version", label: "Version", showInTable: true },
-  { key: "published_at", label: "Published At" },
+  { key: "published_at", label: "Published At", type: "datetime", showInTable: true },
 ];
 
 export default function AdminChangelog() {

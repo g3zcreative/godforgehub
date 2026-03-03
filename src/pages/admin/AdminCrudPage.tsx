@@ -9,14 +9,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { Plus, Pencil, Trash2 } from "lucide-react";
+import { Plus, Pencil, Trash2, CalendarIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Switch } from "@/components/ui/switch";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
 
 export interface ColumnConfig {
   key: string;
   label: string;
-  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown";
+  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime";
   required?: boolean;
   showInTable?: boolean;
   editable?: boolean;
@@ -94,6 +98,7 @@ export function AdminCrudPage({ tableName, title, columns }: AdminCrudPageProps)
       if (c.type === "boolean") defaults[c.key] = false;
       else if (c.type === "number") defaults[c.key] = 0;
       else if (c.type === "json") defaults[c.key] = "{}";
+      else if (c.type === "datetime") defaults[c.key] = new Date().toISOString();
       else defaults[c.key] = "";
     });
     setFormData(defaults);
@@ -132,6 +137,31 @@ export function AdminCrudPage({ tableName, title, columns }: AdminCrudPageProps)
         <div key={col.key} className="flex items-center gap-2">
           <Switch checked={!!value} onCheckedChange={v => setFormData(p => ({ ...p, [col.key]: v }))} />
           <Label>{col.label}</Label>
+        </div>
+      );
+    }
+    if (col.type === "datetime") {
+      const dateValue = value ? new Date(value as string) : undefined;
+      return (
+        <div key={col.key} className="space-y-1">
+          <Label>{col.label}</Label>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal", !dateValue && "text-muted-foreground")}>
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {dateValue ? format(dateValue, "PPP p") : "Pick a date"}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar
+                mode="single"
+                selected={dateValue}
+                onSelect={d => setFormData(p => ({ ...p, [col.key]: d ? d.toISOString() : "" }))}
+                initialFocus
+                className={cn("p-3 pointer-events-auto")}
+              />
+            </PopoverContent>
+          </Popover>
         </div>
       );
     }
@@ -175,6 +205,9 @@ export function AdminCrudPage({ tableName, title, columns }: AdminCrudPageProps)
     if (val === null || val === undefined) return "—";
     if (col.type === "boolean") return val ? "Yes" : "No";
     if (col.type === "json") return "{ ... }";
+    if (col.type === "datetime") {
+      try { return format(new Date(val as string), "PPP"); } catch { return String(val); }
+    }
     const s = String(val);
     return s.length > 60 ? s.slice(0, 60) + "…" : s;
   };
