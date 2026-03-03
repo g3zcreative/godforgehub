@@ -115,37 +115,39 @@ const Index = () => {
               {[1, 2, 3].map(i => <Skeleton key={i} className="h-20 w-full" />)}
             </div>
           ) : (
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {news?.map((article) => (
-                <Card key={article.id} className="hover:border-primary/30 transition-colors overflow-hidden">
-                  <CardContent className="p-0">
-                    <div className="flex">
-                      {article.image_url && (
-                        <Link to={`/news/${article.slug}`} className="shrink-0 w-40">
-                          <div className="aspect-video w-full h-full">
-                            <img src={article.image_url} alt={article.title} className="h-full w-full object-cover" />
-                          </div>
-                        </Link>
-                      )}
-                      <div className="p-4 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Badge variant="outline" className={categoryColors[article.category] || ""}>
-                            {article.category}
-                          </Badge>
-                          {article.published_at && (
-                            <span className="text-xs text-muted-foreground flex items-center gap-1">
-                              <Clock className="h-3 w-3" /> {format(new Date(article.published_at), "PPP")}
-                            </span>
-                          )}
-                        </div>
-                        <Link to={`/news/${article.slug}`} className="font-semibold hover:text-primary transition-colors line-clamp-1">
-                          {article.title}
-                        </Link>
-                        {article.excerpt && <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{article.excerpt}</p>}
+                <Link key={article.id} to={`/news/${article.slug}`} className="group">
+                  <Card className="hover:border-primary/30 transition-colors overflow-hidden h-full flex flex-col">
+                    {article.image_url && (
+                      <div className="aspect-video w-full overflow-hidden">
+                        <img
+                          src={article.image_url}
+                          alt={article.title}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    )}
+                    <CardContent className="p-4 flex flex-col flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <Badge variant="outline" className={categoryColors[article.category] || ""}>
+                          {article.category}
+                        </Badge>
+                      </div>
+                      <span className="font-semibold leading-snug group-hover:text-primary transition-colors line-clamp-2 mb-1">
+                        {article.title}
+                      </span>
+                      {article.excerpt && (
+                        <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{article.excerpt}</p>
+                      )}
+                      {article.published_at && (
+                        <span className="text-xs text-muted-foreground flex items-center gap-1 mt-auto pt-1">
+                          <Clock className="h-3 w-3" /> {format(new Date(article.published_at), "PPP")}
+                        </span>
+                      )}
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           )}
