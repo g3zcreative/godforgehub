@@ -1,4 +1,5 @@
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useAdmin } from "@/hooks/useAdmin";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -10,8 +11,10 @@ import { NavLink } from "@/components/NavLink";
 import {
   Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
   BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle, BarChart3,
+  RefreshCw,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const contentItems = [
   { title: "Heroes", url: "/admin/heroes", icon: Shield },
@@ -84,6 +87,46 @@ function AdminSidebar() {
   );
 }
 
+function AdminHeader() {
+  const [regenerating, setRegenerating] = useState(false);
+
+  const handleRegenSitemap = async () => {
+    setRegenerating(true);
+    try {
+      const res = await fetch(
+        `https://${import.meta.env.VITE_SUPABASE_PROJECT_ID}.supabase.co/functions/v1/sitemap`
+      );
+      if (!res.ok) throw new Error("Failed to fetch sitemap");
+      const xml = await res.text();
+      const blob = new Blob([xml], { type: "application/xml" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "sitemap.xml";
+      a.click();
+      URL.revokeObjectURL(url);
+      toast.success("Sitemap downloaded — replace public/sitemap.xml with it");
+    } catch {
+      toast.error("Failed to regenerate sitemap");
+    } finally {
+      setRegenerating(false);
+    }
+  };
+
+  return (
+    <header className="h-12 flex items-center border-b border-border px-4 gap-4">
+      <SidebarTrigger />
+      <span className="font-display font-bold text-sm">GodforgeHub Admin</span>
+      <div className="ml-auto">
+        <Button variant="outline" size="sm" onClick={handleRegenSitemap} disabled={regenerating}>
+          <RefreshCw className={`mr-2 h-3.5 w-3.5 ${regenerating ? "animate-spin" : ""}`} />
+          {regenerating ? "Generating..." : "Regenerate Sitemap"}
+        </Button>
+      </div>
+    </header>
+  );
+}
+
 export default function AdminLayout() {
   const { user, loading: authLoading } = useAuth();
   const { isAdmin, loading: adminLoading } = useAdmin();
@@ -113,10 +156,7 @@ export default function AdminLayout() {
       <div className="min-h-screen flex w-full">
         <AdminSidebar />
         <div className="flex-1 flex flex-col">
-          <header className="h-12 flex items-center border-b border-border px-4 gap-4">
-            <SidebarTrigger />
-            <span className="font-display font-bold text-sm">GodforgeHub Admin</span>
-          </header>
+          <AdminHeader />
           <main className="flex-1 p-6 overflow-auto">
             <Outlet />
           </main>
