@@ -82,20 +82,22 @@ const DatabasePage = () => {
         ) : heroes && heroes.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {heroes.map((hero) => (
-              <Card key={hero.id} className="hover:border-primary/30 transition-colors">
-                <CardContent className="p-5">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display font-semibold text-lg">{hero.name}</h3>
-                    <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className={elementColors[hero.element] || ""}>
-                      {hero.element}
-                    </Badge>
-                    <Badge variant="outline">{hero.class_type}</Badge>
-                  </div>
-                </CardContent>
-              </Card>
+              <Link key={hero.id} to={`/database/heroes/${hero.slug}`}>
+                <Card className="hover:border-primary/30 transition-colors h-full">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-display font-semibold text-lg">{hero.name}</h3>
+                      <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className={elementColors[hero.element] || ""}>
+                        {hero.element}
+                      </Badge>
+                      <Badge variant="outline">{hero.class_type}</Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         ) : (
