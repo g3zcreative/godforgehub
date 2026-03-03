@@ -4,12 +4,16 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import { useFeatureFlags } from "@/hooks/useFeatureFlags";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import NewsPage from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import ComingSoonPage from "./pages/ComingSoon";
 import CommunityPage from "./pages/Community";
+import DatabasePage from "./pages/Database";
+import GuidesPage from "./pages/Guides";
+import ToolsPage from "./pages/Tools";
 import ChangelogPage from "./pages/Changelog";
 import RoadmapPage from "./pages/Roadmap";
 import AuthPage from "./pages/Auth";
@@ -37,6 +41,75 @@ function PageViewTracker() {
   return null;
 }
 
+const comingSoon = (title: string, desc: string) => (
+  <ComingSoonPage title={title} description={desc} />
+);
+
+function AppRoutes() {
+  const { flags } = useFeatureFlags();
+
+  return (
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/news" element={<NewsPage />} />
+      <Route path="/news/:slug" element={<NewsDetail />} />
+
+      {/* Database */}
+      <Route
+        path="/database"
+        element={flags.database ? <DatabasePage /> : comingSoon("Database", "The full heroes, items, skills, and materials database is under construction.")}
+      />
+      <Route
+        path="/database/*"
+        element={flags.database ? <DatabasePage /> : comingSoon("Database", "The full heroes, items, skills, and materials database is under construction.")}
+      />
+
+      {/* Guides */}
+      <Route
+        path="/guides"
+        element={flags.guides ? <GuidesPage /> : comingSoon("Guides", "Community guides and strategies are being prepared.")}
+      />
+      <Route
+        path="/guides/*"
+        element={flags.guides ? <GuidesPage /> : comingSoon("Guides", "Community guides and strategies are being prepared.")}
+      />
+
+      {/* Tools */}
+      <Route
+        path="/tools"
+        element={flags.tools ? <ToolsPage /> : comingSoon("Tools", "Interactive tools like tier lists, team builder, and resource calculators are in development.")}
+      />
+
+      {/* Community */}
+      <Route
+        path="/community"
+        element={flags.community ? <CommunityPage /> : comingSoon("Community", "The community hub is being set up.")}
+      />
+
+      <Route path="/changelog" element={<ChangelogPage />} />
+      <Route path="/roadmap" element={<RoadmapPage />} />
+      <Route path="/auth" element={<AuthPage />} />
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="/admin/analytics" replace />} />
+        <Route path="analytics" element={<AdminAnalytics />} />
+        <Route path="heroes" element={<AdminHeroes />} />
+        <Route path="items" element={<AdminItems />} />
+        <Route path="skills" element={<AdminSkills />} />
+        <Route path="materials" element={<AdminMaterials />} />
+        <Route path="news" element={<AdminNews />} />
+        <Route path="guides" element={<AdminGuides />} />
+        <Route path="official-posts" element={<AdminOfficialPosts />} />
+        <Route path="changelog" element={<AdminChangelog />} />
+        <Route path="roadmap" element={<AdminRoadmap />} />
+        <Route path="feedback" element={<AdminFeedback />} />
+        <Route path="platform" element={<AdminPlatform />} />
+        <Route path="settings" element={<AdminSettings />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
@@ -46,37 +119,7 @@ const App = () => (
         <BrowserRouter>
           <PageViewTracker />
           <FeedbackWidget />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/news/:slug" element={<NewsDetail />} />
-            <Route path="/database" element={<ComingSoonPage title="Database" description="The full heroes, items, skills, and materials database is under construction." />} />
-            <Route path="/database/*" element={<ComingSoonPage title="Database" description="The full heroes, items, skills, and materials database is under construction." />} />
-            <Route path="/guides" element={<ComingSoonPage title="Guides" description="Community guides and strategies are being prepared." />} />
-            <Route path="/guides/*" element={<ComingSoonPage title="Guides" description="Community guides and strategies are being prepared." />} />
-            <Route path="/tools" element={<ComingSoonPage title="Tools" description="Interactive tools like tier lists, team builder, and resource calculators are in development." />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/changelog" element={<ChangelogPage />} />
-            <Route path="/roadmap" element={<RoadmapPage />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<Navigate to="/admin/analytics" replace />} />
-              <Route path="analytics" element={<AdminAnalytics />} />
-              <Route path="heroes" element={<AdminHeroes />} />
-              <Route path="items" element={<AdminItems />} />
-              <Route path="skills" element={<AdminSkills />} />
-              <Route path="materials" element={<AdminMaterials />} />
-              <Route path="news" element={<AdminNews />} />
-              <Route path="guides" element={<AdminGuides />} />
-              <Route path="official-posts" element={<AdminOfficialPosts />} />
-              <Route path="changelog" element={<AdminChangelog />} />
-              <Route path="roadmap" element={<AdminRoadmap />} />
-              <Route path="feedback" element={<AdminFeedback />} />
-              <Route path="platform" element={<AdminPlatform />} />
-              <Route path="settings" element={<AdminSettings />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppRoutes />
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>
