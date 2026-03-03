@@ -117,22 +117,31 @@ const Index = () => {
           ) : (
             <div className="space-y-3">
               {news?.map((article) => (
-                <Card key={article.id} className="hover:border-primary/30 transition-colors">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Badge variant="outline" className={categoryColors[article.category] || ""}>
-                        {article.category}
-                      </Badge>
-                      {article.published_at && (
-                        <span className="text-xs text-muted-foreground flex items-center gap-1">
-                          <Clock className="h-3 w-3" /> {format(new Date(article.published_at), "PPP")}
-                        </span>
+                <Card key={article.id} className="hover:border-primary/30 transition-colors overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="flex">
+                      {article.image_url && (
+                        <Link to={`/news/${article.slug}`} className="shrink-0">
+                          <img src={article.image_url} alt={article.title} className="h-full w-28 object-cover" />
+                        </Link>
                       )}
+                      <div className="p-4 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Badge variant="outline" className={categoryColors[article.category] || ""}>
+                            {article.category}
+                          </Badge>
+                          {article.published_at && (
+                            <span className="text-xs text-muted-foreground flex items-center gap-1">
+                              <Clock className="h-3 w-3" /> {format(new Date(article.published_at), "PPP")}
+                            </span>
+                          )}
+                        </div>
+                        <Link to={`/news/${article.slug}`} className="font-semibold hover:text-primary transition-colors line-clamp-1">
+                          {article.title}
+                        </Link>
+                        {article.excerpt && <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{article.excerpt}</p>}
+                      </div>
                     </div>
-                    <Link to={`/news/${article.slug}`} className="font-semibold hover:text-primary transition-colors line-clamp-1">
-                      {article.title}
-                    </Link>
-                    {article.excerpt && <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{article.excerpt}</p>}
                   </CardContent>
                 </Card>
               ))}
