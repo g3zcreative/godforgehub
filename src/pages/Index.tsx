@@ -115,9 +115,9 @@ const Index = () => {
               {[1, 2, 3].map(i => <Skeleton key={i} className="h-20 w-full" />)}
             </div>
           ) : (
-            <div className="columns-1 sm:columns-2 gap-4 space-y-4">
+            <div className="columns-1 sm:columns-2 gap-4 [&>a]:mb-4">
               {news?.map((article) => (
-                <Link key={article.id} to={`/news/${article.slug}`} className="group break-inside-avoid">
+                <Link key={article.id} to={`/news/${article.slug}`} className="group break-inside-avoid block">
                   <Card className="hover:border-primary/30 transition-colors overflow-hidden flex flex-col">
                     {article.image_url && (
                       <div className="aspect-video w-full overflow-hidden">
