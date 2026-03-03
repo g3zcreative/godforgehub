@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const DiscordRedirect = () => {
   useEffect(() => {
-    window.location.href = "https://discord.gg/t4wh7Pt5gM";
+    window.location.href = "https://discord.gg/q3be2EEwyZ";
   }, []);
 
   return (
