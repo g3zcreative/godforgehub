@@ -45,22 +45,31 @@ const NewsPage = () => {
         ) : articles && articles.length > 0 ? (
           <div className="space-y-3">
             {articles.map((article) => (
-              <Card key={article.id} className="hover:border-primary/30 transition-colors">
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="outline" className={categoryColors[article.category] || ""}>
-                      {article.category}
-                    </Badge>
-                    {article.published_at && (
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <Clock className="h-3 w-3" /> {new Date(article.published_at).toLocaleDateString()}
-                      </span>
+              <Card key={article.id} className="hover:border-primary/30 transition-colors overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="flex">
+                    {article.image_url && (
+                      <Link to={`/news/${article.slug}`} className="shrink-0">
+                        <img src={article.image_url} alt={article.title} className="h-full w-36 object-cover" />
+                      </Link>
                     )}
+                    <div className="p-5 min-w-0">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge variant="outline" className={categoryColors[article.category] || ""}>
+                          {article.category}
+                        </Badge>
+                        {article.published_at && (
+                          <span className="text-xs text-muted-foreground flex items-center gap-1">
+                            <Clock className="h-3 w-3" /> {new Date(article.published_at).toLocaleDateString()}
+                          </span>
+                        )}
+                      </div>
+                      <Link to={`/news/${article.slug}`} className="text-lg font-semibold hover:text-primary transition-colors">
+                        {article.title}
+                      </Link>
+                      {article.excerpt && <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{article.excerpt}</p>}
+                    </div>
                   </div>
-                  <Link to={`/news/${article.slug}`} className="text-lg font-semibold hover:text-primary transition-colors">
-                    {article.title}
-                  </Link>
-                  {article.excerpt && <p className="text-sm text-muted-foreground mt-2">{article.excerpt}</p>}
                 </CardContent>
               </Card>
             ))}
