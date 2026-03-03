@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 const MDEditor = lazy(() => import("@uiw/react-md-editor"));
 import { supabase } from "@/integrations/supabase/client";
@@ -32,11 +32,12 @@ interface AdminCrudPageProps {
   columns: ColumnConfig[];
   defaults?: RowData;
   onNewOverride?: () => void;
+  triggerCreate?: number;
 }
 
 type RowData = Record<string, unknown>;
 
-export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride }: AdminCrudPageProps) {
+export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate }: AdminCrudPageProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [editingRow, setEditingRow] = useState<RowData | null>(null);
@@ -106,6 +107,12 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
     setFormData({ ...fieldDefaults, ...defaults });
     setDialogOpen(true);
   };
+
+  useEffect(() => {
+    if (triggerCreate && triggerCreate > 0) {
+      openCreate();
+    }
+  }, [triggerCreate]);
 
   const openEdit = (row: RowData) => {
     setEditingRow(row);
