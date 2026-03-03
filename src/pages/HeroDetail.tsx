@@ -74,6 +74,15 @@ export default function HeroDetail() {
               title={hero.name}
               description={hero.description || `${hero.name} - ${hero.rarity}★ ${hero.element} ${hero.class_type}`}
               image={hero.image_url || undefined}
+              url={`/database/heroes/${hero.slug}`}
+              jsonLd={{
+                "@context": "https://schema.org",
+                "@type": "Thing",
+                name: hero.name,
+                description: hero.description || `${hero.name} - ${hero.rarity}★ ${hero.element} ${hero.class_type}`,
+                ...(hero.image_url ? { image: hero.image_url } : {}),
+                additionalType: "GameCharacter",
+              }}
             />
             <div className="flex items-center gap-3 mb-4">
               {hero.image_url && (
