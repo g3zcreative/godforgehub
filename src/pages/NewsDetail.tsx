@@ -8,6 +8,7 @@ import { ArrowLeft, Clock } from "lucide-react";
 import { format } from "date-fns";
 import MDEditor from "@uiw/react-md-editor";
 import { SEO } from "@/components/SEO";
+import { NewsComments } from "@/components/NewsComments";
 
 const categoryColors: Record<string, string> = {
   "Patch Notes": "bg-blue-500/10 text-blue-400 border-blue-500/20",
@@ -90,6 +91,7 @@ export default function NewsDetail() {
                 <MDEditor.Markdown source={article.content} className="!bg-transparent !text-foreground" />
               </div>
             )}
+            <NewsComments articleId={article.id} />
           </>
         )}
       </div>
