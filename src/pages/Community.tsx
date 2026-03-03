@@ -7,13 +7,13 @@ const discordLinks = [
   {
     name: "Official Godforge Discord",
     description: "The official Discord server run by Fateless Games. Get news, updates, and chat with the devs.",
-    url: "https://discord.gg/godforge",
+    url: "/discord",
     icon: <MessageSquare className="h-6 w-6" />,
   },
   {
     name: "GodforgeHub Community Discord",
     description: "Our community-run Discord for guides, theorycrafting, and discussion.",
-    url: "https://discord.gg/hqMfsYVZh7",
+    url: "/discord",
     icon: <MessageSquare className="h-6 w-6" />,
   },
 ];
