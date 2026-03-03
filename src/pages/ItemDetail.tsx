@@ -5,6 +5,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const rarityStars = (r: number) => "★".repeat(r) + "☆".repeat(Math.max(0, 5 - r));
 
@@ -46,6 +47,11 @@ export default function ItemDetail() {
           </div>
         ) : (
           <>
+            <SEO
+              title={item.name}
+              description={item.description || `${item.name} - ${item.rarity}★ ${item.item_type}`}
+              image={item.image_url || undefined}
+            />
             <div className="flex items-center gap-3 mb-4">
               {item.image_url && (
                 <img src={item.image_url} alt={item.name} className="h-20 w-20 rounded-lg object-cover" />

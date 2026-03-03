@@ -7,6 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import { format } from "date-fns";
 import MDEditor from "@uiw/react-md-editor";
+import { SEO } from "@/components/SEO";
 
 export default function GuideDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -46,6 +47,11 @@ export default function GuideDetail() {
           </div>
         ) : (
           <>
+            <SEO
+              title={guide.title}
+              description={guide.excerpt || undefined}
+              type="article"
+            />
             <Badge variant="outline" className="mb-3">{guide.category}</Badge>
             <h1 className="text-3xl font-display font-bold mb-2">{guide.title}</h1>
             <p className="text-sm text-muted-foreground mb-6">

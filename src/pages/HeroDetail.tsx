@@ -5,6 +5,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const elementColors: Record<string, string> = {
   Fire: "bg-red-500/10 text-red-400 border-red-500/20",
@@ -69,6 +70,11 @@ export default function HeroDetail() {
           </div>
         ) : (
           <>
+            <SEO
+              title={hero.name}
+              description={hero.description || `${hero.name} - ${hero.rarity}★ ${hero.element} ${hero.class_type}`}
+              image={hero.image_url || undefined}
+            />
             <div className="flex items-center gap-3 mb-4">
               {hero.image_url && (
                 <img src={hero.image_url} alt={hero.name} className="h-20 w-20 rounded-lg object-cover" />
