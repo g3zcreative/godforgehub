@@ -119,6 +119,29 @@ export default function AdminDocs() {
             <p><strong className="text-foreground">Image URLs:</strong> Use full URLs (e.g. from a CDN or public hosting). Relative paths won't work in Markdown content fields.</p>
           </AccordionContent>
         </AccordionItem>
+
+        <AccordionItem value="sitemap">
+          <AccordionTrigger className="text-base font-semibold">
+            Sitemap &amp; Google Search Console
+          </AccordionTrigger>
+          <AccordionContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+            <p>
+              The sitemap is generated <strong className="text-foreground">dynamically</strong> by a backend function. It automatically includes all published news, heroes, items, and guides — no manual regeneration needed.
+            </p>
+            <p><strong className="text-foreground">Sitemap URL:</strong></p>
+            <code className="block bg-muted px-3 py-2 rounded text-xs font-mono text-foreground break-all">
+              https://yawfmtkrnewpdxjdypmc.supabase.co/functions/v1/sitemap
+            </code>
+            <p><strong className="text-foreground">How to submit to Google Search Console:</strong></p>
+            <ol className="list-decimal pl-5 space-y-1">
+              <li>Go to <strong className="text-foreground">Google Search Console</strong> and select the <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">godforgehub.com</code> property</li>
+              <li>Navigate to <strong className="text-foreground">Sitemaps</strong> in the left sidebar</li>
+              <li>Paste the full sitemap URL above into the "Add a new sitemap" field</li>
+              <li>Click <strong className="text-foreground">Submit</strong> — Google accepts cross-domain sitemaps for verified properties</li>
+            </ol>
+            <p><strong className="text-foreground">Note:</strong> Any new published content (news articles, heroes, guides, etc.) is automatically included the next time Google fetches the sitemap. No action needed from you.</p>
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </div>
   );
