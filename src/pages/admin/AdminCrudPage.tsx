@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 const MDEditor = lazy(() => import("@uiw/react-md-editor"));
 import { supabase } from "@/integrations/supabase/client";
+import { compressImage, compressedExtension } from "@/lib/image-utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -29,9 +30,9 @@ function ImageUploadButton({ bucket, onUploaded }: { bucket: string; onUploaded:
     }
     setUploading(true);
     try {
-      const ext = file.name.split(".").pop() || "png";
-      const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-      const { error } = await supabase.storage.from(bucket).upload(path, file);
+      const compressed = await compressImage(file);
+      const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${compressedExtension}`;
+      const { error } = await supabase.storage.from(bucket).upload(path, compressed);
       if (error) throw error;
       const { data: urlData } = supabase.storage.from(bucket).getPublicUrl(path);
       onUploaded(urlData.publicUrl);
