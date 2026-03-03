@@ -23,6 +23,7 @@ import AdminGuides from "./pages/admin/AdminGuides";
 import AdminOfficialPosts from "./pages/admin/AdminOfficialPosts";
 import AdminChangelog from "./pages/admin/AdminChangelog";
 import AdminRoadmap from "./pages/admin/AdminRoadmap";
+import { FeedbackWidget } from "./components/FeedbackWidget";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <FeedbackWidget />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/news" element={<NewsPage />} />
