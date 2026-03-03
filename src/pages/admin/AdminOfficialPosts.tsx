@@ -5,7 +5,7 @@ const columns: ColumnConfig[] = [
   { key: "author_role", label: "Author Role", showInTable: true },
   { key: "source", label: "Source", showInTable: true },
   { key: "channel_name", label: "Channel Name", showInTable: true },
-  { key: "content", label: "Content", type: "textarea", required: true, showInTable: true },
+  { key: "content", label: "Content", type: "markdown", required: true, showInTable: true },
   { key: "message_url", label: "Message URL" },
   { key: "region", label: "Region" },
   { key: "posted_at", label: "Posted At", type: "datetime" },

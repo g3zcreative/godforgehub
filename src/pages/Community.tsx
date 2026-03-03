@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { format } from "date-fns";
 import { SEO } from "@/components/SEO";
+import MDEditor from "@uiw/react-md-editor";
 
 const sourceIcons: Record<string, React.ReactNode> = {
   Discord: <MessageSquare className="h-4 w-4" />,
@@ -50,7 +51,9 @@ const CommunityPage = () => {
                     <span className="text-sm font-semibold">{post.author}</span>
                     {post.author_role && <span className="text-xs text-muted-foreground">· {post.author_role}</span>}
                   </div>
-                  <p className="text-sm text-foreground mb-3">{post.content}</p>
+                  <div className="text-sm text-foreground mb-3" data-color-mode="dark">
+                    <MDEditor.Markdown source={post.content} className="!bg-transparent !text-foreground" />
+                  </div>
                   <div className="flex items-center gap-2 flex-wrap">
                     <Badge variant="outline" className="text-xs">{post.source}</Badge>
                     {post.channel_name && <Badge variant="secondary" className="text-xs">#{post.channel_name}</Badge>}
