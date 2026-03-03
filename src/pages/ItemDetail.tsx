@@ -51,6 +51,14 @@ export default function ItemDetail() {
               title={item.name}
               description={item.description || `${item.name} - ${item.rarity}★ ${item.item_type}`}
               image={item.image_url || undefined}
+              url={`/database/items/${item.slug}`}
+              jsonLd={{
+                "@context": "https://schema.org",
+                "@type": "Thing",
+                name: item.name,
+                description: item.description || `${item.name} - ${item.rarity}★ ${item.item_type}`,
+                ...(item.image_url ? { image: item.image_url } : {}),
+              }}
             />
             <div className="flex items-center gap-3 mb-4">
               {item.image_url && (

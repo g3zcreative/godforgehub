@@ -51,6 +51,15 @@ export default function GuideDetail() {
               title={guide.title}
               description={guide.excerpt || undefined}
               type="article"
+              url={`/guides/${guide.slug}`}
+              jsonLd={{
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: guide.title,
+                ...(guide.excerpt ? { description: guide.excerpt } : {}),
+                author: { "@type": "Person", name: guide.author },
+                ...(guide.published_at ? { datePublished: guide.published_at } : {}),
+              }}
             />
             <Badge variant="outline" className="mb-3">{guide.category}</Badge>
             <h1 className="text-3xl font-display font-bold mb-2">{guide.title}</h1>

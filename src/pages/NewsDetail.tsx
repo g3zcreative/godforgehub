@@ -61,6 +61,15 @@ export default function NewsDetail() {
               description={article.excerpt || undefined}
               image={article.image_url || undefined}
               type="article"
+              url={`/news/${article.slug}`}
+              jsonLd={{
+                "@context": "https://schema.org",
+                "@type": "NewsArticle",
+                headline: article.title,
+                ...(article.excerpt ? { description: article.excerpt } : {}),
+                ...(article.image_url ? { image: article.image_url } : {}),
+                ...(article.published_at ? { datePublished: article.published_at } : {}),
+              }}
             />
             <div className="flex items-center gap-2 mb-3">
               <Badge variant="outline" className={categoryColors[article.category] || ""}>
