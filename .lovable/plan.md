@@ -1,49 +1,40 @@
 
 
-## Plan: Streamlined News Creation System
+## Feedback Widget
 
-### Problem
-Writing full news articles is too time-consuming for a solo operator. You need faster ways to publish content.
+### What to build
 
-### What to Build
+A minimal, fixed-position feedback widget in the bottom-right corner of every public page. Design concept:
 
-**1. Quick-Post Templates (in Admin)**
-Add pre-built category templates to the admin news creation form. When you click "New", you pick a template (Patch Notes, Event Recap, Dev Update, Community Spotlight) and get a pre-filled structure with placeholder text you just fill in. This alone cuts writing time to under 2 minutes.
+**Collapsed state**: A small pill/button showing a chat-bubble icon + "Feedback" label, sitting unobtrusively at the bottom-right. Semi-transparent, becomes solid on hover.
 
-**2. AI-Assisted Draft Generation (in Admin)**
-Add a "Generate with AI" button to the news article creation form. You provide a few bullet points or a short description, and AI generates a full draft (title, excerpt, markdown content). You review, tweak, and publish. Uses Lovable AI (already available) via a backend function.
+**Expanded state** (on click): A compact card (~280px wide) with:
+1. **Emoji reaction row** — 5 emoji buttons (😡 😕 😐 🙂 😍) for instant sentiment. One tap = done.
+2. **Optional text field** — appears after selecting an emoji: "Anything else?" with a small textarea (2 rows) and a "Send" button.
+3. **Thank you state** — replaces the form briefly after submit, then auto-collapses after 2s.
 
-**3. Curate from URL (in Admin)**
-Add a "Import from URL" option. Paste a link to patch notes, a dev blog, or a tweet. The system fetches the page content and uses AI to summarize it into a news article draft. Uses Firecrawl for scraping + Lovable AI for summarization.
+This is the lowest-friction pattern: one click to open, one click to rate, optionally type more. No login required.
 
-### Implementation Details
+### Database
 
-**Backend function: `supabase/functions/generate-news/index.ts`**
-- Accepts either `{ prompt, category }` (AI-assisted) or `{ url, category }` (curate from URL)
-- For URL mode: calls Firecrawl to scrape, then passes content to Lovable AI
-- For prompt mode: sends bullet points directly to Lovable AI
-- Returns `{ title, slug, excerpt, content }` as a draft
-- Uses LOVABLE_API_KEY (already configured)
+Create a `feedback` table to store submissions:
+- `id` (uuid, PK)
+- `rating` (int, 1–5, the emoji index)
+- `message` (text, nullable)
+- `page_url` (text, the current route)
+- `created_at` (timestamptz)
 
-**Frontend changes: `src/pages/admin/AdminNews.tsx`**
-- Add a pre-creation dialog with three options: "Blank", "From Template", "AI Generate", "Import URL"
-- Templates: hardcoded markdown skeletons per category
-- AI Generate: text area for bullet points → calls edge function → pre-fills form
-- Import URL: URL input → calls edge function → pre-fills form
-- All options land in the existing create/edit form for final review before saving
+RLS: Allow anonymous inserts (public-facing, no auth required). No select/update/delete for anon — only admins can read feedback.
 
-**Firecrawl connector**
-- Needed for the "Import from URL" feature
-- Will prompt you to connect Firecrawl when implementing
+### Files
 
-### Files to Create/Edit
-- `supabase/functions/generate-news/index.ts` — new edge function
-- `src/pages/admin/AdminNews.tsx` — add template picker, AI generate, URL import UI
-- `supabase/config.toml` — register the new function (auto-handled)
+1. **Migration** — Create `feedback` table + RLS policies (anon insert, admin select).
+2. **`src/components/FeedbackWidget.tsx`** — New component with collapsed/expanded/thank-you states, calls `supabase.from("feedback").insert(...)`.
+3. **`src/App.tsx`** — Render `<FeedbackWidget />` at the app root level (outside Routes) so it appears on every page. Exclude admin routes.
 
-### User Flow
-1. Click "New" on News Articles admin page
-2. Choose: Template / AI Generate / Import URL / Blank
-3. Form pre-fills with draft content
-4. Review, edit, publish
+### Design details
+- Uses existing design tokens (card bg, border, primary gold, muted text).
+- `position: fixed; bottom: 1rem; right: 1rem; z-index: 50`.
+- Smooth scale/opacity transition on open/close.
+- On admin pages, the widget is hidden.
 
