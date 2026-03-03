@@ -10,6 +10,8 @@ import DatabasePage from "./pages/Database";
 import GuidesPage from "./pages/Guides";
 import ToolsPage from "./pages/Tools";
 import CommunityPage from "./pages/Community";
+import ChangelogPage from "./pages/Changelog";
+import RoadmapPage from "./pages/Roadmap";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/guides" element={<GuidesPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route path="/changelog" element={<ChangelogPage />} />
+          <Route path="/roadmap" element={<RoadmapPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
