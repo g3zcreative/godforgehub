@@ -1,29 +1,43 @@
 
 
-## Internal Admin Documentation Page
+## Plan: AI Generate from Video URL
 
-A dedicated `/admin/docs` page inside the admin dashboard that serves as a living reference guide for content management conventions and best practices.
+### Approach
 
-### What it covers
+YouTube pages are JavaScript-heavy and Firecrawl scraping often returns minimal useful content from them. Instead, we'll use Gemini's native multimodal capability — pass the YouTube URL directly to Gemini, which can process video content and generate an article from it.
 
-- **Changelog conventions**: Version numbering (semver explanation), change types (feature/improvement/bugfix/new), writing good titles and descriptions
-- **Content guidelines**: How to write news articles, guides, official posts
-- **Feature flags**: What each flag controls
-- **Roadmap**: Status meanings (planned/in-progress/completed)
-- **General tips**: Markdown formatting reference, image URLs, slug conventions
+### Changes
 
-### Technical approach
+**1. Edge function (`supabase/functions/generate-news/index.ts`)**
 
-1. **New page `src/pages/admin/AdminDocs.tsx`** -- A static reference page using accordions to organize sections. No database needed; content lives directly in the component as structured data.
+Add a new `videoUrl` parameter. When provided:
+- Skip Firecrawl entirely
+- Extract the YouTube video ID from the URL
+- Pass the video URL to Gemini as a `file_url` part in the user message (Gemini supports YouTube URLs natively)
+- Use a video-specific system prompt that instructs the AI to watch/analyze the video and write an article summarizing it
 
-2. **Sidebar & routing** -- Add a "Docs" link with a `BookOpen` or `FileQuestion` icon to the Platform group in `AdminLayout.tsx`, and register `/admin/docs` in `App.tsx`.
+The request body to Gemini will use the multimodal message format:
+```json
+{
+  "role": "user",
+  "content": [
+    { "type": "text", "text": "Analyze this video and write an article based on its content." },
+    { "type": "file", "file": { "url": "https://www.youtube.com/watch?v=..." } }
+  ]
+}
+```
 
-3. **Content structure** -- Each section rendered as an `Accordion` item with markdown-like formatted content using existing Tailwind prose styles. Sections include:
-   - Changelog & Versioning (e.g., "Use `MAJOR.MINOR.PATCH` -- bump PATCH for bugfixes, MINOR for new features, MAJOR for breaking/large changes")
-   - Writing News & Guides
-   - Feature Flags Reference
-   - Roadmap Statuses
-   - Markdown Cheat Sheet
+**2. Frontend (`src/pages/admin/AdminNews.tsx`)**
 
-This is a lightweight, zero-dependency addition -- just a new React component with static content, a route, and a sidebar link.
+- Add a 5th option in the creation mode picker: "From Video" with a `Video` icon
+- Add a new `"video"` mode with a dialog containing:
+  - Category selector (same as other modes)
+  - YouTube URL input field
+  - Optional notes/context textarea (to guide the AI on what to focus on)
+  - "Generate from Video" button
+- Wire it to call `generate-news` with `{ videoUrl, category, prompt }` (prompt = optional context notes)
+
+### Files to edit
+- `supabase/functions/generate-news/index.ts` — add `videoUrl` handling with Gemini multimodal
+- `src/pages/admin/AdminNews.tsx` — add video mode to picker and dialog
 
