@@ -1,0 +1,135 @@
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Search, Menu, X, User, Bookmark, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const navItems = [
+  { label: "News", href: "/news" },
+  { label: "Database", href: "/database" },
+  { label: "Guides", href: "/guides" },
+  { label: "Tools", href: "/tools" },
+  { label: "Community", href: "/community" },
+];
+
+export function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const location = useLocation();
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <div className="container flex h-14 items-center gap-4">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <div className="h-8 w-8 rounded-md bg-primary flex items-center justify-center">
+            <span className="font-display font-bold text-primary-foreground text-sm">GF</span>
+          </div>
+          <span className="font-display font-bold text-lg hidden sm:inline">
+            Godforge<span className="text-primary">Hub</span>
+          </span>
+        </Link>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-1 ml-4">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-foreground ${
+                location.pathname.startsWith(item.href)
+                  ? "text-primary bg-secondary"
+                  : "text-muted-foreground"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Search */}
+        <div className="flex-1 flex justify-end items-center gap-2">
+          <div className="hidden sm:flex relative max-w-xs w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search Godforge Hub..."
+              className="pl-9 bg-secondary border-border h-9 text-sm"
+            />
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="sm:hidden"
+            onClick={() => setSearchOpen(!searchOpen)}
+          >
+            <Search className="h-4 w-4" />
+          </Button>
+
+          {/* User menu */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-muted-foreground">
+                <User className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" /> Sign In
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Bookmark className="mr-2 h-4 w-4" /> Bookmarks
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Mobile menu toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden text-muted-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile search */}
+      {searchOpen && (
+        <div className="sm:hidden border-t border-border px-4 py-2">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input placeholder="Search..." className="pl-9 bg-secondary border-border h-9 text-sm" />
+          </div>
+        </div>
+      )}
+
+      {/* Mobile nav */}
+      {mobileOpen && (
+        <nav className="md:hidden border-t border-border px-4 py-3 flex flex-col gap-1 bg-background">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              onClick={() => setMobileOpen(false)}
+              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                location.pathname.startsWith(item.href)
+                  ? "text-primary bg-secondary"
+                  : "text-muted-foreground hover:bg-secondary"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      )}
+    </header>
+  );
+}
