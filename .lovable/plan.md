@@ -1,45 +1,49 @@
 
 
-## Plan: Discord-First Official Post Tracker
+## Plan: Streamlined News Creation System
 
-### Current State
-The Official Posts system already works well — the `official_posts` table has fields for `author`, `author_role`, `source`, `content`, `region`, and `posted_at`. The admin panel (`AdminOfficialPosts`) lets you manually create posts. The public Community page and homepage both display them.
+### Problem
+Writing full news articles is too time-consuming for a solo operator. You need faster ways to publish content.
 
-### What to Build Now
+### What to Build
 
-Since you want manual entry now with automation later, the focus is on making the manual workflow as smooth as possible and preparing the data model for future Discord bot integration.
+**1. Quick-Post Templates (in Admin)**
+Add pre-built category templates to the admin news creation form. When you click "New", you pick a template (Patch Notes, Event Recap, Dev Update, Community Spotlight) and get a pre-filled structure with placeholder text you just fill in. This alone cuts writing time to under 2 minutes.
 
-**1. Improve the admin entry flow for Discord posts**
-- Pre-fill `source` as "Discord" by default
-- Add a `channel_name` field to track which Discord channel the post came from (e.g. #announcements, #dev-updates)
-- Add a `message_url` field so you can link back to the original Discord message
-- Add a `discord_message_id` field (hidden from UI for now) to prevent duplicates when automation arrives
+**2. AI-Assisted Draft Generation (in Admin)**
+Add a "Generate with AI" button to the news article creation form. You provide a few bullet points or a short description, and AI generates a full draft (title, excerpt, markdown content). You review, tweak, and publish. Uses Lovable AI (already available) via a backend function.
 
-**2. Database migration**
-Add three columns to `official_posts`:
-- `channel_name` (text, nullable)
-- `message_url` (text, nullable) 
-- `discord_message_id` (text, nullable, unique) — for future dedup
+**3. Curate from URL (in Admin)**
+Add a "Import from URL" option. Paste a link to patch notes, a dev blog, or a tweet. The system fetches the page content and uses AI to summarize it into a news article draft. Uses Firecrawl for scraping + Lovable AI for summarization.
 
-**3. Update the public Community page**
-- Show channel name as a tag (e.g. "#announcements")
-- Make posts linkable back to the original Discord message when `message_url` is set
+### Implementation Details
 
-**4. Update the admin form**
-- Add the new fields to `AdminOfficialPosts` column config
-- Default `source` to "Discord"
+**Backend function: `supabase/functions/generate-news/index.ts`**
+- Accepts either `{ prompt, category }` (AI-assisted) or `{ url, category }` (curate from URL)
+- For URL mode: calls Firecrawl to scrape, then passes content to Lovable AI
+- For prompt mode: sends bullet points directly to Lovable AI
+- Returns `{ title, slug, excerpt, content }` as a draft
+- Uses LOVABLE_API_KEY (already configured)
 
-### Future Automation Path (not built now)
-When you're ready to automate, the approach would be:
-- Create a backend webhook endpoint that accepts Discord bot payloads
-- Build or configure a Discord bot that watches specific channels and POSTs to your webhook
-- The webhook inserts into `official_posts`, using `discord_message_id` to prevent duplicates
+**Frontend changes: `src/pages/admin/AdminNews.tsx`**
+- Add a pre-creation dialog with three options: "Blank", "From Template", "AI Generate", "Import URL"
+- Templates: hardcoded markdown skeletons per category
+- AI Generate: text area for bullet points → calls edge function → pre-fills form
+- Import URL: URL input → calls edge function → pre-fills form
+- All options land in the existing create/edit form for final review before saving
 
-The schema changes made now will make that transition seamless.
+**Firecrawl connector**
+- Needed for the "Import from URL" feature
+- Will prompt you to connect Firecrawl when implementing
 
-### Files to Change
-- **Database migration**: Add `channel_name`, `message_url`, `discord_message_id` columns to `official_posts`
-- `src/pages/admin/AdminOfficialPosts.tsx` — add new fields, default source to Discord
-- `src/pages/Community.tsx` — show channel name, link to original message
-- `src/pages/Index.tsx` — optionally show channel name in post tracker cards
+### Files to Create/Edit
+- `supabase/functions/generate-news/index.ts` — new edge function
+- `src/pages/admin/AdminNews.tsx` — add template picker, AI generate, URL import UI
+- `supabase/config.toml` — register the new function (auto-handled)
+
+### User Flow
+1. Click "New" on News Articles admin page
+2. Choose: Template / AI Generate / Import URL / Blank
+3. Form pre-fills with draft content
+4. Review, edit, publish
 
