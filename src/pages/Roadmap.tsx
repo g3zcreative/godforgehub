@@ -8,8 +8,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const statusConfig: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
   planned: { label: "Planned", icon: <Circle className="h-4 w-4" />, color: "bg-muted text-muted-foreground border-border" },
-  in_progress: { label: "In Progress", icon: <Loader2 className="h-4 w-4 animate-spin" />, color: "bg-primary/10 text-primary border-primary/20" },
-  completed: { label: "Completed", icon: <CheckCircle2 className="h-4 w-4" />, color: "bg-green-500/10 text-green-400 border-green-500/20" },
+  in_progress: { label: "Coming Soon", icon: <Loader2 className="h-4 w-4 animate-spin" />, color: "bg-primary/10 text-primary border-primary/20" },
+  completed: { label: "Shipped", icon: <CheckCircle2 className="h-4 w-4" />, color: "bg-green-500/10 text-green-400 border-green-500/20" },
 };
 
 const RoadmapPage = () => {
@@ -47,7 +47,7 @@ const RoadmapPage = () => {
           </div>
         ) : items && items.length > 0 ? (
           <div className="grid md:grid-cols-3 gap-6">
-            {(["in_progress", "planned", "completed"] as const).map((status) => {
+            {(["planned", "in_progress", "completed"] as const).map((status) => {
               const config = statusConfig[status];
               return (
                 <div key={status}>
