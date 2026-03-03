@@ -264,6 +264,7 @@ export default function AdminNews() {
     }
   };
 
+  return (
     <>
       <AdminCrudPage
         key={crudKey}
