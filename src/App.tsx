@@ -25,6 +25,7 @@ import AdminChangelog from "./pages/admin/AdminChangelog";
 import AdminRoadmap from "./pages/admin/AdminRoadmap";
 import AdminFeedback from "./pages/admin/AdminFeedback";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AdminPlatform from "./pages/admin/AdminPlatform";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
 
@@ -70,6 +71,7 @@ const App = () => (
               <Route path="changelog" element={<AdminChangelog />} />
               <Route path="roadmap" element={<AdminRoadmap />} />
               <Route path="feedback" element={<AdminFeedback />} />
+              <Route path="platform" element={<AdminPlatform />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
