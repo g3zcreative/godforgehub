@@ -1,40 +1,57 @@
 
 
-## Feedback Widget
+## Plan: Admin Analytics Dashboard + Sidebar Reorganization
 
-### What to build
+### Sidebar Changes (`src/pages/admin/AdminLayout.tsx`)
 
-A minimal, fixed-position feedback widget in the bottom-right corner of every public page. Design concept:
+Split the flat nav list into two groups:
 
-**Collapsed state**: A small pill/button showing a chat-bubble icon + "Feedback" label, sitting unobtrusively at the bottom-right. Semi-transparent, becomes solid on hover.
+**Content** — Heroes, Items, Skills, Materials, News, Guides, Official Posts, Changelog, Roadmap
 
-**Expanded state** (on click): A compact card (~280px wide) with:
-1. **Emoji reaction row** — 5 emoji buttons (😡 😕 😐 🙂 😍) for instant sentiment. One tap = done.
-2. **Optional text field** — appears after selecting an emoji: "Anything else?" with a small textarea (2 rows) and a "Send" button.
-3. **Thank you state** — replaces the form briefly after submit, then auto-collapses after 2s.
+**Insights** — Analytics (new), Feedback (existing)
 
-This is the lowest-friction pattern: one click to open, one click to rate, optionally type more. No login required.
+Use two `SidebarGroup` blocks with separate `SidebarGroupLabel`s.
 
-### Database
+### New Analytics Page (`src/pages/admin/AdminAnalytics.tsx`)
 
-Create a `feedback` table to store submissions:
+A dashboard with 4 stat cards in a grid:
+
+1. **Active Users (Real-time)** — Use the Supabase analytics query tool to check if presence/realtime stats are available. Since there's no built-in real-time user count without extra infrastructure, this card will show a "Coming Soon" placeholder or use a simple approach: query distinct feedback submitters in the last 15 minutes as a proxy. More practically, display this as a placeholder card labeled "Real-time visitors" with a note that it requires additional tracking setup.
+
+2. **Visitors (28 days)** — Same limitation: no visitor tracking table exists. This will be a placeholder card suggesting integration with an analytics provider, or we can count unique `page_url` feedback entries as a rough proxy. Better approach: show it as a placeholder.
+
+3. **Average Feedback Rating** — Query `feedback` table, compute `AVG(rating)`. Straightforward.
+
+4. **Feedback Count** — Query `feedback` table `COUNT(*)`. Straightforward.
+
+**Realistic approach**: Cards 1 and 2 (active users, visitor count) require client-side analytics tracking that doesn't exist yet. Rather than building a full analytics pipeline, I'll:
+- Create a simple `page_views` table to track page visits (inserted client-side on each navigation)
+- Use that for "visitors last 28 days" (count distinct sessions or rows)
+- For "real-time active users", count page_views in the last 5 minutes
+- Feedback stats come directly from the `feedback` table
+
+### Database Migration
+
+Create `page_views` table:
 - `id` (uuid, PK)
-- `rating` (int, 1–5, the emoji index)
-- `message` (text, nullable)
-- `page_url` (text, the current route)
+- `page_url` (text)
+- `session_id` (text) — random ID stored in sessionStorage to deduplicate
 - `created_at` (timestamptz)
 
-RLS: Allow anonymous inserts (public-facing, no auth required). No select/update/delete for anon — only admins can read feedback.
+RLS: Allow anonymous inserts. Admin-only select. No update/delete.
 
-### Files
+### Page View Tracker (`src/hooks/usePageView.tsx`)
 
-1. **Migration** — Create `feedback` table + RLS policies (anon insert, admin select).
-2. **`src/components/FeedbackWidget.tsx`** — New component with collapsed/expanded/thank-you states, calls `supabase.from("feedback").insert(...)`.
-3. **`src/App.tsx`** — Render `<FeedbackWidget />` at the app root level (outside Routes) so it appears on every page. Exclude admin routes.
+A hook used in the main `App.tsx` that inserts a row into `page_views` on each route change. Uses a `sessionStorage` session ID to enable distinct visitor counting.
 
-### Design details
-- Uses existing design tokens (card bg, border, primary gold, muted text).
-- `position: fixed; bottom: 1rem; right: 1rem; z-index: 50`.
-- Smooth scale/opacity transition on open/close.
-- On admin pages, the widget is hidden.
+### Route Registration (`src/App.tsx`)
+
+Add `/admin/analytics` route pointing to the new page.
+
+### Files to create/edit
+- **Migration** — `page_views` table + RLS
+- `src/hooks/usePageView.tsx` — new hook for tracking
+- `src/pages/admin/AdminAnalytics.tsx` — new dashboard page
+- `src/pages/admin/AdminLayout.tsx` — reorganize sidebar into Content + Insights groups
+- `src/App.tsx` — add route + page view hook
 
