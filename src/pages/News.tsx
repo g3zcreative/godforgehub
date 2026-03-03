@@ -43,10 +43,10 @@ const NewsPage = () => {
             {[1, 2, 3].map((i) => <Skeleton key={i} className="h-24 w-full" />)}
           </div>
         ) : articles && articles.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
             {articles.map((article) => (
-              <Link key={article.id} to={`/news/${article.slug}`} className="group">
-                <Card className="hover:border-primary/30 transition-colors overflow-hidden h-full flex flex-col">
+              <Link key={article.id} to={`/news/${article.slug}`} className="group break-inside-avoid">
+                <Card className="hover:border-primary/30 transition-colors overflow-hidden flex flex-col">
                   {article.image_url && (
                     <div className="aspect-video w-full overflow-hidden">
                       <img
