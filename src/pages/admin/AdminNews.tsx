@@ -155,6 +155,7 @@ export default function AdminNews() {
   const [defaults, setDefaults] = useState<Record<string, unknown> | undefined>();
   const [crudKey, setCrudKey] = useState(0);
   const { toast } = useToast();
+  const [triggerCreate, setTriggerCreate] = useState(0);
 
   const openPicker = () => setMode("picker");
 
@@ -170,7 +171,7 @@ export default function AdminNews() {
       published: false,
       published_at: new Date().toISOString(),
     });
-    setCrudKey(k => k + 1);
+    setTriggerCreate(t => t + 1);
     setMode(null);
   };
 
@@ -193,7 +194,7 @@ export default function AdminNews() {
         published: false,
         published_at: new Date().toISOString(),
       });
-      setCrudKey(k => k + 1);
+      setTriggerCreate(t => t + 1);
       setMode(null);
       toast({ title: "Draft generated!", description: "Review and edit before publishing." });
     } catch (e: any) {
@@ -222,7 +223,7 @@ export default function AdminNews() {
         published: false,
         published_at: new Date().toISOString(),
       });
-      setCrudKey(k => k + 1);
+      setTriggerCreate(t => t + 1);
       setMode(null);
       toast({ title: "Article imported!", description: "Review and edit before publishing." });
     } catch (e: any) {
@@ -241,6 +242,7 @@ export default function AdminNews() {
         columns={columns}
         defaults={defaults}
         onNewOverride={openPicker}
+        triggerCreate={triggerCreate}
       />
 
       {/* Mode Picker */}
@@ -262,7 +264,7 @@ export default function AdminNews() {
               <Link className="h-6 w-6" />
               <span className="text-sm">Import from URL</span>
             </Button>
-            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setDefaults(undefined); setCrudKey(k => k + 1); setMode(null); }}>
+            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setDefaults(undefined); setTriggerCreate(t => t + 1); setMode(null); }}>
               <Plus className="h-6 w-6" />
               <span className="text-sm">Blank</span>
             </Button>
