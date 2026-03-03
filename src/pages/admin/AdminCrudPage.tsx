@@ -31,11 +31,12 @@ interface AdminCrudPageProps {
   title: string;
   columns: ColumnConfig[];
   defaults?: RowData;
+  onNewOverride?: () => void;
 }
 
 type RowData = Record<string, unknown>;
 
-export function AdminCrudPage({ tableName, title, columns, defaults }: AdminCrudPageProps) {
+export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride }: AdminCrudPageProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [editingRow, setEditingRow] = useState<RowData | null>(null);
@@ -217,7 +218,7 @@ export function AdminCrudPage({ tableName, title, columns, defaults }: AdminCrud
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-display font-bold">{title}</h1>
-        <Button onClick={openCreate}><Plus className="mr-2 h-4 w-4" /> New</Button>
+        <Button onClick={onNewOverride || openCreate}><Plus className="mr-2 h-4 w-4" /> New</Button>
       </div>
 
       {isLoading ? (
