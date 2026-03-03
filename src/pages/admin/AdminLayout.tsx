@@ -11,7 +11,7 @@ import { NavLink } from "@/components/NavLink";
 import {
   Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
   BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle, BarChart3,
-  RefreshCw, Users, Settings,
+  RefreshCw, Users, Settings, FileQuestion,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -36,6 +36,7 @@ const insightItems = [
 const platformItems = [
   { title: "Users", url: "/admin/platform", icon: Users },
   { title: "Settings", url: "/admin/settings", icon: Settings },
+  { title: "Docs", url: "/admin/docs", icon: FileQuestion },
 ];
 
 function AdminSidebar() {
