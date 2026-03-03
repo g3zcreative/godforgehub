@@ -1,0 +1,105 @@
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { useAdmin } from "@/hooks/useAdmin";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import {
+  Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
+  SidebarMenu, SidebarMenuItem, SidebarMenuButton, useSidebar,
+} from "@/components/ui/sidebar";
+import { NavLink } from "@/components/NavLink";
+import {
+  Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
+  BookOpen, MessageSquare, FileText, Map, LogOut,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const navItems = [
+  { title: "Heroes", url: "/admin/heroes", icon: Shield },
+  { title: "Items", url: "/admin/items", icon: Package },
+  { title: "Skills", url: "/admin/skills", icon: Sparkles },
+  { title: "Materials", url: "/admin/materials", icon: FlaskConical },
+  { title: "News", url: "/admin/news", icon: Newspaper },
+  { title: "Guides", url: "/admin/guides", icon: BookOpen },
+  { title: "Official Posts", url: "/admin/official-posts", icon: MessageSquare },
+  { title: "Changelog", url: "/admin/changelog", icon: FileText },
+  { title: "Roadmap", url: "/admin/roadmap", icon: Map },
+];
+
+function AdminSidebar() {
+  const { state } = useSidebar();
+  const collapsed = state === "collapsed";
+  const { signOut } = useAuth();
+  const navigate = useNavigate();
+
+  return (
+    <Sidebar collapsible="icon">
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Content</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {navItems.map((item) => (
+                <SidebarMenuItem key={item.url}>
+                  <SidebarMenuButton asChild>
+                    <NavLink to={item.url} className="hover:bg-muted/50" activeClassName="bg-muted text-primary font-medium">
+                      <item.icon className="mr-2 h-4 w-4" />
+                      {!collapsed && <span>{item.title}</span>}
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+      <div className="mt-auto p-4 border-t border-border">
+        <Button variant="ghost" size="sm" className="w-full justify-start" onClick={async () => { await signOut(); navigate("/"); }}>
+          <LogOut className="mr-2 h-4 w-4" />
+          {!collapsed && "Sign Out"}
+        </Button>
+      </div>
+    </Sidebar>
+  );
+}
+
+export default function AdminLayout() {
+  const { user, loading: authLoading } = useAuth();
+  const { isAdmin, loading: adminLoading } = useAdmin();
+  const navigate = useNavigate();
+
+  if (authLoading || adminLoading) {
+    return <div className="flex items-center justify-center min-h-screen text-muted-foreground">Loading...</div>;
+  }
+
+  if (!user) {
+    navigate("/auth");
+    return null;
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+        <h1 className="text-2xl font-display font-bold">Access Denied</h1>
+        <p className="text-muted-foreground">You need admin privileges to access this area.</p>
+        <Button onClick={() => navigate("/")}>Go Home</Button>
+      </div>
+    );
+  }
+
+  return (
+    <SidebarProvider>
+      <div className="min-h-screen flex w-full">
+        <AdminSidebar />
+        <div className="flex-1 flex flex-col">
+          <header className="h-12 flex items-center border-b border-border px-4 gap-4">
+            <SidebarTrigger />
+            <span className="font-display font-bold text-sm">GodforgeHub Admin</span>
+          </header>
+          <main className="flex-1 p-6 overflow-auto">
+            <Outlet />
+          </main>
+        </div>
+      </div>
+    </SidebarProvider>
+  );
+}
