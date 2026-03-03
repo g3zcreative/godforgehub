@@ -23,6 +23,7 @@ import AdminGuides from "./pages/admin/AdminGuides";
 import AdminOfficialPosts from "./pages/admin/AdminOfficialPosts";
 import AdminChangelog from "./pages/admin/AdminChangelog";
 import AdminRoadmap from "./pages/admin/AdminRoadmap";
+import AdminFeedback from "./pages/admin/AdminFeedback";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 
 const queryClient = new QueryClient();
@@ -59,6 +60,7 @@ const App = () => (
               <Route path="official-posts" element={<AdminOfficialPosts />} />
               <Route path="changelog" element={<AdminChangelog />} />
               <Route path="roadmap" element={<AdminRoadmap />} />
+              <Route path="feedback" element={<AdminFeedback />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
