@@ -1,38 +1,75 @@
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { ExternalLink, MessageSquare, Users2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { MessageSquare, Newspaper, BookOpen } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
+import { format } from "date-fns";
+import { SEO } from "@/components/SEO";
 
-const links = [
-  { name: "Official Discord", url: "#", icon: <MessageSquare className="h-5 w-5" />, description: "Join the official Godforge community on Discord." },
-  { name: "Reddit Community", url: "#", icon: <Users2 className="h-5 w-5" />, description: "Discuss strategies, share builds, and connect with players." },
-  { name: "Twitter / X", url: "#", icon: <ExternalLink className="h-5 w-5" />, description: "Follow @GodforgeGame for the latest announcements." },
-];
+const sourceIcons: Record<string, React.ReactNode> = {
+  Discord: <MessageSquare className="h-4 w-4" />,
+  Twitter: <Newspaper className="h-4 w-4" />,
+  Forum: <BookOpen className="h-4 w-4" />,
+};
 
 const CommunityPage = () => {
+  const { data: posts, isLoading } = useQuery({
+    queryKey: ["official_posts"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("official_posts")
+        .select("*")
+        .order("posted_at", { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+  });
+
   return (
     <Layout>
+      <SEO title="Official Posts" description="Official communications from the Godforge development team." />
       <div className="container py-8">
         <h1 className="font-display text-3xl font-bold mb-2 flex items-center gap-2">
-          <Users2 className="h-7 w-7 text-primary" /> Community
+          <MessageSquare className="h-7 w-7 text-primary" /> Official Posts
         </h1>
-        <p className="text-muted-foreground mb-6">Connect with the Godforge community.</p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {links.map((link) => (
-            <Card key={link.name} className="hover:border-primary/30 transition-colors">
-              <CardContent className="p-6 flex flex-col gap-3">
-                <div className="text-primary">{link.icon}</div>
-                <h3 className="font-display font-semibold text-lg">{link.name}</h3>
-                <p className="text-sm text-muted-foreground">{link.description}</p>
-                <Button variant="outline" size="sm" className="w-fit mt-auto" asChild>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    Visit <ExternalLink className="ml-1 h-3 w-3" />
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <p className="text-muted-foreground mb-6">Official communications from the Godforge team.</p>
+
+        {isLoading ? (
+          <div className="space-y-3">
+            {[1, 2, 3].map((i) => <Skeleton key={i} className="h-28 w-full" />)}
+          </div>
+        ) : posts && posts.length > 0 ? (
+          <div className="space-y-3">
+            {posts.map((post) => (
+              <Card key={post.id} className="hover:border-primary/30 transition-colors">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-primary">{sourceIcons[post.source] || <MessageSquare className="h-4 w-4" />}</span>
+                    <span className="text-sm font-semibold">{post.author}</span>
+                    {post.author_role && <span className="text-xs text-muted-foreground">· {post.author_role}</span>}
+                  </div>
+                  <p className="text-sm text-foreground mb-3">{post.content}</p>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="text-xs">{post.source}</Badge>
+                    {post.region && <Badge variant="outline" className="text-xs">{post.region}</Badge>}
+                    <span className="text-xs text-muted-foreground ml-auto">
+                      {format(new Date(post.posted_at), "PPP")}
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        ) : (
+          <Card>
+            <CardContent className="p-8 text-center text-muted-foreground">
+              <MessageSquare className="h-12 w-12 mx-auto mb-3 opacity-30" />
+              <p>No official posts yet. Check back soon!</p>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </Layout>
   );

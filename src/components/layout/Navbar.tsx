@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Search, Menu, X, User, Bookmark, ChevronDown, Shield, LogOut } from "lucide-react";
+import { Search, Menu, X, User, Bookmark, Shield, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/useAuth";
@@ -12,12 +12,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
 
-const navItems = [
+interface NavItem {
+  label: string;
+  href: string;
+  comingSoon?: boolean;
+}
+
+const navItems: NavItem[] = [
   { label: "News", href: "/news" },
-  { label: "Database", href: "/database" },
-  { label: "Guides", href: "/guides" },
-  { label: "Tools", href: "/tools" },
+  { label: "Database", href: "/database", comingSoon: true },
+  { label: "Guides", href: "/guides", comingSoon: true },
+  { label: "Tools", href: "/tools", comingSoon: true },
   { label: "Community", href: "/community" },
 ];
 
@@ -44,19 +51,30 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1 ml-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-foreground ${
-                location.pathname.startsWith(item.href)
-                  ? "text-primary bg-secondary"
-                  : "text-muted-foreground"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.comingSoon ? (
+              <span
+                key={item.href}
+                className="px-3 py-2 text-sm font-medium rounded-md text-muted-foreground/50 cursor-not-allowed flex items-center gap-1.5"
+                title="Coming Soon"
+              >
+                {item.label}
+                <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4 border-muted-foreground/30 text-muted-foreground/50">Soon</Badge>
+              </span>
+            ) : (
+              <Link
+                key={item.href}
+                to={item.href}
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-foreground ${
+                  location.pathname.startsWith(item.href)
+                    ? "text-primary bg-secondary"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* Search */}
@@ -137,20 +155,30 @@ export function Navbar() {
       {/* Mobile nav */}
       {mobileOpen && (
         <nav className="md:hidden border-t border-border px-4 py-3 flex flex-col gap-1 bg-background">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              onClick={() => setMobileOpen(false)}
-              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                location.pathname.startsWith(item.href)
-                  ? "text-primary bg-secondary"
-                  : "text-muted-foreground hover:bg-secondary"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.comingSoon ? (
+              <span
+                key={item.href}
+                className="px-3 py-2 text-sm font-medium rounded-md text-muted-foreground/50 cursor-not-allowed flex items-center gap-1.5"
+              >
+                {item.label}
+                <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4 border-muted-foreground/30 text-muted-foreground/50">Soon</Badge>
+              </span>
+            ) : (
+              <Link
+                key={item.href}
+                to={item.href}
+                onClick={() => setMobileOpen(false)}
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                  location.pathname.startsWith(item.href)
+                    ? "text-primary bg-secondary"
+                    : "text-muted-foreground hover:bg-secondary"
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
       )}
     </header>

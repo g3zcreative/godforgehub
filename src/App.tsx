@@ -8,12 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import NewsPage from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
-import DatabasePage from "./pages/Database";
-import GuidesPage from "./pages/Guides";
-import GuideDetail from "./pages/GuideDetail";
-import HeroDetail from "./pages/HeroDetail";
-import ItemDetail from "./pages/ItemDetail";
-import ToolsPage from "./pages/Tools";
+import ComingSoonPage from "./pages/ComingSoon";
 import CommunityPage from "./pages/Community";
 import ChangelogPage from "./pages/Changelog";
 import RoadmapPage from "./pages/Roadmap";
@@ -42,12 +37,11 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/news/:slug" element={<NewsDetail />} />
-            <Route path="/database" element={<DatabasePage />} />
-            <Route path="/database/heroes/:slug" element={<HeroDetail />} />
-            <Route path="/database/items/:slug" element={<ItemDetail />} />
-            <Route path="/guides" element={<GuidesPage />} />
-            <Route path="/guides/:slug" element={<GuideDetail />} />
-            <Route path="/tools" element={<ToolsPage />} />
+            <Route path="/database" element={<ComingSoonPage title="Database" description="The full heroes, items, skills, and materials database is under construction." />} />
+            <Route path="/database/*" element={<ComingSoonPage title="Database" description="The full heroes, items, skills, and materials database is under construction." />} />
+            <Route path="/guides" element={<ComingSoonPage title="Guides" description="Community guides and strategies are being prepared." />} />
+            <Route path="/guides/*" element={<ComingSoonPage title="Guides" description="Community guides and strategies are being prepared." />} />
+            <Route path="/tools" element={<ComingSoonPage title="Tools" description="Interactive tools like tier lists, team builder, and resource calculators are in development." />} />
             <Route path="/community" element={<CommunityPage />} />
             <Route path="/changelog" element={<ChangelogPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />
