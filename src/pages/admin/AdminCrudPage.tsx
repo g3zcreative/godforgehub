@@ -225,8 +225,8 @@ export function AdminCrudPage({ tableName, title, columns, defaults }: AdminCrud
       ) : rows.length === 0 ? (
         <p className="text-muted-foreground">No records yet.</p>
       ) : (
-        <div className="rounded-md border">
-          <Table>
+        <div className="rounded-md border overflow-x-auto">
+          <Table className="min-w-0 w-full table-fixed">
             <TableHeader>
               <TableRow>
                 {tableColumns.map(c => <TableHead key={c.key}>{c.label}</TableHead>)}
