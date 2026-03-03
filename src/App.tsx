@@ -7,8 +7,12 @@ import { AuthProvider } from "@/hooks/useAuth";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import NewsPage from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
 import DatabasePage from "./pages/Database";
 import GuidesPage from "./pages/Guides";
+import GuideDetail from "./pages/GuideDetail";
+import HeroDetail from "./pages/HeroDetail";
+import ItemDetail from "./pages/ItemDetail";
 import ToolsPage from "./pages/Tools";
 import CommunityPage from "./pages/Community";
 import ChangelogPage from "./pages/Changelog";
@@ -37,8 +41,12 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/news/:slug" element={<NewsDetail />} />
             <Route path="/database" element={<DatabasePage />} />
+            <Route path="/database/heroes/:slug" element={<HeroDetail />} />
+            <Route path="/database/items/:slug" element={<ItemDetail />} />
             <Route path="/guides" element={<GuidesPage />} />
+            <Route path="/guides/:slug" element={<GuideDetail />} />
             <Route path="/tools" element={<ToolsPage />} />
             <Route path="/community" element={<CommunityPage />} />
             <Route path="/changelog" element={<ChangelogPage />} />
