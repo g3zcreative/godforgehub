@@ -1,43 +1,29 @@
 
 
-## Plan: AI Generate from Video URL
+## Automatic Image Resize & Compression on Upload
+
+Yes — the best approach is **client-side compression before upload** using the browser's Canvas API. This avoids needing an extra backend service and ensures only optimized images hit storage.
 
 ### Approach
 
-YouTube pages are JavaScript-heavy and Firecrawl scraping often returns minimal useful content from them. Instead, we'll use Gemini's native multimodal capability — pass the YouTube URL directly to Gemini, which can process video content and generate an article from it.
+Add a utility function that takes a `File`, draws it onto an off-screen `<canvas>` at **1280×720** (maintaining aspect ratio with cropping/fitting), then exports it as a compressed JPEG/WebP blob targeting **<200KB**. This runs before the Supabase Storage upload in `ImageUploadButton`.
 
-### Changes
+### Technical Details
 
-**1. Edge function (`supabase/functions/generate-news/index.ts`)**
+1. **Create `src/lib/image-utils.ts`** — a `compressImage(file: File, options)` function:
+   - Load the file into an `Image` element
+   - Draw onto a canvas at 1280×720 (cover-fit, center-cropped to maintain 16:9)
+   - Export as WebP (with JPEG fallback) using `canvas.toBlob()` with iteratively decreasing quality until under 200KB
+   - Return the resulting `Blob`
 
-Add a new `videoUrl` parameter. When provided:
-- Skip Firecrawl entirely
-- Extract the YouTube video ID from the URL
-- Pass the video URL to Gemini as a `file_url` part in the user message (Gemini supports YouTube URLs natively)
-- Use a video-specific system prompt that instructs the AI to watch/analyze the video and write an article summarizing it
+2. **Update `ImageUploadButton` in `AdminCrudPage.tsx`**:
+   - Import and call `compressImage()` on the selected file before uploading
+   - Change the uploaded file extension to `.webp`
+   - No changes needed to the storage bucket or RLS policies
 
-The request body to Gemini will use the multimodal message format:
-```json
-{
-  "role": "user",
-  "content": [
-    { "type": "text", "text": "Analyze this video and write an article based on its content." },
-    { "type": "file", "file": { "url": "https://www.youtube.com/watch?v=..." } }
-  ]
-}
-```
-
-**2. Frontend (`src/pages/admin/AdminNews.tsx`)**
-
-- Add a 5th option in the creation mode picker: "From Video" with a `Video` icon
-- Add a new `"video"` mode with a dialog containing:
-  - Category selector (same as other modes)
-  - YouTube URL input field
-  - Optional notes/context textarea (to guide the AI on what to focus on)
-  - "Generate from Video" button
-- Wire it to call `generate-news` with `{ videoUrl, category, prompt }` (prompt = optional context notes)
-
-### Files to edit
-- `supabase/functions/generate-news/index.ts` — add `videoUrl` handling with Gemini multimodal
-- `src/pages/admin/AdminNews.tsx` — add video mode to picker and dialog
+### What This Gives You
+- Every uploaded news image is automatically resized to 1280×720 and compressed to <200KB
+- No manual Squoosh step needed
+- Works entirely in the browser — no edge function required
+- WebP format for better compression (with JPEG fallback for older browsers)
 
