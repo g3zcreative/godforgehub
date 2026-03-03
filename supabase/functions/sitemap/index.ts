@@ -5,7 +5,7 @@ const corsHeaders = {
   "Cache-Control": "public, max-age=3600",
 };
 
-const SITE_URL = "https://godforgehub.lovable.app";
+const SITE_URL = "https://godforgehub.com";
 
 Deno.serve(async () => {
   const supabase = createClient(
