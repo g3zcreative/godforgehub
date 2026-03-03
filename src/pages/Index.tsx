@@ -76,7 +76,7 @@ const Index = () => {
               <Link to="/news">Latest News</Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link to="/community">Official Posts</Link>
+              <Link to="/official-posts">Official Posts</Link>
             </Button>
           </div>
         </div>
@@ -146,7 +146,7 @@ const Index = () => {
             <h2 className="font-display text-xl font-bold flex items-center gap-2">
               <MessageSquare className="h-5 w-5 text-primary" /> Post Tracker
             </h2>
-            <Link to="/community" className="text-sm text-primary hover:underline flex items-center gap-1">
+            <Link to="/official-posts" className="text-sm text-primary hover:underline flex items-center gap-1">
               View all <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
