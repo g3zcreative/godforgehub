@@ -24,9 +24,16 @@ import AdminOfficialPosts from "./pages/admin/AdminOfficialPosts";
 import AdminChangelog from "./pages/admin/AdminChangelog";
 import AdminRoadmap from "./pages/admin/AdminRoadmap";
 import AdminFeedback from "./pages/admin/AdminFeedback";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import { FeedbackWidget } from "./components/FeedbackWidget";
+import { usePageView } from "./hooks/usePageView";
 
 const queryClient = new QueryClient();
+
+function PageViewTracker() {
+  usePageView();
+  return null;
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -35,6 +42,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <PageViewTracker />
           <FeedbackWidget />
           <Routes>
             <Route path="/" element={<Index />} />
@@ -50,7 +58,8 @@ const App = () => (
             <Route path="/roadmap" element={<RoadmapPage />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<Navigate to="/admin/heroes" replace />} />
+              <Route index element={<Navigate to="/admin/analytics" replace />} />
+              <Route path="analytics" element={<AdminAnalytics />} />
               <Route path="heroes" element={<AdminHeroes />} />
               <Route path="items" element={<AdminItems />} />
               <Route path="skills" element={<AdminSkills />} />

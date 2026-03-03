@@ -9,11 +9,11 @@ import {
 import { NavLink } from "@/components/NavLink";
 import {
   Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
-  BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle,
+  BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle, BarChart3,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const navItems = [
+const contentItems = [
   { title: "Heroes", url: "/admin/heroes", icon: Shield },
   { title: "Items", url: "/admin/items", icon: Package },
   { title: "Skills", url: "/admin/skills", icon: Sparkles },
@@ -23,6 +23,10 @@ const navItems = [
   { title: "Official Posts", url: "/admin/official-posts", icon: MessageSquare },
   { title: "Changelog", url: "/admin/changelog", icon: FileText },
   { title: "Roadmap", url: "/admin/roadmap", icon: Map },
+];
+
+const insightItems = [
+  { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
   { title: "Feedback", url: "/admin/feedback", icon: MessageCircle },
 ];
 
@@ -39,7 +43,24 @@ function AdminSidebar() {
           <SidebarGroupLabel>Content</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navItems.map((item) => (
+              {contentItems.map((item) => (
+                <SidebarMenuItem key={item.url}>
+                  <SidebarMenuButton asChild>
+                    <NavLink to={item.url} className="hover:bg-muted/50" activeClassName="bg-muted text-primary font-medium">
+                      <item.icon className="mr-2 h-4 w-4" />
+                      {!collapsed && <span>{item.title}</span>}
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Insights</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {insightItems.map((item) => (
                 <SidebarMenuItem key={item.url}>
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} className="hover:bg-muted/50" activeClassName="bg-muted text-primary font-medium">
