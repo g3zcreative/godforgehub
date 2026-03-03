@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FileText, Sparkles, Link, Plus, Loader2 } from "lucide-react";
+import { FileText, Sparkles, Link, Plus, Loader2, Video } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -144,13 +144,15 @@ Key takeaways from recent community discussions.
   },
 };
 
-type CreationMode = "picker" | "template" | "ai" | "url" | null;
+type CreationMode = "picker" | "template" | "ai" | "url" | "video" | null;
 
 export default function AdminNews() {
   const [mode, setMode] = useState<CreationMode>(null);
   const [selectedCategory, setSelectedCategory] = useState("Patch Notes");
   const [aiPrompt, setAiPrompt] = useState("");
   const [importUrl, setImportUrl] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
+  const [videoContext, setVideoContext] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [defaults, setDefaults] = useState<Record<string, unknown> | undefined>();
   const [crudKey, setCrudKey] = useState(0);
@@ -233,7 +235,35 @@ export default function AdminNews() {
     }
   };
 
-  return (
+  const generateFromVideo = async () => {
+    if (!videoUrl.trim()) return;
+    setIsGenerating(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-news", {
+        body: { videoUrl, category: selectedCategory, prompt: videoContext || undefined },
+      });
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
+
+      setDefaults({
+        title: data.title || "",
+        slug: data.slug || "",
+        excerpt: data.excerpt || "",
+        content: data.content || "",
+        category: selectedCategory,
+        published: false,
+        published_at: new Date().toISOString(),
+      });
+      setTriggerCreate(t => t + 1);
+      setMode(null);
+      toast({ title: "Draft generated from video!", description: "Review and edit before publishing." });
+    } catch (e: any) {
+      toast({ title: "Video generation failed", description: e.message, variant: "destructive" });
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
     <>
       <AdminCrudPage
         key={crudKey}
@@ -264,7 +294,11 @@ export default function AdminNews() {
               <Link className="h-6 w-6" />
               <span className="text-sm">Import from URL</span>
             </Button>
-            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setDefaults(undefined); setTriggerCreate(t => t + 1); setMode(null); }}>
+            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => setMode("video")}>
+              <Video className="h-6 w-6" />
+              <span className="text-sm">From Video</span>
+            </Button>
+            <Button variant="outline" className="h-24 flex-col gap-2 col-span-2" onClick={() => { setDefaults(undefined); setTriggerCreate(t => t + 1); setMode(null); }}>
               <Plus className="h-6 w-6" />
               <span className="text-sm">Blank</span>
             </Button>
@@ -359,6 +393,49 @@ export default function AdminNews() {
             </div>
             <Button className="w-full" onClick={importFromUrl} disabled={isGenerating || !importUrl.trim()}>
               {isGenerating ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Importing...</> : <><Link className="mr-2 h-4 w-4" /> Import & Generate</>}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* From Video */}
+      <Dialog open={mode === "video"} onOpenChange={open => { if (!open && !isGenerating) setMode(null); }}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Generate from Video</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <Label>Category</Label>
+              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  {Object.keys(TEMPLATES).map(cat => (
+                    <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-1">
+              <Label>YouTube URL</Label>
+              <Input
+                type="url"
+                placeholder="https://www.youtube.com/watch?v=..."
+                value={videoUrl}
+                onChange={e => setVideoUrl(e.target.value)}
+              />
+            </div>
+            <div className="space-y-1">
+              <Label>Additional context <span className="text-muted-foreground font-normal">(optional)</span></Label>
+              <Textarea
+                rows={3}
+                placeholder="E.g. focus on the new hero reveal, skip the intro section..."
+                value={videoContext}
+                onChange={e => setVideoContext(e.target.value)}
+              />
+            </div>
+            <Button className="w-full" onClick={generateFromVideo} disabled={isGenerating || !videoUrl.trim()}>
+              {isGenerating ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Analyzing video...</> : <><Video className="mr-2 h-4 w-4" /> Generate from Video</>}
             </Button>
           </div>
         </DialogContent>
