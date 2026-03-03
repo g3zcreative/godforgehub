@@ -18,6 +18,7 @@ import ToolsPage from "./pages/Tools";
 import ChangelogPage from "./pages/Changelog";
 import RoadmapPage from "./pages/Roadmap";
 import AuthPage from "./pages/Auth";
+import DiscordRedirect from "./pages/Discord";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHeroes from "./pages/admin/AdminHeroes";
 import AdminItems from "./pages/admin/AdminItems";
@@ -91,6 +92,7 @@ function AppRoutes() {
       {/* Official Posts */}
       <Route path="/official-posts" element={<OfficialPostsPage />} />
 
+      <Route path="/discord" element={<DiscordRedirect />} />
       <Route path="/changelog" element={<ChangelogPage />} />
       <Route path="/roadmap" element={<RoadmapPage />} />
       <Route path="/auth" element={<AuthPage />} />
