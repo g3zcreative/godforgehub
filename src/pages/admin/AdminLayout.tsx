@@ -9,7 +9,7 @@ import {
 import { NavLink } from "@/components/NavLink";
 import {
   Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
-  BookOpen, MessageSquare, FileText, Map, LogOut,
+  BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +23,7 @@ const navItems = [
   { title: "Official Posts", url: "/admin/official-posts", icon: MessageSquare },
   { title: "Changelog", url: "/admin/changelog", icon: FileText },
   { title: "Roadmap", url: "/admin/roadmap", icon: Map },
+  { title: "Feedback", url: "/admin/feedback", icon: MessageCircle },
 ];
 
 function AdminSidebar() {
