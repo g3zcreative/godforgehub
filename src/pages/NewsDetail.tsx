@@ -7,6 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Clock } from "lucide-react";
 import { format } from "date-fns";
 import MDEditor from "@uiw/react-md-editor";
+import { SEO } from "@/components/SEO";
 
 const categoryColors: Record<string, string> = {
   "Patch Notes": "bg-blue-500/10 text-blue-400 border-blue-500/20",
@@ -55,6 +56,12 @@ export default function NewsDetail() {
           </div>
         ) : (
           <>
+            <SEO
+              title={article.title}
+              description={article.excerpt || undefined}
+              image={article.image_url || undefined}
+              type="article"
+            />
             <div className="flex items-center gap-2 mb-3">
               <Badge variant="outline" className={categoryColors[article.category] || ""}>
                 {article.category}
