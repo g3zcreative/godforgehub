@@ -10,10 +10,10 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { prompt, url, category } = await req.json();
+    const { prompt, url, category, videoUrl } = await req.json();
 
-    if (!prompt && !url) {
-      return new Response(JSON.stringify({ error: "Either prompt or url is required" }), {
+    if (!prompt && !url && !videoUrl) {
+      return new Response(JSON.stringify({ error: "Either prompt, url, or videoUrl is required" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -22,10 +22,36 @@ serve(async (req) => {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
-    let sourceContent = prompt || "";
+    const categoryHint = category ? ` The article category is "${category}".` : "";
 
-    // If URL mode, scrape with Firecrawl first
-    if (url) {
+    // Determine mode and build messages
+    let systemPrompt: string;
+    let userMessage: any; // string or multimodal array
+
+    if (videoUrl) {
+      // Video mode — pass YouTube URL directly to Gemini as multimodal content
+      let formattedVideoUrl = videoUrl.trim();
+      if (!formattedVideoUrl.startsWith("http://") && !formattedVideoUrl.startsWith("https://")) {
+        formattedVideoUrl = `https://${formattedVideoUrl}`;
+      }
+
+      console.log("Processing video URL:", formattedVideoUrl);
+
+      const contextHint = prompt ? `\n\nAdditional context from the author: ${prompt}` : "";
+
+      systemPrompt = `You are a gaming news writer for GodforgeHub, a community site for a gacha RPG game called Godforge.${categoryHint}
+
+Watch and analyze the provided YouTube video, then write a comprehensive news article summarizing its content for the GodforgeHub community. Focus on game-related announcements, updates, tips, or information discussed in the video. Rephrase and restructure the content into a well-written article — do NOT just transcribe.${contextHint}
+
+Return your response by calling the create_article function. The content should be well-structured markdown with headers, and the slug should be a URL-friendly lowercase version of the title. Keep the excerpt under 200 characters.`;
+
+      userMessage = [
+        { type: "text", text: "Analyze this video and write a news article based on its content." },
+        { type: "file", file: { url: formattedVideoUrl } },
+      ];
+    } else if (url) {
+      // URL scrape mode
+      let sourceContent = "";
       const FIRECRAWL_API_KEY = Deno.env.get("FIRECRAWL_API_KEY");
       if (!FIRECRAWL_API_KEY) {
         return new Response(JSON.stringify({ error: "Firecrawl is not configured. Connect it in Settings." }), {
@@ -65,18 +91,24 @@ serve(async (req) => {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-    }
 
-    const categoryHint = category ? ` The article category is "${category}".` : "";
-    const modeHint = url
-      ? "Summarize and rewrite the following scraped web content into a news article for a gaming community site (GodforgeHub). Do NOT copy verbatim — rephrase and restructure."
-      : "Write a news article for a gaming community site (GodforgeHub) based on the following bullet points or notes.";
+      systemPrompt = `You are a gaming news writer for GodforgeHub, a community site for a gacha RPG game called Godforge.${categoryHint}
 
-    const systemPrompt = `You are a gaming news writer for GodforgeHub, a community site for a gacha RPG game called Godforge.${categoryHint}
-
-${modeHint}
+Summarize and rewrite the following scraped web content into a news article for a gaming community site (GodforgeHub). Do NOT copy verbatim — rephrase and restructure.
 
 Return your response by calling the create_article function. The content should be well-structured markdown with headers, and the slug should be a URL-friendly lowercase version of the title. Keep the excerpt under 200 characters.`;
+
+      userMessage = sourceContent;
+    } else {
+      // Prompt mode
+      systemPrompt = `You are a gaming news writer for GodforgeHub, a community site for a gacha RPG game called Godforge.${categoryHint}
+
+Write a news article for a gaming community site (GodforgeHub) based on the following bullet points or notes.
+
+Return your response by calling the create_article function. The content should be well-structured markdown with headers, and the slug should be a URL-friendly lowercase version of the title. Keep the excerpt under 200 characters.`;
+
+      userMessage = prompt;
+    }
 
     console.log("Calling Lovable AI...");
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -89,7 +121,7 @@ Return your response by calling the create_article function. The content should 
         model: "google/gemini-3-flash-preview",
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: sourceContent },
+          { role: "user", content: userMessage },
         ],
         tools: [
           {
