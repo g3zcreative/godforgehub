@@ -49,8 +49,10 @@ const NewsPage = () => {
                 <CardContent className="p-0">
                   <div className="flex">
                     {article.image_url && (
-                      <Link to={`/news/${article.slug}`} className="shrink-0">
-                        <img src={article.image_url} alt={article.title} className="h-full w-36 object-cover" />
+                      <Link to={`/news/${article.slug}`} className="shrink-0 w-48">
+                        <div className="aspect-video w-full h-full">
+                          <img src={article.image_url} alt={article.title} className="h-full w-full object-cover" />
+                        </div>
                       </Link>
                     )}
                     <div className="p-5 min-w-0">
