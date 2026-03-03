@@ -1,84 +1,49 @@
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { MessageSquare, Newspaper, BookOpen } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
-import { Skeleton } from "@/components/ui/skeleton";
-import { format } from "date-fns";
+import { MessageSquare, ExternalLink } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import MDEditor from "@uiw/react-md-editor";
 
-const sourceIcons: Record<string, React.ReactNode> = {
-  Discord: <MessageSquare className="h-4 w-4" />,
-  Twitter: <Newspaper className="h-4 w-4" />,
-  Forum: <BookOpen className="h-4 w-4" />,
-};
+const discordLinks = [
+  {
+    name: "Official Godforge Discord",
+    description: "The official Discord server run by Fateless Games. Get news, updates, and chat with the devs.",
+    url: "https://discord.gg/godforge",
+    icon: <MessageSquare className="h-6 w-6" />,
+  },
+  {
+    name: "GodforgeHub Community Discord",
+    description: "Our community-run Discord for guides, theorycrafting, and discussion.",
+    url: "https://discord.gg/hqMfsYVZh7",
+    icon: <MessageSquare className="h-6 w-6" />,
+  },
+];
 
 const CommunityPage = () => {
-  const { data: posts, isLoading } = useQuery({
-    queryKey: ["official_posts"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("official_posts")
-        .select("*")
-        .order("posted_at", { ascending: false });
-      if (error) throw error;
-      return data;
-    },
-  });
-
   return (
     <Layout>
-      <SEO title="Official Posts" description="Official communications from the Godforge development team." />
+      <SEO title="Community" description="Join the Godforge community — official and fan-run Discord servers, forums, and more." />
       <div className="container py-8">
         <h1 className="font-display text-3xl font-bold mb-2 flex items-center gap-2">
-          <MessageSquare className="h-7 w-7 text-primary" /> Official Posts
+          <MessageSquare className="h-7 w-7 text-primary" /> Community
         </h1>
-        <p className="text-muted-foreground mb-6">Official communications from the Godforge team.</p>
+        <p className="text-muted-foreground mb-8">Connect with other Godforge players and stay in the loop.</p>
 
-        {isLoading ? (
-          <div className="space-y-3">
-            {[1, 2, 3].map((i) => <Skeleton key={i} className="h-28 w-full" />)}
-          </div>
-        ) : posts && posts.length > 0 ? (
-          <div className="space-y-3">
-            {posts.map((post) => (
-              <Card key={post.id} className="hover:border-primary/30 transition-colors">
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-primary">{sourceIcons[post.source] || <MessageSquare className="h-4 w-4" />}</span>
-                    <span className="text-sm font-semibold">{post.author}</span>
-                    {post.author_role && <span className="text-xs text-muted-foreground">· {post.author_role}</span>}
+        <div className="grid gap-4 sm:grid-cols-2">
+          {discordLinks.map((link) => (
+            <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="block group">
+              <Card className="h-full hover:border-primary/40 transition-colors">
+                <CardContent className="p-6 flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-primary">{link.icon}</span>
+                    <h2 className="font-display font-semibold text-lg group-hover:text-primary transition-colors">{link.name}</h2>
+                    <ExternalLink className="h-4 w-4 ml-auto text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <div className="text-sm text-foreground mb-3" data-color-mode="dark">
-                    <MDEditor.Markdown source={post.content} className="!bg-transparent !text-foreground" />
-                  </div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <Badge variant="outline" className="text-xs">{post.source}</Badge>
-                    {post.channel_name && <Badge variant="secondary" className="text-xs">#{post.channel_name}</Badge>}
-                    {post.region && <Badge variant="outline" className="text-xs">{post.region}</Badge>}
-                    <span className="text-xs text-muted-foreground ml-auto flex items-center gap-2">
-                      {post.message_url && (
-                        <a href={post.message_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                          View original
-                        </a>
-                      )}
-                      {format(new Date(post.posted_at), "PPP")}
-                    </span>
-                  </div>
+                  <p className="text-sm text-muted-foreground">{link.description}</p>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-        ) : (
-          <Card>
-            <CardContent className="p-8 text-center text-muted-foreground">
-              <MessageSquare className="h-12 w-12 mx-auto mb-3 opacity-30" />
-              <p>No official posts yet. Check back soon!</p>
-            </CardContent>
-          </Card>
-        )}
+            </a>
+          ))}
+        </div>
       </div>
     </Layout>
   );

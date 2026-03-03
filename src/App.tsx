@@ -11,6 +11,7 @@ import NewsPage from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import ComingSoonPage from "./pages/ComingSoon";
 import CommunityPage from "./pages/Community";
+import OfficialPostsPage from "./pages/OfficialPosts";
 import DatabasePage from "./pages/Database";
 import GuidesPage from "./pages/Guides";
 import ToolsPage from "./pages/Tools";
@@ -86,6 +87,9 @@ function AppRoutes() {
         path="/community"
         element={flags.community ? <CommunityPage /> : comingSoon("Community", "The community hub is being set up.")}
       />
+
+      {/* Official Posts */}
+      <Route path="/official-posts" element={<OfficialPostsPage />} />
 
       <Route path="/changelog" element={<ChangelogPage />} />
       <Route path="/roadmap" element={<RoadmapPage />} />
