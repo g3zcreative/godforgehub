@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Search, Menu, X, User, Bookmark, ChevronDown } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Search, Menu, X, User, Bookmark, ChevronDown, Shield, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useAuth } from "@/hooks/useAuth";
+import { useAdmin } from "@/hooks/useAdmin";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,6 +25,9 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, signOut } = useAuth();
+  const { isAdmin } = useAdmin();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -80,12 +85,30 @@ export function Navbar() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" /> Sign In
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bookmark className="mr-2 h-4 w-4" /> Bookmarks
-              </DropdownMenuItem>
+              {user ? (
+                <>
+                  <DropdownMenuItem className="text-xs text-muted-foreground" disabled>
+                    {user.email}
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  {isAdmin && (
+                    <DropdownMenuItem onClick={() => navigate("/admin")}>
+                      <Shield className="mr-2 h-4 w-4" /> Admin Panel
+                    </DropdownMenuItem>
+                  )}
+                  <DropdownMenuItem>
+                    <Bookmark className="mr-2 h-4 w-4" /> Bookmarks
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={async () => { await signOut(); navigate("/"); }}>
+                    <LogOut className="mr-2 h-4 w-4" /> Sign Out
+                  </DropdownMenuItem>
+                </>
+              ) : (
+                <DropdownMenuItem onClick={() => navigate("/auth")}>
+                  <User className="mr-2 h-4 w-4" /> Sign In
+                </DropdownMenuItem>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
 
