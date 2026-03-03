@@ -30,11 +30,12 @@ interface AdminCrudPageProps {
   tableName: string;
   title: string;
   columns: ColumnConfig[];
+  defaults?: RowData;
 }
 
 type RowData = Record<string, unknown>;
 
-export function AdminCrudPage({ tableName, title, columns }: AdminCrudPageProps) {
+export function AdminCrudPage({ tableName, title, columns, defaults }: AdminCrudPageProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [editingRow, setEditingRow] = useState<RowData | null>(null);
@@ -93,15 +94,15 @@ export function AdminCrudPage({ tableName, title, columns }: AdminCrudPageProps)
 
   const openCreate = () => {
     setEditingRow(null);
-    const defaults: RowData = {};
+    const fieldDefaults: RowData = {};
     editableColumns.forEach(c => {
-      if (c.type === "boolean") defaults[c.key] = false;
-      else if (c.type === "number") defaults[c.key] = 0;
-      else if (c.type === "json") defaults[c.key] = "{}";
-      else if (c.type === "datetime") defaults[c.key] = new Date().toISOString();
-      else defaults[c.key] = "";
+      if (c.type === "boolean") fieldDefaults[c.key] = false;
+      else if (c.type === "number") fieldDefaults[c.key] = 0;
+      else if (c.type === "json") fieldDefaults[c.key] = "{}";
+      else if (c.type === "datetime") fieldDefaults[c.key] = new Date().toISOString();
+      else fieldDefaults[c.key] = "";
     });
-    setFormData(defaults);
+    setFormData({ ...fieldDefaults, ...defaults });
     setDialogOpen(true);
   };
 
