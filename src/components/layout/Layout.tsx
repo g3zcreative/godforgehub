@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Navbar } from "./Navbar";
 
 interface LayoutProps {
@@ -16,6 +17,10 @@ export function Layout({ children }: LayoutProps) {
           </p>
           <p>A community information hub for Godforge by Fateless Games.</p>
           <p className="mt-1">Godforge Hub is not affiliated with Fateless Games.</p>
+          <div className="flex justify-center gap-4 mt-4">
+            <Link to="/changelog" className="hover:text-primary transition-colors">Changelog</Link>
+            <Link to="/roadmap" className="hover:text-primary transition-colors">Roadmap</Link>
+          </div>
         </div>
       </footer>
     </div>
