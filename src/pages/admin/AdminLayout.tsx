@@ -11,7 +11,7 @@ import { NavLink } from "@/components/NavLink";
 import {
   Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
   BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle, BarChart3,
-  RefreshCw, Users, Settings, FileQuestion,
+  RefreshCw, Users, Settings, FileQuestion, ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -140,7 +140,13 @@ function AdminHeader() {
     <header className="h-12 flex items-center border-b border-border px-4 gap-4">
       <SidebarTrigger />
       <span className="font-display font-bold text-sm">GodforgeHub Admin</span>
-      <div className="ml-auto">
+      <div className="ml-auto flex items-center gap-2">
+        <Button variant="ghost" size="sm" asChild>
+          <a href="https://godforgehub.com" target="_blank" rel="noopener noreferrer">
+            <ExternalLink className="mr-2 h-3.5 w-3.5" />
+            View Live Site
+          </a>
+        </Button>
         <Button variant="outline" size="sm" onClick={handleRegenSitemap} disabled={regenerating}>
           <RefreshCw className={`mr-2 h-3.5 w-3.5 ${regenerating ? "animate-spin" : ""}`} />
           {regenerating ? "Generating..." : "Regenerate Sitemap"}
