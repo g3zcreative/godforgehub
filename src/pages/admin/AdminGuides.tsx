@@ -18,6 +18,7 @@ const columns: ColumnConfig[] = [
   { key: "published", label: "Published", type: "boolean", showInTable: true },
   { key: "excerpt", label: "Excerpt", type: "textarea" },
   { key: "content", label: "Content", type: "markdown" },
+  { key: "image_url", label: "Feature Image", type: "image", storageBucket: "guide-images" },
   { key: "published_at", label: "Published At", type: "datetime" },
 ];
 
