@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, useMemo, lazy, Suspense } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 const MDEditor = lazy(() => import("@uiw/react-md-editor"));
 import { supabase } from "@/integrations/supabase/client";
@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { Plus, Pencil, Trash2, CalendarIcon, Upload, X, Loader2, Image as ImageIcon } from "lucide-react";
+import { Plus, Pencil, Trash2, CalendarIcon, Upload, X, Loader2, Image as ImageIcon, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Switch } from "@/components/ui/switch";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -75,16 +75,21 @@ interface AdminCrudPageProps {
 
 type RowData = Record<string, unknown>;
 
+const ADMIN_PAGE_SIZE = 25;
+
 export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate, onAfterCreate }: AdminCrudPageProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [editingRow, setEditingRow] = useState<RowData | null>(null);
   const [formData, setFormData] = useState<RowData>({});
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
   const queryClient = useQueryClient();
   const { toast } = useToast();
 
   const editableColumns = columns.filter(c => c.editable !== false);
   const tableColumns = columns.filter(c => c.showInTable !== false);
+  const searchableKeys = columns.filter(c => c.showInTable !== false && c.type !== "boolean" && c.type !== "json").map(c => c.key);
 
   const { data: rows = [], isLoading } = useQuery({
     queryKey: [tableName],
@@ -299,17 +304,40 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
     return s.length > 60 ? s.slice(0, 60) + "…" : s;
   };
 
+  const filtered = useMemo(() => {
+    if (!search.trim()) return rows;
+    const q = search.toLowerCase();
+    return rows.filter(row => searchableKeys.some(key => String(row[key] ?? "").toLowerCase().includes(q)));
+  }, [rows, search, searchableKeys]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / ADMIN_PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const paged = filtered.slice((currentPage - 1) * ADMIN_PAGE_SIZE, currentPage * ADMIN_PAGE_SIZE);
+
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-display font-bold">{title}</h1>
         <Button onClick={onNewOverride || openCreate}><Plus className="mr-2 h-4 w-4" /> New</Button>
       </div>
 
+      <div className="flex items-center gap-3 mb-4">
+        <div className="relative flex-1 max-w-sm">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder={`Search ${title.toLowerCase()}...`}
+            value={search}
+            onChange={e => { setSearch(e.target.value); setPage(1); }}
+            className="pl-9"
+          />
+        </div>
+        <span className="text-sm text-muted-foreground">{filtered.length} record{filtered.length !== 1 ? "s" : ""}</span>
+      </div>
+
       {isLoading ? (
         <p className="text-muted-foreground">Loading...</p>
-      ) : rows.length === 0 ? (
-        <p className="text-muted-foreground">No records yet.</p>
+      ) : paged.length === 0 ? (
+        <p className="text-muted-foreground">{search ? "No matching records." : "No records yet."}</p>
       ) : (
         <div className="rounded-md border overflow-x-auto">
           <Table className="min-w-0 w-full table-fixed">
@@ -320,7 +348,7 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
               </TableRow>
             </TableHeader>
             <TableBody>
-              {rows.map((row) => (
+              {paged.map((row) => (
                 <TableRow key={row.id as string}>
                   {tableColumns.map(c => <TableCell key={c.key}>{displayValue(row, c)}</TableCell>)}
                   <TableCell>
@@ -333,6 +361,20 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
               ))}
             </TableBody>
           </Table>
+        </div>
+      )}
+
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-2 mt-4">
+          <Button variant="outline" size="sm" disabled={currentPage <= 1} onClick={() => setPage(currentPage - 1)}>
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <span className="text-sm text-muted-foreground">
+            Page {currentPage} of {totalPages}
+          </span>
+          <Button variant="outline" size="sm" disabled={currentPage >= totalPages} onClick={() => setPage(currentPage + 1)}>
+            <ChevronRight className="h-4 w-4" />
+          </Button>
         </div>
       )}
 
