@@ -16,6 +16,7 @@ import DatabasePage from "./pages/Database";
 import HeroDetail from "./pages/HeroDetail";
 import HeroesList from "./pages/HeroesList";
 import SkillsList from "./pages/SkillsList";
+import SkillDetail from "./pages/SkillDetail";
 import GuidesPage from "./pages/Guides";
 import ToolsPage from "./pages/Tools";
 import ChangelogPage from "./pages/Changelog";
@@ -76,6 +77,10 @@ function AppRoutes() {
       <Route
         path="/database/skills"
         element={flags.database ? <SkillsList /> : comingSoon("Database", "The full heroes, items, skills, and materials database is under construction.")}
+      />
+      <Route
+        path="/database/skills/:slug"
+        element={flags.database ? <SkillDetail /> : comingSoon("Database", "The full heroes, items, skills, and materials database is under construction.")}
       />
 
       {/* Guides */}
