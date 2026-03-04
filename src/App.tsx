@@ -14,6 +14,7 @@ import CommunityPage from "./pages/Community";
 import OfficialPostsPage from "./pages/OfficialPosts";
 import DatabasePage from "./pages/Database";
 import HeroDetail from "./pages/HeroDetail";
+import HeroesList from "./pages/HeroesList";
 import GuidesPage from "./pages/Guides";
 import ToolsPage from "./pages/Tools";
 import ChangelogPage from "./pages/Changelog";
@@ -62,6 +63,10 @@ function AppRoutes() {
       <Route
         path="/database"
         element={flags.database ? <DatabasePage /> : comingSoon("Database", "The full heroes, items, skills, and materials database is under construction.")}
+      />
+      <Route
+        path="/database/heroes"
+        element={flags.database ? <HeroesList /> : comingSoon("Database", "The full heroes, items, skills, and materials database is under construction.")}
       />
       <Route
         path="/database/heroes/:slug"
