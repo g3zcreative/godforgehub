@@ -125,11 +125,36 @@
 }
 
 .entity-link--mechanic {
-  color: hsl(var(--godforge-ember));
+  color: hsl(0 75% 60%);
 }
 .entity-link--mechanic:hover {
-  color: hsl(15 90% 65%);
-  text-shadow: 0 0 8px hsl(15 85% 55% / 0.4);
+  color: hsl(0 80% 70%);
+  text-shadow: 0 0 8px hsl(0 75% 60% / 0.4);
+}
+
+/* Mechanic subtype colors */
+.entity-link--mechanic-buff {
+  color: hsl(210 100% 60%);
+}
+.entity-link--mechanic-buff:hover {
+  color: hsl(210 100% 70%);
+  text-shadow: 0 0 8px hsl(210 100% 60% / 0.4);
+}
+
+.entity-link--mechanic-debuff {
+  color: hsl(0 75% 60%);
+}
+.entity-link--mechanic-debuff:hover {
+  color: hsl(0 80% 70%);
+  text-shadow: 0 0 8px hsl(0 75% 60% / 0.4);
+}
+
+.entity-link--mechanic-disable {
+  color: hsl(50 100% 55%);
+}
+.entity-link--mechanic-disable:hover {
+  color: hsl(50 100% 65%);
+  text-shadow: 0 0 8px hsl(50 100% 55% / 0.4);
 }
 
 /* Entity tooltip */

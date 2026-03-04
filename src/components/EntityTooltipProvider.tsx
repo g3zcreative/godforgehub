@@ -12,6 +12,29 @@ interface TooltipData {
 }
 
 const cache = new Map<string, TooltipData | null>();
+const mechanicTypeCache = new Map<string, string>();
+let mechanicTypesLoaded = false;
+
+async function preloadMechanicTypes() {
+  if (mechanicTypesLoaded) return;
+  mechanicTypesLoaded = true;
+  try {
+    const { data } = await supabase.from("mechanics").select("slug, mechanic_type");
+    if (data) data.forEach((m) => mechanicTypeCache.set(m.slug, m.mechanic_type.toLowerCase()));
+  } catch {}
+}
+
+function colorMechanicLinks(container: HTMLElement) {
+  const links = container.querySelectorAll<HTMLElement>(".entity-link--mechanic");
+  links.forEach((el) => {
+    const slug = el.dataset.slug;
+    if (!slug) return;
+    const subtype = mechanicTypeCache.get(slug);
+    if (subtype && !el.classList.contains(`entity-link--mechanic-${subtype}`)) {
+      el.classList.add(`entity-link--mechanic-${subtype}`);
+    }
+  });
+}
 
 async function fetchEntity(type: string, slug: string): Promise<TooltipData | null> {
   const key = `${type}:${slug}`;
@@ -64,6 +87,12 @@ export function EntityTooltipProvider({ children }: { children: React.ReactNode 
     const data = await fetchEntity(type, slug);
     if (!data) return;
 
+    // Apply mechanic subtype class for coloring
+    if (type === "mechanic" && data.extra) {
+      const subtype = data.extra.toLowerCase();
+      el.classList.add(`entity-link--mechanic-${subtype}`);
+    }
+
     setTooltip({ data, type, rect });
   }, []);
 
@@ -74,6 +103,20 @@ export function EntityTooltipProvider({ children }: { children: React.ReactNode 
   const cancelHide = useCallback(() => {
     clearTimeout(hideTimeout.current);
   }, []);
+
+  // Preload mechanic types and color links
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    preloadMechanicTypes().then(() => {
+      colorMechanicLinks(container);
+      // Observe DOM changes to color newly added links
+      const observer = new MutationObserver(() => colorMechanicLinks(container));
+      observer.observe(container, { childList: true, subtree: true });
+      return () => observer.disconnect();
+    });
+  });
 
   useEffect(() => {
     const container = containerRef.current;
