@@ -76,17 +76,23 @@ Deno.serve(async (req) => {
             role: "system",
             content: `You are a data extraction assistant for GodforgeHub, a community database site for the game Godforge.
 
-Extract structured hero data from the scraped hero page content. The page contains information about a Godforge hero including their name, rarity, archetype (class type), element/affinity, allegiance, realm/faction, stats, abilities, and lore.
+Extract structured hero data from the scraped godforge.gg hero page content. The page contains information about a Godforge hero.
 
 Map the data to these fields:
-- name: The hero's name
-- slug: URL-friendly lowercase version (e.g. "sphinx", "hound-of-duat")
+- name: The hero's display name (e.g. "Sun Wukong")
+- subtitle: The hero's title/epithet shown under the name (e.g. "Monkey King", "Sphinx of Riddles"). Do NOT include the dashes.
+- slug: URL-friendly lowercase version with hyphens (e.g. "sun-wukong", "hound-of-duat")
 - rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
-- element: The hero's affinity/element (e.g. "Eternal", "Flame", "Nature", "Storm", "Shadow", "Frost")
-- class_type: The hero's archetype (e.g. "Defender", "Attacker", "Support", "Mage")
-- description: A brief summary combining the hero summary and key lore (2-3 sentences max)
-- image_url: The hero's main portrait image URL if found (look for the large hero image, not icons)
+- element: The hero's primary element/realm (e.g. "Tian", "Duat", "Olympus", "Asgard"). This is the realm/pantheon the hero belongs to (shown between archetype and allegiance).
+- class_type: The hero's archetype (e.g. "Slayer", "Defender", "Sentinel", "Invoker", "Warden")
+- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane")
+- allegiance: The hero's allegiance (e.g. "Chaos", "Order", "Balance")
+- realm: The hero's realm/pantheon (e.g. "Tian", "Duat", "Olympus"). Same as the faction shown on the page.
+- description: The hero summary text (1-2 sentences)
+- lore: The Story/Lore text from the page if present
+- image_url: The hero's main portrait image URL (the large hero image, not small icons)
 - stats: JSON object with base stats at Rank 1 / Level 1. Include keys: hp, atk, def, spd, init, crit_rate, crit_dmg, res, acc. Use numeric values.
+- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description (the full ability text), image_url (skill icon URL if found)
 
 Return your response by calling the create_hero function.`,
           },
@@ -101,16 +107,20 @@ Return your response by calling the create_hero function.`,
               parameters: {
                 type: "object",
                 properties: {
-                  name: { type: "string", description: "Hero name" },
-                  slug: { type: "string", description: "URL-friendly slug" },
-                  rarity: { type: "number", description: "Rarity: 5=legendary, 4=epic, 3=rare, 2=uncommon, 1=common" },
-                  element: { type: "string", description: "Hero affinity/element" },
-                  class_type: { type: "string", description: "Hero archetype/class" },
-                  description: { type: "string", description: "Brief hero description" },
-                  image_url: { type: "string", description: "Hero portrait image URL" },
+                  name: { type: "string" },
+                  subtitle: { type: "string", description: "Hero title/epithet" },
+                  slug: { type: "string" },
+                  rarity: { type: "number" },
+                  element: { type: "string", description: "Realm/pantheon" },
+                  class_type: { type: "string", description: "Archetype" },
+                  affinity: { type: "string", description: "Affinity type" },
+                  allegiance: { type: "string", description: "Chaos/Order/Balance" },
+                  realm: { type: "string", description: "Realm/pantheon" },
+                  description: { type: "string" },
+                  lore: { type: "string", description: "Story/lore text" },
+                  image_url: { type: "string" },
                   stats: {
                     type: "object",
-                    description: "Base stats JSON",
                     properties: {
                       hp: { type: "number" },
                       atk: { type: "number" },
@@ -121,6 +131,19 @@ Return your response by calling the create_hero function.`,
                       crit_dmg: { type: "number" },
                       res: { type: "number" },
                       acc: { type: "number" },
+                    },
+                  },
+                  skills: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                      properties: {
+                        name: { type: "string" },
+                        skill_type: { type: "string" },
+                        description: { type: "string" },
+                        image_url: { type: "string" },
+                      },
+                      required: ["name", "skill_type", "description"],
                     },
                   },
                 },

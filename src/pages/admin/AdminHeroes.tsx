@@ -10,11 +10,16 @@ import { useToast } from "@/hooks/use-toast";
 
 const columns: ColumnConfig[] = [
   { key: "name", label: "Name", required: true, showInTable: true },
+  { key: "subtitle", label: "Subtitle" },
   { key: "slug", label: "Slug", required: true, showInTable: true },
-  { key: "element", label: "Element", required: true, showInTable: true },
-  { key: "class_type", label: "Class", required: true, showInTable: true },
+  { key: "element", label: "Realm", required: true, showInTable: true },
+  { key: "class_type", label: "Archetype", required: true, showInTable: true },
+  { key: "affinity", label: "Affinity", showInTable: true },
+  { key: "allegiance", label: "Allegiance", showInTable: true },
+  { key: "realm", label: "Realm/Pantheon" },
   { key: "rarity", label: "Rarity", type: "number", required: true, showInTable: true },
   { key: "description", label: "Description", type: "textarea" },
+  { key: "lore", label: "Lore", type: "textarea" },
   { key: "image_url", label: "Image URL" },
   { key: "stats", label: "Stats (JSON)", type: "json" },
 ];
@@ -41,20 +46,35 @@ export default function AdminHeroes() {
       if (error) throw error;
       if (data?.error) throw new Error(data.error);
 
+      // Also auto-create skills if returned
+      const skills = data.skills || [];
+
       setDefaults({
         name: data.name || "",
+        subtitle: data.subtitle || "",
         slug: data.slug || "",
         element: data.element || "",
         class_type: data.class_type || "",
+        affinity: data.affinity || "",
+        allegiance: data.allegiance || "",
+        realm: data.realm || "",
         rarity: data.rarity ?? 5,
         description: data.description || "",
+        lore: data.lore || "",
         image_url: data.image_url || "",
         stats: JSON.stringify(data.stats || {}, null, 2),
       });
       setTriggerCreate(t => t + 1);
       setMode(null);
       setImportUrl("");
-      toast({ title: "Hero imported!", description: "Review and edit before saving." });
+      
+      const skillNote = skills.length > 0 ? ` ${skills.length} skills found — they'll be added after you save the hero.` : "";
+      toast({ title: "Hero imported!", description: `Review and edit before saving.${skillNote}` });
+      
+      // Store skills temporarily for after hero is saved
+      if (skills.length > 0) {
+        (window as any).__pendingHeroSkills = skills;
+      }
     } catch (e: any) {
       toast({ title: "Import failed", description: e.message, variant: "destructive" });
     } finally {
@@ -103,7 +123,7 @@ export default function AdminHeroes() {
               <Label>Hero page URL</Label>
               <Input
                 type="url"
-                placeholder="https://godforge.gg/heroes/sphinx"
+                placeholder="https://godforge.gg/heroes/sun-wukong"
                 value={importUrl}
                 onChange={e => setImportUrl(e.target.value)}
               />
