@@ -113,7 +113,7 @@ export default function HeroDetail() {
             />
 
             {/* Hero header: image right, info left */}
-            <div className="flex flex-col-reverse md:flex-row gap-6 mb-8">
+            <div className="relative flex flex-col-reverse md:flex-row gap-6 mb-8 overflow-visible">
               {/* Left: info */}
               <div className="flex-1 min-w-0">
                 <p className={`text-sm font-bold uppercase tracking-widest mb-1 ${rarityLabelColor(hero.rarity)}`}>{rarityLabel(hero.rarity)}</p>
@@ -139,14 +139,19 @@ export default function HeroDetail() {
                 )}
               </div>
 
-              {/* Right: hero portrait */}
+              {/* Right: hero portrait - overflows container */}
               {hero.image_url && (
-                <div className="flex-shrink-0 md:w-64 lg:w-80">
-                  <div className="relative rounded-xl overflow-hidden border border-border bg-card">
-                    <img src={hero.image_url} alt={hero.name} className="w-full aspect-[3/4] object-cover" />
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-background/90 to-transparent p-4">
-                      <p className="text-2xl font-display font-bold text-center">{hero.name}</p>
-                      <p className={`text-center text-sm font-bold uppercase tracking-wider ${rarityLabelColor(hero.rarity)}`}>{rarityLabel(hero.rarity)}</p>
+                <div className="flex-shrink-0 md:w-64 lg:w-80 relative">
+                  <div className="relative">
+                    <img
+                      src={hero.image_url}
+                      alt={hero.name}
+                      className="w-full md:-mt-12 md:-mb-8 drop-shadow-[0_0_25px_hsl(var(--primary)/0.3)] relative z-10"
+                      style={{ filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.5))" }}
+                    />
+                    <div className="absolute bottom-0 md:-bottom-4 inset-x-0 z-20 text-center">
+                      <p className="text-2xl font-display font-bold drop-shadow-lg">{hero.name}</p>
+                      <p className={`text-sm font-bold uppercase tracking-wider ${rarityLabelColor(hero.rarity)} drop-shadow-lg`}>{rarityLabel(hero.rarity)}</p>
                     </div>
                   </div>
                 </div>
