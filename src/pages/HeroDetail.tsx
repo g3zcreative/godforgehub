@@ -14,9 +14,24 @@ const elementColors: Record<string, string> = {
   Earth: "bg-amber-500/10 text-amber-400 border-amber-500/20",
   Light: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
   Dark: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+  Tian: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+  Duat: "bg-yellow-500/10 text-yellow-300 border-yellow-500/20",
+  Olympus: "bg-sky-500/10 text-sky-400 border-sky-500/20",
+  Asgard: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+};
+
+const allegianceColors: Record<string, string> = {
+  Chaos: "bg-red-500/10 text-red-400 border-red-500/20",
+  Order: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+  Balance: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
 };
 
 const rarityStars = (r: number) => "★".repeat(r) + "☆".repeat(Math.max(0, 5 - r));
+
+const rarityLabel = (r: number) => {
+  const labels: Record<number, string> = { 5: "Legendary", 4: "Epic", 3: "Rare", 2: "Uncommon", 1: "Common" };
+  return labels[r] || `${r}★`;
+};
 
 export default function HeroDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -72,27 +87,39 @@ export default function HeroDetail() {
           <>
             <SEO
               title={hero.name}
-              description={hero.description || `${hero.name} - ${hero.rarity}★ ${hero.element} ${hero.class_type}`}
+              description={hero.description || `${hero.name} - ${rarityLabel(hero.rarity)} ${hero.class_type}`}
               image={hero.image_url || undefined}
               url={`/database/heroes/${hero.slug}`}
               jsonLd={{
                 "@context": "https://schema.org",
                 "@type": "Thing",
                 name: hero.name,
-                description: hero.description || `${hero.name} - ${hero.rarity}★ ${hero.element} ${hero.class_type}`,
+                description: hero.description || `${hero.name} - ${rarityLabel(hero.rarity)} ${hero.class_type}`,
                 ...(hero.image_url ? { image: hero.image_url } : {}),
                 additionalType: "GameCharacter",
               }}
             />
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-4 mb-4">
               {hero.image_url && (
-                <img src={hero.image_url} alt={hero.name} className="h-20 w-20 rounded-lg object-cover" />
+                <img src={hero.image_url} alt={hero.name} className="h-24 w-24 rounded-lg object-cover" />
               )}
               <div>
+                <p className="text-sm font-semibold text-primary uppercase tracking-wider">{rarityLabel(hero.rarity)}</p>
                 <h1 className="text-3xl font-display font-bold">{hero.name}</h1>
-                <div className="flex items-center gap-2 mt-1">
-                  <Badge variant="outline" className={elementColors[hero.element] || ""}>{hero.element}</Badge>
+                {(hero as any).subtitle && (
+                  <p className="text-muted-foreground italic">— {(hero as any).subtitle} —</p>
+                )}
+                <div className="flex flex-wrap items-center gap-2 mt-2">
                   <Badge variant="outline">{hero.class_type}</Badge>
+                  <Badge variant="outline" className={elementColors[hero.element] || ""}>{hero.element}</Badge>
+                  {(hero as any).affinity && (
+                    <Badge variant="outline">{(hero as any).affinity}</Badge>
+                  )}
+                  {(hero as any).allegiance && (
+                    <Badge variant="outline" className={allegianceColors[(hero as any).allegiance] || ""}>
+                      {(hero as any).allegiance}
+                    </Badge>
+                  )}
                   <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
                 </div>
               </div>
@@ -102,13 +129,20 @@ export default function HeroDetail() {
               <p className="text-muted-foreground mb-6">{hero.description}</p>
             )}
 
+            {(hero as any).lore && (
+              <div className="mb-8">
+                <h2 className="text-xl font-display font-semibold mb-3">Lore</h2>
+                <p className="text-muted-foreground leading-relaxed">{(hero as any).lore}</p>
+              </div>
+            )}
+
             {stats && Object.keys(stats).length > 0 && (
               <div className="mb-8">
                 <h2 className="text-xl font-display font-semibold mb-3">Stats</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {Object.entries(stats).map(([key, val]) => (
                     <div key={key} className="rounded-lg border border-border p-3 text-center">
-                      <span className="text-xs text-muted-foreground uppercase tracking-wide">{key}</span>
+                      <span className="text-xs text-muted-foreground uppercase tracking-wide">{key.replace(/_/g, " ")}</span>
                       <p className="text-xl font-bold text-primary">{val}</p>
                     </div>
                   ))}

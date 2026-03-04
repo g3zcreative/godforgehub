@@ -82,42 +82,57 @@ export type Database = {
       }
       heroes: {
         Row: {
+          affinity: string | null
+          allegiance: string | null
           class_type: string
           created_at: string
           description: string | null
           element: string
           id: string
           image_url: string | null
+          lore: string | null
           name: string
           rarity: number
+          realm: string | null
           slug: string
           stats: Json | null
+          subtitle: string | null
           updated_at: string
         }
         Insert: {
+          affinity?: string | null
+          allegiance?: string | null
           class_type: string
           created_at?: string
           description?: string | null
           element: string
           id?: string
           image_url?: string | null
+          lore?: string | null
           name: string
           rarity: number
+          realm?: string | null
           slug: string
           stats?: Json | null
+          subtitle?: string | null
           updated_at?: string
         }
         Update: {
+          affinity?: string | null
+          allegiance?: string | null
           class_type?: string
           created_at?: string
           description?: string | null
           element?: string
           id?: string
           image_url?: string | null
+          lore?: string | null
           name?: string
           rarity?: number
+          realm?: string | null
           slug?: string
           stats?: Json | null
+          subtitle?: string | null
           updated_at?: string
         }
         Relationships: []
