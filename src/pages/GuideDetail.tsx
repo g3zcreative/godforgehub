@@ -7,7 +7,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import { format } from "date-fns";
 import MDEditor from "@uiw/react-md-editor";
+import rehypeRaw from "rehype-raw";
 import { SEO } from "@/components/SEO";
+import { preprocessMarkup } from "@/lib/guide-markup";
 
 export default function GuideDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -69,7 +71,11 @@ export default function GuideDetail() {
             </p>
             {guide.content && (
               <div data-color-mode="dark">
-                <MDEditor.Markdown source={guide.content} className="!bg-transparent !text-foreground" />
+                <MDEditor.Markdown
+                  source={preprocessMarkup(guide.content)}
+                  rehypePlugins={[rehypeRaw]}
+                  className="!bg-transparent !text-foreground"
+                />
               </div>
             )}
           </>

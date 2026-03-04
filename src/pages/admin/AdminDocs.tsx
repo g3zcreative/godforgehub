@@ -120,6 +120,41 @@ export default function AdminDocs() {
           </AccordionContent>
         </AccordionItem>
 
+        <AccordionItem value="entity-markup">
+          <AccordionTrigger className="text-base font-semibold">
+            Entity Markup Reference
+          </AccordionTrigger>
+          <AccordionContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+            <p>
+              You can embed <strong className="text-foreground">interactive entity links</strong> directly in guide Markdown using bracket syntax. These render as color-coded, clickable links to database pages.
+            </p>
+            <p><strong className="text-foreground">Syntax:</strong></p>
+            <div className="bg-muted rounded-md p-4 font-mono text-xs space-y-1">
+              <p>[hero:sun-wukong]</p>
+              <p>[skill:phoenix-strike]</p>
+              <p>[item:iron-sword]</p>
+              <p>[material:fire-crystal]</p>
+            </div>
+            <p><strong className="text-foreground">Rules:</strong></p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>The slug after the colon must match the entity's <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">slug</code> column in the database</li>
+              <li>Use lowercase, hyphen-separated words only</li>
+              <li>The display name is auto-generated from the slug (e.g. <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">sun-wukong</code> → Sun Wukong)</li>
+            </ul>
+            <p><strong className="text-foreground">Color coding:</strong></p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li><span className="text-[hsl(37,100%,55%)]">Heroes</span> — gold</li>
+              <li><span className="text-[hsl(270,70%,65%)]">Skills</span> — purple</li>
+              <li><span className="text-[hsl(150,60%,50%)]">Items</span> — green</li>
+              <li><span className="text-[hsl(15,85%,55%)]">Materials</span> — amber</li>
+            </ul>
+            <p><strong className="text-foreground">Example:</strong></p>
+            <div className="bg-muted rounded-md p-4 font-mono text-xs">
+              <p>Equip [hero:sun-wukong] with [item:iron-sword] and use [skill:phoenix-strike] for maximum damage.</p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
         <AccordionItem value="sitemap">
           <AccordionTrigger className="text-base font-semibold">
             Sitemap &amp; Google Search Console
