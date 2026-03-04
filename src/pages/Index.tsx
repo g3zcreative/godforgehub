@@ -82,20 +82,37 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Coming Soon Feature Tiles */}
+      {/* Quick Links */}
       <section className="container py-10">
-        <h2 className="font-display text-lg font-semibold text-muted-foreground mb-4">Coming Soon</h2>
+        <h2 className="font-display text-lg font-semibold text-muted-foreground mb-4">Explore</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {["Heroes", "Items", "Skills", "Materials", "Guides"].map((name) => (
-            <div
-              key={name}
-              className="flex flex-col items-center gap-2 p-4 rounded-lg bg-card border border-border opacity-60 cursor-not-allowed"
-            >
-              <Lock className="h-5 w-5 text-muted-foreground" />
-              <span className="text-sm font-medium text-muted-foreground">{name}</span>
-              <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4 border-muted-foreground/30 text-muted-foreground/60">Coming Soon</Badge>
-            </div>
-          ))}
+          {[
+            { name: "Heroes", href: "/database/heroes", unlocked: true },
+            { name: "Items", href: "/database/items", unlocked: false },
+            { name: "Skills", href: "/database/skills", unlocked: true },
+            { name: "Materials", href: "/database/materials", unlocked: false },
+            { name: "Guides", href: "/guides", unlocked: false },
+          ].map((item) =>
+            item.unlocked ? (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="flex flex-col items-center gap-2 p-4 rounded-lg bg-card border border-border hover:border-primary/40 transition-colors"
+              >
+                <ArrowRight className="h-5 w-5 text-primary" />
+                <span className="text-sm font-medium">{item.name}</span>
+              </Link>
+            ) : (
+              <div
+                key={item.name}
+                className="flex flex-col items-center gap-2 p-4 rounded-lg bg-card border border-border opacity-60 cursor-not-allowed"
+              >
+                <Lock className="h-5 w-5 text-muted-foreground" />
+                <span className="text-sm font-medium text-muted-foreground">{item.name}</span>
+                <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4 border-muted-foreground/30 text-muted-foreground/60">Coming Soon</Badge>
+              </div>
+            )
+          )}
         </div>
       </section>
 
