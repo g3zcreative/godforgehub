@@ -13,6 +13,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Plus, Pencil, Trash2, CalendarIcon, Upload, X, Loader2, Image as ImageIcon, Search, ChevronLeft, ChevronRight, ArrowUp, ArrowDown, ArrowUpDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Switch } from "@/components/ui/switch";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
@@ -56,7 +57,8 @@ function ImageUploadButton({ bucket, onUploaded }: { bucket: string; onUploaded:
 export interface ColumnConfig {
   key: string;
   label: string;
-  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime" | "image";
+  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime" | "image" | "select";
+  options?: { value: string; label: string }[];
   required?: boolean;
   showInTable?: boolean;
   editable?: boolean;
@@ -270,6 +272,21 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
               onUploaded={(url) => setFormData(p => ({ ...p, [col.key]: url }))}
             />
           </div>
+        </div>
+      );
+    }
+    if (col.type === "select" && col.options) {
+      return (
+        <div key={col.key} className="space-y-1">
+          <Label>{col.label}</Label>
+          <Select value={String(value ?? "")} onValueChange={(v: string) => setFormData(p => ({ ...p, [col.key]: v }))}>
+            <SelectTrigger><SelectValue placeholder={`Select ${col.label.toLowerCase()}`} /></SelectTrigger>
+            <SelectContent>
+              {col.options.map(opt => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       );
     }
