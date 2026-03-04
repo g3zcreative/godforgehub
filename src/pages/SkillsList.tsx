@@ -147,7 +147,8 @@ export default function SkillsList() {
             {paged.map((skill) => {
               const hero = skill.heroes as any;
               return (
-                <Card key={skill.id} className="hover:border-primary/30 transition-colors h-full">
+                <Link key={skill.id} to={`/database/skills/${skill.slug}`}>
+                <Card className="hover:border-primary/30 transition-colors h-full">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="font-display font-semibold truncate">{skill.name}</h3>
@@ -173,6 +174,7 @@ export default function SkillsList() {
                     )}
                   </CardContent>
                 </Card>
+                </Link>
               );
             })}
           </div>

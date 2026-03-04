@@ -155,7 +155,7 @@ export default function HeroDetail() {
                 <h2 className="text-xl font-display font-semibold mb-3">Skills</h2>
                 <div className="space-y-3">
                   {skills.map((skill) => (
-                    <div key={skill.id} className="rounded-lg border border-border p-4">
+                    <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="block rounded-lg border border-border p-4 hover:border-primary/30 transition-colors">
                       <div className="flex items-center justify-between mb-1">
                         <h3 className="font-semibold">{skill.name}</h3>
                         <div className="flex items-center gap-2">
@@ -164,7 +164,7 @@ export default function HeroDetail() {
                         </div>
                       </div>
                       {skill.description && <p className="text-sm text-muted-foreground">{skill.description}</p>}
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
