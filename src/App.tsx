@@ -18,6 +18,7 @@ import HeroesList from "./pages/HeroesList";
 import SkillsList from "./pages/SkillsList";
 import SkillDetail from "./pages/SkillDetail";
 import GuidesPage from "./pages/Guides";
+import GuideDetail from "./pages/GuideDetail";
 import ToolsPage from "./pages/Tools";
 import ChangelogPage from "./pages/Changelog";
 import RoadmapPage from "./pages/Roadmap";
@@ -101,8 +102,8 @@ function AppRoutes() {
         element={flags.guides ? <GuidesPage /> : comingSoon("Guides", "Community guides and strategies are being prepared.")}
       />
       <Route
-        path="/guides/*"
-        element={flags.guides ? <GuidesPage /> : comingSoon("Guides", "Community guides and strategies are being prepared.")}
+        path="/guides/:slug"
+        element={flags.guides ? <GuideDetail /> : comingSoon("Guides", "Community guides and strategies are being prepared.")}
       />
 
       {/* Tools */}

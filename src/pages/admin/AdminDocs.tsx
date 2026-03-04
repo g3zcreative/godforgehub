@@ -155,6 +155,46 @@ export default function AdminDocs() {
           </AccordionContent>
         </AccordionItem>
 
+        <AccordionItem value="writing-guides">
+          <AccordionTrigger className="text-base font-semibold">
+            How to Write Guides
+          </AccordionTrigger>
+          <AccordionContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+            <p>
+              Guides are long-form content pieces that help players understand game mechanics, builds, and strategies. They are typically <strong className="text-foreground">generated from video URLs</strong> using the AI drafting tool in the admin panel.
+            </p>
+            <p><strong className="text-foreground">Workflow:</strong></p>
+            <ol className="list-decimal pl-5 space-y-1">
+              <li>Go to <strong className="text-foreground">Admin → Guides</strong> and click <strong className="text-foreground">New</strong></li>
+              <li>Choose a <strong className="text-foreground">category</strong> (Beginner, Tier Lists, Team Building, Farming, Advanced)</li>
+              <li>Fill in the <strong className="text-foreground">title</strong>, <strong className="text-foreground">slug</strong>, <strong className="text-foreground">author</strong>, and <strong className="text-foreground">excerpt</strong> (≤160 chars for card previews)</li>
+              <li>Write or paste Markdown content in the <strong className="text-foreground">content</strong> field</li>
+              <li>Set <strong className="text-foreground">published = false</strong> while drafting; flip to <strong className="text-foreground">true</strong> when ready</li>
+            </ol>
+            <p><strong className="text-foreground">Entity Markup:</strong></p>
+            <p>
+              Use bracket syntax to embed interactive database links inside guide content. These render as color-coded, clickable links with hover tooltips.
+            </p>
+            <div className="bg-muted rounded-md p-4 font-mono text-xs space-y-1">
+              <p>[hero:sun-wukong] → <span className="text-[hsl(37,100%,55%)]">Sun Wukong</span></p>
+              <p>[skill:phoenix-strike] → <span className="text-[hsl(270,70%,65%)]">Phoenix Strike</span></p>
+              <p>[item:iron-sword] → <span className="text-[hsl(150,60%,50%)]">Iron Sword</span></p>
+              <p>[mechanic:atk-up-ii] → <span className="text-[hsl(15,85%,55%)]">ATK Up II</span></p>
+            </div>
+            <p>
+              Roman numerals (I–X) in slugs are automatically uppercased (e.g. <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">atk-up-iii</code> → ATK Up III).
+            </p>
+            <p><strong className="text-foreground">Best practices:</strong></p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Use descriptive slugs: <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">best-warrior-builds-2026</code></li>
+              <li>Include entity markup links wherever you reference heroes, skills, items, or mechanics</li>
+              <li>Break up long content with <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">##</code> and <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">###</code> headings</li>
+              <li>Add images via full URLs: <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">![alt](https://...)</code></li>
+              <li>Set <code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">published_at</code> to control the display date</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+
         <AccordionItem value="sitemap">
           <AccordionTrigger className="text-base font-semibold">
             Sitemap &amp; Google Search Console
