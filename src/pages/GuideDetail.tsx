@@ -69,6 +69,15 @@ export default function GuideDetail() {
               by {guide.author}
               {guide.published_at && ` · ${format(new Date(guide.published_at), "PPP")}`}
             </p>
+            {(guide as any).image_url && (
+              <div className="aspect-video w-full overflow-hidden rounded-lg mb-6">
+                <img
+                  src={(guide as any).image_url}
+                  alt={guide.title}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            )}
             {guide.content && (
               <div data-color-mode="dark">
                 <MDEditor.Markdown

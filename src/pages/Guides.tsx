@@ -36,22 +36,31 @@ const GuidesPage = () => {
         ) : guides && guides.length > 0 ? (
           <div className="grid sm:grid-cols-2 gap-4">
             {guides.map((guide) => (
-              <Card key={guide.id} className="hover:border-primary/30 transition-colors">
-                <CardHeader className="pb-2">
-                  <Badge variant="outline" className="w-fit text-xs">{guide.category}</Badge>
-                  <CardTitle className="text-lg">
-                    <Link to={`/guides/${guide.slug}`} className="hover:text-primary transition-colors">
+              <Card key={guide.id} className="hover:border-primary/30 transition-colors overflow-hidden">
+                <Link to={`/guides/${guide.slug}`} className="group">
+                  {(guide as any).image_url && (
+                    <div className="aspect-video w-full overflow-hidden">
+                      <img
+                        src={(guide as any).image_url}
+                        alt={guide.title}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <CardHeader className="pb-2">
+                    <Badge variant="outline" className="w-fit text-xs">{guide.category}</Badge>
+                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
                       {guide.title}
-                    </Link>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {guide.excerpt && <p className="text-sm text-muted-foreground">{guide.excerpt}</p>}
-                  <p className="text-xs text-muted-foreground mt-3">
-                    by {guide.author}
-                    {guide.published_at && ` · ${new Date(guide.published_at).toLocaleDateString()}`}
-                  </p>
-                </CardContent>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {guide.excerpt && <p className="text-sm text-muted-foreground">{guide.excerpt}</p>}
+                    <p className="text-xs text-muted-foreground mt-3">
+                      by {guide.author}
+                      {guide.published_at && ` · ${new Date(guide.published_at).toLocaleDateString()}`}
+                    </p>
+                  </CardContent>
+                </Link>
               </Card>
             ))}
           </div>
