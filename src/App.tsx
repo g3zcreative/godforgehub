@@ -27,7 +27,9 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHeroes from "./pages/admin/AdminHeroes";
 import AdminItems from "./pages/admin/AdminItems";
 import AdminSkills from "./pages/admin/AdminSkills";
-import AdminMaterials from "./pages/admin/AdminMaterials";
+import AdminMechanics from "./pages/admin/AdminMechanics";
+import MechanicsList from "./pages/MechanicsList";
+import MechanicDetail from "./pages/MechanicDetail";
 import AdminNews from "./pages/admin/AdminNews";
 import AdminGuides from "./pages/admin/AdminGuides";
 import AdminOfficialPosts from "./pages/admin/AdminOfficialPosts";
@@ -83,6 +85,16 @@ function AppRoutes() {
         element={flags.database ? <SkillDetail /> : comingSoon("Database", "The full heroes, items, skills, and materials database is under construction.")}
       />
 
+      {/* Mechanics */}
+      <Route
+        path="/database/mechanics"
+        element={flags.database ? <MechanicsList /> : comingSoon("Database", "The full database is under construction.")}
+      />
+      <Route
+        path="/database/mechanics/:slug"
+        element={flags.database ? <MechanicDetail /> : comingSoon("Database", "The full database is under construction.")}
+      />
+
       {/* Guides */}
       <Route
         path="/guides"
@@ -118,7 +130,7 @@ function AppRoutes() {
         <Route path="heroes" element={<AdminHeroes />} />
         <Route path="items" element={<AdminItems />} />
         <Route path="skills" element={<AdminSkills />} />
-        <Route path="materials" element={<AdminMaterials />} />
+        <Route path="mechanics" element={<AdminMechanics />} />
         <Route path="news" element={<AdminNews />} />
         <Route path="guides" element={<AdminGuides />} />
         <Route path="official-posts" element={<AdminOfficialPosts />} />

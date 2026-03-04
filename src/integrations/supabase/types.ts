@@ -179,45 +179,36 @@ export type Database = {
         }
         Relationships: []
       }
-      materials: {
+      mechanics: {
         Row: {
           created_at: string
           description: string | null
-          drop_locations: string[] | null
+          icon_url: string | null
           id: string
-          image_url: string | null
-          material_type: string
+          mechanic_type: string
           name: string
-          rarity: number
           slug: string
           updated_at: string
-          usage_info: string | null
         }
         Insert: {
           created_at?: string
           description?: string | null
-          drop_locations?: string[] | null
+          icon_url?: string | null
           id?: string
-          image_url?: string | null
-          material_type: string
+          mechanic_type?: string
           name: string
-          rarity: number
           slug: string
           updated_at?: string
-          usage_info?: string | null
         }
         Update: {
           created_at?: string
           description?: string | null
-          drop_locations?: string[] | null
+          icon_url?: string | null
           id?: string
-          image_url?: string | null
-          material_type?: string
+          mechanic_type?: string
           name?: string
-          rarity?: number
           slug?: string
           updated_at?: string
-          usage_info?: string | null
         }
         Relationships: []
       }

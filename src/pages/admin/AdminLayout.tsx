@@ -20,7 +20,7 @@ const contentItems = [
   { title: "Heroes", url: "/admin/heroes", icon: Shield },
   { title: "Items", url: "/admin/items", icon: Package },
   { title: "Skills", url: "/admin/skills", icon: Sparkles },
-  { title: "Materials", url: "/admin/materials", icon: FlaskConical },
+  { title: "Mechanics", url: "/admin/mechanics", icon: FlaskConical },
   { title: "News", url: "/admin/news", icon: Newspaper },
   { title: "Guides", url: "/admin/guides", icon: BookOpen },
   { title: "Official Posts", url: "/admin/official-posts", icon: MessageSquare },

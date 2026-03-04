@@ -70,7 +70,7 @@ export default function AdminDocs() {
           <AccordionContent className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>Feature flags control which public sections are visible. Toggle them in <strong className="text-foreground">Settings</strong>.</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">database</code> — Heroes, items, skills, and materials database pages</li>
+              <li><code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">database</code> — Heroes, items, skills, and mechanics database pages</li>
               <li><code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">guides</code> — Community guides section</li>
               <li><code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">tools</code> — Interactive tools (tier lists, team builder, calculators)</li>
               <li><code className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground">community</code> — Community hub page</li>
@@ -133,7 +133,7 @@ export default function AdminDocs() {
               <p>[hero:sun-wukong]</p>
               <p>[skill:phoenix-strike]</p>
               <p>[item:iron-sword]</p>
-              <p>[material:fire-crystal]</p>
+              <p>[mechanic:atk-up-i]</p>
             </div>
             <p><strong className="text-foreground">Rules:</strong></p>
             <ul className="list-disc pl-5 space-y-1">
@@ -146,7 +146,7 @@ export default function AdminDocs() {
               <li><span className="text-[hsl(37,100%,55%)]">Heroes</span> — gold</li>
               <li><span className="text-[hsl(270,70%,65%)]">Skills</span> — purple</li>
               <li><span className="text-[hsl(150,60%,50%)]">Items</span> — green</li>
-              <li><span className="text-[hsl(15,85%,55%)]">Materials</span> — amber</li>
+              <li><span className="text-[hsl(15,85%,55%)]">Mechanics</span> — amber</li>
             </ul>
             <p><strong className="text-foreground">Example:</strong></p>
             <div className="bg-muted rounded-md p-4 font-mono text-xs">

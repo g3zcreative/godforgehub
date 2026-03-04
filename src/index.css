@@ -124,10 +124,10 @@
   text-shadow: 0 0 8px hsl(150 60% 50% / 0.4);
 }
 
-.entity-link--material {
+.entity-link--mechanic {
   color: hsl(var(--godforge-ember));
 }
-.entity-link--material:hover {
+.entity-link--mechanic:hover {
   color: hsl(15 90% 65%);
   text-shadow: 0 0 8px hsl(15 85% 55% / 0.4);
 }
