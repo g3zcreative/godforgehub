@@ -29,7 +29,7 @@ serve(async (req) => {
     let userMessage: any; // string or multimodal array
 
     if (videoUrl) {
-      // Video mode — pass YouTube URL directly to Gemini as multimodal content
+      // Video mode — scrape video page for context, then generate article
       let formattedVideoUrl = videoUrl.trim();
       if (!formattedVideoUrl.startsWith("http://") && !formattedVideoUrl.startsWith("https://")) {
         formattedVideoUrl = `https://${formattedVideoUrl}`;
@@ -37,18 +37,50 @@ serve(async (req) => {
 
       console.log("Processing video URL:", formattedVideoUrl);
 
+      const FIRECRAWL_API_KEY = Deno.env.get("FIRECRAWL_API_KEY");
+      if (!FIRECRAWL_API_KEY) {
+        return new Response(JSON.stringify({ error: "Firecrawl is not configured. Connect it in Settings." }), {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      let sourceContent = "";
+      try {
+        const scrapeRes = await fetch("https://api.firecrawl.dev/v1/scrape", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url: formattedVideoUrl, formats: ["markdown"], onlyMainContent: true, timeout: 120000 }),
+        });
+        const scrapeData = await scrapeRes.json();
+        if (scrapeRes.ok) {
+          sourceContent = scrapeData.data?.markdown || scrapeData.markdown || "";
+        } else {
+          console.error("Firecrawl error:", scrapeData);
+        }
+      } catch (scrapeError) {
+        console.error("Firecrawl request failed:", scrapeError);
+      }
+
+      if (!sourceContent && !prompt?.trim()) {
+        return new Response(JSON.stringify({ error: "Could not extract content from this video URL. Add some context notes and try again." }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
       const contextHint = prompt ? `\n\nAdditional context from the author: ${prompt}` : "";
 
       systemPrompt = `You are a gaming news writer for GodforgeHub, a community site for a gacha RPG game called Godforge.${categoryHint}
 
-Watch and analyze the provided YouTube video, then write a comprehensive news article summarizing its content for the GodforgeHub community. Focus on game-related announcements, updates, tips, or information discussed in the video. Rephrase and restructure the content into a well-written article — do NOT just transcribe.${contextHint}
+Using the provided source context from a YouTube video page, write a comprehensive news article summarizing its content for the GodforgeHub community. Focus on game-related announcements, updates, tips, or information discussed in the video. Rephrase and restructure the content into a well-written article — do NOT copy verbatim.${contextHint}
 
 Return your response by calling the create_article function. The content should be well-structured markdown with headers, and the slug should be a URL-friendly lowercase version of the title. Keep the excerpt under 200 characters.`;
 
-      userMessage = [
-        { type: "text", text: "Analyze this video and write a news article based on its content." },
-        { type: "file", file: { url: formattedVideoUrl } },
-      ];
+      userMessage = `Video URL: ${formattedVideoUrl}\n\nScraped Video Page Context:\n${sourceContent || "(Unavailable)"}\n\nAuthor Notes:\n${prompt?.trim() || "(No additional notes provided)"}`;
     } else if (url) {
       // URL scrape mode
       let sourceContent = "";
