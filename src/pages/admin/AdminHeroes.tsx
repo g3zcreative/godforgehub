@@ -1,10 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { AdminCrudPage, ColumnConfig } from "./AdminCrudPage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link, Plus, Loader2 } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Link, Plus, Loader2, Upload, CheckCircle2, XCircle, SkipForward, AlertTriangle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -24,7 +26,206 @@ const columns: ColumnConfig[] = [
   { key: "stats", label: "Stats (JSON)", type: "json" },
 ];
 
-type CreationMode = "picker" | "url" | null;
+type CreationMode = "picker" | "url" | "bulk" | null;
+
+type BulkEntry = {
+  heroName: string;
+  url: string;
+  status: "pending" | "importing" | "success" | "skipped" | "error";
+  message?: string;
+};
+
+const HERO_CSV = `set,aaru,4,https://godforge.gg/heroes/set
+osiris,aaru,4,https://godforge.gg/heroes/osiris
+imhotep,aaru,4,https://godforge.gg/heroes/imhotep
+hound-of-duat,aaru,4,https://godforge.gg/heroes/hound-of-duat
+cleopatra,aaru,4,https://godforge.gg/heroes/cleopatra
+bastet,aaru,4,https://godforge.gg/heroes/bastet
+tutankhamun,aaru,3,https://godforge.gg/heroes/tutankhamun
+ramses,aaru,3,https://godforge.gg/heroes/ramses
+nitocris,aaru,3,https://godforge.gg/heroes/nitocris
+nefertiti,aaru,3,https://godforge.gg/heroes/nefertiti
+babi,aaru,3,https://godforge.gg/heroes/babi
+ankhesenamun,aaru,3,https://godforge.gg/heroes/ankhesenamun
+nubian-warrior,aaru,2,https://godforge.gg/heroes/nubian-warrior
+mummy,aaru,2,https://godforge.gg/heroes/mummy
+ymir,asgard,5,https://godforge.gg/heroes/ymir
+odin,asgard,5,https://godforge.gg/heroes/odin
+loki,asgard,5,https://godforge.gg/heroes/loki
+hel,asgard,5,https://godforge.gg/heroes/hel
+heimdall,asgard,5,https://godforge.gg/heroes/heimdall
+grendel,asgard,5,https://godforge.gg/heroes/grendel
+freya,asgard,5,https://godforge.gg/heroes/freya
+fenrir,asgard,5,https://godforge.gg/heroes/fenrir
+thorkell,asgard,4,https://godforge.gg/heroes/thorkell
+ran,asgard,4,https://godforge.gg/heroes/ran
+geri,asgard,4,https://godforge.gg/heroes/geri
+freki,asgard,4,https://godforge.gg/heroes/freki
+brynhild,asgard,4,https://godforge.gg/heroes/brynhild
+beowulf,asgard,3,https://godforge.gg/heroes/beowulf
+vidar,asgard,3,https://godforge.gg/heroes/vidar
+ulfhednar,asgard,3,https://godforge.gg/heroes/ulfhednar
+skadi,asgard,3,https://godforge.gg/heroes/skadi
+sigurd,asgard,3,https://godforge.gg/heroes/sigurd
+seeress,asgard,3,https://godforge.gg/heroes/seeress
+ragnar-lothbrok,asgard,3,https://godforge.gg/heroes/ragnar-lothbrok
+lagertha,asgard,3,https://godforge.gg/heroes/lagertha
+aslaug,asgard,3,https://godforge.gg/heroes/aslaug
+valkyrie,asgard,2,https://godforge.gg/heroes/valkyrie
+jomsviking,asgard,2,https://godforge.gg/heroes/jomsviking
+y-ddraid-goch,avalon,5,https://godforge.gg/heroes/y-ddraid-goch
+viviane,avalon,5,https://godforge.gg/heroes/viviane
+morrigan,avalon,5,https://godforge.gg/heroes/morrigan
+morgan-le-fay,avalon,5,https://godforge.gg/heroes/morgan-le-fay
+king-arthur,avalon,5,https://godforge.gg/heroes/king-arthur
+fisher-king,avalon,5,https://godforge.gg/heroes/fisher-king
+percival,avalon,4,https://godforge.gg/heroes/percival
+mordred,avalon,4,https://godforge.gg/heroes/mordred
+green-knight,avalon,4,https://godforge.gg/heroes/green-knight
+gogmagog,avalon,4,https://godforge.gg/heroes/gogmagog
+gawain,avalon,4,https://godforge.gg/heroes/gawain
+bran,avalon,4,https://godforge.gg/heroes/bran
+banshee,avalon,4,https://godforge.gg/heroes/banshee
+tristan,avalon,3,https://godforge.gg/heroes/tristan
+mabon,avalon,3,https://godforge.gg/heroes/mabon
+isolde,avalon,3,https://godforge.gg/heroes/isolde
+dagonet,avalon,3,https://godforge.gg/heroes/dagonet
+ceridwen,avalon,3,https://godforge.gg/heroes/ceridwen
+cait-sith,avalon,3,https://godforge.gg/heroes/cait-sith
+knight,avalon,2,https://godforge.gg/heroes/knight
+fae-enchantress,avalon,2,https://godforge.gg/heroes/fae-enchantress
+druid,avalon,2,https://godforge.gg/heroes/druid
+shamash,ekur,5,https://godforge.gg/heroes/shamash
+pazuzu,ekur,5,https://godforge.gg/heroes/pazuzu
+marduk,ekur,5,https://godforge.gg/heroes/marduk
+lamashtu,ekur,5,https://godforge.gg/heroes/lamashtu
+enki,ekur,5,https://godforge.gg/heroes/enki
+anu,ekur,5,https://godforge.gg/heroes/anu
+ninurta,ekur,4,https://godforge.gg/heroes/ninurta
+ninsun,ekur,4,https://godforge.gg/heroes/ninsun
+nanaya,ekur,4,https://godforge.gg/heroes/nanaya
+ishtar,ekur,4,https://godforge.gg/heroes/ishtar
+gilgamesh,ekur,4,https://godforge.gg/heroes/gilgamesh
+aya,ekur,4,https://godforge.gg/heroes/aya
+sargon,ekur,3,https://godforge.gg/heroes/sargon
+nebuchadnezzar,ekur,3,https://godforge.gg/heroes/nebuchadnezzar
+enkidu,ekur,3,https://godforge.gg/heroes/enkidu
+asag,ekur,3,https://godforge.gg/heroes/asag
+temple-priestess,ekur,2,https://godforge.gg/heroes/temple-priestess
+shub-lugal,ekur,2,https://godforge.gg/heroes/shub-lugal
+raijin,izumo,5,https://godforge.gg/heroes/raijin
+oda-nobunaga,izumo,5,https://godforge.gg/heroes/oda-nobunaga
+izanami,izumo,5,https://godforge.gg/heroes/izanami
+izanagi,izumo,5,https://godforge.gg/heroes/izanagi
+fujin,izumo,5,https://godforge.gg/heroes/fujin
+amaterasu,izumo,5,https://godforge.gg/heroes/amaterasu
+ryujin,izumo,4,https://godforge.gg/heroes/ryujin
+musashi,izumo,4,https://godforge.gg/heroes/musashi
+mezu,izumo,4,https://godforge.gg/heroes/mezu
+kenshin,izumo,4,https://godforge.gg/heroes/kenshin
+inari,izumo,4,https://godforge.gg/heroes/inari
+himiko,izumo,4,https://godforge.gg/heroes/himiko
+hattori-hanzo,izumo,4,https://godforge.gg/heroes/hattori-hanzo
+gozu,izumo,4,https://godforge.gg/heroes/gozu
+tomoe-gozen,izumo,3,https://godforge.gg/heroes/tomoe-gozen
+tengu,izumo,3,https://godforge.gg/heroes/tengu
+shinigami,izumo,3,https://godforge.gg/heroes/shinigami
+onryo,izumo,3,https://godforge.gg/heroes/onryo
+oni,izumo,3,https://godforge.gg/heroes/oni
+li-naomasa,izumo,3,https://godforge.gg/heroes/li-naomasa
+akuma,izumo,3,https://godforge.gg/heroes/akuma
+kunoichi,izumo,2,https://godforge.gg/heroes/kunoichi
+ashigaru,izumo,2,https://godforge.gg/heroes/ashigaru
+zeus,olympus,5,https://godforge.gg/heroes/zeus
+hercules,olympus,5,https://godforge.gg/heroes/hercules
+hades,olympus,5,https://godforge.gg/heroes/hades
+athena,olympus,5,https://godforge.gg/heroes/athena
+artemis,olympus,5,https://godforge.gg/heroes/artemis
+ares,olympus,5,https://godforge.gg/heroes/ares
+apollo,olympus,5,https://godforge.gg/heroes/apollo
+aphrodite,olympus,5,https://godforge.gg/heroes/aphrodite
+polyphemus,olympus,4,https://godforge.gg/heroes/polyphemus
+persephone,olympus,4,https://godforge.gg/heroes/persephone
+pandora,olympus,4,https://godforge.gg/heroes/pandora
+odysseus,olympus,4,https://godforge.gg/heroes/odysseus
+leonidas,olympus,4,https://godforge.gg/heroes/leonidas
+achilles,olympus,4,https://godforge.gg/heroes/achilles
+orpheus,olympus,3,https://godforge.gg/heroes/orpheus
+muse,olympus,3,https://godforge.gg/heroes/muse
+minotaur,olympus,3,https://godforge.gg/heroes/minotaur
+icarus,olympus,3,https://godforge.gg/heroes/icarus
+hippolyta,olympus,3,https://godforge.gg/heroes/hippolyta
+eurydice,olympus,3,https://godforge.gg/heroes/eurydice
+cyclops,olympus,3,https://godforge.gg/heroes/cyclops
+thracian-lion,olympus,2,https://godforge.gg/heroes/thracian-lion
+spartan,olympus,2,https://godforge.gg/heroes/spartan
+amazon,olympus,2,https://godforge.gg/heroes/amazon
+tlaloc,omeyocan,5,https://godforge.gg/heroes/tlaloc
+quetzalcoatl,omeyocan,5,https://godforge.gg/heroes/quetzalcoatl
+moctezuma,omeyocan,5,https://godforge.gg/heroes/moctezuma
+metztli,omeyocan,5,https://godforge.gg/heroes/metztli
+kinich-ahau,omeyocan,5,https://godforge.gg/heroes/kinich-ahau
+cizin,omeyocan,5,https://godforge.gg/heroes/cizin
+camazotz,omeyocan,5,https://godforge.gg/heroes/camazotz
+xtabay,omeyocan,4,https://godforge.gg/heroes/xtabay
+xquic,omeyocan,4,https://godforge.gg/heroes/xquic
+xolotl,omeyocan,4,https://godforge.gg/heroes/xolotl
+xochiquetzal,omeyocan,4,https://godforge.gg/heroes/xochiquetzal
+xipe-totec,omeyocan,4,https://godforge.gg/heroes/xipe-totec
+xbalanque,omeyocan,4,https://godforge.gg/heroes/xbalanque
+hunahpu,omeyocan,4,https://godforge.gg/heroes/hunahpu
+tzilacatzin,omeyocan,3,https://godforge.gg/heroes/tzilacatzin
+shorn-one,omeyocan,3,https://godforge.gg/heroes/shorn-one
+lady-xoc,omeyocan,3,https://godforge.gg/heroes/lady-xoc
+ixchel,omeyocan,3,https://godforge.gg/heroes/ixchel
+eagle-archer,omeyocan,2,https://godforge.gg/heroes/eagle-archer
+black-jaguar,omeyocan,2,https://godforge.gg/heroes/black-jaguar
+yan-wang,tian,5,https://godforge.gg/heroes/yan-wang
+tianlong,tian,5,https://godforge.gg/heroes/tianlong
+sun-wukong,tian,5,https://godforge.gg/heroes/sun-wukong
+pangu,tian,5,https://godforge.gg/heroes/pangu
+mulan,tian,5,https://godforge.gg/heroes/mulan
+xiwangmu,tian,4,https://godforge.gg/heroes/xiwangmu
+sun-tzu,tian,4,https://godforge.gg/heroes/sun-tzu
+nezha,tian,4,https://godforge.gg/heroes/nezha
+luoshen,tian,4,https://godforge.gg/heroes/luoshen
+jiutian,tian,4,https://godforge.gg/heroes/jiutian
+hou-yi,tian,4,https://godforge.gg/heroes/hou-yi
+shishi,tian,3,https://godforge.gg/heroes/shishi
+ma-chao,tian,3,https://godforge.gg/heroes/ma-chao
+lu-bu,tian,3,https://godforge.gg/heroes/lu-bu
+guan-yu,tian,3,https://godforge.gg/heroes/guan-yu
+diao-chan,tian,3,https://godforge.gg/heroes/diao-chan
+change,tian,3,https://godforge.gg/heroes/change
+terracotta-warrior,tian,2,https://godforge.gg/heroes/terracotta-warrior
+shaolin-monk,tian,2,https://godforge.gg/heroes/shaolin-monk
+svarog,vyraj,5,https://godforge.gg/heroes/svarog
+perun,vyraj,5,https://godforge.gg/heroes/perun
+dracula,vyraj,5,https://godforge.gg/heroes/dracula
+chernobog,vyraj,5,https://godforge.gg/heroes/chernobog
+belobog,vyraj,5,https://godforge.gg/heroes/belobog
+poludnitsa,vyraj,4,https://godforge.gg/heroes/poludnitsa
+mokosh,vyraj,4,https://godforge.gg/heroes/mokosh
+leshy,vyraj,4,https://godforge.gg/heroes/leshy
+koshchei,vyraj,4,https://godforge.gg/heroes/koshchei
+devana,vyraj,4,https://godforge.gg/heroes/devana
+volkodlak,vyraj,3,https://godforge.gg/heroes/volkodlak
+vesna,vyraj,3,https://godforge.gg/heroes/vesna
+maria-morevna,vyraj,3,https://godforge.gg/heroes/maria-morevna
+lada,vyraj,3,https://godforge.gg/heroes/lada
+dobrynya,vyraj,3,https://godforge.gg/heroes/dobrynya
+bauk,vyraj,3,https://godforge.gg/heroes/bauk
+vila,vyraj,2,https://godforge.gg/heroes/vila
+vampir,vyraj,2,https://godforge.gg/heroes/vampir`;
+
+function parseHeroCsv(): BulkEntry[] {
+  return HERO_CSV.trim().split("\n").map(line => {
+    const parts = line.split(",");
+    const url = parts[3];
+    const heroName = parts[0];
+    return { heroName, url, status: "pending" as const };
+  });
+}
 
 export default function AdminHeroes() {
   const [mode, setMode] = useState<CreationMode>(null);
@@ -34,6 +235,11 @@ export default function AdminHeroes() {
   const [triggerCreate, setTriggerCreate] = useState(0);
   const pendingSkills = useRef<any[]>([]);
   const { toast } = useToast();
+
+  // Bulk import state
+  const [bulkEntries, setBulkEntries] = useState<BulkEntry[]>([]);
+  const [bulkRunning, setBulkRunning] = useState(false);
+  const bulkAbort = useRef(false);
 
   const openPicker = () => setMode("picker");
 
@@ -47,7 +253,6 @@ export default function AdminHeroes() {
       if (error) throw error;
       if (data?.error) throw new Error(data.error);
 
-      // Store skills for after hero is saved
       const skills = data.skills || [];
       pendingSkills.current = skills;
 
@@ -69,7 +274,7 @@ export default function AdminHeroes() {
       setTriggerCreate(t => t + 1);
       setMode(null);
       setImportUrl("");
-      
+
       const skillNote = skills.length > 0 ? ` ${skills.length} skills found — they'll be added after you save.` : "";
       toast({ title: "Hero imported!", description: `Review and edit before saving.${skillNote}` });
     } catch (e: any) {
@@ -102,6 +307,63 @@ export default function AdminHeroes() {
     }
   };
 
+  const startBulkImport = useCallback(async () => {
+    const entries = parseHeroCsv();
+    setBulkEntries(entries);
+    setBulkRunning(true);
+    bulkAbort.current = false;
+
+    const DELAY_MS = 2000; // delay between requests to avoid rate limits
+
+    for (let i = 0; i < entries.length; i++) {
+      if (bulkAbort.current) break;
+
+      setBulkEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "importing" } : e));
+
+      try {
+        const { data, error } = await supabase.functions.invoke("bulk-import-hero", {
+          body: { url: entries[i].url },
+        });
+
+        if (error) throw error;
+
+        if (data?.skipped) {
+          setBulkEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "skipped", message: data.message } : e));
+        } else if (data?.error) {
+          const retryable = data.retryable;
+          if (retryable) {
+            // Wait longer on rate limit and retry
+            setBulkEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "pending", message: "Rate limited, retrying..." } : e));
+            await new Promise(r => setTimeout(r, 10000));
+            i--; // retry this index
+            continue;
+          }
+          setBulkEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "error", message: data.error } : e));
+        } else if (data?.success) {
+          setBulkEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "success", message: `${data.name} (${data.skillCount} skills)` } : e));
+        }
+      } catch (err: any) {
+        setBulkEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "error", message: err.message } : e));
+      }
+
+      if (i < entries.length - 1 && !bulkAbort.current) {
+        await new Promise(r => setTimeout(r, DELAY_MS));
+      }
+    }
+
+    setBulkRunning(false);
+  }, []);
+
+  const stopBulkImport = () => {
+    bulkAbort.current = true;
+  };
+
+  const completedCount = bulkEntries.filter(e => e.status === "success" || e.status === "skipped" || e.status === "error").length;
+  const successCount = bulkEntries.filter(e => e.status === "success").length;
+  const skippedCount = bulkEntries.filter(e => e.status === "skipped").length;
+  const errorCount = bulkEntries.filter(e => e.status === "error").length;
+  const progressPct = bulkEntries.length > 0 ? (completedCount / bulkEntries.length) * 100 : 0;
+
   return (
     <>
       <AdminCrudPage
@@ -120,10 +382,14 @@ export default function AdminHeroes() {
           <DialogHeader>
             <DialogTitle>Add Hero</DialogTitle>
           </DialogHeader>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => setMode("url")}>
               <Link className="h-6 w-6" />
               <span className="text-sm">Import from URL</span>
+            </Button>
+            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setMode("bulk"); }}>
+              <Upload className="h-6 w-6" />
+              <span className="text-sm">Bulk Import All</span>
             </Button>
             <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setDefaults(undefined); setTriggerCreate(t => t + 1); setMode(null); }}>
               <Plus className="h-6 w-6" />
@@ -148,12 +414,78 @@ export default function AdminHeroes() {
                 value={importUrl}
                 onChange={e => setImportUrl(e.target.value)}
               />
-              <p className="text-xs text-muted-foreground">Paste a link to a hero page on godforge.gg. Data will be scraped and extracted automatically.</p>
+              <p className="text-xs text-muted-foreground">Paste a link to a hero page on godforge.gg.</p>
             </div>
             <Button className="w-full" onClick={importFromUrl} disabled={isGenerating || !importUrl.trim()}>
               {isGenerating ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Importing...</> : <><Link className="mr-2 h-4 w-4" /> Import Hero</>}
             </Button>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Bulk Import */}
+      <Dialog open={mode === "bulk"} onOpenChange={open => { if (!open && !bulkRunning) setMode(null); }}>
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Bulk Import All Heroes</DialogTitle>
+          </DialogHeader>
+
+          {bulkEntries.length === 0 ? (
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                This will scrape and import all <strong>182 heroes</strong> from godforge.gg. 
+                Heroes that already exist in the database will be skipped.
+                Each hero takes ~10-15 seconds to process.
+              </p>
+              <div className="flex items-center gap-2 p-3 rounded-md bg-yellow-500/10 border border-yellow-500/20">
+                <AlertTriangle className="h-4 w-4 text-yellow-500 shrink-0" />
+                <p className="text-xs text-yellow-500">This will use Firecrawl credits and may take 30-60+ minutes.</p>
+              </div>
+              <Button className="w-full" onClick={startBulkImport}>
+                <Upload className="mr-2 h-4 w-4" /> Start Bulk Import
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-4 flex-1 min-h-0 flex flex-col">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span>{completedCount} / {bulkEntries.length} processed</span>
+                  <span className="flex gap-3">
+                    <span className="text-green-500">✓ {successCount}</span>
+                    <span className="text-yellow-500">⊘ {skippedCount}</span>
+                    <span className="text-red-500">✗ {errorCount}</span>
+                  </span>
+                </div>
+                <Progress value={progressPct} className="h-2" />
+              </div>
+
+              <ScrollArea className="flex-1 min-h-0 max-h-[50vh] border rounded-md">
+                <div className="p-2 space-y-1">
+                  {bulkEntries.map((entry, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs py-1 px-2 rounded hover:bg-muted/50">
+                      {entry.status === "pending" && <div className="h-4 w-4 rounded-full border border-muted-foreground/30" />}
+                      {entry.status === "importing" && <Loader2 className="h-4 w-4 animate-spin text-primary" />}
+                      {entry.status === "success" && <CheckCircle2 className="h-4 w-4 text-green-500" />}
+                      {entry.status === "skipped" && <SkipForward className="h-4 w-4 text-yellow-500" />}
+                      {entry.status === "error" && <XCircle className="h-4 w-4 text-red-500" />}
+                      <span className="font-mono">{entry.heroName}</span>
+                      {entry.message && <span className="text-muted-foreground ml-auto truncate max-w-[200px]">{entry.message}</span>}
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+
+              {bulkRunning ? (
+                <Button variant="destructive" onClick={stopBulkImport} className="w-full">
+                  Stop Import
+                </Button>
+              ) : (
+                <Button variant="outline" onClick={() => setMode(null)} className="w-full">
+                  Close
+                </Button>
+              )}
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </>
