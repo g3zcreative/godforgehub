@@ -90,7 +90,7 @@ const Index = () => {
             { name: "Heroes", href: "/database/heroes", unlocked: true },
             { name: "Items", href: "/database/items", unlocked: false },
             { name: "Skills", href: "/database/skills", unlocked: true },
-            { name: "Materials", href: "/database/materials", unlocked: false },
+            { name: "Mechanics", href: "/database/mechanics", unlocked: true },
             { name: "Guides", href: "/guides", unlocked: false },
           ].map((item) =>
             item.unlocked ? (
