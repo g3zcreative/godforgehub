@@ -1,11 +1,20 @@
 import { Layout } from "@/components/layout/Layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
+
+const categoryColors: Record<string, string> = {
+  Beginner: "bg-green-500/10 text-green-400 border-green-500/20",
+  Advanced: "bg-red-500/10 text-red-400 border-red-500/20",
+  Strategy: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+  "Team Building": "bg-blue-500/10 text-blue-400 border-blue-500/20",
+  "Hero Guide": "bg-primary/10 text-primary border-primary/20",
+  Tips: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+};
 
 const GuidesPage = () => {
   const { data: guides, isLoading } = useQuery({
@@ -30,38 +39,46 @@ const GuidesPage = () => {
         <p className="text-muted-foreground mb-6">Community guides and strategies for Godforge.</p>
 
         {isLoading ? (
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[1, 2, 3].map((i) => <Skeleton key={i} className="h-36 w-full" />)}
+          <div className="space-y-3">
+            {[1, 2, 3].map((i) => <Skeleton key={i} className="h-24 w-full" />)}
           </div>
         ) : guides && guides.length > 0 ? (
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 [&>a]:mb-5">
             {guides.map((guide) => (
-              <Card key={guide.id} className="hover:border-primary/30 transition-colors overflow-hidden">
-                <Link to={`/guides/${guide.slug}`} className="group">
-                  {(guide as any).image_url && (
+              <Link key={guide.id} to={`/guides/${guide.slug}`} className="group break-inside-avoid block">
+                <Card className="hover:border-primary/30 transition-colors overflow-hidden flex flex-col">
+                  {guide.image_url && (
                     <div className="aspect-video w-full overflow-hidden">
                       <img
-                        src={(guide as any).image_url}
+                        src={guide.image_url}
                         alt={guide.title}
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                   )}
-                  <CardHeader className="pb-2">
-                    <Badge variant="outline" className="w-fit text-xs">{guide.category}</Badge>
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                  <CardContent className="p-4 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Badge variant="outline" className={categoryColors[guide.category] || ""}>
+                        {guide.category}
+                      </Badge>
+                    </div>
+                    <h2 className="font-semibold text-lg leading-snug group-hover:text-primary transition-colors line-clamp-2 mb-2">
                       {guide.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {guide.excerpt && <p className="text-sm text-muted-foreground">{guide.excerpt}</p>}
-                    <p className="text-xs text-muted-foreground mt-3">
-                      by {guide.author}
-                      {guide.published_at && ` · ${new Date(guide.published_at).toLocaleDateString()}`}
-                    </p>
+                    </h2>
+                    {guide.excerpt && (
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{guide.excerpt}</p>
+                    )}
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-auto pt-2">
+                      <span>by {guide.author}</span>
+                      {guide.published_at && (
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" /> {new Date(guide.published_at).toLocaleDateString()}
+                        </span>
+                      )}
+                    </div>
                   </CardContent>
-                </Link>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         ) : (
