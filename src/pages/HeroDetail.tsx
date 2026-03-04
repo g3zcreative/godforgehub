@@ -112,9 +112,9 @@ export default function HeroDetail() {
               }}
             />
 
-            {/* Hero header: image right, info left */}
+            {/* Two-column layout: left content, right hero image */}
             <div className="relative flex flex-col-reverse md:flex-row gap-6 mb-8 overflow-visible">
-              {/* Left: info */}
+              {/* Left: info + skills */}
               <div className="flex-1 min-w-0">
                 <p className={`text-sm font-bold uppercase tracking-widest mb-1 ${rarityLabelColor(hero.rarity)}`}>{rarityLabel(hero.rarity)}</p>
                 <h1 className="text-4xl font-display font-bold mb-1">{hero.name}</h1>
@@ -135,13 +135,36 @@ export default function HeroDetail() {
                   <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
                 </div>
                 {hero.description && (
-                  <p className="text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.description) }} />
+                  <p className="text-muted-foreground leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.description) }} />
+                )}
+
+                {/* Skills */}
+                {skills && skills.length > 0 && (
+                  <div className="mt-2">
+                    <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
+                    <div className="space-y-4">
+                      {skills.map((skill) => (
+                        <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="flex items-start gap-4 rounded-lg border border-border p-4 hover:border-primary/30 transition-colors group">
+                          {skill.image_url && (
+                            <img src={skill.image_url} alt={skill.name} className="h-12 w-12 rounded-full object-cover flex-shrink-0 border-2 border-border group-hover:border-primary/40 transition-colors" />
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-baseline gap-2 mb-1 flex-wrap">
+                              <h3 className="font-display font-bold uppercase tracking-wide">{skill.name}</h3>
+                              <span className="text-xs text-muted-foreground font-semibold uppercase">({skill.skill_type})</span>
+                            </div>
+                            {skill.description && <p className="text-sm text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 )}
               </div>
 
               {/* Right: hero portrait - overflows container */}
               {hero.image_url && (
-                <div className="flex-shrink-0 md:w-64 lg:w-80 relative">
+                <div className="flex-shrink-0 md:w-64 lg:w-80 relative md:sticky md:top-20 md:self-start">
                   <div className="relative">
                     <img
                       src={hero.image_url}
@@ -157,52 +180,6 @@ export default function HeroDetail() {
                 </div>
               )}
             </div>
-
-            {/* Lore */}
-            {hero.lore && (
-              <div className="mb-8">
-                <h2 className="text-xl font-display font-semibold mb-3">Lore</h2>
-                <p className="text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.lore) }} />
-              </div>
-            )}
-
-            {/* Stats */}
-            {stats && Object.keys(stats).length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-xl font-display font-semibold mb-3">Stats</h2>
-                <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
-                  {Object.entries(stats).map(([key, val]) => (
-                    <div key={key} className="rounded-lg border border-border p-3 text-center">
-                      <span className="text-xs text-muted-foreground uppercase tracking-wide">{key.replace(/_/g, " ")}</span>
-                      <p className="text-xl font-bold text-primary">{val}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Skills */}
-            {skills && skills.length > 0 && (
-              <div>
-                <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
-                <div className="space-y-4">
-                  {skills.map((skill) => (
-                    <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="flex items-start gap-4 rounded-lg border border-border p-4 hover:border-primary/30 transition-colors group">
-                      {skill.image_url && (
-                        <img src={skill.image_url} alt={skill.name} className="h-12 w-12 rounded-full object-cover flex-shrink-0 border-2 border-border group-hover:border-primary/40 transition-colors" />
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-baseline gap-2 mb-1 flex-wrap">
-                          <h3 className="font-display font-bold uppercase tracking-wide">{skill.name}</h3>
-                          <span className="text-xs text-muted-foreground font-semibold uppercase">({skill.skill_type})</span>
-                        </div>
-                        {skill.description && <p className="text-sm text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
           </>
         )}
       </div>
