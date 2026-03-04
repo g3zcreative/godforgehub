@@ -9,11 +9,14 @@ interface TooltipData {
   icon_url?: string | null;
   image_url?: string | null;
   extra?: string;
+  rarity?: number;
 }
 
 const cache = new Map<string, TooltipData | null>();
 const mechanicTypeCache = new Map<string, string>();
+const heroRarityCache = new Map<string, number>();
 let mechanicTypesLoaded = false;
+let heroRaritiesLoaded = false;
 
 async function preloadMechanicTypes() {
   if (mechanicTypesLoaded) return;
@@ -21,6 +24,15 @@ async function preloadMechanicTypes() {
   try {
     const { data } = await supabase.from("mechanics").select("slug, mechanic_type");
     if (data) data.forEach((m) => mechanicTypeCache.set(m.slug, m.mechanic_type.toLowerCase()));
+  } catch {}
+}
+
+async function preloadHeroRarities() {
+  if (heroRaritiesLoaded) return;
+  heroRaritiesLoaded = true;
+  try {
+    const { data } = await supabase.from("heroes").select("slug, rarity");
+    if (data) data.forEach((h) => heroRarityCache.set(h.slug, h.rarity));
   } catch {}
 }
 
@@ -32,6 +44,18 @@ function colorMechanicLinks(container: HTMLElement) {
     const subtype = mechanicTypeCache.get(slug);
     if (subtype && !el.classList.contains(`entity-link--mechanic-${subtype}`)) {
       el.classList.add(`entity-link--mechanic-${subtype}`);
+    }
+  });
+}
+
+function colorHeroLinks(container: HTMLElement) {
+  const links = container.querySelectorAll<HTMLElement>(".entity-link--hero");
+  links.forEach((el) => {
+    const slug = el.dataset.slug;
+    if (!slug) return;
+    const rarity = heroRarityCache.get(slug);
+    if (rarity && !el.classList.contains(`entity-link--hero-r${rarity}`)) {
+      el.classList.add(`entity-link--hero-r${rarity}`);
     }
   });
 }
@@ -48,7 +72,7 @@ async function fetchEntity(type: string, slug: string): Promise<TooltipData | nu
       if (data) result = { name: data.name, description: data.description, icon_url: data.icon_url, extra: data.mechanic_type };
     } else if (type === "hero") {
       const { data } = await supabase.from("heroes").select("name, description, image_url, element, class_type, rarity").eq("slug", slug).maybeSingle();
-      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.element} · ${data.class_type} · ${"★".repeat(data.rarity)}` };
+      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.element} · ${data.class_type} · ${"★".repeat(data.rarity)}`, rarity: data.rarity };
     } else if (type === "skill") {
       const { data } = await supabase.from("skills").select("name, description, image_url, skill_type, cooldown").eq("slug", slug).maybeSingle();
       if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.skill_type}${data.cooldown ? ` · ${data.cooldown}s CD` : ""}` };
@@ -64,12 +88,27 @@ async function fetchEntity(type: string, slug: string): Promise<TooltipData | nu
   return result;
 }
 
+const heroRarityColors: Record<number, string> = {
+  5: "hsl(30 100% 55%)",
+  4: "hsl(270 70% 65%)",
+  3: "hsl(210 80% 60%)",
+  2: "hsl(140 60% 50%)",
+  1: "hsl(0 0% 55%)",
+};
+
 const typeColors: Record<string, string> = {
-  hero: "hsl(37 100% 55%)",
+  hero: "hsl(0 0% 65%)",
   skill: "hsl(270 70% 65%)",
   item: "hsl(150 60% 50%)",
   mechanic: "hsl(15 85% 55%)",
 };
+
+function getTooltipTitleColor(type: string, data: TooltipData): string {
+  if (type === "hero" && data.rarity) {
+    return heroRarityColors[data.rarity] || typeColors.hero;
+  }
+  return typeColors[type] || "inherit";
+}
 
 export function EntityTooltipProvider({ children }: { children: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -104,15 +143,18 @@ export function EntityTooltipProvider({ children }: { children: React.ReactNode 
     clearTimeout(hideTimeout.current);
   }, []);
 
-  // Preload mechanic types and color links
+  // Preload entity types and color links
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    preloadMechanicTypes().then(() => {
+    Promise.all([preloadMechanicTypes(), preloadHeroRarities()]).then(() => {
       colorMechanicLinks(container);
-      // Observe DOM changes to color newly added links
-      const observer = new MutationObserver(() => colorMechanicLinks(container));
+      colorHeroLinks(container);
+      const observer = new MutationObserver(() => {
+        colorMechanicLinks(container);
+        colorHeroLinks(container);
+      });
       observer.observe(container, { childList: true, subtree: true });
       return () => observer.disconnect();
     });
@@ -183,7 +225,7 @@ export function EntityTooltipProvider({ children }: { children: React.ReactNode 
               <div className="min-w-0 flex-1">
                 <p
                   className="font-display font-semibold text-sm leading-tight"
-                  style={{ color: typeColors[tooltip.type] }}
+                  style={{ color: getTooltipTitleColor(tooltip.type, tooltip.data) }}
                 >
                   {tooltip.data.name}
                 </p>
