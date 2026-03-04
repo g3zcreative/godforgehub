@@ -14,10 +14,14 @@ const TYPE_TO_PATH: Record<string, string> = {
   mechanic: "mechanics",
 };
 
+const ROMAN_NUMERALS = new Set(["i","ii","iii","iv","v","vi","vii","viii","ix","x"]);
+
 function deslugify(slug: string): string {
   return slug
     .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) =>
+      ROMAN_NUMERALS.has(word) ? word.toUpperCase() : word.charAt(0).toUpperCase() + word.slice(1)
+    )
     .join(" ");
 }
 
