@@ -33,9 +33,54 @@ serve(async (req) => {
 
     const contextHint = prompt ? `\n\nAdditional context from the author: ${prompt}` : "";
 
+    const FIRECRAWL_API_KEY = Deno.env.get("FIRECRAWL_API_KEY");
+    if (!FIRECRAWL_API_KEY) {
+      return new Response(JSON.stringify({ error: "Firecrawl is not configured. Connect it in Settings." }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    let sourceContent = "";
+    console.log("Scraping video page for context:", formattedVideoUrl);
+
+    try {
+      const scrapeRes = await fetch("https://api.firecrawl.dev/v1/scrape", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: formattedVideoUrl,
+          formats: ["markdown"],
+          onlyMainContent: true,
+          timeout: 120000,
+        }),
+      });
+
+      const scrapeData = await scrapeRes.json();
+      if (!scrapeRes.ok) {
+        console.error("Firecrawl error:", scrapeData);
+      } else {
+        sourceContent = scrapeData.data?.markdown || scrapeData.markdown || "";
+      }
+    } catch (scrapeError) {
+      console.error("Firecrawl request failed:", scrapeError);
+    }
+
+    if (!sourceContent && !prompt?.trim()) {
+      return new Response(JSON.stringify({
+        error: "Could not extract content from this video URL. Add a few context notes and try again.",
+      }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const systemPrompt = `You are a guide writer for GodforgeHub, a community site for a gacha RPG game called Godforge.${categoryHint}
 
-Watch and analyze the provided YouTube video, then write a comprehensive guide based on its content for the GodforgeHub community. Focus on actionable strategies, builds, tips, or walkthroughs discussed in the video. Rephrase and restructure the content into a well-organized guide — do NOT just transcribe.
+Using the provided source context, write a comprehensive guide for the GodforgeHub community. Focus on actionable strategies, builds, tips, and walkthrough steps. Rephrase and restructure the content into a well-organized guide — do NOT copy verbatim.
 
 You can embed interactive database links using bracket syntax:
 - [hero:slug] for heroes (e.g. [hero:sun-wukong])
@@ -47,10 +92,7 @@ Use these entity links wherever you reference specific heroes, skills, items, or
 
 Return your response by calling the create_guide function. The content should be well-structured markdown with headers, and the slug should be a URL-friendly lowercase version of the title. Keep the excerpt under 200 characters.`;
 
-    const userMessage = [
-      { type: "text", text: "Analyze this video and write a detailed guide based on its content." },
-      { type: "file", file: { url: formattedVideoUrl } },
-    ];
+    const userMessage = `Video URL: ${formattedVideoUrl}\n\nScraped Video Page Context:\n${sourceContent || "(Unavailable due to scrape timeout)"}\n\nAuthor Notes:\n${prompt?.trim() || "(No additional notes provided)"}`;
 
     console.log("Calling Lovable AI...");
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
