@@ -113,7 +113,7 @@ export default function HeroDetail() {
             />
 
             {/* Two-column layout: left content, right hero image */}
-            <div className="relative flex flex-col-reverse md:flex-row gap-6 mb-8 overflow-visible">
+            <div className="relative flex flex-col md:flex-row gap-6 mb-8 overflow-visible">
               {/* Left: info + skills */}
               <div className="flex-1 min-w-0">
                 <p className={`text-sm font-bold uppercase tracking-widest mb-1 ${rarityLabelColor(hero.rarity)}`}>{rarityLabel(hero.rarity)}</p>
@@ -165,18 +165,12 @@ export default function HeroDetail() {
               {/* Right: hero portrait - overflows container */}
               {hero.image_url && (
                 <div className="flex-shrink-0 md:w-64 lg:w-80 relative md:sticky md:top-20 md:self-start">
-                  <div className="relative">
-                    <img
-                      src={hero.image_url}
-                      alt={hero.name}
-                      className="w-full md:-mt-12 md:-mb-8 drop-shadow-[0_0_25px_hsl(var(--primary)/0.3)] relative z-10"
-                      style={{ filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.5))" }}
-                    />
-                    <div className="absolute bottom-0 md:-bottom-4 inset-x-0 z-20 text-center">
-                      <p className="text-2xl font-display font-bold drop-shadow-lg">{hero.name}</p>
-                      <p className={`text-sm font-bold uppercase tracking-wider ${rarityLabelColor(hero.rarity)} drop-shadow-lg`}>{rarityLabel(hero.rarity)}</p>
-                    </div>
-                  </div>
+                  <img
+                    src={hero.image_url}
+                    alt={hero.name}
+                    className="w-full md:-mt-12 md:-mb-8 relative z-10"
+                    style={{ filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.5))" }}
+                  />
                 </div>
               )}
             </div>
