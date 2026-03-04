@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { preprocessMarkup } from "@/lib/guide-markup";
 
 interface TooltipData {
   name: string;
@@ -147,9 +148,7 @@ export function EntityTooltipProvider({ children }: { children: React.ReactNode 
                   <p className="text-[11px] text-muted-foreground mt-0.5">{tooltip.data.extra}</p>
                 )}
                 {tooltip.data.description && (
-                  <p className="text-xs text-muted-foreground mt-1.5 line-clamp-3 leading-relaxed">
-                    {tooltip.data.description}
-                  </p>
+                  <p className="text-xs text-muted-foreground mt-1.5 line-clamp-3 leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(tooltip.data.description) }} />
                 )}
               </div>
             </div>
