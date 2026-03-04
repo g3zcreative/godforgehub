@@ -127,13 +127,13 @@ export default function HeroDetail() {
             </div>
 
             {hero.description && (
-              <p className="text-muted-foreground mb-6">{hero.description}</p>
+              <p className="text-muted-foreground mb-6" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.description) }} />
             )}
 
             {(hero as any).lore && (
               <div className="mb-8">
                 <h2 className="text-xl font-display font-semibold mb-3">Lore</h2>
-                <p className="text-muted-foreground leading-relaxed">{(hero as any).lore}</p>
+                <p className="text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup((hero as any).lore) }} />
               </div>
             )}
 
