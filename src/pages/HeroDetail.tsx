@@ -112,35 +112,13 @@ export default function HeroDetail() {
               }}
             />
 
-            {/* Two-column layout: left content, right hero image */}
+            {/* Two-column layout: left skills, right info + image */}
             <div className="relative flex flex-col md:flex-row gap-6 mb-8 overflow-visible">
-              {/* Left: info + skills */}
+              {/* Left: skills */}
               <div className="flex-1 min-w-0">
-                <p className={`text-sm font-bold uppercase tracking-widest mb-1 ${rarityLabelColor(hero.rarity)}`}>{rarityLabel(hero.rarity)}</p>
-                <h1 className="text-4xl font-display font-bold mb-1">{hero.name}</h1>
-                {hero.subtitle && (
-                  <p className="text-muted-foreground italic mb-3">— {hero.subtitle} —</p>
-                )}
-                <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <Badge variant="outline">{hero.class_type}</Badge>
-                  <Badge variant="outline" className={elementColors[hero.element] || ""}>{hero.element}</Badge>
-                  {hero.affinity && (
-                    <Badge variant="outline">{hero.affinity}</Badge>
-                  )}
-                  {hero.allegiance && (
-                    <Badge variant="outline" className={allegianceColors[hero.allegiance] || ""}>
-                      {hero.allegiance}
-                    </Badge>
-                  )}
-                  <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
-                </div>
-                {hero.description && (
-                  <p className="text-muted-foreground leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.description) }} />
-                )}
-
                 {/* Skills */}
                 {skills && skills.length > 0 && (
-                  <div className="mt-2">
+                  <div>
                     <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
                     <div className="space-y-4">
                       {skills.map((skill) => (
@@ -162,17 +140,40 @@ export default function HeroDetail() {
                 )}
               </div>
 
-              {/* Right: hero portrait - overflows container */}
-              {hero.image_url && (
-                <div className="flex-shrink-0 md:w-64 lg:w-80 relative md:sticky md:top-20 md:self-start">
+              {/* Right: hero info + portrait */}
+              <div className="flex-shrink-0 md:w-64 lg:w-80 relative md:sticky md:top-20 md:self-start">
+                <div className="mb-4">
+                  <p className={`text-sm font-bold uppercase tracking-widest mb-1 ${rarityLabelColor(hero.rarity)}`}>{rarityLabel(hero.rarity)}</p>
+                  <h1 className="text-4xl font-display font-bold mb-1">{hero.name}</h1>
+                  {hero.subtitle && (
+                    <p className="text-muted-foreground italic mb-3">— {hero.subtitle} —</p>
+                  )}
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <Badge variant="outline">{hero.class_type}</Badge>
+                    <Badge variant="outline" className={elementColors[hero.element] || ""}>{hero.element}</Badge>
+                    {hero.affinity && (
+                      <Badge variant="outline">{hero.affinity}</Badge>
+                    )}
+                    {hero.allegiance && (
+                      <Badge variant="outline" className={allegianceColors[hero.allegiance] || ""}>
+                        {hero.allegiance}
+                      </Badge>
+                    )}
+                    <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
+                  </div>
+                  {hero.description && (
+                    <p className="text-muted-foreground leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.description) }} />
+                  )}
+                </div>
+                {hero.image_url && (
                   <img
                     src={hero.image_url}
                     alt={hero.name}
-                    className="w-full md:-mt-12 md:-mb-8 relative z-10"
+                    className="w-full md:-mb-8 relative z-10"
                     style={{ filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.5))" }}
                   />
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </>
         )}
