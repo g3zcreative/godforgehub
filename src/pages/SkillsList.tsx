@@ -157,9 +157,6 @@ export default function SkillsList() {
                         <Badge variant="outline" className={`text-xs ${skillTypeColors[skill.skill_type] || ""}`}>
                           {skill.skill_type}
                         </Badge>
-                        {skill.cooldown && (
-                          <span className="text-xs text-muted-foreground">{skill.cooldown}s</span>
-                        )}
                       </div>
                     </div>
                     {skill.description && (
