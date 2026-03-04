@@ -165,13 +165,8 @@ export default function SkillsList() {
                     {skill.description && (
                       <p className="text-sm text-muted-foreground line-clamp-2 mb-2" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />
                     )}
-                    {hero?.name && (
-                      <Link
-                        to={`/database/heroes/${hero.slug}`}
-                        className="text-xs text-primary hover:underline"
-                      >
-                        {hero.name}
-                      </Link>
+                    {hero?.name && hero?.slug && (
+                      <span className="text-xs" dangerouslySetInnerHTML={{ __html: preprocessMarkup(`[hero:${hero.slug}]`) }} />
                     )}
                   </CardContent>
                 </Card>

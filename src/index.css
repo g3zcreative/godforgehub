@@ -101,11 +101,52 @@
 }
 
 .entity-link--hero {
-  color: hsl(var(--godforge-gold));
+  color: hsl(0 0% 65%); /* default/common gray */
 }
 .entity-link--hero:hover {
-  color: hsl(37 100% 65%);
-  text-shadow: 0 0 8px hsl(37 100% 55% / 0.4);
+  color: hsl(0 0% 75%);
+  text-shadow: 0 0 8px hsl(0 0% 65% / 0.4);
+}
+
+/* Hero rarity colors */
+.entity-link--hero-r5 {
+  color: hsl(30 100% 55%);
+}
+.entity-link--hero-r5:hover {
+  color: hsl(30 100% 65%);
+  text-shadow: 0 0 8px hsl(30 100% 55% / 0.4);
+}
+
+.entity-link--hero-r4 {
+  color: hsl(270 70% 65%);
+}
+.entity-link--hero-r4:hover {
+  color: hsl(270 80% 75%);
+  text-shadow: 0 0 8px hsl(270 70% 65% / 0.4);
+}
+
+.entity-link--hero-r3 {
+  color: hsl(210 80% 60%);
+}
+.entity-link--hero-r3:hover {
+  color: hsl(210 85% 70%);
+  text-shadow: 0 0 8px hsl(210 80% 60% / 0.4);
+}
+
+.entity-link--hero-r2 {
+  color: hsl(140 60% 50%);
+}
+.entity-link--hero-r2:hover {
+  color: hsl(140 70% 60%);
+  text-shadow: 0 0 8px hsl(140 60% 50% / 0.4);
+}
+
+.entity-link--hero-r1 {
+  color: hsl(0 0% 55%);
+}
+.entity-link--hero-r1:hover {
+  color: hsl(0 0% 65%);
+  text-shadow: 0 0 8px hsl(0 0% 55% / 0.4);
 }
 
 .entity-link--skill {

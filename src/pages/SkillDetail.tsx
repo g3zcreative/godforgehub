@@ -116,7 +116,7 @@ export default function SkillDetail() {
                     <img src={hero.image_url} alt={hero.name} className="h-12 w-12 rounded-lg object-cover" />
                   )}
                   <div>
-                    <p className="font-display font-semibold">{hero.name}</p>
+                    <span className="font-display font-semibold" dangerouslySetInnerHTML={{ __html: preprocessMarkup(`[hero:${hero.slug}]`) }} />
                     <p className="text-sm text-muted-foreground">{hero.class_type} · {hero.element}</p>
                   </div>
                 </Link>
