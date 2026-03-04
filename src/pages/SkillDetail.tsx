@@ -75,11 +75,6 @@ export default function SkillDetail() {
                   <Badge variant="outline" className={skillTypeColors[skill.skill_type] || ""}>
                     {skill.skill_type}
                   </Badge>
-                  {skill.cooldown && (
-                    <Badge variant="outline" className="text-xs">
-                      {skill.cooldown}s Cooldown
-                    </Badge>
-                  )}
                 </div>
               </div>
             </div>
