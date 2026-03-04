@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ArrowLeft, Search, X, ChevronLeft, ChevronRight, Zap } from "lucide-react";
+import { preprocessMarkup } from "@/lib/guide-markup";
 
 const ITEMS_PER_PAGE = 24;
 
@@ -162,7 +163,7 @@ export default function SkillsList() {
                       </div>
                     </div>
                     {skill.description && (
-                      <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{skill.description}</p>
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-2" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />
                     )}
                     {hero?.name && (
                       <Link
