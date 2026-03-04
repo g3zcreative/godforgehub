@@ -1,0 +1,161 @@
+import { useEffect, useRef, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
+import { supabase } from "@/integrations/supabase/client";
+
+interface TooltipData {
+  name: string;
+  description?: string | null;
+  icon_url?: string | null;
+  image_url?: string | null;
+  extra?: string;
+}
+
+const cache = new Map<string, TooltipData | null>();
+
+async function fetchEntity(type: string, slug: string): Promise<TooltipData | null> {
+  const key = `${type}:${slug}`;
+  if (cache.has(key)) return cache.get(key)!;
+
+  let result: TooltipData | null = null;
+
+  try {
+    if (type === "mechanic") {
+      const { data } = await supabase.from("mechanics").select("name, description, icon_url, mechanic_type").eq("slug", slug).maybeSingle();
+      if (data) result = { name: data.name, description: data.description, icon_url: data.icon_url, extra: data.mechanic_type };
+    } else if (type === "hero") {
+      const { data } = await supabase.from("heroes").select("name, description, image_url, element, class_type, rarity").eq("slug", slug).maybeSingle();
+      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.element} · ${data.class_type} · ${"★".repeat(data.rarity)}` };
+    } else if (type === "skill") {
+      const { data } = await supabase.from("skills").select("name, description, image_url, skill_type, cooldown").eq("slug", slug).maybeSingle();
+      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.skill_type}${data.cooldown ? ` · ${data.cooldown}s CD` : ""}` };
+    } else if (type === "item") {
+      const { data } = await supabase.from("items").select("name, description, image_url, item_type, rarity").eq("slug", slug).maybeSingle();
+      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.item_type} · ${"★".repeat(data.rarity)}` };
+    }
+  } catch {
+    // fail silently
+  }
+
+  cache.set(key, result);
+  return result;
+}
+
+const typeColors: Record<string, string> = {
+  hero: "hsl(37 100% 55%)",
+  skill: "hsl(270 70% 65%)",
+  item: "hsl(150 60% 50%)",
+  mechanic: "hsl(15 85% 55%)",
+};
+
+export function EntityTooltipProvider({ children }: { children: React.ReactNode }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [tooltip, setTooltip] = useState<{ data: TooltipData; type: string; rect: DOMRect } | null>(null);
+  const hideTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const tooltipRef = useRef<HTMLDivElement>(null);
+
+  const show = useCallback(async (el: HTMLElement) => {
+    clearTimeout(hideTimeout.current);
+    const type = el.dataset.entity;
+    const slug = el.dataset.slug;
+    if (!type || !slug) return;
+
+    const rect = el.getBoundingClientRect();
+    const data = await fetchEntity(type, slug);
+    if (!data) return;
+
+    setTooltip({ data, type, rect });
+  }, []);
+
+  const scheduleHide = useCallback(() => {
+    hideTimeout.current = setTimeout(() => setTooltip(null), 150);
+  }, []);
+
+  const cancelHide = useCallback(() => {
+    clearTimeout(hideTimeout.current);
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const onEnter = (e: Event) => {
+      const target = (e.target as HTMLElement).closest?.(".entity-link") as HTMLElement | null;
+      if (target) show(target);
+    };
+    const onLeave = (e: Event) => {
+      const target = (e.target as HTMLElement).closest?.(".entity-link") as HTMLElement | null;
+      if (target) scheduleHide();
+    };
+
+    container.addEventListener("mouseenter", onEnter, true);
+    container.addEventListener("mouseleave", onLeave, true);
+
+    return () => {
+      container.removeEventListener("mouseenter", onEnter, true);
+      container.removeEventListener("mouseleave", onLeave, true);
+      clearTimeout(hideTimeout.current);
+    };
+  }, [show, scheduleHide]);
+
+  // Calculate position
+  let style: React.CSSProperties = {};
+  if (tooltip) {
+    const { rect } = tooltip;
+    const tooltipWidth = 280;
+    let left = rect.left + rect.width / 2 - tooltipWidth / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - tooltipWidth - 8));
+    const top = rect.top - 8;
+
+    style = {
+      position: "fixed",
+      left,
+      top,
+      transform: "translateY(-100%)",
+      width: tooltipWidth,
+      zIndex: 9999,
+    };
+  }
+
+  return (
+    <div ref={containerRef}>
+      {children}
+      {tooltip &&
+        createPortal(
+          <div
+            ref={tooltipRef}
+            style={style}
+            className="entity-tooltip"
+            onMouseEnter={cancelHide}
+            onMouseLeave={scheduleHide}
+          >
+            <div className="flex items-start gap-3">
+              {(tooltip.data.icon_url || tooltip.data.image_url) && (
+                <img
+                  src={tooltip.data.icon_url || tooltip.data.image_url || ""}
+                  alt=""
+                  className="h-9 w-9 rounded object-contain flex-shrink-0 mt-0.5"
+                />
+              )}
+              <div className="min-w-0 flex-1">
+                <p
+                  className="font-display font-semibold text-sm leading-tight"
+                  style={{ color: typeColors[tooltip.type] }}
+                >
+                  {tooltip.data.name}
+                </p>
+                {tooltip.data.extra && (
+                  <p className="text-[11px] text-muted-foreground mt-0.5">{tooltip.data.extra}</p>
+                )}
+                {tooltip.data.description && (
+                  <p className="text-xs text-muted-foreground mt-1.5 line-clamp-3 leading-relaxed">
+                    {tooltip.data.description}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+    </div>
+  );
+}

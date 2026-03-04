@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Navbar } from "./Navbar";
+import { EntityTooltipProvider } from "@/components/EntityTooltipProvider";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,7 +10,9 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1">{children}</main>
+      <EntityTooltipProvider>
+        <main className="flex-1">{children}</main>
+      </EntityTooltipProvider>
       <footer className="border-t border-border py-8 mt-12">
         <div className="container text-center text-sm text-muted-foreground">
           <p className="font-display font-semibold text-foreground mb-2">
