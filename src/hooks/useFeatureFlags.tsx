@@ -9,7 +9,7 @@ export interface FeatureFlags {
 }
 
 const defaults: FeatureFlags = {
-  guides: false,
+  guides: true,
   tools: false,
   database: false,
   community: true,
