@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { preprocessMarkup } from "@/lib/guide-markup";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
@@ -86,7 +87,7 @@ export default function SkillDetail() {
             {skill.description && (
               <div className="mb-8">
                 <h2 className="text-xl font-display font-semibold mb-3">Description</h2>
-                <p className="text-muted-foreground leading-relaxed">{skill.description}</p>
+                <p className="text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />
               </div>
             )}
 
