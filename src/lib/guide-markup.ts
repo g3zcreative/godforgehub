@@ -1,0 +1,30 @@
+/**
+ * Custom guide markup preprocessor.
+ *
+ * Converts bracket tokens like [hero:sun-wukong] into HTML anchor tags
+ * before the Markdown renderer processes the content.
+ */
+
+const ENTITY_PATTERN = /\[(hero|skill|item|material):([a-z0-9-]+)\]/g;
+
+const TYPE_TO_PATH: Record<string, string> = {
+  hero: "heroes",
+  skill: "skills",
+  item: "items",
+  material: "materials",
+};
+
+function deslugify(slug: string): string {
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+export function preprocessMarkup(content: string): string {
+  return content.replace(ENTITY_PATTERN, (_match, type: string, slug: string) => {
+    const path = TYPE_TO_PATH[type] ?? type + "s";
+    const displayName = deslugify(slug);
+    return `<a href="/database/${path}/${slug}" class="entity-link entity-link--${type}" data-entity="${type}" data-slug="${slug}">${displayName}</a>`;
+  });
+}

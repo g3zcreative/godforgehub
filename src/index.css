@@ -91,3 +91,43 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
 }
+
+/* Entity link styles for guide markup */
+.entity-link {
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s, text-shadow 0.15s;
+}
+
+.entity-link--hero {
+  color: hsl(var(--godforge-gold));
+}
+.entity-link--hero:hover {
+  color: hsl(37 100% 65%);
+  text-shadow: 0 0 8px hsl(37 100% 55% / 0.4);
+}
+
+.entity-link--skill {
+  color: hsl(270 70% 65%);
+}
+.entity-link--skill:hover {
+  color: hsl(270 80% 75%);
+  text-shadow: 0 0 8px hsl(270 70% 65% / 0.4);
+}
+
+.entity-link--item {
+  color: hsl(150 60% 50%);
+}
+.entity-link--item:hover {
+  color: hsl(150 70% 60%);
+  text-shadow: 0 0 8px hsl(150 60% 50% / 0.4);
+}
+
+.entity-link--material {
+  color: hsl(var(--godforge-ember));
+}
+.entity-link--material:hover {
+  color: hsl(15 90% 65%);
+  text-shadow: 0 0 8px hsl(15 85% 55% / 0.4);
+}
