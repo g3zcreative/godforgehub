@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { AdminCrudPage, ColumnConfig } from "./AdminCrudPage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,7 @@ export default function AdminHeroes() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [defaults, setDefaults] = useState<Record<string, unknown> | undefined>();
   const [triggerCreate, setTriggerCreate] = useState(0);
+  const pendingSkills = useRef<any[]>([]);
   const { toast } = useToast();
 
   const openPicker = () => setMode("picker");
@@ -46,8 +47,9 @@ export default function AdminHeroes() {
       if (error) throw error;
       if (data?.error) throw new Error(data.error);
 
-      // Also auto-create skills if returned
+      // Store skills for after hero is saved
       const skills = data.skills || [];
+      pendingSkills.current = skills;
 
       setDefaults({
         name: data.name || "",
@@ -68,17 +70,35 @@ export default function AdminHeroes() {
       setMode(null);
       setImportUrl("");
       
-      const skillNote = skills.length > 0 ? ` ${skills.length} skills found — they'll be added after you save the hero.` : "";
+      const skillNote = skills.length > 0 ? ` ${skills.length} skills found — they'll be added after you save.` : "";
       toast({ title: "Hero imported!", description: `Review and edit before saving.${skillNote}` });
-      
-      // Store skills temporarily for after hero is saved
-      if (skills.length > 0) {
-        (window as any).__pendingHeroSkills = skills;
-      }
     } catch (e: any) {
       toast({ title: "Import failed", description: e.message, variant: "destructive" });
     } finally {
       setIsGenerating(false);
+    }
+  };
+
+  const handleAfterCreate = async (row: Record<string, unknown>) => {
+    const skills = pendingSkills.current;
+    if (skills.length === 0) return;
+    pendingSkills.current = [];
+
+    const heroId = row.id as string;
+    const skillRows = skills.map((s: any) => ({
+      hero_id: heroId,
+      name: s.name,
+      slug: s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+      skill_type: s.skill_type || "Active",
+      description: s.description || "",
+      image_url: s.image_url || null,
+    }));
+
+    const { error } = await (supabase.from("skills") as any).insert(skillRows);
+    if (error) {
+      toast({ title: "Skills insert failed", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: `${skillRows.length} skills added`, description: "Skills linked to the new hero." });
     }
   };
 
@@ -91,6 +111,7 @@ export default function AdminHeroes() {
         defaults={defaults}
         onNewOverride={openPicker}
         triggerCreate={triggerCreate}
+        onAfterCreate={handleAfterCreate}
       />
 
       {/* Mode Picker */}

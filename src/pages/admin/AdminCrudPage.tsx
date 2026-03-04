@@ -70,11 +70,12 @@ interface AdminCrudPageProps {
   defaults?: RowData;
   onNewOverride?: () => void;
   triggerCreate?: number;
+  onAfterCreate?: (row: RowData) => void;
 }
 
 type RowData = Record<string, unknown>;
 
-export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate }: AdminCrudPageProps) {
+export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate, onAfterCreate }: AdminCrudPageProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [editingRow, setEditingRow] = useState<RowData | null>(null);
@@ -99,17 +100,23 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
       if (editingRow) {
         const { error } = await (supabase.from(tableName as any) as any).update(row).eq("id", editingRow.id);
         if (error) throw error;
+        return null;
       } else {
-        const { error } = await (supabase.from(tableName as any) as any).insert(row);
+        const { data, error } = await (supabase.from(tableName as any) as any).insert(row).select().single();
         if (error) throw error;
+        return data as RowData;
       }
     },
-    onSuccess: () => {
+    onSuccess: (created: RowData | null) => {
+      const wasCreating = !editingRow;
       queryClient.invalidateQueries({ queryKey: [tableName] });
       setDialogOpen(false);
       setEditingRow(null);
       setFormData({});
-      toast({ title: editingRow ? "Updated" : "Created" });
+      toast({ title: wasCreating ? "Created" : "Updated" });
+      if (wasCreating && created && onAfterCreate) {
+        onAfterCreate(created);
+      }
     },
     onError: (err: Error) => {
       toast({ title: "Error", description: err.message, variant: "destructive" });
