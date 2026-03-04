@@ -34,6 +34,17 @@ const rarityLabel = (r: number) => {
   return labels[r] || `${r}★`;
 };
 
+const rarityLabelColor = (r: number) => {
+  const colors: Record<number, string> = {
+    5: "text-orange-400",
+    4: "text-purple-400",
+    3: "text-blue-400",
+    2: "text-green-400",
+    1: "text-gray-400",
+  };
+  return colors[r] || "text-primary";
+};
+
 export default function HeroDetail() {
   const { slug } = useParams<{ slug: string }>();
 
@@ -68,7 +79,7 @@ export default function HeroDetail() {
 
   return (
     <Layout>
-      <div className="container max-w-3xl py-8">
+      <div className="container max-w-4xl py-8">
         <Link to="/database" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
           <ArrowLeft className="h-4 w-4" /> Back to Database
         </Link>
@@ -100,47 +111,61 @@ export default function HeroDetail() {
                 additionalType: "GameCharacter",
               }}
             />
-            <div className="flex items-center gap-4 mb-4">
-              {hero.image_url && (
-                <img src={hero.image_url} alt={hero.name} className="h-24 w-24 rounded-lg object-cover" />
-              )}
-              <div>
-                <p className="text-sm font-semibold text-primary uppercase tracking-wider">{rarityLabel(hero.rarity)}</p>
-                <h1 className="text-3xl font-display font-bold">{hero.name}</h1>
-                {(hero as any).subtitle && (
-                  <p className="text-muted-foreground italic">— {(hero as any).subtitle} —</p>
+
+            {/* Hero header: image right, info left */}
+            <div className="flex flex-col-reverse md:flex-row gap-6 mb-8">
+              {/* Left: info */}
+              <div className="flex-1 min-w-0">
+                <p className={`text-sm font-bold uppercase tracking-widest mb-1 ${rarityLabelColor(hero.rarity)}`}>{rarityLabel(hero.rarity)}</p>
+                <h1 className="text-4xl font-display font-bold mb-1">{hero.name}</h1>
+                {hero.subtitle && (
+                  <p className="text-muted-foreground italic mb-3">— {hero.subtitle} —</p>
                 )}
-                <div className="flex flex-wrap items-center gap-2 mt-2">
+                <div className="flex flex-wrap items-center gap-2 mb-4">
                   <Badge variant="outline">{hero.class_type}</Badge>
                   <Badge variant="outline" className={elementColors[hero.element] || ""}>{hero.element}</Badge>
-                  {(hero as any).affinity && (
-                    <Badge variant="outline">{(hero as any).affinity}</Badge>
+                  {hero.affinity && (
+                    <Badge variant="outline">{hero.affinity}</Badge>
                   )}
-                  {(hero as any).allegiance && (
-                    <Badge variant="outline" className={allegianceColors[(hero as any).allegiance] || ""}>
-                      {(hero as any).allegiance}
+                  {hero.allegiance && (
+                    <Badge variant="outline" className={allegianceColors[hero.allegiance] || ""}>
+                      {hero.allegiance}
                     </Badge>
                   )}
                   <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
                 </div>
+                {hero.description && (
+                  <p className="text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.description) }} />
+                )}
               </div>
+
+              {/* Right: hero portrait */}
+              {hero.image_url && (
+                <div className="flex-shrink-0 md:w-64 lg:w-80">
+                  <div className="relative rounded-xl overflow-hidden border border-border bg-card">
+                    <img src={hero.image_url} alt={hero.name} className="w-full aspect-[3/4] object-cover" />
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-background/90 to-transparent p-4">
+                      <p className="text-2xl font-display font-bold text-center">{hero.name}</p>
+                      <p className={`text-center text-sm font-bold uppercase tracking-wider ${rarityLabelColor(hero.rarity)}`}>{rarityLabel(hero.rarity)}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
-            {hero.description && (
-              <p className="text-muted-foreground mb-6" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.description) }} />
-            )}
-
-            {(hero as any).lore && (
+            {/* Lore */}
+            {hero.lore && (
               <div className="mb-8">
                 <h2 className="text-xl font-display font-semibold mb-3">Lore</h2>
-                <p className="text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup((hero as any).lore) }} />
+                <p className="text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.lore) }} />
               </div>
             )}
 
+            {/* Stats */}
             {stats && Object.keys(stats).length > 0 && (
               <div className="mb-8">
                 <h2 className="text-xl font-display font-semibold mb-3">Stats</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
                   {Object.entries(stats).map(([key, val]) => (
                     <div key={key} className="rounded-lg border border-border p-3 text-center">
                       <span className="text-xs text-muted-foreground uppercase tracking-wide">{key.replace(/_/g, " ")}</span>
@@ -151,20 +176,23 @@ export default function HeroDetail() {
               </div>
             )}
 
+            {/* Skills */}
             {skills && skills.length > 0 && (
               <div>
-                <h2 className="text-xl font-display font-semibold mb-3">Skills</h2>
-                <div className="space-y-3">
+                <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
+                <div className="space-y-4">
                   {skills.map((skill) => (
-                    <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="block rounded-lg border border-border p-4 hover:border-primary/30 transition-colors">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="font-semibold">{skill.name}</h3>
-                        <div className="flex items-center gap-2">
-                          <Badge variant="outline" className="text-xs">{skill.skill_type}</Badge>
-                          {skill.cooldown && <span className="text-xs text-muted-foreground">{skill.cooldown}s CD</span>}
+                    <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="flex items-start gap-4 rounded-lg border border-border p-4 hover:border-primary/30 transition-colors group">
+                      {skill.image_url && (
+                        <img src={skill.image_url} alt={skill.name} className="h-12 w-12 rounded-full object-cover flex-shrink-0 border-2 border-border group-hover:border-primary/40 transition-colors" />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-baseline gap-2 mb-1 flex-wrap">
+                          <h3 className="font-display font-bold uppercase tracking-wide">{skill.name}</h3>
+                          <span className="text-xs text-muted-foreground font-semibold uppercase">({skill.skill_type})</span>
                         </div>
+                        {skill.description && <p className="text-sm text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
                       </div>
-                      {skill.description && <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
                     </Link>
                   ))}
                 </div>
