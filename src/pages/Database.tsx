@@ -22,7 +22,7 @@ const databaseCategories = [
   { id: "heroes", name: "Heroes", description: "All playable heroes", icon: "Shield", href: "/database/heroes" },
   { id: "items", name: "Items", description: "Weapons, armor & accessories", icon: "Sword", href: "/database/items", comingSoon: true },
   { id: "skills", name: "Skills", description: "Hero abilities & passives", icon: "Zap", href: "/database/skills" },
-  { id: "materials", name: "Materials", description: "Crafting & upgrade materials", icon: "Gem", href: "/database/materials", comingSoon: true },
+  { id: "mechanics", name: "Mechanics", description: "Buffs, debuffs & disables", icon: "Gem", href: "/database/mechanics" },
 ];
 
 const iconMap: Record<string, React.ReactNode> = {

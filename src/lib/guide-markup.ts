@@ -5,13 +5,13 @@
  * before the Markdown renderer processes the content.
  */
 
-const ENTITY_PATTERN = /\[(hero|skill|item|material):([a-z0-9-]+)\]/g;
+const ENTITY_PATTERN = /\[(hero|skill|item|mechanic):([a-z0-9-]+)\]/g;
 
 const TYPE_TO_PATH: Record<string, string> = {
   hero: "heroes",
   skill: "skills",
   item: "items",
-  material: "materials",
+  mechanic: "mechanics",
 };
 
 function deslugify(slug: string): string {
