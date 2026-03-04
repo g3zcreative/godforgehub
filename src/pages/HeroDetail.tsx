@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { preprocessMarkup } from "@/lib/guide-markup";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
@@ -163,7 +164,7 @@ export default function HeroDetail() {
                           {skill.cooldown && <span className="text-xs text-muted-foreground">{skill.cooldown}s CD</span>}
                         </div>
                       </div>
-                      {skill.description && <p className="text-sm text-muted-foreground">{skill.description}</p>}
+                      {skill.description && <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
                     </Link>
                   ))}
                 </div>
