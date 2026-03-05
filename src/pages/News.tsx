@@ -47,10 +47,10 @@ const NewsPage = () => {
             {articles.map((article) => (
               <Link key={article.id} to={`/news/${article.slug}`} className="group break-inside-avoid block">
                 <Card className="hover:border-primary/30 transition-colors overflow-hidden flex flex-col">
-                  {article.image_url && (
+                  {(article.image_url || article.video_url) && (
                     <div className="aspect-video w-full overflow-hidden">
                       <img
-                        src={article.image_url}
+                        src={article.image_url || `https://img.youtube.com/vi/${(article.video_url!.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/) || [])[1]}/maxresdefault.jpg`}
                         alt={article.title}
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
