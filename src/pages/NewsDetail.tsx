@@ -65,7 +65,7 @@ export default function NewsDetail() {
             <SEO
               title={article.title}
               description={article.excerpt || undefined}
-              image={article.image_url || undefined}
+              image={article.image_url || (article.video_url ? `https://img.youtube.com/vi/${extractYouTubeId(article.video_url)}/maxresdefault.jpg` : undefined)}
               type="article"
               url={`/news/${article.slug}`}
               jsonLd={{
@@ -73,8 +73,23 @@ export default function NewsDetail() {
                 "@type": "NewsArticle",
                 headline: article.title,
                 ...(article.excerpt ? { description: article.excerpt } : {}),
-                ...(article.image_url ? { image: article.image_url } : {}),
+                ...(article.image_url
+                  ? { image: article.image_url }
+                  : article.video_url
+                    ? { image: `https://img.youtube.com/vi/${extractYouTubeId(article.video_url)}/maxresdefault.jpg` }
+                    : {}),
                 ...(article.published_at ? { datePublished: article.published_at } : {}),
+                ...(article.video_url ? {
+                  video: {
+                    "@type": "VideoObject",
+                    name: article.title,
+                    ...(article.excerpt ? { description: article.excerpt } : {}),
+                    thumbnailUrl: `https://img.youtube.com/vi/${extractYouTubeId(article.video_url)}/maxresdefault.jpg`,
+                    embedUrl: `https://www.youtube.com/embed/${extractYouTubeId(article.video_url)}`,
+                    contentUrl: article.video_url,
+                    ...(article.published_at ? { uploadDate: article.published_at } : {}),
+                  },
+                } : {}),
               }}
             />
             <div className="flex items-center gap-2 mb-3">
