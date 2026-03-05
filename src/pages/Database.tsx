@@ -20,9 +20,10 @@ const rarityStars = (rarity: number) => "★".repeat(rarity) + "☆".repeat(Math
 
 const databaseCategories = [
   { id: "heroes", name: "Heroes", description: "All playable heroes", icon: "Shield", href: "/database/heroes" },
-  { id: "items", name: "Items", description: "Weapons, armor & accessories", icon: "Sword", href: "/database/items", comingSoon: true },
+  { id: "imprints", name: "Imprints", description: "Hero imprints & passives", icon: "Gem", href: "/database/imprints" },
+  { id: "weapons", name: "Weapons", description: "All weapons & factions", icon: "Sword", href: "/database/weapons" },
   { id: "skills", name: "Skills", description: "Hero abilities & passives", icon: "Zap", href: "/database/skills" },
-  { id: "mechanics", name: "Mechanics", description: "Buffs, debuffs & disables", icon: "Gem", href: "/database/mechanics" },
+  { id: "mechanics", name: "Mechanics", description: "Buffs, debuffs & disables", icon: "Map", href: "/database/mechanics" },
 ];
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -58,23 +59,7 @@ const DatabasePage = () => {
 
         {/* Categories grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {databaseCategories.map((cat) =>
-            cat.comingSoon ? (
-              <div key={cat.id} className="opacity-60 cursor-not-allowed">
-                <Card className="h-full">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="text-muted-foreground">{iconMap[cat.icon]}</div>
-                    <div>
-                      <h3 className="font-display font-semibold text-lg text-muted-foreground flex items-center gap-2">
-                        {cat.name}
-                        <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4 border-muted-foreground/30 text-muted-foreground/50">Coming Soon</Badge>
-                      </h3>
-                      <p className="text-sm text-muted-foreground">{cat.description}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ) : (
+          {databaseCategories.map((cat) => (
               <Link key={cat.id} to={cat.href}>
                 <Card className="hover:border-primary/40 transition-all h-full">
                   <CardContent className="p-6 flex items-center gap-4">
@@ -86,8 +71,7 @@ const DatabasePage = () => {
                   </CardContent>
                 </Card>
               </Link>
-            )
-          )}
+          ))}
         </div>
 
         {/* Featured Heroes preview */}
