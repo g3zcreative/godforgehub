@@ -9,24 +9,39 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Video, Plus, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-
-const columns: ColumnConfig[] = [
-  { key: "title", label: "Title", required: true, showInTable: true },
-  { key: "slug", label: "Slug", required: true, showInTable: true },
-  { key: "author", label: "Author", required: true, showInTable: true },
-  { key: "category", label: "Category", showInTable: true },
-  { key: "published", label: "Published", type: "boolean", showInTable: true },
-  { key: "excerpt", label: "Excerpt", type: "textarea" },
-  { key: "content", label: "Content", type: "markdown" },
-  { key: "image_url", label: "Feature Image", type: "image", storageBucket: "guide-images" },
-  { key: "published_at", label: "Published At", type: "datetime" },
-];
+import { useQuery } from "@tanstack/react-query";
 
 const CATEGORIES = ["Beginner", "Tier Lists", "Team Building", "Farming", "Advanced"];
 
 type CreationMode = "picker" | "video" | null;
 
 export default function AdminGuides() {
+  const { data: authors } = useQuery({
+    queryKey: ["authors"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("authors").select("*").order("name");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const authorOptions = (authors ?? []).map((a) => ({
+    value: a.name,
+    label: `${a.name}${a.role ? ` (${a.role})` : ""}`,
+  }));
+
+  const columns: ColumnConfig[] = [
+    { key: "title", label: "Title", required: true, showInTable: true },
+    { key: "slug", label: "Slug", required: true, showInTable: true },
+    { key: "author", label: "Author", type: "select", options: authorOptions, required: true, showInTable: true },
+    { key: "category", label: "Category", showInTable: true },
+    { key: "published", label: "Published", type: "boolean", showInTable: true },
+    { key: "excerpt", label: "Excerpt", type: "textarea" },
+    { key: "content", label: "Content", type: "markdown" },
+    { key: "image_url", label: "Feature Image", type: "image", storageBucket: "guide-images" },
+    { key: "published_at", label: "Published At", type: "datetime" },
+  ];
+
   const [mode, setMode] = useState<CreationMode>(null);
   const [selectedCategory, setSelectedCategory] = useState("Beginner");
   const [videoUrl, setVideoUrl] = useState("");
@@ -35,7 +50,6 @@ export default function AdminGuides() {
   const [defaults, setDefaults] = useState<Record<string, unknown> | undefined>();
   const [triggerCreate, setTriggerCreate] = useState(0);
   const { toast } = useToast();
-
   const openPicker = () => setMode("picker");
 
   const generateFromVideo = async () => {
