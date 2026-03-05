@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      factions: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon_url: string | null
+          id: string
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon_url?: string | null
+          id?: string
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon_url?: string | null
+          id?: string
+          name?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       feedback: {
         Row: {
           created_at: string
@@ -576,6 +606,7 @@ export type Database = {
         Row: {
           created_at: string
           faction: string | null
+          faction_id: string | null
           id: string
           image_url: string | null
           imprint_id: string | null
@@ -589,6 +620,7 @@ export type Database = {
         Insert: {
           created_at?: string
           faction?: string | null
+          faction_id?: string | null
           id?: string
           image_url?: string | null
           imprint_id?: string | null
@@ -602,6 +634,7 @@ export type Database = {
         Update: {
           created_at?: string
           faction?: string | null
+          faction_id?: string | null
           id?: string
           image_url?: string | null
           imprint_id?: string | null
@@ -613,6 +646,13 @@ export type Database = {
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "weapons_faction_id_fkey"
+            columns: ["faction_id"]
+            isOneToOne: false
+            referencedRelation: "factions"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "weapons_imprint_id_fkey"
             columns: ["imprint_id"]
