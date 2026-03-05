@@ -48,6 +48,7 @@ import AdminDocs from "./pages/admin/AdminDocs";
 import AdminImprints from "./pages/admin/AdminImprints";
 import AdminWeapons from "./pages/admin/AdminWeapons";
 import AdminFactions from "./pages/admin/AdminFactions";
+import AdminAuthors from "./pages/admin/AdminAuthors";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
 
@@ -153,6 +154,7 @@ function AppRoutes() {
         <Route path="news" element={<AdminNews />} />
         <Route path="guides" element={<AdminGuides />} />
         <Route path="official-posts" element={<AdminOfficialPosts />} />
+        <Route path="authors" element={<AdminAuthors />} />
         <Route path="changelog" element={<AdminChangelog />} />
         <Route path="roadmap" element={<AdminRoadmap />} />
         <Route path="feedback" element={<AdminFeedback />} />
