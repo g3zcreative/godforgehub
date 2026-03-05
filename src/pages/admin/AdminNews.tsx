@@ -18,6 +18,7 @@ const columns: ColumnConfig[] = [
   { key: "excerpt", label: "Excerpt", type: "textarea" },
   { key: "content", label: "Content", type: "markdown" },
   { key: "image_url", label: "Feature Image", type: "image", storageBucket: "news-images" },
+  { key: "video_url", label: "Video URL" },
   { key: "published_at", label: "Published At", type: "datetime" },
 ];
 
@@ -251,6 +252,7 @@ export default function AdminNews() {
         excerpt: data.excerpt || "",
         content: data.content || "",
         category: selectedCategory,
+        video_url: videoUrl,
         published: false,
         published_at: new Date().toISOString(),
       });
