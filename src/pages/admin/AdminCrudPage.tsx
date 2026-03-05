@@ -63,6 +63,7 @@ export interface ColumnConfig {
   showInTable?: boolean;
   editable?: boolean;
   storageBucket?: string;
+  onChange?: (value: string, setFormData: React.Dispatch<React.SetStateAction<RowData>>) => void;
 }
 
 interface AdminCrudPageProps {
@@ -283,7 +284,7 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
       return (
         <div key={col.key} className="space-y-1">
           <Label>{col.label}</Label>
-          <Select value={String(value ?? "")} onValueChange={(v: string) => setFormData(p => ({ ...p, [col.key]: v }))}>
+          <Select value={String(value ?? "")} onValueChange={(v: string) => { setFormData(p => ({ ...p, [col.key]: v })); col.onChange?.(v, setFormData); }}>
             <SelectTrigger><SelectValue placeholder={`Select ${col.label.toLowerCase()}`} /></SelectTrigger>
             <SelectContent>
               {col.options.map(opt => (
