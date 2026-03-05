@@ -187,6 +187,10 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
       else if (c.type === "json") {
         try { val = JSON.parse(val as string); } catch { val = {}; }
       }
+      // Convert empty strings to null for non-required fields
+      if (!c.required && (val === "" || val === undefined)) {
+        val = null;
+      }
       payload[c.key] = val;
     });
     saveMutation.mutate(payload);
