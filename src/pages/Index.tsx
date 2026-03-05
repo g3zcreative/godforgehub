@@ -53,6 +53,20 @@ const Index = () => {
     },
   });
 
+  const { data: guides, isLoading: guidesLoading } = useQuery({
+    queryKey: ["guides_home"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("guides")
+        .select("*")
+        .eq("published", true)
+        .order("published_at", { ascending: false })
+        .limit(3);
+      if (error) throw error;
+      return data;
+    },
+  });
+
   return (
     <Layout>
       <SEO />
@@ -207,6 +221,57 @@ const Index = () => {
           )}
         </section>
       </div>
+      {/* Featured Guides */}
+      <section className="container pb-12 space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="font-display text-2xl font-bold flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-primary" /> Featured Guides
+          </h2>
+          <Link to="/guides" className="text-sm text-primary hover:underline flex items-center gap-1">
+            View all <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
+        {guidesLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[1, 2, 3].map(i => <Skeleton key={i} className="h-48 w-full" />)}
+          </div>
+        ) : guides && guides.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {guides.map((guide) => (
+              <Link key={guide.id} to={`/guides/${guide.slug}`} className="group block">
+                <Card className="hover:border-primary/30 transition-colors overflow-hidden flex flex-col h-full">
+                  {guide.image_url && (
+                    <div className="aspect-video w-full overflow-hidden">
+                      <img
+                        src={guide.image_url}
+                        alt={guide.title}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <CardContent className="p-4 flex flex-col flex-1">
+                    <Badge variant="outline" className="w-fit mb-2 text-xs">{guide.category}</Badge>
+                    <span className="font-semibold leading-snug group-hover:text-primary transition-colors line-clamp-2 mb-1">
+                      {guide.title}
+                    </span>
+                    {guide.excerpt && (
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{guide.excerpt}</p>
+                    )}
+                    <span className="text-xs text-muted-foreground mt-auto pt-1">by {guide.author}</span>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <Card>
+            <CardContent className="p-8 text-center text-muted-foreground">
+              <BookOpen className="h-12 w-12 mx-auto mb-3 opacity-30" />
+              <p>No guides yet. Check back soon!</p>
+            </CardContent>
+          </Card>
+        )}
+      </section>
     </Layout>
   );
 };
