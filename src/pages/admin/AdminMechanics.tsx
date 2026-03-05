@@ -5,7 +5,7 @@ const columns: ColumnConfig[] = [
   { key: "slug", label: "Slug", required: true, showInTable: true },
   { key: "mechanic_type", label: "Type", required: true, showInTable: true },
   { key: "description", label: "Description", type: "textarea" },
-  { key: "icon_url", label: "Icon URL" },
+  { key: "icon_url", label: "Icon URL", storageBucket: "icons" },
 ];
 
 export default function AdminMechanics() {

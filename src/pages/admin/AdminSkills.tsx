@@ -30,7 +30,7 @@ export default function AdminSkills() {
     { key: "cooldown", label: "Cooldown", type: "number", showInTable: true },
     { key: "description", label: "Description", type: "textarea" },
     { key: "hero_id", label: "Hero", type: "select", options: heroOptions, showInTable: true },
-    { key: "image_url", label: "Image URL" },
+    { key: "image_url", label: "Image URL", storageBucket: "images" },
     { key: "scaling", label: "Scaling (JSON)", type: "json" },
   ];
 
