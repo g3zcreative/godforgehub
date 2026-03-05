@@ -7,7 +7,7 @@ const columns: ColumnConfig[] = [
   { key: "rarity", label: "Rarity", type: "number", required: true, showInTable: true },
   { key: "description", label: "Description", type: "textarea" },
   { key: "obtain_method", label: "Obtain Method" },
-  { key: "image_url", label: "Image URL" },
+  { key: "image_url", label: "Image URL", storageBucket: "images" },
   { key: "stats", label: "Stats (JSON)", type: "json" },
 ];
 

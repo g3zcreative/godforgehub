@@ -82,6 +82,7 @@ const ADMIN_PAGE_SIZE = 25;
 
 export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate, onAfterCreate }: AdminCrudPageProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [editingRow, setEditingRow] = useState<RowData | null>(null);
   const [formData, setFormData] = useState<RowData>({});
@@ -124,6 +125,7 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
     },
     onSuccess: (created: RowData | null) => {
       const wasCreating = !editingRow;
+      setIsSaving(false);
       queryClient.invalidateQueries({ queryKey: [tableName] });
       setDialogOpen(false);
       setEditingRow(null);
@@ -134,6 +136,7 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
       }
     },
     onError: (err: Error) => {
+      setIsSaving(false);
       toast({ title: "Error", description: err.message, variant: "destructive" });
     },
   });
@@ -185,21 +188,56 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
     setDialogOpen(true);
   };
 
-  const handleSave = () => {
-    const payload: RowData = {};
-    editableColumns.forEach(c => {
-      let val = formData[c.key];
-      if (c.type === "number") val = Number(val);
-      else if (c.type === "json") {
-        try { val = JSON.parse(val as string); } catch { val = {}; }
-      }
-      // Convert empty strings to null for non-required fields
-      if (!c.required && (val === "" || val === undefined)) {
-        val = null;
-      }
-      payload[c.key] = val;
+  const isExternalUrl = (url: string) => {
+    if (!url || typeof url !== "string") return false;
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "";
+    return (url.startsWith("http://") || url.startsWith("https://")) && !url.startsWith(supabaseUrl);
+  };
+
+  const proxyImageUrl = async (url: string, bucket: string): Promise<string> => {
+    const { data, error } = await supabase.functions.invoke("proxy-image", {
+      body: { url, bucket },
     });
-    saveMutation.mutate(payload);
+    if (error) throw error;
+    if (data?.error) throw new Error(data.error);
+    return data.publicUrl;
+  };
+
+  const handleSave = async () => {
+    setIsSaving(true);
+    try {
+      const payload: RowData = {};
+      editableColumns.forEach(c => {
+        let val = formData[c.key];
+        if (c.type === "number") val = Number(val);
+        else if (c.type === "json") {
+          try { val = JSON.parse(val as string); } catch { val = {}; }
+        }
+        if (!c.required && (val === "" || val === undefined)) {
+          val = null;
+        }
+        payload[c.key] = val;
+      });
+
+      // Proxy external image URLs to our storage
+      const imageColumns = editableColumns.filter(
+        c => (c.key.includes("image_url") || c.key.includes("icon_url")) && c.storageBucket
+      );
+      for (const col of imageColumns) {
+        const val = payload[col.key];
+        if (typeof val === "string" && isExternalUrl(val)) {
+          try {
+            payload[col.key] = await proxyImageUrl(val, col.storageBucket!);
+          } catch (e: any) {
+            toast({ title: `Failed to proxy image for ${col.label}`, description: e.message, variant: "destructive" });
+          }
+        }
+      }
+
+      saveMutation.mutate(payload);
+    } catch {
+      setIsSaving(false);
+    }
   };
 
   const renderField = (col: ColumnConfig) => {
@@ -453,8 +491,8 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setDialogOpen(false)}>Cancel</Button>
-            <Button onClick={handleSave} disabled={saveMutation.isPending}>
-              {saveMutation.isPending ? "Saving..." : "Save"}
+            <Button onClick={handleSave} disabled={isSaving || saveMutation.isPending}>
+              {isSaving ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Uploading images...</> : saveMutation.isPending ? "Saving..." : "Save"}
             </Button>
           </DialogFooter>
         </DialogContent>

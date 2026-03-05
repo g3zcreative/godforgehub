@@ -50,7 +50,7 @@ export default function AdminImprints() {
     { key: "slug", label: "Slug", required: true, showInTable: true },
     { key: "passive", label: "Passive", type: "textarea" },
     { key: "rarity", label: "Rarity", type: "number", required: true, showInTable: true },
-    { key: "image_url", label: "Image URL" },
+    { key: "image_url", label: "Image URL", storageBucket: "images" },
   ];
 
   return <AdminCrudPage tableName="imprints" title="Imprints" columns={columns} />;

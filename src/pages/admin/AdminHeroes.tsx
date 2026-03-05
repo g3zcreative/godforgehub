@@ -22,7 +22,7 @@ const columns: ColumnConfig[] = [
   { key: "rarity", label: "Rarity", type: "number", required: true, showInTable: true },
   { key: "description", label: "Description", type: "textarea" },
   { key: "lore", label: "Lore", type: "textarea" },
-  { key: "image_url", label: "Image URL" },
+  { key: "image_url", label: "Image URL", storageBucket: "hero-images" },
   { key: "stats", label: "Stats (JSON)", type: "json" },
 ];
 

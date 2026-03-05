@@ -12,7 +12,7 @@ const columns: ColumnConfig[] = [
     { value: "Legendary", label: "Legendary" },
   ]},
   { key: "faction", label: "Faction", showInTable: true },
-  { key: "image_url", label: "Image URL" },
+  { key: "image_url", label: "Image URL", storageBucket: "images" },
 ];
 
 export default function AdminWeapons() {
