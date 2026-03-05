@@ -140,6 +140,50 @@ export type Database = {
         }
         Relationships: []
       }
+      imprints: {
+        Row: {
+          created_at: string
+          id: string
+          image_url: string | null
+          name: string
+          passive: string | null
+          rarity: number
+          slug: string
+          source_hero_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          name: string
+          passive?: string | null
+          rarity?: number
+          slug: string
+          source_hero_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          name?: string
+          passive?: string | null
+          rarity?: number
+          slug?: string
+          source_hero_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "imprints_source_hero_id_fkey"
+            columns: ["source_hero_id"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       items: {
         Row: {
           created_at: string
@@ -527,6 +571,56 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      weapons: {
+        Row: {
+          created_at: string
+          faction: string | null
+          id: string
+          image_url: string | null
+          imprint_id: string | null
+          name: string
+          passive: string | null
+          rank: number
+          rarity: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          faction?: string | null
+          id?: string
+          image_url?: string | null
+          imprint_id?: string | null
+          name: string
+          passive?: string | null
+          rank?: number
+          rarity?: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          faction?: string | null
+          id?: string
+          image_url?: string | null
+          imprint_id?: string | null
+          name?: string
+          passive?: string | null
+          rank?: number
+          rarity?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "weapons_imprint_id_fkey"
+            columns: ["imprint_id"]
+            isOneToOne: false
+            referencedRelation: "imprints"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
