@@ -92,6 +92,11 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
   const queryClient = useQueryClient();
   const { toast } = useToast();
 
+  const hasSlugColumn = columns.some(c => c.key === "slug");
+  const slugSourceKey = columns.some(c => c.key === "name") ? "name" : columns.some(c => c.key === "title") ? "title" : null;
+
+  const toSlug = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
   const editableColumns = columns.filter(c => c.editable !== false);
   const tableColumns = columns.filter(c => c.showInTable !== false);
   const searchableKeys = columns.filter(c => c.showInTable !== false && c.type !== "boolean" && c.type !== "json").map(c => c.key);
@@ -303,13 +308,21 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
         </div>
       );
     }
+    const autoSlug = hasSlugColumn && slugSourceKey && col.key === slugSourceKey;
     return (
       <div key={col.key} className="space-y-1">
         <Label>{col.label}</Label>
         <Input
           type={col.type === "number" ? "number" : "text"}
           value={String(value ?? "")}
-          onChange={e => setFormData(p => ({ ...p, [col.key]: e.target.value }))}
+          onChange={e => {
+            const newVal = e.target.value;
+            setFormData(p => {
+              const updated = { ...p, [col.key]: newVal };
+              if (autoSlug) updated.slug = toSlug(newVal);
+              return updated;
+            });
+          }}
           required={col.required}
         />
       </div>
