@@ -41,6 +41,8 @@ import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminPlatform from "./pages/admin/AdminPlatform";
 import AdminSettings from "./pages/admin/AdminSettings";
 import AdminDocs from "./pages/admin/AdminDocs";
+import AdminImprints from "./pages/admin/AdminImprints";
+import AdminWeapons from "./pages/admin/AdminWeapons";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
 
@@ -132,6 +134,8 @@ function AppRoutes() {
         <Route path="items" element={<AdminItems />} />
         <Route path="skills" element={<AdminSkills />} />
         <Route path="mechanics" element={<AdminMechanics />} />
+        <Route path="imprints" element={<AdminImprints />} />
+        <Route path="weapons" element={<AdminWeapons />} />
         <Route path="news" element={<AdminNews />} />
         <Route path="guides" element={<AdminGuides />} />
         <Route path="official-posts" element={<AdminOfficialPosts />} />
