@@ -19,6 +19,10 @@ import SkillsList from "./pages/SkillsList";
 import SkillDetail from "./pages/SkillDetail";
 import GuidesPage from "./pages/Guides";
 import GuideDetail from "./pages/GuideDetail";
+import ImprintsList from "./pages/ImprintsList";
+import ImprintDetail from "./pages/ImprintDetail";
+import WeaponsList from "./pages/WeaponsList";
+import WeaponDetail from "./pages/WeaponDetail";
 import ToolsPage from "./pages/Tools";
 import ChangelogPage from "./pages/Changelog";
 import RoadmapPage from "./pages/Roadmap";
@@ -98,6 +102,14 @@ function AppRoutes() {
         path="/database/mechanics/:slug"
         element={flags.database ? <MechanicDetail /> : comingSoon("Database", "The full database is under construction.")}
       />
+
+      {/* Imprints */}
+      <Route path="/database/imprints" element={flags.database ? <ImprintsList /> : comingSoon("Database", "The full database is under construction.")} />
+      <Route path="/database/imprints/:slug" element={flags.database ? <ImprintDetail /> : comingSoon("Database", "The full database is under construction.")} />
+
+      {/* Weapons */}
+      <Route path="/database/weapons" element={flags.database ? <WeaponsList /> : comingSoon("Database", "The full database is under construction.")} />
+      <Route path="/database/weapons/:slug" element={flags.database ? <WeaponDetail /> : comingSoon("Database", "The full database is under construction.")} />
 
       {/* Guides */}
       <Route
