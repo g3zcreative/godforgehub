@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Link, Plus, Loader2, Upload, CheckCircle2, XCircle, SkipForward, AlertTriangle } from "lucide-react";
+import { Link, Plus, Loader2, Upload, CheckCircle2, XCircle, SkipForward, AlertTriangle, ImageDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -26,7 +26,7 @@ const columns: ColumnConfig[] = [
   { key: "stats", label: "Stats (JSON)", type: "json" },
 ];
 
-type CreationMode = "picker" | "url" | "bulk" | null;
+type CreationMode = "picker" | "url" | "bulk" | "portraits" | null;
 
 type BulkEntry = {
   heroName: string;
@@ -241,6 +241,10 @@ export default function AdminHeroes() {
   const [bulkRunning, setBulkRunning] = useState(false);
   const bulkAbort = useRef(false);
 
+  // Portrait download state
+  const [portraitResults, setPortraitResults] = useState<{ slug: string; status: string; message?: string }[]>([]);
+  const [portraitRunning, setPortraitRunning] = useState(false);
+
   const openPicker = () => setMode("picker");
 
   const importFromUrl = async () => {
@@ -382,7 +386,7 @@ export default function AdminHeroes() {
           <DialogHeader>
             <DialogTitle>Add Hero</DialogTitle>
           </DialogHeader>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => setMode("url")}>
               <Link className="h-6 w-6" />
               <span className="text-sm">Import from URL</span>
@@ -390,6 +394,10 @@ export default function AdminHeroes() {
             <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setMode("bulk"); }}>
               <Upload className="h-6 w-6" />
               <span className="text-sm">Bulk Import All</span>
+            </Button>
+            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setMode("portraits"); }}>
+              <ImageDown className="h-6 w-6" />
+              <span className="text-sm">Download Portraits</span>
             </Button>
             <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setDefaults(undefined); setTriggerCreate(t => t + 1); setMode(null); }}>
               <Plus className="h-6 w-6" />
@@ -484,6 +492,66 @@ export default function AdminHeroes() {
                   Close
                 </Button>
               )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Download Portraits */}
+      <Dialog open={mode === "portraits"} onOpenChange={open => { if (!open && !portraitRunning) setMode(null); }}>
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Download Hero Portraits</DialogTitle>
+          </DialogHeader>
+
+          {portraitResults.length === 0 ? (
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                This will download all hero portrait images from godforge.gg and upload them to local storage.
+                Heroes that already have local images will be skipped.
+              </p>
+              <Button className="w-full" onClick={async () => {
+                setPortraitRunning(true);
+                try {
+                  const { data, error } = await supabase.functions.invoke("download-hero-portraits", { body: {} });
+                  if (error) throw error;
+                  if (data?.results) setPortraitResults(data.results);
+                  toast({
+                    title: "Portraits downloaded",
+                    description: `${data?.successCount || 0} downloaded, ${data?.skippedCount || 0} skipped, ${data?.errorCount || 0} errors`,
+                  });
+                } catch (e: any) {
+                  toast({ title: "Failed", description: e.message, variant: "destructive" });
+                } finally {
+                  setPortraitRunning(false);
+                }
+              }} disabled={portraitRunning}>
+                {portraitRunning ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Downloading...</> : <><ImageDown className="mr-2 h-4 w-4" /> Download All Portraits</>}
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-4 flex-1 min-h-0 flex flex-col">
+              <div className="flex gap-3 text-sm">
+                <span className="text-green-500">✓ {portraitResults.filter(r => r.status === "success").length}</span>
+                <span className="text-yellow-500">⊘ {portraitResults.filter(r => r.status === "skipped").length}</span>
+                <span className="text-red-500">✗ {portraitResults.filter(r => r.status === "error").length}</span>
+              </div>
+              <ScrollArea className="flex-1 min-h-0 max-h-[50vh] border rounded-md">
+                <div className="p-2 space-y-1">
+                  {portraitResults.map((entry, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs py-1 px-2 rounded hover:bg-muted/50">
+                      {entry.status === "success" && <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />}
+                      {entry.status === "skipped" && <SkipForward className="h-4 w-4 text-yellow-500 shrink-0" />}
+                      {entry.status === "error" && <XCircle className="h-4 w-4 text-red-500 shrink-0" />}
+                      <span className="font-mono">{entry.slug}</span>
+                      {entry.message && <span className="text-muted-foreground ml-auto truncate max-w-[250px]">{entry.message}</span>}
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+              <Button variant="outline" onClick={() => { setMode(null); setPortraitResults([]); }} className="w-full">
+                Close
+              </Button>
             </div>
           )}
         </DialogContent>
