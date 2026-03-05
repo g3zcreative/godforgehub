@@ -15,7 +15,7 @@
     --popover: 228 12% 11%;
     --popover-foreground: 210 20% 92%;
 
-    --primary: 259 100% 55%;
+    --primary: 259 100% 64%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 228 12% 16%;
@@ -24,7 +24,7 @@
     --muted: 228 10% 18%;
     --muted-foreground: 215 12% 55%;
 
-    --accent: 259 80% 50%;
+    --accent: 259 100% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
@@ -32,22 +32,22 @@
 
     --border: 228 10% 18%;
     --input: 228 10% 20%;
-    --ring: 259 100% 55%;
+    --ring: 259 100% 64%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 228 12% 6%;
     --sidebar-foreground: 210 20% 85%;
-    --sidebar-primary: 259 100% 55%;
+    --sidebar-primary: 259 100% 64%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 228 12% 14%;
     --sidebar-accent-foreground: 210 20% 92%;
     --sidebar-border: 228 10% 16%;
-    --sidebar-ring: 259 100% 55%;
+    --sidebar-ring: 259 100% 64%;
 
     /* Custom tokens */
-    --godforge-gold: 259 100% 55%;
-    --godforge-gold-dim: 259 60% 40%;
+    --godforge-gold: 259 100% 64%;
+    --godforge-gold-dim: 259 60% 48%;
     --godforge-surface: 228 12% 13%;
     --godforge-surface-hover: 228 12% 16%;
     --godforge-ember: 15 85% 55%;
