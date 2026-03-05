@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Search, Menu, X, User, Bookmark, Shield, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { GlobalSearch } from "@/components/GlobalSearch";
 import { useAuth } from "@/hooks/useAuth";
 import { useAdmin } from "@/hooks/useAdmin";
 import {
@@ -80,11 +80,7 @@ export function Navbar() {
         {/* Search */}
         <div className="flex-1 flex justify-end items-center gap-2">
           <div className="hidden sm:flex relative max-w-xs w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search Godforge Hub..."
-              className="pl-9 bg-secondary border-border h-9 text-sm"
-            />
+            <GlobalSearch />
           </div>
           <Button
             variant="ghost"
@@ -145,10 +141,7 @@ export function Navbar() {
       {/* Mobile search */}
       {searchOpen && (
         <div className="sm:hidden border-t border-border px-4 py-2">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search..." className="pl-9 bg-secondary border-border h-9 text-sm" />
-          </div>
+          <GlobalSearch mobile />
         </div>
       )}
 
