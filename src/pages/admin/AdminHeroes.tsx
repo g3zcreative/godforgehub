@@ -681,7 +681,7 @@ export default function AdminHeroes() {
                 <Progress value={bfProgressPct} className="h-2" />
               </div>
 
-              <ScrollArea className="flex-1 min-h-0 max-h-[50vh] border rounded-md">
+              <ScrollArea className="flex-1 min-h-0 border rounded-md" style={{ maxHeight: "50vh" }}>
                 <div className="p-2 space-y-1">
                   {backfillEntries.map((entry, i) => (
                     <div key={i} className="flex items-center gap-2 text-xs py-1 px-2 rounded hover:bg-muted/50">
