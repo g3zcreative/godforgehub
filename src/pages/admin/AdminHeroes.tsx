@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AdminCrudPage, ColumnConfig } from "./AdminCrudPage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -11,25 +11,78 @@ import { Link, Plus, Loader2, Upload, CheckCircle2, XCircle, SkipForward, AlertT
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
-const columns: ColumnConfig[] = [
-  { key: "name", label: "Name", required: true, showInTable: true },
-  { key: "subtitle", label: "Subtitle" },
-  { key: "slug", label: "Slug", required: true, showInTable: true },
-  { key: "element", label: "Realm", required: true, showInTable: true },
-  { key: "class_type", label: "Archetype", required: true, showInTable: true },
-  { key: "affinity", label: "Affinity", showInTable: true },
-  { key: "allegiance", label: "Allegiance", showInTable: true },
-  
-  { key: "rarity", label: "Rarity", type: "number", required: true, showInTable: true },
-  { key: "description", label: "Description", type: "textarea" },
-  { key: "lore", label: "Lore", type: "textarea" },
-  { key: "image_url", label: "Image URL", storageBucket: "hero-images" },
-  { key: "stats", label: "Stats (JSON)", type: "json" },
-  { key: "leader_bonus", label: "Leader Bonus (JSON)", type: "json" },
-  { key: "divinity_generator", label: "Divinity Generator", type: "textarea" },
-  { key: "ascension_bonuses", label: "Ascension Bonuses (JSON)", type: "json" },
-  { key: "awakening_bonuses", label: "Awakening Bonuses (JSON)", type: "json" },
-];
+function useReferenceData() {
+  const { data: factions = [] } = useQuery({
+    queryKey: ["ref_factions"],
+    queryFn: async () => {
+      const { data } = await supabase.from("factions").select("id, name").order("name");
+      return (data || []) as { id: string; name: string }[];
+    },
+  });
+  const { data: archetypes = [] } = useQuery({
+    queryKey: ["ref_archetypes"],
+    queryFn: async () => {
+      const { data } = await (supabase as any).from("archetypes").select("id, name").order("name");
+      return (data || []) as { id: string; name: string }[];
+    },
+  });
+  const { data: affinities = [] } = useQuery({
+    queryKey: ["ref_affinities"],
+    queryFn: async () => {
+      const { data } = await (supabase as any).from("affinities").select("id, name").order("name");
+      return (data || []) as { id: string; name: string }[];
+    },
+  });
+  const { data: allegiances = [] } = useQuery({
+    queryKey: ["ref_allegiances"],
+    queryFn: async () => {
+      const { data } = await (supabase as any).from("allegiances").select("id, name").order("name");
+      return (data || []) as { id: string; name: string }[];
+    },
+  });
+  return { factions, archetypes, affinities, allegiances };
+}
+
+function buildColumns(
+  factions: { id: string; name: string }[],
+  archetypes: { id: string; name: string }[],
+  affinities: { id: string; name: string }[],
+  allegiances: { id: string; name: string }[],
+): ColumnConfig[] {
+  return [
+    { key: "name", label: "Name", required: true, showInTable: true },
+    { key: "subtitle", label: "Subtitle" },
+    { key: "slug", label: "Slug", required: true, showInTable: true },
+    {
+      key: "faction_id", label: "Realm/Faction", type: "select", showInTable: true,
+      options: factions.map(f => ({ value: f.id, label: f.name })),
+    },
+    {
+      key: "archetype_id", label: "Archetype", type: "select", showInTable: true,
+      options: archetypes.map(a => ({ value: a.id, label: a.name })),
+    },
+    {
+      key: "affinity_id", label: "Affinity", type: "select", showInTable: true,
+      options: affinities.map(a => ({ value: a.id, label: a.name })),
+    },
+    {
+      key: "allegiance_id", label: "Allegiance", type: "select", showInTable: true,
+      options: allegiances.map(a => ({ value: a.id, label: a.name })),
+    },
+    { key: "rarity", label: "Rarity", type: "number", required: true, showInTable: true },
+    { key: "description", label: "Description", type: "textarea" },
+    { key: "lore", label: "Lore", type: "textarea" },
+    { key: "image_url", label: "Image URL", storageBucket: "hero-images" },
+    { key: "stats", label: "Stats (JSON)", type: "json" },
+    { key: "leader_bonus", label: "Leader Bonus (JSON)", type: "json" },
+    { key: "divinity_generator", label: "Divinity Generator", type: "textarea" },
+    { key: "ascension_bonuses", label: "Ascension Bonuses (JSON)", type: "json" },
+    { key: "awakening_bonuses", label: "Awakening Bonuses (JSON)", type: "json" },
+    // Legacy text fields (hidden, kept for backward compat)
+    { key: "element", label: "Realm (legacy)", required: true },
+    { key: "class_type", label: "Archetype (legacy)", required: true },
+  ];
+}
 
 type CreationMode = "picker" | "url" | "bulk" | "backfill" | "refresh-images" | null;
 
@@ -233,6 +286,12 @@ function parseHeroCsv(): BulkEntry[] {
 }
 
 export default function AdminHeroes() {
+  const { factions, archetypes, affinities, allegiances } = useReferenceData();
+  const columns = useMemo(
+    () => buildColumns(factions, archetypes, affinities, allegiances),
+    [factions, archetypes, affinities, allegiances]
+  );
+
   const [mode, setMode] = useState<CreationMode>(null);
   const [importUrl, setImportUrl] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -283,15 +342,20 @@ export default function AdminHeroes() {
       pendingSkills.current = skills;
       pendingImprint.current = data.imprint_passive || null;
 
+      // Resolve text values to FK IDs
+      const findId = (list: { id: string; name: string }[], name: string) =>
+        list.find(i => i.name.toLowerCase() === (name || "").toLowerCase())?.id || "";
+
       setDefaults({
         name: data.name || "",
         subtitle: data.subtitle || "",
         slug: data.slug || "",
         element: data.element || "",
         class_type: data.class_type || "",
-        affinity: data.affinity || "",
-        allegiance: data.allegiance || "",
-        
+        faction_id: findId(factions, data.element),
+        archetype_id: findId(archetypes, data.class_type),
+        affinity_id: findId(affinities, data.affinity),
+        allegiance_id: findId(allegiances, data.allegiance),
         rarity: data.rarity ?? 5,
         description: data.description || "",
         lore: data.lore || "",

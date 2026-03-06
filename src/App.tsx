@@ -48,6 +48,9 @@ import AdminDocs from "./pages/admin/AdminDocs";
 import AdminImprints from "./pages/admin/AdminImprints";
 import AdminWeapons from "./pages/admin/AdminWeapons";
 import AdminFactions from "./pages/admin/AdminFactions";
+import AdminArchetypes from "./pages/admin/AdminArchetypes";
+import AdminAffinities from "./pages/admin/AdminAffinities";
+import AdminAllegiances from "./pages/admin/AdminAllegiances";
 import AdminAuthors from "./pages/admin/AdminAuthors";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
@@ -151,6 +154,9 @@ function AppRoutes() {
         <Route path="imprints" element={<AdminImprints />} />
         <Route path="weapons" element={<AdminWeapons />} />
         <Route path="factions" element={<AdminFactions />} />
+        <Route path="archetypes" element={<AdminArchetypes />} />
+        <Route path="affinities" element={<AdminAffinities />} />
+        <Route path="allegiances" element={<AdminAllegiances />} />
         <Route path="news" element={<AdminNews />} />
         <Route path="guides" element={<AdminGuides />} />
         <Route path="official-posts" element={<AdminOfficialPosts />} />

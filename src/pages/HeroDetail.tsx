@@ -66,12 +66,32 @@ export default function HeroDetail() {
         .eq("slug", slug!)
         .maybeSingle();
       if (error) throw error;
-      return data as (typeof data & {
+      if (!data) return null;
+
+      // Resolve FK names from reference tables
+      const [factionRes, archetypeRes, affinityRes, allegianceRes] = await Promise.all([
+        data.faction_id ? (supabase as any).from("factions").select("name").eq("id", data.faction_id).maybeSingle() : { data: null },
+        data.archetype_id ? (supabase as any).from("archetypes").select("name").eq("id", data.archetype_id).maybeSingle() : { data: null },
+        data.affinity_id ? (supabase as any).from("affinities").select("name").eq("id", data.affinity_id).maybeSingle() : { data: null },
+        data.allegiance_id ? (supabase as any).from("allegiances").select("name").eq("id", data.allegiance_id).maybeSingle() : { data: null },
+      ]);
+
+      return {
+        ...data,
+        faction_name: factionRes?.data?.name || data.element,
+        archetype_name: archetypeRes?.data?.name || data.class_type,
+        affinity_name: affinityRes?.data?.name || data.affinity,
+        allegiance_name: allegianceRes?.data?.name || data.allegiance,
+      } as (typeof data & {
+        faction_name?: string;
+        archetype_name?: string;
+        affinity_name?: string;
+        allegiance_name?: string;
         leader_bonus?: { text?: string; scope?: string } | null;
         divinity_generator?: string | null;
         ascension_bonuses?: { tier: number; bonus: string }[] | null;
         awakening_bonuses?: { tier: number; bonus: string }[] | null;
-      }) | null;
+      });
     },
     enabled: !!slug,
   });
@@ -277,14 +297,14 @@ export default function HeroDetail() {
                     <p className="text-muted-foreground italic mb-3">— {hero.subtitle} —</p>
                   )}
                   <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <Badge variant="outline">{hero.class_type}</Badge>
-                    <Badge variant="outline" className={elementColors[hero.element] || ""}>{hero.element}</Badge>
-                    {hero.affinity && (
-                      <Badge variant="outline">{hero.affinity}</Badge>
+                    <Badge variant="outline">{hero.archetype_name || hero.class_type}</Badge>
+                    <Badge variant="outline" className={elementColors[hero.faction_name || hero.element] || ""}>{hero.faction_name || hero.element}</Badge>
+                    {(hero.affinity_name || hero.affinity) && (
+                      <Badge variant="outline">{hero.affinity_name || hero.affinity}</Badge>
                     )}
-                    {hero.allegiance && (
-                      <Badge variant="outline" className={allegianceColors[hero.allegiance] || ""}>
-                        {hero.allegiance}
+                    {(hero.allegiance_name || hero.allegiance) && (
+                      <Badge variant="outline" className={allegianceColors[hero.allegiance_name || hero.allegiance || ""] || ""}>
+                        {hero.allegiance_name || hero.allegiance}
                       </Badge>
                     )}
                     <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>

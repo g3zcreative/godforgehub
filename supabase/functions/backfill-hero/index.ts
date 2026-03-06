@@ -168,8 +168,8 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
                 subtitle: { type: "string", description: "Hero epithet without dashes" },
                 description: { type: "string", description: "Hero Summary text" },
                 lore: { type: "string", description: "Story/lore text" },
-                affinity: { type: "string" },
-                allegiance: { type: "string" },
+                affinity: { type: "string", description: "Affinity type: Strength, Cunning, Wisdom, or Eternal" },
+                allegiance: { type: "string", description: "Moral alignment: Chaos or Order" },
                 stats: {
                   type: "object",
                   properties: {
@@ -264,11 +264,25 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
       changed_by: user.id,
     });
 
-    // 5. Update hero — NEVER overwrite identity fields (name, slug, image_url, rarity, element, class_type)
+    // 5. Resolve FK IDs from reference tables
+    const resolveId = async (table: string, name: string) => {
+      if (!name) return null;
+      const { data } = await adminClient.from(table).select("id").ilike("name", name).maybeSingle();
+      return data?.id || null;
+    };
+
+    const [affinityId, allegianceId] = await Promise.all([
+      resolveId("affinities", extracted.affinity),
+      resolveId("allegiances", extracted.allegiance),
+    ]);
+
+    // 6. Update hero — NEVER overwrite identity fields (name, slug, image_url, rarity, element, class_type)
     const heroUpdate: Record<string, unknown> = {};
     if (extracted.subtitle) heroUpdate.subtitle = extracted.subtitle;
     if (extracted.affinity) heroUpdate.affinity = extracted.affinity;
     if (extracted.allegiance) heroUpdate.allegiance = extracted.allegiance;
+    if (affinityId) heroUpdate.affinity_id = affinityId;
+    if (allegianceId) heroUpdate.allegiance_id = allegianceId;
     if (extracted.description) heroUpdate.description = extracted.description;
     if (extracted.lore) heroUpdate.lore = extracted.lore;
     if (extracted.stats) heroUpdate.stats = extracted.stats;

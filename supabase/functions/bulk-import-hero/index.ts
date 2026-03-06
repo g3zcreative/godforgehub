@@ -132,10 +132,10 @@ Map the data to these fields:
 - subtitle: The hero's title/epithet shown under the name (e.g. "Monkey King"). Do NOT include dashes.
 - slug: URL-friendly lowercase version with hyphens (e.g. "sun-wukong")
 - rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
-- element: The hero's REALM/PANTHEON — the faction or world they belong to. Valid values include: "Tian", "Duat", "Olympus", "Asgard", "Izumo", "Avalon". This is NOT the affinity.
-- class_type: The hero's ARCHETYPE/CLASS. Valid values include: "Slayer", "Defender", "Sentinel", "Invoker", "Warden"
-- affinity: The hero's AFFINITY TYPE — their elemental/power affinity. Valid values include: "Cunning", "Might", "Eternal", "Arcane", "Wisdom", "Radiant", "Shadow". This is NOT the realm.
-- allegiance: The hero's ALLEGIANCE — their moral alignment. Valid values: "Chaos", "Order", "Balance"
+- element: The hero's REALM/PANTHEON — the faction or world they belong to. Valid values: "Tian", "Aaru", "Olympus", "Asgard", "Izumo", "Avalon", "Ekur", "Omeyocan", "Vyraj". This is NOT the affinity.
+- class_type: The hero's ARCHETYPE/CLASS. Valid values: "Slayer", "Defender", "Sentinel", "Invoker", "Warden"
+- affinity: The hero's AFFINITY TYPE. Valid values: "Strength", "Cunning", "Wisdom", "Eternal". This is NOT the realm.
+- allegiance: The hero's ALLEGIANCE — their moral alignment. Valid values: "Chaos", "Order"
 - description: The hero summary text (1-2 sentences)
 - lore: The Story/Lore text if present
 - image_url: The hero's main portrait image URL (large hero image, not small icons)
@@ -164,10 +164,10 @@ Return your response by calling the create_hero function.`,
                   subtitle: { type: "string" },
                   slug: { type: "string" },
                   rarity: { type: "number" },
-                  element: { type: "string" },
-                  class_type: { type: "string" },
-                  affinity: { type: "string" },
-                  allegiance: { type: "string" },
+                  element: { type: "string", description: "Realm/pantheon (e.g. Tian, Aaru, Olympus, Asgard, Izumo, Avalon, Ekur, Omeyocan, Vyraj) - NOT the affinity" },
+                  class_type: { type: "string", description: "Archetype/class (e.g. Slayer, Defender, Sentinel, Invoker, Warden)" },
+                  affinity: { type: "string", description: "Affinity type: Strength, Cunning, Wisdom, or Eternal - NOT the realm" },
+                  allegiance: { type: "string", description: "Moral alignment: Chaos or Order" },
                   realm: { type: "string" },
                   description: { type: "string" },
                   lore: { type: "string" },
@@ -244,6 +244,20 @@ Return your response by calling the create_hero function.`,
     const hero = JSON.parse(toolCall.function.arguments);
     console.log("Extracted:", hero.name);
 
+    // Resolve FK IDs from reference tables
+    const resolveId = async (table: string, name: string) => {
+      if (!name) return null;
+      const { data } = await adminClient.from(table).select("id").ilike("name", name).maybeSingle();
+      return data?.id || null;
+    };
+
+    const [factionId, archetypeId, affinityId, allegianceId] = await Promise.all([
+      resolveId("factions", hero.element),
+      resolveId("archetypes", hero.class_type),
+      resolveId("affinities", hero.affinity),
+      resolveId("allegiances", hero.allegiance),
+    ]);
+
     // Insert hero
     const heroRow = {
       name: hero.name || slug,
@@ -254,7 +268,10 @@ Return your response by calling the create_hero function.`,
       class_type: hero.class_type || "Unknown",
       affinity: hero.affinity || null,
       allegiance: hero.allegiance || null,
-      realm: hero.realm || null,
+      faction_id: factionId,
+      archetype_id: archetypeId,
+      affinity_id: affinityId,
+      allegiance_id: allegianceId,
       description: hero.description || null,
       lore: hero.lore || null,
       image_url: hero.image_url || null,

@@ -87,10 +87,10 @@ Map the data to these fields:
 - subtitle: The hero's title/epithet shown under the name (e.g. "Monkey King", "Sphinx of Riddles"). Do NOT include the dashes.
 - slug: URL-friendly lowercase version with hyphens (e.g. "sun-wukong")
 - rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
-- element: The hero's REALM/PANTHEON — the faction or world they belong to. Valid values include: "Tian", "Duat", "Olympus", "Asgard", "Izumo", "Avalon". This is NOT the affinity.
-- class_type: The hero's ARCHETYPE/CLASS. Valid values include: "Slayer", "Defender", "Sentinel", "Invoker", "Warden"
-- affinity: The hero's AFFINITY TYPE — their elemental/power affinity. Valid values include: "Cunning", "Might", "Eternal", "Arcane", "Wisdom", "Radiant", "Shadow". This is NOT the realm.
-- allegiance: The hero's ALLEGIANCE — their moral alignment. Valid values: "Chaos", "Order", "Balance"
+- element: The hero's REALM/PANTHEON — the faction or world they belong to. Valid values: "Tian", "Aaru", "Olympus", "Asgard", "Izumo", "Avalon", "Ekur", "Omeyocan", "Vyraj". This is NOT the affinity.
+- class_type: The hero's ARCHETYPE/CLASS. Valid values: "Slayer", "Defender", "Sentinel", "Invoker", "Warden"
+- affinity: The hero's AFFINITY TYPE. Valid values: "Strength", "Cunning", "Wisdom", "Eternal". This is NOT the realm.
+- allegiance: The hero's ALLEGIANCE — their moral alignment. Valid values: "Chaos", "Order"
 - description: The hero summary text (1-2 sentences)
 - lore: The Story/Lore text from the page if present
 - image_url: The hero's main portrait image URL. IMPORTANT: Do NOT use any placehold.co URLs. Instead, construct the URL as: https://godforge.gg/heroes/assets/hero/CO_Character_{Name}_main.webp where {Name} is the hero name with spaces replaced by underscores (e.g. CO_Character_Sun_Wukong_main.webp). If you cannot determine the name, leave image_url empty.
@@ -119,10 +119,10 @@ Return your response by calling the create_hero function.`,
                   subtitle: { type: "string", description: "Hero title/epithet" },
                   slug: { type: "string" },
                   rarity: { type: "number" },
-                   element: { type: "string", description: "Realm/pantheon (e.g. Tian, Duat, Olympus, Asgard, Izumo, Avalon) - NOT the affinity" },
+                   element: { type: "string", description: "Realm/pantheon (e.g. Tian, Aaru, Olympus, Asgard, Izumo, Avalon, Ekur, Omeyocan, Vyraj) - NOT the affinity" },
                    class_type: { type: "string", description: "Archetype/class (e.g. Slayer, Defender, Sentinel, Invoker, Warden)" },
-                   affinity: { type: "string", description: "Affinity type (e.g. Cunning, Might, Eternal, Arcane, Wisdom, Radiant, Shadow) - NOT the realm" },
-                   allegiance: { type: "string", description: "Moral alignment: Chaos, Order, or Balance" },
+                   affinity: { type: "string", description: "Affinity type: Strength, Cunning, Wisdom, or Eternal - NOT the realm" },
+                   allegiance: { type: "string", description: "Moral alignment: Chaos or Order" },
                   description: { type: "string" },
                   lore: { type: "string", description: "Story/lore text" },
                   image_url: { type: "string" },

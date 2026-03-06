@@ -63,19 +63,34 @@ export default function HeroesList() {
     },
   });
 
+  // Load reference tables for filter options
+  const { data: factionsList = [] } = useQuery({
+    queryKey: ["ref_factions_list"],
+    queryFn: async () => {
+      const { data } = await supabase.from("factions").select("id, name").order("name");
+      return (data || []) as { id: string; name: string }[];
+    },
+  });
+  const { data: archetypesList = [] } = useQuery({
+    queryKey: ["ref_archetypes_list"],
+    queryFn: async () => {
+      const { data } = await (supabase as any).from("archetypes").select("id, name").order("name");
+      return (data || []) as { id: string; name: string }[];
+    },
+  });
+
   const realms = useMemo(() => {
+    if (factionsList.length > 0) return factionsList.map(f => f.name);
     if (!heroes) return [];
-    const unique = [...new Set(heroes.map((h) => h.element))].filter(Boolean).sort();
-    return unique;
-  }, [heroes]);
+    return [...new Set(heroes.map((h) => h.element))].filter(Boolean).sort();
+  }, [heroes, factionsList]);
 
   const classes = useMemo(() => {
+    if (archetypesList.length > 0) return archetypesList.map(a => a.name);
     if (!heroes) return [];
     const unique = [...new Set(heroes.map((h) => h.class_type))].filter(Boolean);
-    // Normalize and deduplicate
-    const normalized = [...new Set(unique.map((c) => c.charAt(0).toUpperCase() + c.slice(1).toLowerCase()))].sort();
-    return normalized;
-  }, [heroes]);
+    return [...new Set(unique.map((c) => c.charAt(0).toUpperCase() + c.slice(1).toLowerCase()))].sort();
+  }, [heroes, archetypesList]);
 
   const filtered = useMemo(() => {
     if (!heroes) return [];
