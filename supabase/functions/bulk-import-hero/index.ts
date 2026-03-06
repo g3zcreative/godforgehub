@@ -244,6 +244,20 @@ Return your response by calling the create_hero function.`,
     const hero = JSON.parse(toolCall.function.arguments);
     console.log("Extracted:", hero.name);
 
+    // Resolve FK IDs from reference tables
+    const resolveId = async (table: string, name: string) => {
+      if (!name) return null;
+      const { data } = await adminClient.from(table).select("id").ilike("name", name).maybeSingle();
+      return data?.id || null;
+    };
+
+    const [factionId, archetypeId, affinityId, allegianceId] = await Promise.all([
+      resolveId("factions", hero.element),
+      resolveId("archetypes", hero.class_type),
+      resolveId("affinities", hero.affinity),
+      resolveId("allegiances", hero.allegiance),
+    ]);
+
     // Insert hero
     const heroRow = {
       name: hero.name || slug,
@@ -254,7 +268,10 @@ Return your response by calling the create_hero function.`,
       class_type: hero.class_type || "Unknown",
       affinity: hero.affinity || null,
       allegiance: hero.allegiance || null,
-      realm: hero.realm || null,
+      faction_id: factionId,
+      archetype_id: archetypeId,
+      affinity_id: affinityId,
+      allegiance_id: allegianceId,
       description: hero.description || null,
       lore: hero.lore || null,
       image_url: hero.image_url || null,
