@@ -18,7 +18,7 @@ const columns: ColumnConfig[] = [
   { key: "class_type", label: "Archetype", required: true, showInTable: true },
   { key: "affinity", label: "Affinity", showInTable: true },
   { key: "allegiance", label: "Allegiance", showInTable: true },
-  { key: "realm", label: "Realm/Pantheon" },
+  
   { key: "rarity", label: "Rarity", type: "number", required: true, showInTable: true },
   { key: "description", label: "Description", type: "textarea" },
   { key: "lore", label: "Lore", type: "textarea" },
@@ -268,7 +268,7 @@ export default function AdminHeroes() {
         class_type: data.class_type || "",
         affinity: data.affinity || "",
         allegiance: data.allegiance || "",
-        realm: data.realm || "",
+        
         rarity: data.rarity ?? 5,
         description: data.description || "",
         lore: data.lore || "",
