@@ -235,13 +235,10 @@ Return by calling the backfill_hero function.`,
       changed_by: user.id,
     });
 
-    // 5. Update hero with ALL fields
+    // 5. Update hero — NEVER overwrite identity fields (name, slug, image_url)
     const heroUpdate: Record<string, unknown> = {};
-    if (extracted.name) heroUpdate.name = extracted.name;
+    // Only update supplementary data fields, not identity fields
     if (extracted.subtitle) heroUpdate.subtitle = extracted.subtitle;
-    if (extracted.rarity) heroUpdate.rarity = extracted.rarity;
-    if (extracted.element) heroUpdate.element = extracted.element;
-    if (extracted.class_type) heroUpdate.class_type = extracted.class_type;
     if (extracted.affinity) heroUpdate.affinity = extracted.affinity;
     if (extracted.allegiance) heroUpdate.allegiance = extracted.allegiance;
     if (extracted.description) heroUpdate.description = extracted.description;
