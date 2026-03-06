@@ -168,8 +168,8 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
                 subtitle: { type: "string", description: "Hero epithet without dashes" },
                 description: { type: "string", description: "Hero Summary text" },
                 lore: { type: "string", description: "Story/lore text" },
-                affinity: { type: "string" },
-                allegiance: { type: "string" },
+                affinity: { type: "string", description: "Affinity type: Strength, Cunning, Wisdom, or Eternal" },
+                allegiance: { type: "string", description: "Moral alignment: Chaos or Order" },
                 stats: {
                   type: "object",
                   properties: {
