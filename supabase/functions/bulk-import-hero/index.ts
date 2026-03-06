@@ -144,7 +144,7 @@ Map the data to these fields:
 - divinity_generator: The divinity generation text
 - ascension_bonuses: Array of objects with "tier" (number 1-6) and "bonus" (text)
 - awakening_bonuses: Array of objects with "tier" (number 1-5) and "bonus" (text)
-- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description, image_url (the skill icon image URL found near the skill heading — extract the full URL), scaling_formula, effects (array of buff/debuff names), awakening_level, awakening_bonus, ultimate_cost, initial_divinity
+- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description, image_url, scaling_formula, effects (array of buff/debuff names), awakening_level, awakening_bonus, ultimate_cost, initial_divinity
 - imprint_passive: The Imprint Bonus text shown on the hero page
 
 Return your response by calling the create_hero function.`,
@@ -199,7 +199,7 @@ Return your response by calling the create_hero function.`,
                       type: "object",
                       properties: {
                         name: { type: "string" }, skill_type: { type: "string" }, description: { type: "string" },
-                        image_url: { type: "string", description: "Skill icon image URL from the page" }, scaling_formula: { type: "string" },
+                        image_url: { type: "string" }, scaling_formula: { type: "string" },
                         effects: { type: "array", items: { type: "string" } },
                         awakening_level: { type: "number" }, awakening_bonus: { type: "string" },
                         ultimate_cost: { type: "number" }, initial_divinity: { type: "number" },
@@ -243,25 +243,6 @@ Return your response by calling the create_hero function.`,
 
     const hero = JSON.parse(toolCall.function.arguments);
     console.log("Extracted:", hero.name);
-
-    // Construct hero portrait URL
-    const nameForUrl = (hero.name || "").replace(/\s+/g, "_");
-    if (!hero.image_url || hero.image_url.includes("placehold.co")) {
-      hero.image_url = nameForUrl
-        ? `https://godforge.gg/heroes/assets/hero/CO_Character_${nameForUrl}_main.webp`
-        : null;
-    }
-
-    // Construct skill icon URLs from the known pattern
-    const skillTypeOrder: Record<string, string> = { Basic: "01", Core: "02", Ultimate: "03", Passive: "04" };
-    if (hero.skills && nameForUrl) {
-      for (const skill of hero.skills) {
-        const idx = skillTypeOrder[skill.skill_type] || null;
-        if (idx) {
-          skill.image_url = `https://godforge.gg/heroes/assets/skill/CO_Skill_${nameForUrl}_${idx}.webp`;
-        }
-      }
-    }
 
     // Resolve FK IDs from reference tables
     const resolveId = async (table: string, name: string) => {
