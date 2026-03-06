@@ -372,6 +372,10 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
     if (val === null || val === undefined) return "—";
     if (col.type === "boolean") return val ? "Yes" : "No";
     if (col.type === "json") return "{ ... }";
+    if (col.type === "select" && col.options) {
+      const opt = col.options.find(o => o.value === val);
+      if (opt) return opt.label;
+    }
     if (col.type === "datetime") {
       try { return format(new Date(val as string), "PPP"); } catch { return String(val); }
     }
