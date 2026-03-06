@@ -17,11 +17,12 @@ Deno.serve(async (req) => {
       auth: { persistSession: false },
     });
 
-    // Get all imprints with external godforge URLs
+    // Get imprints with external godforge URLs, limit batch to 20
     const { data: imprints, error } = await supabase
       .from("imprints")
       .select("id, name, image_url")
-      .like("image_url", "%godforge%");
+      .like("image_url", "%godforge%")
+      .limit(20);
 
     if (error) throw error;
     if (!imprints || imprints.length === 0) {
