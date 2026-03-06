@@ -303,6 +303,33 @@ export default function HeroDetail() {
                 )}
               </div>
             </div>
+
+            {/* Version History */}
+            {versions && versions.length > 0 && (
+              <div className="col-span-full mt-8">
+                <Collapsible open={versionOpen} onOpenChange={setVersionOpen}>
+                  <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <History className="h-4 w-4" />
+                    <span>Version History ({versions.length})</span>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-3">
+                    <div className="space-y-2 border border-border rounded-lg p-4 bg-card/50">
+                      {versions.map((v: any) => (
+                        <div key={v.id} className="flex items-center justify-between text-sm py-1.5 border-b border-border/50 last:border-0">
+                          <div className="flex items-center gap-3">
+                            <Badge variant="outline" className="text-xs">v{v.version_number}</Badge>
+                            <span className="text-muted-foreground capitalize">{v.change_source}</span>
+                          </div>
+                          <span className="text-muted-foreground text-xs">
+                            {format(new Date(v.created_at), "MMM d, yyyy HH:mm")}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            )}
           </>
         )}
       </div>
