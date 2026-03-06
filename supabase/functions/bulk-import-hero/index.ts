@@ -6,6 +6,19 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+/**
+ * Format hero name for skill icon URLs.
+ * Rules: Remove spaces + PascalCase, remove apostrophes, remove hyphens (don't capitalize second part).
+ */
+function formatHeroNameForIcon(name: string): string {
+  return name
+    .replace(/'/g, "")
+    .replace(/-(\w)/g, (_m, c) => c.toLowerCase())
+    .split(/\s+/)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join("");
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -295,24 +308,30 @@ Return your response by calling the create_hero function.`,
       });
     }
 
-    // Insert skills
+    // Insert skills with programmatic icon URLs
     const skills = hero.skills || [];
     let skillCount = 0;
+    const iconName = formatHeroNameForIcon(hero.name || slug);
     if (skills.length > 0) {
-      const skillRows = skills.map((s: any) => ({
-        hero_id: insertedHero.id,
-        name: s.name,
-        slug: s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
-        skill_type: s.skill_type || "Active",
-        description: s.description || "",
-        image_url: s.image_url || null,
-        scaling_formula: s.scaling_formula || null,
-        effects: s.effects || [],
-        awakening_level: s.awakening_level || null,
-        awakening_bonus: s.awakening_bonus || null,
-        ultimate_cost: s.ultimate_cost || null,
-        initial_divinity: s.initial_divinity || null,
-      }));
+      const skillRows = skills.map((s: any) => {
+        const skillIconUrl = s.skill_type
+          ? `https://godforge.gg/heroes/assets/ability/ICON_${iconName}_${s.skill_type}.webp`
+          : null;
+        return {
+          hero_id: insertedHero.id,
+          name: s.name,
+          slug: s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+          skill_type: s.skill_type || "Active",
+          description: s.description || "",
+          image_url: skillIconUrl,
+          scaling_formula: s.scaling_formula || null,
+          effects: s.effects || [],
+          awakening_level: s.awakening_level || null,
+          awakening_bonus: s.awakening_bonus || null,
+          ultimate_cost: s.ultimate_cost || null,
+          initial_divinity: s.initial_divinity || null,
+        };
+      });
 
       const { error: skillError } = await adminClient.from("skills").insert(skillRows);
       if (skillError) {

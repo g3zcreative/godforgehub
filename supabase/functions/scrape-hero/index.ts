@@ -4,6 +4,20 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+/**
+ * Format hero name for skill icon URLs.
+ * Rules: Remove spaces + PascalCase, remove apostrophes, remove hyphens (don't capitalize second part).
+ * e.g. "Sun Wukong" -> "SunWukong", "Chang'e" -> "Change", "Shub-Lugal" -> "Shublugal"
+ */
+function formatHeroNameForIcon(name: string): string {
+  return name
+    .replace(/'/g, "")           // Remove apostrophes: Chang'e -> Change
+    .replace(/-(\w)/g, (_m, c) => c.toLowerCase()) // Remove hyphens, lowercase second part: Shub-Lugal -> Shublugal
+    .split(/\s+/)                // Split by spaces
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1)) // Capitalize first letter of each word
+    .join("");                   // Join without spaces
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -235,6 +249,16 @@ Return your response by calling the create_hero function.`,
       hero.image_url = nameForUrl
         ? `https://godforge.gg/heroes/assets/hero/CO_Character_${nameForUrl}_main.webp`
         : null;
+    }
+
+    // Generate skill icon URLs programmatically
+    if (hero.skills && hero.name) {
+      const iconName = formatHeroNameForIcon(hero.name);
+      for (const skill of hero.skills) {
+        if (!skill.image_url && skill.skill_type) {
+          skill.image_url = `https://godforge.gg/heroes/assets/ability/ICON_${iconName}_${skill.skill_type}.webp`;
+        }
+      }
     }
 
     return new Response(JSON.stringify(hero), {
