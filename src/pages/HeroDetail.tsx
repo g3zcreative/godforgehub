@@ -96,9 +96,26 @@ export default function HeroDetail() {
     enabled: !!hero?.id,
   });
 
+  const { data: versions } = useQuery({
+    queryKey: ["hero_versions", hero?.id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("hero_versions")
+        .select("id, version_number, change_source, created_at")
+        .eq("hero_id", hero!.id)
+        .order("version_number", { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!hero?.id,
+  });
+
+  const [versionOpen, setVersionOpen] = useState(false);
+
   const leaderBonus = hero?.leader_bonus as { text?: string; scope?: string } | null;
   const ascensionBonuses = (hero?.ascension_bonuses || []) as { tier: number; bonus: string }[];
   const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
+
 
   return (
     <Layout>
