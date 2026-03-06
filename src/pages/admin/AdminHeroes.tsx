@@ -738,7 +738,7 @@ export default function AdminHeroes() {
 
       {/* Backfill Dialog */}
       <Dialog open={mode === "backfill"} onOpenChange={open => { if (!open && !backfillRunning) setMode(null); }}>
-        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Backfill All Heroes</DialogTitle>
           </DialogHeader>
