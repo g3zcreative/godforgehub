@@ -31,7 +31,7 @@ const columns: ColumnConfig[] = [
   { key: "awakening_bonuses", label: "Awakening Bonuses (JSON)", type: "json" },
 ];
 
-type CreationMode = "picker" | "url" | "bulk" | "backfill" | null;
+type CreationMode = "picker" | "url" | "bulk" | "backfill" | "refresh-images" | null;
 
 type BulkEntry = {
   heroName: string;
@@ -251,6 +251,11 @@ export default function AdminHeroes() {
   const [backfillRunning, setBackfillRunning] = useState(false);
   const backfillAbort = useRef(false);
 
+  // Refresh images state
+  const [refreshEntries, setRefreshEntries] = useState<BulkEntry[]>([]);
+  const [refreshRunning, setRefreshRunning] = useState(false);
+  const refreshAbort = useRef(false);
+
   // Fetch all heroes for backfill
   const { data: allHeroes = [] } = useQuery({
     queryKey: ["heroes_for_backfill"],
@@ -450,6 +455,62 @@ export default function AdminHeroes() {
   const bfErrorCount = backfillEntries.filter(e => e.status === "error").length;
   const bfProgressPct = backfillEntries.length > 0 ? (bfCompletedCount / backfillEntries.length) * 100 : 0;
 
+  // Refresh images logic
+  const startRefreshImages = useCallback(async () => {
+    const entries: BulkEntry[] = allHeroes.map(h => ({
+      heroName: h.name,
+      url: h.slug,
+      status: "pending" as const,
+    }));
+    setRefreshEntries(entries);
+    setRefreshRunning(true);
+    refreshAbort.current = false;
+
+    const DELAY_MS = 2000;
+
+    for (let i = 0; i < entries.length; i++) {
+      if (refreshAbort.current) break;
+
+      setRefreshEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "importing" } : e));
+
+      try {
+        const hero = allHeroes[i];
+        const { data, error } = await supabase.functions.invoke("refresh-hero-image", {
+          body: { hero_id: hero.id, slug: hero.slug },
+        });
+
+        if (error) throw error;
+
+        if (data?.error) {
+          if (data.retryable) {
+            setRefreshEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "pending", message: "Rate limited, retrying..." } : e));
+            await new Promise(r => setTimeout(r, 10000));
+            i--;
+            continue;
+          }
+          setRefreshEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "error", message: data.error } : e));
+        } else if (data?.success) {
+          setRefreshEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "success", message: `${data.format} ✓` } : e));
+        }
+      } catch (err: any) {
+        setRefreshEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "error", message: err.message } : e));
+      }
+
+      if (i < entries.length - 1 && !refreshAbort.current) {
+        await new Promise(r => setTimeout(r, DELAY_MS));
+      }
+    }
+
+    setRefreshRunning(false);
+  }, [allHeroes]);
+
+  const stopRefreshImages = () => { refreshAbort.current = true; };
+
+  const riCompletedCount = refreshEntries.filter(e => e.status === "success" || e.status === "error").length;
+  const riSuccessCount = refreshEntries.filter(e => e.status === "success").length;
+  const riErrorCount = refreshEntries.filter(e => e.status === "error").length;
+  const riProgressPct = refreshEntries.length > 0 ? (riCompletedCount / refreshEntries.length) * 100 : 0;
+
   return (
     <>
       <AdminCrudPage
@@ -481,7 +542,11 @@ export default function AdminHeroes() {
               <RefreshCw className="h-6 w-6" />
               <span className="text-sm">Backfill All</span>
             </Button>
-            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setDefaults(undefined); setTriggerCreate(t => t + 1); setMode(null); }}>
+            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setMode("refresh-images"); }}>
+              <Upload className="h-6 w-6" />
+              <span className="text-sm">Refresh Images</span>
+            </Button>
+            <Button variant="outline" className="h-24 flex-col gap-2 col-span-2" onClick={() => { setDefaults(undefined); setTriggerCreate(t => t + 1); setMode(null); }}>
               <Plus className="h-6 w-6" />
               <span className="text-sm">Blank</span>
             </Button>
@@ -631,6 +696,69 @@ export default function AdminHeroes() {
               {backfillRunning ? (
                 <Button variant="destructive" onClick={stopBackfill} className="w-full">
                   Stop Backfill
+                </Button>
+              ) : (
+                <Button variant="outline" onClick={() => setMode(null)} className="w-full">
+                  Close
+                </Button>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Refresh Images Dialog */}
+      <Dialog open={mode === "refresh-images"} onOpenChange={open => { if (!open && !refreshRunning) setMode(null); }}>
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Refresh Hero Images</DialogTitle>
+          </DialogHeader>
+
+          {refreshEntries.length === 0 ? (
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                This will re-download all <strong>{allHeroes.length} hero images</strong> from godforge.gg as transparent PNG/WebP files,
+                replacing the current JPG images with black backgrounds.
+              </p>
+              <div className="flex items-center gap-2 p-3 rounded-md bg-yellow-500/10 border border-yellow-500/20">
+                <AlertTriangle className="h-4 w-4 text-yellow-500 shrink-0" />
+                <p className="text-xs text-yellow-500">This will use Firecrawl credits. Each hero takes ~5-10 seconds.</p>
+              </div>
+              <Button className="w-full" onClick={startRefreshImages} disabled={allHeroes.length === 0}>
+                <RefreshCw className="mr-2 h-4 w-4" /> Start Image Refresh ({allHeroes.length} heroes)
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-4 flex-1 min-h-0 flex flex-col">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span>{riCompletedCount} / {refreshEntries.length} processed</span>
+                  <span className="flex gap-3">
+                    <span className="text-green-500">✓ {riSuccessCount}</span>
+                    <span className="text-red-500">✗ {riErrorCount}</span>
+                  </span>
+                </div>
+                <Progress value={riProgressPct} className="h-2" />
+              </div>
+
+              <ScrollArea className="flex-1 min-h-0 max-h-[50vh] border rounded-md">
+                <div className="p-2 space-y-1">
+                  {refreshEntries.map((entry, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs py-1 px-2 rounded hover:bg-muted/50">
+                      {entry.status === "pending" && <div className="h-4 w-4 rounded-full border border-muted-foreground/30" />}
+                      {entry.status === "importing" && <Loader2 className="h-4 w-4 animate-spin text-primary" />}
+                      {entry.status === "success" && <CheckCircle2 className="h-4 w-4 text-green-500" />}
+                      {entry.status === "error" && <XCircle className="h-4 w-4 text-red-500" />}
+                      <span className="font-mono">{entry.heroName}</span>
+                      {entry.message && <span className="text-muted-foreground ml-auto truncate max-w-[200px]">{entry.message}</span>}
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+
+              {refreshRunning ? (
+                <Button variant="destructive" onClick={stopRefreshImages} className="w-full">
+                  Stop Refresh
                 </Button>
               ) : (
                 <Button variant="outline" onClick={() => setMode(null)} className="w-full">
