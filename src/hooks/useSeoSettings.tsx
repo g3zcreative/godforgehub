@@ -23,7 +23,12 @@ export function useSeoSettings() {
         .eq("key", "seo_metadata")
         .single();
       if (error) throw error;
-      return data.value as unknown as SeoSettings;
+      const raw = data.value as Record<string, string>;
+      return {
+        siteTitle: raw.siteTitle || raw.title || defaults.siteTitle,
+        metaDescription: raw.metaDescription || raw.description || defaults.metaDescription,
+        ogImage: raw.ogImage || raw.og_image || defaults.ogImage,
+      } as SeoSettings;
     },
     staleTime: 60_000,
   });
