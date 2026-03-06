@@ -312,7 +312,14 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
         );
         result = result.replace(pattern, (match) => {
           const trimmed = match.replace(/^\[|\]$/g, "").trim();
-          // Check for roman numeral suffix
+          // Check if there's a roman numeral suffix BEYOND what's already in the mechanic name
+          const nameUpper = m.name.toUpperCase();
+          const trimmedUpper = trimmed.toUpperCase();
+          // If the matched text is just the mechanic name (case-insensitive), use slug directly
+          if (trimmedUpper === nameUpper) {
+            return `[mechanic:${m.slug}]`;
+          }
+          // Only if there's an extra numeral not part of the name, append it
           const romanMatch = trimmed.match(/^(.+?)\s+([IVX]+)$/i);
           if (romanMatch) {
             const baseSlug = m.slug;
