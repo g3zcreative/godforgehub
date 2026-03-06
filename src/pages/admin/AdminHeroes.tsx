@@ -342,15 +342,20 @@ export default function AdminHeroes() {
       pendingSkills.current = skills;
       pendingImprint.current = data.imprint_passive || null;
 
+      // Resolve text values to FK IDs
+      const findId = (list: { id: string; name: string }[], name: string) =>
+        list.find(i => i.name.toLowerCase() === (name || "").toLowerCase())?.id || "";
+
       setDefaults({
         name: data.name || "",
         subtitle: data.subtitle || "",
         slug: data.slug || "",
         element: data.element || "",
         class_type: data.class_type || "",
-        affinity: data.affinity || "",
-        allegiance: data.allegiance || "",
-        
+        faction_id: findId(factions, data.element),
+        archetype_id: findId(archetypes, data.class_type),
+        affinity_id: findId(affinities, data.affinity),
+        allegiance_id: findId(allegiances, data.allegiance),
         rarity: data.rarity ?? 5,
         description: data.description || "",
         lore: data.lore || "",
