@@ -160,7 +160,6 @@ export type Database = {
           lore: string | null
           name: string
           rarity: number
-          realm: string | null
           slug: string
           stats: Json | null
           subtitle: string | null
@@ -182,7 +181,6 @@ export type Database = {
           lore?: string | null
           name: string
           rarity: number
-          realm?: string | null
           slug: string
           stats?: Json | null
           subtitle?: string | null
@@ -204,7 +202,6 @@ export type Database = {
           lore?: string | null
           name?: string
           rarity?: number
-          realm?: string | null
           slug?: string
           stats?: Json | null
           subtitle?: string | null
