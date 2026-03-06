@@ -244,6 +244,25 @@ Return your response by calling the create_hero function.`,
     const hero = JSON.parse(toolCall.function.arguments);
     console.log("Extracted:", hero.name);
 
+    // Construct hero portrait URL
+    const nameForUrl = (hero.name || "").replace(/\s+/g, "_");
+    if (!hero.image_url || hero.image_url.includes("placehold.co")) {
+      hero.image_url = nameForUrl
+        ? `https://godforge.gg/heroes/assets/hero/CO_Character_${nameForUrl}_main.webp`
+        : null;
+    }
+
+    // Construct skill icon URLs from the known pattern
+    const skillTypeOrder: Record<string, string> = { Basic: "01", Core: "02", Ultimate: "03", Passive: "04" };
+    if (hero.skills && nameForUrl) {
+      for (const skill of hero.skills) {
+        const idx = skillTypeOrder[skill.skill_type] || null;
+        if (idx) {
+          skill.image_url = `https://godforge.gg/heroes/assets/skill/CO_Skill_${nameForUrl}_${idx}.webp`;
+        }
+      }
+    }
+
     // Resolve FK IDs from reference tables
     const resolveId = async (table: string, name: string) => {
       if (!name) return null;
