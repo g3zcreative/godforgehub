@@ -6,6 +6,22 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+/** Strip the hero sidebar listing from the markdown to avoid confusing the AI */
+function stripSidebar(md: string): string {
+  // The actual hero data starts at the second "## Epic/Legendary/Rare/etc" heading
+  // or at the first "# HeroName" heading after the sidebar
+  const heroHeaderMatch = md.match(/\n## (Legendary|Epic|Rare|Uncommon|Common)\s*\n\n# /);
+  if (heroHeaderMatch && heroHeaderMatch.index !== undefined) {
+    return md.slice(heroHeaderMatch.index);
+  }
+  // Fallback: find "Back to Index" link which marks end of sidebar
+  const backToIndex = md.indexOf("[Back to Index]");
+  if (backToIndex !== -1) {
+    return md.slice(backToIndex);
+  }
+  return md;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -35,7 +51,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { hero_id, slug } = await req.json();
+    const { hero_id, slug, element } = await req.json();
     if (!hero_id || !slug) {
       return new Response(JSON.stringify({ error: "hero_id and slug are required" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -59,8 +75,9 @@ Deno.serve(async (req) => {
     const { data: currentImprints } = await adminClient
       .from("imprints").select("*").eq("source_hero_id", hero_id);
 
-    // 2. Scrape the hero page
-    const url = `https://godforge.gg/heroes/${slug}`;
+    // 2. Scrape the hero page — URL format: /heroes/{faction}/{slug}
+    const faction = (element || currentHero?.element || "").toLowerCase();
+    const url = `https://godforge.gg/heroes/${faction}/${slug}`;
     console.log("Backfilling:", url);
 
     const scrapeRes = await fetch("https://api.firecrawl.dev/v1/scrape", {
@@ -76,15 +93,21 @@ Deno.serve(async (req) => {
       });
     }
 
-    const pageContent = scrapeData.data?.markdown || scrapeData.markdown || "";
-    if (!pageContent) {
+    const rawContent = scrapeData.data?.markdown || scrapeData.markdown || "";
+    if (!rawContent) {
       return new Response(JSON.stringify({ error: "No content found" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // 3. AI extraction
+    // Strip the sidebar hero listing to prevent AI from confusing heroes
+    const pageContent = stripSidebar(rawContent);
+    console.log("Content length after stripping sidebar:", pageContent.length);
+
+    // 3. AI extraction with targeted prompt
     console.log("Extracting with AI...");
+    const heroName = currentHero?.name || slug;
+
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: { Authorization: `Bearer ${LOVABLE_API_KEY}`, "Content-Type": "application/json" },
@@ -93,27 +116,44 @@ Deno.serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: `You are a data extraction assistant for GodforgeHub. Extract ALL fields from this godforge.gg hero page.
+            content: `You are extracting data for the hero "${heroName}" from their godforge.gg page.
 
-Extract these hero fields:
-- name: The hero's display name
-- subtitle: The hero's title/epithet (without dashes)
-- rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
-- element: The hero's realm/pantheon (e.g. "Tian", "Duat", "Olympus")
-- class_type: The hero's archetype (e.g. "Slayer", "Defender", "Sentinel", "Invoker", "Warden")
-- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane", "Wisdom")
-- allegiance: The hero's allegiance (e.g. "Chaos", "Order", "Balance")
-- description: The hero summary text (1-2 sentences)
-- lore: The Story/Lore text if present
-- stats: JSON object with base stats: hp, atk, def, spd, init, crit_rate, crit_dmg, res, acc (numeric values)
-- leader_bonus: JSON object with "text" and "scope"
-- divinity_generator: The divinity generation text
-- ascension_bonuses: Array of {tier, bonus}
-- awakening_bonuses: Array of {tier, bonus}
-- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description, scaling_formula, effects (array of buff/debuff names), awakening_level, awakening_bonus, ultimate_cost, initial_divinity
-- imprint: If the hero has an imprint/weapon, extract: name, passive (the passive ability text), rarity (same as hero)
+CRITICAL RULES:
+- You are extracting data for "${heroName}" ONLY. Ignore any other hero names on the page.
+- The page may contain a sidebar listing other heroes — IGNORE IT completely.
+- The hero's detail section starts with a heading like "# ${heroName}" followed by their subtitle.
 
-Return by calling the backfill_hero function.`,
+PAGE STRUCTURE (in order):
+1. Rarity label (e.g. "## Epic") then "# HeroName" then "- Subtitle -"
+2. Realm icon + realm name (e.g. "Olympus")
+3. Archetype (class_type), Affinity, Allegiance
+4. Imprint Bonus text
+5. Hero Summary (short description)
+6. "Full Hero Information" — the detailed section repeats the above then adds:
+7. Lore/Story section
+8. Scaled Stats table (HP, ATK, DEF, SPD, INIT, C.RATE, C.DMG, RES, ACC)
+9. Abilities section with each skill
+10. Divinity Generator
+11. Imprint Bonus (repeated)
+12. Leader Bonus with scope
+13. Ascension Bonuses (tiers 1-6)
+14. Awakening Bonuses (tiers I-V)
+
+STATS FORMAT: Stats show as "15,361" for HP — extract as integer 15361. Percentages like "10%" extract as 10.
+
+ABILITIES FORMAT: Each ability has:
+- Name (### heading)
+- Effect icons and names (e.g. "Bleed", "ATK Up II")
+- Description text with scaling like "260%ATK"
+- Skill type label at the end: "Basic", "Core", "Ultimate", or "Passive"
+- Awakening badge with roman numeral (I-V) and bonus text
+- Ultimate skills show "Initial Divinity" and "Ultimate Cost" numbers
+
+ASCENSION FORMAT: "1★ Health +7%, Attack +7%, Defense +7%" — extract tier as 1, bonus as "Health +7%, Attack +7%, Defense +7%"
+
+AWAKENING FORMAT: "I Ignore Resistance +10" — extract tier as 1, bonus as "Ignore Resistance +10"
+
+Extract ONLY the data present on the page. Do NOT invent or hallucinate any data.`,
           },
           { role: "user", content: pageContent },
         ],
@@ -121,19 +161,15 @@ Return by calling the backfill_hero function.`,
           type: "function",
           function: {
             name: "backfill_hero",
-            description: "Backfill hero with all extracted data.",
+            description: "Backfill hero with extracted data from the page.",
             parameters: {
               type: "object",
               properties: {
-                name: { type: "string" },
-                subtitle: { type: "string" },
-                rarity: { type: "number" },
-                element: { type: "string" },
-                class_type: { type: "string" },
+                subtitle: { type: "string", description: "Hero epithet without dashes" },
+                description: { type: "string", description: "Hero Summary text" },
+                lore: { type: "string", description: "Story/lore text" },
                 affinity: { type: "string" },
                 allegiance: { type: "string" },
-                description: { type: "string" },
-                lore: { type: "string" },
                 stats: {
                   type: "object",
                   properties: {
@@ -162,26 +198,19 @@ Return by calling the backfill_hero function.`,
                     type: "object",
                     properties: {
                       name: { type: "string" },
-                      skill_type: { type: "string" },
+                      skill_type: { type: "string", enum: ["Basic", "Core", "Ultimate", "Passive"] },
                       description: { type: "string" },
-                      scaling_formula: { type: "string" },
-                      effects: { type: "array", items: { type: "string" } },
-                      awakening_level: { type: "number" },
+                      scaling_formula: { type: "string", description: "e.g. 260%ATK" },
+                      effects: { type: "array", items: { type: "string" }, description: "Buff/debuff names like Bleed, ATK Up II" },
+                      awakening_level: { type: "number", description: "Roman numeral converted: I=1, II=2, III=3, IV=4, V=5" },
                       awakening_bonus: { type: "string" },
-                      ultimate_cost: { type: "number" },
-                      initial_divinity: { type: "number" },
+                      ultimate_cost: { type: "number", description: "For Ultimate skills only" },
+                      initial_divinity: { type: "number", description: "For Ultimate skills only" },
                     },
                     required: ["name", "skill_type"],
                   },
                 },
-                imprint: {
-                  type: "object",
-                  properties: {
-                    name: { type: "string" },
-                    passive: { type: "string" },
-                    rarity: { type: "number" },
-                  },
-                },
+                imprint_passive: { type: "string", description: "The Imprint Bonus text" },
               },
             },
           },
@@ -212,7 +241,7 @@ Return by calling the backfill_hero function.`,
     }
 
     const extracted = JSON.parse(toolCall.function.arguments);
-    console.log("Extracted backfill data for:", slug);
+    console.log("Extracted backfill data for:", slug, "skills:", extracted.skills?.length || 0);
 
     // 4. Save version snapshot BEFORE updating
     const { data: lastVersion } = await adminClient
@@ -235,9 +264,8 @@ Return by calling the backfill_hero function.`,
       changed_by: user.id,
     });
 
-    // 5. Update hero — NEVER overwrite identity fields (name, slug, image_url)
+    // 5. Update hero — NEVER overwrite identity fields (name, slug, image_url, rarity, element, class_type)
     const heroUpdate: Record<string, unknown> = {};
-    // Only update supplementary data fields, not identity fields
     if (extracted.subtitle) heroUpdate.subtitle = extracted.subtitle;
     if (extracted.affinity) heroUpdate.affinity = extracted.affinity;
     if (extracted.allegiance) heroUpdate.allegiance = extracted.allegiance;
@@ -260,7 +288,7 @@ Return by calling the backfill_hero function.`,
       }
     }
 
-    // 6. Update/insert skills
+    // 6. Update existing skills (by name match), insert new ones
     const extractedSkills = extracted.skills || [];
     let skillsUpdated = 0;
     let skillsInserted = 0;
@@ -307,9 +335,7 @@ Return by calling the backfill_hero function.`,
 
     // 7. Update/create imprint
     let imprintResult = "skipped";
-    if (extracted.imprint?.name) {
-      const imprintSlug = extracted.imprint.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-
+    if (extracted.imprint_passive) {
       const { data: existingImprint } = await adminClient
         .from("imprints")
         .select("id")
@@ -317,16 +343,17 @@ Return by calling the backfill_hero function.`,
         .maybeSingle();
 
       const imprintData = {
-        name: extracted.imprint.name,
-        passive: extracted.imprint.passive || null,
-        rarity: extracted.imprint.rarity || extracted.rarity || 3,
+        name: heroName,
+        passive: extracted.imprint_passive,
+        rarity: currentHero?.rarity || 3,
         source_hero_id: hero_id,
       };
 
       if (existingImprint) {
-        const { error } = await adminClient.from("imprints").update(imprintData).eq("id", existingImprint.id);
+        const { error } = await adminClient.from("imprints").update({ passive: extracted.imprint_passive }).eq("id", existingImprint.id);
         imprintResult = error ? `error: ${error.message}` : "updated";
       } else {
+        const imprintSlug = slug;
         const { error } = await adminClient.from("imprints").insert({
           ...imprintData,
           slug: imprintSlug,

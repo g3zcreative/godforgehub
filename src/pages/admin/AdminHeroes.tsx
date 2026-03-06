@@ -260,7 +260,7 @@ export default function AdminHeroes() {
   const { data: allHeroes = [] } = useQuery({
     queryKey: ["heroes_for_backfill"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("heroes").select("id, name, slug").order("name");
+      const { data, error } = await supabase.from("heroes").select("id, name, slug, element").order("name");
       if (error) throw error;
       return data;
     },
@@ -423,7 +423,7 @@ export default function AdminHeroes() {
       try {
         const hero = allHeroes[i];
         const { data, error } = await supabase.functions.invoke("backfill-hero", {
-          body: { hero_id: hero.id, slug: hero.slug },
+          body: { hero_id: hero.id, slug: hero.slug, element: hero.element },
         });
 
         if (error) throw error;
