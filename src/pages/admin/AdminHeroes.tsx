@@ -805,9 +805,16 @@ export default function AdminHeroes() {
                   Stop Backfill
                 </Button>
               ) : (
-                <Button variant="outline" onClick={() => setMode(null)} className="w-full">
-                  Close
-                </Button>
+                <div className="flex gap-2">
+                  {bfErrorCount > 0 && (
+                    <Button onClick={retryFailedBackfill} className="flex-1">
+                      <RefreshCw className="mr-2 h-4 w-4" /> Retry Failed ({bfErrorCount})
+                    </Button>
+                  )}
+                  <Button variant="outline" onClick={() => setMode(null)} className="flex-1">
+                    Close
+                  </Button>
+                </div>
               )}
             </div>
           )}
