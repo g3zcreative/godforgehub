@@ -297,14 +297,14 @@ export default function HeroDetail() {
                     <p className="text-muted-foreground italic mb-3">— {hero.subtitle} —</p>
                   )}
                   <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <Badge variant="outline">{hero.class_type}</Badge>
-                    <Badge variant="outline" className={elementColors[hero.element] || ""}>{hero.element}</Badge>
-                    {hero.affinity && (
-                      <Badge variant="outline">{hero.affinity}</Badge>
+                    <Badge variant="outline">{hero.archetype_name || hero.class_type}</Badge>
+                    <Badge variant="outline" className={elementColors[hero.faction_name || hero.element] || ""}>{hero.faction_name || hero.element}</Badge>
+                    {(hero.affinity_name || hero.affinity) && (
+                      <Badge variant="outline">{hero.affinity_name || hero.affinity}</Badge>
                     )}
-                    {hero.allegiance && (
-                      <Badge variant="outline" className={allegianceColors[hero.allegiance] || ""}>
-                        {hero.allegiance}
+                    {(hero.allegiance_name || hero.allegiance) && (
+                      <Badge variant="outline" className={allegianceColors[hero.allegiance_name || hero.allegiance || ""] || ""}>
+                        {hero.allegiance_name || hero.allegiance}
                       </Badge>
                     )}
                     <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
