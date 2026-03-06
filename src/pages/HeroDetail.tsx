@@ -288,15 +288,18 @@ export default function HeroDetail() {
                     ))}
                   </div>
                 </div>
-              )}
+              </div>
+            )}
 
+            {/* Other sections — masonry multi-column layout */}
+            <div className="columns-1 md:columns-2 xl:columns-3 2xl:columns-4 gap-6 mb-8 [&>div]:break-inside-avoid [&>div]:mb-6">
               {/* Divinity Generator */}
               {hero.divinity_generator && (
                 <div>
                   <h2 className="text-lg font-display font-semibold mb-3 flex items-center gap-2">
                     <Zap className="h-5 w-5 text-primary" /> Divinity Generator
                   </h2>
-                  <div className="rounded-lg border border-border p-4 bg-card h-full">
+                  <div className="rounded-lg border border-border p-4 bg-card">
                     <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.divinity_generator) }} />
                   </div>
                 </div>
@@ -308,7 +311,7 @@ export default function HeroDetail() {
                   <h2 className="text-lg font-display font-semibold mb-3 flex items-center gap-2">
                     <Shield className="h-5 w-5 text-primary" /> Leader Bonus
                   </h2>
-                  <div className="rounded-lg border border-border p-4 bg-card h-full">
+                  <div className="rounded-lg border border-border p-4 bg-card">
                     <p className="text-sm font-semibold">{leaderBonus.text}</p>
                     {leaderBonus.scope && <p className="text-xs text-muted-foreground mt-1">{leaderBonus.scope}</p>}
                   </div>
@@ -352,7 +355,7 @@ export default function HeroDetail() {
               {hero.lore && (
                 <div>
                   <h2 className="text-lg font-display font-semibold mb-3">Lore</h2>
-                  <div className="rounded-lg border border-border p-4 bg-card h-full">
+                  <div className="rounded-lg border border-border p-4 bg-card">
                     <p className="text-sm text-muted-foreground leading-relaxed italic">{hero.lore}</p>
                   </div>
                 </div>
