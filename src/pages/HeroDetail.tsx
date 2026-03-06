@@ -129,6 +129,7 @@ export default function HeroDetail() {
   const leaderBonus = hero?.leader_bonus as { text?: string; scope?: string } | null;
   const ascensionBonuses = (hero?.ascension_bonuses || []) as { tier: number; bonus: string }[];
   const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
+  const hasRecommendations = (recommendations?.weapons?.length || 0) + (recommendations?.imprints?.length || 0) + (recommendations?.synergies?.length || 0) > 0;
 
   return (
     <Layout>
