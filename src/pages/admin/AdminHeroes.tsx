@@ -22,21 +22,21 @@ function useReferenceData() {
   const { data: archetypes = [] } = useQuery({
     queryKey: ["ref_archetypes"],
     queryFn: async () => {
-      const { data } = await supabase.from("archetypes" as any).select("id, name").order("name");
+      const { data } = await (supabase as any).from("archetypes").select("id, name").order("name");
       return (data || []) as { id: string; name: string }[];
     },
   });
   const { data: affinities = [] } = useQuery({
     queryKey: ["ref_affinities"],
     queryFn: async () => {
-      const { data } = await supabase.from("affinities" as any).select("id, name").order("name");
+      const { data } = await (supabase as any).from("affinities").select("id, name").order("name");
       return (data || []) as { id: string; name: string }[];
     },
   });
   const { data: allegiances = [] } = useQuery({
     queryKey: ["ref_allegiances"],
     queryFn: async () => {
-      const { data } = await supabase.from("allegiances" as any).select("id, name").order("name");
+      const { data } = await (supabase as any).from("allegiances").select("id, name").order("name");
       return (data || []) as { id: string; name: string }[];
     },
   });
