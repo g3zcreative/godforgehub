@@ -41,12 +41,16 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Get hero's element/realm to build the correct godforge URL
+    const { data: heroData } = await adminClient.from("heroes").select("element").eq("id", hero_id).single();
+    const faction = heroData?.element?.toLowerCase() || "";
+
     const FIRECRAWL_API_KEY = Deno.env.get("FIRECRAWL_API_KEY");
     if (!FIRECRAWL_API_KEY) throw new Error("FIRECRAWL_API_KEY not configured");
 
-    // Scrape the hero page to find the image URL
-    const godforgeUrl = `https://godforge.gg/heroes/${slug}`;
-    console.log(`Scraping ${godforgeUrl} for image URL...`);
+    // godforge.gg URL pattern: /heroes/:faction/:hero-name
+    const godforgeUrl = `https://godforge.gg/heroes/${faction}/${slug}`;
+    console.log(`Scraping ${godforgeUrl} for hero image...`);
 
     const scrapeRes = await fetch("https://api.firecrawl.dev/v1/scrape", {
       method: "POST",
@@ -54,7 +58,7 @@ Deno.serve(async (req) => {
         Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ url: godforgeUrl, formats: ["markdown"], onlyMainContent: true }),
+      body: JSON.stringify({ url: godforgeUrl, formats: ["html"], onlyMainContent: false }),
     });
 
     const scrapeData = await scrapeRes.json();
@@ -64,55 +68,42 @@ Deno.serve(async (req) => {
       });
     }
 
-    const pageContent = scrapeData.data?.markdown || "";
-    if (!pageContent) {
-      return new Response(JSON.stringify({ error: "No content found" }), {
+    const pageHtml = scrapeData.data?.html || "";
+    if (!pageHtml) {
+      return new Response(JSON.stringify({ error: "No HTML content found" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // Extract the hero portrait image URL directly via regex
-    // Hero portraits have _Base.png in the path, which distinguishes them from logos/icons
-    const baseImgMatch = pageContent.match(/https:\/\/godforge\.gg\/_next\/image\?url=%2Fapi%2Fmedia%2Ffile%2F[^&\s)]*_Base\.png[^&\s)]*&w=\d+&q=\d+/i);
-    
-    // Fallback: any /api/media/file/ image that's not a tiny icon (w>=640)
-    const anyImgMatch = !baseImgMatch 
-      ? pageContent.match(/https:\/\/godforge\.gg\/_next\/image\?url=%2Fapi%2Fmedia%2Ffile%2F[^&\s)]+&w=(?:3840|1920|1280|640)&q=\d+/) 
-      : null;
+    // Extract the hero portrait from: <img src="assets/hero/XX_Character_Name_main.webp" class="heroFullBodyImage">
+    const heroImgMatch = pageHtml.match(/<img[^>]+class="heroFullBodyImage"[^>]+src="([^"]+)"/i)
+      || pageHtml.match(/<img[^>]+src="([^"]+)"[^>]+class="heroFullBodyImage"/i);
 
-    const imgUrl = baseImgMatch?.[0] || anyImgMatch?.[0];
-    
-    if (!imgUrl) {
-      console.error("No hero image found in page content. Content preview:", pageContent.slice(0, 500));
-      return new Response(JSON.stringify({ error: "No hero portrait image found on page" }), {
+    if (!heroImgMatch) {
+      console.error("No heroFullBodyImage found. HTML preview:", pageHtml.slice(0, 1000));
+      return new Response(JSON.stringify({ error: "No heroFullBodyImage found on page" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    console.log("Found image URL:", imgUrl);
+    let imgSrc = heroImgMatch[1];
+    // Make it absolute if relative
+    if (!imgSrc.startsWith("http")) {
+      imgSrc = imgSrc.startsWith("/") ? `https://godforge.gg${imgSrc}` : `https://godforge.gg/${imgSrc}`;
+    }
+    console.log(`Found hero image: ${imgSrc}`);
 
-    // Extract raw path for transparent PNG download
-    const parsed = new URL(imgUrl);
-    const rawPath = parsed.searchParams.get("url");
-    const downloadUrl = rawPath ? `https://godforge.gg${rawPath}` : imgUrl;
-    console.log(`Downloading from: ${downloadUrl}`);
-
-    // Download the image
-    let imgRes = await fetch(downloadUrl);
+    // Download the webp image
+    const imgRes = await fetch(imgSrc);
     if (!imgRes.ok) {
-      // Fallback to the /_next/image URL
-      console.log("Raw URL failed, trying /_next/image URL...");
-      imgRes = await fetch(imgUrl, { headers: { "Accept": "image/webp,image/png,*/*" } });
-      if (!imgRes.ok) {
-        return new Response(JSON.stringify({ error: `Image download failed: ${imgRes.status}` }), {
-          status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
+      return new Response(JSON.stringify({ error: `Image download failed: ${imgRes.status} from ${imgSrc}` }), {
+        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
-    const contentType = (imgRes.headers.get("content-type") || "image/png").split(";")[0].trim();
+    const contentType = (imgRes.headers.get("content-type") || "image/webp").split(";")[0].trim();
     const imageData = new Uint8Array(await imgRes.arrayBuffer());
-    const ext = contentType === "image/webp" ? "webp" : "png";
+    const ext = contentType === "image/png" ? "png" : "webp";
     const fileName = `${hero_id}.${ext}`;
 
     console.log(`Uploading as ${fileName} (${contentType}, ${imageData.length} bytes)`);
