@@ -319,10 +319,13 @@ export default function AdminHeroes() {
     pendingSkills.current = [];
 
     const heroId = row.id as string;
-    const skillRows = skills.map((s: any) => ({
+    const heroSlug = (row.slug as string) || heroId;
+    const skillRows = skills.map((s: any) => {
+      const skillSlug = s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      return {
       hero_id: heroId,
       name: s.name,
-      slug: s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+      slug: `${heroSlug}-${skillSlug}`,
       skill_type: s.skill_type || "Active",
       description: s.description || "",
       image_url: s.image_url || null,
@@ -332,7 +335,7 @@ export default function AdminHeroes() {
       awakening_bonus: s.awakening_bonus || null,
       ultimate_cost: s.ultimate_cost || null,
       initial_divinity: s.initial_divinity || null,
-    }));
+    }});
 
     const { error } = await (supabase.from("skills") as any).insert(skillRows);
     if (error) {
