@@ -143,6 +143,7 @@ STATS FORMAT: Stats show as "15,361" for HP — extract as integer 15361. Percen
 
 ABILITIES FORMAT: Each ability has:
 - Name (### heading)
+- A skill icon image (look for image URLs near each skill heading — these are the skill icons, extract the full URL as image_url)
 - Effect icons and names (e.g. "Bleed", "ATK Up II")
 - Description text with scaling like "260%ATK"
 - Skill type label at the end: "Basic", "Core", "Ultimate", or "Passive"
@@ -200,6 +201,7 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
                       name: { type: "string" },
                       skill_type: { type: "string", enum: ["Basic", "Core", "Ultimate", "Passive"] },
                       description: { type: "string" },
+                      image_url: { type: "string", description: "Skill icon URL from the page (img src near the skill heading)" },
                       scaling_formula: { type: "string", description: "e.g. 260%ATK" },
                       effects: { type: "array", items: { type: "string" }, description: "Buff/debuff names like Bleed, ATK Up II" },
                       awakening_level: { type: "number", description: "Roman numeral converted: I=1, II=2, III=3, IV=4, V=5" },
@@ -376,6 +378,7 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
           ultimate_cost: es.ultimate_cost || null,
           initial_divinity: es.initial_divinity || null,
         };
+        if (es.image_url) skillData.image_url = es.image_url;
 
         if (existingId) {
           const { error } = await adminClient.from("skills").update(skillData).eq("id", existingId);
