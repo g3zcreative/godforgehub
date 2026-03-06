@@ -286,36 +286,33 @@ export default function HeroDetail() {
                         </div>
                       </Link>
                     ))}
+                    {/* Divinity Generator as a skill-style card */}
+                    {hero.divinity_generator && (
+                      <div className="rounded-lg border border-border p-4 bg-card">
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <Zap className="h-4 w-4 text-primary flex-shrink-0" />
+                          <h3 className="font-display font-bold uppercase tracking-wide text-sm">Divinity Generator</h3>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.divinity_generator) }} />
+                      </div>
+                    )}
+                    {/* Leader Bonus as a skill-style card */}
+                    {leaderBonus?.text && (
+                      <div className="rounded-lg border border-border p-4 bg-card">
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <Shield className="h-4 w-4 text-primary flex-shrink-0" />
+                          <h3 className="font-display font-bold uppercase tracking-wide text-sm">Leader Bonus</h3>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{leaderBonus.text}</p>
+                        {leaderBonus.scope && <p className="text-xs text-muted-foreground/70 mt-1">{leaderBonus.scope}</p>}
+                      </div>
+                    )}
                 </div>
               </div>
             )}
 
             {/* Other sections — masonry multi-column layout */}
             <div className="columns-1 md:columns-2 xl:columns-3 2xl:columns-4 gap-6 mb-8 [&>div]:break-inside-avoid [&>div]:mb-6">
-              {/* Divinity Generator */}
-              {hero.divinity_generator && (
-                <div>
-                  <h2 className="text-lg font-display font-semibold mb-3 flex items-center gap-2">
-                    <Zap className="h-5 w-5 text-primary" /> Divinity Generator
-                  </h2>
-                  <div className="rounded-lg border border-border p-4 bg-card">
-                    <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.divinity_generator) }} />
-                  </div>
-                </div>
-              )}
-
-              {/* Leader Bonus */}
-              {leaderBonus?.text && (
-                <div>
-                  <h2 className="text-lg font-display font-semibold mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-primary" /> Leader Bonus
-                  </h2>
-                  <div className="rounded-lg border border-border p-4 bg-card">
-                    <p className="text-sm font-semibold">{leaderBonus.text}</p>
-                    {leaderBonus.scope && <p className="text-xs text-muted-foreground mt-1">{leaderBonus.scope}</p>}
-                  </div>
-                </div>
-              )}
 
               {/* Ascension Bonuses */}
               {ascensionBonuses.length > 0 && (
