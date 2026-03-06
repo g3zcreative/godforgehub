@@ -146,6 +146,50 @@ export type Database = {
         }
         Relationships: []
       }
+      hero_versions: {
+        Row: {
+          change_source: string
+          changed_by: string | null
+          created_at: string
+          hero_id: string
+          id: string
+          imprints_snapshot: Json
+          skills_snapshot: Json
+          snapshot: Json
+          version_number: number
+        }
+        Insert: {
+          change_source?: string
+          changed_by?: string | null
+          created_at?: string
+          hero_id: string
+          id?: string
+          imprints_snapshot?: Json
+          skills_snapshot?: Json
+          snapshot?: Json
+          version_number?: number
+        }
+        Update: {
+          change_source?: string
+          changed_by?: string | null
+          created_at?: string
+          hero_id?: string
+          id?: string
+          imprints_snapshot?: Json
+          skills_snapshot?: Json
+          snapshot?: Json
+          version_number?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hero_versions_hero_id_fkey"
+            columns: ["hero_id"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       heroes: {
         Row: {
           affinity: string | null

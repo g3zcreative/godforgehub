@@ -5,8 +5,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Shield, Zap, Star } from "lucide-react";
+import { ArrowLeft, Shield, Zap, Star, History } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useState } from "react";
+import { format } from "date-fns";
 
 const elementColors: Record<string, string> = {
   Fire: "bg-red-500/10 text-red-400 border-red-500/20",
@@ -93,9 +96,26 @@ export default function HeroDetail() {
     enabled: !!hero?.id,
   });
 
+  const { data: versions } = useQuery({
+    queryKey: ["hero_versions", hero?.id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("hero_versions")
+        .select("id, version_number, change_source, created_at")
+        .eq("hero_id", hero!.id)
+        .order("version_number", { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!hero?.id,
+  });
+
+  const [versionOpen, setVersionOpen] = useState(false);
+
   const leaderBonus = hero?.leader_bonus as { text?: string; scope?: string } | null;
   const ascensionBonuses = (hero?.ascension_bonuses || []) as { tier: number; bonus: string }[];
   const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
+
 
   return (
     <Layout>
@@ -283,6 +303,33 @@ export default function HeroDetail() {
                 )}
               </div>
             </div>
+
+            {/* Version History */}
+            {versions && versions.length > 0 && (
+              <div className="col-span-full mt-8">
+                <Collapsible open={versionOpen} onOpenChange={setVersionOpen}>
+                  <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <History className="h-4 w-4" />
+                    <span>Version History ({versions.length})</span>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-3">
+                    <div className="space-y-2 border border-border rounded-lg p-4 bg-card/50">
+                      {versions.map((v: any) => (
+                        <div key={v.id} className="flex items-center justify-between text-sm py-1.5 border-b border-border/50 last:border-0">
+                          <div className="flex items-center gap-3">
+                            <Badge variant="outline" className="text-xs">v{v.version_number}</Badge>
+                            <span className="text-muted-foreground capitalize">{v.change_source}</span>
+                          </div>
+                          <span className="text-muted-foreground text-xs">
+                            {format(new Date(v.created_at), "MMM d, yyyy HH:mm")}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            )}
           </>
         )}
       </div>
