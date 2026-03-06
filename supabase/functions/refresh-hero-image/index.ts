@@ -49,10 +49,10 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Construct direct image URL: assets/hero/CO_Character_{Name}_main.webp
+    // Construct direct image URL: /heroes/assets/hero/CO_Character_{Name}_main.webp
     // Spaces in names become underscores
     const nameForUrl = heroData.name.replace(/\s+/g, "_");
-    const imgUrl = `https://godforge.gg/assets/hero/CO_Character_${nameForUrl}_main.webp`;
+    const imgUrl = `https://godforge.gg/heroes/assets/hero/CO_Character_${nameForUrl}_main.webp`;
     console.log(`Downloading hero image: ${imgUrl}`);
 
     const imgRes = await fetch(imgUrl);
@@ -62,7 +62,14 @@ Deno.serve(async (req) => {
       });
     }
 
-    const contentType = (imgRes.headers.get("content-type") || "image/webp").split(";")[0].trim();
+    const contentType = (imgRes.headers.get("content-type") || "").split(";")[0].trim();
+    if (!contentType.startsWith("image/")) {
+      return new Response(JSON.stringify({ error: `Unexpected content type '${contentType}' from ${imgUrl}` }), {
+        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    
     const imageData = new Uint8Array(await imgRes.arrayBuffer());
     const ext = contentType === "image/png" ? "png" : "webp";
     const fileName = `${hero_id}.${ext}`;
