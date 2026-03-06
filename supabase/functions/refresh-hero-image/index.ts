@@ -41,62 +41,23 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Get hero's element/realm to build the correct godforge URL
-    const { data: heroData } = await adminClient.from("heroes").select("element").eq("id", hero_id).single();
-    const faction = heroData?.element?.toLowerCase() || "";
-
-    const FIRECRAWL_API_KEY = Deno.env.get("FIRECRAWL_API_KEY");
-    if (!FIRECRAWL_API_KEY) throw new Error("FIRECRAWL_API_KEY not configured");
-
-    // godforge.gg URL pattern: /heroes/:faction/:hero-name
-    const godforgeUrl = `https://godforge.gg/heroes/${faction}/${slug}`;
-    console.log(`Scraping ${godforgeUrl} for hero image...`);
-
-    const scrapeRes = await fetch("https://api.firecrawl.dev/v1/scrape", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${FIRECRAWL_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ url: godforgeUrl, formats: ["html"], onlyMainContent: false }),
-    });
-
-    const scrapeData = await scrapeRes.json();
-    if (!scrapeRes.ok) {
-      return new Response(JSON.stringify({ error: "Scrape failed: " + (scrapeData.error || scrapeRes.status) }), {
-        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+    // Get hero name from DB to construct the image URL
+    const { data: heroData } = await adminClient.from("heroes").select("name").eq("id", hero_id).single();
+    if (!heroData?.name) {
+      return new Response(JSON.stringify({ error: "Hero not found" }), {
+        status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    const pageHtml = scrapeData.data?.html || "";
-    if (!pageHtml) {
-      return new Response(JSON.stringify({ error: "No HTML content found" }), {
-        status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
+    // Construct direct image URL: assets/hero/CO_Character_{Name}_main.webp
+    // Spaces in names become underscores
+    const nameForUrl = heroData.name.replace(/\s+/g, "_");
+    const imgUrl = `https://godforge.gg/assets/hero/CO_Character_${nameForUrl}_main.webp`;
+    console.log(`Downloading hero image: ${imgUrl}`);
 
-    // Extract the hero portrait from: <img src="assets/hero/XX_Character_Name_main.webp" class="heroFullBodyImage">
-    const heroImgMatch = pageHtml.match(/<img[^>]+class="heroFullBodyImage"[^>]+src="([^"]+)"/i)
-      || pageHtml.match(/<img[^>]+src="([^"]+)"[^>]+class="heroFullBodyImage"/i);
-
-    if (!heroImgMatch) {
-      console.error("No heroFullBodyImage found. HTML preview:", pageHtml.slice(0, 1000));
-      return new Response(JSON.stringify({ error: "No heroFullBodyImage found on page" }), {
-        status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
-    let imgSrc = heroImgMatch[1];
-    // Make it absolute if relative
-    if (!imgSrc.startsWith("http")) {
-      imgSrc = imgSrc.startsWith("/") ? `https://godforge.gg${imgSrc}` : `https://godforge.gg/${imgSrc}`;
-    }
-    console.log(`Found hero image: ${imgSrc}`);
-
-    // Download the webp image
-    const imgRes = await fetch(imgSrc);
+    const imgRes = await fetch(imgUrl);
     if (!imgRes.ok) {
-      return new Response(JSON.stringify({ error: `Image download failed: ${imgRes.status} from ${imgSrc}` }), {
+      return new Response(JSON.stringify({ error: `Image download failed: ${imgRes.status} from ${imgUrl}` }), {
         status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
