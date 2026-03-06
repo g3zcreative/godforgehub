@@ -96,7 +96,7 @@ export default function HeroDetail() {
       const synergyIds = recs.filter(r => r.recommendation_type === "synergy").map(r => r.target_id);
 
       const [weaponsRes, imprintsRes, synergiesRes] = await Promise.all([
-        weaponIds.length ? supabase.from("weapons").select("id, name, slug, image_url, rarity").in("id", weaponIds) : { data: [] },
+        weaponIds.length ? supabase.from("weapons").select("id, name, slug, image_url, rarity, passive").in("id", weaponIds) : { data: [] },
         imprintIds.length ? supabase.from("imprints").select("id, name, slug, image_url, rarity, passive").in("id", imprintIds) : { data: [] },
         synergyIds.length ? supabase.from("heroes").select("id, name, slug, image_url, rarity").in("id", synergyIds) : { data: [] },
       ]);
