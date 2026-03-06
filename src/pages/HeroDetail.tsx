@@ -249,13 +249,12 @@ export default function HeroDetail() {
               </div>
             </div>
 
-            {/* ===== BELOW THE FOLD: Multi-column sections ===== */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 mb-8">
-              {/* Skills */}
-              {skills && skills.length > 0 && (
-                <div className="md:col-span-2 xl:col-span-3 2xl:col-span-4">
-                  <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+            {/* ===== BELOW THE FOLD: Masonry-style sections ===== */}
+            {/* Skills row first (full width) */}
+            {skills && skills.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
                     {skills.map((skill) => (
                       <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="flex items-start gap-3 rounded-lg border border-border p-4 hover:border-primary/30 transition-colors group bg-card">
                         {skill.image_url && (
@@ -287,17 +286,19 @@ export default function HeroDetail() {
                         </div>
                       </Link>
                     ))}
-                  </div>
                 </div>
-              )}
+              </div>
+            )}
 
+            {/* Other sections — masonry multi-column layout */}
+            <div className="columns-1 md:columns-2 xl:columns-3 2xl:columns-4 gap-6 mb-8 [&>div]:break-inside-avoid [&>div]:mb-6">
               {/* Divinity Generator */}
               {hero.divinity_generator && (
                 <div>
                   <h2 className="text-lg font-display font-semibold mb-3 flex items-center gap-2">
                     <Zap className="h-5 w-5 text-primary" /> Divinity Generator
                   </h2>
-                  <div className="rounded-lg border border-border p-4 bg-card h-full">
+                  <div className="rounded-lg border border-border p-4 bg-card">
                     <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.divinity_generator) }} />
                   </div>
                 </div>
@@ -309,7 +310,7 @@ export default function HeroDetail() {
                   <h2 className="text-lg font-display font-semibold mb-3 flex items-center gap-2">
                     <Shield className="h-5 w-5 text-primary" /> Leader Bonus
                   </h2>
-                  <div className="rounded-lg border border-border p-4 bg-card h-full">
+                  <div className="rounded-lg border border-border p-4 bg-card">
                     <p className="text-sm font-semibold">{leaderBonus.text}</p>
                     {leaderBonus.scope && <p className="text-xs text-muted-foreground mt-1">{leaderBonus.scope}</p>}
                   </div>
@@ -353,7 +354,7 @@ export default function HeroDetail() {
               {hero.lore && (
                 <div>
                   <h2 className="text-lg font-display font-semibold mb-3">Lore</h2>
-                  <div className="rounded-lg border border-border p-4 bg-card h-full">
+                  <div className="rounded-lg border border-border p-4 bg-card">
                     <p className="text-sm text-muted-foreground leading-relaxed italic">{hero.lore}</p>
                   </div>
                 </div>
