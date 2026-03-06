@@ -7,6 +7,11 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 
+function extractYouTubeId(url: string): string {
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+  return match?.[1] || "";
+}
+
 const categoryColors: Record<string, string> = {
   Beginner: "bg-green-500/10 text-green-400 border-green-500/20",
   Advanced: "bg-red-500/10 text-red-400 border-red-500/20",
