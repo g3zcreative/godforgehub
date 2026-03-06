@@ -249,13 +249,12 @@ export default function HeroDetail() {
               </div>
             </div>
 
-            {/* ===== BELOW THE FOLD: Multi-column sections ===== */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 mb-8">
-              {/* Skills */}
-              {skills && skills.length > 0 && (
-                <div className="md:col-span-2 xl:col-span-3 2xl:col-span-4">
-                  <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+            {/* ===== BELOW THE FOLD: Masonry-style sections ===== */}
+            {/* Skills row first (full width) */}
+            {skills && skills.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
                     {skills.map((skill) => (
                       <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="flex items-start gap-3 rounded-lg border border-border p-4 hover:border-primary/30 transition-colors group bg-card">
                         {skill.image_url && (
