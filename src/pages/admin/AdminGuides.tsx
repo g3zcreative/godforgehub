@@ -39,6 +39,7 @@ export default function AdminGuides() {
     { key: "excerpt", label: "Excerpt", type: "textarea" },
     { key: "content", label: "Content", type: "markdown" },
     { key: "image_url", label: "Feature Image", type: "image", storageBucket: "guide-images" },
+    { key: "video_url", label: "Video URL" },
     { key: "published_at", label: "Published At", type: "datetime" },
   ];
 

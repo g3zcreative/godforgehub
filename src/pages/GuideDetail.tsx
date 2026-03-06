@@ -11,6 +11,11 @@ import rehypeRaw from "rehype-raw";
 import { SEO } from "@/components/SEO";
 import { preprocessMarkup } from "@/lib/guide-markup";
 
+function extractYouTubeId(url: string): string {
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+  return match?.[1] || "";
+}
+
 export default function GuideDetail() {
   const { slug } = useParams<{ slug: string }>();
 
@@ -69,7 +74,20 @@ export default function GuideDetail() {
               by {guide.author}
               {guide.published_at && ` · ${format(new Date(guide.published_at), "PPP")}`}
             </p>
-            {(guide as any).image_url && (
+            {(guide as any).video_url ? (
+              <div className="mb-6">
+                <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">Watch Instead:</h2>
+                <div className="aspect-video w-full rounded-lg overflow-hidden border border-border">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${extractYouTubeId((guide as any).video_url)}`}
+                    title={guide.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+            ) : (guide as any).image_url ? (
               <div className="aspect-video w-full overflow-hidden rounded-lg mb-6">
                 <img
                   src={(guide as any).image_url}
@@ -77,7 +95,7 @@ export default function GuideDetail() {
                   className="h-full w-full object-cover"
                 />
               </div>
-            )}
+            ) : null}
             {guide.content && (
               <div data-color-mode="dark">
                 <MDEditor.Markdown

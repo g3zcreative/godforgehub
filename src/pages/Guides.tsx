@@ -7,6 +7,11 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 
+function extractYouTubeId(url: string): string {
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+  return match?.[1] || "";
+}
+
 const categoryColors: Record<string, string> = {
   Beginner: "bg-green-500/10 text-green-400 border-green-500/20",
   Advanced: "bg-red-500/10 text-red-400 border-red-500/20",
@@ -47,10 +52,10 @@ const GuidesPage = () => {
             {guides.map((guide) => (
               <Link key={guide.id} to={`/guides/${guide.slug}`} className="group break-inside-avoid block">
                 <Card className="hover:border-primary/30 transition-colors overflow-hidden flex flex-col">
-                  {guide.image_url && (
+                  {(guide.image_url || (guide as any).video_url) && (
                     <div className="aspect-video w-full overflow-hidden">
                       <img
-                        src={guide.image_url}
+                        src={guide.image_url || `https://img.youtube.com/vi/${extractYouTubeId((guide as any).video_url)}/hqdefault.jpg`}
                         alt={guide.title}
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
