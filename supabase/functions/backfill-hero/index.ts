@@ -389,15 +389,26 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
         .eq("source_hero_id", hero_id)
         .maybeSingle();
 
+      // Use passive skill icon for imprint image, falling back to hero image
+      const passiveSkill = extractedSkills.find((s: any) => s.skill_type === "Passive");
+      const { data: passiveSkillRow } = !passiveSkill ? { data: null } : await adminClient
+        .from("skills")
+        .select("image_url")
+        .eq("hero_id", hero_id)
+        .eq("skill_type", "Passive")
+        .maybeSingle();
+      const imprintImage = passiveSkillRow?.image_url || currentHero?.image_url || null;
+
       const imprintData = {
         name: heroName,
         passive: extracted.imprint_passive,
         rarity: currentHero?.rarity || 3,
         source_hero_id: hero_id,
+        image_url: imprintImage,
       };
 
       if (existingImprint) {
-        const { error } = await adminClient.from("imprints").update({ passive: extracted.imprint_passive }).eq("id", existingImprint.id);
+        const { error } = await adminClient.from("imprints").update({ passive: extracted.imprint_passive, image_url: imprintImage }).eq("id", existingImprint.id);
         imprintResult = error ? `error: ${error.message}` : "updated";
       } else {
         const imprintSlug = slug;
