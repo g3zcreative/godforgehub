@@ -147,12 +147,16 @@ export type Database = {
         Row: {
           affinity: string | null
           allegiance: string | null
+          ascension_bonuses: Json | null
+          awakening_bonuses: Json | null
           class_type: string
           created_at: string
           description: string | null
+          divinity_generator: string | null
           element: string
           id: string
           image_url: string | null
+          leader_bonus: Json | null
           lore: string | null
           name: string
           rarity: number
@@ -165,12 +169,16 @@ export type Database = {
         Insert: {
           affinity?: string | null
           allegiance?: string | null
+          ascension_bonuses?: Json | null
+          awakening_bonuses?: Json | null
           class_type: string
           created_at?: string
           description?: string | null
+          divinity_generator?: string | null
           element: string
           id?: string
           image_url?: string | null
+          leader_bonus?: Json | null
           lore?: string | null
           name: string
           rarity: number
@@ -183,12 +191,16 @@ export type Database = {
         Update: {
           affinity?: string | null
           allegiance?: string | null
+          ascension_bonuses?: Json | null
+          awakening_bonuses?: Json | null
           class_type?: string
           created_at?: string
           description?: string | null
+          divinity_generator?: string | null
           element?: string
           id?: string
           image_url?: string | null
+          leader_bonus?: Json | null
           lore?: string | null
           name?: string
           rarity?: number
@@ -572,42 +584,60 @@ export type Database = {
       }
       skills: {
         Row: {
+          awakening_bonus: string | null
+          awakening_level: number | null
           cooldown: number | null
           created_at: string
           description: string | null
+          effects: Json | null
           hero_id: string | null
           id: string
           image_url: string | null
+          initial_divinity: number | null
           name: string
           scaling: Json | null
+          scaling_formula: string | null
           skill_type: string
           slug: string
+          ultimate_cost: number | null
           updated_at: string
         }
         Insert: {
+          awakening_bonus?: string | null
+          awakening_level?: number | null
           cooldown?: number | null
           created_at?: string
           description?: string | null
+          effects?: Json | null
           hero_id?: string | null
           id?: string
           image_url?: string | null
+          initial_divinity?: number | null
           name: string
           scaling?: Json | null
+          scaling_formula?: string | null
           skill_type?: string
           slug: string
+          ultimate_cost?: number | null
           updated_at?: string
         }
         Update: {
+          awakening_bonus?: string | null
+          awakening_level?: number | null
           cooldown?: number | null
           created_at?: string
           description?: string | null
+          effects?: Json | null
           hero_id?: string | null
           id?: string
           image_url?: string | null
+          initial_divinity?: number | null
           name?: string
           scaling?: Json | null
+          scaling_formula?: string | null
           skill_type?: string
           slug?: string
+          ultimate_cost?: number | null
           updated_at?: string
         }
         Relationships: [

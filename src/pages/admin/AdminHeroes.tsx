@@ -24,6 +24,10 @@ const columns: ColumnConfig[] = [
   { key: "lore", label: "Lore", type: "textarea" },
   { key: "image_url", label: "Image URL", storageBucket: "hero-images" },
   { key: "stats", label: "Stats (JSON)", type: "json" },
+  { key: "leader_bonus", label: "Leader Bonus (JSON)", type: "json" },
+  { key: "divinity_generator", label: "Divinity Generator", type: "textarea" },
+  { key: "ascension_bonuses", label: "Ascension Bonuses (JSON)", type: "json" },
+  { key: "awakening_bonuses", label: "Awakening Bonuses (JSON)", type: "json" },
 ];
 
 type CreationMode = "picker" | "url" | "bulk" | null;
@@ -270,6 +274,10 @@ export default function AdminHeroes() {
         lore: data.lore || "",
         image_url: data.image_url || "",
         stats: JSON.stringify(data.stats || {}, null, 2),
+        leader_bonus: JSON.stringify(data.leader_bonus || {}, null, 2),
+        divinity_generator: data.divinity_generator || "",
+        ascension_bonuses: JSON.stringify(data.ascension_bonuses || [], null, 2),
+        awakening_bonuses: JSON.stringify(data.awakening_bonuses || [], null, 2),
       });
       setTriggerCreate(t => t + 1);
       setMode(null);
@@ -297,6 +305,12 @@ export default function AdminHeroes() {
       skill_type: s.skill_type || "Active",
       description: s.description || "",
       image_url: s.image_url || null,
+      scaling_formula: s.scaling_formula || null,
+      effects: s.effects || [],
+      awakening_level: s.awakening_level || null,
+      awakening_bonus: s.awakening_bonus || null,
+      ultimate_cost: s.ultimate_cost || null,
+      initial_divinity: s.initial_divinity || null,
     }));
 
     const { error } = await (supabase.from("skills") as any).insert(skillRows);

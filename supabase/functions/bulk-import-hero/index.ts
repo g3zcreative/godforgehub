@@ -130,14 +130,18 @@ Map the data to these fields:
 - rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
 - element: The hero's primary element/realm (e.g. "Tian", "Duat", "Olympus", "Asgard")
 - class_type: The hero's archetype (e.g. "Slayer", "Defender", "Sentinel", "Invoker", "Warden")
-- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane")
+- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane", "Wisdom")
 - allegiance: The hero's allegiance (e.g. "Chaos", "Order", "Balance")
 - realm: The hero's realm/pantheon
 - description: The hero summary text (1-2 sentences)
 - lore: The Story/Lore text if present
 - image_url: The hero's main portrait image URL (large hero image, not small icons)
-- stats: JSON object with base stats at Rank 1 / Level 1. Keys: hp, atk, def, spd, init, crit_rate, crit_dmg, res, acc. Numeric values.
-- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description, image_url (skill icon URL if found)
+- stats: JSON object with base stats. Keys: hp, atk, def, spd, init, crit_rate, crit_dmg, res, acc. Numeric values.
+- leader_bonus: JSON object with "text" (e.g. "20% DEF") and "scope" (e.g. "All Battles")
+- divinity_generator: The divinity generation text
+- ascension_bonuses: Array of objects with "tier" (number 1-6) and "bonus" (text)
+- awakening_bonuses: Array of objects with "tier" (number 1-5) and "bonus" (text)
+- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description, image_url, scaling_formula, effects (array of buff/debuff names), awakening_level, awakening_bonus, ultimate_cost, initial_divinity
 
 Return your response by calling the create_hero function.`,
           },
@@ -167,26 +171,34 @@ Return your response by calling the create_hero function.`,
                   stats: {
                     type: "object",
                     properties: {
-                      hp: { type: "number" },
-                      atk: { type: "number" },
-                      def: { type: "number" },
-                      spd: { type: "number" },
-                      init: { type: "number" },
-                      crit_rate: { type: "number" },
-                      crit_dmg: { type: "number" },
-                      res: { type: "number" },
-                      acc: { type: "number" },
+                      hp: { type: "number" }, atk: { type: "number" }, def: { type: "number" },
+                      spd: { type: "number" }, init: { type: "number" }, crit_rate: { type: "number" },
+                      crit_dmg: { type: "number" }, res: { type: "number" }, acc: { type: "number" },
                     },
+                  },
+                  leader_bonus: {
+                    type: "object",
+                    properties: { text: { type: "string" }, scope: { type: "string" } },
+                  },
+                  divinity_generator: { type: "string" },
+                  ascension_bonuses: {
+                    type: "array",
+                    items: { type: "object", properties: { tier: { type: "number" }, bonus: { type: "string" } }, required: ["tier", "bonus"] },
+                  },
+                  awakening_bonuses: {
+                    type: "array",
+                    items: { type: "object", properties: { tier: { type: "number" }, bonus: { type: "string" } }, required: ["tier", "bonus"] },
                   },
                   skills: {
                     type: "array",
                     items: {
                       type: "object",
                       properties: {
-                        name: { type: "string" },
-                        skill_type: { type: "string" },
-                        description: { type: "string" },
-                        image_url: { type: "string" },
+                        name: { type: "string" }, skill_type: { type: "string" }, description: { type: "string" },
+                        image_url: { type: "string" }, scaling_formula: { type: "string" },
+                        effects: { type: "array", items: { type: "string" } },
+                        awakening_level: { type: "number" }, awakening_bonus: { type: "string" },
+                        ultimate_cost: { type: "number" }, initial_divinity: { type: "number" },
                       },
                       required: ["name", "skill_type", "description"],
                     },
@@ -243,6 +255,10 @@ Return your response by calling the create_hero function.`,
       lore: hero.lore || null,
       image_url: hero.image_url || null,
       stats: hero.stats || {},
+      leader_bonus: hero.leader_bonus || {},
+      divinity_generator: hero.divinity_generator || null,
+      ascension_bonuses: hero.ascension_bonuses || [],
+      awakening_bonuses: hero.awakening_bonuses || [],
     };
 
     const { data: insertedHero, error: heroError } = await adminClient
@@ -269,6 +285,12 @@ Return your response by calling the create_hero function.`,
         skill_type: s.skill_type || "Active",
         description: s.description || "",
         image_url: s.image_url || null,
+        scaling_formula: s.scaling_formula || null,
+        effects: s.effects || [],
+        awakening_level: s.awakening_level || null,
+        awakening_bonus: s.awakening_bonus || null,
+        ultimate_cost: s.ultimate_cost || null,
+        initial_divinity: s.initial_divinity || null,
       }));
 
       const { error: skillError } = await adminClient.from("skills").insert(skillRows);

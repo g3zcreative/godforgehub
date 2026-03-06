@@ -32,6 +32,12 @@ export default function AdminSkills() {
     { key: "hero_id", label: "Hero", type: "select", options: heroOptions, showInTable: true },
     { key: "image_url", label: "Image URL", storageBucket: "images" },
     { key: "scaling", label: "Scaling (JSON)", type: "json" },
+    { key: "scaling_formula", label: "Scaling Formula", showInTable: true },
+    { key: "effects", label: "Effects (JSON)", type: "json" },
+    { key: "awakening_level", label: "Awakening Level", type: "number" },
+    { key: "awakening_bonus", label: "Awakening Bonus", type: "textarea" },
+    { key: "ultimate_cost", label: "Ultimate Cost", type: "number" },
+    { key: "initial_divinity", label: "Initial Divinity", type: "number" },
   ];
 
   return <AdminCrudPage tableName="skills" title="Skills" columns={columns} />;
