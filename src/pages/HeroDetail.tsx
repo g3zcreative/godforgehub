@@ -5,8 +5,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Shield, Zap, Star } from "lucide-react";
+import { ArrowLeft, Shield, Zap, Star, History } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useState } from "react";
+import { format } from "date-fns";
 
 const elementColors: Record<string, string> = {
   Fire: "bg-red-500/10 text-red-400 border-red-500/20",
