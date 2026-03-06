@@ -107,13 +107,44 @@ Return the image URL by calling the extract_image function. If you find a /_next
             },
           },
         }],
+        tool_choice: { type: "function", function: { name: "extract_image" } },
       }),
     });
 
     const aiData = await aiRes.json();
+    console.log("AI response:", JSON.stringify(aiData).slice(0, 500));
+    
     const toolCall = aiData.choices?.[0]?.message?.tool_calls?.[0];
     if (!toolCall) {
-      return new Response(JSON.stringify({ error: "AI could not extract image URL" }), {
+      // Fallback: try to extract image URL from markdown directly
+      const imgMatch = pageContent.match(/https:\/\/godforge\.gg\/_next\/image\?url=%2Fapi%2Fmedia%2Ffile%2F[^&\s)]+&w=\d+&q=\d+/);
+      if (imgMatch) {
+        console.log("Fallback: extracted image URL from markdown:", imgMatch[0]);
+        const parsed = new URL(imgMatch[0]);
+        const rawPath = parsed.searchParams.get("url");
+        const downloadUrl = rawPath ? `https://godforge.gg${rawPath}` : imgMatch[0];
+        
+        const imgRes = await fetch(downloadUrl);
+        if (imgRes.ok) {
+          const contentType = (imgRes.headers.get("content-type") || "image/png").split(";")[0].trim();
+          const imageData = new Uint8Array(await imgRes.arrayBuffer());
+          const ext = contentType === "image/webp" ? "webp" : "png";
+          const fileName = `${hero_id}.${ext}`;
+          
+          await adminClient.storage.from("hero-images").remove([`${hero_id}.jpg`, `${hero_id}.png`, `${hero_id}.webp`]);
+          const { error: upErr } = await adminClient.storage.from("hero-images").upload(fileName, imageData, { contentType, upsert: true });
+          if (upErr) throw upErr;
+          
+          const { data: pub } = adminClient.storage.from("hero-images").getPublicUrl(fileName);
+          await adminClient.from("heroes").update({ image_url: pub.publicUrl }).eq("id", hero_id);
+          
+          return new Response(JSON.stringify({ success: true, image_url: pub.publicUrl, format: ext }), {
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          });
+        }
+      }
+      
+      return new Response(JSON.stringify({ error: "AI could not extract image URL", aiResponse: JSON.stringify(aiData).slice(0, 300) }), {
         status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
