@@ -491,23 +491,18 @@ export default function AdminHeroes() {
   const errorCount = bulkEntries.filter(e => e.status === "error").length;
   const progressPct = bulkEntries.length > 0 ? (completedCount / bulkEntries.length) * 100 : 0;
 
-  // Backfill logic
-  const startBackfill = useCallback(async () => {
-    const entries: BulkEntry[] = allHeroes.map(h => ({
-      heroName: h.name,
-      url: h.slug,
-      status: "pending" as const,
-    }));
-    setBackfillEntries(entries);
+  // Backfill logic — runs over a list of indices into allHeroes
+  const runBackfillForIndices = useCallback(async (indices: number[]) => {
     setBackfillRunning(true);
     backfillAbort.current = false;
 
-    const DELAY_MS = 2000;
+    const DELAY_MS = 3000;
 
-    for (let i = 0; i < entries.length; i++) {
+    for (let j = 0; j < indices.length; j++) {
       if (backfillAbort.current) break;
+      const i = indices[j];
 
-      setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "importing" } : e));
+      setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "importing", message: undefined } : e));
 
       try {
         const hero = allHeroes[i];
@@ -521,7 +516,7 @@ export default function AdminHeroes() {
           if (data.retryable) {
             setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "pending", message: "Rate limited, retrying..." } : e));
             await new Promise(r => setTimeout(r, 10000));
-            i--;
+            j--; // retry
             continue;
           }
           setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "error", message: data.error } : e));
@@ -532,13 +527,33 @@ export default function AdminHeroes() {
         setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "error", message: err.message } : e));
       }
 
-      if (i < entries.length - 1 && !backfillAbort.current) {
+      if (j < indices.length - 1 && !backfillAbort.current) {
         await new Promise(r => setTimeout(r, DELAY_MS));
       }
     }
 
     setBackfillRunning(false);
   }, [allHeroes]);
+
+  const startBackfill = useCallback(async () => {
+    const entries: BulkEntry[] = allHeroes.map(h => ({
+      heroName: h.name,
+      url: h.slug,
+      status: "pending" as const,
+    }));
+    setBackfillEntries(entries);
+    await runBackfillForIndices(entries.map((_, i) => i));
+  }, [allHeroes, runBackfillForIndices]);
+
+  const retryFailedBackfill = useCallback(async () => {
+    const failedIndices = backfillEntries
+      .map((e, i) => e.status === "error" ? i : -1)
+      .filter(i => i !== -1);
+    if (failedIndices.length === 0) return;
+    // Reset failed entries to pending
+    setBackfillEntries(prev => prev.map((e, i) => failedIndices.includes(i) ? { ...e, status: "pending", message: undefined } : e));
+    await runBackfillForIndices(failedIndices);
+  }, [backfillEntries, runBackfillForIndices]);
 
   const stopBackfill = () => { backfillAbort.current = true; };
 
@@ -790,9 +805,16 @@ export default function AdminHeroes() {
                   Stop Backfill
                 </Button>
               ) : (
-                <Button variant="outline" onClick={() => setMode(null)} className="w-full">
-                  Close
-                </Button>
+                <div className="flex gap-2">
+                  {bfErrorCount > 0 && (
+                    <Button onClick={retryFailedBackfill} className="flex-1">
+                      <RefreshCw className="mr-2 h-4 w-4" /> Retry Failed ({bfErrorCount})
+                    </Button>
+                  )}
+                  <Button variant="outline" onClick={() => setMode(null)} className="flex-1">
+                    Close
+                  </Button>
+                </div>
               )}
             </div>
           )}
