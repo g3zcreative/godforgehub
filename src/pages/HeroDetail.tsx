@@ -286,7 +286,6 @@ export default function HeroDetail() {
                         </div>
                       </Link>
                     ))}
-                  </div>
                 </div>
               </div>
             )}
