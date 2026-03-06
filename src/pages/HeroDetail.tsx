@@ -97,7 +97,7 @@ export default function HeroDetail() {
 
       const [weaponsRes, imprintsRes, synergiesRes] = await Promise.all([
         weaponIds.length ? supabase.from("weapons").select("id, name, slug, image_url, rarity").in("id", weaponIds) : { data: [] },
-        imprintIds.length ? supabase.from("imprints").select("id, name, slug, image_url, rarity").in("id", imprintIds) : { data: [] },
+        imprintIds.length ? supabase.from("imprints").select("id, name, slug, image_url, rarity, passive").in("id", imprintIds) : { data: [] },
         synergyIds.length ? supabase.from("heroes").select("id, name, slug, image_url, rarity").in("id", synergyIds) : { data: [] },
       ]);
 
@@ -493,6 +493,9 @@ function RecommendationSection({ title, icon, items, linkPrefix, emptyText }: {
                 <p className="font-display font-semibold text-sm truncate">{item.name}</p>
                 {item.rarity && (
                   <p className="text-xs text-muted-foreground">{typeof item.rarity === "number" ? rarityStars(item.rarity) : item.rarity}</p>
+                )}
+                {item.passive && (
+                  <p className="text-xs text-muted-foreground mt-1 line-clamp-2 leading-relaxed">{item.passive}</p>
                 )}
               </div>
             </Link>
