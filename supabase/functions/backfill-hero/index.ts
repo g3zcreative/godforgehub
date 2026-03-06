@@ -15,6 +15,7 @@ Deno.serve(async (req) => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
 
+    // Auth check
     const userClient = createClient(supabaseUrl, anonKey, {
       global: { headers: { Authorization: authHeader } },
     });
@@ -50,6 +51,15 @@ Deno.serve(async (req) => {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY not configured");
 
+    // 1. Fetch current hero + skills + imprints for version snapshot
+    const { data: currentHero } = await adminClient
+      .from("heroes").select("*").eq("id", hero_id).single();
+    const { data: currentSkills } = await adminClient
+      .from("skills").select("*").eq("hero_id", hero_id);
+    const { data: currentImprints } = await adminClient
+      .from("imprints").select("*").eq("source_hero_id", hero_id);
+
+    // 2. Scrape the hero page
     const url = `https://godforge.gg/heroes/${slug}`;
     console.log("Backfilling:", url);
 
@@ -73,6 +83,7 @@ Deno.serve(async (req) => {
       });
     }
 
+    // 3. AI extraction
     console.log("Extracting with AI...");
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -82,14 +93,25 @@ Deno.serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: `You are a data extraction assistant for GodforgeHub. Extract NEW fields from this godforge.gg hero page that were previously missing.
+            content: `You are a data extraction assistant for GodforgeHub. Extract ALL fields from this godforge.gg hero page.
 
-Extract these fields:
-- leader_bonus: JSON object with "text" (e.g. "20% DEF") and "scope" (e.g. "All Battles")
-- divinity_generator: The divinity generation text (e.g. "Gain [50] Divinity when hit by an enemy.")
-- ascension_bonuses: Array of objects with "tier" (number 1-6) and "bonus" (text)
-- awakening_bonuses: Array of objects with "tier" (number 1-5) and "bonus" (text)
-- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), scaling_formula (e.g. "175%DEF + 80%ATK"), effects (array of buff/debuff names), awakening_level (integer), awakening_bonus (text), ultimate_cost (integer for Ultimate only), initial_divinity (integer for Ultimate only)
+Extract these hero fields:
+- name: The hero's display name
+- subtitle: The hero's title/epithet (without dashes)
+- rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
+- element: The hero's realm/pantheon (e.g. "Tian", "Duat", "Olympus")
+- class_type: The hero's archetype (e.g. "Slayer", "Defender", "Sentinel", "Invoker", "Warden")
+- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane", "Wisdom")
+- allegiance: The hero's allegiance (e.g. "Chaos", "Order", "Balance")
+- description: The hero summary text (1-2 sentences)
+- lore: The Story/Lore text if present
+- stats: JSON object with base stats: hp, atk, def, spd, init, crit_rate, crit_dmg, res, acc (numeric values)
+- leader_bonus: JSON object with "text" and "scope"
+- divinity_generator: The divinity generation text
+- ascension_bonuses: Array of {tier, bonus}
+- awakening_bonuses: Array of {tier, bonus}
+- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description, scaling_formula, effects (array of buff/debuff names), awakening_level, awakening_bonus, ultimate_cost, initial_divinity
+- imprint: If the hero has an imprint/weapon, extract: name, passive (the passive ability text), rarity (same as hero)
 
 Return by calling the backfill_hero function.`,
           },
@@ -99,10 +121,28 @@ Return by calling the backfill_hero function.`,
           type: "function",
           function: {
             name: "backfill_hero",
-            description: "Backfill hero with new fields.",
+            description: "Backfill hero with all extracted data.",
             parameters: {
               type: "object",
               properties: {
+                name: { type: "string" },
+                subtitle: { type: "string" },
+                rarity: { type: "number" },
+                element: { type: "string" },
+                class_type: { type: "string" },
+                affinity: { type: "string" },
+                allegiance: { type: "string" },
+                description: { type: "string" },
+                lore: { type: "string" },
+                stats: {
+                  type: "object",
+                  properties: {
+                    hp: { type: "number" }, atk: { type: "number" }, def: { type: "number" },
+                    spd: { type: "number" }, init: { type: "number" },
+                    crit_rate: { type: "number" }, crit_dmg: { type: "number" },
+                    res: { type: "number" }, acc: { type: "number" },
+                  },
+                },
                 leader_bonus: {
                   type: "object",
                   properties: { text: { type: "string" }, scope: { type: "string" } },
@@ -123,6 +163,7 @@ Return by calling the backfill_hero function.`,
                     properties: {
                       name: { type: "string" },
                       skill_type: { type: "string" },
+                      description: { type: "string" },
                       scaling_formula: { type: "string" },
                       effects: { type: "array", items: { type: "string" } },
                       awakening_level: { type: "number" },
@@ -131,6 +172,14 @@ Return by calling the backfill_hero function.`,
                       initial_divinity: { type: "number" },
                     },
                     required: ["name", "skill_type"],
+                  },
+                },
+                imprint: {
+                  type: "object",
+                  properties: {
+                    name: { type: "string" },
+                    passive: { type: "string" },
+                    rarity: { type: "number" },
                   },
                 },
               },
@@ -165,89 +214,137 @@ Return by calling the backfill_hero function.`,
     const extracted = JSON.parse(toolCall.function.arguments);
     console.log("Extracted backfill data for:", slug);
 
-    // Update hero with new fields
-    const { error: heroError } = await adminClient
-      .from("heroes")
-      .update({
-        leader_bonus: extracted.leader_bonus || {},
-        divinity_generator: extracted.divinity_generator || null,
-        ascension_bonuses: extracted.ascension_bonuses || [],
-        awakening_bonuses: extracted.awakening_bonuses || [],
-      })
-      .eq("id", hero_id);
+    // 4. Save version snapshot BEFORE updating
+    const { data: lastVersion } = await adminClient
+      .from("hero_versions")
+      .select("version_number")
+      .eq("hero_id", hero_id)
+      .order("version_number", { ascending: false })
+      .limit(1)
+      .maybeSingle();
 
-    if (heroError) {
-      return new Response(JSON.stringify({ error: `Hero update failed: ${heroError.message}` }), {
-        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    const nextVersion = (lastVersion?.version_number || 0) + 1;
+
+    await adminClient.from("hero_versions").insert({
+      hero_id,
+      version_number: nextVersion,
+      snapshot: currentHero || {},
+      skills_snapshot: currentSkills || [],
+      imprints_snapshot: currentImprints || [],
+      change_source: "backfill",
+      changed_by: user.id,
+    });
+
+    // 5. Update hero with ALL fields
+    const heroUpdate: Record<string, unknown> = {};
+    if (extracted.name) heroUpdate.name = extracted.name;
+    if (extracted.subtitle) heroUpdate.subtitle = extracted.subtitle;
+    if (extracted.rarity) heroUpdate.rarity = extracted.rarity;
+    if (extracted.element) heroUpdate.element = extracted.element;
+    if (extracted.class_type) heroUpdate.class_type = extracted.class_type;
+    if (extracted.affinity) heroUpdate.affinity = extracted.affinity;
+    if (extracted.allegiance) heroUpdate.allegiance = extracted.allegiance;
+    if (extracted.description) heroUpdate.description = extracted.description;
+    if (extracted.lore) heroUpdate.lore = extracted.lore;
+    if (extracted.stats) heroUpdate.stats = extracted.stats;
+    if (extracted.leader_bonus) heroUpdate.leader_bonus = extracted.leader_bonus;
+    if (extracted.divinity_generator) heroUpdate.divinity_generator = extracted.divinity_generator;
+    if (extracted.ascension_bonuses) heroUpdate.ascension_bonuses = extracted.ascension_bonuses;
+    if (extracted.awakening_bonuses) heroUpdate.awakening_bonuses = extracted.awakening_bonuses;
+
+    if (Object.keys(heroUpdate).length > 0) {
+      const { error: heroError } = await adminClient
+        .from("heroes").update(heroUpdate).eq("id", hero_id);
+      if (heroError) {
+        console.error("Hero update error:", heroError.message);
+        return new Response(JSON.stringify({ error: `Hero update failed: ${heroError.message}` }), {
+          status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
     }
 
-    // Update existing skills and insert missing ones
+    // 6. Update/insert skills
     const extractedSkills = extracted.skills || [];
     let skillsUpdated = 0;
     let skillsInserted = 0;
+
     if (extractedSkills.length > 0) {
       const { data: existingSkills } = await adminClient
-        .from("skills")
-        .select("id, name")
-        .eq("hero_id", hero_id);
+        .from("skills").select("id, name").eq("hero_id", hero_id);
 
-      const existingNames = (existingSkills || []).map((s: any) => s.name.toLowerCase().trim());
+      const existingMap = new Map(
+        (existingSkills || []).map((s: any) => [s.name.toLowerCase().trim(), s.id])
+      );
 
-      // Update existing skills
-      for (const es of (existingSkills || [])) {
-        const match = extractedSkills.find((s: any) =>
-          s.name.toLowerCase().trim() === es.name.toLowerCase().trim()
-        );
-        if (match) {
-          const { error } = await adminClient
-            .from("skills")
-            .update({
-              scaling_formula: match.scaling_formula || null,
-              effects: match.effects || [],
-              awakening_level: match.awakening_level || null,
-              awakening_bonus: match.awakening_bonus || null,
-              ultimate_cost: match.ultimate_cost || null,
-              initial_divinity: match.initial_divinity || null,
-            })
-            .eq("id", es.id);
+      for (const es of extractedSkills) {
+        const key = es.name.toLowerCase().trim();
+        const existingId = existingMap.get(key);
+
+        const skillData: Record<string, unknown> = {
+          skill_type: es.skill_type || "Active",
+          description: es.description || null,
+          scaling_formula: es.scaling_formula || null,
+          effects: es.effects || [],
+          awakening_level: es.awakening_level || null,
+          awakening_bonus: es.awakening_bonus || null,
+          ultimate_cost: es.ultimate_cost || null,
+          initial_divinity: es.initial_divinity || null,
+        };
+
+        if (existingId) {
+          const { error } = await adminClient.from("skills").update(skillData).eq("id", existingId);
           if (!error) skillsUpdated++;
+        } else {
+          const skillSlug = es.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+          const { error } = await adminClient.from("skills").insert({
+            ...skillData,
+            hero_id,
+            name: es.name,
+            slug: `${slug}-${skillSlug}`,
+          });
+          if (!error) skillsInserted++;
+          else console.error("Skill insert error:", error.message);
         }
       }
+    }
 
-      // Insert skills that don't exist yet
-      const newSkills = extractedSkills.filter((s: any) =>
-        !existingNames.includes(s.name.toLowerCase().trim())
-      );
-      if (newSkills.length > 0) {
-        const heroSlug = slug as string;
-        const rows = newSkills.map((s: any) => {
-          const skillSlug = s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-          return {
-            hero_id,
-            name: s.name,
-            slug: `${heroSlug}-${skillSlug}`,
-            skill_type: s.skill_type || "Active",
-            description: "",
-            scaling_formula: s.scaling_formula || null,
-            effects: s.effects || [],
-            awakening_level: s.awakening_level || null,
-            awakening_bonus: s.awakening_bonus || null,
-            ultimate_cost: s.ultimate_cost || null,
-            initial_divinity: s.initial_divinity || null,
-          };
+    // 7. Update/create imprint
+    let imprintResult = "skipped";
+    if (extracted.imprint?.name) {
+      const imprintSlug = extracted.imprint.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+      const { data: existingImprint } = await adminClient
+        .from("imprints")
+        .select("id")
+        .eq("source_hero_id", hero_id)
+        .maybeSingle();
+
+      const imprintData = {
+        name: extracted.imprint.name,
+        passive: extracted.imprint.passive || null,
+        rarity: extracted.imprint.rarity || extracted.rarity || 3,
+        source_hero_id: hero_id,
+      };
+
+      if (existingImprint) {
+        const { error } = await adminClient.from("imprints").update(imprintData).eq("id", existingImprint.id);
+        imprintResult = error ? `error: ${error.message}` : "updated";
+      } else {
+        const { error } = await adminClient.from("imprints").insert({
+          ...imprintData,
+          slug: imprintSlug,
         });
-        const { error } = await adminClient.from("skills").insert(rows);
-        if (!error) skillsInserted = rows.length;
-        else console.error("Skill insert error:", error.message);
+        imprintResult = error ? `error: ${error.message}` : "created";
       }
     }
 
     return new Response(JSON.stringify({
       success: true,
       slug,
+      version: nextVersion,
       skillsUpdated,
       skillsInserted,
+      imprintResult,
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
