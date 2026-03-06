@@ -63,7 +63,12 @@ export default function HeroDetail() {
         .eq("slug", slug!)
         .maybeSingle();
       if (error) throw error;
-      return data;
+      return data as (typeof data & {
+        leader_bonus?: { text?: string; scope?: string } | null;
+        divinity_generator?: string | null;
+        ascension_bonuses?: { tier: number; bonus: string }[] | null;
+        awakening_bonuses?: { tier: number; bonus: string }[] | null;
+      }) | null;
     },
     enabled: !!slug,
   });
@@ -76,7 +81,14 @@ export default function HeroDetail() {
         .select("*")
         .eq("hero_id", hero!.id);
       if (error) throw error;
-      return data;
+      return data as (typeof data[number] & {
+        scaling_formula?: string | null;
+        effects?: string[] | null;
+        awakening_level?: number | null;
+        awakening_bonus?: string | null;
+        ultimate_cost?: number | null;
+        initial_divinity?: number | null;
+      })[];
     },
     enabled: !!hero?.id,
   });
