@@ -223,29 +223,76 @@ export default function HeroDetail() {
                 )}
               </div>
 
-              {/* Right Column: Recommendations */}
+              {/* Right Column: Recommendations or Skills fallback */}
               <div className="lg:col-span-2 space-y-6">
-                <RecommendationSection
-                  title="Recommended Weapons"
-                  icon={<Swords className="h-5 w-5 text-primary" />}
-                  items={recommendations?.weapons || []}
-                  linkPrefix="/database/weapons"
-                  emptyText="No weapon recommendations yet"
-                />
-                <RecommendationSection
-                  title="Recommended Imprints"
-                  icon={<Stamp className="h-5 w-5 text-primary" />}
-                  items={recommendations?.imprints || []}
-                  linkPrefix="/database/imprints"
-                  emptyText="No imprint recommendations yet"
-                />
-                <RecommendationSection
-                  title="Hero Synergies"
-                  icon={<Users className="h-5 w-5 text-primary" />}
-                  items={recommendations?.synergies || []}
-                  linkPrefix="/database/heroes"
-                  emptyText="No synergy recommendations yet"
-                />
+                {hasRecommendations ? (
+                  <>
+                    <RecommendationSection
+                      title="Recommended Weapons"
+                      icon={<Swords className="h-5 w-5 text-primary" />}
+                      items={recommendations?.weapons || []}
+                      linkPrefix="/database/weapons"
+                      emptyText="No weapon recommendations yet"
+                    />
+                    <RecommendationSection
+                      title="Recommended Imprints"
+                      icon={<Stamp className="h-5 w-5 text-primary" />}
+                      items={recommendations?.imprints || []}
+                      linkPrefix="/database/imprints"
+                      emptyText="No imprint recommendations yet"
+                    />
+                    <RecommendationSection
+                      title="Hero Synergies"
+                      icon={<Users className="h-5 w-5 text-primary" />}
+                      items={recommendations?.synergies || []}
+                      linkPrefix="/database/heroes"
+                      emptyText="No synergy recommendations yet"
+                    />
+                  </>
+                ) : (
+                  <>
+                    {skills && skills.length > 0 && (
+                      <div>
+                        <h2 className="text-base font-display font-semibold mb-3">Hero Skills</h2>
+                        <div className="space-y-3">
+                          {skills.map((skill) => (
+                            <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="flex items-start gap-3 rounded-lg border border-border p-3 hover:border-primary/30 transition-colors group bg-card">
+                              {skill.image_url && (
+                                <img src={skill.image_url} alt={skill.name} className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border group-hover:border-primary/40 transition-colors" />
+                              )}
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-baseline gap-2 mb-1 flex-wrap">
+                                  <h3 className="font-display font-bold uppercase tracking-wide text-sm">{skill.name}</h3>
+                                  <span className="text-xs text-muted-foreground font-semibold uppercase">({skill.skill_type})</span>
+                                </div>
+                                {skill.description && <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {hero.divinity_generator && (
+                      <div className="rounded-lg border border-border p-4 bg-card">
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <Zap className="h-4 w-4 text-primary flex-shrink-0" />
+                          <h3 className="font-display font-bold uppercase tracking-wide text-sm">Divinity Generator</h3>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.divinity_generator) }} />
+                      </div>
+                    )}
+                    {leaderBonus?.text && (
+                      <div className="rounded-lg border border-border p-4 bg-card">
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <Shield className="h-4 w-4 text-primary flex-shrink-0" />
+                          <h3 className="font-display font-bold uppercase tracking-wide text-sm">Leader Bonus</h3>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{leaderBonus.text}</p>
+                        {leaderBonus.scope && <p className="text-xs text-muted-foreground/70 mt-1">{leaderBonus.scope}</p>}
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
             </div>
 
