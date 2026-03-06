@@ -123,16 +123,19 @@ Deno.serve(async (req) => {
 
 Extract structured hero data from the scraped godforge.gg hero page content.
 
+IMPORTANT: On the godforge.gg hero page, the hero info section typically shows these attributes in order:
+  Archetype (class) | Realm/Pantheon | Allegiance
+with Affinity shown separately.
+
 Map the data to these fields:
-- name: The hero's display name (e.g. "Sun Wukong")
+- name: The hero's display name (e.g. "Sun Wukong", "Amaterasu")
 - subtitle: The hero's title/epithet shown under the name (e.g. "Monkey King"). Do NOT include dashes.
 - slug: URL-friendly lowercase version with hyphens (e.g. "sun-wukong")
 - rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
-- element: The hero's primary element/realm (e.g. "Tian", "Duat", "Olympus", "Asgard")
-- class_type: The hero's archetype (e.g. "Slayer", "Defender", "Sentinel", "Invoker", "Warden")
-- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane", "Wisdom")
-- allegiance: The hero's allegiance (e.g. "Chaos", "Order", "Balance")
-- realm: The hero's realm/pantheon
+- element: The hero's REALM/PANTHEON — the faction or world they belong to. Valid values include: "Tian", "Duat", "Olympus", "Asgard", "Izumo", "Avalon". This is NOT the affinity.
+- class_type: The hero's ARCHETYPE/CLASS. Valid values include: "Slayer", "Defender", "Sentinel", "Invoker", "Warden"
+- affinity: The hero's AFFINITY TYPE — their elemental/power affinity. Valid values include: "Cunning", "Might", "Eternal", "Arcane", "Wisdom", "Radiant", "Shadow". This is NOT the realm.
+- allegiance: The hero's ALLEGIANCE — their moral alignment. Valid values: "Chaos", "Order", "Balance"
 - description: The hero summary text (1-2 sentences)
 - lore: The Story/Lore text if present
 - image_url: The hero's main portrait image URL (large hero image, not small icons)
@@ -142,6 +145,7 @@ Map the data to these fields:
 - ascension_bonuses: Array of objects with "tier" (number 1-6) and "bonus" (text)
 - awakening_bonuses: Array of objects with "tier" (number 1-5) and "bonus" (text)
 - skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description, image_url, scaling_formula, effects (array of buff/debuff names), awakening_level, awakening_bonus, ultimate_cost, initial_divinity
+- imprint_passive: The Imprint Bonus text shown on the hero page
 
 Return your response by calling the create_hero function.`,
           },

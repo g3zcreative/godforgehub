@@ -78,16 +78,19 @@ Deno.serve(async (req) => {
 
 Extract structured hero data from the scraped godforge.gg hero page content. The page contains information about a Godforge hero.
 
+IMPORTANT: On the godforge.gg hero page, the hero info section typically shows these attributes in order:
+  Archetype (class) | Realm/Pantheon | Allegiance
+with Affinity shown separately.
+
 Map the data to these fields:
-- name: The hero's display name (e.g. "Sun Wukong")
+- name: The hero's display name (e.g. "Sun Wukong", "Amaterasu")
 - subtitle: The hero's title/epithet shown under the name (e.g. "Monkey King", "Sphinx of Riddles"). Do NOT include the dashes.
-- slug: URL-friendly lowercase version with hyphens (e.g. "sun-wukong", "hound-of-duat")
+- slug: URL-friendly lowercase version with hyphens (e.g. "sun-wukong")
 - rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
-- element: The hero's primary element/realm (e.g. "Tian", "Duat", "Olympus", "Asgard"). This is the realm/pantheon the hero belongs to (shown between archetype and allegiance).
-- class_type: The hero's archetype (e.g. "Slayer", "Defender", "Sentinel", "Invoker", "Warden")
-- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane", "Wisdom")
-- allegiance: The hero's allegiance (e.g. "Chaos", "Order", "Balance")
-- realm: The hero's realm/pantheon (e.g. "Tian", "Duat", "Olympus"). Same as the faction shown on the page.
+- element: The hero's REALM/PANTHEON — the faction or world they belong to. Valid values include: "Tian", "Duat", "Olympus", "Asgard", "Izumo", "Avalon". This is NOT the affinity.
+- class_type: The hero's ARCHETYPE/CLASS. Valid values include: "Slayer", "Defender", "Sentinel", "Invoker", "Warden"
+- affinity: The hero's AFFINITY TYPE — their elemental/power affinity. Valid values include: "Cunning", "Might", "Eternal", "Arcane", "Wisdom", "Radiant", "Shadow". This is NOT the realm.
+- allegiance: The hero's ALLEGIANCE — their moral alignment. Valid values: "Chaos", "Order", "Balance"
 - description: The hero summary text (1-2 sentences)
 - lore: The Story/Lore text from the page if present
 - image_url: The hero's main portrait image URL. IMPORTANT: Do NOT use any placehold.co URLs. Instead, construct the URL as: https://godforge.gg/heroes/assets/hero/CO_Character_{Name}_main.webp where {Name} is the hero name with spaces replaced by underscores (e.g. CO_Character_Sun_Wukong_main.webp). If you cannot determine the name, leave image_url empty.
@@ -116,11 +119,10 @@ Return your response by calling the create_hero function.`,
                   subtitle: { type: "string", description: "Hero title/epithet" },
                   slug: { type: "string" },
                   rarity: { type: "number" },
-                  element: { type: "string", description: "Realm/pantheon" },
-                  class_type: { type: "string", description: "Archetype" },
-                  affinity: { type: "string", description: "Affinity type" },
-                  allegiance: { type: "string", description: "Chaos/Order/Balance" },
-                  realm: { type: "string", description: "Realm/pantheon" },
+                   element: { type: "string", description: "Realm/pantheon (e.g. Tian, Duat, Olympus, Asgard, Izumo, Avalon) - NOT the affinity" },
+                   class_type: { type: "string", description: "Archetype/class (e.g. Slayer, Defender, Sentinel, Invoker, Warden)" },
+                   affinity: { type: "string", description: "Affinity type (e.g. Cunning, Might, Eternal, Arcane, Wisdom, Radiant, Shadow) - NOT the realm" },
+                   allegiance: { type: "string", description: "Moral alignment: Chaos, Order, or Balance" },
                   description: { type: "string" },
                   lore: { type: "string", description: "Story/lore text" },
                   image_url: { type: "string" },
