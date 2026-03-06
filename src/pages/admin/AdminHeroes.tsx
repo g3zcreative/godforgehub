@@ -350,13 +350,17 @@ export default function AdminHeroes() {
     const imprintPassive = pendingImprint.current;
     pendingImprint.current = null;
     if (imprintPassive) {
+      // Use passive skill icon for imprint image, falling back to hero image
+      const passiveSkill = skills.find((s: any) => s.skill_type === "Passive");
+      const imprintImage = passiveSkill?.image_url || (row.image_url as string) || null;
+
       const { error: imprintError } = await (supabase.from("imprints") as any).insert({
         name: row.name as string,
         slug: heroSlug,
         rarity: (row.rarity as number) || 3,
         source_hero_id: heroId,
         passive: imprintPassive,
-        image_url: (row.image_url as string) || null,
+        image_url: imprintImage,
       });
       if (imprintError) {
         toast({ title: "Imprint insert failed", description: imprintError.message, variant: "destructive" });
