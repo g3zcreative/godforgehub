@@ -286,6 +286,12 @@ function parseHeroCsv(): BulkEntry[] {
 }
 
 export default function AdminHeroes() {
+  const { factions, archetypes, affinities, allegiances } = useReferenceData();
+  const columns = useMemo(
+    () => buildColumns(factions, archetypes, affinities, allegiances),
+    [factions, archetypes, affinities, allegiances]
+  );
+
   const [mode, setMode] = useState<CreationMode>(null);
   const [importUrl, setImportUrl] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
