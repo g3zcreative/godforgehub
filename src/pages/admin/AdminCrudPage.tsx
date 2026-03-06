@@ -101,7 +101,13 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
 
   const editableColumns = columns.filter(c => c.editable !== false);
   const allTableColumns = columns.filter(c => c.showInTable !== false);
-  const [hiddenColumns, setHiddenColumns] = useState<Set<string>>(new Set());
+  const storageKey = `admin-hidden-cols-${tableName}`;
+  const [hiddenColumns, setHiddenColumns] = useState<Set<string>>(() => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      return saved ? new Set(JSON.parse(saved)) : new Set();
+    } catch { return new Set(); }
+  });
 
   const tableColumns = allTableColumns.filter(c => !hiddenColumns.has(c.key));
   const searchableKeys = tableColumns.filter(c => c.type !== "boolean" && c.type !== "json").map(c => c.key);
@@ -111,6 +117,7 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
       const next = new Set(prev);
       if (next.has(key)) next.delete(key);
       else next.add(key);
+      localStorage.setItem(storageKey, JSON.stringify([...next]));
       return next;
     });
   };
