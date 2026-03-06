@@ -10,7 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { Plus, Pencil, Trash2, CalendarIcon, Upload, X, Loader2, Image as ImageIcon, Search, ChevronLeft, ChevronRight, ArrowUp, ArrowDown, ArrowUpDown } from "lucide-react";
+import { Plus, Pencil, Trash2, CalendarIcon, Upload, X, Loader2, Image as ImageIcon, Search, ChevronLeft, ChevronRight, ArrowUp, ArrowDown, ArrowUpDown, Columns3 } from "lucide-react";
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -99,8 +100,20 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
   const toSlug = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
   const editableColumns = columns.filter(c => c.editable !== false);
-  const tableColumns = columns.filter(c => c.showInTable !== false);
-  const searchableKeys = columns.filter(c => c.showInTable !== false && c.type !== "boolean" && c.type !== "json").map(c => c.key);
+  const allTableColumns = columns.filter(c => c.showInTable !== false);
+  const [hiddenColumns, setHiddenColumns] = useState<Set<string>>(new Set());
+
+  const tableColumns = allTableColumns.filter(c => !hiddenColumns.has(c.key));
+  const searchableKeys = tableColumns.filter(c => c.type !== "boolean" && c.type !== "json").map(c => c.key);
+
+  const toggleColumn = (key: string) => {
+    setHiddenColumns(prev => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
 
   const { data: rows = [], isLoading } = useQuery({
     queryKey: [tableName],
@@ -432,6 +445,24 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
           />
         </div>
         <span className="text-sm text-muted-foreground">{filtered.length} record{filtered.length !== 1 ? "s" : ""}</span>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              <Columns3 className="mr-2 h-4 w-4" /> Columns
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {allTableColumns.map(c => (
+              <DropdownMenuCheckboxItem
+                key={c.key}
+                checked={!hiddenColumns.has(c.key)}
+                onCheckedChange={() => toggleColumn(c.key)}
+              >
+                {c.label}
+              </DropdownMenuCheckboxItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       {isLoading ? (
