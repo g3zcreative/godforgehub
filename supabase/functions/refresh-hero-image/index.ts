@@ -44,10 +44,7 @@ Deno.serve(async (req) => {
     const FIRECRAWL_API_KEY = Deno.env.get("FIRECRAWL_API_KEY");
     if (!FIRECRAWL_API_KEY) throw new Error("FIRECRAWL_API_KEY not configured");
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY not configured");
-
-    // Scrape the hero page to get the image URL
+    // Scrape the hero page to find the image URL
     const godforgeUrl = `https://godforge.gg/heroes/${slug}`;
     console.log(`Scraping ${godforgeUrl} for image URL...`);
 
@@ -74,163 +71,58 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Use AI to extract just the image URL
-    const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
-          {
-            role: "system",
-            content: `Extract only the hero's main portrait image URL from this godforge.gg page content. 
-The image URL typically looks like: https://godforge.gg/_next/image?url=%2Fapi%2Fmedia%2Ffile%2F{CODE}_Base.png&w=3840&q=75
-Return the image URL by calling the extract_image function. If you find a /_next/image URL, also extract the raw source path from the url parameter (decoded).`,
-          },
-          { role: "user", content: pageContent },
-        ],
-        tools: [{
-          type: "function",
-          function: {
-            name: "extract_image",
-            description: "Extract the hero image URL",
-            parameters: {
-              type: "object",
-              properties: {
-                image_url: { type: "string", description: "The full /_next/image URL" },
-                raw_path: { type: "string", description: "The decoded raw path from the url param, e.g. /api/media/file/ATL_Base.png" },
-              },
-              required: ["image_url"],
-            },
-          },
-        }],
-        tool_choice: { type: "function", function: { name: "extract_image" } },
-      }),
-    });
-
-    const aiData = await aiRes.json();
-    console.log("AI response:", JSON.stringify(aiData).slice(0, 500));
+    // Extract the hero portrait image URL directly via regex
+    // Hero portraits have _Base.png in the path, which distinguishes them from logos/icons
+    const baseImgMatch = pageContent.match(/https:\/\/godforge\.gg\/_next\/image\?url=%2Fapi%2Fmedia%2Ffile%2F[^&\s)]*_Base\.png[^&\s)]*&w=\d+&q=\d+/i);
     
-    const toolCall = aiData.choices?.[0]?.message?.tool_calls?.[0];
-    if (!toolCall) {
-      // Fallback: try to extract image URL from markdown directly
-      const imgMatch = pageContent.match(/https:\/\/godforge\.gg\/_next\/image\?url=%2Fapi%2Fmedia%2Ffile%2F[^&\s)]+&w=\d+&q=\d+/);
-      if (imgMatch) {
-        console.log("Fallback: extracted image URL from markdown:", imgMatch[0]);
-        const parsed = new URL(imgMatch[0]);
-        const rawPath = parsed.searchParams.get("url");
-        const downloadUrl = rawPath ? `https://godforge.gg${rawPath}` : imgMatch[0];
-        
-        const imgRes = await fetch(downloadUrl);
-        if (imgRes.ok) {
-          const contentType = (imgRes.headers.get("content-type") || "image/png").split(";")[0].trim();
-          const imageData = new Uint8Array(await imgRes.arrayBuffer());
-          const ext = contentType === "image/webp" ? "webp" : "png";
-          const fileName = `${hero_id}.${ext}`;
-          
-          await adminClient.storage.from("hero-images").remove([`${hero_id}.jpg`, `${hero_id}.png`, `${hero_id}.webp`]);
-          const { error: upErr } = await adminClient.storage.from("hero-images").upload(fileName, imageData, { contentType, upsert: true });
-          if (upErr) throw upErr;
-          
-          const { data: pub } = adminClient.storage.from("hero-images").getPublicUrl(fileName);
-          await adminClient.from("heroes").update({ image_url: pub.publicUrl }).eq("id", hero_id);
-          
-          return new Response(JSON.stringify({ success: true, image_url: pub.publicUrl, format: ext }), {
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
-          });
-        }
-      }
-      
-      return new Response(JSON.stringify({ error: "AI could not extract image URL", aiResponse: JSON.stringify(aiData).slice(0, 300) }), {
-        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
+    // Fallback: any /api/media/file/ image that's not a tiny icon (w>=640)
+    const anyImgMatch = !baseImgMatch 
+      ? pageContent.match(/https:\/\/godforge\.gg\/_next\/image\?url=%2Fapi%2Fmedia%2Ffile%2F[^&\s)]+&w=(?:3840|1920|1280|640)&q=\d+/) 
+      : null;
 
-    const extracted = JSON.parse(toolCall.function.arguments);
-    console.log("Extracted:", extracted);
-
-    // Determine the best URL to download - prefer raw path for transparency
-    let downloadUrl: string;
-    if (extracted.raw_path) {
-      downloadUrl = `https://godforge.gg${extracted.raw_path}`;
-    } else if (extracted.image_url) {
-      // Try to parse raw path from /_next/image URL
-      try {
-        const parsed = new URL(extracted.image_url);
-        const rawPath = parsed.searchParams.get("url");
-        if (rawPath) {
-          downloadUrl = `https://godforge.gg${rawPath}`;
-        } else {
-          downloadUrl = extracted.image_url;
-        }
-      } catch {
-        downloadUrl = extracted.image_url;
-      }
-    } else {
-      return new Response(JSON.stringify({ error: "No image URL found" }), {
+    const imgUrl = baseImgMatch?.[0] || anyImgMatch?.[0];
+    
+    if (!imgUrl) {
+      console.error("No hero image found in page content. Content preview:", pageContent.slice(0, 500));
+      return new Response(JSON.stringify({ error: "No hero portrait image found on page" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    console.log(`Downloading image from: ${downloadUrl}`);
+    console.log("Found image URL:", imgUrl);
 
-    // Download the raw image (PNG with transparency)
-    const imgRes = await fetch(downloadUrl);
+    // Extract raw path for transparent PNG download
+    const parsed = new URL(imgUrl);
+    const rawPath = parsed.searchParams.get("url");
+    const downloadUrl = rawPath ? `https://godforge.gg${rawPath}` : imgUrl;
+    console.log(`Downloading from: ${downloadUrl}`);
+
+    // Download the image
+    let imgRes = await fetch(downloadUrl);
     if (!imgRes.ok) {
-      // Fallback to the /_next/image URL with webp accept header
-      console.log("Raw URL failed, trying /_next/image with WebP...");
-      const fallbackUrl = extracted.image_url || downloadUrl;
-      const imgRes2 = await fetch(fallbackUrl, {
-        headers: { "Accept": "image/webp,image/png,*/*" },
-      });
-      if (!imgRes2.ok) {
-        return new Response(JSON.stringify({ error: `Image download failed: ${imgRes2.status}` }), {
+      // Fallback to the /_next/image URL
+      console.log("Raw URL failed, trying /_next/image URL...");
+      imgRes = await fetch(imgUrl, { headers: { "Accept": "image/webp,image/png,*/*" } });
+      if (!imgRes.ok) {
+        return new Response(JSON.stringify({ error: `Image download failed: ${imgRes.status}` }), {
           status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      
-      const ct = (imgRes2.headers.get("content-type") || "image/webp").split(";")[0].trim();
-      const imageData = new Uint8Array(await imgRes2.arrayBuffer());
-      const ext = ct === "image/webp" ? "webp" : ct === "image/png" ? "png" : "webp";
-      const fileName = `${hero_id}.${ext}`;
-
-      // Delete old file if exists
-      await adminClient.storage.from("hero-images").remove([`${hero_id}.jpg`, `${hero_id}.png`, `${hero_id}.webp`]);
-
-      const { error: upErr } = await adminClient.storage.from("hero-images").upload(fileName, imageData, {
-        contentType: ct, upsert: true,
-      });
-      if (upErr) throw upErr;
-
-      const { data: pub } = adminClient.storage.from("hero-images").getPublicUrl(fileName);
-      await adminClient.from("heroes").update({ image_url: pub.publicUrl }).eq("id", hero_id);
-
-      return new Response(JSON.stringify({ success: true, image_url: pub.publicUrl, format: ext }), {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
     }
 
     const contentType = (imgRes.headers.get("content-type") || "image/png").split(";")[0].trim();
     const imageData = new Uint8Array(await imgRes.arrayBuffer());
-    const ext = contentType === "image/webp" ? "webp" : contentType === "image/png" ? "png" : "png";
+    const ext = contentType === "image/webp" ? "webp" : "png";
     const fileName = `${hero_id}.${ext}`;
 
     console.log(`Uploading as ${fileName} (${contentType}, ${imageData.length} bytes)`);
 
-    // Delete old files
+    // Delete old files and upload new one
     await adminClient.storage.from("hero-images").remove([`${hero_id}.jpg`, `${hero_id}.png`, `${hero_id}.webp`]);
-
-    const { error: upErr } = await adminClient.storage.from("hero-images").upload(fileName, imageData, {
-      contentType, upsert: true,
-    });
+    const { error: upErr } = await adminClient.storage.from("hero-images").upload(fileName, imageData, { contentType, upsert: true });
     if (upErr) throw upErr;
 
     const { data: pub } = adminClient.storage.from("hero-images").getPublicUrl(fileName);
-
-    // Update hero record
     const { error: updErr } = await adminClient.from("heroes").update({ image_url: pub.publicUrl }).eq("id", hero_id);
     if (updErr) throw updErr;
 
