@@ -182,36 +182,64 @@ Return by calling the backfill_hero function.`,
       });
     }
 
-    // Update skills with new fields (match by name)
+    // Update existing skills and insert missing ones
     const extractedSkills = extracted.skills || [];
     let skillsUpdated = 0;
+    let skillsInserted = 0;
     if (extractedSkills.length > 0) {
-      // Get existing skills for this hero
       const { data: existingSkills } = await adminClient
         .from("skills")
         .select("id, name")
         .eq("hero_id", hero_id);
 
-      if (existingSkills) {
-        for (const es of existingSkills) {
-          const match = extractedSkills.find((s: any) =>
-            s.name.toLowerCase().trim() === es.name.toLowerCase().trim()
-          );
-          if (match) {
-            const { error } = await adminClient
-              .from("skills")
-              .update({
-                scaling_formula: match.scaling_formula || null,
-                effects: match.effects || [],
-                awakening_level: match.awakening_level || null,
-                awakening_bonus: match.awakening_bonus || null,
-                ultimate_cost: match.ultimate_cost || null,
-                initial_divinity: match.initial_divinity || null,
-              })
-              .eq("id", es.id);
-            if (!error) skillsUpdated++;
-          }
+      const existingNames = (existingSkills || []).map((s: any) => s.name.toLowerCase().trim());
+
+      // Update existing skills
+      for (const es of (existingSkills || [])) {
+        const match = extractedSkills.find((s: any) =>
+          s.name.toLowerCase().trim() === es.name.toLowerCase().trim()
+        );
+        if (match) {
+          const { error } = await adminClient
+            .from("skills")
+            .update({
+              scaling_formula: match.scaling_formula || null,
+              effects: match.effects || [],
+              awakening_level: match.awakening_level || null,
+              awakening_bonus: match.awakening_bonus || null,
+              ultimate_cost: match.ultimate_cost || null,
+              initial_divinity: match.initial_divinity || null,
+            })
+            .eq("id", es.id);
+          if (!error) skillsUpdated++;
         }
+      }
+
+      // Insert skills that don't exist yet
+      const newSkills = extractedSkills.filter((s: any) =>
+        !existingNames.includes(s.name.toLowerCase().trim())
+      );
+      if (newSkills.length > 0) {
+        const heroSlug = slug as string;
+        const rows = newSkills.map((s: any) => {
+          const skillSlug = s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+          return {
+            hero_id,
+            name: s.name,
+            slug: `${heroSlug}-${skillSlug}`,
+            skill_type: s.skill_type || "Active",
+            description: "",
+            scaling_formula: s.scaling_formula || null,
+            effects: s.effects || [],
+            awakening_level: s.awakening_level || null,
+            awakening_bonus: s.awakening_bonus || null,
+            ultimate_cost: s.ultimate_cost || null,
+            initial_divinity: s.initial_divinity || null,
+          };
+        });
+        const { error } = await adminClient.from("skills").insert(rows);
+        if (!error) skillsInserted = rows.length;
+        else console.error("Skill insert error:", error.message);
       }
     }
 
@@ -219,6 +247,7 @@ Return by calling the backfill_hero function.`,
       success: true,
       slug,
       skillsUpdated,
+      skillsInserted,
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
