@@ -63,6 +63,22 @@ export default function HeroesList() {
     },
   });
 
+  // Load reference tables for filter options
+  const { data: factionsList = [] } = useQuery({
+    queryKey: ["ref_factions_list"],
+    queryFn: async () => {
+      const { data } = await supabase.from("factions").select("id, name").order("name");
+      return (data || []) as { id: string; name: string }[];
+    },
+  });
+  const { data: archetypesList = [] } = useQuery({
+    queryKey: ["ref_archetypes_list"],
+    queryFn: async () => {
+      const { data } = await (supabase as any).from("archetypes").select("id, name").order("name");
+      return (data || []) as { id: string; name: string }[];
+    },
+  });
+
   const realms = useMemo(() => {
     if (!heroes) return [];
     const unique = [...new Set(heroes.map((h) => h.element))].filter(Boolean).sort();
