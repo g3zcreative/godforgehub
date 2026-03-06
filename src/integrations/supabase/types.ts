@@ -14,6 +14,117 @@ export type Database = {
   }
   public: {
     Tables: {
+      affinities: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon_url: string | null
+          id: string
+          name: string
+          slug: string
+          strength_id: string | null
+          updated_at: string
+          weakness_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon_url?: string | null
+          id?: string
+          name: string
+          slug: string
+          strength_id?: string | null
+          updated_at?: string
+          weakness_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon_url?: string | null
+          id?: string
+          name?: string
+          slug?: string
+          strength_id?: string | null
+          updated_at?: string
+          weakness_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "affinities_strength_id_fkey"
+            columns: ["strength_id"]
+            isOneToOne: false
+            referencedRelation: "affinities"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "affinities_weakness_id_fkey"
+            columns: ["weakness_id"]
+            isOneToOne: false
+            referencedRelation: "affinities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      allegiances: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon_url: string | null
+          id: string
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon_url?: string | null
+          id?: string
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon_url?: string | null
+          id?: string
+          name?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      archetypes: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon_url: string | null
+          id: string
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon_url?: string | null
+          id?: string
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon_url?: string | null
+          id?: string
+          name?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       authors: {
         Row: {
           avatar_url: string | null
@@ -193,7 +304,10 @@ export type Database = {
       heroes: {
         Row: {
           affinity: string | null
+          affinity_id: string | null
           allegiance: string | null
+          allegiance_id: string | null
+          archetype_id: string | null
           ascension_bonuses: Json | null
           awakening_bonuses: Json | null
           class_type: string
@@ -201,6 +315,7 @@ export type Database = {
           description: string | null
           divinity_generator: string | null
           element: string
+          faction_id: string | null
           id: string
           image_url: string | null
           leader_bonus: Json | null
@@ -214,7 +329,10 @@ export type Database = {
         }
         Insert: {
           affinity?: string | null
+          affinity_id?: string | null
           allegiance?: string | null
+          allegiance_id?: string | null
+          archetype_id?: string | null
           ascension_bonuses?: Json | null
           awakening_bonuses?: Json | null
           class_type: string
@@ -222,6 +340,7 @@ export type Database = {
           description?: string | null
           divinity_generator?: string | null
           element: string
+          faction_id?: string | null
           id?: string
           image_url?: string | null
           leader_bonus?: Json | null
@@ -235,7 +354,10 @@ export type Database = {
         }
         Update: {
           affinity?: string | null
+          affinity_id?: string | null
           allegiance?: string | null
+          allegiance_id?: string | null
+          archetype_id?: string | null
           ascension_bonuses?: Json | null
           awakening_bonuses?: Json | null
           class_type?: string
@@ -243,6 +365,7 @@ export type Database = {
           description?: string | null
           divinity_generator?: string | null
           element?: string
+          faction_id?: string | null
           id?: string
           image_url?: string | null
           leader_bonus?: Json | null
@@ -254,7 +377,36 @@ export type Database = {
           subtitle?: string | null
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "heroes_affinity_id_fkey"
+            columns: ["affinity_id"]
+            isOneToOne: false
+            referencedRelation: "affinities"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "heroes_allegiance_id_fkey"
+            columns: ["allegiance_id"]
+            isOneToOne: false
+            referencedRelation: "allegiances"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "heroes_archetype_id_fkey"
+            columns: ["archetype_id"]
+            isOneToOne: false
+            referencedRelation: "archetypes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "heroes_faction_id_fkey"
+            columns: ["faction_id"]
+            isOneToOne: false
+            referencedRelation: "factions"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       imprints: {
         Row: {
