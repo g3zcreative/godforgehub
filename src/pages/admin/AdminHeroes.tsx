@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { AdminCrudPage, ColumnConfig } from "./AdminCrudPage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -6,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Link, Plus, Loader2, Upload, CheckCircle2, XCircle, SkipForward, AlertTriangle } from "lucide-react";
+import { Link, Plus, Loader2, Upload, CheckCircle2, XCircle, SkipForward, AlertTriangle, RefreshCw } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -30,7 +31,7 @@ const columns: ColumnConfig[] = [
   { key: "awakening_bonuses", label: "Awakening Bonuses (JSON)", type: "json" },
 ];
 
-type CreationMode = "picker" | "url" | "bulk" | null;
+type CreationMode = "picker" | "url" | "bulk" | "backfill" | null;
 
 type BulkEntry = {
   heroName: string;
@@ -245,6 +246,21 @@ export default function AdminHeroes() {
   const [bulkRunning, setBulkRunning] = useState(false);
   const bulkAbort = useRef(false);
 
+  // Backfill state
+  const [backfillEntries, setBackfillEntries] = useState<BulkEntry[]>([]);
+  const [backfillRunning, setBackfillRunning] = useState(false);
+  const backfillAbort = useRef(false);
+
+  // Fetch all heroes for backfill
+  const { data: allHeroes = [] } = useQuery({
+    queryKey: ["heroes_for_backfill"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("heroes").select("id, name, slug").order("name");
+      if (error) throw error;
+      return data;
+    },
+  });
+
   const openPicker = () => setMode("picker");
 
   const importFromUrl = async () => {
@@ -378,6 +394,62 @@ export default function AdminHeroes() {
   const errorCount = bulkEntries.filter(e => e.status === "error").length;
   const progressPct = bulkEntries.length > 0 ? (completedCount / bulkEntries.length) * 100 : 0;
 
+  // Backfill logic
+  const startBackfill = useCallback(async () => {
+    const entries: BulkEntry[] = allHeroes.map(h => ({
+      heroName: h.name,
+      url: h.slug,
+      status: "pending" as const,
+    }));
+    setBackfillEntries(entries);
+    setBackfillRunning(true);
+    backfillAbort.current = false;
+
+    const DELAY_MS = 2000;
+
+    for (let i = 0; i < entries.length; i++) {
+      if (backfillAbort.current) break;
+
+      setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "importing" } : e));
+
+      try {
+        const hero = allHeroes[i];
+        const { data, error } = await supabase.functions.invoke("backfill-hero", {
+          body: { hero_id: hero.id, slug: hero.slug },
+        });
+
+        if (error) throw error;
+
+        if (data?.error) {
+          if (data.retryable) {
+            setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "pending", message: "Rate limited, retrying..." } : e));
+            await new Promise(r => setTimeout(r, 10000));
+            i--;
+            continue;
+          }
+          setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "error", message: data.error } : e));
+        } else if (data?.success) {
+          setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "success", message: `${data.skillsUpdated} skills updated` } : e));
+        }
+      } catch (err: any) {
+        setBackfillEntries(prev => prev.map((e, idx) => idx === i ? { ...e, status: "error", message: err.message } : e));
+      }
+
+      if (i < entries.length - 1 && !backfillAbort.current) {
+        await new Promise(r => setTimeout(r, DELAY_MS));
+      }
+    }
+
+    setBackfillRunning(false);
+  }, [allHeroes]);
+
+  const stopBackfill = () => { backfillAbort.current = true; };
+
+  const bfCompletedCount = backfillEntries.filter(e => e.status === "success" || e.status === "error").length;
+  const bfSuccessCount = backfillEntries.filter(e => e.status === "success").length;
+  const bfErrorCount = backfillEntries.filter(e => e.status === "error").length;
+  const bfProgressPct = backfillEntries.length > 0 ? (bfCompletedCount / backfillEntries.length) * 100 : 0;
+
   return (
     <>
       <AdminCrudPage
@@ -396,7 +468,7 @@ export default function AdminHeroes() {
           <DialogHeader>
             <DialogTitle>Add Hero</DialogTitle>
           </DialogHeader>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => setMode("url")}>
               <Link className="h-6 w-6" />
               <span className="text-sm">Import from URL</span>
@@ -404,6 +476,10 @@ export default function AdminHeroes() {
             <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setMode("bulk"); }}>
               <Upload className="h-6 w-6" />
               <span className="text-sm">Bulk Import All</span>
+            </Button>
+            <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setMode("backfill"); }}>
+              <RefreshCw className="h-6 w-6" />
+              <span className="text-sm">Backfill All</span>
             </Button>
             <Button variant="outline" className="h-24 flex-col gap-2" onClick={() => { setDefaults(undefined); setTriggerCreate(t => t + 1); setMode(null); }}>
               <Plus className="h-6 w-6" />
@@ -492,6 +568,69 @@ export default function AdminHeroes() {
               {bulkRunning ? (
                 <Button variant="destructive" onClick={stopBulkImport} className="w-full">
                   Stop Import
+                </Button>
+              ) : (
+                <Button variant="outline" onClick={() => setMode(null)} className="w-full">
+                  Close
+                </Button>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Backfill Dialog */}
+      <Dialog open={mode === "backfill"} onOpenChange={open => { if (!open && !backfillRunning) setMode(null); }}>
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Backfill All Heroes</DialogTitle>
+          </DialogHeader>
+
+          {backfillEntries.length === 0 ? (
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                This will re-scrape all <strong>{allHeroes.length} heroes</strong> from godforge.gg and update them with new fields:
+                leader bonus, divinity generator, ascension bonuses, awakening bonuses, and skill details.
+              </p>
+              <div className="flex items-center gap-2 p-3 rounded-md bg-yellow-500/10 border border-yellow-500/20">
+                <AlertTriangle className="h-4 w-4 text-yellow-500 shrink-0" />
+                <p className="text-xs text-yellow-500">This will use Firecrawl credits and may take 30-60+ minutes.</p>
+              </div>
+              <Button className="w-full" onClick={startBackfill} disabled={allHeroes.length === 0}>
+                <RefreshCw className="mr-2 h-4 w-4" /> Start Backfill ({allHeroes.length} heroes)
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-4 flex-1 min-h-0 flex flex-col">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span>{bfCompletedCount} / {backfillEntries.length} processed</span>
+                  <span className="flex gap-3">
+                    <span className="text-green-500">✓ {bfSuccessCount}</span>
+                    <span className="text-red-500">✗ {bfErrorCount}</span>
+                  </span>
+                </div>
+                <Progress value={bfProgressPct} className="h-2" />
+              </div>
+
+              <ScrollArea className="flex-1 min-h-0 max-h-[50vh] border rounded-md">
+                <div className="p-2 space-y-1">
+                  {backfillEntries.map((entry, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs py-1 px-2 rounded hover:bg-muted/50">
+                      {entry.status === "pending" && <div className="h-4 w-4 rounded-full border border-muted-foreground/30" />}
+                      {entry.status === "importing" && <Loader2 className="h-4 w-4 animate-spin text-primary" />}
+                      {entry.status === "success" && <CheckCircle2 className="h-4 w-4 text-green-500" />}
+                      {entry.status === "error" && <XCircle className="h-4 w-4 text-red-500" />}
+                      <span className="font-mono">{entry.heroName}</span>
+                      {entry.message && <span className="text-muted-foreground ml-auto truncate max-w-[200px]">{entry.message}</span>}
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+
+              {backfillRunning ? (
+                <Button variant="destructive" onClick={stopBackfill} className="w-full">
+                  Stop Backfill
                 </Button>
               ) : (
                 <Button variant="outline" onClick={() => setMode(null)} className="w-full">
