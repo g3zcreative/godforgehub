@@ -288,7 +288,44 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
       }
     }
 
-    // 6. Update existing skills (by name match), insert new ones
+    // 6. Fetch all mechanics for markup conversion
+    const { data: allMechanics } = await adminClient
+      .from("mechanics").select("name, slug").order("name");
+    
+    // Build a map of mechanic name (lowercase) -> slug, sorted longest-first to avoid partial matches
+    const mechanicEntries = (allMechanics || [])
+      .sort((a: any, b: any) => b.name.length - a.name.length);
+    
+    /** Replace mechanic names in text with [mechanic:slug] markup */
+    function applyMechanicMarkup(text: string): string {
+      if (!text) return text;
+      let result = text;
+      for (const m of mechanicEntries) {
+        // Match the mechanic name with optional roman numeral suffix, 
+        // but skip if already inside [mechanic:...] markup
+        const escaped = m.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        // Match [Name], plain Name, or Name I/II/III/IV/V variants
+        // Skip if preceded by "mechanic:" (already marked up)
+        const pattern = new RegExp(
+          `(?<!\\[mechanic:[^\\]]*)\\[?${escaped}(\\s+[IVX]+)?\\]?(?![^\\[]*\\])`,
+          "gi"
+        );
+        result = result.replace(pattern, (match) => {
+          const trimmed = match.replace(/^\[|\]$/g, "").trim();
+          // Check for roman numeral suffix
+          const romanMatch = trimmed.match(/^(.+?)\s+([IVX]+)$/i);
+          if (romanMatch) {
+            const baseSlug = m.slug;
+            const numeral = romanMatch[2].toLowerCase();
+            return `[mechanic:${baseSlug}-${numeral}]`;
+          }
+          return `[mechanic:${m.slug}]`;
+        });
+      }
+      return result;
+    }
+
+    // 7. Update existing skills (by name match), insert new ones
     const extractedSkills = extracted.skills || [];
     let skillsUpdated = 0;
     let skillsInserted = 0;
@@ -305,9 +342,12 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
         const key = es.name.toLowerCase().trim();
         const existingId = existingMap.get(key);
 
+        // Apply mechanic markup to description
+        const processedDescription = applyMechanicMarkup(es.description || "");
+
         const skillData: Record<string, unknown> = {
           skill_type: es.skill_type || "Active",
-          description: es.description || null,
+          description: processedDescription || null,
           scaling_formula: es.scaling_formula || null,
           effects: es.effects || [],
           awakening_level: es.awakening_level || null,
