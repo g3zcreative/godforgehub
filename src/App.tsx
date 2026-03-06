@@ -52,6 +52,7 @@ import AdminArchetypes from "./pages/admin/AdminArchetypes";
 import AdminAffinities from "./pages/admin/AdminAffinities";
 import AdminAllegiances from "./pages/admin/AdminAllegiances";
 import AdminAuthors from "./pages/admin/AdminAuthors";
+import AdminRecommendations from "./pages/admin/AdminRecommendations";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
 
@@ -148,6 +149,7 @@ function AppRoutes() {
         <Route index element={<Navigate to="/admin/analytics" replace />} />
         <Route path="analytics" element={<AdminAnalytics />} />
         <Route path="heroes" element={<AdminHeroes />} />
+        <Route path="recommendations" element={<AdminRecommendations />} />
         <Route path="items" element={<AdminItems />} />
         <Route path="skills" element={<AdminSkills />} />
         <Route path="mechanics" element={<AdminMechanics />} />
