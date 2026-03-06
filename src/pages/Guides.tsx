@@ -47,10 +47,10 @@ const GuidesPage = () => {
             {guides.map((guide) => (
               <Link key={guide.id} to={`/guides/${guide.slug}`} className="group break-inside-avoid block">
                 <Card className="hover:border-primary/30 transition-colors overflow-hidden flex flex-col">
-                  {guide.image_url && (
+                  {(guide.image_url || (guide as any).video_url) && (
                     <div className="aspect-video w-full overflow-hidden">
                       <img
-                        src={guide.image_url}
+                        src={guide.image_url || `https://img.youtube.com/vi/${extractYouTubeId((guide as any).video_url)}/hqdefault.jpg`}
                         alt={guide.title}
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
