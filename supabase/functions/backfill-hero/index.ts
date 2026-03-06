@@ -6,6 +6,20 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+/**
+ * Format hero name for skill icon URLs.
+ * Rules: Remove spaces + PascalCase, remove apostrophes, remove hyphens (don't capitalize second part).
+ * e.g. "Sun Wukong" -> "SunWukong", "Chang'e" -> "Change", "Shub-Lugal" -> "Shublugal"
+ */
+function formatHeroNameForIcon(name: string): string {
+  return name
+    .replace(/'/g, "")
+    .replace(/-(\w)/g, (_m, c) => c.toLowerCase())
+    .split(/\s+/)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join("");
+}
+
 /** Strip the hero sidebar listing from the markdown to avoid confusing the AI */
 function stripSidebar(md: string): string {
   // The actual hero data starts at the second "## Epic/Legendary/Rare/etc" heading
@@ -366,6 +380,12 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
         // Apply mechanic markup to description
         const processedDescription = applyMechanicMarkup(es.description || "");
 
+        // Generate skill icon URL programmatically
+        const iconName = formatHeroNameForIcon(heroName);
+        const skillIconUrl = es.skill_type
+          ? `https://godforge.gg/heroes/assets/ability/ICON_${iconName}_${es.skill_type}.webp`
+          : null;
+
         const skillData: Record<string, unknown> = {
           skill_type: es.skill_type || "Active",
           description: processedDescription || null,
@@ -375,6 +395,7 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
           awakening_bonus: es.awakening_bonus || null,
           ultimate_cost: es.ultimate_cost || null,
           initial_divinity: es.initial_divinity || null,
+          image_url: skillIconUrl,
         };
 
         if (existingId) {
