@@ -230,11 +230,22 @@ Return your response by calling the create_hero function.`,
     console.log("Extracted hero:", hero.name);
 
     // Fix image_url: never use placehold.co, construct from name
+    const nameForUrl = (hero.name || "").replace(/\s+/g, "_");
     if (!hero.image_url || hero.image_url.includes("placehold.co")) {
-      const nameForUrl = (hero.name || "").replace(/\s+/g, "_");
       hero.image_url = nameForUrl
         ? `https://godforge.gg/heroes/assets/hero/CO_Character_${nameForUrl}_main.webp`
         : null;
+    }
+
+    // Construct skill icon URLs from the known pattern
+    const skillTypeOrder: Record<string, string> = { Basic: "01", Core: "02", Ultimate: "03", Passive: "04" };
+    if (hero.skills && nameForUrl) {
+      for (const skill of hero.skills) {
+        const idx = skillTypeOrder[skill.skill_type] || null;
+        if (idx) {
+          skill.image_url = `https://godforge.gg/heroes/assets/skill/CO_Skill_${nameForUrl}_${idx}.webp`;
+        }
+      }
     }
 
     return new Response(JSON.stringify(hero), {

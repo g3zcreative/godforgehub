@@ -245,6 +245,18 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
     const extracted = JSON.parse(toolCall.function.arguments);
     console.log("Extracted backfill data for:", slug, "skills:", extracted.skills?.length || 0);
 
+    // Construct skill icon URLs from the known pattern
+    const nameForUrl = (heroName || "").replace(/\s+/g, "_");
+    const skillTypeOrder: Record<string, string> = { Basic: "01", Core: "02", Ultimate: "03", Passive: "04" };
+    if (extracted.skills && nameForUrl) {
+      for (const skill of extracted.skills) {
+        const idx = skillTypeOrder[skill.skill_type] || null;
+        if (idx) {
+          skill.image_url = `https://godforge.gg/heroes/assets/skill/CO_Skill_${nameForUrl}_${idx}.webp`;
+        }
+      }
+    }
+
     // 4. Save version snapshot BEFORE updating
     const { data: lastVersion } = await adminClient
       .from("hero_versions")
