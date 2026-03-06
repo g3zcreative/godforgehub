@@ -85,14 +85,18 @@ Map the data to these fields:
 - rarity: Numeric value — legendary=5, epic=4, rare=3, uncommon=2, common=1
 - element: The hero's primary element/realm (e.g. "Tian", "Duat", "Olympus", "Asgard"). This is the realm/pantheon the hero belongs to (shown between archetype and allegiance).
 - class_type: The hero's archetype (e.g. "Slayer", "Defender", "Sentinel", "Invoker", "Warden")
-- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane")
+- affinity: The hero's affinity type (e.g. "Cunning", "Might", "Eternal", "Arcane", "Wisdom")
 - allegiance: The hero's allegiance (e.g. "Chaos", "Order", "Balance")
 - realm: The hero's realm/pantheon (e.g. "Tian", "Duat", "Olympus"). Same as the faction shown on the page.
 - description: The hero summary text (1-2 sentences)
 - lore: The Story/Lore text from the page if present
 - image_url: The hero's main portrait image URL (the large hero image, not small icons)
-- stats: JSON object with base stats at Rank 1 / Level 1. Include keys: hp, atk, def, spd, init, crit_rate, crit_dmg, res, acc. Use numeric values.
-- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description (the full ability text), image_url (skill icon URL if found)
+- stats: JSON object with base stats. Include keys: hp, atk, def, spd, init, crit_rate, crit_dmg, res, acc. Use numeric values.
+- leader_bonus: JSON object with "text" (e.g. "20% DEF") and "scope" (e.g. "All Battles")
+- divinity_generator: The divinity generation text (e.g. "Gain [50] Divinity when hit by an enemy. Gain [500] divinity when this hero gains a [Disable]")
+- ascension_bonuses: Array of objects with "tier" (number 1-6) and "bonus" (text describing the bonus)
+- awakening_bonuses: Array of objects with "tier" (number 1-5) and "bonus" (text describing the bonus)
+- skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description (the full ability text), image_url (skill icon URL if found), scaling_formula (e.g. "175%DEF + 80%ATK"), effects (array of buff/debuff names like ["ATK Down II", "Intercept"]), awakening_level (integer tier that unlocks bonus, if any), awakening_bonus (text of the awakening bonus, if any), ultimate_cost (integer, for Ultimate skills only), initial_divinity (integer, for Ultimate skills only)
 
 Return your response by calling the create_hero function.`,
           },
@@ -133,6 +137,36 @@ Return your response by calling the create_hero function.`,
                       acc: { type: "number" },
                     },
                   },
+                  leader_bonus: {
+                    type: "object",
+                    properties: {
+                      text: { type: "string" },
+                      scope: { type: "string" },
+                    },
+                  },
+                  divinity_generator: { type: "string" },
+                  ascension_bonuses: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                      properties: {
+                        tier: { type: "number" },
+                        bonus: { type: "string" },
+                      },
+                      required: ["tier", "bonus"],
+                    },
+                  },
+                  awakening_bonuses: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                      properties: {
+                        tier: { type: "number" },
+                        bonus: { type: "string" },
+                      },
+                      required: ["tier", "bonus"],
+                    },
+                  },
                   skills: {
                     type: "array",
                     items: {
@@ -142,6 +176,12 @@ Return your response by calling the create_hero function.`,
                         skill_type: { type: "string" },
                         description: { type: "string" },
                         image_url: { type: "string" },
+                        scaling_formula: { type: "string" },
+                        effects: { type: "array", items: { type: "string" } },
+                        awakening_level: { type: "number" },
+                        awakening_bonus: { type: "string" },
+                        ultimate_cost: { type: "number" },
+                        initial_divinity: { type: "number" },
                       },
                       required: ["name", "skill_type", "description"],
                     },

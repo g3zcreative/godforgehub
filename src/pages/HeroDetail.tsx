@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Shield, Zap, Star } from "lucide-react";
 import { SEO } from "@/components/SEO";
 
 const elementColors: Record<string, string> = {
@@ -19,6 +19,12 @@ const elementColors: Record<string, string> = {
   Duat: "bg-yellow-500/10 text-yellow-300 border-yellow-500/20",
   Olympus: "bg-sky-500/10 text-sky-400 border-sky-500/20",
   Asgard: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+  Avalon: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+  Ekur: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+  Izumo: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+  Omeyocan: "bg-lime-500/10 text-lime-400 border-lime-500/20",
+  Vyraj: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+  Aaru: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
 };
 
 const allegianceColors: Record<string, string> = {
@@ -75,7 +81,9 @@ export default function HeroDetail() {
     enabled: !!hero?.id,
   });
 
-  const stats = hero?.stats as Record<string, number> | null;
+  const leaderBonus = hero?.leader_bonus as { text?: string; scope?: string } | null;
+  const ascensionBonuses = (hero?.ascension_bonuses || []) as { tier: number; bonus: string }[];
+  const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
 
   return (
     <Layout>
@@ -114,8 +122,8 @@ export default function HeroDetail() {
 
             {/* Two-column layout: left skills, right info + image */}
             <div className="relative flex flex-col md:flex-row gap-6 mb-8 overflow-visible">
-              {/* Left: skills */}
-              <div className="flex-1 min-w-0">
+              {/* Left: skills + progression */}
+              <div className="flex-1 min-w-0 space-y-8">
                 {/* Skills */}
                 {skills && skills.length > 0 && (
                   <div>
@@ -130,11 +138,99 @@ export default function HeroDetail() {
                             <div className="flex items-baseline gap-2 mb-1 flex-wrap">
                               <h3 className="font-display font-bold uppercase tracking-wide">{skill.name}</h3>
                               <span className="text-xs text-muted-foreground font-semibold uppercase">({skill.skill_type})</span>
+                              {skill.scaling_formula && (
+                                <span className="text-xs text-primary font-mono">{skill.scaling_formula}</span>
+                              )}
                             </div>
                             {skill.description && <p className="text-sm text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
+                            <div className="flex flex-wrap gap-2 mt-2">
+                              {(skill.effects as string[] || []).map((effect, i) => (
+                                <Badge key={i} variant="secondary" className="text-xs">{effect}</Badge>
+                              ))}
+                              {skill.ultimate_cost && (
+                                <Badge variant="outline" className="text-xs">Cost: {skill.ultimate_cost}</Badge>
+                              )}
+                              {skill.initial_divinity && (
+                                <Badge variant="outline" className="text-xs">Init Div: {skill.initial_divinity}</Badge>
+                              )}
+                            </div>
+                            {skill.awakening_bonus && (
+                              <p className="text-xs text-primary/80 mt-1">
+                                <Star className="inline h-3 w-3 mr-1" />
+                                Awakening {skill.awakening_level ? `${skill.awakening_level}` : ""}: {skill.awakening_bonus}
+                              </p>
+                            )}
                           </div>
                         </Link>
                       ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Divinity Generator */}
+                {hero.divinity_generator && (
+                  <div>
+                    <h2 className="text-xl font-display font-semibold mb-3 flex items-center gap-2">
+                      <Zap className="h-5 w-5 text-primary" /> Divinity Generator
+                    </h2>
+                    <div className="rounded-lg border border-border p-4 bg-card">
+                      <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.divinity_generator) }} />
+                    </div>
+                  </div>
+                )}
+
+                {/* Leader Bonus */}
+                {leaderBonus?.text && (
+                  <div>
+                    <h2 className="text-xl font-display font-semibold mb-3 flex items-center gap-2">
+                      <Shield className="h-5 w-5 text-primary" /> Leader Bonus
+                    </h2>
+                    <div className="rounded-lg border border-border p-4 bg-card">
+                      <p className="text-sm font-semibold">{leaderBonus.text}</p>
+                      {leaderBonus.scope && <p className="text-xs text-muted-foreground mt-1">{leaderBonus.scope}</p>}
+                    </div>
+                  </div>
+                )}
+
+                {/* Ascension Bonuses */}
+                {ascensionBonuses.length > 0 && (
+                  <div>
+                    <h2 className="text-xl font-display font-semibold mb-3">Ascension Bonuses</h2>
+                    <div className="space-y-2">
+                      {ascensionBonuses.map((ab) => (
+                        <div key={ab.tier} className="flex items-center gap-3 rounded-lg border border-border p-3 bg-card">
+                          <span className="text-primary font-bold text-sm w-6">{ab.tier}★</span>
+                          <p className="text-sm text-muted-foreground">{ab.bonus}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Awakening Bonuses */}
+                {awakeningBonuses.length > 0 && (
+                  <div>
+                    <h2 className="text-xl font-display font-semibold mb-3">Awakening Bonuses</h2>
+                    <div className="space-y-2">
+                      {awakeningBonuses.map((ab) => {
+                        const romanNumerals: Record<number, string> = { 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V" };
+                        return (
+                          <div key={ab.tier} className="flex items-center gap-3 rounded-lg border border-border p-3 bg-card">
+                            <span className="text-primary font-bold text-sm w-6">{romanNumerals[ab.tier] || ab.tier}</span>
+                            <p className="text-sm text-muted-foreground">{ab.bonus}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Lore */}
+                {hero.lore && (
+                  <div>
+                    <h2 className="text-xl font-display font-semibold mb-3">Lore</h2>
+                    <div className="rounded-lg border border-border p-4 bg-card">
+                      <p className="text-sm text-muted-foreground leading-relaxed italic">{hero.lore}</p>
                     </div>
                   </div>
                 )}
