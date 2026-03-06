@@ -257,6 +257,47 @@ export type Database = {
         }
         Relationships: []
       }
+      hero_recommendations: {
+        Row: {
+          created_at: string
+          hero_id: string
+          id: string
+          note: string | null
+          recommendation_type: string
+          sort_order: number
+          target_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          hero_id: string
+          id?: string
+          note?: string | null
+          recommendation_type: string
+          sort_order?: number
+          target_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          hero_id?: string
+          id?: string
+          note?: string | null
+          recommendation_type?: string
+          sort_order?: number
+          target_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hero_recommendations_hero_id_fkey"
+            columns: ["hero_id"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       hero_versions: {
         Row: {
           change_source: string
