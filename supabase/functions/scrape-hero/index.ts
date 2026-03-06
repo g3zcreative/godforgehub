@@ -97,6 +97,7 @@ Map the data to these fields:
 - ascension_bonuses: Array of objects with "tier" (number 1-6) and "bonus" (text describing the bonus)
 - awakening_bonuses: Array of objects with "tier" (number 1-5) and "bonus" (text describing the bonus)
 - skills: Array of skill objects with: name, skill_type (Basic/Core/Ultimate/Passive), description (the full ability text), image_url (skill icon URL if found), scaling_formula (e.g. "175%DEF + 80%ATK"), effects (array of buff/debuff names like ["ATK Down II", "Intercept"]), awakening_level (integer tier that unlocks bonus, if any), awakening_bonus (text of the awakening bonus, if any), ultimate_cost (integer, for Ultimate skills only), initial_divinity (integer, for Ultimate skills only)
+- imprint_passive: The Imprint Bonus text shown on the hero page
 
 Return your response by calling the create_hero function.`,
           },
@@ -186,6 +187,7 @@ Return your response by calling the create_hero function.`,
                       required: ["name", "skill_type", "description"],
                     },
                   },
+                  imprint_passive: { type: "string", description: "The Imprint Bonus text" },
                 },
                 required: ["name", "slug", "rarity", "element", "class_type", "description"],
                 additionalProperties: false,
