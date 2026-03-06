@@ -239,6 +239,7 @@ export default function AdminHeroes() {
   const [defaults, setDefaults] = useState<Record<string, unknown> | undefined>();
   const [triggerCreate, setTriggerCreate] = useState(0);
   const pendingSkills = useRef<any[]>([]);
+  const pendingImprint = useRef<string | null>(null);
   const { toast } = useToast();
 
   // Bulk import state
@@ -280,6 +281,7 @@ export default function AdminHeroes() {
 
       const skills = data.skills || [];
       pendingSkills.current = skills;
+      pendingImprint.current = data.imprint_passive || null;
 
       setDefaults({
         name: data.name || "",
@@ -342,6 +344,25 @@ export default function AdminHeroes() {
       toast({ title: "Skills insert failed", description: error.message, variant: "destructive" });
     } else {
       toast({ title: `${skillRows.length} skills added`, description: "Skills linked to the new hero." });
+    }
+
+    // Create imprint if extracted
+    const imprintPassive = pendingImprint.current;
+    pendingImprint.current = null;
+    if (imprintPassive) {
+      const { error: imprintError } = await (supabase.from("imprints") as any).insert({
+        name: row.name as string,
+        slug: heroSlug,
+        rarity: (row.rarity as number) || 3,
+        source_hero_id: heroId,
+        passive: imprintPassive,
+        image_url: (row.image_url as string) || null,
+      });
+      if (imprintError) {
+        toast({ title: "Imprint insert failed", description: imprintError.message, variant: "destructive" });
+      } else {
+        toast({ title: "Imprint created", description: `Imprint linked to ${row.name}.` });
+      }
     }
   };
 
