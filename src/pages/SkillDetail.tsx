@@ -56,8 +56,8 @@ export default function SkillDetail() {
         ) : (
           <>
             <SEO
-              title={skill.name}
-              description={skill.description || `${skill.name} - ${skill.skill_type} skill`}
+              rawTitle={`${skill.name} Godforge | GodforgeHub.com`}
+              description={`${skill.description || `${skill.name} - ${skill.skill_type} skill`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
               url={`/database/skills/${skill.slug}`}
             />
 
