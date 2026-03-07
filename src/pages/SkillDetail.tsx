@@ -36,6 +36,10 @@ export default function SkillDetail() {
   const hero = skill?.heroes as any;
   const scaling = skill?.scaling as Record<string, any> | null;
 
+  const skillSeoVars = skill ? { name: skill.name, skill_type: skill.skill_type, description: skill.description } : {};
+  const seoTitle = interpolateTemplate(tpl?.title_template, skillSeoVars);
+  const seoDesc = interpolateTemplate(tpl?.description_template, skillSeoVars);
+
   return (
     <Layout>
       <div className="container max-w-3xl py-8">

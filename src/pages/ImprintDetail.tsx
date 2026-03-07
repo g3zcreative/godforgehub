@@ -45,6 +45,10 @@ export default function ImprintDetail() {
     enabled: !!imprint?.id,
   });
 
+  const imprintSeoVars = imprint ? { name: imprint.name, rarity: imprint.rarity, rarity_label: rarityLabel(imprint.rarity), passive: imprint.passive } : {};
+  const seoTitle = interpolateTemplate(tpl?.title_template, imprintSeoVars);
+  const seoDesc = interpolateTemplate(tpl?.description_template, imprintSeoVars);
+
   return (
     <Layout>
       <div className="container max-w-4xl py-8">

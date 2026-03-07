@@ -133,6 +133,10 @@ export default function HeroDetail() {
   const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
   const hasRecommendations = (recommendations?.weapons?.length || 0) + (recommendations?.imprints?.length || 0) + (recommendations?.synergies?.length || 0) > 0;
 
+  const heroSeoVars = hero ? { name: hero.name, element: hero.element, class_type: hero.class_type, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle } : {};
+  const seoTitle = interpolateTemplate(tpl?.title_template, heroSeoVars);
+  const seoDesc = interpolateTemplate(tpl?.description_template, heroSeoVars);
+
   return (
     <Layout>
       <div className="container max-w-7xl py-8">
@@ -144,7 +148,7 @@ export default function HeroDetail() {
           <div className="space-y-4">
             <Skeleton className="h-10 w-1/2" />
             <Skeleton className="h-6 w-1/3" />
-            <Skeleton className="h-48 w-full" />
+            <Skeleton className="h-64 w-full" />
           </div>
         ) : !hero ? (
           <div className="text-center py-16">
@@ -153,12 +157,6 @@ export default function HeroDetail() {
           </div>
         ) : (
           <>
-            {(() => {
-              const vars = { name: hero.name, element: hero.element, class_type: hero.class_type, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle };
-              const seoTitle = interpolateTemplate(tpl?.title_template, vars);
-              const seoDesc = interpolateTemplate(tpl?.description_template, vars);
-              return null;
-            })()}
             <SEO
               rawTitle={seoTitle || `${hero.name} Godforge | GodforgeHub.com`}
               description={seoDesc || `${hero.name} Hero: ${hero.description || `${rarityLabel(hero.rarity)} ${hero.class_type} hero in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}

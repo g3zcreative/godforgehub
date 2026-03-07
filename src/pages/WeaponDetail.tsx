@@ -49,6 +49,10 @@ export default function WeaponDetail() {
 
   const factionName = (weapon?.factions as any)?.name;
 
+  const weaponSeoVars = weapon ? { name: weapon.name, rarity: weapon.rarity, passive: weapon.passive, faction: factionName, rank: weapon.rank } : {};
+  const seoTitle = interpolateTemplate(tpl?.title_template, weaponSeoVars);
+  const seoDesc = interpolateTemplate(tpl?.description_template, weaponSeoVars);
+
   return (
     <Layout>
       <div className="container max-w-4xl py-8">
