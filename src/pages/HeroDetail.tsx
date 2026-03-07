@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Shield, Zap, Star, History, Swords, Stamp, Users } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useState } from "react";
@@ -152,8 +153,8 @@ export default function HeroDetail() {
         ) : (
           <>
             <SEO
-              rawTitle={`${hero.name} Godforge | GodforgeHub.com`}
-              description={`${hero.name} Hero: ${hero.description || `${rarityLabel(hero.rarity)} ${hero.class_type} hero in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
+              rawTitle={seoTitle || `${hero.name} Godforge | GodforgeHub.com`}
+              description={seoDesc || `${hero.name} Hero: ${hero.description || `${rarityLabel(hero.rarity)} ${hero.class_type} hero in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
               image={hero.image_url || undefined}
               url={`/database/heroes/${hero.slug}`}
               jsonLd={{

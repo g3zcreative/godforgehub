@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { preprocessMarkup } from "@/lib/guide-markup";
 
 const rarityColors: Record<string, string> = {
@@ -68,7 +69,7 @@ export default function WeaponDetail() {
           </div>
         ) : (
           <>
-            <SEO rawTitle={`${weapon.name} Godforge | GodforgeHub.com`} description={`${weapon.name} Weapon: ${weapon.passive || `${weapon.rarity} Weapon in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={weapon.image_url || undefined} url={`/database/weapons/${weapon.slug}`} />
+            <SEO rawTitle={seoTitle || `${weapon.name} Godforge | GodforgeHub.com`} description={seoDesc || `${weapon.name} Weapon: ${weapon.passive || `${weapon.rarity} Weapon in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={weapon.image_url || undefined} url={`/database/weapons/${weapon.slug}`} />
 
             <div className="flex flex-col md:flex-row gap-6 mb-8">
               <div className="flex-1 min-w-0">
