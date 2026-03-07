@@ -17,7 +17,7 @@ export function usePageSeo(routePath: string | undefined) {
         .eq("route_path", routePath)
         .maybeSingle();
       if (error) throw error;
-      return data as PageSeo | null;
+      return data as unknown as PageSeo | null;
     },
     enabled: !!routePath,
     staleTime: 5 * 60_000,
