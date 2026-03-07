@@ -25,11 +25,14 @@ Deno.serve(async () => {
   ];
 
   // Fetch dynamic slugs in parallel
-  const [newsRes, heroesRes, itemsRes, guidesRes] = await Promise.all([
+  const [newsRes, heroesRes, itemsRes, guidesRes, skillsRes, imprintsRes, weaponsRes] = await Promise.all([
     supabase.from("news_articles").select("slug, updated_at").eq("published", true),
     supabase.from("heroes").select("slug, updated_at"),
     supabase.from("items").select("slug, updated_at"),
     supabase.from("guides").select("slug, updated_at").eq("published", true),
+    supabase.from("skills").select("slug, updated_at"),
+    supabase.from("imprints").select("slug, updated_at"),
+    supabase.from("weapons").select("slug, updated_at"),
   ]);
 
   const urls: string[] = [];
@@ -57,6 +60,21 @@ Deno.serve(async () => {
   // Guides
   for (const g of guidesRes.data || []) {
     urls.push(`<url><loc>${SITE_URL}/guides/${g.slug}</loc><lastmod>${g.updated_at}</lastmod><priority>0.7</priority></url>`);
+  }
+
+  // Skills
+  for (const s of skillsRes.data || []) {
+    urls.push(`<url><loc>${SITE_URL}/database/skills/${s.slug}</loc><lastmod>${s.updated_at}</lastmod><priority>0.6</priority></url>`);
+  }
+
+  // Imprints
+  for (const imp of imprintsRes.data || []) {
+    urls.push(`<url><loc>${SITE_URL}/database/imprints/${imp.slug}</loc><lastmod>${imp.updated_at}</lastmod><priority>0.6</priority></url>`);
+  }
+
+  // Weapons
+  for (const w of weaponsRes.data || []) {
+    urls.push(`<url><loc>${SITE_URL}/database/weapons/${w.slug}</loc><lastmod>${w.updated_at}</lastmod><priority>0.6</priority></url>`);
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
