@@ -62,6 +62,21 @@ Deno.serve(async () => {
     urls.push(`<url><loc>${SITE_URL}/guides/${g.slug}</loc><lastmod>${g.updated_at}</lastmod><priority>0.7</priority></url>`);
   }
 
+  // Skills
+  for (const s of skillsRes.data || []) {
+    urls.push(`<url><loc>${SITE_URL}/database/skills/${s.slug}</loc><lastmod>${s.updated_at}</lastmod><priority>0.6</priority></url>`);
+  }
+
+  // Imprints
+  for (const imp of imprintsRes.data || []) {
+    urls.push(`<url><loc>${SITE_URL}/database/imprints/${imp.slug}</loc><lastmod>${imp.updated_at}</lastmod><priority>0.6</priority></url>`);
+  }
+
+  // Weapons
+  for (const w of weaponsRes.data || []) {
+    urls.push(`<url><loc>${SITE_URL}/database/weapons/${w.slug}</loc><lastmod>${w.updated_at}</lastmod><priority>0.6</priority></url>`);
+  }
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.join("\n")}
