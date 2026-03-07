@@ -50,7 +50,12 @@ const OfficialPostsPage = () => {
                     <span className="text-primary">{sourceIcons[post.source] || <MessageSquare className="h-4 w-4" />}</span>
                     <span className="text-sm font-semibold">{post.author}</span>
                     {post.author_role && <span className="text-xs text-muted-foreground">· {post.author_role}</span>}
+                    {post.is_edited && <span className="text-xs text-muted-foreground italic">(edited)</span>}
                   </div>
+                  {post.title && <h2 className="text-base font-semibold mb-1">{post.title}</h2>}
+                  {post.image_url && (
+                    <img src={post.image_url} alt={post.title || "Post image"} className="rounded-md mb-3 max-h-64 object-cover w-full" />
+                  )}
                   <div className="text-sm text-foreground mb-3" data-color-mode="dark">
                     <MDEditor.Markdown source={post.content} className="!bg-transparent !text-foreground" />
                   </div>

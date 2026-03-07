@@ -657,10 +657,13 @@ export type Database = {
           created_at: string
           discord_message_id: string | null
           id: string
+          image_url: string | null
+          is_edited: boolean
           message_url: string | null
           posted_at: string
           region: string | null
           source: string
+          title: string | null
         }
         Insert: {
           author: string
@@ -670,10 +673,13 @@ export type Database = {
           created_at?: string
           discord_message_id?: string | null
           id?: string
+          image_url?: string | null
+          is_edited?: boolean
           message_url?: string | null
           posted_at?: string
           region?: string | null
           source?: string
+          title?: string | null
         }
         Update: {
           author?: string
@@ -683,10 +689,13 @@ export type Database = {
           created_at?: string
           discord_message_id?: string | null
           id?: string
+          image_url?: string | null
+          is_edited?: boolean
           message_url?: string | null
           posted_at?: string
           region?: string | null
           source?: string
+          title?: string | null
         }
         Relationships: []
       }
