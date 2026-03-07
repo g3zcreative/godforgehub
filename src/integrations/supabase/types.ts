@@ -699,33 +699,6 @@ export type Database = {
         }
         Relationships: []
       }
-      page_seo: {
-        Row: {
-          created_at: string
-          id: string
-          meta_description: string | null
-          meta_title: string | null
-          route_path: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          meta_description?: string | null
-          meta_title?: string | null
-          route_path: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          meta_description?: string | null
-          meta_title?: string | null
-          route_path?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       page_views: {
         Row: {
           created_at: string
@@ -803,6 +776,33 @@ export type Database = {
           status?: string
           target_date?: string | null
           title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      seo_templates: {
+        Row: {
+          created_at: string
+          description_template: string | null
+          entity_type: string
+          id: string
+          title_template: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description_template?: string | null
+          entity_type: string
+          id?: string
+          title_template?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description_template?: string | null
+          entity_type?: string
+          id?: string
+          title_template?: string | null
           updated_at?: string
         }
         Relationships: []

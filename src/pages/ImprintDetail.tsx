@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { preprocessMarkup } from "@/lib/guide-markup";
 
 const rarityStars = (r: number) => "★".repeat(r) + "☆".repeat(Math.max(0, 5 - r));
@@ -14,6 +15,7 @@ const rarityLabelColor = (r: number) => ({ 5: "text-orange-400", 4: "text-purple
 
 export default function ImprintDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { data: tpl } = useSeoTemplate("imprint");
 
   const { data: imprint, isLoading } = useQuery({
     queryKey: ["imprint", slug],
@@ -44,6 +46,10 @@ export default function ImprintDetail() {
     enabled: !!imprint?.id,
   });
 
+  const imprintSeoVars = imprint ? { name: imprint.name, rarity: imprint.rarity, rarity_label: rarityLabel(imprint.rarity), passive: imprint.passive } : {};
+  const seoTitle = interpolateTemplate(tpl?.title_template, imprintSeoVars);
+  const seoDesc = interpolateTemplate(tpl?.description_template, imprintSeoVars);
+
   return (
     <Layout>
       <div className="container max-w-4xl py-8">
@@ -64,7 +70,7 @@ export default function ImprintDetail() {
           </div>
         ) : (
           <>
-            <SEO rawTitle={`${imprint.name} Godforge | GodforgeHub.com`} description={`${imprint.name} Imprint: ${imprint.passive || `${rarityLabel(imprint.rarity)} Imprint in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={imprint.image_url || undefined} url={`/database/imprints/${imprint.slug}`} />
+            <SEO rawTitle={seoTitle || `${imprint.name} Godforge | GodforgeHub.com`} description={seoDesc || `${imprint.name} Imprint: ${imprint.passive || `${rarityLabel(imprint.rarity)} Imprint in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={imprint.image_url || undefined} url={`/database/imprints/${imprint.slug}`} />
 
             <div className="flex flex-col md:flex-row gap-6 mb-8">
               <div className="flex-1 min-w-0">

@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { useSeoSettings } from "@/hooks/useSeoSettings";
-import { usePageSeo } from "@/hooks/usePageSeo";
 
 interface SEOProps {
   title?: string;
@@ -14,12 +13,9 @@ interface SEOProps {
 
 export function SEO({ title, rawTitle, description, image, url, type = "website", jsonLd }: SEOProps) {
   const seo = useSeoSettings();
-  const { data: pageOverride } = usePageSeo(url);
   const siteName = seo.siteTitle;
-
-  const baseTitle = rawTitle || (title ? `${title} | ${siteName}` : siteName);
-  const fullTitle = pageOverride?.meta_title || baseTitle;
-  const desc = pageOverride?.meta_description || description || seo.metaDescription;
+  const fullTitle = rawTitle || (title ? `${title} | ${siteName}` : siteName);
+  const desc = description || seo.metaDescription;
   const ogImage = image || seo.ogImage || undefined;
   const siteUrl = "https://godforgehub.lovable.app";
   const canonical = url ? `${siteUrl}${url}` : undefined;

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
+import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Zap } from "lucide-react";
@@ -17,6 +18,7 @@ const skillTypeColors: Record<string, string> = {
 
 export default function SkillDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { data: tpl } = useSeoTemplate("skill");
 
   const { data: skill, isLoading } = useQuery({
     queryKey: ["skill", slug],
@@ -34,6 +36,10 @@ export default function SkillDetail() {
 
   const hero = skill?.heroes as any;
   const scaling = skill?.scaling as Record<string, any> | null;
+
+  const skillSeoVars = skill ? { name: skill.name, skill_type: skill.skill_type, description: skill.description } : {};
+  const seoTitle = interpolateTemplate(tpl?.title_template, skillSeoVars);
+  const seoDesc = interpolateTemplate(tpl?.description_template, skillSeoVars);
 
   return (
     <Layout>
@@ -56,8 +62,8 @@ export default function SkillDetail() {
         ) : (
           <>
             <SEO
-              rawTitle={`${skill.name} Godforge | GodforgeHub.com`}
-              description={`${skill.name} Skill: ${skill.description || `${skill.skill_type} skill in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
+              rawTitle={seoTitle || `${skill.name} Godforge | GodforgeHub.com`}
+              description={seoDesc || `${skill.name} Skill: ${skill.description || `${skill.skill_type} skill in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
               url={`/database/skills/${skill.slug}`}
             />
 

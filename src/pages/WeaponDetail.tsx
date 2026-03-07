@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { preprocessMarkup } from "@/lib/guide-markup";
 
 const rarityColors: Record<string, string> = {
@@ -16,6 +17,7 @@ const rarityColors: Record<string, string> = {
 
 export default function WeaponDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { data: tpl } = useSeoTemplate("weapon");
 
   const { data: weapon, isLoading } = useQuery({
     queryKey: ["weapon", slug],
@@ -48,6 +50,10 @@ export default function WeaponDetail() {
 
   const factionName = (weapon?.factions as any)?.name;
 
+  const weaponSeoVars = weapon ? { name: weapon.name, rarity: weapon.rarity, passive: weapon.passive, faction: factionName, rank: weapon.rank } : {};
+  const seoTitle = interpolateTemplate(tpl?.title_template, weaponSeoVars);
+  const seoDesc = interpolateTemplate(tpl?.description_template, weaponSeoVars);
+
   return (
     <Layout>
       <div className="container max-w-4xl py-8">
@@ -68,7 +74,7 @@ export default function WeaponDetail() {
           </div>
         ) : (
           <>
-            <SEO rawTitle={`${weapon.name} Godforge | GodforgeHub.com`} description={`${weapon.name} Weapon: ${weapon.passive || `${weapon.rarity} Weapon in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={weapon.image_url || undefined} url={`/database/weapons/${weapon.slug}`} />
+            <SEO rawTitle={seoTitle || `${weapon.name} Godforge | GodforgeHub.com`} description={seoDesc || `${weapon.name} Weapon: ${weapon.passive || `${weapon.rarity} Weapon in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={weapon.image_url || undefined} url={`/database/weapons/${weapon.slug}`} />
 
             <div className="flex flex-col md:flex-row gap-6 mb-8">
               <div className="flex-1 min-w-0">
