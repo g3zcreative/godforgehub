@@ -68,7 +68,7 @@ export default function WeaponDetail() {
           </div>
         ) : (
           <>
-            <SEO rawTitle={`${weapon.name} Godforge | GodforgeHub.com`} description={`${weapon.passive || `${weapon.name} - ${weapon.rarity} Weapon`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={weapon.image_url || undefined} url={`/database/weapons/${weapon.slug}`} />
+            <SEO rawTitle={`${weapon.name} Godforge | GodforgeHub.com`} description={`${weapon.name} Weapon: ${weapon.passive || `${weapon.rarity} Weapon in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={weapon.image_url || undefined} url={`/database/weapons/${weapon.slug}`} />
 
             <div className="flex flex-col md:flex-row gap-6 mb-8">
               <div className="flex-1 min-w-0">
