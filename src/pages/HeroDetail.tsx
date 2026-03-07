@@ -152,7 +152,7 @@ export default function HeroDetail() {
         ) : (
           <>
             <SEO
-              title={hero.name}
+              rawTitle={`${hero.name} Godforge | GodforgeHub.com`}
               description={hero.description || `${hero.name} - ${rarityLabel(hero.rarity)} ${hero.class_type}`}
               image={hero.image_url || undefined}
               url={`/database/heroes/${hero.slug}`}

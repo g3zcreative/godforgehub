@@ -3,6 +3,7 @@ import { useSeoSettings } from "@/hooks/useSeoSettings";
 
 interface SEOProps {
   title?: string;
+  rawTitle?: string;
   description?: string;
   image?: string;
   url?: string;
@@ -10,10 +11,10 @@ interface SEOProps {
   jsonLd?: Record<string, unknown>;
 }
 
-export function SEO({ title, description, image, url, type = "website", jsonLd }: SEOProps) {
+export function SEO({ title, rawTitle, description, image, url, type = "website", jsonLd }: SEOProps) {
   const seo = useSeoSettings();
   const siteName = seo.siteTitle;
-  const fullTitle = title ? `${title} | ${siteName}` : siteName;
+  const fullTitle = rawTitle || (title ? `${title} | ${siteName}` : siteName);
   const desc = description || seo.metaDescription;
   const ogImage = image || seo.ogImage || undefined;
   const siteUrl = "https://godforgehub.lovable.app";
