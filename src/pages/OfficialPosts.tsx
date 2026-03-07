@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { format } from "date-fns";
 import { SEO } from "@/components/SEO";
-import MDEditor from "@uiw/react-md-editor";
+import ReactMarkdown from "react-markdown";
 
 const sourceIcons: Record<string, React.ReactNode> = {
   Discord: <MessageSquare className="h-4 w-4" />,
@@ -56,8 +56,8 @@ const OfficialPostsPage = () => {
                   {post.image_url && (
                     <img src={post.image_url} alt={post.title || "Post image"} className="rounded-md mb-3 max-h-64 object-cover w-full" />
                   )}
-                  <div className="text-sm text-foreground mb-3" data-color-mode="dark">
-                    <MDEditor.Markdown source={post.content} className="!bg-transparent !text-foreground" />
+                  <div className="text-sm text-foreground mb-3 prose prose-invert prose-sm max-w-none">
+                    <ReactMarkdown>{post.content}</ReactMarkdown>
                   </div>
                   <div className="flex items-center gap-2 flex-wrap">
                     <Badge variant="outline" className="text-xs">{post.source}</Badge>
