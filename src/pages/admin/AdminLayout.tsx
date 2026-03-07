@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sidebar";
 import { NavLink } from "@/components/NavLink";
 import {
-  Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
+  Shield, Swords, Sparkles, FlaskConical, Newspaper,
   BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle, BarChart3,
   Users, Settings, FileQuestion, ExternalLink, Stamp, Crosshair, Flag, PenTool, Star,
 } from "lucide-react";
@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 const contentItems = [
   { title: "Heroes", url: "/admin/heroes", icon: Shield },
   { title: "Recommendations", url: "/admin/recommendations", icon: Star },
-  { title: "Items", url: "/admin/items", icon: Package },
+  
   { title: "Skills", url: "/admin/skills", icon: Sparkles },
   { title: "Mechanics", url: "/admin/mechanics", icon: FlaskConical },
   { title: "Imprints", url: "/admin/imprints", icon: Stamp },
