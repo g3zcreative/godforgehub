@@ -699,6 +699,33 @@ export type Database = {
         }
         Relationships: []
       }
+      page_seo: {
+        Row: {
+          created_at: string
+          id: string
+          meta_description: string | null
+          meta_title: string | null
+          route_path: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          route_path: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          route_path?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           created_at: string

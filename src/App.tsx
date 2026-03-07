@@ -53,6 +53,7 @@ import AdminAffinities from "./pages/admin/AdminAffinities";
 import AdminAllegiances from "./pages/admin/AdminAllegiances";
 import AdminAuthors from "./pages/admin/AdminAuthors";
 import AdminRecommendations from "./pages/admin/AdminRecommendations";
+import AdminSeo from "./pages/admin/AdminSeo";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
 
@@ -166,6 +167,7 @@ function AppRoutes() {
         <Route path="changelog" element={<AdminChangelog />} />
         <Route path="roadmap" element={<AdminRoadmap />} />
         <Route path="feedback" element={<AdminFeedback />} />
+        <Route path="seo" element={<AdminSeo />} />
         <Route path="platform" element={<AdminPlatform />} />
         <Route path="settings" element={<AdminSettings />} />
         <Route path="docs" element={<AdminDocs />} />

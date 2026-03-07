@@ -11,7 +11,7 @@ import { NavLink } from "@/components/NavLink";
 import {
   Shield, Swords, Sparkles, FlaskConical, Newspaper,
   BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle, BarChart3,
-  Users, Settings, FileQuestion, ExternalLink, Stamp, Crosshair, Flag, PenTool, Star,
+  Users, Settings, FileQuestion, ExternalLink, Stamp, Crosshair, Flag, PenTool, Star, Search,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -42,6 +42,7 @@ const insightItems = [
 ];
 
 const platformItems = [
+  { title: "SEO", url: "/admin/seo", icon: Search },
   { title: "Users", url: "/admin/platform", icon: Users },
   { title: "Settings", url: "/admin/settings", icon: Settings },
   { title: "Docs", url: "/admin/docs", icon: FileQuestion },
