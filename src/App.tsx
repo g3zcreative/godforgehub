@@ -30,7 +30,7 @@ import AuthPage from "./pages/Auth";
 import DiscordRedirect from "./pages/Discord";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHeroes from "./pages/admin/AdminHeroes";
-import AdminItems from "./pages/admin/AdminItems";
+
 import AdminSkills from "./pages/admin/AdminSkills";
 import AdminMechanics from "./pages/admin/AdminMechanics";
 import MechanicsList from "./pages/MechanicsList";
@@ -150,7 +150,7 @@ function AppRoutes() {
         <Route path="analytics" element={<AdminAnalytics />} />
         <Route path="heroes" element={<AdminHeroes />} />
         <Route path="recommendations" element={<AdminRecommendations />} />
-        <Route path="items" element={<AdminItems />} />
+        
         <Route path="skills" element={<AdminSkills />} />
         <Route path="mechanics" element={<AdminMechanics />} />
         <Route path="imprints" element={<AdminImprints />} />

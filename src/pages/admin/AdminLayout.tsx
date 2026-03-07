@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 const contentItems = [
   { title: "Heroes", url: "/admin/heroes", icon: Shield },
   { title: "Recommendations", url: "/admin/recommendations", icon: Star },
-  { title: "Items", url: "/admin/items", icon: Package },
+  
   { title: "Skills", url: "/admin/skills", icon: Sparkles },
   { title: "Mechanics", url: "/admin/mechanics", icon: FlaskConical },
   { title: "Imprints", url: "/admin/imprints", icon: Stamp },
