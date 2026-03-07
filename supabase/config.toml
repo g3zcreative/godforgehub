@@ -1,1 +1,4 @@
 project_id = "yawfmtkrnewpdxjdypmc"
+
+[functions.ingest-official-post]
+verify_jwt = false
