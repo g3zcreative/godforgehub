@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sidebar";
 import { NavLink } from "@/components/NavLink";
 import {
-  Shield, Swords, Package, Sparkles, FlaskConical, Newspaper,
+  Shield, Swords, Sparkles, FlaskConical, Newspaper,
   BookOpen, MessageSquare, FileText, Map, LogOut, MessageCircle, BarChart3,
   Users, Settings, FileQuestion, ExternalLink, Stamp, Crosshair, Flag, PenTool, Star,
 } from "lucide-react";
