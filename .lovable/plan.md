@@ -1,76 +1,45 @@
 
 
-## Custom Markup for Embedding Game Entity Links in Guides
+## Plan: Configurable Per-Page Meta Titles and Descriptions
 
-### Concept
+### Approach
 
-Inspired by Wowhead's markup (e.g. `[item=1234]`, `[spell=5678]`), we define a simple bracket syntax that authors write inside standard Markdown content. Before rendering, a preprocessing step transforms these tokens into interactive links with tooltips and icons.
+Create a new `page_seo` database table that stores custom meta titles and descriptions keyed by route path. A new admin page lets you manage these overrides. The `SEO` component checks for a matching override before falling back to the hardcoded values.
 
-### Proposed Syntax
+### Database
 
-```text
-[hero:sun-wukong]       → links to /database/heroes/sun-wukong
-[skill:phoenix-strike]  → links to /database/skills/phoenix-strike  (future)
-[item:iron-sword]       → links to /database/items/iron-sword       (future)
-[material:fire-crystal] → links to /database/materials/fire-crystal (future)
-```
+New table `page_seo`:
+| Column | Type | Notes |
+|---|---|---|
+| id | uuid | PK, auto |
+| route_path | text | Unique, e.g. `/database/heroes/artemis` or `/news` |
+| meta_title | text | Nullable -- if null, use component default |
+| meta_description | text | Nullable -- if null, use component default |
+| created_at | timestamptz | Default now() |
+| updated_at | timestamptz | Default now() |
 
-Authors write these directly in the Markdown editor. The slug after the colon matches the entity's `slug` column in the database.
+RLS: public SELECT, admin INSERT/UPDATE/DELETE.
 
-### Architecture
+### SEO Component Changes
 
-```text
-Guide Markdown content (stored in DB)
-  │
-  ▼
-preprocessMarkup(content)          ← new utility function
-  │  Regex: /\[(hero|skill|item|material):([a-z0-9-]+)\]/g
-  │  Replaces with custom HTML: <a> with data attributes + inline icon
-  ▼
-MDEditor.Markdown renders HTML     ← already used in GuideDetail
-  │  needs: rehypeRaw plugin to allow inline HTML
-  ▼
-CSS styles for .entity-link         ← styled inline links with hover effects
-```
+- Add a `url` (or `routePath`) based lookup: query `page_seo` for the current route.
+- If a row exists with a non-null `meta_title`, use it instead of the component-provided title.
+- Same for `meta_description`.
+- Use React Query with aggressive caching (`staleTime: 5min`) to avoid extra requests.
 
-### Implementation Steps
+### Admin UI
 
-1. **Create `src/lib/guide-markup.ts`** — a pure function `preprocessMarkup(content: string): string`
-   - Uses regex to find all `[type:slug]` tokens
-   - Replaces each with an HTML anchor: `<a href="/database/{type}s/{slug}" class="entity-link entity-link--{type}" data-entity="{type}" data-slug="{slug}">{Display Name}</a>`
-   - For display name: capitalize and de-slugify (e.g. `sun-wukong` → `Sun Wukong`). A future enhancement could batch-fetch names from the DB, but starting with slug-derived names keeps it simple and synchronous.
+New page at `/admin/seo` (add to admin routes):
+- Table listing all `page_seo` rows (route, title, description).
+- Add/edit/delete rows.
+- Could reuse the existing `AdminCrudPage` pattern.
 
-2. **Update `GuideDetail.tsx`** — pipe `guide.content` through `preprocessMarkup()` before passing to `MDEditor.Markdown`
-   - Add `rehype-raw` plugin so the injected HTML anchors render correctly (MDEditor.Markdown supports `rehypePlugins` prop)
+### How It Works
 
-3. **Add entity link styles to `src/index.css`** — color-coded underlined links
-   - `.entity-link` base: inline, underline, font-medium
-   - `.entity-link--hero`: primary/gold color
-   - `.entity-link--skill`: purple color
-   - `.entity-link--item`: green color
-   - `.entity-link--material`: amber color
-   - Hover: brighten + show a subtle glow
+1. You visit `/database/imprints/artemis`.
+2. The `SEO` component checks `page_seo` for route `/database/imprints/artemis`.
+3. If a custom title/description exists, it overrides the component defaults.
+4. If no row exists, the current hardcoded logic applies as a fallback.
 
-4. **Wire up client-side navigation** — since these are standard `<a href>` tags pointing to internal routes, React Router will handle them naturally with full page transitions. For SPA navigation, we can optionally add a click interceptor component wrapping the markdown output, or simply rely on `<a>` tags (works fine for content pages).
-
-5. **Add a "Markup Reference" section to AdminDocs** — document the syntax for content authors so they know how to use `[hero:slug]` etc.
-
-### Technical Details
-
-- **Regex pattern**: `/\[(hero|skill|item|material):([a-z0-9-]+)\]/g`
-- **rehype-raw**: New dependency needed (`rehype-raw`) to allow raw HTML in Markdown output. MDEditor.Markdown accepts `rehypePlugins={[rehypeRaw]}`.
-- **No DB queries needed at render time** — display names are derived from slugs. This keeps the preprocessor synchronous and avoids waterfall fetches.
-- **Editor preview**: The admin MDEditor could also use the same preprocessor for live preview, but that's a follow-up enhancement.
-
-### Example
-
-Author writes:
-```markdown
-To beat this boss, equip [hero:sun-wukong] with [item:iron-sword] and use [skill:phoenix-strike] for maximum damage.
-```
-
-Renders as:
-> To beat this boss, equip **Sun Wukong** with **Iron Sword** and use **Phoenix Strike** for maximum damage.
-
-Where each name is a colored, clickable link to the respective database page.
+This gives you full control over any page's metadata without code changes, while keeping the existing dynamic defaults as a safety net.
 
