@@ -54,7 +54,7 @@ export default function MechanicDetail() {
 
   return (
     <Layout>
-      <SEO title={`${mechanic.name} — Mechanic`} description={mechanic.description || `Details about ${mechanic.name}`} />
+      <SEO rawTitle={`${mechanic.name} Godforge | GodforgeHub.com`} description={`${mechanic.description || `Details about ${mechanic.name}`} Read more on GodforgeHub.com, your hub for all things Godforge.`} />
       <div className="container py-8 max-w-2xl">
         <Link to="/database/mechanics" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
           <ArrowLeft className="h-4 w-4" /> Back to Mechanics

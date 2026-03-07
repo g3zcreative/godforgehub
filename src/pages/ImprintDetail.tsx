@@ -64,7 +64,7 @@ export default function ImprintDetail() {
           </div>
         ) : (
           <>
-            <SEO title={imprint.name} description={imprint.passive || `${imprint.name} - ${rarityLabel(imprint.rarity)} Imprint`} image={imprint.image_url || undefined} url={`/database/imprints/${imprint.slug}`} />
+            <SEO rawTitle={`${imprint.name} Godforge | GodforgeHub.com`} description={`${imprint.passive || `${imprint.name} - ${rarityLabel(imprint.rarity)} Imprint`} Read more on GodforgeHub.com, your hub for all things Godforge.`} image={imprint.image_url || undefined} url={`/database/imprints/${imprint.slug}`} />
 
             <div className="flex flex-col md:flex-row gap-6 mb-8">
               <div className="flex-1 min-w-0">
