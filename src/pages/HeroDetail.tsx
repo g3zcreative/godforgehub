@@ -33,6 +33,7 @@ const rarityLabelColor = (r: number) => {
 
 export default function HeroDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { data: tpl } = useSeoTemplate("hero");
 
   const { data: hero, isLoading } = useQuery({
     queryKey: ["hero", slug],
@@ -152,6 +153,12 @@ export default function HeroDetail() {
           </div>
         ) : (
           <>
+            {(() => {
+              const vars = { name: hero.name, element: hero.element, class_type: hero.class_type, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle };
+              const seoTitle = interpolateTemplate(tpl?.title_template, vars);
+              const seoDesc = interpolateTemplate(tpl?.description_template, vars);
+              return null;
+            })()}
             <SEO
               rawTitle={seoTitle || `${hero.name} Godforge | GodforgeHub.com`}
               description={seoDesc || `${hero.name} Hero: ${hero.description || `${rarityLabel(hero.rarity)} ${hero.class_type} hero in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
