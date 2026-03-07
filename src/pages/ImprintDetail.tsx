@@ -15,6 +15,7 @@ const rarityLabelColor = (r: number) => ({ 5: "text-orange-400", 4: "text-purple
 
 export default function ImprintDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { data: tpl } = useSeoTemplate("imprint");
 
   const { data: imprint, isLoading } = useQuery({
     queryKey: ["imprint", slug],

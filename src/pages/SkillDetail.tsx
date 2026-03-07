@@ -18,6 +18,7 @@ const skillTypeColors: Record<string, string> = {
 
 export default function SkillDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { data: tpl } = useSeoTemplate("skill");
 
   const { data: skill, isLoading } = useQuery({
     queryKey: ["skill", slug],

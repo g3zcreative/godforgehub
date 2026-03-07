@@ -17,6 +17,7 @@ const rarityColors: Record<string, string> = {
 
 export default function WeaponDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { data: tpl } = useSeoTemplate("weapon");
 
   const { data: weapon, isLoading } = useQuery({
     queryKey: ["weapon", slug],
