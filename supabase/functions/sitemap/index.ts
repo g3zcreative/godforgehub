@@ -25,11 +25,14 @@ Deno.serve(async () => {
   ];
 
   // Fetch dynamic slugs in parallel
-  const [newsRes, heroesRes, itemsRes, guidesRes] = await Promise.all([
+  const [newsRes, heroesRes, itemsRes, guidesRes, skillsRes, imprintsRes, weaponsRes] = await Promise.all([
     supabase.from("news_articles").select("slug, updated_at").eq("published", true),
     supabase.from("heroes").select("slug, updated_at"),
     supabase.from("items").select("slug, updated_at"),
     supabase.from("guides").select("slug, updated_at").eq("published", true),
+    supabase.from("skills").select("slug, updated_at"),
+    supabase.from("imprints").select("slug, updated_at"),
+    supabase.from("weapons").select("slug, updated_at"),
   ]);
 
   const urls: string[] = [];
