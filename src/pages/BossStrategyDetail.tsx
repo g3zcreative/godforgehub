@@ -20,15 +20,15 @@ export default function BossStrategyDetail() {
   const { data, isLoading } = useQuery({
     queryKey: ["boss_strategy_detail", bossSlug, strategySlug],
     queryFn: async () => {
-      const { data: boss } = await supabase
-        .from("bosses" as any)
+      const { data: boss } = await (supabase as any)
+        .from("bosses")
         .select("id, name, slug, image_url")
         .eq("slug", bossSlug!)
         .maybeSingle();
       if (!boss) return null;
 
-      const { data: strat, error } = await supabase
-        .from("boss_strategies" as any)
+      const { data: strat, error } = await (supabase as any)
+        .from("boss_strategies")
         .select("*")
         .eq("boss_id", boss.id)
         .eq("slug", strategySlug!)
@@ -37,13 +37,13 @@ export default function BossStrategyDetail() {
       if (error) throw error;
       if (!strat) return null;
 
-      const { data: teamHeroes } = await supabase
-        .from("boss_strategy_heroes" as any)
+      const { data: teamHeroes } = await (supabase as any)
+        .from("boss_strategy_heroes")
         .select("*, heroes:hero_id(id, name, slug, image_url, rarity)")
         .eq("strategy_id", strat.id)
         .order("sort_order");
 
-      return { ...strat, boss, teamHeroes: teamHeroes || [] };
+      return { ...strat, boss, teamHeroes: teamHeroes || [] } as any;
     },
     enabled: !!bossSlug && !!strategySlug,
   });
@@ -78,7 +78,6 @@ export default function BossStrategyDetail() {
               Strategy for <Link to={`/bosses/${data.boss.slug}`} className="text-primary hover:underline">{data.boss.name}</Link>
             </p>
 
-            {/* Team Comp */}
             {data.teamHeroes.length > 0 && (
               <div className="mb-8">
                 <h2 className="text-lg font-display font-semibold mb-3 flex items-center gap-2">
@@ -104,7 +103,6 @@ export default function BossStrategyDetail() {
               </div>
             )}
 
-            {/* Video */}
             {data.video_url && extractYouTubeId(data.video_url) && (
               <div className="mb-8">
                 <div className="aspect-video rounded-lg overflow-hidden border border-border">
@@ -118,7 +116,6 @@ export default function BossStrategyDetail() {
               </div>
             )}
 
-            {/* Content */}
             {data.content && (
               <div className="prose prose-invert max-w-none" data-color-mode="dark">
                 <MDEditor.Markdown source={preprocessMarkup(data.content)} rehypePlugins={[rehypeRaw]} />

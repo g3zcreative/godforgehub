@@ -5,8 +5,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardContent } from "@/components/ui/card";
-import { Skull, Zap, Package, Swords, Shield, Users, ExternalLink } from "lucide-react";
+import { Skull, Zap, Package, Swords, Users, ExternalLink } from "lucide-react";
 import { preprocessMarkup } from "@/lib/guide-markup";
 import MDEditor from "@uiw/react-md-editor";
 import rehypeRaw from "rehype-raw";
@@ -36,22 +35,21 @@ export default function BossDetail() {
   const { data: boss, isLoading } = useQuery({
     queryKey: ["boss", slug],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("bosses" as any)
+      const { data, error } = await (supabase as any)
+        .from("bosses")
         .select("*")
         .eq("slug", slug!)
         .maybeSingle();
       if (error) throw error;
       if (!data) return null;
 
-      // Resolve affinity
       let affinity: any = null;
       if (data.affinity_id) {
         const { data: aff } = await supabase.from("affinities").select("name, icon_url").eq("id", data.affinity_id).maybeSingle();
         affinity = aff;
       }
 
-      return { ...data, affinity };
+      return { ...data, affinity } as any;
     },
     enabled: !!slug,
   });
@@ -59,8 +57,8 @@ export default function BossDetail() {
   const { data: skills = [] } = useQuery({
     queryKey: ["boss_skills", boss?.id],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("boss_skills" as any)
+      const { data, error } = await (supabase as any)
+        .from("boss_skills")
         .select("*")
         .eq("boss_id", boss!.id)
         .order("sort_order");
@@ -73,15 +71,14 @@ export default function BossDetail() {
   const { data: drops = [] } = useQuery({
     queryKey: ["boss_drops", boss?.id],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("boss_drops" as any)
+      const { data, error } = await (supabase as any)
+        .from("boss_drops")
         .select("*")
         .eq("boss_id", boss!.id)
         .order("sort_order");
       if (error) throw error;
       if (!data || data.length === 0) return [];
 
-      // Resolve item/weapon/armor names
       const resolved = await Promise.all(data.map(async (drop: any) => {
         let item = null, weapon = null, armor_set = null;
         if (drop.item_id) {
@@ -106,8 +103,8 @@ export default function BossDetail() {
   const { data: strategies = [] } = useQuery({
     queryKey: ["boss_strategies", boss?.id],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("boss_strategies" as any)
+      const { data, error } = await (supabase as any)
+        .from("boss_strategies")
         .select("*")
         .eq("boss_id", boss!.id)
         .eq("published", true)
@@ -118,14 +115,13 @@ export default function BossDetail() {
     enabled: !!boss?.id,
   });
 
-  // Fetch team comp heroes for strategies
   const { data: strategyHeroes = [] } = useQuery({
     queryKey: ["boss_strategy_heroes", strategies.map((s: any) => s.id).join(",")],
     queryFn: async () => {
       const ids = strategies.map((s: any) => s.id);
       if (ids.length === 0) return [];
-      const { data, error } = await supabase
-        .from("boss_strategy_heroes" as any)
+      const { data, error } = await (supabase as any)
+        .from("boss_strategy_heroes")
         .select("*, heroes:hero_id(id, name, slug, image_url, rarity)")
         .in("strategy_id", ids)
         .order("sort_order");
@@ -292,7 +288,6 @@ export default function BossDetail() {
                           </Link>
                         </div>
 
-                        {/* Team Comp */}
                         {teamHeroes.length > 0 && (
                           <div className="mb-4">
                             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2 flex items-center gap-1">
@@ -315,7 +310,6 @@ export default function BossDetail() {
                           </div>
                         )}
 
-                        {/* Video */}
                         {strat.video_url && extractYouTubeId(strat.video_url) && (
                           <div className="mb-4 aspect-video rounded-lg overflow-hidden border border-border">
                             <iframe
@@ -327,7 +321,6 @@ export default function BossDetail() {
                           </div>
                         )}
 
-                        {/* Content preview */}
                         {strat.content && (
                           <div className="prose prose-invert prose-sm max-w-none line-clamp-6" data-color-mode="dark">
                             <MDEditor.Markdown source={preprocessMarkup(strat.content)} rehypePlugins={[rehypeRaw]} />
