@@ -362,7 +362,7 @@ export default function HeroDetail() {
                           {skill.scaling_formula && (
                             <span className="text-xs text-primary font-mono block mb-1">{skill.scaling_formula}</span>
                           )}
-                          {skill.description && <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
+                          {skill.description && <p className="text-xs text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
                           <div className="flex flex-wrap gap-1 mt-2">
                             {(skill.effects as string[] || []).map((effect: string, i: number) => (
                               <Badge key={i} variant="secondary" className="text-xs">{effect}</Badge>
