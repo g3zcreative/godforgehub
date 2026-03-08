@@ -143,21 +143,28 @@ export function EntityTooltipProvider({ children }: { children: React.ReactNode 
     clearTimeout(hideTimeout.current);
   }, []);
 
-  // Preload entity types and color links
+  // Preload entity types and color links (deferred to idle time)
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    Promise.all([preloadMechanicTypes(), preloadHeroRarities()]).then(() => {
-      colorMechanicLinks(container);
-      colorHeroLinks(container);
-      const observer = new MutationObserver(() => {
+    const load = () => {
+      Promise.all([preloadMechanicTypes(), preloadHeroRarities()]).then(() => {
         colorMechanicLinks(container);
         colorHeroLinks(container);
+        const observer = new MutationObserver(() => {
+          colorMechanicLinks(container);
+          colorHeroLinks(container);
+        });
+        observer.observe(container, { childList: true, subtree: true });
       });
-      observer.observe(container, { childList: true, subtree: true });
-      return () => observer.disconnect();
-    });
+    };
+
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(load);
+    } else {
+      setTimeout(load, 200);
+    }
   });
 
   useEffect(() => {
