@@ -30,6 +30,7 @@ const contentItems = [
   { title: "Affinities", url: "/admin/affinities", icon: Sparkles },
   { title: "Allegiances", url: "/admin/allegiances", icon: Flag },
   { title: "Armor Sets", url: "/admin/armor-sets", icon: Shield },
+  { title: "Team Comps", url: "/admin/team-comps", icon: Users },
   { title: "News", url: "/admin/news", icon: Newspaper },
   { title: "Guides", url: "/admin/guides", icon: BookOpen },
   { title: "Official Posts", url: "/admin/official-posts", icon: MessageSquare },
