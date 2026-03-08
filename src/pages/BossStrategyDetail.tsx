@@ -117,7 +117,7 @@ export default function BossStrategyDetail() {
             )}
 
             {data.content && (
-              <div className="prose prose-invert max-w-none" data-color-mode="dark">
+              <div className="prose prose-invert max-w-none [&_.wmde-markdown]:!bg-transparent" data-color-mode="dark">
                 <MDEditor.Markdown source={preprocessMarkup(data.content)} rehypePlugins={[rehypeRaw]} />
               </div>
             )}
