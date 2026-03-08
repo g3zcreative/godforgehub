@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, Search, X, ChevronLeft, ChevronRight, Zap } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight, Zap } from "lucide-react";
 import { preprocessMarkup } from "@/lib/guide-markup";
 
 const ITEMS_PER_PAGE = 24;
