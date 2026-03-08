@@ -312,7 +312,7 @@ export default function HeroDetail() {
                                   <h3 className="font-display font-bold uppercase tracking-wide text-sm">{skill.name}</h3>
                                   <span className="text-xs text-muted-foreground font-semibold uppercase">({skill.skill_type})</span>
                                 </div>
-                                {skill.description && <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
+                                {skill.description && <p className="text-xs text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
                               </div>
                             </Link>
                           ))}
