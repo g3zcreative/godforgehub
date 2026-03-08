@@ -56,9 +56,9 @@ export default function HeroDetail() {
 
       return {
         ...data,
-        faction_name: factionRes?.data?.name || data.element,
+        faction_name: factionRes?.data?.name || null,
         faction_icon: factionRes?.data?.icon_url || null,
-        archetype_name: archetypeRes?.data?.name || data.class_type,
+        archetype_name: archetypeRes?.data?.name || null,
         archetype_icon: archetypeRes?.data?.icon_url || null,
         affinity_name: affinityRes?.data?.name || data.affinity,
         affinity_icon: affinityRes?.data?.icon_url || null,
@@ -134,7 +134,7 @@ export default function HeroDetail() {
   const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
   const hasRecommendations = (recommendations?.weapons?.length || 0) + (recommendations?.imprints?.length || 0) + (recommendations?.synergies?.length || 0) > 0;
 
-  const heroSeoVars = hero ? { name: hero.name, element: hero.element, class_type: hero.class_type, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle } : {};
+  const heroSeoVars = hero ? { name: hero.name, element: hero.faction_name, class_type: hero.archetype_name, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle } : {};
   const seoTitle = interpolateTemplate(tpl?.title_template, heroSeoVars);
   const seoDesc = interpolateTemplate(tpl?.description_template, heroSeoVars);
 
@@ -158,14 +158,14 @@ export default function HeroDetail() {
           <>
             <SEO
               rawTitle={seoTitle || `${hero.name} Godforge | GodforgeHub.com`}
-              description={seoDesc || `${hero.name} Hero: ${hero.description || `${rarityLabel(hero.rarity)} ${hero.class_type} hero in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
+              description={seoDesc || `${hero.name} Hero: ${hero.description || `${rarityLabel(hero.rarity)} ${hero.archetype_name} hero in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
               image={hero.image_url || undefined}
               url={`/database/heroes/${hero.slug}`}
               jsonLd={{
                 "@context": "https://schema.org",
                 "@type": "Thing",
                 name: hero.name,
-                description: hero.description || `${hero.name} - ${rarityLabel(hero.rarity)} ${hero.class_type}`,
+                description: hero.description || `${hero.name} - ${rarityLabel(hero.rarity)} ${hero.archetype_name}`,
                 ...(hero.image_url ? { image: hero.image_url } : {}),
                 additionalType: "GameCharacter",
               }}
@@ -188,12 +188,12 @@ export default function HeroDetail() {
                   <div className="flex items-center gap-4 py-3">
                     <AttributeIcon
                       label="Faction"
-                      name={hero.faction_name || hero.element}
+                      name={hero.faction_name}
                       iconUrl={hero.faction_icon}
                     />
                     <AttributeIcon
                       label="Archetype"
-                      name={hero.archetype_name || hero.class_type}
+                      name={hero.archetype_name}
                       iconUrl={hero.archetype_icon}
                     />
                     {(hero.affinity_name || hero.affinity) && (

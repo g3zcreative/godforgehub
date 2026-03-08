@@ -26,7 +26,7 @@ export default function SkillDetail() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("skills")
-        .select("*, heroes(name, slug, image_url, class_type, element, rarity)")
+        .select("*, heroes(name, slug, image_url, rarity, factions(name), archetypes(name))")
         .eq("slug", slug!)
         .maybeSingle();
       if (error) throw error;
@@ -117,7 +117,7 @@ export default function SkillDetail() {
                   )}
                   <div>
                     <span className="font-display font-semibold" dangerouslySetInnerHTML={{ __html: preprocessMarkup(`[hero:${hero.slug}]`) }} />
-                    <p className="text-sm text-muted-foreground">{hero.class_type} · {hero.element}</p>
+                    <p className="text-sm text-muted-foreground">{hero.archetypes?.name || "Unknown"} · {hero.factions?.name || "Unknown"}</p>
                   </div>
                 </Link>
               </div>

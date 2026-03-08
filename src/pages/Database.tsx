@@ -41,11 +41,15 @@ const DatabasePage = () => {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("heroes")
-        .select("*")
+        .select("*, factions(name), archetypes(name)")
         .order("rarity", { ascending: false })
         .limit(6);
       if (error) throw error;
-      return data;
+      return (data || []).map((h: any) => ({
+        ...h,
+        faction_name: h.factions?.name || "Unknown",
+        archetype_name: h.archetypes?.name || "Unknown",
+      }));
     },
   });
 
@@ -91,10 +95,10 @@ const DatabasePage = () => {
                       <span className="text-primary text-sm">{rarityStars(hero.rarity)}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Badge variant="outline" className={elementColors[hero.element] || ""}>
-                        {hero.element}
+                      <Badge variant="outline" className={elementColors[hero.faction_name] || ""}>
+                        {hero.faction_name}
                       </Badge>
-                      <Badge variant="outline">{hero.class_type}</Badge>
+                      <Badge variant="outline">{hero.archetype_name}</Badge>
                     </div>
                   </CardContent>
                 </Card>
