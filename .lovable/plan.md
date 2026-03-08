@@ -1,82 +1,76 @@
 
 
-## Performance Optimization Plan
+## Custom Markup for Embedding Game Entity Links in Guides
 
-### Current State (Mobile Score: 24/100)
+### Concept
 
-| Metric | Value | Target |
-|--------|-------|--------|
-| FCP | 7.3s | <1.8s |
-| LCP | 7.7s | <2.5s |
-| TBT | 1,510ms | <200ms |
-| CLS | 0.196 | <0.1 |
-| SI | 7.3s | <3.4s |
+Inspired by Wowhead's markup (e.g. `[item=1234]`, `[spell=5678]`), we define a simple bracket syntax that authors write inside standard Markdown content. Before rendering, a preprocessing step transforms these tokens into interactive links with tooltips and icons.
 
-### Root Causes Identified
+### Proposed Syntax
 
-1. **839 KiB single JS bundle** -- every page (all 40+ routes, admin panel, MDEditor, recharts, etc.) loads in one chunk
-2. **Render-blocking Google Fonts** via `@import` in CSS -- adds 750ms to critical path
-3. **CLS from web fonts** -- Space Grotesk + Inter swap causes the "Explore" section to shift (0.196 CLS)
-4. **No lazy loading on images** -- all news/guide images load eagerly
-5. **EntityTooltipProvider preloads all mechanics + heroes** on every page load (2 extra Supabase queries)
-6. **No preconnect hints** to Supabase or Google Fonts origins
-
-### Implementation Plan
-
-#### 1. Code-split routes with React.lazy (biggest impact -- targets FCP, LCP, TBT, SI)
-
-Convert all page imports in `App.tsx` to lazy imports with `React.lazy()` and wrap `<Routes>` in `<Suspense>`. This alone should cut the initial bundle from ~839 KiB to ~100-150 KiB.
-
-Split into groups:
-- **Eager**: Index (home page)
-- **Lazy**: All other pages, especially heavy ones (admin/*, TeamBuilder, BossDetail, BuildDetail which pull in MDEditor/recharts)
-
-#### 2. Fix font loading (targets FCP, CLS)
-
-- Remove the `@import url(...)` from `index.css`
-- Add `<link rel="preconnect">` for `fonts.googleapis.com` and `fonts.gstatic.com` in `index.html`
-- Add the font `<link>` with `display=swap` directly in `index.html`
-- Add `font-display: optional` or size-adjust fallback to reduce CLS from font swap
-
-#### 3. Add preconnect hints (targets FCP, LCP)
-
-Add to `index.html`:
-```html
-<link rel="preconnect" href="https://yawfmtkrnewpdxjdypmc.supabase.co" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+```text
+[hero:sun-wukong]       → links to /database/heroes/sun-wukong
+[skill:phoenix-strike]  → links to /database/skills/phoenix-strike  (future)
+[item:iron-sword]       → links to /database/items/iron-sword       (future)
+[material:fire-crystal] → links to /database/materials/fire-crystal (future)
 ```
 
-#### 4. Lazy load below-fold images (targets LCP, SI)
+Authors write these directly in the Markdown editor. The slug after the colon matches the entity's `slug` column in the database.
 
-Add `loading="lazy"` to all `<img>` tags in news cards, guide cards, and other list pages. Keep the first/hero image eager.
+### Architecture
 
-#### 5. Defer EntityTooltipProvider data loading (targets TBT)
+```text
+Guide Markdown content (stored in DB)
+  │
+  ▼
+preprocessMarkup(content)          ← new utility function
+  │  Regex: /\[(hero|skill|item|material):([a-z0-9-]+)\]/g
+  │  Replaces with custom HTML: <a> with data attributes + inline icon
+  ▼
+MDEditor.Markdown renders HTML     ← already used in GuideDetail
+  │  needs: rehypeRaw plugin to allow inline HTML
+  ▼
+CSS styles for .entity-link         ← styled inline links with hover effects
+```
 
-The `preloadMechanicTypes()` and `preloadHeroRarities()` calls fire on mount of every page. Defer them with `requestIdleCallback` or only trigger on first hover of an entity link.
+### Implementation Steps
 
-#### 6. Defer Google Analytics (targets TBT)
+1. **Create `src/lib/guide-markup.ts`** — a pure function `preprocessMarkup(content: string): string`
+   - Uses regex to find all `[type:slug]` tokens
+   - Replaces each with an HTML anchor: `<a href="/database/{type}s/{slug}" class="entity-link entity-link--{type}" data-entity="{type}" data-slug="{slug}">{Display Name}</a>`
+   - For display name: capitalize and de-slugify (e.g. `sun-wukong` → `Sun Wukong`). A future enhancement could batch-fetch names from the DB, but starting with slug-derived names keeps it simple and synchronous.
 
-Move the gtag script to load after the page is interactive by adding `defer` or loading it via `requestIdleCallback` in a small inline script.
+2. **Update `GuideDetail.tsx`** — pipe `guide.content` through `preprocessMarkup()` before passing to `MDEditor.Markdown`
+   - Add `rehype-raw` plugin so the injected HTML anchors render correctly (MDEditor.Markdown supports `rehypePlugins` prop)
 
-### Files to Change
+3. **Add entity link styles to `src/index.css`** — color-coded underlined links
+   - `.entity-link` base: inline, underline, font-medium
+   - `.entity-link--hero`: primary/gold color
+   - `.entity-link--skill`: purple color
+   - `.entity-link--item`: green color
+   - `.entity-link--material`: amber color
+   - Hover: brighten + show a subtle glow
 
-- `index.html` -- preconnect hints, font links, defer gtag
-- `src/index.css` -- remove `@import` for Google Fonts
-- `src/App.tsx` -- convert all imports to `React.lazy`, add `Suspense`
-- `src/pages/Index.tsx` -- add `loading="lazy"` to below-fold images
-- `src/components/EntityTooltipProvider.tsx` -- defer preload calls
+4. **Wire up client-side navigation** — since these are standard `<a href>` tags pointing to internal routes, React Router will handle them naturally with full page transitions. For SPA navigation, we can optionally add a click interceptor component wrapping the markdown output, or simply rely on `<a>` tags (works fine for content pages).
 
-### Expected Impact
+5. **Add a "Markup Reference" section to AdminDocs** — document the syntax for content authors so they know how to use `[hero:slug]` etc.
 
-| Change | Est. Score Impact |
-|--------|------------------|
-| Code splitting | +25-35 points (FCP, LCP, TBT, SI all improve) |
-| Font optimization | +5-10 points (FCP, CLS) |
-| Preconnect hints | +3-5 points (FCP, LCP) |
-| Image lazy loading | +2-3 points (SI) |
-| Defer tooltip preloads | +2-3 points (TBT) |
-| Defer analytics | +1-2 points (TBT) |
+### Technical Details
 
-Realistic target: **60-75 on mobile** after these changes.
+- **Regex pattern**: `/\[(hero|skill|item|material):([a-z0-9-]+)\]/g`
+- **rehype-raw**: New dependency needed (`rehype-raw`) to allow raw HTML in Markdown output. MDEditor.Markdown accepts `rehypePlugins={[rehypeRaw]}`.
+- **No DB queries needed at render time** — display names are derived from slugs. This keeps the preprocessor synchronous and avoids waterfall fetches.
+- **Editor preview**: The admin MDEditor could also use the same preprocessor for live preview, but that's a follow-up enhancement.
+
+### Example
+
+Author writes:
+```markdown
+To beat this boss, equip [hero:sun-wukong] with [item:iron-sword] and use [skill:phoenix-strike] for maximum damage.
+```
+
+Renders as:
+> To beat this boss, equip **Sun Wukong** with **Iron Sword** and use **Phoenix Strike** for maximum damage.
+
+Where each name is a colored, clickable link to the respective database page.
 

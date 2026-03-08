@@ -156,6 +156,7 @@ const Index = () => {
                         <img
                           src={article.image_url || `https://img.youtube.com/vi/${(article.video_url!.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/) || [])[1]}/hqdefault.jpg`}
                           alt={article.title}
+                          loading="lazy"
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                       </div>
@@ -245,6 +246,7 @@ const Index = () => {
                       <img
                         src={guide.image_url}
                         alt={guide.title}
+                        loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
