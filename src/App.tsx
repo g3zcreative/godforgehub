@@ -13,6 +13,9 @@ import ComingSoonPage from "./pages/ComingSoon";
 import CommunityPage from "./pages/Community";
 import OfficialPostsPage from "./pages/OfficialPosts";
 import DatabasePage from "./pages/Database";
+import BossesList from "./pages/BossesList";
+import BossDetail from "./pages/BossDetail";
+import BossStrategyDetail from "./pages/BossStrategyDetail";
 import HeroDetail from "./pages/HeroDetail";
 import HeroesList from "./pages/HeroesList";
 import SkillsList from "./pages/SkillsList";
@@ -54,6 +57,8 @@ import AdminAllegiances from "./pages/admin/AdminAllegiances";
 import AdminAuthors from "./pages/admin/AdminAuthors";
 import AdminBuilds from "./pages/admin/AdminBuilds";
 import AdminArmorSets from "./pages/admin/AdminArmorSets";
+import AdminBosses from "./pages/admin/AdminBosses";
+import AdminBossStrategies from "./pages/admin/AdminBossStrategies";
 import AdminSeo from "./pages/admin/AdminSeo";
 import BuildDetail from "./pages/BuildDetail";
 import { FeedbackWidget } from "./components/FeedbackWidget";
@@ -122,6 +127,11 @@ function AppRoutes() {
       {/* Builds */}
       <Route path="/database/heroes/:heroSlug/builds/:buildSlug" element={flags.database ? <BuildDetail /> : comingSoon("Database", "The full database is under construction.")} />
 
+      {/* Bosses */}
+      <Route path="/bosses" element={<BossesList />} />
+      <Route path="/bosses/:slug" element={<BossDetail />} />
+      <Route path="/bosses/:bossSlug/strategies/:strategySlug" element={<BossStrategyDetail />} />
+
       {/* Guides */}
       <Route
         path="/guides"
@@ -157,7 +167,9 @@ function AppRoutes() {
         <Route path="heroes" element={<AdminHeroes />} />
         <Route path="builds" element={<AdminBuilds />} />
         <Route path="armor-sets" element={<AdminArmorSets />} />
-        
+        <Route path="bosses" element={<AdminBosses />} />
+        <Route path="boss-strategies" element={<AdminBossStrategies />} />
+
         <Route path="skills" element={<AdminSkills />} />
         <Route path="mechanics" element={<AdminMechanics />} />
         <Route path="imprints" element={<AdminImprints />} />

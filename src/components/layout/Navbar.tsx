@@ -23,6 +23,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "News", href: "/news" },
   { label: "Database", href: "/database" },
+  { label: "Bosses", href: "/bosses" },
   { label: "Guides", href: "/guides" },
   { label: "Tools", href: "/tools", comingSoon: true },
   { label: "Community", href: "/community" },

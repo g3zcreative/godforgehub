@@ -17,6 +17,7 @@ Deno.serve(async () => {
     { loc: "/", priority: "1.0" },
     { loc: "/news", priority: "0.9" },
     { loc: "/database", priority: "0.8" },
+    { loc: "/bosses", priority: "0.8" },
     { loc: "/guides", priority: "0.8" },
     { loc: "/community", priority: "0.7" },
     { loc: "/tools", priority: "0.5" },
@@ -25,7 +26,7 @@ Deno.serve(async () => {
   ];
 
   // Fetch dynamic slugs in parallel
-  const [newsRes, heroesRes, itemsRes, guidesRes, skillsRes, imprintsRes, weaponsRes] = await Promise.all([
+  const [newsRes, heroesRes, itemsRes, guidesRes, skillsRes, imprintsRes, weaponsRes, bossesRes] = await Promise.all([
     supabase.from("news_articles").select("slug, updated_at").eq("published", true),
     supabase.from("heroes").select("slug, updated_at"),
     supabase.from("items").select("slug, updated_at"),
@@ -33,6 +34,7 @@ Deno.serve(async () => {
     supabase.from("skills").select("slug, updated_at"),
     supabase.from("imprints").select("slug, updated_at"),
     supabase.from("weapons").select("slug, updated_at"),
+    supabase.from("bosses").select("slug, updated_at"),
   ]);
 
   const urls: string[] = [];
@@ -75,6 +77,11 @@ Deno.serve(async () => {
   // Weapons
   for (const w of weaponsRes.data || []) {
     urls.push(`<url><loc>${SITE_URL}/database/weapons/${w.slug}</loc><lastmod>${w.updated_at}</lastmod><priority>0.6</priority></url>`);
+  }
+
+  // Bosses
+  for (const b of bossesRes.data || []) {
+    urls.push(`<url><loc>${SITE_URL}/bosses/${b.slug}</loc><lastmod>${b.updated_at}</lastmod><priority>0.7</priority></url>`);
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
