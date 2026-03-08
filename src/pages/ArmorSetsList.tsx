@@ -90,10 +90,7 @@ export default function ArmorSetsList() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => {
-                setSearch("");
-                setPage(1);
-              }}
+              onClick={() => setSearch("")}
               className="shrink-0"
               title="Clear search"
             >
