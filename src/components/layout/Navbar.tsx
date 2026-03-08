@@ -111,8 +111,8 @@ export function Navbar() {
                       <Shield className="mr-2 h-4 w-4" /> Admin Panel
                     </DropdownMenuItem>
                   )}
-                  <DropdownMenuItem>
-                    <Bookmark className="mr-2 h-4 w-4" /> Bookmarks
+                  <DropdownMenuItem onClick={() => navigate("/profile")}>
+                    <Bookmark className="mr-2 h-4 w-4" /> My Collection
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={async () => { await signOut(); navigate("/"); }}>

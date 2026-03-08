@@ -41,6 +41,8 @@ const MechanicsList = lazy(() => import("./pages/MechanicsList"));
 const MechanicDetail = lazy(() => import("./pages/MechanicDetail"));
 const ArmorSetsList = lazy(() => import("./pages/ArmorSetsList"));
 const BuildDetail = lazy(() => import("./pages/BuildDetail"));
+const OnboardingPage = lazy(() => import("./pages/Onboarding"));
+const ProfilePage = lazy(() => import("./pages/Profile"));
 
 // Admin pages (heavy -- always lazy)
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
@@ -132,6 +134,8 @@ function AppRoutes() {
         <Route path="/changelog" element={<ChangelogPage />} />
         <Route path="/roadmap" element={<RoadmapPage />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/analytics" replace />} />
           <Route path="analytics" element={<AdminAnalytics />} />
