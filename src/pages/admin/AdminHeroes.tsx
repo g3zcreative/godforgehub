@@ -529,7 +529,7 @@ export default function AdminHeroes() {
     }
 
     setBackfillRunning(false);
-  }, [allHeroes]);
+  }, [allHeroes, factions]);
 
   const startBackfill = useCallback(async () => {
     const entries: BulkEntry[] = allHeroes.map(h => ({
