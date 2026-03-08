@@ -16,7 +16,7 @@ const tools = [
     description: "Build and share team compositions with synergy analysis.",
     icon: <Users className="h-8 w-8" />,
     href: "/tools/team-builder",
-    status: "Coming Soon",
+    status: "Available",
   },
   {
     name: "Resource Calculator",
