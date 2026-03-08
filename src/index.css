@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Metric-matched fallback fonts to prevent CLS during web font loading */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 110%;
+  ascent-override: 95%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 @layer base {
   :root {
     --background: 228 12% 8%;
