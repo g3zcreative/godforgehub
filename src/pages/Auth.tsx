@@ -26,10 +26,27 @@ export default function AuthPage() {
     e.preventDefault();
     setLoading(true);
     const { error } = await signIn(email, password);
-    setLoading(false);
     if (error) {
+      setLoading(false);
       toast({ title: "Sign in failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    // Check onboarding status
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("onboarding_complete")
+        .eq("id", session.user.id)
+        .single();
+      setLoading(false);
+      if (profile && !profile.onboarding_complete) {
+        navigate("/onboarding");
+      } else {
+        navigate("/profile");
+      }
     } else {
+      setLoading(false);
       navigate("/");
     }
   };
