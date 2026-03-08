@@ -28,7 +28,6 @@ function parseSetBonus(raw: string | null) {
 
 export default function ArmorSetsList() {
   const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
 
   const { data: armorSets, isLoading } = useQuery({
     queryKey: ["armor_sets_public"],
