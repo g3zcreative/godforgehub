@@ -74,7 +74,7 @@ export default function AdminBossStrategies() {
     if (search) {
       const q = search.toLowerCase();
       result = result.filter((s: any) => {
-        const bossName = bossMap.get(s.boss_id)?.name?.toLowerCase() || "";
+        const bossName = (bossMap.get(s.boss_id) as any)?.name?.toLowerCase() || "";
         return bossName.includes(q) || s.title.toLowerCase().includes(q);
       });
     }
