@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft } from "lucide-react";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 import { SEO } from "@/components/SEO";
 
 const rarityStars = (r: number) => "★".repeat(r) + "☆".repeat(Math.max(0, 5 - r));
@@ -31,9 +31,7 @@ export default function ItemDetail() {
   return (
     <Layout>
       <div className="container max-w-3xl py-8">
-        <Link to="/database" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Database
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Items", href: "/database/items" }, { label: item?.name || "..." }]} />
 
         {isLoading ? (
           <div className="space-y-4">

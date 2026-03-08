@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -16,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, Search, X, ChevronLeft, ChevronRight, Zap } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight, Zap } from "lucide-react";
 import { preprocessMarkup } from "@/lib/guide-markup";
 
 const ITEMS_PER_PAGE = 24;
@@ -86,9 +87,7 @@ export default function SkillsList() {
     <Layout>
       <SEO title="Skills Database" description="Browse all skills in Godforge — filter by type and hero." url="/database/skills" />
       <div className="container py-8">
-        <Link to="/database" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Database
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Skills" }]} />
 
         <h1 className="font-display text-3xl font-bold mb-6 flex items-center gap-2">
           <Zap className="h-7 w-7 text-primary" /> Skills

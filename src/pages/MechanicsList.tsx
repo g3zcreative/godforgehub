@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent } from "@/components/ui/card";
@@ -47,6 +48,7 @@ export default function MechanicsList() {
     <Layout>
       <SEO title="Mechanics Database" description="Browse all spell mechanics — buffs, debuffs, and disables." />
       <div className="container py-8">
+        <DatabaseBreadcrumb segments={[{ label: "Mechanics" }]} />
         <h1 className="font-display text-3xl font-bold mb-2 flex items-center gap-2">
           <Zap className="h-7 w-7 text-primary" /> Mechanics
         </h1>

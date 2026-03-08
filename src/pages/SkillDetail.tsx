@@ -7,7 +7,8 @@ import { SEO } from "@/components/SEO";
 import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 
 const skillTypeColors: Record<string, string> = {
   Active: "bg-blue-500/10 text-blue-400 border-blue-500/20",
@@ -44,9 +45,7 @@ export default function SkillDetail() {
   return (
     <Layout>
       <div className="container max-w-3xl py-8">
-        <Link to="/database/skills" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Skills
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Skills", href: "/database/skills" }, { label: skill?.name || "..." }]} />
 
         {isLoading ? (
           <div className="space-y-4">

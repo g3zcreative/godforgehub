@@ -16,7 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 
 const ITEMS_PER_PAGE = 24;
 
@@ -121,9 +122,7 @@ export default function HeroesList() {
     <Layout>
       <SEO title="Heroes Database" description="Browse all heroes in Godforge — filter by realm, class, and rarity." url="/database/heroes" />
       <div className="container py-8">
-        <Link to="/database" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Database
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Heroes" }]} />
 
         <h1 className="font-display text-3xl font-bold mb-6">Heroes</h1>
 

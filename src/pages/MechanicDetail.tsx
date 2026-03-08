@@ -5,7 +5,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 import { SEO } from "@/components/SEO";
 
 const typeColors: Record<string, string> = {
@@ -56,9 +57,7 @@ export default function MechanicDetail() {
     <Layout>
       <SEO rawTitle={`${mechanic.name} Godforge | GodforgeHub.com`} description={`${mechanic.name} Mechanic: ${mechanic.description || `A ${mechanic.mechanic_type} mechanic in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} />
       <div className="container py-8 max-w-2xl">
-        <Link to="/database/mechanics" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Mechanics
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Mechanics", href: "/database/mechanics" }, { label: mechanic?.name || "..." }]} />
 
         <Card>
           <CardContent className="p-6">
