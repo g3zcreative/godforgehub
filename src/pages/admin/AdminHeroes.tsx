@@ -78,9 +78,6 @@ function buildColumns(
     { key: "divinity_generator", label: "Divinity Generator", type: "textarea" },
     { key: "ascension_bonuses", label: "Ascension Bonuses (JSON)", type: "json" },
     { key: "awakening_bonuses", label: "Awakening Bonuses (JSON)", type: "json" },
-    // Legacy text fields (hidden, kept for backward compat)
-    { key: "element", label: "Realm (legacy)", required: true },
-    { key: "class_type", label: "Archetype (legacy)", required: true },
   ];
 }
 
@@ -320,7 +317,7 @@ export default function AdminHeroes() {
   const { data: allHeroes = [] } = useQuery({
     queryKey: ["heroes_for_backfill"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("heroes").select("id, name, slug, element").order("name");
+      const { data, error } = await supabase.from("heroes").select("id, name, slug, faction_id").order("name");
       if (error) throw error;
       return data;
     },
@@ -350,8 +347,6 @@ export default function AdminHeroes() {
         name: data.name || "",
         subtitle: data.subtitle || "",
         slug: data.slug || "",
-        element: data.element || "",
-        class_type: data.class_type || "",
         faction_id: findId(factions, data.element),
         archetype_id: findId(archetypes, data.class_type),
         affinity_id: findId(affinities, data.affinity),
@@ -506,8 +501,9 @@ export default function AdminHeroes() {
 
       try {
         const hero = allHeroes[i];
+        const factionName = factions.find(f => f.id === hero.faction_id)?.name || "";
         const { data, error } = await supabase.functions.invoke("backfill-hero", {
-          body: { hero_id: hero.id, slug: hero.slug, element: hero.element },
+          body: { hero_id: hero.id, slug: hero.slug, faction_name: factionName },
         });
 
         if (error) throw error;
@@ -533,7 +529,7 @@ export default function AdminHeroes() {
     }
 
     setBackfillRunning(false);
-  }, [allHeroes]);
+  }, [allHeroes, factions]);
 
   const startBackfill = useCallback(async () => {
     const entries: BulkEntry[] = allHeroes.map(h => ({

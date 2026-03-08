@@ -65,7 +65,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { hero_id, slug, element } = await req.json();
+    const { hero_id, slug, faction_name, element } = await req.json();
     if (!hero_id || !slug) {
       return new Response(JSON.stringify({ error: "hero_id and slug are required" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -90,8 +90,13 @@ Deno.serve(async (req) => {
       .from("imprints").select("*").eq("source_hero_id", hero_id);
 
     // 2. Scrape the hero page — URL format: /heroes/{faction}/{slug}
-    const faction = (element || currentHero?.element || "").toLowerCase();
-    const url = `https://godforge.gg/heroes/${faction}/${slug}`;
+    // Resolve faction name: prefer explicit param, then look up from FK, fallback to legacy element
+    let factionSlug = (faction_name || element || "").toLowerCase();
+    if (!factionSlug && currentHero?.faction_id) {
+      const { data: factionRow } = await adminClient.from("factions").select("name").eq("id", currentHero.faction_id).maybeSingle();
+      factionSlug = (factionRow?.name || "").toLowerCase();
+    }
+    const url = `https://godforge.gg/heroes/${factionSlug}/${slug}`;
     console.log("Backfilling:", url);
 
     const scrapeRes = await fetch("https://api.firecrawl.dev/v1/scrape", {

@@ -351,11 +351,9 @@ export type Database = {
           archetype_id: string | null
           ascension_bonuses: Json | null
           awakening_bonuses: Json | null
-          class_type: string
           created_at: string
           description: string | null
           divinity_generator: string | null
-          element: string
           faction_id: string | null
           id: string
           image_url: string | null
@@ -376,11 +374,9 @@ export type Database = {
           archetype_id?: string | null
           ascension_bonuses?: Json | null
           awakening_bonuses?: Json | null
-          class_type: string
           created_at?: string
           description?: string | null
           divinity_generator?: string | null
-          element: string
           faction_id?: string | null
           id?: string
           image_url?: string | null
@@ -401,11 +397,9 @@ export type Database = {
           archetype_id?: string | null
           ascension_bonuses?: Json | null
           awakening_bonuses?: Json | null
-          class_type?: string
           created_at?: string
           description?: string | null
           divinity_generator?: string | null
-          element?: string
           faction_id?: string | null
           id?: string
           image_url?: string | null

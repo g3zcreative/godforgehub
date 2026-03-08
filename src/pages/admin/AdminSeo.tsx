@@ -20,7 +20,7 @@ const columns: ColumnConfig[] = [
 ];
 
 const variableReference: Record<string, string[]> = {
-  hero: ["name", "element", "class_type", "rarity", "rarity_label", "description", "subtitle"],
+  hero: ["name", "element", "class_type", "rarity", "rarity_label", "description", "subtitle", "faction", "archetype"],
   imprint: ["name", "rarity", "rarity_label", "passive"],
   weapon: ["name", "rarity", "passive", "faction", "rank"],
   skill: ["name", "skill_type", "description"],
