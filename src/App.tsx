@@ -62,6 +62,7 @@ import ArmorSetsList from "./pages/ArmorSetsList";
 import AdminBosses from "./pages/admin/AdminBosses";
 import AdminBossStrategies from "./pages/admin/AdminBossStrategies";
 import AdminSeo from "./pages/admin/AdminSeo";
+import AdminTeamComps from "./pages/admin/AdminTeamComps";
 import BuildDetail from "./pages/BuildDetail";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
@@ -192,6 +193,7 @@ function AppRoutes() {
         <Route path="roadmap" element={<AdminRoadmap />} />
         <Route path="feedback" element={<AdminFeedback />} />
         <Route path="seo" element={<AdminSeo />} />
+        <Route path="team-comps" element={<AdminTeamComps />} />
         <Route path="platform" element={<AdminPlatform />} />
         <Route path="settings" element={<AdminSettings />} />
         <Route path="docs" element={<AdminDocs />} />
