@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { Sword, Shield, Zap, Gem, Map, Trophy, Database as DatabaseIcon, Lock } from "lucide-react";
+import { Sword, Shield, Zap, Gem, Map, Trophy, Database as DatabaseIcon, Lock, ShieldHalf } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
