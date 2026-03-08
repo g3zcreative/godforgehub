@@ -1,76 +1,74 @@
 
 
-## Custom Markup for Embedding Game Entity Links in Guides
+## Next Performance & SEO Optimizations
 
-### Concept
+### Current Scores (Mobile)
+| Metric | Value | Status |
+|--------|-------|--------|
+| Performance | 77 | Good, room to improve |
+| FCP | 3.0s | Needs work |
+| LCP | 3.2s | Needs work |
+| TBT | 60ms | Excellent |
+| **CLS** | **0.196** | **Main problem** |
+| SEO | 100 | Perfect |
 
-Inspired by Wowhead's markup (e.g. `[item=1234]`, `[spell=5678]`), we define a simple bracket syntax that authors write inside standard Markdown content. Before rendering, a preprocessing step transforms these tokens into interactive links with tooltips and icons.
+### Remaining Issues (from report)
 
-### Proposed Syntax
+1. **CLS 0.196** — The entire "Explore" section shifts when Space Grotesk and Inter web fonts load and swap. This is the single biggest remaining issue (worth 16 points in the score).
 
-```text
-[hero:sun-wukong]       → links to /database/heroes/sun-wukong
-[skill:phoenix-strike]  → links to /database/skills/phoenix-strike  (future)
-[item:iron-sword]       → links to /database/items/iron-sword       (future)
-[material:fire-crystal] → links to /database/materials/fire-crystal (future)
+2. **Google Fonts still render-blocking** — The `<link rel="stylesheet">` in `index.html` blocks rendering for 750ms while it fetches the CSS, then chains to woff2 files (another 1,528ms). Critical path is 2,050ms.
+
+3. **No cache headers on main JS/CSS assets** — Vite-hashed assets (`index-*.js`, `index-*.css`) have no cache TTL set.
+
+### Plan
+
+#### 1. Fix CLS by eliminating font swap shift (biggest impact: +10-16 points)
+
+The CLS culprit is `font-display: swap` causing the "Explore" section to reflow when fonts arrive. Fix by:
+
+- **Change Google Fonts to `display=optional`** instead of `display=swap` — this tells the browser to use the fallback font if the web font hasn't loaded within ~100ms, eliminating layout shift entirely. The tradeoff is the custom font may not show on very first visit (subsequent visits use cached font).
+- **Add CSS `size-adjust` fallback fonts** in `index.css` to make the system font fallback match the web font metrics closely, so even if swap occurs the shift is negligible.
+
+```css
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
 ```
 
-Authors write these directly in the Markdown editor. The slug after the colon matches the entity's `slug` column in the database.
+Update `tailwind.config.ts` font stacks to include the metric-matched fallback.
 
-### Architecture
+#### 2. Make Google Fonts non-render-blocking (targets FCP, LCP: +5-8 points)
 
-```text
-Guide Markdown content (stored in DB)
-  │
-  ▼
-preprocessMarkup(content)          ← new utility function
-  │  Regex: /\[(hero|skill|item|material):([a-z0-9-]+)\]/g
-  │  Replaces with custom HTML: <a> with data attributes + inline icon
-  ▼
-MDEditor.Markdown renders HTML     ← already used in GuideDetail
-  │  needs: rehypeRaw plugin to allow inline HTML
-  ▼
-CSS styles for .entity-link         ← styled inline links with hover effects
+The `<link rel="stylesheet">` is still render-blocking. Change to a non-blocking pattern:
+
+```html
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?...&display=optional" onload="this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="..." /></noscript>
 ```
 
-### Implementation Steps
+This loads the font CSS asynchronously so it never blocks first paint.
 
-1. **Create `src/lib/guide-markup.ts`** — a pure function `preprocessMarkup(content: string): string`
-   - Uses regex to find all `[type:slug]` tokens
-   - Replaces each with an HTML anchor: `<a href="/database/{type}s/{slug}" class="entity-link entity-link--{type}" data-entity="{type}" data-slug="{slug}">{Display Name}</a>`
-   - For display name: capitalize and de-slugify (e.g. `sun-wukong` → `Sun Wukong`). A future enhancement could batch-fetch names from the DB, but starting with slug-derived names keeps it simple and synchronous.
+#### 3. Add immutable cache headers via Vite config (targets repeat visits)
 
-2. **Update `GuideDetail.tsx`** — pipe `guide.content` through `preprocessMarkup()` before passing to `MDEditor.Markdown`
-   - Add `rehype-raw` plugin so the injected HTML anchors render correctly (MDEditor.Markdown supports `rehypePlugins` prop)
+Vite already hashes filenames. We can't control hosting headers directly, but we can note this is a hosting-level config. If using Lovable's default hosting, this is already handled. The report flags it but it's low priority.
 
-3. **Add entity link styles to `src/index.css`** — color-coded underlined links
-   - `.entity-link` base: inline, underline, font-medium
-   - `.entity-link--hero`: primary/gold color
-   - `.entity-link--skill`: purple color
-   - `.entity-link--item`: green color
-   - `.entity-link--material`: amber color
-   - Hover: brighten + show a subtle glow
+### Files to Change
 
-4. **Wire up client-side navigation** — since these are standard `<a href>` tags pointing to internal routes, React Router will handle them naturally with full page transitions. For SPA navigation, we can optionally add a click interceptor component wrapping the markdown output, or simply rely on `<a>` tags (works fine for content pages).
+- `index.html` — switch font link to `preload` pattern, change `display=swap` to `display=optional`
+- `src/index.css` — add `@font-face` declarations for metric-matched fallback fonts
+- `tailwind.config.ts` — update font stacks to include fallback fonts
 
-5. **Add a "Markup Reference" section to AdminDocs** — document the syntax for content authors so they know how to use `[hero:slug]` etc.
+### Expected Impact
 
-### Technical Details
+| Change | Est. Score Impact |
+|--------|------------------|
+| Fix CLS via `display=optional` + size-adjust fallbacks | +10-16 points |
+| Non-blocking font loading | +5-8 points |
 
-- **Regex pattern**: `/\[(hero|skill|item|material):([a-z0-9-]+)\]/g`
-- **rehype-raw**: New dependency needed (`rehype-raw`) to allow raw HTML in Markdown output. MDEditor.Markdown accepts `rehypePlugins={[rehypeRaw]}`.
-- **No DB queries needed at render time** — display names are derived from slugs. This keeps the preprocessor synchronous and avoids waterfall fetches.
-- **Editor preview**: The admin MDEditor could also use the same preprocessor for live preview, but that's a follow-up enhancement.
-
-### Example
-
-Author writes:
-```markdown
-To beat this boss, equip [hero:sun-wukong] with [item:iron-sword] and use [skill:phoenix-strike] for maximum damage.
-```
-
-Renders as:
-> To beat this boss, equip **Sun Wukong** with **Iron Sword** and use **Phoenix Strike** for maximum damage.
-
-Where each name is a colored, clickable link to the respective database page.
+**Realistic target: 90+ on mobile.**
 
