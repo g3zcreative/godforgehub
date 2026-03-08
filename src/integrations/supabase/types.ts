@@ -1308,6 +1308,62 @@ export type Database = {
           },
         ]
       }
+      sync_diffs: {
+        Row: {
+          batch_id: string
+          created_at: string
+          current_value: string | null
+          entity_id: string | null
+          entity_type: string
+          field: string
+          hero_id: string
+          hero_name: string
+          id: string
+          incoming_value: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+        }
+        Insert: {
+          batch_id: string
+          created_at?: string
+          current_value?: string | null
+          entity_id?: string | null
+          entity_type?: string
+          field: string
+          hero_id: string
+          hero_name: string
+          id?: string
+          incoming_value?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+        }
+        Update: {
+          batch_id?: string
+          created_at?: string
+          current_value?: string | null
+          entity_id?: string | null
+          entity_type?: string
+          field?: string
+          hero_id?: string
+          hero_name?: string
+          id?: string
+          incoming_value?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sync_diffs_hero_id_fkey"
+            columns: ["hero_id"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       team_slots: {
         Row: {
           armor_set_1_id: string | null
