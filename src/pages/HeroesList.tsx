@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,8 +17,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+import { Search, X, ChevronLeft, ChevronRight, Plus, Check } from "lucide-react";
 import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
+import { toast } from "sonner";
 
 const ITEMS_PER_PAGE = 24;
 
@@ -50,6 +53,9 @@ export default function HeroesList() {
   const [classFilter, setClassFilter] = useState("all");
   const [rarityFilter, setRarityFilter] = useState("all");
   const [page, setPage] = useState(1);
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
+  const [addingHeroId, setAddingHeroId] = useState<string | null>(null);
 
   const { data: heroes, isLoading } = useQuery({
     queryKey: ["heroes_all"],
@@ -106,6 +112,44 @@ export default function HeroesList() {
       return true;
     });
   }, [heroes, search, realmFilter, classFilter, rarityFilter]);
+
+  // Fetch user's collection to show which heroes are already added
+  const { data: userHeroIds = [] } = useQuery({
+    queryKey: ["user_heroes", user?.id],
+    queryFn: async () => {
+      if (!user) return [];
+      const { data } = await supabase
+        .from("user_heroes")
+        .select("hero_id")
+        .eq("user_id", user.id);
+      return (data || []).map((r) => r.hero_id);
+    },
+    enabled: !!user,
+  });
+
+  const addToCollection = async (heroId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!user) return;
+    setAddingHeroId(heroId);
+    try {
+      const { error } = await supabase.from("user_heroes").insert({ hero_id: heroId, user_id: user.id });
+      if (error) {
+        if (error.code === "23505") {
+          toast.info("Hero already in your collection");
+        } else {
+          throw error;
+        }
+      } else {
+        toast.success("Hero added to your collection!");
+        queryClient.invalidateQueries({ queryKey: ["user_heroes"] });
+      }
+    } catch (err: any) {
+      toast.error(err.message || "Failed to add hero");
+    } finally {
+      setAddingHeroId(null);
+    }
+  };
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   const currentPage = Math.min(page, totalPages);
@@ -191,32 +235,57 @@ export default function HeroesList() {
           </div>
         ) : paged.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {paged.map((hero) => (
-              <Link key={hero.id} to={`/database/heroes/${hero.slug}`}>
-                <Card className="hover:border-primary/30 transition-colors h-full group">
-                  <CardContent className="p-4 flex items-center gap-3">
-                    {hero.image_url ? (
-                      <img
-                        src={hero.image_url}
-                        alt={hero.name}
-                        className="h-14 w-14 rounded-lg object-cover shrink-0 group-hover:scale-105 transition-transform"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="h-14 w-14 rounded-lg bg-muted shrink-0 flex items-center justify-center text-muted-foreground text-xs">?</div>
-                    )}
-                    <div className="min-w-0">
-                      <h3 className="font-display font-semibold truncate">{hero.name}</h3>
-                      <div className="flex items-center gap-1.5 flex-wrap mt-1">
-                        <Badge variant="outline" className={`text-xs ${realmColors[hero.faction_name] || ""}`}>{hero.faction_name}</Badge>
-                        <Badge variant="outline" className="text-xs">{hero.archetype_name}</Badge>
-                      </div>
-                      <span className="text-primary text-xs mt-1 block">{rarityStars(hero.rarity)}</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+            <TooltipProvider delayDuration={200}>
+              {paged.map((hero) => {
+                const isOwned = userHeroIds.includes(hero.id);
+                return (
+                  <Link key={hero.id} to={`/database/heroes/${hero.slug}`}>
+                    <Card className="hover:border-primary/30 transition-colors h-full group relative">
+                      {user && (
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button
+                              onClick={(e) => isOwned ? (e.preventDefault(), e.stopPropagation()) : addToCollection(hero.id, e)}
+                              className={`absolute top-2 right-2 z-10 h-6 w-6 rounded-full flex items-center justify-center transition-colors ${
+                                isOwned
+                                  ? "bg-primary/20 text-primary cursor-default"
+                                  : "bg-muted/80 text-muted-foreground hover:bg-primary/20 hover:text-primary"
+                              }`}
+                              disabled={addingHeroId === hero.id}
+                            >
+                              {isOwned ? <Check className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent side="left">
+                            {isOwned ? "Already in your collection" : "Add to your collection"}
+                          </TooltipContent>
+                        </Tooltip>
+                      )}
+                      <CardContent className="p-4 flex items-center gap-3">
+                        {hero.image_url ? (
+                          <img
+                            src={hero.image_url}
+                            alt={hero.name}
+                            className="h-14 w-14 rounded-lg object-cover shrink-0 group-hover:scale-105 transition-transform"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="h-14 w-14 rounded-lg bg-muted shrink-0 flex items-center justify-center text-muted-foreground text-xs">?</div>
+                        )}
+                        <div className="min-w-0">
+                          <h3 className="font-display font-semibold truncate">{hero.name}</h3>
+                          <div className="flex items-center gap-1.5 flex-wrap mt-1">
+                            <Badge variant="outline" className={`text-xs ${realmColors[hero.faction_name] || ""}`}>{hero.faction_name}</Badge>
+                            <Badge variant="outline" className="text-xs">{hero.archetype_name}</Badge>
+                          </div>
+                          <span className="text-primary text-xs mt-1 block">{rarityStars(hero.rarity)}</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                );
+              })}
+            </TooltipProvider>
           </div>
         ) : (
           <p className="text-muted-foreground text-center py-12">No heroes match your filters.</p>
