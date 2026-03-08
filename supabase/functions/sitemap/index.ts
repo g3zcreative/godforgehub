@@ -79,6 +79,11 @@ Deno.serve(async () => {
     urls.push(`<url><loc>${SITE_URL}/database/weapons/${w.slug}</loc><lastmod>${w.updated_at}</lastmod><priority>0.6</priority></url>`);
   }
 
+  // Bosses
+  for (const b of bossesRes.data || []) {
+    urls.push(`<url><loc>${SITE_URL}/bosses/${b.slug}</loc><lastmod>${b.updated_at}</lastmod><priority>0.7</priority></url>`);
+  }
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.join("\n")}
