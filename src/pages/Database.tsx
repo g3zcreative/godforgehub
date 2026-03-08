@@ -22,6 +22,7 @@ const databaseCategories = [
   { id: "heroes", name: "Heroes", description: "All playable heroes", icon: "Shield", href: "/database/heroes" },
   { id: "imprints", name: "Imprints", description: "Hero imprints & passives", icon: "Gem", href: "/database/imprints" },
   { id: "weapons", name: "Weapons", description: "All weapons & factions", icon: "Sword", href: "/database/weapons" },
+  { id: "armor-sets", name: "Armor Sets", description: "Set bonuses & gear effects", icon: "ShieldHalf", href: "/database/armor-sets" },
   { id: "skills", name: "Skills", description: "Hero abilities & passives", icon: "Zap", href: "/database/skills" },
   { id: "mechanics", name: "Mechanics", description: "Buffs, debuffs & disables", icon: "Map", href: "/database/mechanics" },
 ];
