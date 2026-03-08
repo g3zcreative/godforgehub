@@ -65,8 +65,8 @@ export default function AdminBossStrategies() {
     },
   });
 
-  const bossMap = useMemo(() => new Map(bosses.map((b: any) => [b.id, b])), [bosses]);
-  const heroMap = useMemo(() => new Map(heroes.map((h: any) => [h.id, h])), [heroes]);
+  const bossMap = useMemo(() => new Map(bosses.map((b: any) => [b.id, b] as [string, any])), [bosses]);
+  const heroMap = useMemo(() => new Map(heroes.map((h: any) => [h.id, h] as [string, any])), [heroes]);
 
   const filteredStrategies = useMemo(() => {
     let result = strategies;
