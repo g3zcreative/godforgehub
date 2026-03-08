@@ -29,7 +29,6 @@ const columns: ColumnConfig[] = [
 
 export default function AdminBosses() {
   const [importOpen, setImportOpen] = useState(false);
-  const [importUrl, setImportUrl] = useState("");
   const [triggerCreate, setTriggerCreate] = useState(0);
   const { toast } = useToast();
   const queryClient = useQueryClient();
