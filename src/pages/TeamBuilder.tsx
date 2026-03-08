@@ -277,68 +277,80 @@ export default function TeamBuilder() {
                   )}
 
                   {/* Hero select */}
-                  <Select
-                    value={slot.hero_id || NONE_VALUE}
-                    onValueChange={(v) => updateSlot(i, "hero_id", v === NONE_VALUE ? null : v)}
-                  >
-                    <SelectTrigger className="text-xs h-8"><SelectValue placeholder="Hero" /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value={NONE_VALUE}>— None —</SelectItem>
-                      {heroes.map((h) => (
-                        <SelectItem key={h.id} value={h.id}>{h.name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="space-y-1">
+                    <label className="text-xs font-medium text-muted-foreground">Hero</label>
+                    <Select
+                      value={slot.hero_id || NONE_VALUE}
+                      onValueChange={(v) => updateSlot(i, "hero_id", v === NONE_VALUE ? null : v)}
+                    >
+                      <SelectTrigger className="text-xs h-8"><SelectValue placeholder="Hero" /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value={NONE_VALUE}>— None —</SelectItem>
+                        {heroes.map((h) => (
+                          <SelectItem key={h.id} value={h.id}>{h.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
                   {/* Weapon */}
-                  <Select
-                    value={slot.weapon_id || NONE_VALUE}
-                    onValueChange={(v) => updateSlot(i, "weapon_id", v === NONE_VALUE ? null : v)}
-                  >
-                    <SelectTrigger className="text-xs h-8"><SelectValue placeholder="Weapon" /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value={NONE_VALUE}>— None —</SelectItem>
-                      {weapons.map((w) => (
-                        <SelectItem key={w.id} value={w.id}>{w.name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="space-y-1">
+                    <label className="text-xs font-medium text-muted-foreground">Weapon</label>
+                    <Select
+                      value={slot.weapon_id || NONE_VALUE}
+                      onValueChange={(v) => updateSlot(i, "weapon_id", v === NONE_VALUE ? null : v)}
+                    >
+                      <SelectTrigger className="text-xs h-8"><SelectValue placeholder="Weapon" /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value={NONE_VALUE}>— None —</SelectItem>
+                        {weapons.map((w) => (
+                          <SelectItem key={w.id} value={w.id}>{w.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
                   {/* Imprint */}
-                  <Select
-                    value={slot.imprint_id || NONE_VALUE}
-                    onValueChange={(v) => updateSlot(i, "imprint_id", v === NONE_VALUE ? null : v)}
-                  >
-                    <SelectTrigger className="text-xs h-8"><SelectValue placeholder="Imprint" /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value={NONE_VALUE}>— None —</SelectItem>
-                      {imprints.map((im) => (
-                        <SelectItem key={im.id} value={im.id}>{im.name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="space-y-1">
+                    <label className="text-xs font-medium text-muted-foreground">Imprint</label>
+                    <Select
+                      value={slot.imprint_id || NONE_VALUE}
+                      onValueChange={(v) => updateSlot(i, "imprint_id", v === NONE_VALUE ? null : v)}
+                    >
+                      <SelectTrigger className="text-xs h-8"><SelectValue placeholder="Imprint" /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value={NONE_VALUE}>— None —</SelectItem>
+                        {imprints.map((im) => (
+                          <SelectItem key={im.id} value={im.id}>{im.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
                   {/* Armor sets */}
-                  {([1, 2, 3] as const).map((n) => {
-                    const field = `armor_set_${n}_id` as keyof SlotState;
-                    return (
-                      <Select
-                        key={n}
-                        value={(slot[field] as string) || NONE_VALUE}
-                        onValueChange={(v) => updateSlot(i, field, v === NONE_VALUE ? null : v)}
-                      >
-                        <SelectTrigger className="text-xs h-8">
-                          <SelectValue placeholder={`Armor Set ${n}`} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value={NONE_VALUE}>— None —</SelectItem>
-                          {armorSets.map((a) => (
-                            <SelectItem key={a.id} value={a.id}>{a.name}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    );
-                  })}
+                  <div className="space-y-1">
+                    <label className="text-xs font-medium text-muted-foreground">Armor Sets</label>
+                    {([1, 2, 3] as const).map((n) => {
+                      const field = `armor_set_${n}_id` as keyof SlotState;
+                      return (
+                        <Select
+                          key={n}
+                          value={(slot[field] as string) || NONE_VALUE}
+                          onValueChange={(v) => updateSlot(i, field, v === NONE_VALUE ? null : v)}
+                        >
+                          <SelectTrigger className="text-xs h-8">
+                            <SelectValue placeholder={`Armor Set ${n}`} />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value={NONE_VALUE}>— None —</SelectItem>
+                            {armorSets.map((a) => (
+                              <SelectItem key={a.id} value={a.id}>{a.name}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      );
+                    })}
+                  </div>
                 </CardContent>
               </Card>
             );
