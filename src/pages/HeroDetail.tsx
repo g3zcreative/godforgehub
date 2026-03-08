@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Shield, Zap, Star, History, Swords, Stamp, Users } from "lucide-react";
+import { Shield, Zap, Star, History, Swords, Stamp, Users, ExternalLink } from "lucide-react";
 import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 import { SEO } from "@/components/SEO";
 import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
@@ -82,33 +82,36 @@ export default function HeroDetail() {
     enabled: !!hero?.id,
   });
 
-  const { data: recommendations } = useQuery({
-    queryKey: ["hero_recommendations", hero?.id],
+  const { data: builds } = useQuery({
+    queryKey: ["hero_builds", hero?.id],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("hero_recommendations" as any)
+        .from("hero_builds")
         .select("*")
         .eq("hero_id", hero!.id)
+        .eq("published", true)
+        .eq("featured", true)
         .order("sort_order");
       if (error) throw error;
-      const recs = data as any[];
+      if (!data || data.length === 0) return [];
 
-      // Resolve targets
-      const weaponIds = recs.filter(r => r.recommendation_type === "weapon").map(r => r.target_id);
-      const imprintIds = recs.filter(r => r.recommendation_type === "imprint").map(r => r.target_id);
-      const synergyIds = recs.filter(r => r.recommendation_type === "synergy").map(r => r.target_id);
-
-      const [weaponsRes, imprintsRes, synergiesRes] = await Promise.all([
-        weaponIds.length ? supabase.from("weapons").select("id, name, slug, image_url, rarity, passive").in("id", weaponIds) : { data: [] },
-        imprintIds.length ? supabase.from("imprints").select("id, name, slug, image_url, rarity, passive").in("id", imprintIds) : { data: [] },
-        synergyIds.length ? supabase.from("heroes").select("id, name, slug, image_url, rarity").in("id", synergyIds) : { data: [] },
-      ]);
-
-      return {
-        weapons: (weaponsRes.data || []) as any[],
-        imprints: (imprintsRes.data || []) as any[],
-        synergies: (synergiesRes.data || []) as any[],
-      };
+      // Resolve gear for each build
+      const enriched = await Promise.all(data.map(async (build: any) => {
+        const [wRes, iRes, aRes, sRes] = await Promise.all([
+          build.weapon_id ? supabase.from("weapons").select("id, name, slug, image_url, rarity, passive").eq("id", build.weapon_id).maybeSingle() : { data: null },
+          build.imprint_id ? supabase.from("imprints").select("id, name, slug, image_url, rarity, passive").eq("id", build.imprint_id).maybeSingle() : { data: null },
+          build.armor_set_id ? supabase.from("armor_sets").select("id, name, slug, image_url, set_bonus").eq("id", build.armor_set_id).maybeSingle() : { data: null },
+          supabase.from("hero_build_synergies").select("*, heroes:hero_id(id, name, slug, image_url)").eq("build_id", build.id).order("sort_order"),
+        ]);
+        return {
+          ...build,
+          weapon: wRes?.data || null,
+          imprint: iRes?.data || null,
+          armor_set: aRes?.data || null,
+          synergies: sRes.data || [],
+        };
+      }));
+      return enriched;
     },
     enabled: !!hero?.id,
   });
@@ -132,7 +135,7 @@ export default function HeroDetail() {
   const leaderBonus = hero?.leader_bonus as { text?: string; scope?: string } | null;
   const ascensionBonuses = (hero?.ascension_bonuses || []) as { tier: number; bonus: string }[];
   const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
-  const hasRecommendations = (recommendations?.weapons?.length || 0) + (recommendations?.imprints?.length || 0) + (recommendations?.synergies?.length || 0) > 0;
+  const hasBuilds = (builds?.length || 0) > 0;
 
   const heroSeoVars = hero ? { name: hero.name, element: hero.faction_name, class_type: hero.archetype_name, faction: hero.faction_name, archetype: hero.archetype_name, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle } : {};
   const seoTitle = interpolateTemplate(tpl?.title_template, heroSeoVars);
@@ -231,29 +234,67 @@ export default function HeroDetail() {
 
               {/* Right Column: Recommendations or Skills fallback */}
               <div className="lg:col-span-2 space-y-6">
-                {hasRecommendations ? (
+                {hasBuilds ? (
                   <>
-                    <RecommendationSection
-                      title="Recommended Weapons"
-                      icon={<Swords className="h-5 w-5 text-primary" />}
-                      items={recommendations?.weapons || []}
-                      linkPrefix="/database/weapons"
-                      emptyText="No weapon recommendations yet"
-                    />
-                    <RecommendationSection
-                      title="Recommended Imprints"
-                      icon={<Stamp className="h-5 w-5 text-primary" />}
-                      items={recommendations?.imprints || []}
-                      linkPrefix="/database/imprints"
-                      emptyText="No imprint recommendations yet"
-                    />
-                    <RecommendationSection
-                      title="Hero Synergies"
-                      icon={<Users className="h-5 w-5 text-primary" />}
-                      items={recommendations?.synergies || []}
-                      linkPrefix="/database/heroes"
-                      emptyText="No synergy recommendations yet"
-                    />
+                    {builds!.map((build: any) => (
+                      <div key={build.id} className="space-y-3">
+                        <div className="flex items-center justify-between">
+                          <h2 className="text-base font-display font-semibold">{build.title}</h2>
+                          <Link
+                            to={`/database/heroes/${hero.slug}/builds/${build.slug}`}
+                            className="text-xs text-primary hover:underline flex items-center gap-1"
+                          >
+                            Full Guide <ExternalLink className="h-3 w-3" />
+                          </Link>
+                        </div>
+                        {build.weapon && (
+                          <Link to={`/database/weapons/${build.weapon.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-3 hover:border-primary/30 transition-colors bg-card group">
+                            {build.weapon.image_url && <img src={build.weapon.image_url} alt={build.weapon.name} className="h-10 w-10 rounded object-cover border border-border" />}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-0.5"><Swords className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Weapon</span></div>
+                              <p className="font-display font-semibold text-sm truncate">{build.weapon.name}</p>
+                              {build.weapon.passive && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.weapon.passive}</p>}
+                            </div>
+                          </Link>
+                        )}
+                        {build.imprint && (
+                          <Link to={`/database/imprints/${build.imprint.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-3 hover:border-primary/30 transition-colors bg-card group">
+                            {build.imprint.image_url && <img src={build.imprint.image_url} alt={build.imprint.name} className="h-10 w-10 rounded object-cover border border-border" />}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-0.5"><Stamp className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Imprint</span></div>
+                              <p className="font-display font-semibold text-sm truncate">{build.imprint.name}</p>
+                              {build.imprint.passive && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.imprint.passive}</p>}
+                            </div>
+                          </Link>
+                        )}
+                        {build.armor_set && (
+                          <div className="flex items-center gap-3 rounded-lg border border-border p-3 bg-card">
+                            {build.armor_set.image_url && <img src={build.armor_set.image_url} alt={build.armor_set.name} className="h-10 w-10 rounded object-cover border border-border" />}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-0.5"><Shield className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Armor Set</span></div>
+                              <p className="font-display font-semibold text-sm truncate">{build.armor_set.name}</p>
+                              {build.armor_set.set_bonus && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.armor_set.set_bonus}</p>}
+                            </div>
+                          </div>
+                        )}
+                        {build.synergies.length > 0 && (
+                          <div>
+                            <p className="text-xs text-muted-foreground uppercase font-semibold mb-2 flex items-center gap-1"><Users className="h-3.5 w-3.5 text-primary" /> Synergies</p>
+                            <div className="space-y-2">
+                              {build.synergies.map((s: any) => (
+                                <Link key={s.id} to={`/database/heroes/${s.heroes?.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-2.5 hover:border-primary/30 transition-colors bg-card">
+                                  {s.heroes?.image_url && <img src={s.heroes.image_url} alt={s.heroes.name} className="h-8 w-8 rounded object-cover border border-border" />}
+                                  <div>
+                                    <p className="font-display font-semibold text-sm">{s.heroes?.name}</p>
+                                    {s.note && <p className="text-xs text-muted-foreground">{s.note}</p>}
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </>
                 ) : (
                   <>
