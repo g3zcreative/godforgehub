@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
 
-const ITEMS_PER_PAGE = 24;
+
 
 function parseSetBonus(raw: string | null) {
   if (!raw) return [];
