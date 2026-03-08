@@ -49,7 +49,7 @@ export default function TeamBuilder() {
   const { data: heroes = [] } = useQuery({
     queryKey: ["tb_heroes"],
     queryFn: async () => {
-      const { data } = await supabase.from("heroes").select("id, name, image_url, rarity").order("name");
+      const { data } = await supabase.from("heroes").select("id, name, image_url, rarity, leader_bonus").order("name");
       return data || [];
     },
   });
