@@ -147,11 +147,11 @@ export default function AdminDataSync() {
             .select("stats")
             .eq("id", diff.hero_id)
             .single();
-          const currentStats = (hero?.stats || {}) as Record<string, unknown>;
+          const currentStats = (hero?.stats || {}) as Record<string, any>;
           currentStats[statKey] = incoming;
           const { error } = await supabase
             .from("heroes")
-            .update({ stats: currentStats })
+            .update({ stats: currentStats as any })
             .eq("id", diff.hero_id);
           if (error) throw error;
         } else if (diff.field === "affinity" || diff.field === "allegiance") {
