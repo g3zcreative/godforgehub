@@ -79,6 +79,7 @@ function buildColumns(
     { key: "ascension_bonuses", label: "Ascension Bonuses (JSON)", type: "json" },
     { key: "awakening_bonuses", label: "Awakening Bonuses (JSON)", type: "json" },
   ];
+}
 
 type CreationMode = "picker" | "url" | "bulk" | "backfill" | "refresh-images" | null;
 
