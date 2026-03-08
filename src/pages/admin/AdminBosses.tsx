@@ -103,9 +103,6 @@ export default function AdminBosses() {
     scrapeMutation.mutate(importUrl.trim());
   };
 
-  const handleNewOverride = () => {
-    // Show dropdown is handled by the custom button render
-  };
 
   return (
     <>
