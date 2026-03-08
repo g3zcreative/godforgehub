@@ -279,7 +279,7 @@ function AddToCollectionDialog({ type, userId }: { type: CollectionType; userId:
       }
     } else {
       toast({ title: `${type.charAt(0).toUpperCase() + type.slice(1)} added!` });
-      queryClient.invalidateQueries({ queryKey: [`user_${type}s`] });
+      queryClient.invalidateQueries({ queryKey: [`user_${type === "hero" ? "heroes" : type + "s"}`] });
     }
     setAdding(null);
   };
