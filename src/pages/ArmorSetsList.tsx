@@ -82,10 +82,7 @@ export default function ArmorSetsList() {
             <Input
               placeholder="Search armor sets..."
               value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setPage(1);
-              }}
+              onChange={(e) => setSearch(e.target.value)}
               className="pl-9"
             />
           </div>
