@@ -277,7 +277,7 @@ export default function TeamBuilder() {
                               <Crown className="h-3 w-3 text-primary shrink-0" />
                               <span className="text-[10px] font-semibold text-primary uppercase tracking-wider">Leader</span>
                             </div>
-                            <p className="text-[11px] leading-tight text-foreground/90">{lb.text}</p>
+                            <p className="text-[11px] leading-tight text-foreground/90">{lb.scope ? `(${lb.scope}) ` : ""}{lb.text}</p>
                           </div>
                         ) : null;
                       })()}
