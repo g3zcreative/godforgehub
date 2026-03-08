@@ -49,7 +49,7 @@ export default function TeamBuilder() {
   const { data: heroes = [] } = useQuery({
     queryKey: ["tb_heroes"],
     queryFn: async () => {
-      const { data } = await supabase.from("heroes").select("id, name, image_url, rarity").order("name");
+      const { data } = await supabase.from("heroes").select("id, name, image_url, rarity, leader_bonus").order("name");
       return data || [];
     },
   });
@@ -267,8 +267,20 @@ export default function TeamBuilder() {
 
                   {/* Hero portrait */}
                   {hero?.image_url ? (
-                    <div className="aspect-[4/5] rounded-lg overflow-hidden bg-muted/30 border border-border">
+                    <div className="relative aspect-[4/5] rounded-lg overflow-hidden bg-muted/30 border border-border">
                       <img src={hero.image_url} alt={hero.name} className="w-full h-full object-cover" />
+                      {i === 0 && (() => {
+                        const lb = hero.leader_bonus as { text?: string; scope?: string } | null;
+                        return lb?.text ? (
+                          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-background/95 via-background/70 to-transparent px-2.5 pt-5 pb-2">
+                            <div className="flex items-center gap-1 mb-0.5">
+                              <Crown className="h-3 w-3 text-primary shrink-0" />
+                              <span className="text-[10px] font-semibold text-primary uppercase tracking-wider">Leader</span>
+                            </div>
+                            <p className="text-[11px] leading-tight text-foreground/90">{lb.text}</p>
+                          </div>
+                        ) : null;
+                      })()}
                     </div>
                   ) : (
                     <div className="aspect-[4/5] rounded-lg bg-muted/20 border border-dashed border-border flex items-center justify-center text-muted-foreground text-xs">
