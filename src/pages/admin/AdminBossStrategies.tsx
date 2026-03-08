@@ -10,7 +10,8 @@ import { Switch } from "@/components/ui/switch";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { Plus, Trash2, Search, Pencil, Users } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Plus, Trash2, Search, Pencil, Users, Loader2, Video } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 
@@ -25,6 +26,9 @@ export default function AdminBossStrategies() {
   const [teamDialogStratId, setTeamDialogStratId] = useState<string | null>(null);
   const [teamHeroId, setTeamHeroId] = useState("");
   const [teamNote, setTeamNote] = useState("");
+  const [videoImportOpen, setVideoImportOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+  const [videoBossId, setVideoBossId] = useState("");
 
   const [form, setForm] = useState({
     boss_id: "", title: "", slug: "", content: "", video_url: "",
@@ -152,6 +156,41 @@ export default function AdminBossStrategies() {
     },
   });
 
+  const videoImportMutation = useMutation({
+    mutationFn: async () => {
+      const bossName = (bossMap.get(videoBossId) as any)?.name || "";
+      const { data, error } = await supabase.functions.invoke("generate-boss-strategy", {
+        body: { video_url: videoUrl, boss_id: videoBossId, boss_name: bossName },
+      });
+      if (error) throw new Error(error.message);
+      if (data?.error) throw new Error(data.error);
+      return data;
+    },
+    onSuccess: async (data) => {
+      // Pre-fill the create form with generated content
+      const slug = (data.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      setEditingId(null);
+      setForm({
+        boss_id: videoBossId,
+        title: data.title || "",
+        slug,
+        content: data.content || "",
+        video_url: data.video_url || videoUrl,
+        published: false,
+        featured: false,
+        sort_order: 0,
+      });
+      setVideoImportOpen(false);
+      setVideoUrl("");
+      setVideoBossId("");
+      setDialogOpen(true);
+      toast({ title: "Strategy generated", description: "Review and save the generated strategy." });
+    },
+    onError: (err: Error) => {
+      toast({ title: "Generation failed", description: err.message, variant: "destructive" });
+    },
+  });
+
   const openNew = () => {
     setEditingId(null);
     setForm({ boss_id: "", title: "", slug: "", content: "", video_url: "", published: false, featured: false, sort_order: 0 });
@@ -179,7 +218,18 @@ export default function AdminBossStrategies() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-display font-bold">Boss Strategies</h1>
-        <Button onClick={openNew}><Plus className="mr-2 h-4 w-4" /> Add Strategy</Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button><Plus className="mr-2 h-4 w-4" /> Add Strategy</Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onSelect={openNew}>Create manually</DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => setVideoImportOpen(true)}>
+              <Video className="mr-2 h-4 w-4" />
+              Create from Video URL
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       <div className="flex flex-wrap gap-3">
@@ -341,6 +391,57 @@ export default function AdminBossStrategies() {
               </Button>
             </div>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Video Import Dialog */}
+      <Dialog open={videoImportOpen} onOpenChange={setVideoImportOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Create Strategy from Video</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 py-2">
+            <div>
+              <Label>Boss *</Label>
+              <Select value={videoBossId || "none"} onValueChange={v => setVideoBossId(v === "none" ? "" : v)}>
+                <SelectTrigger><SelectValue placeholder="Select boss" /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">Select...</SelectItem>
+                  {bosses.map((b: any) => <SelectItem key={b.id} value={b.id}>{b.name}</SelectItem>)}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label>YouTube Video URL</Label>
+              <Input
+                placeholder="https://youtu.be/yXoeVhXmJe8"
+                value={videoUrl}
+                onChange={e => setVideoUrl(e.target.value)}
+                disabled={videoImportMutation.isPending}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Paste a YouTube video URL. AI will generate a strategy guide from the video content.
+              </p>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setVideoImportOpen(false)} disabled={videoImportMutation.isPending}>
+              Cancel
+            </Button>
+            <Button
+              onClick={() => videoImportMutation.mutate()}
+              disabled={!videoUrl.trim() || !videoBossId || videoImportMutation.isPending}
+            >
+              {videoImportMutation.isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Generating...
+                </>
+              ) : (
+                "Generate Strategy"
+              )}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
