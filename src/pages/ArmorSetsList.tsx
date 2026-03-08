@@ -52,12 +52,6 @@ export default function ArmorSetsList() {
     );
   }, [armorSets, search]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
-  const currentPage = Math.min(page, totalPages);
-  const paged = filtered.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
 
   const tierColors: Record<string, string> = {
     "2-Piece": "text-emerald-400",
