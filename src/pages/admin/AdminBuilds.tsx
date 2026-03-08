@@ -307,30 +307,30 @@ export default function AdminBuilds() {
             <div className="grid grid-cols-3 gap-4">
               <div>
                 <Label>Weapon</Label>
-                <Select value={form.weapon_id} onValueChange={v => setForm(f => ({ ...f, weapon_id: v }))}>
+                <Select value={form.weapon_id || "none"} onValueChange={v => setForm(f => ({ ...f, weapon_id: v === "none" ? "" : v }))}>
                   <SelectTrigger><SelectValue placeholder="None" /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">None</SelectItem>
+                    <SelectItem value="none">None</SelectItem>
                     {weapons.map(w => <SelectItem key={w.id} value={w.id}>{w.name}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>
               <div>
                 <Label>Imprint</Label>
-                <Select value={form.imprint_id} onValueChange={v => setForm(f => ({ ...f, imprint_id: v }))}>
+                <Select value={form.imprint_id || "none"} onValueChange={v => setForm(f => ({ ...f, imprint_id: v === "none" ? "" : v }))}>
                   <SelectTrigger><SelectValue placeholder="None" /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">None</SelectItem>
+                    <SelectItem value="none">None</SelectItem>
                     {imprints.map(i => <SelectItem key={i.id} value={i.id}>{i.name}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>
               <div>
                 <Label>Armor Set</Label>
-                <Select value={form.armor_set_id} onValueChange={v => setForm(f => ({ ...f, armor_set_id: v }))}>
+                <Select value={form.armor_set_id || "none"} onValueChange={v => setForm(f => ({ ...f, armor_set_id: v === "none" ? "" : v }))}>
                   <SelectTrigger><SelectValue placeholder="None" /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">None</SelectItem>
+                    <SelectItem value="none">None</SelectItem>
                     {armorSets.map(a => <SelectItem key={a.id} value={a.id}>{a.name}</SelectItem>)}
                   </SelectContent>
                 </Select>
