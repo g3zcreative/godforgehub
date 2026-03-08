@@ -317,7 +317,7 @@ export default function AdminHeroes() {
   const { data: allHeroes = [] } = useQuery({
     queryKey: ["heroes_for_backfill"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("heroes").select("id, name, slug, element").order("name");
+      const { data, error } = await supabase.from("heroes").select("id, name, slug, faction_id").order("name");
       if (error) throw error;
       return data;
     },
@@ -501,7 +501,7 @@ export default function AdminHeroes() {
 
       try {
         const hero = allHeroes[i];
-        const factionName = factionsList.find(f => f.id === hero.faction_id)?.name || "";
+        const factionName = factions.find(f => f.id === hero.faction_id)?.name || "";
         const { data, error } = await supabase.functions.invoke("backfill-hero", {
           body: { hero_id: hero.id, slug: hero.slug, faction_name: factionName },
         });
