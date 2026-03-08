@@ -8,9 +8,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, X } from "lucide-react";
 
-const ITEMS_PER_PAGE = 24;
+
 
 function parseSetBonus(raw: string | null) {
   if (!raw) return [];
@@ -28,7 +28,6 @@ function parseSetBonus(raw: string | null) {
 
 export default function ArmorSetsList() {
   const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
 
   const { data: armorSets, isLoading } = useQuery({
     queryKey: ["armor_sets_public"],
@@ -53,12 +52,6 @@ export default function ArmorSetsList() {
     );
   }, [armorSets, search]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
-  const currentPage = Math.min(page, totalPages);
-  const paged = filtered.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
 
   const tierColors: Record<string, string> = {
     "2-Piece": "text-emerald-400",
@@ -83,10 +76,7 @@ export default function ArmorSetsList() {
             <Input
               placeholder="Search armor sets..."
               value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setPage(1);
-              }}
+              onChange={(e) => setSearch(e.target.value)}
               className="pl-9"
             />
           </div>
@@ -94,10 +84,7 @@ export default function ArmorSetsList() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => {
-                setSearch("");
-                setPage(1);
-              }}
+              onClick={() => setSearch("")}
               className="shrink-0"
               title="Clear search"
             >
@@ -116,9 +103,9 @@ export default function ArmorSetsList() {
               <Skeleton key={i} className="h-36 w-full rounded-lg" />
             ))}
           </div>
-        ) : paged.length > 0 ? (
+        ) : filtered.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {paged.map((set) => {
+            {filtered.map((set) => {
               const bonuses = parseSetBonus(set.set_bonus);
               return (
                 <Card
@@ -172,29 +159,6 @@ export default function ArmorSetsList() {
           </p>
         )}
 
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-8">
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentPage <= 1}
-              onClick={() => setPage(currentPage - 1)}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <span className="text-sm text-muted-foreground">
-              Page {currentPage} of {totalPages}
-            </span>
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentPage >= totalPages}
-              onClick={() => setPage(currentPage + 1)}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
       </div>
     </Layout>
   );
