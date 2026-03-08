@@ -1308,6 +1308,119 @@ export type Database = {
           },
         ]
       }
+      team_slots: {
+        Row: {
+          armor_set_1_id: string | null
+          armor_set_2_id: string | null
+          armor_set_3_id: string | null
+          hero_id: string | null
+          id: string
+          imprint_id: string | null
+          slot_number: number
+          team_id: string
+          weapon_id: string | null
+        }
+        Insert: {
+          armor_set_1_id?: string | null
+          armor_set_2_id?: string | null
+          armor_set_3_id?: string | null
+          hero_id?: string | null
+          id?: string
+          imprint_id?: string | null
+          slot_number: number
+          team_id: string
+          weapon_id?: string | null
+        }
+        Update: {
+          armor_set_1_id?: string | null
+          armor_set_2_id?: string | null
+          armor_set_3_id?: string | null
+          hero_id?: string | null
+          id?: string
+          imprint_id?: string | null
+          slot_number?: number
+          team_id?: string
+          weapon_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "team_slots_armor_set_1_id_fkey"
+            columns: ["armor_set_1_id"]
+            isOneToOne: false
+            referencedRelation: "armor_sets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "team_slots_armor_set_2_id_fkey"
+            columns: ["armor_set_2_id"]
+            isOneToOne: false
+            referencedRelation: "armor_sets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "team_slots_armor_set_3_id_fkey"
+            columns: ["armor_set_3_id"]
+            isOneToOne: false
+            referencedRelation: "armor_sets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "team_slots_hero_id_fkey"
+            columns: ["hero_id"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "team_slots_imprint_id_fkey"
+            columns: ["imprint_id"]
+            isOneToOne: false
+            referencedRelation: "imprints"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "team_slots_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "team_slots_weapon_id_fkey"
+            columns: ["weapon_id"]
+            isOneToOne: false
+            referencedRelation: "weapons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teams: {
+        Row: {
+          created_at: string
+          id: string
+          notes: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

@@ -16,7 +16,7 @@ const tools = [
     description: "Build and share team compositions with synergy analysis.",
     icon: <Users className="h-8 w-8" />,
     href: "/tools/team-builder",
-    status: "Coming Soon",
+    status: "Available",
   },
   {
     name: "Resource Calculator",
@@ -39,13 +39,23 @@ const ToolsPage = () => {
           {tools.map((tool) => (
             <Card key={tool.name} className="relative overflow-hidden hover:border-primary/30 transition-colors">
               <div className="absolute top-3 right-3">
-                <span className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">{tool.status}</span>
+                <span className={`text-xs px-2 py-1 rounded-full ${tool.status === "Available" ? "bg-primary/15 text-primary" : "bg-muted text-muted-foreground"}`}>{tool.status}</span>
               </div>
-              <CardContent className="p-6 pt-8">
-                <div className="text-primary mb-4">{tool.icon}</div>
-                <h3 className="font-display font-semibold text-lg mb-2">{tool.name}</h3>
-                <p className="text-sm text-muted-foreground">{tool.description}</p>
-              </CardContent>
+              {tool.status === "Available" ? (
+                <Link to={tool.href}>
+                  <CardContent className="p-6 pt-8">
+                    <div className="text-primary mb-4">{tool.icon}</div>
+                    <h3 className="font-display font-semibold text-lg mb-2">{tool.name}</h3>
+                    <p className="text-sm text-muted-foreground">{tool.description}</p>
+                  </CardContent>
+                </Link>
+              ) : (
+                <CardContent className="p-6 pt-8">
+                  <div className="text-primary mb-4">{tool.icon}</div>
+                  <h3 className="font-display font-semibold text-lg mb-2">{tool.name}</h3>
+                  <p className="text-sm text-muted-foreground">{tool.description}</p>
+                </CardContent>
+              )}
             </Card>
           ))}
         </div>

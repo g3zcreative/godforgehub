@@ -27,6 +27,7 @@ import ImprintDetail from "./pages/ImprintDetail";
 import WeaponsList from "./pages/WeaponsList";
 import WeaponDetail from "./pages/WeaponDetail";
 import ToolsPage from "./pages/Tools";
+import TeamBuilder from "./pages/TeamBuilder";
 import ChangelogPage from "./pages/Changelog";
 import RoadmapPage from "./pages/Roadmap";
 import AuthPage from "./pages/Auth";
@@ -151,6 +152,7 @@ function AppRoutes() {
         path="/tools"
         element={flags.tools ? <ToolsPage /> : comingSoon("Tools", "Interactive tools like tier lists, team builder, and resource calculators are in development.")}
       />
+      <Route path="/tools/team-builder" element={<TeamBuilder />} />
 
       {/* Community */}
       <Route
