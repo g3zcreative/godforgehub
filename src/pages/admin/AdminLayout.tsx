@@ -18,8 +18,7 @@ import { Button } from "@/components/ui/button";
 
 const contentItems = [
   { title: "Heroes", url: "/admin/heroes", icon: Shield },
-  { title: "Recommendations", url: "/admin/recommendations", icon: Star },
-  
+  { title: "Builds", url: "/admin/builds", icon: Star },
   { title: "Skills", url: "/admin/skills", icon: Sparkles },
   { title: "Mechanics", url: "/admin/mechanics", icon: FlaskConical },
   { title: "Imprints", url: "/admin/imprints", icon: Stamp },
@@ -28,6 +27,7 @@ const contentItems = [
   { title: "Archetypes", url: "/admin/archetypes", icon: Swords },
   { title: "Affinities", url: "/admin/affinities", icon: Sparkles },
   { title: "Allegiances", url: "/admin/allegiances", icon: Flag },
+  { title: "Armor Sets", url: "/admin/armor-sets", icon: Shield },
   { title: "News", url: "/admin/news", icon: Newspaper },
   { title: "Guides", url: "/admin/guides", icon: BookOpen },
   { title: "Official Posts", url: "/admin/official-posts", icon: MessageSquare },

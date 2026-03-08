@@ -125,6 +125,39 @@ export type Database = {
         }
         Relationships: []
       }
+      armor_sets: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          name: string
+          set_bonus: string | null
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          set_bonus?: string | null
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          set_bonus?: string | null
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       authors: {
         Row: {
           avatar_url: string | null
@@ -257,43 +290,131 @@ export type Database = {
         }
         Relationships: []
       }
-      hero_recommendations: {
+      hero_build_synergies: {
         Row: {
-          created_at: string
+          build_id: string
           hero_id: string
           id: string
           note: string | null
-          recommendation_type: string
           sort_order: number
-          target_id: string
-          updated_at: string
         }
         Insert: {
-          created_at?: string
+          build_id: string
           hero_id: string
           id?: string
           note?: string | null
-          recommendation_type: string
           sort_order?: number
-          target_id: string
-          updated_at?: string
         }
         Update: {
-          created_at?: string
+          build_id?: string
           hero_id?: string
           id?: string
           note?: string | null
-          recommendation_type?: string
           sort_order?: number
-          target_id?: string
-          updated_at?: string
         }
         Relationships: [
           {
-            foreignKeyName: "hero_recommendations_hero_id_fkey"
+            foreignKeyName: "hero_build_synergies_build_id_fkey"
+            columns: ["build_id"]
+            isOneToOne: false
+            referencedRelation: "hero_builds"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "hero_build_synergies_hero_id_fkey"
             columns: ["hero_id"]
             isOneToOne: false
             referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hero_builds: {
+        Row: {
+          armor_set_id: string | null
+          author_id: string | null
+          content: string | null
+          created_at: string
+          featured: boolean
+          hero_id: string
+          id: string
+          imprint_id: string | null
+          published: boolean
+          slug: string
+          sort_order: number
+          title: string
+          updated_at: string
+          video_url: string | null
+          weapon_id: string | null
+        }
+        Insert: {
+          armor_set_id?: string | null
+          author_id?: string | null
+          content?: string | null
+          created_at?: string
+          featured?: boolean
+          hero_id: string
+          id?: string
+          imprint_id?: string | null
+          published?: boolean
+          slug: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+          video_url?: string | null
+          weapon_id?: string | null
+        }
+        Update: {
+          armor_set_id?: string | null
+          author_id?: string | null
+          content?: string | null
+          created_at?: string
+          featured?: boolean
+          hero_id?: string
+          id?: string
+          imprint_id?: string | null
+          published?: boolean
+          slug?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          video_url?: string | null
+          weapon_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hero_builds_armor_set_id_fkey"
+            columns: ["armor_set_id"]
+            isOneToOne: false
+            referencedRelation: "armor_sets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "hero_builds_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "hero_builds_hero_id_fkey"
+            columns: ["hero_id"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "hero_builds_imprint_id_fkey"
+            columns: ["imprint_id"]
+            isOneToOne: false
+            referencedRelation: "imprints"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "hero_builds_weapon_id_fkey"
+            columns: ["weapon_id"]
+            isOneToOne: false
+            referencedRelation: "weapons"
             referencedColumns: ["id"]
           },
         ]
