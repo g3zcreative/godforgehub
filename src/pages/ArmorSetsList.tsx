@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 
 
