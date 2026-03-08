@@ -393,6 +393,57 @@ export default function AdminBossStrategies() {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Video Import Dialog */}
+      <Dialog open={videoImportOpen} onOpenChange={setVideoImportOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Create Strategy from Video</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 py-2">
+            <div>
+              <Label>Boss *</Label>
+              <Select value={videoBossId || "none"} onValueChange={v => setVideoBossId(v === "none" ? "" : v)}>
+                <SelectTrigger><SelectValue placeholder="Select boss" /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">Select...</SelectItem>
+                  {bosses.map((b: any) => <SelectItem key={b.id} value={b.id}>{b.name}</SelectItem>)}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label>YouTube Video URL</Label>
+              <Input
+                placeholder="https://youtu.be/yXoeVhXmJe8"
+                value={videoUrl}
+                onChange={e => setVideoUrl(e.target.value)}
+                disabled={videoImportMutation.isPending}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Paste a YouTube video URL. AI will generate a strategy guide from the video content.
+              </p>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setVideoImportOpen(false)} disabled={videoImportMutation.isPending}>
+              Cancel
+            </Button>
+            <Button
+              onClick={() => videoImportMutation.mutate()}
+              disabled={!videoUrl.trim() || !videoBossId || videoImportMutation.isPending}
+            >
+              {videoImportMutation.isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Generating...
+                </>
+              ) : (
+                "Generate Strategy"
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
