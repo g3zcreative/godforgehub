@@ -2,3 +2,6 @@ project_id = "yawfmtkrnewpdxjdypmc"
 
 [functions.ingest-official-post]
 verify_jwt = false
+
+[functions.sync-hero]
+verify_jwt = false
