@@ -71,8 +71,8 @@ async function fetchEntity(type: string, slug: string): Promise<TooltipData | nu
       const { data } = await supabase.from("mechanics").select("name, description, icon_url, mechanic_type").eq("slug", slug).maybeSingle();
       if (data) result = { name: data.name, description: data.description, icon_url: data.icon_url, extra: data.mechanic_type };
     } else if (type === "hero") {
-      const { data } = await supabase.from("heroes").select("name, description, image_url, element, class_type, rarity").eq("slug", slug).maybeSingle();
-      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.element} · ${data.class_type} · ${"★".repeat(data.rarity)}`, rarity: data.rarity };
+      const { data } = await supabase.from("heroes").select("name, description, image_url, rarity, factions(name), archetypes(name)").eq("slug", slug).maybeSingle();
+      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${(data as any).factions?.name || "?"} · ${(data as any).archetypes?.name || "?"} · ${"★".repeat(data.rarity)}`, rarity: data.rarity };
     } else if (type === "skill") {
       const { data } = await supabase.from("skills").select("name, description, image_url, skill_type, cooldown").eq("slug", slug).maybeSingle();
       if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.skill_type}${data.cooldown ? ` · ${data.cooldown}s CD` : ""}` };
