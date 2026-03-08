@@ -75,6 +75,7 @@ interface AdminCrudPageProps {
   onNewOverride?: () => void;
   triggerCreate?: number;
   onAfterCreate?: (row: RowData) => void;
+  customNewButton?: React.ReactNode;
 }
 
 type RowData = Record<string, unknown>;
