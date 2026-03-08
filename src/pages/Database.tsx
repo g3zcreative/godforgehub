@@ -30,6 +30,7 @@ const databaseCategories = [
 const iconMap: Record<string, React.ReactNode> = {
   Sword: <Sword className="h-8 w-8" />,
   Shield: <Shield className="h-8 w-8" />,
+  ShieldHalf: <ShieldHalf className="h-8 w-8" />,
   Zap: <Zap className="h-8 w-8" />,
   Gem: <Gem className="h-8 w-8" />,
   Map: <Map className="h-8 w-8" />,

@@ -125,6 +125,9 @@ function AppRoutes() {
       <Route path="/database/weapons" element={flags.database ? <WeaponsList /> : comingSoon("Database", "The full database is under construction.")} />
       <Route path="/database/weapons/:slug" element={flags.database ? <WeaponDetail /> : comingSoon("Database", "The full database is under construction.")} />
 
+      {/* Armor Sets */}
+      <Route path="/database/armor-sets" element={flags.database ? <ArmorSetsList /> : comingSoon("Database", "The full database is under construction.")} />
+
       {/* Builds */}
       <Route path="/database/heroes/:heroSlug/builds/:buildSlug" element={flags.database ? <BuildDetail /> : comingSoon("Database", "The full database is under construction.")} />
 
