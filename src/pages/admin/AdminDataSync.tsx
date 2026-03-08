@@ -418,7 +418,7 @@ export default function AdminDataSync() {
                           <Button
                             size="sm"
                             variant="ghost"
-                            className="text-green-500 hover:text-green-600"
+                            className="text-primary hover:text-primary/80"
                             onClick={() => acceptMutation.mutate(diff)}
                             disabled={acceptMutation.isPending}
                           >
