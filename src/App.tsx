@@ -193,6 +193,7 @@ function AppRoutes() {
         <Route path="roadmap" element={<AdminRoadmap />} />
         <Route path="feedback" element={<AdminFeedback />} />
         <Route path="seo" element={<AdminSeo />} />
+        <Route path="team-comps" element={<AdminTeamComps />} />
         <Route path="platform" element={<AdminPlatform />} />
         <Route path="settings" element={<AdminSettings />} />
         <Route path="docs" element={<AdminDocs />} />
