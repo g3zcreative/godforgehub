@@ -78,11 +78,7 @@ function buildColumns(
     { key: "divinity_generator", label: "Divinity Generator", type: "textarea" },
     { key: "ascension_bonuses", label: "Ascension Bonuses (JSON)", type: "json" },
     { key: "awakening_bonuses", label: "Awakening Bonuses (JSON)", type: "json" },
-    // Legacy text fields (hidden, kept for backward compat)
-    { key: "element", label: "Realm (legacy)", required: true },
-    { key: "class_type", label: "Archetype (legacy)", required: true },
   ];
-}
 
 type CreationMode = "picker" | "url" | "bulk" | "backfill" | "refresh-images" | null;
 
