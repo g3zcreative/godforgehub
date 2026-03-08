@@ -1111,18 +1111,21 @@ export type Database = {
           display_name: string | null
           email: string | null
           id: string
+          onboarding_complete: boolean
         }
         Insert: {
           created_at?: string
           display_name?: string | null
           email?: string | null
           id: string
+          onboarding_complete?: boolean
         }
         Update: {
           created_at?: string
           display_name?: string | null
           email?: string | null
           id?: string
+          onboarding_complete?: boolean
         }
         Relationships: []
       }
@@ -1477,6 +1480,70 @@ export type Database = {
         }
         Relationships: []
       }
+      user_heroes: {
+        Row: {
+          created_at: string
+          hero_id: string
+          id: string
+          source: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          hero_id: string
+          id?: string
+          source?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          hero_id?: string
+          id?: string
+          source?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_heroes_hero_id_fkey"
+            columns: ["hero_id"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_imprints: {
+        Row: {
+          created_at: string
+          id: string
+          imprint_id: string
+          source: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          imprint_id: string
+          source?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          imprint_id?: string
+          source?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_imprints_imprint_id_fkey"
+            columns: ["imprint_id"]
+            isOneToOne: false
+            referencedRelation: "imprints"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           id: string
@@ -1494,6 +1561,38 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      user_weapons: {
+        Row: {
+          created_at: string
+          id: string
+          source: string | null
+          user_id: string
+          weapon_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          source?: string | null
+          user_id: string
+          weapon_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          source?: string | null
+          user_id?: string
+          weapon_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_weapons_weapon_id_fkey"
+            columns: ["weapon_id"]
+            isOneToOne: false
+            referencedRelation: "weapons"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       weapons: {
         Row: {
