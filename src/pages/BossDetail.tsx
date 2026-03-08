@@ -322,7 +322,7 @@ export default function BossDetail() {
                         )}
 
                         {strat.content && (
-                          <div className="prose prose-invert prose-sm max-w-none line-clamp-6" data-color-mode="dark">
+                          <div className="prose prose-invert prose-sm max-w-none line-clamp-6 [&_.wmde-markdown]:!bg-transparent" data-color-mode="dark">
                             <MDEditor.Markdown source={preprocessMarkup(strat.content)} rehypePlugins={[rehypeRaw]} />
                           </div>
                         )}
