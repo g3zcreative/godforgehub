@@ -57,6 +57,7 @@ import AdminAllegiances from "./pages/admin/AdminAllegiances";
 import AdminAuthors from "./pages/admin/AdminAuthors";
 import AdminBuilds from "./pages/admin/AdminBuilds";
 import AdminArmorSets from "./pages/admin/AdminArmorSets";
+import ArmorSetsList from "./pages/ArmorSetsList";
 import AdminBosses from "./pages/admin/AdminBosses";
 import AdminBossStrategies from "./pages/admin/AdminBossStrategies";
 import AdminSeo from "./pages/admin/AdminSeo";
@@ -123,6 +124,9 @@ function AppRoutes() {
       {/* Weapons */}
       <Route path="/database/weapons" element={flags.database ? <WeaponsList /> : comingSoon("Database", "The full database is under construction.")} />
       <Route path="/database/weapons/:slug" element={flags.database ? <WeaponDetail /> : comingSoon("Database", "The full database is under construction.")} />
+
+      {/* Armor Sets */}
+      <Route path="/database/armor-sets" element={flags.database ? <ArmorSetsList /> : comingSoon("Database", "The full database is under construction.")} />
 
       {/* Builds */}
       <Route path="/database/heroes/:heroSlug/builds/:buildSlug" element={flags.database ? <BuildDetail /> : comingSoon("Database", "The full database is under construction.")} />

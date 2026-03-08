@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { Sword, Shield, Zap, Gem, Map, Trophy, Database as DatabaseIcon, Lock } from "lucide-react";
+import { Sword, Shield, Zap, Gem, Map, Trophy, Database as DatabaseIcon, Lock, ShieldHalf } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
@@ -22,6 +22,7 @@ const databaseCategories = [
   { id: "heroes", name: "Heroes", description: "All playable heroes", icon: "Shield", href: "/database/heroes" },
   { id: "imprints", name: "Imprints", description: "Hero imprints & passives", icon: "Gem", href: "/database/imprints" },
   { id: "weapons", name: "Weapons", description: "All weapons & factions", icon: "Sword", href: "/database/weapons" },
+  { id: "armor-sets", name: "Armor Sets", description: "Set bonuses & gear effects", icon: "ShieldHalf", href: "/database/armor-sets" },
   { id: "skills", name: "Skills", description: "Hero abilities & passives", icon: "Zap", href: "/database/skills" },
   { id: "mechanics", name: "Mechanics", description: "Buffs, debuffs & disables", icon: "Map", href: "/database/mechanics" },
 ];
@@ -29,6 +30,7 @@ const databaseCategories = [
 const iconMap: Record<string, React.ReactNode> = {
   Sword: <Sword className="h-8 w-8" />,
   Shield: <Shield className="h-8 w-8" />,
+  ShieldHalf: <ShieldHalf className="h-8 w-8" />,
   Zap: <Zap className="h-8 w-8" />,
   Gem: <Gem className="h-8 w-8" />,
   Map: <Map className="h-8 w-8" />,
