@@ -113,6 +113,44 @@ export default function HeroesList() {
     });
   }, [heroes, search, realmFilter, classFilter, rarityFilter]);
 
+  // Fetch user's collection to show which heroes are already added
+  const { data: userHeroIds = [] } = useQuery({
+    queryKey: ["user_heroes", user?.id],
+    queryFn: async () => {
+      if (!user) return [];
+      const { data } = await supabase
+        .from("user_heroes")
+        .select("hero_id")
+        .eq("user_id", user.id);
+      return (data || []).map((r) => r.hero_id);
+    },
+    enabled: !!user,
+  });
+
+  const addToCollection = async (heroId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!user) return;
+    setAddingHeroId(heroId);
+    try {
+      const { error } = await supabase.from("user_heroes").insert({ hero_id: heroId, user_id: user.id });
+      if (error) {
+        if (error.code === "23505") {
+          toast.info("Hero already in your collection");
+        } else {
+          throw error;
+        }
+      } else {
+        toast.success("Hero added to your collection!");
+        queryClient.invalidateQueries({ queryKey: ["user_heroes"] });
+      }
+    } catch (err: any) {
+      toast.error(err.message || "Failed to add hero");
+    } finally {
+      setAddingHeroId(null);
+    }
+  };
+
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   const currentPage = Math.min(page, totalPages);
   const paged = filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
