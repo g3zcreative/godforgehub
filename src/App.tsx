@@ -152,6 +152,7 @@ function AppRoutes() {
         path="/tools"
         element={flags.tools ? <ToolsPage /> : comingSoon("Tools", "Interactive tools like tier lists, team builder, and resource calculators are in development.")}
       />
+      <Route path="/tools/team-builder" element={<TeamBuilder />} />
 
       {/* Community */}
       <Route
