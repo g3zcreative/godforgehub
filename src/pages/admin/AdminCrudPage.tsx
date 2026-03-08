@@ -82,7 +82,7 @@ type RowData = Record<string, unknown>;
 
 const ADMIN_PAGE_SIZE = 25;
 
-export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate, onAfterCreate }: AdminCrudPageProps) {
+export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate, onAfterCreate, customNewButton }: AdminCrudPageProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
