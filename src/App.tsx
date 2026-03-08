@@ -52,8 +52,10 @@ import AdminArchetypes from "./pages/admin/AdminArchetypes";
 import AdminAffinities from "./pages/admin/AdminAffinities";
 import AdminAllegiances from "./pages/admin/AdminAllegiances";
 import AdminAuthors from "./pages/admin/AdminAuthors";
-import AdminRecommendations from "./pages/admin/AdminRecommendations";
+import AdminBuilds from "./pages/admin/AdminBuilds";
+import AdminArmorSets from "./pages/admin/AdminArmorSets";
 import AdminSeo from "./pages/admin/AdminSeo";
+import BuildDetail from "./pages/BuildDetail";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
 
@@ -117,6 +119,9 @@ function AppRoutes() {
       <Route path="/database/weapons" element={flags.database ? <WeaponsList /> : comingSoon("Database", "The full database is under construction.")} />
       <Route path="/database/weapons/:slug" element={flags.database ? <WeaponDetail /> : comingSoon("Database", "The full database is under construction.")} />
 
+      {/* Builds */}
+      <Route path="/database/heroes/:heroSlug/builds/:buildSlug" element={flags.database ? <BuildDetail /> : comingSoon("Database", "The full database is under construction.")} />
+
       {/* Guides */}
       <Route
         path="/guides"
@@ -150,7 +155,8 @@ function AppRoutes() {
         <Route index element={<Navigate to="/admin/analytics" replace />} />
         <Route path="analytics" element={<AdminAnalytics />} />
         <Route path="heroes" element={<AdminHeroes />} />
-        <Route path="recommendations" element={<AdminRecommendations />} />
+        <Route path="builds" element={<AdminBuilds />} />
+        <Route path="armor-sets" element={<AdminArmorSets />} />
         
         <Route path="skills" element={<AdminSkills />} />
         <Route path="mechanics" element={<AdminMechanics />} />
