@@ -1,74 +1,76 @@
 
 
-## Data Sync System
+## Custom Markup for Embedding Game Entity Links in Guides
 
-### Overview
-Replace the destructive backfill-hero function with a read-only comparison system. A new edge function scrapes godforge.gg, compares against current DB data, and stores diffs in a new `sync_diffs` table. Admins review and accept/reject each diff from a new "Data Sync" admin page.
+### Concept
 
-### Database Changes
+Inspired by Wowhead's markup (e.g. `[item=1234]`, `[spell=5678]`), we define a simple bracket syntax that authors write inside standard Markdown content. Before rendering, a preprocessing step transforms these tokens into interactive links with tooltips and icons.
 
-**New table: `sync_diffs`**
-| Column | Type | Notes |
-|--------|------|-------|
-| id | uuid PK | |
-| hero_id | uuid | FK reference |
-| hero_name | text | For display |
-| field | text | e.g. "description", "stats.hp", "skill:Fireball.description" |
-| entity_type | text | "hero", "skill", "imprint" |
-| entity_id | uuid | nullable, for skills/imprints |
-| current_value | text | JSON-stringified current value |
-| incoming_value | text | JSON-stringified scraped value |
-| status | text | "pending", "accepted", "rejected" |
-| reviewed_by | uuid | nullable |
-| reviewed_at | timestamptz | nullable |
-| created_at | timestamptz | |
-| batch_id | text | Groups diffs from same sync run |
+### Proposed Syntax
 
-RLS: Admins can SELECT/UPDATE/DELETE/INSERT. No public access.
+```text
+[hero:sun-wukong]       → links to /database/heroes/sun-wukong
+[skill:phoenix-strike]  → links to /database/skills/phoenix-strike  (future)
+[item:iron-sword]       → links to /database/items/iron-sword       (future)
+[material:fire-crystal] → links to /database/materials/fire-crystal (future)
+```
 
-### Edge Function: `sync-hero` (new, replaces backfill-hero usage)
+Authors write these directly in the Markdown editor. The slug after the colon matches the entity's `slug` column in the database.
 
-Same scraping + AI extraction logic as current backfill-hero, but instead of writing to heroes/skills/imprints tables, it:
+### Architecture
 
-1. Scrapes godforge.gg page for the hero
-2. Extracts structured data via AI (reuse existing prompt)
-3. Fetches current hero + skills + imprints from DB
-4. Compares each field and generates diffs for any differences
-5. Inserts diff rows into `sync_diffs` with status "pending"
-6. Returns a summary (number of diffs found)
-
-Key comparison fields:
-- **Hero**: subtitle, description, lore, affinity, allegiance, stats (deep compare each stat key), leader_bonus, divinity_generator, ascension_bonuses, awakening_bonuses
-- **Skills**: name match, then compare description, skill_type, scaling_formula, effects, awakening_level/bonus, ultimate_cost, initial_divinity
-- **Imprint**: passive text
-
-### Admin Page: `AdminDataSync.tsx`
-
-Located at `/admin/data-sync`, added to Platform section in sidebar with a `RefreshCw` icon.
-
-**Features:**
-- **Sync controls**: "Sync Single Hero" (dropdown) and "Sync All Heroes" (bulk with progress, same sequential pattern as backfill)
-- **Pending diffs table**: Filterable by hero, entity type, status
-- **Diff review**: Each row shows field name, current vs incoming value side-by-side with visual diff highlighting
-- **Actions**: Accept (applies the change to DB), Reject (marks as rejected), Bulk accept/reject per hero or batch
-- **Accept logic**: When accepted, the page makes a direct Supabase update to the relevant table (hero/skill/imprint) for that specific field, then marks the diff as accepted
-
-### Routing & Navigation
-
-- Add `{ title: "Data Sync", url: "/admin/data-sync", icon: RefreshCw }` to `platformItems` in AdminLayout
-- Add route in App.tsx: `/admin/data-sync` -> `AdminDataSync`
+```text
+Guide Markdown content (stored in DB)
+  │
+  ▼
+preprocessMarkup(content)          ← new utility function
+  │  Regex: /\[(hero|skill|item|material):([a-z0-9-]+)\]/g
+  │  Replaces with custom HTML: <a> with data attributes + inline icon
+  ▼
+MDEditor.Markdown renders HTML     ← already used in GuideDetail
+  │  needs: rehypeRaw plugin to allow inline HTML
+  ▼
+CSS styles for .entity-link         ← styled inline links with hover effects
+```
 
 ### Implementation Steps
 
-1. Create `sync_diffs` table via migration with RLS policies (admin-only)
-2. Create `sync-hero` edge function (fork from backfill-hero, replace write logic with diff generation)
-3. Build `AdminDataSync.tsx` page with sync triggers, diff table, review UI, and accept/reject mutations
-4. Add route and sidebar entry
-5. Keep existing backfill-hero function untouched (can be deprecated later)
+1. **Create `src/lib/guide-markup.ts`** — a pure function `preprocessMarkup(content: string): string`
+   - Uses regex to find all `[type:slug]` tokens
+   - Replaces each with an HTML anchor: `<a href="/database/{type}s/{slug}" class="entity-link entity-link--{type}" data-entity="{type}" data-slug="{slug}">{Display Name}</a>`
+   - For display name: capitalize and de-slugify (e.g. `sun-wukong` → `Sun Wukong`). A future enhancement could batch-fetch names from the DB, but starting with slug-derived names keeps it simple and synchronous.
 
-### Technical Notes
+2. **Update `GuideDetail.tsx`** — pipe `guide.content` through `preprocessMarkup()` before passing to `MDEditor.Markdown`
+   - Add `rehype-raw` plugin so the injected HTML anchors render correctly (MDEditor.Markdown supports `rehypePlugins` prop)
 
-- Accept action uses service-role-level access via a small edge function `apply-sync-diff` that validates admin, reads the diff row, and applies the single field update. This avoids needing the frontend to construct arbitrary updates.
-- Alternatively, since admins already have RLS write access to heroes/skills/imprints, the frontend can apply accepted changes directly via the Supabase client — simpler approach, recommended.
-- Bulk sync reuses the existing sequential-with-delay pattern (3s between heroes) to avoid rate limits.
+3. **Add entity link styles to `src/index.css`** — color-coded underlined links
+   - `.entity-link` base: inline, underline, font-medium
+   - `.entity-link--hero`: primary/gold color
+   - `.entity-link--skill`: purple color
+   - `.entity-link--item`: green color
+   - `.entity-link--material`: amber color
+   - Hover: brighten + show a subtle glow
+
+4. **Wire up client-side navigation** — since these are standard `<a href>` tags pointing to internal routes, React Router will handle them naturally with full page transitions. For SPA navigation, we can optionally add a click interceptor component wrapping the markdown output, or simply rely on `<a>` tags (works fine for content pages).
+
+5. **Add a "Markup Reference" section to AdminDocs** — document the syntax for content authors so they know how to use `[hero:slug]` etc.
+
+### Technical Details
+
+- **Regex pattern**: `/\[(hero|skill|item|material):([a-z0-9-]+)\]/g`
+- **rehype-raw**: New dependency needed (`rehype-raw`) to allow raw HTML in Markdown output. MDEditor.Markdown accepts `rehypePlugins={[rehypeRaw]}`.
+- **No DB queries needed at render time** — display names are derived from slugs. This keeps the preprocessor synchronous and avoids waterfall fetches.
+- **Editor preview**: The admin MDEditor could also use the same preprocessor for live preview, but that's a follow-up enhancement.
+
+### Example
+
+Author writes:
+```markdown
+To beat this boss, equip [hero:sun-wukong] with [item:iron-sword] and use [skill:phoenix-strike] for maximum damage.
+```
+
+Renders as:
+> To beat this boss, equip **Sun Wukong** with **Iron Sword** and use **Phoenix Strike** for maximum damage.
+
+Where each name is a colored, clickable link to the respective database page.
 

@@ -63,6 +63,7 @@ import AdminBosses from "./pages/admin/AdminBosses";
 import AdminBossStrategies from "./pages/admin/AdminBossStrategies";
 import AdminSeo from "./pages/admin/AdminSeo";
 import AdminTeamComps from "./pages/admin/AdminTeamComps";
+import AdminDataSync from "./pages/admin/AdminDataSync";
 import BuildDetail from "./pages/BuildDetail";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
@@ -195,6 +196,7 @@ function AppRoutes() {
         <Route path="seo" element={<AdminSeo />} />
         <Route path="team-comps" element={<AdminTeamComps />} />
         <Route path="platform" element={<AdminPlatform />} />
+        <Route path="data-sync" element={<AdminDataSync />} />
         <Route path="settings" element={<AdminSettings />} />
         <Route path="docs" element={<AdminDocs />} />
       </Route>
