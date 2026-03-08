@@ -75,13 +75,14 @@ interface AdminCrudPageProps {
   onNewOverride?: () => void;
   triggerCreate?: number;
   onAfterCreate?: (row: RowData) => void;
+  customNewButton?: React.ReactNode;
 }
 
 type RowData = Record<string, unknown>;
 
 const ADMIN_PAGE_SIZE = 25;
 
-export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate, onAfterCreate }: AdminCrudPageProps) {
+export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverride, triggerCreate, onAfterCreate, customNewButton }: AdminCrudPageProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -438,7 +439,7 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
     <div>
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-display font-bold">{title}</h1>
-        <Button onClick={onNewOverride || openCreate}><Plus className="mr-2 h-4 w-4" /> New</Button>
+        {customNewButton || <Button onClick={onNewOverride || openCreate}><Plus className="mr-2 h-4 w-4" /> New</Button>}
       </div>
 
       <div className="flex items-center gap-3 mb-4">
