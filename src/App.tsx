@@ -57,6 +57,8 @@ import AdminAllegiances from "./pages/admin/AdminAllegiances";
 import AdminAuthors from "./pages/admin/AdminAuthors";
 import AdminBuilds from "./pages/admin/AdminBuilds";
 import AdminArmorSets from "./pages/admin/AdminArmorSets";
+import AdminBosses from "./pages/admin/AdminBosses";
+import AdminBossStrategies from "./pages/admin/AdminBossStrategies";
 import AdminSeo from "./pages/admin/AdminSeo";
 import BuildDetail from "./pages/BuildDetail";
 import { FeedbackWidget } from "./components/FeedbackWidget";
