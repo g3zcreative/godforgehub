@@ -118,7 +118,7 @@ export default function AdminBosses() {
               <Button size="sm">+ New</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onSelect={() => setTriggerCreate(c => c + 1)}>
+              <DropdownMenuItem onSelect={() => setTriggerCreate(prev => prev + 1)}>
                 Create manually
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={() => setImportOpen(true)}>
