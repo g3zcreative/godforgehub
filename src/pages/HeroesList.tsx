@@ -53,6 +53,9 @@ export default function HeroesList() {
   const [classFilter, setClassFilter] = useState("all");
   const [rarityFilter, setRarityFilter] = useState("all");
   const [page, setPage] = useState(1);
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
+  const [addingHeroId, setAddingHeroId] = useState<string | null>(null);
 
   const { data: heroes, isLoading } = useQuery({
     queryKey: ["heroes_all"],
