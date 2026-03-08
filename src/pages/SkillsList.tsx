@@ -86,9 +86,7 @@ export default function SkillsList() {
     <Layout>
       <SEO title="Skills Database" description="Browse all skills in Godforge — filter by type and hero." url="/database/skills" />
       <div className="container py-8">
-        <Link to="/database" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Database
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Skills" }]} />
 
         <h1 className="font-display text-3xl font-bold mb-6 flex items-center gap-2">
           <Zap className="h-7 w-7 text-primary" /> Skills

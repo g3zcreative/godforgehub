@@ -61,9 +61,7 @@ export default function ImprintsList() {
     <Layout>
       <SEO title="Imprints Database" description="Browse all imprints in Godforge — filter by rarity." url="/database/imprints" />
       <div className="container py-8">
-        <Link to="/database" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Database
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Imprints" }]} />
         <h1 className="font-display text-3xl font-bold mb-6">Imprints</h1>
 
         <div className="flex flex-col sm:flex-row gap-3 mb-6">

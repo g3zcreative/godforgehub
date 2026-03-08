@@ -57,9 +57,7 @@ export default function MechanicDetail() {
     <Layout>
       <SEO rawTitle={`${mechanic.name} Godforge | GodforgeHub.com`} description={`${mechanic.name} Mechanic: ${mechanic.description || `A ${mechanic.mechanic_type} mechanic in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`} />
       <div className="container py-8 max-w-2xl">
-        <Link to="/database/mechanics" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Mechanics
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Mechanics", href: "/database/mechanics" }, { label: mechanic?.name || "..." }]} />
 
         <Card>
           <CardContent className="p-6">

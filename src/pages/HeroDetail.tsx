@@ -141,9 +141,7 @@ export default function HeroDetail() {
   return (
     <Layout>
       <div className="container max-w-7xl py-8">
-        <Link to="/database" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Database
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Heroes", href: "/database/heroes" }, { label: hero?.name || "..." }]} />
 
         {isLoading ? (
           <div className="space-y-4">

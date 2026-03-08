@@ -45,9 +45,7 @@ export default function SkillDetail() {
   return (
     <Layout>
       <div className="container max-w-3xl py-8">
-        <Link to="/database/skills" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Skills
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Skills", href: "/database/skills" }, { label: skill?.name || "..." }]} />
 
         {isLoading ? (
           <div className="space-y-4">

@@ -53,9 +53,7 @@ export default function ImprintDetail() {
   return (
     <Layout>
       <div className="container max-w-4xl py-8">
-        <Link to="/database/imprints" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
-          <ArrowLeft className="h-4 w-4" /> Back to Imprints
-        </Link>
+        <DatabaseBreadcrumb segments={[{ label: "Imprints", href: "/database/imprints" }, { label: imprint?.name || "..." }]} />
 
         {isLoading ? (
           <div className="space-y-4">
