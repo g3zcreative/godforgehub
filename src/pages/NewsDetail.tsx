@@ -122,7 +122,7 @@ export default function NewsDetail() {
               </div>
             ) : null}
             {article.content && (
-              <div data-color-mode="dark">
+              <div className="[&_.wmde-markdown]:!bg-transparent" data-color-mode="dark">
                 <MDEditor.Markdown source={article.content} className="!bg-transparent !text-foreground" />
               </div>
             )}
