@@ -19,6 +19,8 @@ import { Button } from "@/components/ui/button";
 const contentItems = [
   { title: "Heroes", url: "/admin/heroes", icon: Shield },
   { title: "Builds", url: "/admin/builds", icon: Star },
+  { title: "Bosses", url: "/admin/bosses", icon: Swords },
+  { title: "Boss Strategies", url: "/admin/boss-strategies", icon: Flag },
   { title: "Skills", url: "/admin/skills", icon: Sparkles },
   { title: "Mechanics", url: "/admin/mechanics", icon: FlaskConical },
   { title: "Imprints", url: "/admin/imprints", icon: Stamp },
