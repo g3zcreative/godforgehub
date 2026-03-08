@@ -215,9 +215,9 @@ function CollectionCard({
   return (
     <Card className="group relative overflow-hidden">
       <Link to={href}>
-        <div className="aspect-square bg-muted overflow-hidden">
+        <div className="aspect-[4/5] bg-muted overflow-hidden">
           {image ? (
-            <img src={image} alt={name || ""} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+            <img src={image} alt={name || ""} className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">No img</div>
           )}
