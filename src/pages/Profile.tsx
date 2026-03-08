@@ -27,7 +27,7 @@ export default function Profile() {
   }
 
   // Fetch collections
-  const { data: myHeroes = [] } = useQuery({
+  const { data: myHeroes = [], isLoading: heroesLoading } = useQuery({
     queryKey: ["user_heroes", user?.id],
     enabled: !!user,
     queryFn: async () => {
@@ -83,8 +83,14 @@ export default function Profile() {
 
   const rarityStars = (r: number) => "★".repeat(r);
 
-  if (authLoading) {
+  if (authLoading || heroesLoading) {
     return <Layout><div className="container py-16 text-center text-muted-foreground">Loading...</div></Layout>;
+  }
+
+  // Redirect to onboarding if user has no heroes
+  if (myHeroes.length === 0) {
+    navigate("/onboarding");
+    return null;
   }
 
   return (
