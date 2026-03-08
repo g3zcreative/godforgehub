@@ -27,7 +27,7 @@ export default function Profile() {
   }
 
   // Fetch collections
-  const { data: myHeroes = [] } = useQuery({
+  const { data: myHeroes = [], isLoading: heroesLoading } = useQuery({
     queryKey: ["user_heroes", user?.id],
     enabled: !!user,
     queryFn: async () => {
