@@ -188,6 +188,276 @@ export type Database = {
         }
         Relationships: []
       }
+      boss_drops: {
+        Row: {
+          armor_set_id: string | null
+          boss_id: string
+          drop_rate: string | null
+          id: string
+          item_id: string | null
+          notes: string | null
+          sort_order: number
+          weapon_id: string | null
+        }
+        Insert: {
+          armor_set_id?: string | null
+          boss_id: string
+          drop_rate?: string | null
+          id?: string
+          item_id?: string | null
+          notes?: string | null
+          sort_order?: number
+          weapon_id?: string | null
+        }
+        Update: {
+          armor_set_id?: string | null
+          boss_id?: string
+          drop_rate?: string | null
+          id?: string
+          item_id?: string | null
+          notes?: string | null
+          sort_order?: number
+          weapon_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "boss_drops_armor_set_id_fkey"
+            columns: ["armor_set_id"]
+            isOneToOne: false
+            referencedRelation: "armor_sets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "boss_drops_boss_id_fkey"
+            columns: ["boss_id"]
+            isOneToOne: false
+            referencedRelation: "bosses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "boss_drops_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "boss_drops_weapon_id_fkey"
+            columns: ["weapon_id"]
+            isOneToOne: false
+            referencedRelation: "weapons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      boss_skills: {
+        Row: {
+          boss_id: string
+          cooldown: number | null
+          created_at: string
+          damage_type: string | null
+          description: string | null
+          id: string
+          image_url: string | null
+          name: string
+          skill_type: string
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          boss_id: string
+          cooldown?: number | null
+          created_at?: string
+          damage_type?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          skill_type?: string
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          boss_id?: string
+          cooldown?: number | null
+          created_at?: string
+          damage_type?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          skill_type?: string
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "boss_skills_boss_id_fkey"
+            columns: ["boss_id"]
+            isOneToOne: false
+            referencedRelation: "bosses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      boss_strategies: {
+        Row: {
+          author_id: string | null
+          boss_id: string
+          content: string | null
+          created_at: string
+          featured: boolean
+          id: string
+          published: boolean
+          slug: string
+          sort_order: number
+          title: string
+          updated_at: string
+          video_url: string | null
+        }
+        Insert: {
+          author_id?: string | null
+          boss_id: string
+          content?: string | null
+          created_at?: string
+          featured?: boolean
+          id?: string
+          published?: boolean
+          slug: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Update: {
+          author_id?: string | null
+          boss_id?: string
+          content?: string | null
+          created_at?: string
+          featured?: boolean
+          id?: string
+          published?: boolean
+          slug?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "boss_strategies_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "boss_strategies_boss_id_fkey"
+            columns: ["boss_id"]
+            isOneToOne: false
+            referencedRelation: "bosses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      boss_strategy_heroes: {
+        Row: {
+          hero_id: string
+          id: string
+          note: string | null
+          sort_order: number
+          strategy_id: string
+        }
+        Insert: {
+          hero_id: string
+          id?: string
+          note?: string | null
+          sort_order?: number
+          strategy_id: string
+        }
+        Update: {
+          hero_id?: string
+          id?: string
+          note?: string | null
+          sort_order?: number
+          strategy_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "boss_strategy_heroes_hero_id_fkey"
+            columns: ["hero_id"]
+            isOneToOne: false
+            referencedRelation: "heroes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "boss_strategy_heroes_strategy_id_fkey"
+            columns: ["strategy_id"]
+            isOneToOne: false
+            referencedRelation: "boss_strategies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bosses: {
+        Row: {
+          affinity_id: string | null
+          created_at: string
+          description: string | null
+          difficulty: string | null
+          hp: string | null
+          id: string
+          image_url: string | null
+          location: string | null
+          lore: string | null
+          name: string
+          recommended_level: number | null
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          affinity_id?: string | null
+          created_at?: string
+          description?: string | null
+          difficulty?: string | null
+          hp?: string | null
+          id?: string
+          image_url?: string | null
+          location?: string | null
+          lore?: string | null
+          name: string
+          recommended_level?: number | null
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          affinity_id?: string | null
+          created_at?: string
+          description?: string | null
+          difficulty?: string | null
+          hp?: string | null
+          id?: string
+          image_url?: string | null
+          location?: string | null
+          lore?: string | null
+          name?: string
+          recommended_level?: number | null
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bosses_affinity_id_fkey"
+            columns: ["affinity_id"]
+            isOneToOne: false
+            referencedRelation: "affinities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       factions: {
         Row: {
           created_at: string
