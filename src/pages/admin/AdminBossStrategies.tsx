@@ -26,6 +26,9 @@ export default function AdminBossStrategies() {
   const [teamDialogStratId, setTeamDialogStratId] = useState<string | null>(null);
   const [teamHeroId, setTeamHeroId] = useState("");
   const [teamNote, setTeamNote] = useState("");
+  const [videoImportOpen, setVideoImportOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+  const [videoBossId, setVideoBossId] = useState("");
 
   const [form, setForm] = useState({
     boss_id: "", title: "", slug: "", content: "", video_url: "",
