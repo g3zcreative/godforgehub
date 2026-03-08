@@ -87,22 +87,21 @@ export default function HeroesList() {
   const realms = useMemo(() => {
     if (factionsList.length > 0) return factionsList.map(f => f.name);
     if (!heroes) return [];
-    return [...new Set(heroes.map((h) => h.element))].filter(Boolean).sort();
+    return [...new Set(heroes.map((h: any) => h.faction_name))].filter(Boolean).sort();
   }, [heroes, factionsList]);
 
   const classes = useMemo(() => {
     if (archetypesList.length > 0) return archetypesList.map(a => a.name);
     if (!heroes) return [];
-    const unique = [...new Set(heroes.map((h) => h.class_type))].filter(Boolean);
-    return [...new Set(unique.map((c) => c.charAt(0).toUpperCase() + c.slice(1).toLowerCase()))].sort();
+    return [...new Set(heroes.map((h: any) => h.archetype_name))].filter(Boolean).sort();
   }, [heroes, archetypesList]);
 
   const filtered = useMemo(() => {
     if (!heroes) return [];
-    return heroes.filter((h) => {
+    return heroes.filter((h: any) => {
       if (search && !h.name.toLowerCase().includes(search.toLowerCase())) return false;
-      if (realmFilter !== "all" && h.element.toLowerCase() !== realmFilter.toLowerCase()) return false;
-      if (classFilter !== "all" && h.class_type.toLowerCase() !== classFilter.toLowerCase()) return false;
+      if (realmFilter !== "all" && h.faction_name.toLowerCase() !== realmFilter.toLowerCase()) return false;
+      if (classFilter !== "all" && h.archetype_name.toLowerCase() !== classFilter.toLowerCase()) return false;
       if (rarityFilter !== "all" && h.rarity !== Number(rarityFilter)) return false;
       return true;
     });
@@ -209,8 +208,8 @@ export default function HeroesList() {
                     <div className="min-w-0">
                       <h3 className="font-display font-semibold truncate">{hero.name}</h3>
                       <div className="flex items-center gap-1.5 flex-wrap mt-1">
-                        <Badge variant="outline" className={`text-xs ${realmColors[hero.element] || ""}`}>{hero.element}</Badge>
-                        <Badge variant="outline" className="text-xs">{hero.class_type}</Badge>
+                        <Badge variant="outline" className={`text-xs ${realmColors[hero.faction_name] || ""}`}>{hero.faction_name}</Badge>
+                        <Badge variant="outline" className="text-xs">{hero.archetype_name}</Badge>
                       </div>
                       <span className="text-primary text-xs mt-1 block">{rarityStars(hero.rarity)}</span>
                     </div>
