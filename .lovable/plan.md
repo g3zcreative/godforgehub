@@ -1,76 +1,78 @@
 
 
-## Custom Markup for Embedding Game Entity Links in Guides
+## Team Builder Tool — Implementation Plan
 
-### Concept
+### Overview
+Build a Team Builder tool at `/tools/team-builder` where authenticated users can create, save, and manage team compositions. Each team has a title, 5 hero slots (slot 1 is leader), and per-hero equipment (weapon, imprint, up to 3 armor sets). Includes markdown strategy notes with entity markup support.
 
-Inspired by Wowhead's markup (e.g. `[item=1234]`, `[spell=5678]`), we define a simple bracket syntax that authors write inside standard Markdown content. Before rendering, a preprocessing step transforms these tokens into interactive links with tooltips and icons.
+### 1. Database Schema
 
-### Proposed Syntax
+**New table: `teams`**
+- `id` uuid PK
+- `user_id` uuid NOT NULL (references auth.users)
+- `title` text NOT NULL
+- `notes` text (markdown content)
+- `created_at`, `updated_at` timestamps
 
-```text
-[hero:sun-wukong]       → links to /database/heroes/sun-wukong
-[skill:phoenix-strike]  → links to /database/skills/phoenix-strike  (future)
-[item:iron-sword]       → links to /database/items/iron-sword       (future)
-[material:fire-crystal] → links to /database/materials/fire-crystal (future)
-```
+**New table: `team_slots`**
+- `id` uuid PK
+- `team_id` uuid NOT NULL (FK → teams)
+- `slot_number` integer NOT NULL (1-5)
+- `hero_id` uuid (FK → heroes)
+- `weapon_id` uuid (FK → weapons)
+- `imprint_id` uuid (FK → imprints)
+- `armor_set_1_id` uuid (FK → armor_sets)
+- `armor_set_2_id` uuid (FK → armor_sets)
+- `armor_set_3_id` uuid (FK → armor_sets)
+- UNIQUE constraint on (team_id, slot_number)
 
-Authors write these directly in the Markdown editor. The slug after the colon matches the entity's `slug` column in the database.
+**RLS Policies:**
+- Users can SELECT/INSERT/UPDATE/DELETE their own teams and team_slots (via `auth.uid() = user_id` on teams, join through team_id for slots)
+- Admins get full access
 
-### Architecture
+### 2. New Page: `src/pages/TeamBuilder.tsx`
 
-```text
-Guide Markdown content (stored in DB)
-  │
-  ▼
-preprocessMarkup(content)          ← new utility function
-  │  Regex: /\[(hero|skill|item|material):([a-z0-9-]+)\]/g
-  │  Replaces with custom HTML: <a> with data attributes + inline icon
-  ▼
-MDEditor.Markdown renders HTML     ← already used in GuideDetail
-  │  needs: rehypeRaw plugin to allow inline HTML
-  ▼
-CSS styles for .entity-link         ← styled inline links with hover effects
-```
+**Route:** `/tools/team-builder`
 
-### Implementation Steps
+**UI Structure (inspired by reference site):**
+- Team title input at top
+- 5 hero slot cards in a horizontal row (responsive grid)
+  - Slot 1 labeled "Leader"
+  - Each slot: hero selector (searchable dropdown from `heroes` table), plus sub-selectors for weapon, imprint, and 3 armor set dropdowns
+  - Show hero image/name when selected
+- Strategy notes section with tabs: "Preview" (rendered markdown with entity markup) and "Write" (textarea)
+- Action buttons: "Save Team", "New Team"
+- Saved teams list (sidebar or above) showing user's existing teams to load/edit/delete
 
-1. **Create `src/lib/guide-markup.ts`** — a pure function `preprocessMarkup(content: string): string`
-   - Uses regex to find all `[type:slug]` tokens
-   - Replaces each with an HTML anchor: `<a href="/database/{type}s/{slug}" class="entity-link entity-link--{type}" data-entity="{type}" data-slug="{slug}">{Display Name}</a>`
-   - For display name: capitalize and de-slugify (e.g. `sun-wukong` → `Sun Wukong`). A future enhancement could batch-fetch names from the DB, but starting with slug-derived names keeps it simple and synchronous.
+**Data fetching (React Query):**
+- Fetch all heroes, weapons, imprints, armor_sets for selector dropdowns
+- Fetch user's saved teams
 
-2. **Update `GuideDetail.tsx`** — pipe `guide.content` through `preprocessMarkup()` before passing to `MDEditor.Markdown`
-   - Add `rehype-raw` plugin so the injected HTML anchors render correctly (MDEditor.Markdown supports `rehypePlugins` prop)
+**Auth requirement:** Must be logged in. Show sign-in prompt if not authenticated.
 
-3. **Add entity link styles to `src/index.css`** — color-coded underlined links
-   - `.entity-link` base: inline, underline, font-medium
-   - `.entity-link--hero`: primary/gold color
-   - `.entity-link--skill`: purple color
-   - `.entity-link--item`: green color
-   - `.entity-link--material`: amber color
-   - Hover: brighten + show a subtle glow
+### 3. Routing Changes
 
-4. **Wire up client-side navigation** — since these are standard `<a href>` tags pointing to internal routes, React Router will handle them naturally with full page transitions. For SPA navigation, we can optionally add a click interceptor component wrapping the markdown output, or simply rely on `<a>` tags (works fine for content pages).
+**`App.tsx`:**
+- Import `TeamBuilder` page
+- Add route `/tools/team-builder` (not gated by feature flag since tools flag controls the `/tools` index only, or gate it similarly)
 
-5. **Add a "Markup Reference" section to AdminDocs** — document the syntax for content authors so they know how to use `[hero:slug]` etc.
+**`Tools.tsx`:**
+- Update Team Builder card status from "Coming Soon" to "Available" and make it a clickable `Link`
 
-### Technical Details
+### 4. Key Implementation Details
 
-- **Regex pattern**: `/\[(hero|skill|item|material):([a-z0-9-]+)\]/g`
-- **rehype-raw**: New dependency needed (`rehype-raw`) to allow raw HTML in Markdown output. MDEditor.Markdown accepts `rehypePlugins={[rehypeRaw]}`.
-- **No DB queries needed at render time** — display names are derived from slugs. This keeps the preprocessor synchronous and avoids waterfall fetches.
-- **Editor preview**: The admin MDEditor could also use the same preprocessor for live preview, but that's a follow-up enhancement.
+- Use `CommandDialog` or `Select` with search for hero/weapon/imprint/armor set pickers (consistent with existing patterns)
+- Markdown preview uses `MDEditor.Markdown` with `preprocessMarkup` + `rehypeRaw` (same as BuildDetail, GuideDetail)
+- Save creates/updates both `teams` and `team_slots` rows in a single operation
+- "New Team" clears form state for a fresh composition
+- Equipment selectors are optional — only hero selection is required per slot
 
-### Example
+### 5. Files to Create/Modify
 
-Author writes:
-```markdown
-To beat this boss, equip [hero:sun-wukong] with [item:iron-sword] and use [skill:phoenix-strike] for maximum damage.
-```
-
-Renders as:
-> To beat this boss, equip **Sun Wukong** with **Iron Sword** and use **Phoenix Strike** for maximum damage.
-
-Where each name is a colored, clickable link to the respective database page.
+| File | Action |
+|------|--------|
+| `src/pages/TeamBuilder.tsx` | Create — main tool page |
+| `src/App.tsx` | Add route for `/tools/team-builder` |
+| `src/pages/Tools.tsx` | Update Team Builder card to link and mark active |
+| Database migration | Create `teams` + `team_slots` tables with RLS |
 
