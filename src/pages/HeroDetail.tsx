@@ -345,7 +345,7 @@ export default function HeroDetail() {
 
             {/* ===== BELOW THE FOLD: Masonry-style sections ===== */}
             {/* Skills row first (full width) */}
-            {hasRecommendations && skills && skills.length > 0 && (
+            {hasBuilds && skills && skills.length > 0 && (
               <div className="mb-8">
                 <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
