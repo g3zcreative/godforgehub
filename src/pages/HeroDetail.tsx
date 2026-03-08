@@ -134,7 +134,7 @@ export default function HeroDetail() {
   const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
   const hasRecommendations = (recommendations?.weapons?.length || 0) + (recommendations?.imprints?.length || 0) + (recommendations?.synergies?.length || 0) > 0;
 
-  const heroSeoVars = hero ? { name: hero.name, element: hero.faction_name, class_type: hero.archetype_name, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle } : {};
+  const heroSeoVars = hero ? { name: hero.name, element: hero.faction_name, class_type: hero.archetype_name, faction: hero.faction_name, archetype: hero.archetype_name, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle } : {};
   const seoTitle = interpolateTemplate(tpl?.title_template, heroSeoVars);
   const seoDesc = interpolateTemplate(tpl?.description_template, heroSeoVars);
 
