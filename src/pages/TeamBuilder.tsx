@@ -374,7 +374,7 @@ export default function TeamBuilder() {
               />
             </TabsContent>
             <TabsContent value="preview">
-              <div className="prose prose-invert max-w-none bg-card/40 rounded-md p-4 border border-border min-h-[180px]">
+              <div className="prose prose-invert max-w-none rounded-md p-4 border border-border min-h-[180px]">
                 {notes ? (
                   <MDEditor.Markdown
                     source={preprocessMarkup(notes)}
