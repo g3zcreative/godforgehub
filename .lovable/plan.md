@@ -1,76 +1,90 @@
 
 
-## Custom Markup for Embedding Game Entity Links in Guides
+## Analysis: Current Setup vs. Hero Builds
 
-### Concept
+### Current `hero_recommendations` Problem
 
-Inspired by Wowhead's markup (e.g. `[item=1234]`, `[spell=5678]`), we define a simple bracket syntax that authors write inside standard Markdown content. Before rendering, a preprocessing step transforms these tokens into interactive links with tooltips and icons.
+The existing `hero_recommendations` table is a flat list of individual item suggestions per hero (one weapon row, one imprint row, one synergy row). It has no concept of a **build** -- a coherent combination of gear + team + strategy. This means:
 
-### Proposed Syntax
+- You can't have multiple builds per hero (e.g. "PvP Build" vs "Boss Build")
+- No written guide content or video per recommendation set
+- No way for users to author their own builds later
+- No armor sets
+- Recommendations aren't grouped -- they're just loose suggestions
 
-```text
-[hero:sun-wukong]       → links to /database/heroes/sun-wukong
-[skill:phoenix-strike]  → links to /database/skills/phoenix-strike  (future)
-[item:iron-sword]       → links to /database/items/iron-sword       (future)
-[material:fire-crystal] → links to /database/materials/fire-crystal (future)
-```
+### Proposed: `hero_builds` System
 
-Authors write these directly in the Markdown editor. The slug after the colon matches the entity's `slug` column in the database.
+Replace `hero_recommendations` with a proper builds model.
 
-### Architecture
+#### New Tables
 
-```text
-Guide Markdown content (stored in DB)
-  │
-  ▼
-preprocessMarkup(content)          ← new utility function
-  │  Regex: /\[(hero|skill|item|material):([a-z0-9-]+)\]/g
-  │  Replaces with custom HTML: <a> with data attributes + inline icon
-  ▼
-MDEditor.Markdown renders HTML     ← already used in GuideDetail
-  │  needs: rehypeRaw plugin to allow inline HTML
-  ▼
-CSS styles for .entity-link         ← styled inline links with hover effects
-```
+**`armor_sets`** (reference table for the new entity type)
 
-### Implementation Steps
+| Column | Type | Notes |
+|---|---|---|
+| id | uuid | PK |
+| name | text | Required |
+| slug | text | Unique |
+| description | text | Nullable |
+| set_bonus | text | Nullable -- describes the set effect |
+| image_url | text | Nullable |
+| created_at / updated_at | timestamptz | |
 
-1. **Create `src/lib/guide-markup.ts`** — a pure function `preprocessMarkup(content: string): string`
-   - Uses regex to find all `[type:slug]` tokens
-   - Replaces each with an HTML anchor: `<a href="/database/{type}s/{slug}" class="entity-link entity-link--{type}" data-entity="{type}" data-slug="{slug}">{Display Name}</a>`
-   - For display name: capitalize and de-slugify (e.g. `sun-wukong` → `Sun Wukong`). A future enhancement could batch-fetch names from the DB, but starting with slug-derived names keeps it simple and synchronous.
+**`hero_builds`**
 
-2. **Update `GuideDetail.tsx`** — pipe `guide.content` through `preprocessMarkup()` before passing to `MDEditor.Markdown`
-   - Add `rehype-raw` plugin so the injected HTML anchors render correctly (MDEditor.Markdown supports `rehypePlugins` prop)
+| Column | Type | Notes |
+|---|---|---|
+| id | uuid | PK |
+| hero_id | uuid | FK to heroes |
+| title | text | e.g. "PvP Burst Build" |
+| slug | text | Unique |
+| author_id | uuid | Nullable FK to profiles (null = admin/editorial) |
+| weapon_id | uuid | Nullable FK to weapons |
+| imprint_id | uuid | Nullable FK to imprints |
+| armor_set_id | uuid | Nullable FK to armor_sets |
+| content | text | Markdown guide content |
+| video_url | text | Nullable |
+| published | boolean | Default false |
+| featured | boolean | Default false -- admin-curated builds shown on hero page |
+| sort_order | integer | Default 0 |
+| created_at / updated_at | timestamptz | |
 
-3. **Add entity link styles to `src/index.css`** — color-coded underlined links
-   - `.entity-link` base: inline, underline, font-medium
-   - `.entity-link--hero`: primary/gold color
-   - `.entity-link--skill`: purple color
-   - `.entity-link--item`: green color
-   - `.entity-link--material`: amber color
-   - Hover: brighten + show a subtle glow
+**`hero_build_synergies`** (many-to-many for team synergies)
 
-4. **Wire up client-side navigation** — since these are standard `<a href>` tags pointing to internal routes, React Router will handle them naturally with full page transitions. For SPA navigation, we can optionally add a click interceptor component wrapping the markdown output, or simply rely on `<a>` tags (works fine for content pages).
+| Column | Type | Notes |
+|---|---|---|
+| id | uuid | PK |
+| build_id | uuid | FK to hero_builds |
+| hero_id | uuid | FK to heroes (the synergy hero) |
+| note | text | Nullable -- why this hero synergizes |
+| sort_order | integer | Default 0 |
 
-5. **Add a "Markup Reference" section to AdminDocs** — document the syntax for content authors so they know how to use `[hero:slug]` etc.
+#### RLS
 
-### Technical Details
+- `armor_sets`: public SELECT, admin CUD
+- `hero_builds`: public SELECT (where published = true), admin full access, authenticated users can INSERT/UPDATE/DELETE own rows (for future user builds)
+- `hero_build_synergies`: public SELECT, admin CUD, authenticated users can manage rows for their own builds
 
-- **Regex pattern**: `/\[(hero|skill|item|material):([a-z0-9-]+)\]/g`
-- **rehype-raw**: New dependency needed (`rehype-raw`) to allow raw HTML in Markdown output. MDEditor.Markdown accepts `rehypePlugins={[rehypeRaw]}`.
-- **No DB queries needed at render time** — display names are derived from slugs. This keeps the preprocessor synchronous and avoids waterfall fetches.
-- **Editor preview**: The admin MDEditor could also use the same preprocessor for live preview, but that's a follow-up enhancement.
+#### Migration Path
 
-### Example
+- Create the three new tables
+- Migrate existing `hero_recommendations` data into `hero_builds` (one build per hero that has recommendations, titled "Recommended Build", marked `featured`)
+- Drop `hero_recommendations` after migration
 
-Author writes:
-```markdown
-To beat this boss, equip [hero:sun-wukong] with [item:iron-sword] and use [skill:phoenix-strike] for maximum damage.
-```
+### Code Changes
 
-Renders as:
-> To beat this boss, equip **Sun Wukong** with **Iron Sword** and use **Phoenix Strike** for maximum damage.
+1. **Admin: `AdminArmorSets.tsx`** -- new CRUD page for armor sets using `AdminCrudPage`
+2. **Admin: `AdminBuilds.tsx`** -- new CRUD page for hero builds with synergy management
+3. **`HeroDetail.tsx`** -- replace the recommendations query + `RecommendationSection` with a builds section showing featured builds (weapon/imprint/armor/synergies cards + content preview + link to full build page)
+4. **New page: `BuildDetail.tsx`** at `/database/heroes/:heroSlug/builds/:buildSlug` -- full build guide view with markdown content, video embed, gear cards, team synergies
+5. **Admin nav** -- add Armor Sets and Builds links
+6. **App.tsx** -- add routes
 
-Where each name is a colored, clickable link to the respective database page.
+### Why This Is Better
+
+- **Multiple builds per hero** with distinct titles and strategies
+- **Self-contained**: each build bundles gear + team + content + video as one coherent unit
+- **User-generated content ready**: `author_id` + RLS policies let authenticated users create builds later
+- **Featured flag** lets admins curate which builds appear on the hero detail page
+- **Armor sets** become a first-class entity you can reference elsewhere too
 
