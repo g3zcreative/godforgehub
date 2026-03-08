@@ -127,6 +127,11 @@ function AppRoutes() {
       {/* Builds */}
       <Route path="/database/heroes/:heroSlug/builds/:buildSlug" element={flags.database ? <BuildDetail /> : comingSoon("Database", "The full database is under construction.")} />
 
+      {/* Bosses */}
+      <Route path="/bosses" element={<BossesList />} />
+      <Route path="/bosses/:slug" element={<BossDetail />} />
+      <Route path="/bosses/:bossSlug/strategies/:strategySlug" element={<BossStrategyDetail />} />
+
       {/* Guides */}
       <Route
         path="/guides"
