@@ -17,6 +17,7 @@ Deno.serve(async () => {
     { loc: "/", priority: "1.0" },
     { loc: "/news", priority: "0.9" },
     { loc: "/database", priority: "0.8" },
+    { loc: "/bosses", priority: "0.8" },
     { loc: "/guides", priority: "0.8" },
     { loc: "/community", priority: "0.7" },
     { loc: "/tools", priority: "0.5" },
