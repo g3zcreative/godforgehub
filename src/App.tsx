@@ -196,6 +196,7 @@ function AppRoutes() {
         <Route path="seo" element={<AdminSeo />} />
         <Route path="team-comps" element={<AdminTeamComps />} />
         <Route path="platform" element={<AdminPlatform />} />
+        <Route path="data-sync" element={<AdminDataSync />} />
         <Route path="settings" element={<AdminSettings />} />
         <Route path="docs" element={<AdminDocs />} />
       </Route>

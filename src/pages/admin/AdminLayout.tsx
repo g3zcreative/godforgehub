@@ -45,6 +45,7 @@ const insightItems = [
 ];
 
 const platformItems = [
+  { title: "Data Sync", url: "/admin/data-sync", icon: RefreshCw },
   { title: "SEO", url: "/admin/seo", icon: Search },
   { title: "Users", url: "/admin/platform", icon: Users },
   { title: "Settings", url: "/admin/settings", icon: Settings },
