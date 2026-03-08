@@ -213,7 +213,7 @@ export default function AdminBossStrategies() {
               <TableRow><TableCell colSpan={4} className="text-center text-muted-foreground py-8">No strategies found</TableCell></TableRow>
             ) : filteredStrategies.map((strat: any) => (
               <TableRow key={strat.id}>
-                <TableCell className="font-medium">{bossMap.get(strat.boss_id)?.name || strat.boss_id}</TableCell>
+                <TableCell className="font-medium">{(bossMap.get(strat.boss_id) as any)?.name || strat.boss_id}</TableCell>
                 <TableCell>
                   {strat.title}
                   {strat.featured && <Badge variant="secondary" className="ml-2 text-xs">Featured</Badge>}
