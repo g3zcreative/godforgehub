@@ -12,7 +12,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 
 const ITEMS_PER_PAGE = 24;
 const rarityStars = (r: number) => "★".repeat(r) + "☆".repeat(Math.max(0, 5 - r));

@@ -7,7 +7,8 @@ import { SEO } from "@/components/SEO";
 import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 
 const skillTypeColors: Record<string, string> = {
   Active: "bg-blue-500/10 text-blue-400 border-blue-500/20",

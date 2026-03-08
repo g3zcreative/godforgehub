@@ -16,7 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 
 const ITEMS_PER_PAGE = 24;
 

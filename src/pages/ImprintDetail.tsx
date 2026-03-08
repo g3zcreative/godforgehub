@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft } from "lucide-react";
+import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 import { SEO } from "@/components/SEO";
 import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { preprocessMarkup } from "@/lib/guide-markup";
