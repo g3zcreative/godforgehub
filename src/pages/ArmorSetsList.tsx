@@ -109,9 +109,9 @@ export default function ArmorSetsList() {
               <Skeleton key={i} className="h-36 w-full rounded-lg" />
             ))}
           </div>
-        ) : paged.length > 0 ? (
+        ) : filtered.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {paged.map((set) => {
+            {filtered.map((set) => {
               const bonuses = parseSetBonus(set.set_bonus);
               return (
                 <Card
