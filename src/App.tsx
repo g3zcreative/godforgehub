@@ -63,6 +63,7 @@ import AdminBosses from "./pages/admin/AdminBosses";
 import AdminBossStrategies from "./pages/admin/AdminBossStrategies";
 import AdminSeo from "./pages/admin/AdminSeo";
 import AdminTeamComps from "./pages/admin/AdminTeamComps";
+import AdminDataSync from "./pages/admin/AdminDataSync";
 import BuildDetail from "./pages/BuildDetail";
 import { FeedbackWidget } from "./components/FeedbackWidget";
 import { usePageView } from "./hooks/usePageView";
