@@ -56,11 +56,15 @@ export default function HeroesList() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("heroes")
-        .select("*")
+        .select("*, factions(name), archetypes(name)")
         .order("rarity", { ascending: false })
         .order("name");
       if (error) throw error;
-      return data;
+      return (data || []).map((h: any) => ({
+        ...h,
+        faction_name: h.factions?.name || "Unknown",
+        archetype_name: h.archetypes?.name || "Unknown",
+      }));
     },
   });
 
