@@ -167,7 +167,9 @@ function AppRoutes() {
         <Route path="heroes" element={<AdminHeroes />} />
         <Route path="builds" element={<AdminBuilds />} />
         <Route path="armor-sets" element={<AdminArmorSets />} />
-        
+        <Route path="bosses" element={<AdminBosses />} />
+        <Route path="boss-strategies" element={<AdminBossStrategies />} />
+
         <Route path="skills" element={<AdminSkills />} />
         <Route path="mechanics" element={<AdminMechanics />} />
         <Route path="imprints" element={<AdminImprints />} />
