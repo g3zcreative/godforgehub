@@ -267,11 +267,11 @@ export default function TeamBuilder() {
 
                   {/* Hero portrait */}
                   {hero?.image_url ? (
-                    <div className="aspect-[5/4] rounded-lg overflow-hidden bg-muted/30 border border-border">
+                    <div className="aspect-[4/5] rounded-lg overflow-hidden bg-muted/30 border border-border">
                       <img src={hero.image_url} alt={hero.name} className="w-full h-full object-cover" />
                     </div>
                   ) : (
-                    <div className="aspect-[5/4] rounded-lg bg-muted/20 border border-dashed border-border flex items-center justify-center text-muted-foreground text-xs">
+                    <div className="aspect-[4/5] rounded-lg bg-muted/20 border border-dashed border-border flex items-center justify-center text-muted-foreground text-xs">
                       No hero
                     </div>
                   )}
