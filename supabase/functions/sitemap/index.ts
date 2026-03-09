@@ -1,87 +1,81 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const corsHeaders = {
+const SITE_URL = "https://godforgehub.com";
+const FUNC_URL = Deno.env.get("SUPABASE_URL")! + "/functions/v1/sitemap";
+
+const xmlHeaders = {
   "Content-Type": "application/xml",
   "Cache-Control": "public, max-age=3600",
 };
 
-const SITE_URL = "https://godforgehub.com";
+Deno.serve(async (req) => {
+  const url = new URL(req.url);
+  const type = url.searchParams.get("type");
 
-Deno.serve(async () => {
   const supabase = createClient(
     Deno.env.get("SUPABASE_URL")!,
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
   );
 
-  const staticPages = [
-    { loc: "/", priority: "1.0" },
-    { loc: "/news", priority: "0.9" },
-    { loc: "/database", priority: "0.8" },
-    { loc: "/bosses", priority: "0.8" },
-    { loc: "/guides", priority: "0.8" },
-    { loc: "/community", priority: "0.7" },
-    { loc: "/tools", priority: "0.5" },
-    { loc: "/changelog", priority: "0.4" },
-    { loc: "/roadmap", priority: "0.4" },
-  ];
+  // If no type param, return sitemap index
+  if (!type) {
+    const sitemaps = ["static", "news", "heroes", "items", "guides", "skills", "imprints", "weapons", "bosses"];
+    const entries = sitemaps.map(
+      (s) => `<sitemap><loc>${FUNC_URL}?type=${s}</loc></sitemap>`
+    );
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries.join("\n")}
+</sitemapindex>`;
+    return new Response(xml, { headers: xmlHeaders });
+  }
 
-  // Fetch dynamic slugs in parallel
-  const [newsRes, heroesRes, itemsRes, guidesRes, skillsRes, imprintsRes, weaponsRes, bossesRes] = await Promise.all([
-    supabase.from("news_articles").select("slug, updated_at").eq("published", true),
-    supabase.from("heroes").select("slug, updated_at"),
-    supabase.from("items").select("slug, updated_at"),
-    supabase.from("guides").select("slug, updated_at").eq("published", true),
-    supabase.from("skills").select("slug, updated_at"),
-    supabase.from("imprints").select("slug, updated_at"),
-    supabase.from("weapons").select("slug, updated_at"),
-    supabase.from("bosses").select("slug, updated_at"),
-  ]);
-
+  // Child sitemaps
   const urls: string[] = [];
 
-  // Static pages
-  for (const p of staticPages) {
-    urls.push(`<url><loc>${SITE_URL}${p.loc}</loc><priority>${p.priority}</priority><changefreq>daily</changefreq></url>`);
-  }
+  if (type === "static") {
+    const pages = [
+      { loc: "/", priority: "1.0" },
+      { loc: "/news", priority: "0.9" },
+      { loc: "/database", priority: "0.8" },
+      { loc: "/bosses", priority: "0.8" },
+      { loc: "/guides", priority: "0.8" },
+      { loc: "/community", priority: "0.7" },
+      { loc: "/tools", priority: "0.5" },
+      { loc: "/changelog", priority: "0.4" },
+      { loc: "/roadmap", priority: "0.4" },
+    ];
+    for (const p of pages) {
+      urls.push(`<url><loc>${SITE_URL}${p.loc}</loc><priority>${p.priority}</priority><changefreq>daily</changefreq></url>`);
+    }
+  } else {
+    const config: Record<string, { table: string; prefix: string; priority: string; filter?: Record<string, unknown> }> = {
+      news:     { table: "news_articles", prefix: "/news",              priority: "0.7", filter: { published: true } },
+      heroes:   { table: "heroes",        prefix: "/database/heroes",   priority: "0.7" },
+      items:    { table: "items",          prefix: "/database/items",    priority: "0.6" },
+      guides:   { table: "guides",         prefix: "/guides",            priority: "0.7", filter: { published: true } },
+      skills:   { table: "skills",         prefix: "/database/skills",   priority: "0.6" },
+      imprints: { table: "imprints",       prefix: "/database/imprints", priority: "0.6" },
+      weapons:  { table: "weapons",        prefix: "/database/weapons",  priority: "0.6" },
+      bosses:   { table: "bosses",         prefix: "/bosses",            priority: "0.7" },
+    };
 
-  // News articles
-  for (const a of newsRes.data || []) {
-    urls.push(`<url><loc>${SITE_URL}/news/${a.slug}</loc><lastmod>${a.updated_at}</lastmod><priority>0.7</priority></url>`);
-  }
+    const cfg = config[type];
+    if (!cfg) {
+      return new Response("Unknown sitemap type", { status: 404 });
+    }
 
-  // Heroes
-  for (const h of heroesRes.data || []) {
-    urls.push(`<url><loc>${SITE_URL}/database/heroes/${h.slug}</loc><lastmod>${h.updated_at}</lastmod><priority>0.7</priority></url>`);
-  }
+    let query = supabase.from(cfg.table).select("slug, updated_at");
+    if (cfg.filter) {
+      for (const [k, v] of Object.entries(cfg.filter)) {
+        query = query.eq(k, v);
+      }
+    }
+    const { data } = await query;
 
-  // Items
-  for (const i of itemsRes.data || []) {
-    urls.push(`<url><loc>${SITE_URL}/database/items/${i.slug}</loc><lastmod>${i.updated_at}</lastmod><priority>0.6</priority></url>`);
-  }
-
-  // Guides
-  for (const g of guidesRes.data || []) {
-    urls.push(`<url><loc>${SITE_URL}/guides/${g.slug}</loc><lastmod>${g.updated_at}</lastmod><priority>0.7</priority></url>`);
-  }
-
-  // Skills
-  for (const s of skillsRes.data || []) {
-    urls.push(`<url><loc>${SITE_URL}/database/skills/${s.slug}</loc><lastmod>${s.updated_at}</lastmod><priority>0.6</priority></url>`);
-  }
-
-  // Imprints
-  for (const imp of imprintsRes.data || []) {
-    urls.push(`<url><loc>${SITE_URL}/database/imprints/${imp.slug}</loc><lastmod>${imp.updated_at}</lastmod><priority>0.6</priority></url>`);
-  }
-
-  // Weapons
-  for (const w of weaponsRes.data || []) {
-    urls.push(`<url><loc>${SITE_URL}/database/weapons/${w.slug}</loc><lastmod>${w.updated_at}</lastmod><priority>0.6</priority></url>`);
-  }
-
-  // Bosses
-  for (const b of bossesRes.data || []) {
-    urls.push(`<url><loc>${SITE_URL}/bosses/${b.slug}</loc><lastmod>${b.updated_at}</lastmod><priority>0.7</priority></url>`);
+    for (const row of data || []) {
+      urls.push(`<url><loc>${SITE_URL}${cfg.prefix}/${row.slug}</loc><lastmod>${row.updated_at}</lastmod><priority>${cfg.priority}</priority></url>`);
+    }
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -89,5 +83,5 @@ Deno.serve(async () => {
 ${urls.join("\n")}
 </urlset>`;
 
-  return new Response(xml, { headers: corsHeaders });
+  return new Response(xml, { headers: xmlHeaders });
 });
