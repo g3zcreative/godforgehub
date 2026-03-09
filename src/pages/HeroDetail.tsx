@@ -313,6 +313,12 @@ export default function HeroDetail() {
                                   <span className="text-xs text-muted-foreground font-semibold uppercase">({skill.skill_type})</span>
                                 </div>
                                 {skill.description && <p className="text-xs text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(skill.description) }} />}
+                                {skill.awakening_bonus && (
+                                  <p className="text-xs text-primary/80 mt-1">
+                                    <Star className="inline h-3 w-3 mr-1" />
+                                    Awakening {skill.awakening_level || ""}: {skill.awakening_bonus}
+                                  </p>
+                                )}
                               </div>
                             </Link>
                           ))}
