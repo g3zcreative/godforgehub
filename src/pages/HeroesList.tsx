@@ -73,11 +73,11 @@ export default function HeroesList() {
   const [addingHeroId, setAddingHeroId] = useState<string | null>(null);
 
   const { data: heroes, isLoading } = useQuery({
-    queryKey: ["heroes_all"],
+    queryKey: ["heroes_all_with_skills"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("heroes")
-        .select("*, factions(name), archetypes(name)")
+        .select("*, factions(name), archetypes(name), skills(name, description, effects)")
         .order("rarity", { ascending: false })
         .order("name");
       if (error) throw error;
@@ -85,6 +85,7 @@ export default function HeroesList() {
         ...h,
         faction_name: h.factions?.name || "Unknown",
         archetype_name: h.archetypes?.name || "Unknown",
+        skills: h.skills || [],
       }));
     },
   });
