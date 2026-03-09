@@ -24,6 +24,21 @@ import { toast } from "sonner";
 
 const ITEMS_PER_PAGE = 24;
 
+// Keyword synonyms for skill-based searching
+const keywordAliases: Record<string, string[]> = {
+  "ally attack": ["ally attack", "join attack"],
+  "join attack": ["ally attack", "join attack"],
+  "counter": ["counter", "counterattack"],
+  "counterattack": ["counter", "counterattack"],
+  "heal": ["heal", "restore", "recovery"],
+  "restore": ["heal", "restore", "recovery"],
+  "recovery": ["heal", "restore", "recovery"],
+  "shield": ["shield", "barrier"],
+  "barrier": ["shield", "barrier"],
+  "stun": ["stun", "daze"],
+  "daze": ["stun", "daze"],
+};
+
 const realmColors: Record<string, string> = {
   Tian: "bg-amber-500/10 text-amber-400 border-amber-500/20",
   Aaru: "bg-yellow-500/10 text-yellow-300 border-yellow-500/20",
