@@ -120,12 +120,40 @@ export default function HeroesList() {
 
   const filtered = useMemo(() => {
     if (!heroes) return [];
+    
+    // Expand search terms using keyword aliases
+    const searchLower = search.toLowerCase().trim();
+    const searchTerms = keywordAliases[searchLower] || (searchLower ? [searchLower] : []);
+    
     return heroes.filter((h: any) => {
-      if (search && !h.name.toLowerCase().includes(search.toLowerCase())) return false;
+      // Check standard filters first
       if (realmFilter !== "all" && h.faction_name.toLowerCase() !== realmFilter.toLowerCase()) return false;
       if (classFilter !== "all" && h.archetype_name.toLowerCase() !== classFilter.toLowerCase()) return false;
       if (rarityFilter !== "all" && h.rarity !== Number(rarityFilter)) return false;
-      return true;
+      
+      // If no search, pass
+      if (searchTerms.length === 0) return true;
+      
+      // Check if any search term matches hero name
+      const nameMatch = searchTerms.some(term => h.name.toLowerCase().includes(term));
+      if (nameMatch) return true;
+      
+      // Check if any search term matches skills (name, description, effects)
+      const skillMatch = h.skills?.some((skill: any) => {
+        return searchTerms.some(term => {
+          if (skill.name?.toLowerCase().includes(term)) return true;
+          if (skill.description?.toLowerCase().includes(term)) return true;
+          // Effects is a JSON array of strings
+          if (Array.isArray(skill.effects)) {
+            return skill.effects.some((effect: any) => 
+              typeof effect === 'string' && effect.toLowerCase().includes(term)
+            );
+          }
+          return false;
+        });
+      });
+      
+      return skillMatch;
     });
   }, [heroes, search, realmFilter, classFilter, rarityFilter]);
 
