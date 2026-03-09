@@ -8,8 +8,8 @@ export interface SeoSettings {
 }
 
 const defaults: SeoSettings = {
-  siteTitle: "GodforgeHub",
-  metaDescription: "A community information hub for Godforge by Fateless Games.",
+  siteTitle: "GodforgeHub.com",
+  metaDescription: "A community information hub for Godforge by Fateless Games. Database, guides, news, tools, and more.",
   ogImage: "",
 };
 

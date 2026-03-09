@@ -69,7 +69,7 @@ const Index = () => {
 
   return (
     <Layout>
-      <SEO />
+      <SEO rawTitle="Godforge Database, News and Guides | GodforgeHub.com" description="A community information hub for Godforge by Fateless Games. Database, guides, news, tools, and more." url="/" />
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-godforge-ember/5" />
