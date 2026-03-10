@@ -364,6 +364,24 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
         </div>
       );
     }
+    if (col.type === "slider") {
+      const numVal = Number(value ?? col.sliderMin ?? 0);
+      return (
+        <div key={col.key} className="space-y-2">
+          <div className="flex items-center justify-between">
+            <Label>{col.label}</Label>
+            <span className="text-sm text-muted-foreground tabular-nums">{numVal.toFixed(1)}</span>
+          </div>
+          <Slider
+            value={[numVal]}
+            min={col.sliderMin ?? 0}
+            max={col.sliderMax ?? 1}
+            step={col.sliderStep ?? 0.1}
+            onValueChange={([v]) => setFormData(p => ({ ...p, [col.key]: v }))}
+          />
+        </div>
+      );
+    }
     if (col.type === "textarea" || col.type === "json") {
       return (
         <div key={col.key} className="space-y-1">

@@ -83,9 +83,14 @@ function buildColumns(
         { value: "50% 30%", label: "Upper third" },
         { value: "50% 40%", label: "Upper center" },
       ],
+    },
+    {
+      key: "image_zoom", label: "Image Zoom", type: "slider",
+      sliderMin: 1.0, sliderMax: 3.0, sliderStep: 0.1,
       renderBelow: (formData) => {
         const imageUrl = formData.image_url ? String(formData.image_url) : "";
         const focalPoint = String(formData.image_focal_point || "top");
+        const zoom = Number(formData.image_zoom ?? 1.5);
         if (!imageUrl) return null;
         return (
           <div className="mt-2 flex items-start gap-4">
@@ -96,7 +101,7 @@ function buildColumns(
                   src={imageUrl}
                   alt="Focal point preview"
                   className="h-full w-full object-cover"
-                  style={{ objectPosition: focalPoint, transform: 'scale(1.5)', transformOrigin: focalPoint }}
+                  style={{ objectPosition: focalPoint, transform: `scale(${zoom})`, transformOrigin: focalPoint }}
                 />
               </div>
             </div>
@@ -107,7 +112,7 @@ function buildColumns(
                   src={imageUrl}
                   alt="Focal point preview large"
                   className="h-full w-full object-cover"
-                  style={{ objectPosition: focalPoint, transform: 'scale(1.5)', transformOrigin: focalPoint }}
+                  style={{ objectPosition: focalPoint, transform: `scale(${zoom})`, transformOrigin: focalPoint }}
                 />
               </div>
             </div>
