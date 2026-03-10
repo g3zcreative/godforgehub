@@ -6,7 +6,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Shield, Zap, Star, History, Swords, Stamp, Users, ExternalLink } from "lucide-react";
-import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
+import { DatabaseBreadcrumb, DropdownItem } from "@/components/DatabaseBreadcrumb";
 import { SEO } from "@/components/SEO";
 import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
@@ -67,6 +67,34 @@ export default function HeroDetail() {
       } as any;
     },
     enabled: !!slug,
+  });
+
+  // Fetch all factions for breadcrumb dropdown
+  const { data: allFactions } = useQuery({
+    queryKey: ["ref_factions_breadcrumb"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("factions")
+        .select("id, name, slug, icon_url")
+        .order("name");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  // Fetch all heroes in the same faction for breadcrumb dropdown
+  const { data: factionHeroes } = useQuery({
+    queryKey: ["faction_heroes_breadcrumb", hero?.faction_id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("heroes")
+        .select("name, slug, image_url")
+        .eq("faction_id", hero!.faction_id!)
+        .order("name");
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!hero?.faction_id,
   });
 
   const { data: skills } = useQuery({
@@ -141,10 +169,40 @@ export default function HeroDetail() {
   const seoTitle = interpolateTemplate(tpl?.title_template, heroSeoVars);
   const seoDesc = interpolateTemplate(tpl?.description_template, heroSeoVars);
 
+  // Build breadcrumb segments with dropdowns
+  const factionDropdown: DropdownItem[] = (allFactions || []).map((f) => ({
+    label: f.name,
+    href: `/database/heroes?faction=${f.slug}`,
+    iconUrl: f.icon_url,
+    active: hero?.faction_id === f.id,
+  }));
+
+  const heroDropdown: DropdownItem[] = (factionHeroes || []).map((h) => ({
+    label: h.name,
+    href: `/database/heroes/${h.slug}`,
+    iconUrl: h.image_url,
+    active: h.slug === slug,
+  }));
+
+  const breadcrumbSegments = [
+    { label: "Heroes", href: "/database/heroes" },
+    ...(hero?.faction_name
+      ? [{
+          label: hero.faction_name,
+          href: `/database/heroes?faction=${allFactions?.find(f => f.id === hero.faction_id)?.slug || ""}`,
+          dropdown: factionDropdown,
+        }]
+      : []),
+    {
+      label: hero?.name || "...",
+      dropdown: heroDropdown.length > 1 ? heroDropdown : undefined,
+    },
+  ];
+
   return (
     <Layout>
       <div className="container max-w-7xl py-8">
-        <DatabaseBreadcrumb segments={[{ label: "Heroes", href: "/database/heroes" }, { label: hero?.name || "..." }]} />
+        <DatabaseBreadcrumb segments={breadcrumbSegments} />
 
         {isLoading ? (
           <div className="space-y-4">
