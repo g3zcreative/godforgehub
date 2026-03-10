@@ -65,6 +65,7 @@ export interface ColumnConfig {
   editable?: boolean;
   storageBucket?: string;
   onChange?: (value: string, setFormData: React.Dispatch<React.SetStateAction<RowData>>) => void;
+  renderBelow?: (formData: RowData) => React.ReactNode;
 }
 
 interface AdminCrudPageProps {
