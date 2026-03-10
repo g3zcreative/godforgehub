@@ -61,6 +61,9 @@ export interface ColumnConfig {
   label: string;
   type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime" | "image" | "select" | "slider";
   options?: { value: string; label: string }[];
+  sliderMin?: number;
+  sliderMax?: number;
+  sliderStep?: number;
   required?: boolean;
   showInTable?: boolean;
   editable?: boolean;
