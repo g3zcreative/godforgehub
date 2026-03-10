@@ -83,6 +83,37 @@ function buildColumns(
         { value: "50% 30%", label: "Upper third" },
         { value: "50% 40%", label: "Upper center" },
       ],
+      renderBelow: (formData) => {
+        const imageUrl = formData.image_url ? String(formData.image_url) : "";
+        const focalPoint = String(formData.image_focal_point || "top");
+        if (!imageUrl) return null;
+        return (
+          <div className="mt-2 flex items-start gap-4">
+            <div className="space-y-1">
+              <span className="text-xs text-muted-foreground">Card preview</span>
+              <div className="h-14 w-14 rounded-lg overflow-hidden border border-border">
+                <img
+                  src={imageUrl}
+                  alt="Focal point preview"
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: focalPoint, transform: 'scale(1.5)', transformOrigin: focalPoint }}
+                />
+              </div>
+            </div>
+            <div className="space-y-1">
+              <span className="text-xs text-muted-foreground">Full crop</span>
+              <div className="h-24 w-24 rounded-lg overflow-hidden border border-border">
+                <img
+                  src={imageUrl}
+                  alt="Focal point preview large"
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: focalPoint, transform: 'scale(1.5)', transformOrigin: focalPoint }}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      },
     },
     { key: "stats", label: "Stats (JSON)", type: "json" },
     { key: "leader_bonus", label: "Leader Bonus (JSON)", type: "json" },

@@ -65,6 +65,7 @@ export interface ColumnConfig {
   editable?: boolean;
   storageBucket?: string;
   onChange?: (value: string, setFormData: React.Dispatch<React.SetStateAction<RowData>>) => void;
+  renderBelow?: (formData: RowData) => React.ReactNode;
 }
 
 interface AdminCrudPageProps {
@@ -530,7 +531,12 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
             <DialogTitle>{editingRow ? "Edit" : "Create"} {title}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            {editableColumns.map(renderField)}
+            {editableColumns.map(col => (
+              <div key={`wrap-${col.key}`}>
+                {renderField(col)}
+                {col.renderBelow?.(formData)}
+              </div>
+            ))}
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setDialogOpen(false)}>Cancel</Button>
