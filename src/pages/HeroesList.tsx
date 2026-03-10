@@ -63,6 +63,7 @@ const rarityOptions = [
 ];
 
 export default function HeroesList() {
+  const [searchParams] = useSearchParams();
   const [search, setSearch] = useState("");
   const [realmFilter, setRealmFilter] = useState("all");
   const [classFilter, setClassFilter] = useState("all");
