@@ -6,7 +6,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Shield, Zap, Star, History, Swords, Stamp, Users, ExternalLink } from "lucide-react";
-import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
+import { DatabaseBreadcrumb, DropdownItem } from "@/components/DatabaseBreadcrumb";
 import { SEO } from "@/components/SEO";
 import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
