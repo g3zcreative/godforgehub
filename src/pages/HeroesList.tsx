@@ -94,10 +94,22 @@ export default function HeroesList() {
   const { data: factionsList = [] } = useQuery({
     queryKey: ["ref_factions_list"],
     queryFn: async () => {
-      const { data } = await supabase.from("factions").select("id, name").order("name");
-      return (data || []) as { id: string; name: string }[];
+      const { data } = await supabase.from("factions").select("id, name, slug").order("name");
+      return (data || []) as { id: string; name: string; slug: string }[];
     },
   });
+
+  // Sync ?faction= URL param to realm filter
+  useEffect(() => {
+    const factionSlug = searchParams.get("faction");
+    if (factionSlug && factionsList.length > 0) {
+      const match = factionsList.find(f => f.slug === factionSlug);
+      if (match) {
+        setRealmFilter(match.name);
+        setPage(1);
+      }
+    }
+  }, [searchParams, factionsList]);
   const { data: archetypesList = [] } = useQuery({
     queryKey: ["ref_archetypes_list"],
     queryFn: async () => {
