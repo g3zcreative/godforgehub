@@ -747,6 +747,7 @@ export type Database = {
           divinity_generator: string | null
           faction_id: string | null
           id: string
+          image_focal_point: string
           image_url: string | null
           leader_bonus: Json | null
           lore: string | null
@@ -770,6 +771,7 @@ export type Database = {
           divinity_generator?: string | null
           faction_id?: string | null
           id?: string
+          image_focal_point?: string
           image_url?: string | null
           leader_bonus?: Json | null
           lore?: string | null
@@ -793,6 +795,7 @@ export type Database = {
           divinity_generator?: string | null
           faction_id?: string | null
           id?: string
+          image_focal_point?: string
           image_url?: string | null
           leader_bonus?: Json | null
           lore?: string | null
