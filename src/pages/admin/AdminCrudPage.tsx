@@ -14,6 +14,7 @@ import { Plus, Pencil, Trash2, CalendarIcon, Upload, X, Loader2, Image as ImageI
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { Switch } from "@/components/ui/switch";
+import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
@@ -58,8 +59,11 @@ function ImageUploadButton({ bucket, onUploaded }: { bucket: string; onUploaded:
 export interface ColumnConfig {
   key: string;
   label: string;
-  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime" | "image" | "select";
+  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime" | "image" | "select" | "slider";
   options?: { value: string; label: string }[];
+  sliderMin?: number;
+  sliderMax?: number;
+  sliderStep?: number;
   required?: boolean;
   showInTable?: boolean;
   editable?: boolean;
@@ -357,6 +361,24 @@ export function AdminCrudPage({ tableName, title, columns, defaults, onNewOverri
               ))}
             </SelectContent>
           </Select>
+        </div>
+      );
+    }
+    if (col.type === "slider") {
+      const numVal = Number(value ?? col.sliderMin ?? 0);
+      return (
+        <div key={col.key} className="space-y-2">
+          <div className="flex items-center justify-between">
+            <Label>{col.label}</Label>
+            <span className="text-sm text-muted-foreground tabular-nums">{numVal.toFixed(1)}</span>
+          </div>
+          <Slider
+            value={[numVal]}
+            min={col.sliderMin ?? 0}
+            max={col.sliderMax ?? 1}
+            step={col.sliderStep ?? 0.1}
+            onValueChange={([v]) => setFormData(p => ({ ...p, [col.key]: v }))}
+          />
         </div>
       );
     }

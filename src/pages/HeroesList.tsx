@@ -323,8 +323,12 @@ export default function HeroesList() {
                             <img
                               src={hero.image_url}
                               alt={hero.name}
-                              className="h-full w-full object-cover scale-150 group-hover:scale-[1.6] transition-transform"
-                              style={{ objectPosition: hero.image_focal_point || 'top' }}
+                              className="h-full w-full object-cover transition-transform"
+                              style={{
+                                objectPosition: hero.image_focal_point || 'top',
+                                transform: `scale(${hero.image_zoom ?? 1.5})`,
+                                transformOrigin: hero.image_focal_point || 'top',
+                              }}
                               loading="lazy"
                             />
                           </div>
