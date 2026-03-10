@@ -319,12 +319,15 @@ export default function HeroesList() {
                       )}
                       <CardContent className="p-4 flex items-center gap-3">
                         {hero.image_url ? (
-                          <img
-                            src={hero.image_url}
-                            alt={hero.name}
-                            className="h-14 w-14 rounded-lg object-cover shrink-0 group-hover:scale-105 transition-transform"
-                            loading="lazy"
-                          />
+                          <div className="h-14 w-14 rounded-lg shrink-0 overflow-hidden">
+                            <img
+                              src={hero.image_url}
+                              alt={hero.name}
+                              className="h-full w-full object-cover scale-150 group-hover:scale-[1.6] transition-transform"
+                              style={{ objectPosition: hero.image_focal_point || 'top' }}
+                              loading="lazy"
+                            />
+                          </div>
                         ) : (
                           <div className="h-14 w-14 rounded-lg bg-muted shrink-0 flex items-center justify-center text-muted-foreground text-xs">?</div>
                         )}

@@ -73,6 +73,17 @@ function buildColumns(
     { key: "description", label: "Description", type: "textarea" },
     { key: "lore", label: "Lore", type: "textarea" },
     { key: "image_url", label: "Image URL", storageBucket: "hero-images" },
+    {
+      key: "image_focal_point", label: "Image Focal Point", type: "select",
+      options: [
+        { value: "top", label: "Top (default)" },
+        { value: "center", label: "Center" },
+        { value: "bottom", label: "Bottom" },
+        { value: "50% 20%", label: "Upper middle" },
+        { value: "50% 30%", label: "Upper third" },
+        { value: "50% 40%", label: "Upper center" },
+      ],
+    },
     { key: "stats", label: "Stats (JSON)", type: "json" },
     { key: "leader_bonus", label: "Leader Bonus (JSON)", type: "json" },
     { key: "divinity_generator", label: "Divinity Generator", type: "textarea" },
