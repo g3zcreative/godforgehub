@@ -58,7 +58,7 @@ function ImageUploadButton({ bucket, onUploaded }: { bucket: string; onUploaded:
 export interface ColumnConfig {
   key: string;
   label: string;
-  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime" | "image" | "select";
+  type?: "text" | "number" | "textarea" | "boolean" | "json" | "markdown" | "datetime" | "image" | "select" | "slider";
   options?: { value: string; label: string }[];
   required?: boolean;
   showInTable?: boolean;
