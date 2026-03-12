@@ -748,6 +748,7 @@ export type Database = {
           faction_id: string | null
           id: string
           image_focal_point: string
+          image_focal_x: number
           image_url: string | null
           image_zoom: number
           leader_bonus: Json | null
@@ -773,6 +774,7 @@ export type Database = {
           faction_id?: string | null
           id?: string
           image_focal_point?: string
+          image_focal_x?: number
           image_url?: string | null
           image_zoom?: number
           leader_bonus?: Json | null
@@ -798,6 +800,7 @@ export type Database = {
           faction_id?: string | null
           id?: string
           image_focal_point?: string
+          image_focal_x?: number
           image_url?: string | null
           image_zoom?: number
           leader_bonus?: Json | null
