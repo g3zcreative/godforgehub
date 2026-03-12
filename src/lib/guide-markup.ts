@@ -5,7 +5,7 @@
  * before the Markdown renderer processes the content.
  */
 
-const ENTITY_PATTERN = /\[(hero|skill|item|mechanic|boss-skill):([a-z0-9-]+)\]/g;
+const ENTITY_PATTERN = /\[(hero|skill|item|mechanic|boss-skill|boss):([a-z0-9-]+)\]/g;
 
 const TYPE_TO_PATH: Record<string, string> = {
   hero: "heroes",
@@ -13,6 +13,7 @@ const TYPE_TO_PATH: Record<string, string> = {
   item: "items",
   mechanic: "mechanics",
   "boss-skill": "boss-skills",
+  boss: "bosses",
 };
 
 const ROMAN_NUMERALS = new Set(["i","ii","iii","iv","v","vi","vii","viii","ix","x"]);

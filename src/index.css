@@ -223,7 +223,15 @@
   text-shadow: 0 0 8px hsl(0 70% 60% / 0.4);
 }
 
+.entity-link--boss {
+  color: hsl(15 85% 55%);
+}
+.entity-link--boss:hover {
+  color: hsl(15 90% 65%);
+  text-shadow: 0 0 8px hsl(15 85% 55% / 0.4);
+}
 
+/* Entity tooltip */
 .entity-tooltip {
   background: hsl(var(--popover));
   border: 1px solid hsl(var(--border));
