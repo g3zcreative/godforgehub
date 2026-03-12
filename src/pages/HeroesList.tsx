@@ -121,6 +121,17 @@ export default function HeroesList() {
     },
   });
 
+  const { data: affinitiesList = [] } = useQuery({
+    queryKey: ["ref_affinities_list"],
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("affinities")
+        .select("id, name, slug, strength_id, weakness_id, icon_url")
+        .order("name");
+      return (data || []) as any[];
+    },
+  });
+
   const realms = useMemo(() => {
     if (factionsList.length > 0) return factionsList.map(f => f.name);
     if (!heroes) return [];
