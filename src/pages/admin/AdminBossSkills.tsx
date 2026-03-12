@@ -30,7 +30,7 @@ export default function AdminBossSkills() {
     { key: "damage_type", label: "Damage Type", showInTable: true },
     { key: "cooldown", label: "Cooldown", type: "number", showInTable: true },
     { key: "description", label: "Description", type: "textarea" },
-    { key: "image_url", label: "Image URL", storageBucket: "images" },
+    { key: "image_url", label: "Image", type: "image", storageBucket: "icons" },
     { key: "sort_order", label: "Sort Order", type: "number" },
   ];
 
