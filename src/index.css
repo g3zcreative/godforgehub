@@ -215,7 +215,15 @@
   text-shadow: 0 0 8px hsl(50 100% 55% / 0.4);
 }
 
-/* Entity tooltip */
+.entity-link--boss-skill {
+  color: hsl(0 70% 60%);
+}
+.entity-link--boss-skill:hover {
+  color: hsl(0 80% 70%);
+  text-shadow: 0 0 8px hsl(0 70% 60% / 0.4);
+}
+
+
 .entity-tooltip {
   background: hsl(var(--popover));
   border: 1px solid hsl(var(--border));
