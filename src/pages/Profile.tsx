@@ -22,6 +22,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [analysisOpen, setAnalysisOpen] = useState(false);
 
   if (!authLoading && !user) {
     navigate("/auth");
@@ -29,7 +30,6 @@ export default function Profile() {
   }
 
   // Fetch collections
-  const [analysisOpen, setAnalysisOpen] = useState(false);
 
   const { data: myHeroes = [], isLoading: heroesLoading } = useQuery({
     queryKey: ["user_heroes", user?.id],
