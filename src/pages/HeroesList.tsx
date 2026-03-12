@@ -243,6 +243,20 @@ export default function HeroesList() {
 
         <h1 className="font-display text-3xl font-bold mb-6">Heroes</h1>
 
+        {/* Roster Analysis */}
+        {heroes && heroes.length > 0 && (
+          <Collapsible open={analysisOpen} onOpenChange={setAnalysisOpen} className="mb-6">
+            <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group w-full">
+              <ChevronDown className={`h-4 w-4 transition-transform ${analysisOpen ? "rotate-0" : "-rotate-90"}`} />
+              <span className="font-medium">Roster Analysis</span>
+              <span className="text-xs text-muted-foreground">— distribution, rarity & affinity insights</span>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-3">
+              <RosterAnalysis heroes={heroes} affinities={affinitiesList} />
+            </CollapsibleContent>
+          </Collapsible>
+        )}
+
         {/* Filters */}
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
           <div className="relative flex-1">
