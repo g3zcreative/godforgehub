@@ -18,8 +18,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
-import { Search, X, ChevronLeft, ChevronRight, Plus, Check } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight, Plus, Check, ChevronDown } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
+import { RosterAnalysis } from "@/components/RosterAnalysis";
 import { toast } from "sonner";
 
 const ITEMS_PER_PAGE = 24;
@@ -69,6 +71,7 @@ export default function HeroesList() {
   const [classFilter, setClassFilter] = useState("all");
   const [rarityFilter, setRarityFilter] = useState("all");
   const [page, setPage] = useState(1);
+  const [analysisOpen, setAnalysisOpen] = useState(false);
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [addingHeroId, setAddingHeroId] = useState<string | null>(null);
@@ -115,6 +118,17 @@ export default function HeroesList() {
     queryFn: async () => {
       const { data } = await (supabase as any).from("archetypes").select("id, name").order("name");
       return (data || []) as { id: string; name: string }[];
+    },
+  });
+
+  const { data: affinitiesList = [] } = useQuery({
+    queryKey: ["ref_affinities_list"],
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("affinities")
+        .select("id, name, slug, strength_id, weakness_id, icon_url")
+        .order("name");
+      return (data || []) as any[];
     },
   });
 
@@ -228,6 +242,20 @@ export default function HeroesList() {
         <DatabaseBreadcrumb segments={[{ label: "Heroes" }]} />
 
         <h1 className="font-display text-3xl font-bold mb-6">Heroes</h1>
+
+        {/* Roster Analysis */}
+        {heroes && heroes.length > 0 && (
+          <Collapsible open={analysisOpen} onOpenChange={setAnalysisOpen} className="mb-6">
+            <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group w-full">
+              <ChevronDown className={`h-4 w-4 transition-transform ${analysisOpen ? "rotate-0" : "-rotate-90"}`} />
+              <span className="font-medium">Roster Analysis</span>
+              <span className="text-xs text-muted-foreground">— distribution, rarity & affinity insights</span>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-3">
+              <RosterAnalysis heroes={heroes} affinities={affinitiesList} />
+            </CollapsibleContent>
+          </Collapsible>
+        )}
 
         {/* Filters */}
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
