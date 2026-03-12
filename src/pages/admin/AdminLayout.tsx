@@ -21,6 +21,7 @@ const contentItems = [
   { title: "Builds", url: "/admin/builds", icon: Star },
   { title: "Bosses", url: "/admin/bosses", icon: Swords },
   { title: "Boss Strategies", url: "/admin/boss-strategies", icon: Flag },
+  { title: "Boss Skills", url: "/admin/boss-skills", icon: Sparkles },
   { title: "Skills", url: "/admin/skills", icon: Sparkles },
   { title: "Mechanics", url: "/admin/mechanics", icon: FlaskConical },
   { title: "Imprints", url: "/admin/imprints", icon: Stamp },

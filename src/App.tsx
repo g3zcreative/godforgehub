@@ -70,6 +70,7 @@ const AdminBuilds = lazy(() => import("./pages/admin/AdminBuilds"));
 const AdminArmorSets = lazy(() => import("./pages/admin/AdminArmorSets"));
 const AdminBosses = lazy(() => import("./pages/admin/AdminBosses"));
 const AdminBossStrategies = lazy(() => import("./pages/admin/AdminBossStrategies"));
+const AdminBossSkills = lazy(() => import("./pages/admin/AdminBossSkills"));
 const AdminSeo = lazy(() => import("./pages/admin/AdminSeo"));
 const AdminTeamComps = lazy(() => import("./pages/admin/AdminTeamComps"));
 const AdminDataSync = lazy(() => import("./pages/admin/AdminDataSync"));
@@ -144,6 +145,7 @@ function AppRoutes() {
           <Route path="armor-sets" element={<AdminArmorSets />} />
           <Route path="bosses" element={<AdminBosses />} />
           <Route path="boss-strategies" element={<AdminBossStrategies />} />
+          <Route path="boss-skills" element={<AdminBossSkills />} />
           <Route path="skills" element={<AdminSkills />} />
           <Route path="mechanics" element={<AdminMechanics />} />
           <Route path="imprints" element={<AdminImprints />} />
