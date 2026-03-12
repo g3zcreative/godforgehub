@@ -29,15 +29,25 @@ export default function Profile() {
   }
 
   // Fetch collections
+  const [analysisOpen, setAnalysisOpen] = useState(false);
+
   const { data: myHeroes = [], isLoading: heroesLoading } = useQuery({
     queryKey: ["user_heroes", user?.id],
     enabled: !!user,
     queryFn: async () => {
       const { data } = await supabase
         .from("user_heroes")
-        .select("id, source, hero_id, heroes:hero_id(name, slug, image_url, rarity)")
+        .select("id, source, hero_id, heroes:hero_id(name, slug, image_url, rarity, affinity_id, factions:faction_id(name), archetypes:archetype_id(name))")
         .eq("user_id", user!.id)
         .order("created_at");
+      return data || [];
+    },
+  });
+
+  const { data: affinitiesList = [] } = useQuery({
+    queryKey: ["ref_affinities_list"],
+    queryFn: async () => {
+      const { data } = await supabase.from("affinities").select("*").order("name");
       return data || [];
     },
   });
