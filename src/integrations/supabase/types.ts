@@ -749,6 +749,7 @@ export type Database = {
           id: string
           image_focal_point: string
           image_focal_x: number
+          image_focal_y: number
           image_url: string | null
           image_zoom: number
           leader_bonus: Json | null
@@ -775,6 +776,7 @@ export type Database = {
           id?: string
           image_focal_point?: string
           image_focal_x?: number
+          image_focal_y?: number
           image_url?: string | null
           image_zoom?: number
           leader_bonus?: Json | null
@@ -801,6 +803,7 @@ export type Database = {
           id?: string
           image_focal_point?: string
           image_focal_x?: number
+          image_focal_y?: number
           image_url?: string | null
           image_zoom?: number
           leader_bonus?: Json | null
