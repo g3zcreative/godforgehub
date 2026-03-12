@@ -18,8 +18,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
-import { Search, X, ChevronLeft, ChevronRight, Plus, Check } from "lucide-react";
+import { Search, X, ChevronLeft, ChevronRight, Plus, Check, ChevronDown } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
+import { RosterAnalysis } from "@/components/RosterAnalysis";
 import { toast } from "sonner";
 
 const ITEMS_PER_PAGE = 24;
