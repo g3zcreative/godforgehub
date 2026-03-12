@@ -10,8 +10,10 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Sword, Shield, Sparkles, Trash2, Search } from "lucide-react";
+import { Plus, Sword, Shield, Sparkles, Trash2, Search, BarChart3, ChevronDown } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { RosterAnalysis } from "@/components/RosterAnalysis";
 
 type CollectionType = "hero" | "weapon" | "imprint";
 
