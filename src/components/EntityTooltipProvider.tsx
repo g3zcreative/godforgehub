@@ -104,6 +104,7 @@ const typeColors: Record<string, string> = {
   skill: "hsl(270 70% 65%)",
   item: "hsl(150 60% 50%)",
   mechanic: "hsl(15 85% 55%)",
+  "boss-skill": "hsl(0 70% 60%)",
 };
 
 function getTooltipTitleColor(type: string, data: TooltipData): string {
