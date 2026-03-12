@@ -124,6 +124,30 @@ export default function Profile() {
           </TabsList>
 
           <TabsContent value="heroes" className="space-y-4">
+            {myHeroes.length >= 2 && (
+              <Collapsible open={analysisOpen} onOpenChange={setAnalysisOpen}>
+                <CollapsibleTrigger asChild>
+                  <button className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full py-2">
+                    <BarChart3 className="h-4 w-4" />
+                    <span>My Roster Analysis</span>
+                    <ChevronDown className={`h-4 w-4 ml-auto transition-transform ${analysisOpen ? "rotate-180" : ""}`} />
+                  </button>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <RosterAnalysis
+                    heroes={myHeroes.map((item: any) => ({
+                      id: item.hero_id,
+                      name: item.heroes?.name || "",
+                      rarity: item.heroes?.rarity || 0,
+                      faction_name: item.heroes?.factions?.name || "Unknown",
+                      archetype_name: item.heroes?.archetypes?.name || "Unknown",
+                      affinity_id: item.heroes?.affinity_id,
+                    }))}
+                    affinities={affinitiesList}
+                  />
+                </CollapsibleContent>
+              </Collapsible>
+            )}
             <div className="flex justify-end">
               <AddToCollectionDialog type="hero" userId={user!.id} />
             </div>
