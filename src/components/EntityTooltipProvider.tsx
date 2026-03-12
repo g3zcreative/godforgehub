@@ -79,6 +79,9 @@ async function fetchEntity(type: string, slug: string): Promise<TooltipData | nu
     } else if (type === "item") {
       const { data } = await supabase.from("items").select("name, description, image_url, item_type, rarity").eq("slug", slug).maybeSingle();
       if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${data.item_type} · ${"★".repeat(data.rarity)}` };
+    } else if (type === "boss-skill") {
+      const { data } = await supabase.from("boss_skills").select("name, description, image_url, skill_type, cooldown, bosses(name)").eq("slug", slug).maybeSingle();
+      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${(data as any).bosses?.name || "?"} · ${data.skill_type}${data.cooldown ? ` · ${data.cooldown}s CD` : ""}` };
     }
   } catch {
     // fail silently
@@ -101,6 +104,7 @@ const typeColors: Record<string, string> = {
   skill: "hsl(270 70% 65%)",
   item: "hsl(150 60% 50%)",
   mechanic: "hsl(15 85% 55%)",
+  "boss-skill": "hsl(0 70% 60%)",
 };
 
 function getTooltipTitleColor(type: string, data: TooltipData): string {
