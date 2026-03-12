@@ -85,13 +85,19 @@ function buildColumns(
       ],
     },
     {
+      key: "image_focal_x", label: "Image Horizontal Position", type: "slider",
+      sliderMin: 0, sliderMax: 100, sliderStep: 1,
+    },
+    {
       key: "image_zoom", label: "Image Zoom", type: "slider",
       sliderMin: 1.0, sliderMax: 3.0, sliderStep: 0.1,
       renderBelow: (formData) => {
         const imageUrl = formData.image_url ? String(formData.image_url) : "";
         const focalPoint = String(formData.image_focal_point || "top");
+        const focalX = Number(formData.image_focal_x ?? 50);
         const zoom = Number(formData.image_zoom ?? 1.5);
         if (!imageUrl) return null;
+        const pos = `${focalX}% ${focalPoint === "top" ? "0%" : focalPoint === "center" ? "50%" : focalPoint === "bottom" ? "100%" : focalPoint.includes("%") ? focalPoint.split(" ").pop() : "0%"}`;
         return (
           <div className="mt-2 flex items-start gap-4">
             <div className="space-y-1">
@@ -101,7 +107,7 @@ function buildColumns(
                   src={imageUrl}
                   alt="Focal point preview"
                   className="h-full w-full object-cover"
-                  style={{ objectPosition: focalPoint, transform: `scale(${zoom})`, transformOrigin: focalPoint }}
+                  style={{ objectPosition: pos, transform: `scale(${zoom})`, transformOrigin: pos }}
                 />
               </div>
             </div>
@@ -112,7 +118,7 @@ function buildColumns(
                   src={imageUrl}
                   alt="Focal point preview large"
                   className="h-full w-full object-cover"
-                  style={{ objectPosition: focalPoint, transform: `scale(${zoom})`, transformOrigin: focalPoint }}
+                  style={{ objectPosition: pos, transform: `scale(${zoom})`, transformOrigin: pos }}
                 />
               </div>
             </div>
