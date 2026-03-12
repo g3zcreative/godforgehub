@@ -353,9 +353,9 @@ export default function HeroesList() {
                               alt={hero.name}
                               className="h-full w-full object-cover transition-transform"
                               style={{
-                                objectPosition: hero.image_focal_point || 'top',
+                                objectPosition: `${hero.image_focal_x ?? 50}% ${hero.image_focal_point === 'top' ? '0%' : hero.image_focal_point === 'center' ? '50%' : hero.image_focal_point === 'bottom' ? '100%' : hero.image_focal_point?.includes('%') ? hero.image_focal_point.split(' ').pop() : '0%'}`,
                                 transform: `scale(${hero.image_zoom ?? 1.5})`,
-                                transformOrigin: hero.image_focal_point || 'top',
+                                transformOrigin: `${hero.image_focal_x ?? 50}% ${hero.image_focal_point === 'top' ? '0%' : hero.image_focal_point === 'center' ? '50%' : hero.image_focal_point === 'bottom' ? '100%' : hero.image_focal_point?.includes('%') ? hero.image_focal_point.split(' ').pop() : '0%'}`,
                               }}
                               loading="lazy"
                             />
