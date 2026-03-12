@@ -89,15 +89,19 @@ function buildColumns(
       sliderMin: 0, sliderMax: 100, sliderStep: 1,
     },
     {
+      key: "image_focal_y", label: "Image Vertical Position", type: "slider",
+      sliderMin: 0, sliderMax: 100, sliderStep: 1,
+    },
+    {
       key: "image_zoom", label: "Image Zoom", type: "slider",
       sliderMin: 1.0, sliderMax: 3.0, sliderStep: 0.1,
       renderBelow: (formData) => {
         const imageUrl = formData.image_url ? String(formData.image_url) : "";
-        const focalPoint = String(formData.image_focal_point || "top");
         const focalX = Number(formData.image_focal_x ?? 50);
+        const focalY = Number(formData.image_focal_y ?? 0);
         const zoom = Number(formData.image_zoom ?? 1.5);
         if (!imageUrl) return null;
-        const pos = `${focalX}% ${focalPoint === "top" ? "0%" : focalPoint === "center" ? "50%" : focalPoint === "bottom" ? "100%" : focalPoint.includes("%") ? focalPoint.split(" ").pop() : "0%"}`;
+        const pos = `${focalX}% ${focalY}%`;
         return (
           <div className="mt-2 flex items-start gap-4">
             <div className="space-y-1">
