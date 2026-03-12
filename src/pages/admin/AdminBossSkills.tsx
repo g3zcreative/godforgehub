@@ -22,10 +22,10 @@ export default function AdminBossSkills() {
     { key: "slug", label: "Slug", required: true, showInTable: true },
     { key: "boss_id", label: "Boss", type: "select", required: true, options: bossOptions, showInTable: true },
     { key: "skill_type", label: "Type", type: "select", required: true, showInTable: true, options: [
-      { value: "Active", label: "Active" },
-      { value: "Passive", label: "Passive" },
+      { value: "Basic", label: "Basic" },
+      { value: "Core", label: "Core" },
       { value: "Ultimate", label: "Ultimate" },
-      { value: "Enrage", label: "Enrage" },
+      { value: "Passive", label: "Passive" },
     ]},
     { key: "damage_type", label: "Damage Type", showInTable: true },
     { key: "cooldown", label: "Cooldown", type: "number", showInTable: true },
