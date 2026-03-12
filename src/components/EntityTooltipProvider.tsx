@@ -82,6 +82,9 @@ async function fetchEntity(type: string, slug: string): Promise<TooltipData | nu
     } else if (type === "boss-skill") {
       const { data } = await supabase.from("boss_skills").select("name, description, image_url, skill_type, cooldown, bosses(name)").eq("slug", slug).maybeSingle();
       if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: `${(data as any).bosses?.name || "?"} · ${data.skill_type}${data.cooldown ? ` · ${data.cooldown}s CD` : ""}` };
+    } else if (type === "boss") {
+      const { data } = await supabase.from("bosses").select("name, description, image_url, difficulty, location").eq("slug", slug).maybeSingle();
+      if (data) result = { name: data.name, description: data.description, image_url: data.image_url, extra: [data.difficulty, data.location].filter(Boolean).join(" · ") || undefined };
     }
   } catch {
     // fail silently
