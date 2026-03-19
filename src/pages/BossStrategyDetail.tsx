@@ -64,8 +64,8 @@ export default function BossStrategyDetail() {
         ) : (
           <>
             <SEO
-              rawTitle={`${data.title} - ${data.boss.name} Strategy | GodforgeHub`}
-              description={`${data.title} strategy guide for ${data.boss.name} boss in Godforge.`}
+              rawTitle={`${data.title} | ${data.boss.name} Boss Strategy | GodforgeHub`}
+              description={`${data.title} — strategy guide for ${data.boss.name} boss in Godforge. Team comp, tips, and recommended heroes.`}
               url={`/bosses/${bossSlug}/strategies/${strategySlug}`}
             />
 

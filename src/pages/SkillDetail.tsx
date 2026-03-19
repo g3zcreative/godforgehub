@@ -61,8 +61,9 @@ export default function SkillDetail() {
         ) : (
           <>
             <SEO
-              rawTitle={seoTitle || `${skill.name} Godforge | GodforgeHub.com`}
-              description={seoDesc || `${skill.name} Skill: ${skill.description || `${skill.skill_type} skill in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
+              rawTitle={seoTitle || `${skill.name} | Godforge ${skill.skill_type} Skill | GodforgeHub`}
+              description={seoDesc || `${skill.name} ${skill.skill_type} skill in Godforge${hero?.name ? ` (${hero.name})` : ''} — ${skill.description?.slice(0, 120) || 'cooldown, scaling, and effects.'}`}
+              image={skill.image_url || undefined}
               url={`/database/skills/${skill.slug}`}
             />
 
