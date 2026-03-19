@@ -82,7 +82,7 @@ export default function BuildDetail() {
         ) : (
           <>
             <SEO
-              rawTitle={`${build.title} - ${build.hero.name} Build | GodforgeHub`}
+              rawTitle={`${build.title} | ${build.hero.name} Build Guide | GodforgeHub`}
               description={`${build.title} build guide for ${build.hero.name} in Godforge.`}
               url={`/database/heroes/${heroSlug}/builds/${buildSlug}`}
             />

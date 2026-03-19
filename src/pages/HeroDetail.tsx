@@ -218,8 +218,8 @@ export default function HeroDetail() {
         ) : (
           <>
             <SEO
-              rawTitle={seoTitle || `${hero.name} Godforge | GodforgeHub.com`}
-              description={seoDesc || `${hero.name} Hero: ${hero.description || `${rarityLabel(hero.rarity)} ${hero.archetype_name} hero in Godforge.`} Read more on GodforgeHub.com, your hub for all things Godforge.`}
+              rawTitle={seoTitle || `${hero.name} | Godforge Hero Database | GodforgeHub`}
+              description={seoDesc || `${hero.name} hero guide for Godforge — skills, imprints, stats, and team synergies. ${hero.archetype_name ? `${rarityLabel(hero.rarity)} ${hero.archetype_name}.` : ''} Updated for latest patch.`}
               image={hero.image_url || undefined}
               url={`/database/heroes/${hero.slug}`}
               jsonLd={{

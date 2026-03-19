@@ -55,8 +55,8 @@ export default function GuideDetail() {
         ) : (
           <>
             <SEO
-              title={guide.title}
-              description={guide.excerpt || undefined}
+              rawTitle={`${guide.title} | Godforge Guide | GodforgeHub`}
+              description={guide.excerpt || `${guide.title} — a ${guide.category.toLowerCase()} Godforge guide by ${guide.author}. Tips, strategies, and more.`}
               type="article"
               url={`/guides/${guide.slug}`}
               jsonLd={{

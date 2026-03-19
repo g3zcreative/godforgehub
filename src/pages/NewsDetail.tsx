@@ -63,8 +63,8 @@ export default function NewsDetail() {
         ) : (
           <>
             <SEO
-              title={article.title}
-              description={article.excerpt || undefined}
+              rawTitle={`${article.title} | Godforge News | GodforgeHub`}
+              description={article.excerpt || `${article.title} — ${article.category} news for Godforge. Latest updates and community coverage.`}
               image={article.image_url || (article.video_url ? `https://img.youtube.com/vi/${extractYouTubeId(article.video_url)}/maxresdefault.jpg` : undefined)}
               type="article"
               url={`/news/${article.slug}`}

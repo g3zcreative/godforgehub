@@ -46,8 +46,8 @@ export default function ItemDetail() {
         ) : (
           <>
             <SEO
-              title={item.name}
-              description={item.description || `${item.name} - ${item.rarity}★ ${item.item_type}`}
+              rawTitle={`${item.name} | Godforge ${item.item_type} | GodforgeHub`}
+              description={`${item.name} — ${rarityStars(item.rarity)} ${item.item_type} in Godforge. ${item.description?.slice(0, 100) || 'Stats, how to obtain, and more.'}`}
               image={item.image_url || undefined}
               url={`/database/items/${item.slug}`}
               jsonLd={{

@@ -148,8 +148,9 @@ export default function BossDetail() {
         ) : (
           <>
             <SEO
-              rawTitle={`${boss.name} Boss Guide | GodforgeHub`}
-              description={boss.description || `${boss.name} boss guide — skills, strategies, and loot drops in Godforge.`}
+              rawTitle={`${boss.name} | Godforge Boss Guide | GodforgeHub`}
+              description={`${boss.name} boss guide for Godforge — skills, strategies, drops, and team comps.${boss.difficulty ? ` ${boss.difficulty} difficulty.` : ''} Updated for latest patch.`}
+              image={boss.image_url || undefined}
               url={`/bosses/${boss.slug}`}
             />
 
