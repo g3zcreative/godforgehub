@@ -703,17 +703,7 @@
     "created_at": "2026-03-06T14:31:18.498283+00:00",
     "updated_at": "2026-03-08T00:38:42.177289+00:00"
   },
-  {
-    "id": "714aedd7-5e3a-40b0-9db3-fd6d5813c6b8",
-    "name": "Nuwa",
-    "slug": "nuwa",
-    "passive": "Increases HP by 10% and restores 5% of max HP at the start of Nuwa's turn.",
-    "source_hero_id": "887d762b-d228-4167-822a-f2b8084e4d5d",
-    "rarity": 5,
-    "image_url": "https://godforge.gg/_next/image?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FGodforge-Hub%2Fgodforge-assets%40main%2Fheroes%2Fnuwa%2Frender.png&w=1920&q=75",
-    "created_at": "2026-03-06T14:33:21.406131+00:00",
-    "updated_at": "2026-03-08T00:40:21.865587+00:00"
-  },
+
   {
     "id": "d0102d2d-e4ef-4dbb-8f0b-96eb58c9cd60",
     "name": "Odysseus",
@@ -1245,7 +1235,7 @@
   {
     "id": "feed8f8d-cc29-45dc-a1e7-a5a007343976",
     "name": "Y Ddraig Goch",
-    "slug": "y-ddraig-goch",
+    "slug": "yddraig-goch",
     "passive": "Inflicts 15% more damage and receives 15% less damage from enemies under [Blaze] or [Aetherburn].",
     "source_hero_id": "10489680-36a5-4e20-b717-f069606eb275",
     "rarity": 5,
@@ -1693,17 +1683,7 @@
     "created_at": "2026-03-06T14:43:24.073705+00:00",
     "updated_at": "2026-03-08T00:49:42.169606+00:00"
   },
-  {
-    "id": "9126bee0-ceff-46b5-b5f5-76cb446ac720",
-    "name": "Themis",
-    "slug": "themis",
-    "passive": "While Themis is alive, all allies gain 5 Speed and 10% Resistance.",
-    "source_hero_id": "a55d05c1-69fc-4d7d-91fd-0d37bd61c65a",
-    "rarity": 5,
-    "image_url": "https://godforge.gg/api/media/file/ICON_Themis_Passive.webp",
-    "created_at": "2026-03-06T23:36:30.480605+00:00",
-    "updated_at": "2026-03-06T23:36:30.480605+00:00"
-  },
+
   {
     "id": "71ca1933-cb68-4ba7-be2f-23c5670e776b",
     "name": "Volkodlak",

@@ -143,7 +143,6 @@
 <url><loc>https://godforgehub.com/database/heroes/ninurta</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/nitocris</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/nubian-warrior</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
-<url><loc>https://godforgehub.com/database/heroes/nuwa</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/nymph</loc><lastmod>2026-03-12</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/oda-nobunaga</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/odin</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
@@ -190,7 +189,6 @@
 <url><loc>https://godforgehub.com/database/heroes/temple-priestess</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/tengu</loc><lastmod>2026-03-13</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/terracotta-warrior</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
-<url><loc>https://godforgehub.com/database/heroes/themis</loc><lastmod>2026-03-12</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/thorkell</loc><lastmod>2026-03-13</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/thracian-lion</loc><lastmod>2026-03-13</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/tianlong</loc><lastmod>2026-03-13</lastmod><priority>0.7</priority></url>
@@ -215,7 +213,7 @@
 <url><loc>https://godforgehub.com/database/heroes/xolotl</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/xquic</loc><lastmod>2026-03-13</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/xtabay</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
-<url><loc>https://godforgehub.com/database/heroes/y-ddraig-goch</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
+<url><loc>https://godforgehub.com/database/heroes/yddraig-goch</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/yamawaro</loc><lastmod>2026-03-12</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/yan-wang</loc><lastmod>2026-03-13</lastmod><priority>0.7</priority></url>
 <url><loc>https://godforgehub.com/database/heroes/ymir</loc><lastmod>2026-03-08</lastmod><priority>0.7</priority></url>
@@ -723,18 +721,6 @@
 <url><loc>https://godforgehub.com/database/skills/nubian-warrior-desert-bow</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/nubian-warrior-quickdraw</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/nubian-warrior-scion-of-sands</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-all-mother-s-care</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-cosmic-genesis</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-dragon-s-breath</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-dragon-s-fury</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-empowered-curses</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-life-beam</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-life-weave</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-primordial-essence</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-serpent-s-blessing</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-serpent-s-curse</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-shield-of-the-all-mother</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/nuwa-world-mender</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/nymph-blossom-surge</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/nymph-nature-s-gift</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/oda-nobunaga-daimyo-claim</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
@@ -911,10 +897,6 @@
 <url><loc>https://godforgehub.com/database/skills/terracotta-warrior-ancient-vanguard</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/terracotta-warrior-eternal-mandate</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/terracotta-warrior-shattered-wrath</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/themis-all-seeing-eye</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/themis-divine-intervention</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/themis-hammer-of-justice</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/themis-universal-law</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/thorkell-bloodlust</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/thorkell-double-swing</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/thorkell-mighty-cleave</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
@@ -1005,10 +987,10 @@
 <url><loc>https://godforgehub.com/database/skills/xtabay-false-paradise</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/xtabay-snake-bite</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/xtabay-venomous-allure</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/y-ddraig-goch-ancient-power</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/y-ddraig-goch-call-of-cadwaladr</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/y-ddraig-goch-searing-jaws</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/skills/y-ddraig-goch-take-flight</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
+<url><loc>https://godforgehub.com/database/skills/yddraig-goch-ancient-power</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
+<url><loc>https://godforgehub.com/database/skills/yddraig-goch-call-of-cadwaladr</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
+<url><loc>https://godforgehub.com/database/skills/yddraig-goch-searing-jaws</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
+<url><loc>https://godforgehub.com/database/skills/yddraig-goch-take-flight</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/yamawaro-equinox-slam</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/yamawaro-heavy-swing</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/skills/yan-wang-dreadful-omen</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
@@ -1129,7 +1111,6 @@
 <url><loc>https://godforgehub.com/database/imprints/ninsun</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/ninurta</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/nitocris</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/imprints/nuwa</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/oda-nobunaga</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/odin</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/odysseus</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
@@ -1165,7 +1146,6 @@
 <url><loc>https://godforgehub.com/database/imprints/sun-wukong</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/svarog</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/tengu</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/imprints/themis</loc><lastmod>2026-03-06</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/thorkell</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/tianlong</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/tlaloc</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
@@ -1185,7 +1165,7 @@
 <url><loc>https://godforgehub.com/database/imprints/xolotl</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/xquic</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/xtabay</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
-<url><loc>https://godforgehub.com/database/imprints/y-ddraig-goch</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
+<url><loc>https://godforgehub.com/database/imprints/yddraig-goch</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/yan-wang</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/ymir</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>
 <url><loc>https://godforgehub.com/database/imprints/zeus</loc><lastmod>2026-03-08</lastmod><priority>0.6</priority></url>

@@ -17,9 +17,8 @@ SCAVENGED_DATA_PATH = r"e:\godforgehub\src\data\scavenged_data.json"
 VALIDATOR_PATH = r"e:\godforgehub\scripts\validate_heroes.py"
 SCRAPE_URL = "https://yawfmtkrnewpdxjdypmc.supabase.co/functions/v1/scrape-hero"
 
-SLUG_MAPPING = {
-    "yddraig-goch": "y-ddraig-goch"
-}
+SLUG_MAPPING = {}
+
 
 
 def get_active_game_info():
