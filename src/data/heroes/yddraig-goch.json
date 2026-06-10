@@ -2,7 +2,7 @@
   "id": "10489680-36a5-4e20-b717-f069606eb275",
   "name": "Y Ddraig Goch",
   "subtitle": "Protector of Avalon",
-  "slug": "y-ddraig-goch",
+  "slug": "yddraig-goch",
   "rarity": 5,
   "description": "Burn your enemies and Protect your Allies from Harmful Blaze and Burns.",
   "lore": "The terrible Red Dragon is the fiercest protector Avalon has—and a last resort nobody wants to invoke. When roused to the realm’s defense, Y Ddraig Goch devastates surrounding lands, armies, and communities, and though the bulk of it is inflicted on the enemy, swathes of Avalon also suffer. It seems to wreak such destruction deliberately, as though demanding a sacrifice for its aid.",
@@ -81,7 +81,7 @@
   "skills": [
     {
       "name": "Call of Cadwaladr",
-      "slug": "y-ddraig-goch-call-of-cadwaladr",
+      "slug": "yddraig-goch-call-of-cadwaladr",
       "skill_type": "Core",
       "description": "Attack all enemies 185%ATK2 times. The first attack has a 75% chance to place [mechanic:blaze-ii] on each target for 2 turns. The second attack decreases each target’s DEF by 5% (stacking up to 4 times).",
       "image_url": "https://godforge.gg/api/media/file/ICON_YDdraigGoch_Core.webp",
@@ -96,7 +96,7 @@
     },
     {
       "name": "Take Flight",
-      "slug": "y-ddraig-goch-take-flight",
+      "slug": "yddraig-goch-take-flight",
       "skill_type": "Ultimate",
       "description": "Transfers all [mechanic:blaze] and [mechanic:aetherburn] from allies onto all enemies then attacks all enemies 155%ATK3 times. Place [mechanic:shield]150%ATK on all allies. The strength of the [mechanic:shield] is increased by 2% for each [Debuff] transferred to enemies.",
       "image_url": "https://godforge.gg/api/media/file/ICON_YDdraigGoch_Ultimate.webp",
@@ -111,7 +111,7 @@
     },
     {
       "name": "Searing Jaws",
-      "slug": "y-ddraig-goch-searing-jaws",
+      "slug": "yddraig-goch-searing-jaws",
       "skill_type": "Basic",
       "description": "Attack 1 enemy 360%ATK. Ignores 15% of the target’s DEF if they are under [mechanic:blaze]. Place [mechanic:atk-up-ii] on this hero for 2 turns.",
       "image_url": "https://godforge.gg/api/media/file/ICON_YDdraigGoch_Basic.webp",
@@ -126,7 +126,7 @@
     },
     {
       "name": "Ancient Power",
-      "slug": "y-ddraig-goch-ancient-power",
+      "slug": "yddraig-goch-ancient-power",
       "skill_type": "Passive",
       "description": "Inflicts 30% more damage and receives 30% less damage from enemies under [mechanic:blaze] or [mechanic:aetherburn].",
       "image_url": "https://godforge.gg/api/media/file/ICON_YDdraigGoch_Passive.webp",
