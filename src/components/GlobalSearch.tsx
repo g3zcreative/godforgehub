@@ -4,6 +4,7 @@ import { Search, Sword, Shield, User, Zap, BookOpen, Newspaper, Cog, X } from "l
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { getLocalNewsArticles } from "@/data/news";
 
 interface SearchResult {
   id: string;
@@ -43,15 +44,19 @@ export function GlobalSearch({ className, mobile }: { className?: string; mobile
     setLoading(true);
     const pattern = `%${q}%`;
 
-    const [heroes, weapons, imprints, skills, mechanics, guides, news] = await Promise.all([
+    const [heroes, weapons, imprints, skills, mechanics, guides] = await Promise.all([
       supabase.from("heroes").select("id, name, slug").ilike("name", pattern).limit(5),
       supabase.from("weapons").select("id, name, slug, rarity").ilike("name", pattern).limit(5),
       supabase.from("imprints").select("id, name, slug").ilike("name", pattern).limit(5),
       supabase.from("skills").select("id, name, slug, skill_type").ilike("name", pattern).limit(5),
       supabase.from("mechanics").select("id, name, slug, mechanic_type").ilike("name", pattern).limit(5),
       supabase.from("guides").select("id, title, slug, category").ilike("title", pattern).eq("published", true).limit(5),
-      supabase.from("news_articles").select("id, title, slug, category").ilike("title", pattern).eq("published", true).limit(5),
     ]);
+
+    const qLower = q.toLowerCase();
+    const newsResults = getLocalNewsArticles()
+      .filter((n) => n.published && n.title.toLowerCase().includes(qLower))
+      .slice(0, 5);
 
     const mapped: SearchResult[] = [
       ...(heroes.data?.map((h) => ({ id: h.id, name: h.name, type: "hero" as const, href: `/database/heroes/${h.slug}` })) || []),
@@ -60,7 +65,7 @@ export function GlobalSearch({ className, mobile }: { className?: string; mobile
       ...(skills.data?.map((s) => ({ id: s.id, name: s.name, type: "skill" as const, href: `/database/skills/${s.slug}`, subtitle: s.skill_type })) || []),
       ...(mechanics.data?.map((m) => ({ id: m.id, name: m.name, type: "mechanic" as const, href: `/database/mechanics/${m.slug}`, subtitle: m.mechanic_type })) || []),
       ...(guides.data?.map((g) => ({ id: g.id, name: g.title, type: "guide" as const, href: `/guides/${g.slug}`, subtitle: g.category })) || []),
-      ...(news.data?.map((n) => ({ id: n.id, name: n.title, type: "news" as const, href: `/news/${n.slug}`, subtitle: n.category })) || []),
+      ...newsResults.map((n) => ({ id: n.id, name: n.title, type: "news" as const, href: `/news/${n.slug}`, subtitle: n.category })),
     ];
 
     setResults(mapped);

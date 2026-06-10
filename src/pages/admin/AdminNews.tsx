@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FileText, Sparkles, Link, Plus, Loader2, Video } from "lucide-react";
+import { FileText, Sparkles, Link, Plus, Loader2, Video, Info } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -283,7 +283,18 @@ export default function AdminNews() {
   };
 
   return (
-    <>
+    <div className="space-y-6">
+      <div className="bg-blue-500/10 border border-blue-500/20 text-blue-400 p-4 rounded-lg flex items-start gap-3">
+        <Info className="h-5 w-5 shrink-0 mt-0.5" />
+        <div>
+          <h3 className="font-semibold text-sm mb-0.5">Statically Managed via Markdown</h3>
+          <p className="text-xs opacity-90 leading-relaxed">
+            News articles are now loaded statically from local Markdown files in <code>src/data/news/</code>. 
+            You can add, edit, or delete articles by modifying files in that directory. 
+            The database-backed editor below is kept for legacy reference.
+          </p>
+        </div>
+      </div>
       <AdminCrudPage
         key={crudKey}
         tableName="news_articles"
@@ -459,6 +470,6 @@ export default function AdminNews() {
           </div>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 }

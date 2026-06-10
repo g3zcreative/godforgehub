@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, Newspaper } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getLocalNewsArticles } from "@/data/news";
 
 const categoryColors: Record<string, string> = {
   "Patch Notes": "bg-blue-500/10 text-blue-400 border-blue-500/20",
@@ -20,13 +20,7 @@ const NewsPage = () => {
   const { data: articles, isLoading } = useQuery({
     queryKey: ["news_articles"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("news_articles")
-        .select("*")
-        .eq("published", true)
-        .order("published_at", { ascending: false });
-      if (error) throw error;
-      return data;
+      return getLocalNewsArticles().filter(a => a.published);
     },
   });
 

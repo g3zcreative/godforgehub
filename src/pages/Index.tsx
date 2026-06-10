@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { format } from "date-fns";
 import { SEO } from "@/components/SEO";
+import { getLocalNewsArticles } from "@/data/news";
 
 const categoryColors: Record<string, string> = {
   "Patch Notes": "bg-blue-500/10 text-blue-400 border-blue-500/20",
@@ -29,14 +30,7 @@ const Index = () => {
   const { data: news, isLoading: newsLoading } = useQuery({
     queryKey: ["news_home"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("news_articles")
-        .select("*")
-        .eq("published", true)
-        .order("published_at", { ascending: false })
-        .limit(4);
-      if (error) throw error;
-      return data;
+      return getLocalNewsArticles().filter(a => a.published).slice(0, 4);
     },
   });
 

@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -9,6 +8,7 @@ import { format } from "date-fns";
 import MDEditor from "@uiw/react-md-editor";
 import { SEO } from "@/components/SEO";
 import { NewsComments } from "@/components/NewsComments";
+import { getLocalNewsArticle } from "@/data/news";
 
 function extractYouTubeId(url: string): string {
   const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
@@ -30,14 +30,9 @@ export default function NewsDetail() {
   const { data: article, isLoading } = useQuery({
     queryKey: ["news_article", slug],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("news_articles")
-        .select("*")
-        .eq("slug", slug!)
-        .eq("published", true)
-        .maybeSingle();
-      if (error) throw error;
-      return data;
+      const art = getLocalNewsArticle(slug!);
+      if (!art || !art.published) return null;
+      return art;
     },
     enabled: !!slug,
   });
