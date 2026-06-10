@@ -1,0 +1,123 @@
+{
+  "id": "f59f5e4a-5658-4239-9a7b-a2503a194ee8",
+  "name": "Temple Priestess",
+  "subtitle": "Servant of Ishtar",
+  "slug": "temple-priestess",
+  "rarity": 2,
+  "description": "In days of old, temple priestesses of various goddesses wielded surprising authority in Ekur. Their religious and communal education and their authority to conduct certain ceremonies earned the respect and the ear of the populace. Since the Shattering, that learning and those rites have bestowed upon them genuine magical power, which they now use at the behest of their gods.",
+  "lore": "In days of old, temple priestesses of various goddesses wielded surprising authority in Ekur. Their religious and communal education and their authority to conduct certain ceremonies earned the respect and the ear of the populace. Since the Shattering, that learning and those rites have bestowed upon them genuine magical power, which they now use at the behest of their gods.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/de20d564-7992-4216-bb1e-c47e56b23d75.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 11727,
+    "acc": 0,
+    "atk": 573,
+    "def": 672,
+    "res": 15,
+    "spd": 92,
+    "init": 82,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK, 20% DEF, 10% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when healing an ally",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Outgoing healing +10%"
+    },
+    {
+      "tier": 4,
+      "bonus": "HP +5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Healing received +10%"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Power of Devotion",
+      "slug": "temple-priestess-power-of-devotion",
+      "skill_type": "Core",
+      "description": "Increase this hero’s Turn Meter by 10% then Heal 5%HP all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TemplePriestess_Core.webp",
+      "scaling_formula": "5%HP",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ishtar's Blessing",
+      "slug": "temple-priestess-ishtar-s-blessing",
+      "skill_type": "Ultimate",
+      "description": "Increase this hero’s Turn Meter by 10% then Heal 5%HP all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TemplePriestess_Ultimate.webp",
+      "scaling_formula": "5%HP",
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Temple Strike",
+      "slug": "temple-priestess-temple-strike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times then Heal this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TemplePriestess_Basic.webp",
+      "scaling_formula": "70%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

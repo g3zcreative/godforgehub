@@ -1,0 +1,140 @@
+{
+  "id": "fee60141-1586-4a7f-9158-e6ba20156a09",
+  "name": "Metztli",
+  "subtitle": "Sanctuary of Night",
+  "slug": "metztli",
+  "rarity": 5,
+  "description": "Channel the cycle of the moon restoring your allies HP and spreading buffs throughout your team.",
+  "lore": "Like the moon itself, the Omeyocan lunar goddess is a being of multiple facets. Relatively benevolent, she aids Quetzalcoatl in his endeavors to end the War of Pyramids while spreading the ways of their pantheon to Aaru. Yet ironically as a goddess of magic, she also wishes to expand her dominion over the sorcerers of other realms, and is not choosy about how.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/fee60141-1586-4a7f-9158-e6ba20156a09.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 20151,
+    "acc": 15,
+    "atk": 859,
+    "def": 1079,
+    "res": 45,
+    "spd": 118,
+    "init": 106,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [60] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Twilight Eclipse"
+    },
+    {
+      "tier": 2,
+      "bonus": "Heal Multiplier +30%, Divinity Multiplier +20%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Cycle of Dusk"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Weapon Multiplier +30%, Armor Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Endless Night"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Endless Night",
+      "slug": "metztli-endless-night",
+      "skill_type": "Passive",
+      "description": "Restore 20% of the target’s Destroyed HP when they receive a [Buff].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Metztli_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "When this hero uses an ability, spread 1 random [buff] from this hero to all allies."
+    },
+    {
+      "name": "Cycle of Dusk",
+      "slug": "metztli-cycle-of-dusk",
+      "skill_type": "Core",
+      "description": "Remove 2 random [Debuff] from all allies then place [Block Debuff] on each target for 2 turns.\nAlso Heal all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Metztli_Core.webp",
+      "scaling_formula": "20%HP",
+      "effects": [
+        "RES Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [RES Up II] on each target for 2 turns and all [Buff] cannot be removed."
+    },
+    {
+      "name": "Cycle of Dawn",
+      "slug": "metztli-cycle-of-dawn",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy and restore 20% Destroyed HP of the ally with the most Destroyed HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Metztli_Basic.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Twilight Eclipse",
+      "slug": "metztli-twilight-eclipse",
+      "skill_type": "Ultimate",
+      "description": "Revives all defeated allies with 40% Health and Turn Meter. Also restores 50% of each ally’s Destroyed HP and increase their Divinity by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Metztli_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Vanish"
+      ],
+      "ultimate_cost": 1650,
+      "initial_divinity": 350,
+      "awakening_level": 1,
+      "awakening_bonus": "Also place [Vanish] on all allies except this hero for 2 turns."
+    }
+  ],
+  "imprint_passive": "Restore 10% of this hero's Destroyed HP when they receive a [Buff]."
+}

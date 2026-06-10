@@ -1,0 +1,141 @@
+{
+  "id": "d267c20a-f11a-4562-b7bf-05b6f0558c36",
+  "name": "Asag",
+  "subtitle": "Grotesque Golem",
+  "slug": "asag",
+  "rarity": 3,
+  "description": "Petrify your opponents and burn them as you attack your foes.",
+  "lore": "A great demon of burning malice, Asag was once bound to the mountains of Ekur, able to descend only in the winter. Since the Shattering, however, his nature has shifted and he is no longer bound by location or season. His rampages are unpredictable, and so violent they can leave entire communities obliterated in his wake.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/d267c20a-f11a-4562-b7bf-05b6f0558c36.webp",
+  "image_zoom": 2.3,
+  "image_focal_x": 38,
+  "image_focal_y": 4,
+  "stats": {
+    "hp": 16352,
+    "acc": 15,
+    "atk": 727,
+    "def": 771,
+    "res": 25,
+    "spd": 80,
+    "init": 81,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF & 10% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [10] Divinity when enemies are damaged by [Blaze]",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Strong Hit DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Strong Hit DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Molten Smash"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Crushing Force",
+      "slug": "asag-crushing-force",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (8%HP+120%ATK). If the target is under [mechanic:petrify] or [mechanic:blaze], increase the damage inflicted by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Asag_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Magmaburn",
+      "slug": "asag-magmaburn",
+      "skill_type": "Passive",
+      "description": "At the end of an enemy turn, if they are under [mechanic:blaze], has a 50% to place [mechanic:petrify] on them for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Asag_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Petrify"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Seismic Surge",
+      "slug": "asag-seismic-surge",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (16%HP+130%ATK). If the target is under [mechanic:blaze], Heal 10%HP this hero. If the target is under [mechanic:petrify], has a 10% additional chance to Strong Hit.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Asag_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Molten Smash",
+      "slug": "asag-molten-smash",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (11%HP+90%ATK) with a 75% chance to place [mechanic:blaze-i] on each target for 1 turn. If the target is under [mechanic:petrify], will place [mechanic:blaze-ii] instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Asag_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Blaze I",
+        "Blaze II"
+      ],
+      "ultimate_cost": 1200,
+      "initial_divinity": 325,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "At the end of an enemy turn, if they are under [Blaze], has a 25% to place [Petrify] on them for 1 turn."
+}

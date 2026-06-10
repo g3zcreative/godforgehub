@@ -1,0 +1,139 @@
+{
+  "id": "d738c1cf-c509-4a47-86a6-4371d2b874ec",
+  "name": "Raijin",
+  "subtitle": "Herald of Storms",
+  "slug": "raijin",
+  "rarity": 5,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Demon-god of the tempest, Raijin delights in devastation. Although driven by both his own nature and by rage at Izanagi, Raijin still feels some sense of ownership over Izumo. He often directs his storms against the realm’s enemies, not to spare his own people suffering—he still batters them fiercely—but because he feels Izumo is his to harrow, no one else’s.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/d738c1cf-c509-4a47-86a6-4371d2b874ec.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18830,
+    "acc": 40,
+    "atk": 1343,
+    "def": 980,
+    "res": 25,
+    "spd": 99,
+    "init": 103,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "25% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [15] Divinity when hitting an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Supercharged Pulse"
+    },
+    {
+      "tier": 2,
+      "bonus": "Barrier Multiplier +30%, DMG Multiplier +30%, Ignore RES +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Harnessed Tempest"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Eye of the Storm"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Scattered Thunder",
+      "slug": "raijin-scattered-thunder",
+      "skill_type": "Basic",
+      "description": "Attack 3 random targets 260%ATK. If the target is under a [Debuff], each hit places [mechanic:barrier] 50%ATK on this hero. If Fujin is on the team, he will also gain the [mechanic:barrier] and join the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Raijin_Basic.webp",
+      "scaling_formula": "260%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Harnessed Tempest",
+      "slug": "raijin-harnessed-tempest",
+      "skill_type": "Core",
+      "description": "Attack all enemies 2 times 175%ATK. The first hit has a 75% chance to place [mechanic:hex-ii] on each target for 2 turns. The second hit has a 75% chance to place [mechanic:def-down-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Raijin_Core.webp",
+      "scaling_formula": "175%ATK",
+      "effects": [
+        "Hex II",
+        "DEF Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "If an enemy receives both [Hex II] and [DEF Down II] from this ability, increase their duration by 1 turn."
+    },
+    {
+      "name": "Supercharged Pulse",
+      "slug": "raijin-supercharged-pulse",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 3 times 155%ATK. Increase this hero’s Divinity by 10% for each enemy defeated. If Fujin is on the team, also increase his Divinity by the same amount.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Raijin_Ultimate.webp",
+      "scaling_formula": "155%ATK",
+      "effects": [],
+      "ultimate_cost": 1550,
+      "initial_divinity": 325,
+      "awakening_level": 1,
+      "awakening_bonus": "If an enemy is under [Hex], each hit has a 25% increased chance to Strong Hit"
+    },
+    {
+      "name": "Eye of the Storm",
+      "slug": "raijin-eye-of-the-storm",
+      "skill_type": "Passive",
+      "description": "When an enemy receives a [Debuff], shock them inflicting damage 100%ATK. This can trigger up to 1 time per hero turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Raijin_Passive.webp",
+      "scaling_formula": "100%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "No longer limits to 1 trigger per hero turn."
+    }
+  ],
+  "imprint_passive": "When an enemy receives a [Debuff] has a 50% to shock them inflicting damage 100%ATK which cannot be critical and ignores defence. This can trigger up to 1 time per hero turn."
+}

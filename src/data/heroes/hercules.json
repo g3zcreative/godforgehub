@@ -1,0 +1,250 @@
+{
+  "id": "91ae27ca-2dd2-47eb-b1a6-c0e66291e08e",
+  "name": "Hercules",
+  "subtitle": "Mighty Redeemer",
+  "slug": "hercules",
+  "rarity": 5,
+  "description": "Complete Twelve Labors and Deal Devastating Damage to Enemies",
+  "lore": "Olympus’s greatest hero and a god in his own right, Hercules stalks the monsters of Ryven, protecting his home realm from their depredations. Sadly, the altered magics of this world also render him susceptible to bouts of violent madness inspired by servants of Chaos, forcing him to isolate himself from those he loves and making his efforts an exercise in loneliness.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/91ae27ca-2dd2-47eb-b1a6-c0e66291e08e.webp",
+  "image_zoom": 3,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 23785,
+    "acc": 35,
+    "atk": 991,
+    "def": 1090,
+    "res": 55,
+    "spd": 97,
+    "init": 100,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [500] Divinity when defeating an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Zero to Hero"
+    },
+    {
+      "tier": 2,
+      "bonus": "Barrier Multiplier +30%, DMG Reduction Multiplier +20%, Strong Hit DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Hydra Club"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Twelve Labors"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Olympian Might",
+      "slug": "hercules-olympian-might",
+      "skill_type": "Passive",
+      "description": "Increases Hercules' Attack by 20% and Health by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hercules_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Attack Up",
+        "Health Up"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Increases Hercules' Attack by 30% and Health by 30%. Also, at the start of battle, Hercules gains a [Cleanse] buff for 1 turn."
+    },
+    {
+      "name": "Hydra Club",
+      "slug": "hercules-hydra-club",
+      "skill_type": "Basic",
+      "description": "Attack all enemies (12%HP+120%ATK) with a 75% chance to place [mechanic:acid] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hercules_Basic.webp",
+      "scaling_formula": "12%HP+120%ATK",
+      "effects": [
+        "Acid"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "If the target is under [Acid] then reduce the target ATK by 5% (stacking up to 5 times)."
+    },
+    {
+      "name": "Nemean Lion Hide",
+      "slug": "hercules-nemean-lion-hide",
+      "skill_type": "Basic",
+      "description": "Attacks an enemy 1 time. Has a 50% chance to inflict [Defense Down I] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hercules_Basic.webp",
+      "scaling_formula": "120%ATK",
+      "effects": [
+        "Defense Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Has a 75% chance to inflict [Defense Down I] on the target for 2 turns."
+    },
+    {
+      "name": "Herc Smash",
+      "slug": "hercules-herc-smash",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (18%HP+140%ATK) and place [mechanic:stun] for 1 turn. If this hero is under [mechanic:immortal], increase the damage inflicted by 100% and place [mechanic:stun] for 2 turns instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hercules_Core.webp",
+      "scaling_formula": "18%HP+140%ATK",
+      "effects": [
+        "Stun"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Zero to Hero",
+      "slug": "hercules-zero-to-hero",
+      "skill_type": "Passive",
+      "description": "Prevents this hero’s death and heals them to 100% of their MAX HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hercules_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also place [Barrier]20%HP on this hero."
+    },
+    {
+      "name": "Herculean Strength",
+      "slug": "hercules-herculean-strength",
+      "skill_type": "Core",
+      "description": "Attacks all enemies 1 time. Has a 75% chance to inflict [mechanic:stun] on all enemies for 1 turn. Also grants self a [Counterattack] buff for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hercules_Core.webp",
+      "scaling_formula": "100%ATK",
+      "effects": [
+        "Stun",
+        "Counterattack"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 2,
+      "awakening_bonus": "Grants self [Counterattack] for 2 turns and a [Defense Up II] buff for 2 turns."
+    },
+    {
+      "name": "Divine Resilience",
+      "slug": "hercules-divine-resilience",
+      "skill_type": "Passive",
+      "description": "Whenever Hercules takes damage, he has a 50% chance to gain 10 Divinity. This effect can only trigger once per turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hercules_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Divinity"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 4,
+      "awakening_bonus": "Whenever Hercules takes damage, he has a 75% chance to gain 10 Divinity. This effect can only trigger once per turn."
+    },
+    {
+      "name": "Nemean Lion Slayer",
+      "slug": "hercules-nemean-lion-slayer",
+      "skill_type": "Basic",
+      "description": "Deals 260% ATK damage to an enemy. Has a 35% chance to inflict Burn for 2 turns.",
+      "image_url": null,
+      "scaling_formula": "260%ATK",
+      "effects": [
+        "Burn"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Hydra's Venom",
+      "slug": "hercules-hydra-s-venom",
+      "skill_type": "Core",
+      "description": "Deals 380% ATK damage to an enemy and has a 50% chance to inflict Poison for 2 turns. If the target is already Burned, this attack has a 100% chance to inflict Poison.",
+      "image_url": null,
+      "scaling_formula": "380%ATK",
+      "effects": [
+        "Poison"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Twelve Labors",
+      "slug": "hercules-twelve-labors",
+      "skill_type": "Ultimate",
+      "description": "Increase this hero's HP by 5% (stacking up to 12 times) and place [mechanic:barrier]5%HP on this hero. When at max stacks, place [mechanic:immortal] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hercules_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Barrier",
+        "Immortal"
+      ],
+      "ultimate_cost": 500,
+      "initial_divinity": 100,
+      "awakening_level": 5,
+      "awakening_bonus": "Also, increase this hero’s ATK by 5% (stacking up to 12 times)."
+    },
+    {
+      "name": "God Strength",
+      "slug": "hercules-god-strength",
+      "skill_type": "Passive",
+      "description": "Increases Hercules's ATK by 20% and Crit Rate by 10%.",
+      "image_url": null,
+      "scaling_formula": null,
+      "effects": [
+        "ATK Up",
+        "CRIT Rate Up"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Prevents this hero’s death and heals them to 50% of their MAX HP."
+}

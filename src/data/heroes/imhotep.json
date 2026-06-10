@@ -1,0 +1,142 @@
+{
+  "id": "3b8cc634-4339-433e-a5a6-13b2f5941cee",
+  "name": "Imhotep",
+  "subtitle": "Architect of Ascension",
+  "slug": "imhotep",
+  "rarity": 4,
+  "description": "Ascend your allies reducing their Divinity Requirements and Restoring their Health",
+  "lore": "Advisor to pharaohs, Imhotep held great authority and respect in his prior life. Since the Shattering, he has discovered that his reputation had grown in his absence, until many revere him as a god. While he labors on Aaru’s behalf, he finds himself uncertain what is expected of him, or how to wield this new influence that has been thrust upon him.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/3b8cc634-4339-433e-a5a6-13b2f5941cee.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18004,
+    "acc": 10,
+    "atk": 815,
+    "def": 969,
+    "res": 35,
+    "spd": 106,
+    "init": 92,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Pillar of Support"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Steps of Ascension"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Bane of Sorcery",
+      "slug": "imhotep-bane-of-sorcery",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 140%ATK, then increase the Divinity of this hero by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Imhotep_Basic.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Pillar of Support",
+      "slug": "imhotep-pillar-of-support",
+      "skill_type": "Core",
+      "description": "Heal all allies 25% of their MAX HP and place [mechanic:stalwart] on each ally for 1 turs.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Imhotep_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Stalwart"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Place [Block Debuff] on all allies for 1 turn."
+    },
+    {
+      "name": "Steps of Ascension",
+      "slug": "imhotep-steps-of-ascension",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:radiance-ii] on all allies for 1 turn then reduce each target's Divinity Cost by 3% (stacking up to 3times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Imhotep_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Radiance II"
+      ],
+      "ultimate_cost": 1300,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "Reduce the [Divinity] Costs by 6% instead."
+    },
+    {
+      "name": "Grand Architect",
+      "slug": "imhotep-grand-architect",
+      "skill_type": "Passive",
+      "description": "At the start of each wave, place [mechanic:ward] on the ally with the lowest HP for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Imhotep_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Ward"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "At the start of each wave, place [Ward] on the ally with the lowest HP for 1 turn."
+}

@@ -1,0 +1,135 @@
+{
+  "id": "ca2ce60b-9b24-4d41-9597-0d6a2ed0b105",
+  "name": "Nebuchadnezzar",
+  "subtitle": "Conqueror King",
+  "slug": "nebuchadnezzar",
+  "rarity": 3,
+  "description": "This ability is still under review - please check back later.",
+  "lore": "A warrior-king of the old world, Nebuchadnezzar the Great was renowned as a builder of architectural and engineering marvels—and infamous for his brutal conquests and merciless suppression of resistance. While most of Ekur’s leaders today focus on defending the Realm, Nebuchadnezzar leads his military in open attacks against neighboring lands, looking to expand not only Ekur’s dominion, but his own.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ca2ce60b-9b24-4d41-9597-0d6a2ed0b105.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14701,
+    "acc": 10,
+    "atk": 584,
+    "def": 903,
+    "res": 45,
+    "spd": 82,
+    "init": 85,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "A  powerful attack planned for the future."
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Reduction Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Reduction Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Ambitious Solidarity"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Kingly Strike",
+      "slug": "nebuchadnezzar-kingly-strike",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nebuchadnezzar_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ishtar’s Bastion",
+      "slug": "nebuchadnezzar-ishtar-s-bastion",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nebuchadnezzar_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Marduk’s Favor",
+      "slug": "nebuchadnezzar-marduk-s-favor",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nebuchadnezzar_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ambitious Solidarity",
+      "slug": "nebuchadnezzar-ambitious-solidarity",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nebuchadnezzar_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

@@ -1,0 +1,143 @@
+{
+  "id": "2d5c66a5-8588-45d6-b1ec-6b5f38023623",
+  "name": "Xipe Totec",
+  "subtitle": "The Flayed One",
+  "slug": "xipe-totec",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "The Flayed One represents conflicting elements that feed one another, such as war and agriculture, death and sustenance, opposing seasons. Indirectly, he symbolizes the core of Omeyocan faith: power from sacrifice. Thus, the existence of realms that function differently is not only a cosmic danger but, for him, a personal affront, driving him to lead battles against them and terrify their worshipers.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ba9b308d-e01b-4fe5-941c-b1f023f11846.webp",
+  "image_zoom": 3,
+  "image_focal_x": 71,
+  "image_focal_y": 14,
+  "stats": {
+    "hp": 15031,
+    "acc": 30,
+    "atk": 1123,
+    "def": 881,
+    "res": 20,
+    "spd": 92,
+    "init": 96,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "Campaign"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy under [Bleed].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +12"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Strong Hit Chance Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Ritual Flay"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Expose Flesh"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Expose Flesh",
+      "slug": "xipe-totec-expose-flesh",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 330%ATK with an 80% chance to place [mechanic:curse-ii] on all targets for 2 turns. If a target is defeated, spread 2 stacks of [mechanic:bleed] to all targets. If a target is defeated with 10 stacks of [mechanic:bleed], this hero gains an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_XipeTotec_Ultimate.webp",
+      "scaling_formula": "330%ATK",
+      "effects": [
+        "Curse II",
+        "Bleed"
+      ],
+      "ultimate_cost": 1475,
+      "initial_divinity": 250,
+      "awakening_level": 5,
+      "awakening_bonus": "If this hero gain’s an [Extra Turn], reset the Core Ability."
+    },
+    {
+      "name": "Haemorrhage",
+      "slug": "xipe-totec-haemorrhage",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 350%ATK with a 75% chance to place 1 stack of [mechanic:bleed] on the target. Strong Hits place 2 stacks instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_XipeTotec_Basic.webp",
+      "scaling_formula": "350%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Flayed Feast",
+      "slug": "xipe-totec-flayed-feast",
+      "skill_type": "Passive",
+      "description": "When below 50% HP, attacks remove 2 stacks of [mechanic:bleed] and Heal [10%HP] per stack removed. When above 50% HP, Increase Strong Hit chance by 2% per [mechanic:bleed] on target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_XipeTotec_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ritual Flay",
+      "slug": "xipe-totec-ritual-flay",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 400%ATK with a 80% place 3 stacks of [mechanic:bleed] on the target then attack all enemies 400%ATK. If the initial target has 10 stacks of [mechanic:bleed] the second hit will activate all stacks of [mechanic:bleed] on all targets.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_XipeTotec_Core.webp",
+      "scaling_formula": "400%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Increase this hero’s Divinity by 1% for each stack of [Bleed] that was activated. Strong Hit also increase this hero’s Turn Meter by 1%."
+    }
+  ],
+  "imprint_passive": "When below 50% HP, attacks remove 2 stacks of [Bleed] and Heal 5%HP per stack removed. When above 50% HP, Increase Strong Hit chance by 2% per [Bleed] on target."
+}

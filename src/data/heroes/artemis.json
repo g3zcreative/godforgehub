@@ -1,0 +1,140 @@
+{
+  "id": "41fd09fd-077d-440e-9532-fce122be08f5",
+  "name": "Artemis",
+  "subtitle": "Lunar Huntress",
+  "slug": "artemis",
+  "rarity": 5,
+  "description": "WIP",
+  "lore": "Mercurial Artemis is a goddess of contradictions: guardian of beasts, yet patron of hunters; goddess of the moon, though the moon is its own deity; chaste, yet associated with childbirth; protector, yet swift to curse mortals in anger; erratic, yet loyal to Order. Since the Shattering, even her priests and fellow gods are often uncertain what to expect of her.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/41fd09fd-077d-440e-9532-fce122be08f5.webp",
+  "image_zoom": 2.6,
+  "image_focal_x": 31,
+  "image_focal_y": 3,
+  "stats": {
+    "hp": 17839,
+    "acc": 40,
+    "atk": 1233,
+    "def": 991,
+    "res": 30,
+    "spd": 102,
+    "init": 102,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "26% ATK",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when inflicting damage to an enemy. Gain an additional [100] Divinity when defeating an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Thrill of the Hunt"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore DEF +10%, DMG Multiplier +30%, Divinity Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Lunar Barrage"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Wrath of the Wild"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Lunar Barrage",
+      "slug": "artemis-lunar-barrage",
+      "skill_type": "Core",
+      "description": "Attack all enemies 3 times. Increase this hero’s Divinity by 1% for each enemy hit.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Artemis_Core.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Increase the Divinity by an additional 5% for each enemy defeated"
+    },
+    {
+      "name": "Thrill of the Hunt",
+      "slug": "artemis-thrill-of-the-hunt",
+      "skill_type": "Passive",
+      "description": "After defeating an enemy, this hero’s next attack will inflict 50% increased damage.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Artemis_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "If an ally is defeated, this hero’s next attack will inflict 100% increase damage."
+    },
+    {
+      "name": "Moonlight Union",
+      "slug": "artemis-moonlight-union",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Has a 50% chance to place [mechanic:def-down-ii] on the target for 2 turns. If Apollo is on the team, he will join in the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Artemis_Basic.webp",
+      "scaling_formula": "190%ATK",
+      "effects": [
+        "DEF Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Wrath of the Wild",
+      "slug": "artemis-wrath-of-the-wild",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy. Increase the damage inflicted by 10% for each defeated enemy.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Artemis_Ultimate.webp",
+      "scaling_formula": "400%ATK",
+      "effects": [
+        "Banish"
+      ],
+      "ultimate_cost": 1600,
+      "initial_divinity": 275,
+      "awakening_level": 5,
+      "awakening_bonus": "Place [Banish] on all defeated enemies for 1 turn."
+    }
+  ],
+  "imprint_passive": "After defeating an enemy, this hero’s next attack will inflict 25% increased damage."
+}

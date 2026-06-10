@@ -1,0 +1,143 @@
+{
+  "id": "6bc69b97-fdb1-46c7-a9de-479f0e366bda",
+  "name": "Skadi",
+  "subtitle": "Frostborne Huntress",
+  "slug": "skadi",
+  "rarity": 3,
+  "description": "Cast forth the ice of Jotunn, freezing your enemies and slowing their aggression.",
+  "lore": "Both giant and goddess, Skadi is a deity of winter sky and snowy mountain, as well as the hunt. She has long had a volatile relationship with Asgard’s gods, one that includes multiple marriages—and also the death of her father at their hands. Since the Shattering, her growing resentments have occasionally driven her to thwart the efforts of other gods.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/6bc69b97-fdb1-46c7-a9de-479f0e366bda.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14040,
+    "acc": 20,
+    "atk": 892,
+    "def": 661,
+    "res": 15,
+    "spd": 89,
+    "init": 96,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when placing [Freeze].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "ATK +5%, DEF +5%, HP +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +5%, DEF +5%, HP +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +5%, DEF +5%, HP +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +75"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Winter Prowess"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Frozen Arrows",
+      "slug": "skadi-frozen-arrows",
+      "skill_type": "Core",
+      "description": "Attack 3 random enemies. Each hit has a 40% chance to place [mechanic:freeze] on each target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Skadi_Core.webp",
+      "scaling_formula": "120%ATK",
+      "effects": [
+        "Freeze"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Arctic Dominion",
+      "slug": "skadi-arctic-dominion",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 270%ATK with a 85% chance to place [mechanic:spd-down-i] on each target for 2 turns. If the target is under [mechanic:freeze], place [mechanic:spd-down-ii] on the target for 2 Turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Skadi_Ultimate.webp",
+      "scaling_formula": "270%ATK",
+      "effects": [
+        "SPD Down I",
+        "SPD Down II"
+      ],
+      "ultimate_cost": 1300,
+      "initial_divinity": 400,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Tundra Vengeance",
+      "slug": "skadi-tundra-vengeance",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Each hit has a 15% chance to place [mechanic:freeze] on the target for 1 Turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Skadi_Basic.webp",
+      "scaling_formula": "160%ATK",
+      "effects": [
+        "Freeze"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Winter Prowess",
+      "slug": "skadi-winter-prowess",
+      "skill_type": "Passive",
+      "description": "When attacking enemies under [mechanic:freeze], reduce the target’s Divinity by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Skadi_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also increases this hero’s Divinity by 10%."
+    }
+  ],
+  "imprint_passive": "When attacking enemies under [Freeze], reduce the target’s Divinity by 5%."
+}

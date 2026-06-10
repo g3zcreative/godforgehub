@@ -1,0 +1,143 @@
+{
+  "id": "fb99d7e6-5353-41e9-972f-36a84d0fdcb0",
+  "name": "Mokosh",
+  "subtitle": "Lady of Waters",
+  "slug": "mokosh",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Vyraj’s goddess of the earth, the waters, and fertility, Mokosh eschews the politics of pantheons and the wars of Realms. She prefers to focus on those who call upon her with proper reverence, ensuring bountiful harvests and healthy offspring where peace lingers. Where violence holds sway, she offers the barest hints of the bounty she can provide if only the bloodshed might end.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/fb99d7e6-5353-41e9-972f-36a84d0fdcb0.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18004,
+    "acc": 10,
+    "atk": 760,
+    "def": 1002,
+    "res": 35,
+    "spd": 109,
+    "init": 93,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "18% INIT",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [10] Divinity when an ally is healed.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Turn Meter Multiplier +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Harvest Cycle"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Guardian Mother"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Cradle of the Earth",
+      "slug": "mokosh-cradle-of-the-earth",
+      "skill_type": "Core",
+      "description": "Place [mechanic:radiance-ii] and [mechanic:stalwart] on a target ally for 2 turns. If the target is aligned with Order, also place [mechanic:def-up-ii] on the target for 2 turns. If the target is aligned with Chaos, place [mechanic:atk-up-ii] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mokosh_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Radiance II",
+        "Stalwart",
+        "DEF Up II",
+        "ATK Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Woven Strength",
+      "slug": "mokosh-woven-strength",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 220%ATK and increase the Turn Meter and Divinity of the ally with the highest ATK by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mokosh_Basic.webp",
+      "scaling_formula": "220%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Guardian Mother",
+      "slug": "mokosh-guardian-mother",
+      "skill_type": "Ultimate",
+      "description": "Revive 1 defeated ally with 30% HP and 30% Turn Meter and place [Pheonix] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mokosh_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Phoenix"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Place [Pheonix] on all allies instead."
+    },
+    {
+      "name": "Harvest Cycle",
+      "slug": "mokosh-harvest-cycle",
+      "skill_type": "Passive",
+      "description": "When any enemy is defeated, Heal 1500%INIT all allies and increase their Turn Meter by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mokosh_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "When an enemy is revived, increase all allies Divinity by 10%."
+    }
+  ],
+  "imprint_passive": "When any enemy is defeated, Heal 1500%INIT this hero and increase Turn Meter by 10%."
+}

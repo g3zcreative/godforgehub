@@ -1,0 +1,132 @@
+{
+  "id": "a628fb8a-5cbb-4815-95b8-07a705aed53f",
+  "name": "Banshee",
+  "subtitle": "Mistress of Misery",
+  "slug": "banshee",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "A fey spirit in woman’s form, the banshee is the harbinger of grief. Prior to the Shattering, each banshee was associated with a given bloodline, and would wail hideously when death approached for one of the family. Now, however, the shifting aether has transformed some into bringers of death. They have become hostile, murdering victims with their hellish keening.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/a628fb8a-5cbb-4815-95b8-07a705aed53f.webp",
+  "image_zoom": 3,
+  "image_focal_x": 50,
+  "image_focal_y": 23,
+  "stats": {
+    "hp": 15692,
+    "acc": 30,
+    "atk": 1134,
+    "def": 903,
+    "res": 25,
+    "spd": 97,
+    "init": 94,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +9"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Awaken the ability: Phantom Despair"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Wraith Drain",
+      "slug": "banshee-wraith-drain",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Banshee_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Haunted Scream",
+      "slug": "banshee-haunted-scream",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Banshee_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Phantom Despair",
+      "slug": "banshee-phantom-despair",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Banshee_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Tormented Blight",
+      "slug": "banshee-tormented-blight",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Banshee_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

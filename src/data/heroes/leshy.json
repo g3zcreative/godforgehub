@@ -1,0 +1,143 @@
+{
+  "id": "2ae86b5d-efc1-4254-9825-1f84e36c8d9b",
+  "name": "Leshy",
+  "subtitle": "Vanishing Woodwalker",
+  "slug": "leshy",
+  "rarity": 4,
+  "description": "Poison and Sleep your foes and protect the forest from interlopers whilst also striking from the Shadows.",
+  "lore": "Mystical giant-god of the woodlands, the Leshy is normally a figure of terror, punishing most who intrude upon his domain, though he occasionally whisks away mistreated children to grow up among the wild spirits. Since the Shattering, he has begun to appear in forests outside Vyraj, though none can say why, nor whether this is voluntary or a phenomenon beyond his control.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/2ae86b5d-efc1-4254-9825-1f84e36c8d9b.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15692,
+    "acc": 30,
+    "atk": 1079,
+    "def": 859,
+    "res": 20,
+    "spd": 92,
+    "init": 95,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "All Allies gain 6% Critical Damage",
+    "scope": "All Allies"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy. Gain an additional [20] Divinity when attacking under [Vanish]",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +12"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Forest Illusions"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Weapon Multiplier +15%, Armor Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Vengeful Vines"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Veiled Vengeance",
+      "slug": "leshy-veiled-vengeance",
+      "skill_type": "Passive",
+      "description": "Attacks have a 50% chance to increase Divinity by 5% when attacking under [mechanic:vanish]",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Leshy_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Tainted Overgrowth",
+      "slug": "leshy-tainted-overgrowth",
+      "skill_type": "Core",
+      "description": "Attack all enemies",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Leshy_Core.webp",
+      "scaling_formula": "370%ATK",
+      "effects": [
+        "Acid"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Vengeful Vines",
+      "slug": "leshy-vengeful-vines",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Leshy_Basic.webp",
+      "scaling_formula": "340%ATK",
+      "effects": [
+        "Vulnerable II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If this hero is under [Vanish], has a 35% chance to place [Vulnerable II] on all enemies for 1 turn."
+    },
+    {
+      "name": "Forest Illusions",
+      "slug": "leshy-forest-illusions",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Leshy_Ultimate.webp",
+      "scaling_formula": "410%ATK",
+      "effects": [
+        "Sleep",
+        "Vanish"
+      ],
+      "ultimate_cost": 1500,
+      "initial_divinity": 300,
+      "awakening_level": 3,
+      "awakening_bonus": "After attacking, Place [Vanish] on this hero for 2 turns."
+    }
+  ],
+  "imprint_passive": "Attacks have a 50% chance to increase Divinity by 2.5% when attacking under [Vanish]"
+}

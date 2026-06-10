@@ -1,0 +1,86 @@
+{
+  "id": "4da41fd4-fbcd-4ff1-9037-7d651f99b218",
+  "name": "Nymph",
+  "subtitle": "Maiden of the Glade",
+  "slug": "nymph",
+  "rarity": 1,
+  "description": "Invoker with reliable healing and divinity increase.",
+  "lore": "Wild semi-divine spirits of nature, nymphs are literal manifestations of the springs, the rivers, the woods, and other elements of Olympus. They have little use for most mortals, and encountering them can be dangerous, as even if a traveler doesn’t provoke the nymph’s anger, merely spotting them as they dance, play music, and otherwise cavort can befuddle or besot the unfortunate witness.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/2c8c160a-b22c-4029-86d8-464324eb9b5f.webp",
+  "image_zoom": 2.2,
+  "image_focal_x": 73,
+  "image_focal_y": 7,
+  "stats": {
+    "hp": 8754,
+    "acc": 0,
+    "atk": 440,
+    "def": 551,
+    "res": 5,
+    "spd": 83,
+    "init": 69,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [15] Divinity when healing an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Olympus",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Nature’s Gift",
+      "slug": "nymph-nature-s-gift",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 160% ATK. Heal 10% HP the ally with the lowest HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nymph_Basic.webp",
+      "scaling_formula": "160% ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Blossom Surge",
+      "slug": "nymph-blossom-surge",
+      "skill_type": "Ultimate",
+      "description": "Increase the Divinity of all allies by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nymph_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 1450,
+      "initial_divinity": 275,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

@@ -1,0 +1,90 @@
+{
+  "id": "fb91081d-e3d3-4178-b8a8-1d70707826a3",
+  "name": "Dryad",
+  "subtitle": "Evergreen Enchanter",
+  "slug": "dryad",
+  "rarity": 1,
+  "description": "Call the power of the forest to restore your teams power.",
+  "lore": "Spirits of the trees, dryads dwell in the deep woods of Avalon. Some dryads occasionally take a fancy to passing mortals, seeking to charm them into dalliance, but most prefer solitude, eschewing the company of humans and other fae alike. Dryads have no interest in the ongoing struggles between Realms, but are quick to defend themselves and their forests against hostile intruders.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/29c426aa-bbda-4360-9ee8-2ef777f25a09.webp",
+  "image_zoom": 2.2,
+  "image_focal_x": 70,
+  "image_focal_y": 9,
+  "stats": {
+    "hp": 8424,
+    "acc": 0,
+    "atk": 440,
+    "def": 529,
+    "res": 5,
+    "spd": 82,
+    "init": 71,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Avalon",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Falling Leaf",
+      "slug": "dryad-falling-leaf",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 200% ATK. Place [Shield] 75% ATK on the ally with the lowest HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dryad_Basic.webp",
+      "scaling_formula": "200% ATK (Damage), 75% ATK (Shield)",
+      "effects": [
+        "Shield"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Bountiful Growth",
+      "slug": "dryad-bountiful-growth",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 200% ATK then Heal 150% ATK all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dryad_Ultimate.webp",
+      "scaling_formula": "200% ATK (Damage), 150% ATK (Heal)",
+      "effects": [
+        "Heal"
+      ],
+      "ultimate_cost": 1250,
+      "initial_divinity": 325,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

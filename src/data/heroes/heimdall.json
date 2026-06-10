@@ -1,0 +1,144 @@
+{
+  "id": "df3e7afe-81ec-444d-bc09-32e279698629",
+  "name": "Heimdall",
+  "subtitle": "Bifrost Warden",
+  "slug": "heimdall",
+  "rarity": 5,
+  "description": "Defend the bifrost against marauding invaders and protect the halls of asgard from harm!",
+  "lore": "The sentinel of Bifrost, Heimdall has long guarded Asgard against danger—yet now the entire world is a threat. He does not know how the Shattering could have happened without him spotting some warning, some trace. That lack of understanding, and what he views as a failure of his duties, spur him to new efforts that may exhaust even his divine endurance.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/df3e7afe-81ec-444d-bc09-32e279698629.webp",
+  "image_zoom": 2.5,
+  "image_focal_x": 50,
+  "image_focal_y": 32,
+  "stats": {
+    "hp": 20482,
+    "acc": 20,
+    "atk": 760,
+    "def": 1299,
+    "res": 85,
+    "spd": 100,
+    "init": 99,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% DEF",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Vanguard's Vigil"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +20%, Ignore RES +20%, Shield Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Watchmaster"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Shield of Asgard"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Defender",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Bifrost Blade",
+      "slug": "heimdall-bifrost-blade",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (190%DEF+120%ATK) and transfer a random [Debuff] from this hero to the target. If [mechanic:blaze], [mechanic:aetherburn], or [mechanic:acid] is transferred, activate the [Debuff] after attacking.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Heimdall_Basic.webp",
+      "scaling_formula": "190%DEF+120%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Watchmaster",
+      "slug": "heimdall-watchmaster",
+      "skill_type": "Core",
+      "description": "Place [mechanic:retaliate] and [mechanic:intercept] on all allies for 2 turns, then attack all enemies (270%DEF+140%ATK).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Heimdall_Core.webp",
+      "scaling_formula": "270%DEF+140%ATK",
+      "effects": [
+        "Retaliate",
+        "Intercept",
+        "Ward"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also places [Ward] on this hero for 2 turns, which cannot be removed."
+    },
+    {
+      "name": "Shield of Asgard",
+      "slug": "heimdall-shield-of-asgard",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:def-up-ii] on all allies for 2 turns, and place [mechanic:shield]300%DEF on all allies. Then place [mechanic:protect-ii] on all allies except this hero for 2 turns. These buffs cannot be removed when placed on heroes from Asgard.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Heimdall_Ultimate.webp",
+      "scaling_formula": "300%DEF",
+      "effects": [
+        "DEF Up II",
+        "Protect II",
+        "Shield"
+      ],
+      "ultimate_cost": 1450,
+      "initial_divinity": 325,
+      "awakening_level": 5,
+      "awakening_bonus": "At the start of each wave, activate this ultimate before any turn is taken."
+    },
+    {
+      "name": "Vanguard's Vigil",
+      "slug": "heimdall-vanguard-s-vigil",
+      "skill_type": "Passive",
+      "description": "Allies under any [Buff] have a 50% chance to [mechanic:reflect] any [Debuff] received.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Heimdall_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also heals this hero 3%HP whenever a [Debuff] is reflected."
+    }
+  ],
+  "imprint_passive": "If this hero is under a [Buff] has a 25% chance to reflect any [Debuff] received."
+}

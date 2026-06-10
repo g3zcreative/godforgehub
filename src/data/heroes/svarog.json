@@ -1,0 +1,145 @@
+{
+  "id": "dd35fb6e-d5ac-41ad-9841-06db0965a7d7",
+  "name": "Svarog",
+  "subtitle": "Father of Fire",
+  "slug": "svarog",
+  "rarity": 5,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Blacksmith of the gods, Svarog forged much of Vyraj itself. That creation is imperfect has always eaten at him, and the Shattering has only salted that wound. Furious at Chaos and Destiny both, he is among the most vocal champions of Order, and seeks nothing less than the opportunity to recreate the world in its most perfect potential form.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/dd35fb6e-d5ac-41ad-9841-06db0965a7d7.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 21473,
+    "acc": 20,
+    "atk": 804,
+    "def": 1277,
+    "res": 80,
+    "spd": 98,
+    "init": 101,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% DEF",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [15] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +15"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Celestial Hammer"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, DMG Reduction Multiplier +20%, C.DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Forgefire Protection"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Anvil Sparks"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Anvil Sparks",
+      "slug": "svarog-anvil-sparks",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:res-up-ii] and [mechanic:def-up-ii] on all allies for 3 turns. Then place [mechanic:shield]250% DEF on all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Svarog_Ultimate.webp",
+      "scaling_formula": "250% DEF",
+      "effects": [
+        "RES Up II",
+        "DEF Up II",
+        "Shield"
+      ],
+      "ultimate_cost": 1100,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "When an ally [Shield] is removed or depleted, place [Ward] on them for 1 turn."
+    },
+    {
+      "name": "Seared Strike",
+      "slug": "svarog-seared-strike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (280%DEF+160%ATK) with a 75% chance to place [mechanic:blunt-ii] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Svarog_Basic.webp",
+      "scaling_formula": "280%DEF+160%ATK",
+      "effects": [
+        "Blunt II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Forgefire Protection",
+      "slug": "svarog-forgefire-protection",
+      "skill_type": "Passive",
+      "description": "Each time an ally uses an Ultimate, Decreases the damage received by all allies by 3% (up to 10 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Svarog_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Each Ultimate also increases the strength of [Shield's] placed by this hero by 3% (up to 10 times)"
+    },
+    {
+      "name": "Celestial Hammer",
+      "slug": "svarog-celestial-hammer",
+      "skill_type": "Core",
+      "description": "Attack all enemies (330%DEF+160%ATK) with a 75% chance to place [mechanic:atk-down-ii] on each target for 2 turns. Also place [mechanic:protect-ii] on all allies for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Svarog_Core.webp",
+      "scaling_formula": "330%DEF+160%ATK",
+      "effects": [
+        "ATK Down II",
+        "Protect II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Each time an ally is attacked under [Protect II] increases the damage of this hero’s next ability by 3%. Resets on next ability."
+    }
+  ],
+  "imprint_passive": "Each time an ally uses an Ultimate, Decreases the damage received by this hero by 3% (up to 5 times)."
+}

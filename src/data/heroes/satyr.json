@@ -1,0 +1,88 @@
+{
+  "id": "c500601f-dc76-48a0-9e08-eaab23a141e6",
+  "name": "Satyr",
+  "subtitle": "Faun of Dionysus",
+  "slug": "satyr",
+  "rarity": 1,
+  "description": "Dance and Be Merry as you Sleep your Foes in the Dance of Dionysus.",
+  "lore": "Spirits of nature, half goat and half man, satyrs represent unchecked desires and lusts. Disruptive with their carousing even in good moods, they are rapacious and violent in bad ones, and flip between them without warning. Their presence in the wilds of Olympus causes frequent problems, yet they also wind up defending its borders from outsiders—even if only by accident.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/910ece9f-7331-4a35-8623-01570c46cd13.webp",
+  "image_zoom": 1.4,
+  "image_focal_x": 59,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 7598,
+    "acc": 0,
+    "atk": 584,
+    "def": 451,
+    "res": 0,
+    "spd": 71,
+    "init": 82,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when an enemy takes a turn.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Olympus",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Seizing Gaze",
+      "slug": "satyr-seizing-gaze",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 140%ATK 2 times with a 35% chance to decrease turn meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Satyr_Basic.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Dance of Dreams",
+      "slug": "satyr-dance-of-dreams",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 320%ATK with a 25% chance to place [Sleep] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Satyr_Ultimate.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [
+        "Sleep"
+      ],
+      "ultimate_cost": 900,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

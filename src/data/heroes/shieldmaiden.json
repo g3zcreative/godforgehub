@@ -1,0 +1,90 @@
+{
+  "id": "4d61c778-50b5-4dcc-bd9f-f7bfd98a9b0b",
+  "name": "Shieldmaiden",
+  "subtitle": "Shield Sister",
+  "slug": "shieldmaiden",
+  "rarity": 1,
+  "description": "Shield your allies against your Foes as you weaken their attacks.",
+  "lore": "While many in Asgard use “shieldmaiden” to mean any female warrior, since the Shattering it has come to refer more precisely to those who practice specific techniques focusing heavily on the protection of their brethren on the battlefield. Despite this seemingly defensive bent, these women are as fierce, as hungry for glory, as any other Asgardian warrior.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/0883b481-483c-4f16-848d-1d13f0bd9ac2.webp",
+  "image_zoom": 3,
+  "image_focal_x": 58,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 8754,
+    "acc": 0,
+    "atk": 385,
+    "def": 573,
+    "res": 10,
+    "spd": 67,
+    "init": 61,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [10] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Asgard",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Deplete Strength",
+      "slug": "shieldmaiden-deplete-strength",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (200%DEF+110%ATK) with a 35% chance to place [ATK Down I] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shieldmaiden_Basic.webp",
+      "scaling_formula": "200%DEF+110%ATK",
+      "effects": [
+        "ATK Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Maiden Fortification",
+      "slug": "shieldmaiden-maiden-fortification",
+      "skill_type": "Ultimate",
+      "description": "Place [Shield] 100%DEF on all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shieldmaiden_Ultimate.webp",
+      "scaling_formula": "100%DEF",
+      "effects": [
+        "Shield"
+      ],
+      "ultimate_cost": 800,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

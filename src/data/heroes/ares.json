@@ -1,0 +1,138 @@
+{
+  "id": "b3f8810e-bcde-4a36-9bd5-5032ee070286",
+  "name": "Ares",
+  "subtitle": "God of War",
+  "slug": "ares",
+  "rarity": 5,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "The war god’s lust for violence and his berserk rages turn fields into carnage, fortresses into charnel houses. As a lover and instigator of conflict, Ares adores the post-Shattering world. Thus far he has contented himself with the slaughter of monsters and with the bloodshed of small skirmishes, but he hopes to ignite ongoing wars between Olympus and other Realms.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/b3f8810e-bcde-4a36-9bd5-5032ee070286.webp",
+  "image_zoom": 3,
+  "image_focal_x": 31,
+  "image_focal_y": 13,
+  "stats": {
+    "hp": 18665,
+    "acc": 35,
+    "atk": 1321,
+    "def": 991,
+    "res": 25,
+    "spd": 106,
+    "init": 110,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% CDMG",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when defeating an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Brutal Cleave"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Ignore DEF +10%, Divinity Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Carnage Momentum"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Warborn Frenzy"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Carnage Momentum",
+      "slug": "ares-carnage-momentum",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 2 times (250%ATK). Each hit ignores [mechanic:protect], [mechanic:intercept], [mechanic:immortal] and [mechanic:ward]. If the attack is a Strong Hit, also ignores 20% of the target’s DEF.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/ddbf1603-2e02-49b9-a0bf-ee48b07fdbe2.webp",
+      "scaling_formula": "250%ATK",
+      "effects": [
+        "Block Revive"
+      ],
+      "ultimate_cost": 1450,
+      "initial_divinity": 325,
+      "awakening_level": 3,
+      "awakening_bonus": "Place [Block Revive] on enemies defeated by this ability."
+    },
+    {
+      "name": "Warborn Frenzy",
+      "slug": "ares-warborn-frenzy",
+      "skill_type": "Passive",
+      "description": "Each time an enemy receives a [Debuff], increases this hero’s chance to Strong Hit by 5% on their next ability.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ares_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Each time this hero receives a [Buff], increase the damage of his next ability by 10%."
+    },
+    {
+      "name": "Furious Onslaught",
+      "slug": "ares-furious-onslaught",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 3 times and decrease the target’s DEF by 2% (stacking up to 10 times). Each Strong Hit also decreases the target’s INIT by 5 (stacking up to 10 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ares_Basic.webp",
+      "scaling_formula": "115%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Brutal Cleave",
+      "slug": "ares-brutal-cleave",
+      "skill_type": "Core",
+      "description": "Attack all enemies (450%ATK) and ignore [mechanic:shield] and [mechanic:barrier] on each target. If the attack is a Strong Hit, remove all [mechanic:shield] and [mechanic:barrier] from each target. If an enemy is defeated, increase this hero’s Divinity by 10%.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/3dad22b2-bc64-462d-a60c-7184842b16fc.webp",
+      "scaling_formula": "450%ATK",
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 1,
+      "awakening_bonus": "Also increase this hero’s Turn Meter by 10% when an enemy is defeated."
+    }
+  ],
+  "imprint_passive": "Each time an enemy receives a [Debuff], increases this hero’s chance to Strong Hit by 2.5% on their next ability."
+}

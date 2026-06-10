@@ -1,0 +1,142 @@
+{
+  "id": "10189f10-71f1-4512-a48e-4ed1adde13a3",
+  "name": "Fujin",
+  "subtitle": "Guaridan of Air",
+  "slug": "fujin",
+  "rarity": 5,
+  "description": "Use Wind Strikes to Deflect AoE Damage and Protect your Allies from Debuffs and Disables.",
+  "lore": "Both demon and god, Fujin carries the Four Winds, using them to fly and leaving powerful gusts and gales in his wake. Although a source of destruction, Fujin is not a being of evil per se. Rather, Fujin simply does not care, traveling where he will and brawling with whoever he likes, in utter disregard of the damage his winds cause.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/10189f10-71f1-4512-a48e-4ed1adde13a3.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 20812,
+    "acc": 25,
+    "atk": 760,
+    "def": 1288,
+    "res": 75,
+    "spd": 103,
+    "init": 100,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "50 RES",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when hit by an enemy which is increased by 100% if the attack is AoE Attacks.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Windwall"
+    },
+    {
+      "tier": 2,
+      "bonus": "Barrier Multiplier +30%, DMG Reduction Multiplier +20%, DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Cyclone Barrier"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Weapon Multiplier +30%, Armor Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Winds of Change"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Defender",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Windwall",
+      "slug": "fujin-windwall",
+      "skill_type": "Core",
+      "description": "Attack all enemies (210%DEF+120%ATK) and place [mechanic:protect-ii] on all allies except this hero. Then place [mechanic:stalwart] on all allies for 1 turn. If Raijin is on the team, place [mechanic:ward] on him.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Fujin_Core.webp",
+      "scaling_formula": "210%DEF+120%ATK",
+      "effects": [
+        "Protect II",
+        "Stalwart",
+        "Ward"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Transfer all [Debuff] from all allies instead. If Raijin is on the team, increase his turn meter by 20% for each [Debuff] transferred."
+    },
+    {
+      "name": "Winds of Change",
+      "slug": "fujin-winds-of-change",
+      "skill_type": "Ultimate",
+      "description": "Transfer 1[Debuff] from each ally to this hero, then attack 1 enemy (210%DEF+120%ATK) and transfer all [Debuffs] from this hero to the target. For each [Debuff] transferred, increase all allies [mechanic:barrier] 50%DEF. If Raijin is on the team, transfer all [Debuffs] to this hero instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Fujin_Ultimate.webp",
+      "scaling_formula": "210%DEF+120%ATK",
+      "effects": [],
+      "ultimate_cost": 1950,
+      "initial_divinity": 250,
+      "awakening_level": 5,
+      "awakening_bonus": "If an ally is attacked by AoE Attacks while under [Protect], place Barrier 50%DEF on them."
+    },
+    {
+      "name": "Gust of Wind",
+      "slug": "fujin-gust-of-wind",
+      "skill_type": "Basic",
+      "description": "Attack all enemies (210%DEF+120%ATK) with a 30% chance to place [mechanic:res-down-ii] on each target for 2 turns. If Raijin is on the team, he will also join the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Fujin_Basic.webp",
+      "scaling_formula": "210%DEF+120%ATK",
+      "effects": [
+        "RES Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Cyclone Barrier",
+      "slug": "fujin-cyclone-barrier",
+      "skill_type": "Passive",
+      "description": "Allies receive 30% decreased damage from AoE attacks.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Fujin_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Reflect 25% of the reduced damage back to the attacker. If Raijin is on the team, reflect 100% of the damage reduced by him."
+    }
+  ],
+  "imprint_passive": "Reduce the damage this hero receives from AoE Attacks by 15%."
+}

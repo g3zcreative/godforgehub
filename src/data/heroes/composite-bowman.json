@@ -1,0 +1,88 @@
+{
+  "id": "282468a0-b986-4dd7-a1ff-ff97a778ba38",
+  "name": "Composite Bowman",
+  "subtitle": "Precision Deadeye",
+  "slug": "composite-bowman",
+  "rarity": 1,
+  "description": "Rain arrows down upon your foes and smite Chaos enemies from the field of battle.",
+  "lore": "Infantry archers called Lu-Geshban are often the backbone of Ekur’s military forces, making expert use of the composite bow, perhaps the greatest military technology of their Realm. They move in coordinated formations to bring mass death to the enemy. They haven’t yet made substantial alterations to their weapons since the Shattering, but have begun studying the larger longbows used in other Realms.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/244df54d-e83e-44b3-aacb-83232059d9f1.webp",
+  "image_zoom": 3,
+  "image_focal_x": 55,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 7928,
+    "acc": 0,
+    "atk": 661,
+    "def": 485,
+    "res": 0,
+    "spd": 68,
+    "init": 74,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Ekur",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Rapid Fire",
+      "slug": "composite-bowman-rapid-fire",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 120%ATK 3 times. If the target is defeated, has a 50% chance to gain an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_CompositeBowman_Basic.webp",
+      "scaling_formula": "120%ATK",
+      "effects": [
+        "Extra Turn"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Arrow Barrage",
+      "slug": "composite-bowman-arrow-barrage",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 330%ATK with an 20% additional critical chance.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_CompositeBowman_Ultimate.webp",
+      "scaling_formula": "330%ATK",
+      "effects": [],
+      "ultimate_cost": 800,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

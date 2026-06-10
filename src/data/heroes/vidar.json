@@ -1,0 +1,135 @@
+{
+  "id": "bab9c127-bfaa-49ee-bb9e-168669139dbf",
+  "name": "Vidar",
+  "subtitle": "Silent Avenger",
+  "slug": "vidar",
+  "rarity": 3,
+  "description": "Grows stronger as allies are defeated and avenges them all.",
+  "lore": "Prophesied to avenge the death of his father, Odin, and to stand as one of Ragnarok’s few survivors, Vidar is a brooding, silent warrior. He often accompanies other gods into battle as preparation for his grim destiny. Now that the Shattering has thrown this future into question, however, Vidar works to punish all who harm Asgard—especially the gods of Aaru who invaded his Realm.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/bab9c127-bfaa-49ee-bb9e-168669139dbf.webp",
+  "image_zoom": 3,
+  "image_focal_x": 65,
+  "image_focal_y": 12,
+  "stats": {
+    "hp": 17178,
+    "acc": 15,
+    "atk": 727,
+    "def": 760,
+    "res": 30,
+    "spd": 86,
+    "init": 86,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "There is no leader bonus for this hero."
+  },
+  "divinity_generator": "Gain [50] Divinity when inflicting damage to an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Strong Hit Chance Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Strong Hit Chance Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Into the Maw"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Victory from Defeat",
+      "slug": "vidar-victory-from-defeat",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (12%HP+150%ATK). If there are no living allies, increase the damage inflicted by 50%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vidar_Ultimate.webp",
+      "scaling_formula": "12%HP+150%ATK",
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Mightiest Shoe",
+      "slug": "vidar-mightiest-shoe",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (11%HP+130%ATK). Increase this hero’s ATK by 5% (stacking up to 3 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vidar_Core.webp",
+      "scaling_formula": "11%HP+130%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Into the Maw",
+      "slug": "vidar-into-the-maw",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (8%HP+120%ATK) and Heal for 10% of the damage inflicted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vidar_Basic.webp",
+      "scaling_formula": "8%HP+120%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If there are no living allies, attack all enemies instead."
+    },
+    {
+      "name": "Vow of Silence",
+      "slug": "vidar-vow-of-silence",
+      "skill_type": "Passive",
+      "description": "Increase this hero’s Max HP by 10% each time an ally dies (stacking up to 3 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vidar_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Increase this hero’s Max HP by 5% each time an ally dies (stacking up to 3 times)."
+}

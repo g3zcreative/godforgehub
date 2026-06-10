@@ -1,0 +1,136 @@
+{
+  "id": "41e41fb3-6ade-4da8-ad11-2c8a78f5c602",
+  "name": "Beowulf",
+  "subtitle": "Beast-Slayer",
+  "slug": "beowulf",
+  "rarity": 4,
+  "description": "Slaughter Brawlers and Bosses with devastating single target attacks.",
+  "lore": "A true legend even in his youth, the great warrior Beowulf was famed for slaying the monster Grendel, his even more fearsome mother, and—later, as king—a terrible dragon. In today’s Asgard, he finds his strength restored, yet he resents the need to continue fighting, as he had reconciled with his age and had been ready for his reward in Valhalla.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/41e41fb3-6ade-4da8-ad11-2c8a78f5c602.webp",
+  "image_zoom": 2.9,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15526,
+    "acc": 25,
+    "atk": 1090,
+    "def": 870,
+    "res": 20,
+    "spd": 97,
+    "init": 95,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "25% CDMG%",
+    "scope": "Pantheon Boss Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when inflicting a Strong hit which is doubled against Brawlers or Bosses.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +15"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Strong Hit DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Strong Hit Chance Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Grendel's Doom"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Giant Slayer"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Slayer",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Naegling’s Wrath",
+      "slug": "beowulf-naegling-s-wrath",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 340%ATK. If the target is a Brawler or Boss, increase ATK by 5% (stacking up to 3 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Beowulf_Basic.webp",
+      "scaling_formula": "340%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Thane's Wrath",
+      "slug": "beowulf-thane-s-wrath",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (410%ATK+3%targetHP). If the target is a Brawler or Boss, increase this hero’s CDMG by 10% (stacking up to 3 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Beowulf_Ultimate.webp",
+      "scaling_formula": "410%ATK+3%targetHP",
+      "effects": [],
+      "ultimate_cost": 850,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Giant Slayer",
+      "slug": "beowulf-giant-slayer",
+      "skill_type": "Passive",
+      "description": "This hero inflicts 20% increased damage to Brawlers and Bosses",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Beowulf_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Strong hits inflict additional 1% Enemy Max HP damage. If the target is a Brawler or Boss, this bonus is doubled."
+    },
+    {
+      "name": "Grendel's Doom",
+      "slug": "beowulf-grendel-s-doom",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 300%ATK. If the target is a Brawler or Boss, then decrease the target’s ATK by 5% (stacking up to 3 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Beowulf_Core.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Guarantees the attack will Strong Hit."
+    }
+  ],
+  "imprint_passive": "Inflicts 10% increased damage to Brawler and Bosses."
+}

@@ -1,0 +1,137 @@
+{
+  "id": "aaef1ecd-14f2-4e49-af6b-e623b8273476",
+  "name": "Aphrodite",
+  "subtitle": "Heavenly Desire",
+  "slug": "aphrodite",
+  "rarity": 5,
+  "description": "Charms and Dazes her foes with spells of her beauty while empowering her allies to fight for her.",
+  "lore": "The Olympian goddess of love and beauty, Aphrodite is often mistaken for a gentle or even meek goddess. In truth, her wrath when she is spurned or slighted—sometimes to only the faintest degree—is dreadful. This tendency has only increased since the Shattering, as her obsessions with certain gods or heroes of other domains is not always returned in kind.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/aaef1ecd-14f2-4e49-af6b-e623b8273476.webp",
+  "image_zoom": 3,
+  "image_focal_x": 65,
+  "image_focal_y": 14,
+  "stats": {
+    "hp": 20151,
+    "acc": 15,
+    "atk": 859,
+    "def": 1079,
+    "res": 50,
+    "spd": 114,
+    "init": 105,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Divine Sacrament"
+    },
+    {
+      "tier": 2,
+      "bonus": "Awaken the ability: Eternal Bonds"
+    },
+    {
+      "tier": 3,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Awaken the ability: Motivation"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Invoker",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Lovers Duet",
+      "slug": "aphrodite-lovers-duet",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy. Allies under [mechanic:spd-up-ii] and [INT Up II] will join this attack, using their default ability.\nAfter attacking, place [mechanic:spd-up-ii] for 1 turn on this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aphrodite_Basic.webp",
+      "scaling_formula": "120%ATK",
+      "effects": [
+        "SPD Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Divine Sacrament",
+      "slug": "aphrodite-divine-sacrament",
+      "skill_type": "Core",
+      "description": "Target 1 Ally and place [mechanic:spd-up-ii] and [mechanic:init-up-ii] for 1 turn, then gain an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aphrodite_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "SPD Up II",
+        "INIT Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "[Buffs] cannot be removed or blocked."
+    },
+    {
+      "name": "Eternal Bonds",
+      "slug": "aphrodite-eternal-bonds",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies then extends the duration of any [mechanic:spd-up-ii] and [mechanic:init-up-ii] on all allies by 1 turn.\nAlso increases the Turn Meter and Divinity of all allies by 15%. This effect is doubled on allies who are under [mechanic:spd-up-ii] and [mechanic:init-up-ii].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aphrodite_Ultimate.webp",
+      "scaling_formula": "230%ATK",
+      "effects": [],
+      "ultimate_cost": 2000,
+      "initial_divinity": 200,
+      "awakening_level": 3,
+      "awakening_bonus": "Remove all [Disable] and [Debuff] from allies under [SPD Up II] and [INIT Up II]."
+    },
+    {
+      "name": "Motivation",
+      "slug": "aphrodite-motivation",
+      "skill_type": "Passive",
+      "description": "Allies gain 2% Turn Meter when inflicting damage to an enemy. This effect is doubled on allies who are under [mechanic:spd-up-ii] and [mechanic:init-up-ii].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aphrodite_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Allies under [SPD Up II] and [Init Up II] gain 20% increased incoming healing and inflict 20% increased damage."
+    }
+  ],
+  "imprint_passive": "Allies gain 1% Turn Meter when inflicting damage to an enemy. This effect is doubled on allies who are under [SPD Up II] and [INIT Up II]."
+}

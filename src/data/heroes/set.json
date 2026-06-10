@@ -1,0 +1,142 @@
+{
+  "id": "6354a362-9367-43ad-94b5-8bbfe5b30c43",
+  "name": "Set",
+  "subtitle": "Master of Disorder",
+  "slug": "set",
+  "rarity": 4,
+  "description": "Poisons enemies and increases the damage they take from debuffs.",
+  "lore": "Dreaded Set is the god of storm, upheaval, and violence. Although loyal to Aaru, he bears no love for his fellow gods. He plots his own ascension even as he defends his territory and his brethren from rival realms and the forces of the Primal Powers. Empowered by the bloodshed of the War of Pyramids, he secretly conspires to extend the conflict.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/6354a362-9367-43ad-94b5-8bbfe5b30c43.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 16187,
+    "acc": 35,
+    "atk": 1013,
+    "def": 848,
+    "res": 20,
+    "spd": 97,
+    "init": 108,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +9"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Jealous Retribution"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Seeds of Chaos"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Seeds of Chaos",
+      "slug": "set-seeds-of-chaos",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 290%ATK with a 50% chance to place [mechanic:despair] on each target for 1 turn, and 75% chance to place [mechanic:acc-down-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Set_Ultimate.webp",
+      "scaling_formula": "290%ATK",
+      "effects": [
+        "Despair",
+        "ACC Down II"
+      ],
+      "ultimate_cost": 1600,
+      "initial_divinity": 250,
+      "awakening_level": 5,
+      "awakening_bonus": "Also, increase the cooldown of the Core Ability on a random enemy by 1 turn."
+    },
+    {
+      "name": "Desert Mirage",
+      "slug": "set-desert-mirage",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 240%ATK with a 50% chance to place [mechanic:init-down-ii] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Set_Basic.webp",
+      "scaling_formula": "240%ATK",
+      "effects": [
+        "INIT Down II",
+        "INIT Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Jealous Retribution",
+      "slug": "set-jealous-retribution",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 290%ATK with a 50% chance to steal a random [Buff]. Decrease the cooldown of this ability by 1 turn if a [Buff] is not stolen.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Set_Core.webp",
+      "scaling_formula": "290%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Has a chance to steal 2 random [Buffs]."
+    },
+    {
+      "name": "Eternal Spite",
+      "slug": "set-eternal-spite",
+      "skill_type": "Passive",
+      "description": "When an enemy places a [Debuff] on this hero, increase their ultimate divinity cost 2%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Set_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an enemy places a [Debuff] on this hero, increase their ultimate divinity cost 1%."
+}

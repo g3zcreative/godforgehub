@@ -1,0 +1,90 @@
+{
+  "id": "3e617f99-04e0-4b5c-8c17-26ae73dd40b4",
+  "name": "Tlamani",
+  "subtitle": "Jungle Warrior",
+  "slug": "tlamani",
+  "rarity": 1,
+  "description": "Attack with frenzy and precise strikes, weakening your enemies Defence.",
+  "lore": "While members of elite martial orders such as the jaguar warriors and eagle archers are expected to bring back prisoners for sacrifice to Omeyocan’s gods, sometimes less elite soldiers, or even commoners, manage to capture an enemy. These individuals are granted the title of tlamani, or “captor,” and are then provided additional training so they may more readily repeat their accomplishments.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/0696b9b7-2db0-4536-9be4-7194235ab59b.webp",
+  "image_zoom": 1.9,
+  "image_focal_x": 43,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 7598,
+    "acc": 0,
+    "atk": 617,
+    "def": 462,
+    "res": 0,
+    "spd": 70,
+    "init": 73,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Omeyocan",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Obsidian Wound",
+      "slug": "tlamani-obsidian-wound",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 220%ATK with a 50% chance to place [DEF Down I]for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tlamani_Basic.webp",
+      "scaling_formula": "220%ATK",
+      "effects": [
+        "DEF Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Bravery Unleashed",
+      "slug": "tlamani-bravery-unleashed",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 300%ATK. Place [Sharpen I] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tlamani_Ultimate.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [
+        "Sharpen I"
+      ],
+      "ultimate_cost": 750,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

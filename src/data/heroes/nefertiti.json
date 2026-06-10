@@ -1,0 +1,135 @@
+{
+  "id": "fbb89529-ab90-4cf9-b1a3-29cc6bcc487a",
+  "name": "Nefertiti",
+  "subtitle": "Lady of Grace",
+  "slug": "nefertiti",
+  "rarity": 3,
+  "description": "Charms and burns enemies.",
+  "lore": "Queen Nefertiti and her husband, the pharaoh Akhenaten, turned their people away from Aaru’s gods and toward a deity called Aten—a policy that lasted only until Akhenaten died and Nefertiti fell through the Shattering’s cracks. In Ryven she stands as an enemy of Aaru’s pantheon, and though none have seen sign of Aten’s return, Nefertiti still draws power from something…",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/fbb89529-ab90-4cf9-b1a3-29cc6bcc487a.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 13544,
+    "acc": 20,
+    "atk": 892,
+    "def": 727,
+    "res": 15,
+    "spd": 89,
+    "init": 96,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "A  powerful attack planned for the future."
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Living Goddess"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Matron’s Smite",
+      "slug": "nefertiti-matron-s-smite",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nefertiti_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Solar Offering",
+      "slug": "nefertiti-solar-offering",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nefertiti_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Divine Triad",
+      "slug": "nefertiti-divine-triad",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nefertiti_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Living Goddess",
+      "slug": "nefertiti-living-goddess",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nefertiti_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

@@ -1,3 +1,4 @@
 http://godforgehub.com/* https://godforgehub.com/:splat 301!
 http://www.godforgehub.com/* https://godforgehub.com/:splat 301!
 https://www.godforgehub.com/* https://godforgehub.com/:splat 301!
+/* /index.html 200

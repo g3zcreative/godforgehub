@@ -1,0 +1,141 @@
+{
+  "id": "496e81e0-9355-4420-9294-77eb6fcf449d",
+  "name": "Amaterasu",
+  "subtitle": "Shining Sky",
+  "slug": "amaterasu",
+  "rarity": 5,
+  "description": "Revives allies and herself. Requires a full team wipe to kill.",
+  "lore": "Beloved sun goddess of Izumo, Amaterasu helps guide her pantheon—yet her benevolence and wisdom sometimes falter beneath an occasionally childish temperament. Already preoccupied with family drama, she has become further distracted by the voice of Destiny. Amaterasu sees sense in Destiny’s cause, but their disagreements as to what the future should look like have so far prevented a formal alliance.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/3cd86c8b-5928-4d5e-b9d0-d1ddfe4b76f5.webp",
+  "image_zoom": 3,
+  "image_focal_x": 71,
+  "image_focal_y": 25,
+  "stats": {
+    "hp": 19491,
+    "acc": 15,
+    "atk": 892,
+    "def": 1123,
+    "res": 45,
+    "spd": 113,
+    "init": 102,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% INIT",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when healing an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Light of Heavans"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, Heal Multiplier +30%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Rising Sun"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: New Dawn"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Invoker",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Eternal Flame",
+      "slug": "amaterasu-eternal-flame",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy and Heal all allies. If the target is under [mechanic:aetherburn], increase the Heal by 100%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Amaterasu_Basic.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Light of Heavans",
+      "slug": "amaterasu-light-of-heavans",
+      "skill_type": "Core",
+      "description": "Place [Block Debuff] and [mechanic:radiance-ii] on all allies for 2 turns, then has a 75% chance to place [mechanic:aetherburn-ii] on all enemies for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Amaterasu_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Radiance II",
+        "Aetherburn II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "The [Aetherburn II] cannot be resisted."
+    },
+    {
+      "name": "Rising Sun",
+      "slug": "amaterasu-rising-sun",
+      "skill_type": "Ultimate",
+      "description": "Revive all defeated allies with 50% Turn Meter and 50% Divinity, then reset all Ability Cooldowns on all allies. Also equalize the HP of all allies to the ally or enemy with the highest current HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Amaterasu_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Phoenix"
+      ],
+      "ultimate_cost": 1850,
+      "initial_divinity": 300,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [Phoenix] on each revived ally for 2 turns which cannot be removed."
+    },
+    {
+      "name": "New Dawn",
+      "slug": "amaterasu-new-dawn",
+      "skill_type": "Passive",
+      "description": "At the start of an enemy turn, decrease the damage this hero receives by 10% (stacking up to 10 times). Stacks reset at the start of this hero’s turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Amaterasu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Damage reduction applies to all allies instead."
+    }
+  ],
+  "imprint_passive": "At the start of an enemy turn, decrease the damage this hero receives by 10% (stacking up to 5 times). Stacks reset at the start of this hero’s turn."
+}

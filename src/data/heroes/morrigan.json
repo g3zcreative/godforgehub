@@ -1,0 +1,147 @@
+{
+  "id": "bfb7fb1e-432e-492f-91a6-573f2c68d8ca",
+  "name": "Morrigan",
+  "subtitle": "Emissary of Destiny",
+  "slug": "morrigan",
+  "rarity": 5,
+  "description": "Bring Dark Tidings to the battle, casting Despair and Debuffs on your foes.",
+  "lore": "Goddess of war and fate, the Morrigan is a source of both fear and courage throughout Avalon. It was to her that Destiny turned upon restitching the world, and the Morrigan now acts primarily as an agent and emissary for that mysterious power. She guides and oversees the Scions—though she still does, on occasion, pursue objectives of her own.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/bfb7fb1e-432e-492f-91a6-573f2c68d8ca.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 19821,
+    "acc": 50,
+    "atk": 1101,
+    "def": 958,
+    "res": 30,
+    "spd": 115,
+    "init": 125,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% INIT",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when dealing damage to enemies under [Dark Tidings].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Omen of the Raven"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, DMG Reduction Multiplier +20%, Strong Hit Chance Multiplier +15%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Futuresight"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Dark Tidings"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Fate Foretold",
+      "slug": "morrigan-fate-foretold",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (200%ATK+5%INIT) with a 75% chance to place [mechanic:init-down-ii] on the target for 1 turn. Then place [mechanic:dark-tidings] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Morrigan_Basic.webp",
+      "scaling_formula": "200%ATK+5%INIT",
+      "effects": [
+        "INIT Down II",
+        "Dark Tidings"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Dark Tidings",
+      "slug": "morrigan-dark-tidings",
+      "skill_type": "Core",
+      "description": "Place 2 stacks of [mechanic:dark-tidings] on all enemies, then attack all enemies (200%ATK+5%INIT) with a 75% chance to place [mechanic:despair] on each target for 1 turn. If the target is a Boss, place [mechanic:spd-down-ii] on the target for 2 turns instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Morrigan_Core.webp",
+      "scaling_formula": "200%ATK+5%INIT",
+      "effects": [
+        "Dark Tidings",
+        "Despair",
+        "SPD Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Place [Dark Tidings]5 stacks instead."
+    },
+    {
+      "name": "Omen of the Raven",
+      "slug": "morrigan-omen-of-the-raven",
+      "skill_type": "Ultimate",
+      "description": "Remove all [Buffs] from all enemies, then attack all enemies (100%ATK+2%INIT)3 times. The first hit has a 80% chance to place [mechanic:drain-ii] on each target for 2 turns. The second hit has a 80% chance to place [mechanic:def-down-ii] on each target for 2 turns. The third hit has a 80% chance to place [mechanic:atk-down-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Morrigan_Ultimate.webp",
+      "scaling_formula": "100%ATK+2%INIT",
+      "effects": [
+        "Drain II",
+        "DEF Down II",
+        "ATK Down II"
+      ],
+      "ultimate_cost": 1400,
+      "initial_divinity": 350,
+      "awakening_level": 1,
+      "awakening_bonus": "If all 3[Debuffs] are placed on the target, also decrease the target’s Turn Meter by 30%."
+    },
+    {
+      "name": "Futuresight",
+      "slug": "morrigan-futuresight",
+      "skill_type": "Passive",
+      "description": "When an enemy receives a [Buff], reduce its duration by 1 turn. When an enemy receives a [Debuff], increase its duration by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Morrigan_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Decrease the target’s RES and ACC by 5 (up to 100) each time they receive a stack of [Dark Tidings]."
+    }
+  ],
+  "imprint_passive": "When an enemy receives a [Buff], has a 50% chance to reduce its duration by 1 turn. When an enemy receives a [Debuff], has a 50% chance to increase its duration by 1 turn."
+}

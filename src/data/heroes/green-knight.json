@@ -1,0 +1,143 @@
+{
+  "id": "a68daa20-140a-4273-8dd9-3a3796f9afaa",
+  "name": "Green Knight",
+  "subtitle": "Emerald Warden",
+  "slug": "green-knight",
+  "rarity": 4,
+  "description": "Challenge your opponents to a Duel whilst Reflecting Damage back upon those who are unworthy.",
+  "lore": "Sir Bertilak de Hautdesert was transformed into something more than human by an entity of the faerie courts to test Arthur and his vassals. Gawain eventually passed his trials, but neither that nor the Shattering itself altered the Green Knight’s course. He still considers it his duty to judge the knights of Avalon, and his methods have grown even more lethal.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/c7ce30aa-6a00-49b7-9bc0-a671b37ab7c1.webp",
+  "image_zoom": 2.5,
+  "image_focal_x": 59,
+  "image_focal_y": 27,
+  "stats": {
+    "hp": 20317,
+    "acc": 20,
+    "atk": 881,
+    "def": 925,
+    "res": 45,
+    "spd": 92,
+    "init": 91,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "None",
+    "scope": "None"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +11"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Curse of Gawain"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Trial of Chivalry"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Brawler",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Exchange of Blows",
+      "slug": "green-knight-exchange-of-blows",
+      "skill_type": "Passive",
+      "description": "[mechanic:reflect]s 30% of the damage inflicted to this hero back to the enemy.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_GreenKnight_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Trial of Chivalry",
+      "slug": "green-knight-trial-of-chivalry",
+      "skill_type": "Core",
+      "description": "Steals all [Buffs] from an enemy then has a 75% chance to place [mechanic:taunt] on the target for 3 turns which cannot be blocked or removed. Also place [mechanic:retaliate] for 3 turns on this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_GreenKnight_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Taunt",
+        "Retaliate"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "When [Taunt] expires on an enemy, attack the target using Curse of Gawain. Will not put Curse of Gawain on cooldown."
+    },
+    {
+      "name": "Great Cleave",
+      "slug": "green-knight-great-cleave",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy . Inflicts 50% of the damage dealt to enemies under [mechanic:taunt]. This attack is always normal hit and ignores the target's DEF.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_GreenKnight_Ultimate.webp",
+      "scaling_formula": "15%HP+90%ATK",
+      "effects": [],
+      "ultimate_cost": 1100,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Curse of Gawain",
+      "slug": "green-knight-curse-of-gawain",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 3 times. Before attacking, has a 75% chance to place [mechanic:drain-i] on the target for 3 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_GreenKnight_Basic.webp",
+      "scaling_formula": "3%HP+30%ATK",
+      "effects": [
+        "Drain I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "If the target is defeated, increase this Hero’s Max HP by 10%."
+    }
+  ],
+  "imprint_passive": "Reflects 15% of the damage inflicted to this hero back to the enemy."
+}

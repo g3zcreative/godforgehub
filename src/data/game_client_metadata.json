@@ -1,0 +1,438 @@
+{
+  "scavenged_at": "2026-06-09T22:06:14.552281",
+  "version_info": {
+    "active_version_dir": "p38bdtfa6c",
+    "dir_path": "C:\\Users\\chris\\AppData\\Local\\godforge\\games\\p38bdtfa6c",
+    "name": "Generate by cli 2026-05-29 15:01:26",
+    "executable": "Godforge.exe",
+    "access_code": "HFocFtjkgPFbhO",
+    "prefs_path": "C:\\Users\\chris\\AppData\\Local\\godforge\\prefs.json"
+  },
+  "launcher_logs": {
+    "file": "launcher_log_2026-06-09.log",
+    "last_modified": "2026-06-09T19:18:06.351482",
+    "notable_events": [
+      {
+        "time": "2026-06-09T19:17:56.6213907-04:00",
+        "level": "INFO",
+        "msg": "=== DOWNLOAD PROCESS STARTED ===",
+        "details": {}
+      },
+      {
+        "time": "2026-06-09T19:17:56.937279-04:00",
+        "level": "INFO",
+        "msg": "artifact download started.",
+        "details": {}
+      },
+      {
+        "time": "2026-06-09T19:17:56.937279-04:00",
+        "level": "INFO",
+        "msg": "PATCH STEP 1: checking disk space for patch download",
+        "details": {}
+      },
+      {
+        "time": "2026-06-09T19:17:57.3652794-04:00",
+        "level": "INFO",
+        "msg": "PATCH STEP 1: starting fresh patch file download",
+        "details": {
+          "patch_file": "C:\\Users\\chris\\AppData\\Local\\godforge\\games\\.temp\\patch_6ac0bd19-f3ae-4c2c-b4a5-ce25cbf4307f.pwr",
+          "patch_size_bytes": 64619541
+        }
+      },
+      {
+        "time": "2026-06-09T19:17:59.1275787-04:00",
+        "level": "INFO",
+        "msg": "PATCH STEP 1: patch file download completed successfully",
+        "details": {}
+      },
+      {
+        "time": "2026-06-09T19:17:59.1275787-04:00",
+        "level": "INFO",
+        "msg": "PATCH STEP 2: starting patch application",
+        "details": {}
+      },
+      {
+        "time": "2026-06-09T19:18:03.8333172-04:00",
+        "level": "INFO",
+        "msg": "PATCH STEP 2: patch application completed successfully",
+        "details": {
+          "destination_dir": "C:\\Users\\chris\\AppData\\Local\\godforge\\games\\p38bdtfa6c"
+        }
+      },
+      {
+        "time": "2026-06-09T19:18:03.8338166-04:00",
+        "level": "INFO",
+        "msg": "=== PATCH DOWNLOAD PROCESS COMPLETED SUCCESSFULLY ===",
+        "details": {
+          "final_artifact_id": "6ac0bd19-f3ae-4c2c-b4a5-ce25cbf4307f",
+          "final_artifact_dir": "C:\\Users\\chris\\AppData\\Local\\godforge\\games\\p38bdtfa6c"
+        }
+      },
+      {
+        "time": "2026-06-09T19:18:04.3428305-04:00",
+        "level": "INFO",
+        "msg": "=== DOWNLOAD PROCESS COMPLETED SUCCESSFULLY ===",
+        "details": {
+          "final_artifact_id": "6ac0bd19-f3ae-4c2c-b4a5-ce25cbf4307f",
+          "final_artifact_name": "Generate by cli 2026-05-29 15:01:26",
+          "final_artifact_dir": "C:\\Users\\chris\\AppData\\Local\\godforge\\games\\p38bdtfa6c",
+          "final_executable": "Godforge.exe"
+        }
+      }
+    ]
+  },
+  "shared_game_config": {
+    "file_size": 701211,
+    "total_subfiles": 58,
+    "files": [
+      {
+        "name": "AbilitiesData.mpc",
+        "flag": 1,
+        "size_bytes": 210733,
+        "hash": "983abc6f3c570639e244760b3f7a719a"
+      },
+      {
+        "name": "7-:AbilityUpgradeCostsConfig.mpc",
+        "flag": 1,
+        "size_bytes": 229,
+        "hash": "640fd31608af75ce208e9192c1cb973f"
+      },
+      {
+        "name": "2AccountExperienceData.mpc",
+        "flag": 1,
+        "size_bytes": 294,
+        "hash": "8daf3e20f7cd267b76266ba185801b77"
+      },
+      {
+        "name": "AdminGroupConfig.mpc",
+        "flag": 0,
+        "size_bytes": 50,
+        "hash": "94a21192804df9e2ed9e9c26d4c212eb"
+      },
+      {
+        "name": "2(ArmorCostsConfig.mpc",
+        "flag": 1,
+        "size_bytes": 702,
+        "hash": "92c8c857936f6b368d45c5f66bc07d31"
+      },
+      {
+        "name": "ArmorSetData.mpc",
+        "flag": 1,
+        "size_bytes": 2569,
+        "hash": "4c9e7ad9953154b2bd641997e1548c4e"
+      },
+      {
+        "name": "2ArmorStatTablesConfig.mpc",
+        "flag": 1,
+        "size_bytes": 2300,
+        "hash": "a5689bb9248dd38be6a22b93aa87cfc1"
+      },
+      {
+        "name": "0AscensionCostsConfig.mpc",
+        "flag": 1,
+        "size_bytes": 191,
+        "hash": "f417591b7210042fa6dd95edd94e942f"
+      },
+      {
+        "name": "0AwakeningCostsConfig.mpc",
+        "flag": 1,
+        "size_bytes": 43,
+        "hash": "b14db38115d7391008efd39854db3837"
+      },
+      {
+        "name": "BoostConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 253,
+        "hash": "4bdff097c30a1255569bd037cc214cca"
+      },
+      {
+        "name": "CampaignData.mpc",
+        "flag": 1,
+        "size_bytes": 1463,
+        "hash": "f2b774554bf41b8f0d077e52c6a61481"
+      },
+      {
+        "name": "6CampaignProgressionData.mpc",
+        "flag": 1,
+        "size_bytes": 676,
+        "hash": "d2c466a1418f3fa8eccdc3fb6728fb80"
+      },
+      {
+        "name": "Chapters.mpc",
+        "flag": 1,
+        "size_bytes": 22746,
+        "hash": "4550354b786a5dc979f2c21e283aabe8"
+      },
+      {
+        "name": "BCharacterStatsProgressionData.mpc",
+        "flag": 1,
+        "size_bytes": 77,
+        "hash": "013934f9e4a846610355b6a577d2622d"
+      },
+      {
+        "name": "M$CharactersData.mpc",
+        "flag": 1,
+        "size_bytes": 61084,
+        "hash": "2380a8fc535043bc3499414f6237ee35"
+      },
+      {
+        "name": "CombatConstants.mpc",
+        "flag": 1,
+        "size_bytes": 200,
+        "hash": "8beac6584abc988c97354a67f7032978"
+      },
+      {
+        "name": "CosmeticConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 1692,
+        "hash": "587cb7649f5df4202cbe26f2ea1cf637"
+      },
+      {
+        "name": "DefaultCosmeticConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 253,
+        "hash": "8363c29ca60aca6307c6a9e41d436fb2"
+      },
+      {
+        "name": "DraftGameConfig.mpc",
+        "flag": 0,
+        "size_bytes": 19,
+        "hash": "48c85f64c044a3d1c893aada918718e3"
+      },
+      {
+        "name": "EnergyConfig.mpc",
+        "flag": 0,
+        "size_bytes": 33,
+        "hash": "372fe3a1eafa745e1f12bfaf8f0c04a8"
+      },
+      {
+        "name": "2ExtractionCostsConfig.mpc",
+        "flag": 0,
+        "size_bytes": 31,
+        "hash": "194d27127980f2d9e1595a680affda8e"
+      },
+      {
+        "name": "FeatureUnlockData.mpc",
+        "flag": 1,
+        "size_bytes": 79,
+        "hash": "3198da0d305f5b005b1628607c700ac3"
+      },
+      {
+        "name": "Global.mpc",
+        "flag": 0,
+        "size_bytes": 30,
+        "hash": "c8d406ca835ff7bd94a9258da582c5b0"
+      },
+      {
+        "name": "$GodForgingData.mpc",
+        "flag": 1,
+        "size_bytes": 402,
+        "hash": "e4ffbe2c6d153f915d38bd6714d465fd"
+      },
+      {
+        "name": "HeroDestructionCostsConfig.mpc",
+        "flag": 1,
+        "size_bytes": 477,
+        "hash": "c2bc6ee6745d27648db224ef3b5d7a2f"
+      },
+      {
+        "name": "8HeroPromotionCostsConfig.mpc",
+        "flag": 1,
+        "size_bytes": 471,
+        "hash": "74904b3e69c8728be26134bf96b1d166"
+      },
+      {
+        "name": "InAppProducts.mpc",
+        "flag": 1,
+        "size_bytes": 1386,
+        "hash": "411f900d4f0e75b421d5d74dbcdc46ec"
+      },
+      {
+        "name": "Languages.mpc",
+        "flag": 1,
+        "size_bytes": 80,
+        "hash": "f26b9f9cfc3568688eec661c1848045a"
+      },
+      {
+        "name": "Levels.mpc",
+        "flag": 1,
+        "size_bytes": 138767,
+        "hash": "afddc230552b281aabe39d96ee2481db"
+      },
+      {
+        "name": "LoginCalendarData.mpc",
+        "flag": 1,
+        "size_bytes": 8289,
+        "hash": "d60c2590a57fb28c31bef5d1a610d941"
+      },
+      {
+        "name": "a$LootTablesData.mpc",
+        "flag": 1,
+        "size_bytes": 40413,
+        "hash": "e1f768edef87b2d6b4522b0d96d4b99f"
+      },
+      {
+        "name": "MaterialConversionCostsData.mpc",
+        "flag": 1,
+        "size_bytes": 74,
+        "hash": "8a621c1f090592e63a206ccbcf07a0ef"
+      },
+      {
+        "name": "J4NotificationConfigData.mpc",
+        "flag": 0,
+        "size_bytes": 148,
+        "hash": "a4d33e3244bb6e162824b508b4a2628a"
+      },
+      {
+        "name": "OfferGroups.mpc",
+        "flag": 1,
+        "size_bytes": 1646,
+        "hash": "6bfb21fb25cfb0476418d86bbd0a3188"
+      },
+      {
+        "name": "Offers.mpc",
+        "flag": 1,
+        "size_bytes": 7857,
+        "hash": "584e732cdfb97e05aa4ce6b85e46b1f8"
+      },
+      {
+        "name": "4PantheonBossConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 686,
+        "hash": "16277a3f8b5db77f52f3f47624cb879a"
+      },
+      {
+        "name": "PantheonConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 647,
+        "hash": "433504064904ed1aa1103806447eec2e"
+      },
+      {
+        "name": "PantheonQuestsData.mpc",
+        "flag": 1,
+        "size_bytes": 1715,
+        "hash": "4912614f1cecbea78dda4207e767c794"
+      },
+      {
+        "name": "PlayTimeQuestsData.mpc",
+        "flag": 1,
+        "size_bytes": 357,
+        "hash": "37dac65a08dcbd76af1bd9b8541acbb3"
+      },
+      {
+        "name": "e.ProgressMissionData.mpc",
+        "flag": 1,
+        "size_bytes": 8862,
+        "hash": "bc558a4f5e34732154015b809642d34c"
+      },
+      {
+        "name": "0ProgressionOfferData.mpc",
+        "flag": 1,
+        "size_bytes": 2018,
+        "hash": "4510336ff4c4bb3bfd34d20ad16d0307"
+      },
+      {
+        "name": "2ProgressionRewardData.mpc",
+        "flag": 1,
+        "size_bytes": 456,
+        "hash": "b248d17c390e0c81b6d0d1db974d71c7"
+      },
+      {
+        "name": "PvPAsyncConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 571,
+        "hash": "db2604c1172bbc8bd35767c1e0c8342d"
+      },
+      {
+        "name": "Quests.mpc",
+        "flag": 1,
+        "size_bytes": 92837,
+        "hash": "2ecc64e92cd250fdf9649113cc7b0ff3"
+      },
+      {
+        "name": "8RecurringQuestConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 982,
+        "hash": "2b1abdb19bf306e34e0e1f8bdcede316"
+      },
+      {
+        "name": "RecurringQuestsData.mpc",
+        "flag": 1,
+        "size_bytes": 692,
+        "hash": "531dbc6a3699c74e96ea04d84baf84e3"
+      },
+      {
+        "name": "$RiftConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 4295,
+        "hash": "87466460370ee247c6e78809a04528b4"
+      },
+      {
+        "name": "2StarRewardsQuestsData.mpc",
+        "flag": 1,
+        "size_bytes": 53717,
+        "hash": "58efd9bd92c22940fcda3e28359b0797"
+      },
+      {
+        "name": "StatusEffectData.mpc",
+        "flag": 1,
+        "size_bytes": 17370,
+        "hash": "1c11f7b43985cb9177a1f1a337c878dc"
+      },
+      {
+        "name": "StoreConfigData.mpc",
+        "flag": 1,
+        "size_bytes": 160,
+        "hash": "6d6f025f6b71d14d6392f8e1d3676b35"
+      },
+      {
+        "name": "SubscriptionsData.mpc",
+        "flag": 1,
+        "size_bytes": 430,
+        "hash": "8be4ea0624c7941aff8e8100fe23b4ee"
+      },
+      {
+        "name": "TowerStrifeEventTimeConfig.mpc",
+        "flag": 1,
+        "size_bytes": 267,
+        "hash": "7976377b76840930824e402074ce55a9"
+      },
+      {
+        "name": "TowerStrifeEvents.mpc",
+        "flag": 1,
+        "size_bytes": 175,
+        "hash": "84a0710e5bfeafdd7b2aa44f6cf55d56"
+      },
+      {
+        "name": "TowerStrifeRotationEvents.mpc",
+        "flag": 1,
+        "size_bytes": 181,
+        "hash": "f181a8d874706d222087c8e17ffb92a5"
+      },
+      {
+        "name": "6TowerStrifeSummonEvents.mpc",
+        "flag": 1,
+        "size_bytes": 393,
+        "hash": "ddfd4517a3a6859b95edb44b734051d5"
+      },
+      {
+        "name": "WeaponForgeConfig.mpc",
+        "flag": 1,
+        "size_bytes": 99,
+        "hash": "e7bf51776d8ea0b271527767f7959c1d"
+      },
+      {
+        "name": "c6WeaponProgressionConfig.mpc",
+        "flag": 1,
+        "size_bytes": 1864,
+        "hash": "55f77e29c13b14433b3db86fb883d899"
+      },
+      {
+        "name": "WeaponsData.mpc",
+        "flag": 1,
+        "size_bytes": 3951,
+        "hash": "805ef10e7f13cb1fe934a62ca7b4f5d6"
+      }
+    ]
+  }
+}

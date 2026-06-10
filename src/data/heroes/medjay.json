@@ -1,0 +1,90 @@
+{
+  "id": "39016134-014f-4795-b090-c9e19ab2e7b6",
+  "name": "Medjay",
+  "subtitle": "Desert Nomad",
+  "slug": "medjay",
+  "rarity": 1,
+  "description": "Protect and Shield your allies from harm.",
+  "lore": "While initially referring to a specific ethnic group, “Medjay” has become the designation of multiple tribes of desert nomads who practice potent martial techniques. They patrol the borders and protect areas of import such as temples, palaces, and tombs. Those who invade Aaru can expect to find their scouts slain, their supplies destroyed, and their flanks bloodied by these desert rangers.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/efd7a5f1-4ce5-4911-8a50-eed63374fd91.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 8754,
+    "acc": 0,
+    "atk": 363,
+    "def": 595,
+    "res": 10,
+    "spd": 67,
+    "init": 62,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [10] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Aaru",
+  "archetype": "Defender",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Sandstorm Fury",
+      "slug": "medjay-sandstorm-fury",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (180%DEF+80%ATK) then place [Protect I] on a random ally for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Medjay_Basic.webp",
+      "scaling_formula": "180%DEF+80%ATK",
+      "effects": [
+        "Protect I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Desert Shroud",
+      "slug": "medjay-desert-shroud",
+      "skill_type": "Ultimate",
+      "description": "Place [Shield] 150%DEF on all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Medjay_Ultimate.webp",
+      "scaling_formula": "150%DEF",
+      "effects": [
+        "Shield"
+      ],
+      "ultimate_cost": 800,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

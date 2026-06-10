@@ -1,0 +1,144 @@
+{
+  "id": "f480958f-7786-43e0-9723-4b7259759f44",
+  "name": "Shinigami",
+  "subtitle": "Shadow Reaper",
+  "slug": "shinigami",
+  "rarity": 3,
+  "description": "Bring your foes to the afterlife as you Curse and Drain their lifeforce.",
+  "lore": "Terrifying kami of Izumo, the shinigami are considered spirits by some, gods by others. As literal manifestations of the death urge, shinigami call mortals to the underworld of Yomi. Some are content merely guiding those who seek death—whether self-inflicted or in the pursuit of some cause—but others possess the living and influence their victims to take their own lives.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/f480958f-7786-43e0-9723-4b7259759f44.webp",
+  "image_zoom": 3,
+  "image_focal_x": 89,
+  "image_focal_y": 19,
+  "stats": {
+    "hp": 12388,
+    "acc": 15,
+    "atk": 1002,
+    "def": 716,
+    "res": 15,
+    "spd": 87,
+    "init": 91,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [80] Divinity when an enemy is defeated.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Mortal Reminder"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Slayer",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Soul Cleave",
+      "slug": "shinigami-soul-cleave",
+      "skill_type": "Core",
+      "description": "Attack all enemies 2 times. Each hit has a 50% chance to place [mechanic:def-down-i] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shinigami_Core.webp",
+      "scaling_formula": "155%ATK",
+      "effects": [
+        "DEF Down I",
+        "Hex I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Mortal Reminder",
+      "slug": "shinigami-mortal-reminder",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Each hit has a 40% chance to destroy MAX HP by 5% of the damage inflicted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shinigami_Basic.webp",
+      "scaling_formula": "160%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also has a 40% chance to steal 1 random [Buff], will always steal [Phoenix]."
+    },
+    {
+      "name": "Custodial Reaper",
+      "slug": "shinigami-custodial-reaper",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy with a 75% chance to place [mechanic:curse-i] and [mechanic:drain-i] on the target for 2 turns.\n\nIncreases the damage inflicted by 3% for each [Debuff] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shinigami_Ultimate.webp",
+      "scaling_formula": "385%ATK",
+      "effects": [
+        "Curse I",
+        "Drain I"
+      ],
+      "ultimate_cost": 700,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Afterlife Calls",
+      "slug": "shinigami-afterlife-calls",
+      "skill_type": "Passive",
+      "description": "Instantly defeat an enemy if they have less than 10% HP after attacking them.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shinigami_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Banish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Instantly defeat an enemy if they have less than 5% HP after attacking them."
+}

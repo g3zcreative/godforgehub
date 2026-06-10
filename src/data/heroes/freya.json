@@ -1,0 +1,142 @@
+{
+  "id": "998d8cf7-3038-42c6-9380-9528e5b4761b",
+  "name": "Freya",
+  "subtitle": "Mistress of Fólkvangr",
+  "slug": "freya",
+  "rarity": 5,
+  "description": "Full Hero Information▶",
+  "lore": "Goddess of love, fertility, and war, Freya often rides with the Valkyrie and stands among Asgard’s most revered deities. She is also among their busiest, as her duties and obligations have vastly expanded since the Shattering—especially as she, along with the goddess Frigg, struggle to govern the realm in the face of Odin’s growing preoccupation and ever-increasing absences.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/998d8cf7-3038-42c6-9380-9528e5b4761b.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 21142,
+    "acc": 15,
+    "atk": 881,
+    "def": 1090,
+    "res": 45,
+    "spd": 119,
+    "init": 101,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% CDMG",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when healing an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Love and War"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +20%, Heal Multiplier +30%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Valkyrie of Fólkvangr"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Vanir’s Grace"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Valkyrie of Fólkvangr",
+      "slug": "freya-valkyrie-of-f-lkvangr",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:atk-up-ii] and [mechanic:sharpen-ii] on all allies for 2 turns then Attack 1 enemy (250%ATK+500%INIT) then attack all enemies (250%ATK+500%INIT). Increase the ATK and CDMG of each ally by 10% (up to 5 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Freya_Ultimate.webp",
+      "scaling_formula": "250%ATK+500%INIT",
+      "effects": [
+        "ATK Up II",
+        "Sharpen II",
+        "Phoenix"
+      ],
+      "ultimate_cost": 1600,
+      "initial_divinity": 325,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [Phoenix] on all allies below 50% HP for 2 turns"
+    },
+    {
+      "name": "Love and War",
+      "slug": "freya-love-and-war",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (175%ATK+300%INIT). Place [mechanic:mend] on the ally with the lowest HP for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Freya_Basic.webp",
+      "scaling_formula": "175%ATK+300%INIT",
+      "effects": [
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "If the ally is below 50% HP, place an additional [Mend] for 2 turns."
+    },
+    {
+      "name": "Vanir’s Grace",
+      "slug": "freya-vanir-s-grace",
+      "skill_type": "Passive",
+      "description": "When an ally inflicts a critical hit, Heal 1200%INIT the ally.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Freya_Passive.webp",
+      "scaling_formula": "1200%INIT",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If the ally is at full Health, Inflict the heal as Damage to the enemy. This cannot critical or strong hit and ignores 50% of the target’s DEF."
+    },
+    {
+      "name": "Edict of the Vanir",
+      "slug": "freya-edict-of-the-vanir",
+      "skill_type": "Core",
+      "description": "Equalize 1 ally’s Turn Meter equal to the enemy with the Highest Turn Meter then increase the Turn Meter of all allies by 20%. Also permanently increase this Hero’s Healing by 5% (up to 4 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Freya_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When this hero inflicts a critical hit, Heal 1200%INIT this hero."
+}

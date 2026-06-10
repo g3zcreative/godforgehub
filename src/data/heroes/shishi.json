@@ -1,0 +1,142 @@
+{
+  "id": "ecb19782-6144-4032-94b8-c45a8c896a89",
+  "name": "Shishi",
+  "subtitle": "Jade Protector",
+  "slug": "shishi",
+  "rarity": 3,
+  "description": "Protect the kingdom from invaders as you charge into battle with your allies by your side.",
+  "lore": "The shishi are great lions, sculpted of stone or metal, and granted life to serve as guardians of temples, shrines, and other holy sites. They possess intelligence and will far greater than the beasts they were made to resemble. Shishi have spread since the Shattering, as some now consider all Tian holy—or at least, significant enough to defend against outsiders.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ecb19782-6144-4032-94b8-c45a8c896a89.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 0,
+  "image_focal_y": 7,
+  "stats": {
+    "hp": 15196,
+    "acc": 10,
+    "atk": 595,
+    "def": 958,
+    "res": 50,
+    "spd": 86,
+    "init": 85,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "15% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Steadfast"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Guardian’s Roar",
+      "slug": "shishi-guardian-s-roar",
+      "skill_type": "Ultimate",
+      "description": "Place 150%DEF on all allies, then reduce this hero’s Core Ability cooldown by 1 turn. Also place [mechanic:taunt] on enemy Slayer's for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shishi_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Taunt"
+      ],
+      "ultimate_cost": 1300,
+      "initial_divinity": 400,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Watchful Pride",
+      "slug": "shishi-watchful-pride",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (320%DEF+80%ATK) and place [Protect] on all allies except this hero for 2 turns. Ally Defender's will join the attack using their Basic Ability.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shishi_Core.webp",
+      "scaling_formula": "320%DEF+80%ATK",
+      "effects": [
+        "Protect I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Jade Protector",
+      "slug": "shishi-jade-protector",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (280%DEF+70%ATK) with a 50% chance to place [mechanic:atk-down-i] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shishi_Basic.webp",
+      "scaling_formula": "280%DEF+70%ATK",
+      "effects": [
+        "ATK Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Steadfast",
+      "slug": "shishi-steadfast",
+      "skill_type": "Passive",
+      "description": "Heal 5%MAXHP an ally when an enemy places a [Debuff] on them.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shishi_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Place Barrier for 50%DEF on this hero when an enemy places a [Debuff] on them."
+    }
+  ],
+  "imprint_passive": "Heal 5%MAXHP this hero when an enemy places a [Debuff] on them."
+}

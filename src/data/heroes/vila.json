@@ -1,0 +1,125 @@
+{
+  "id": "ad8826d5-e141-4b04-8012-6e8c1eb2d055",
+  "name": "Vila",
+  "subtitle": "Woodland Fairy",
+  "slug": "vila",
+  "rarity": 2,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Fairy-like spirits, the vila dwell in the wilds of Vyraj, and prove capricious in their attitudes toward mortals. They enjoy hunting, whether in their natural form or in animal shapes, and are skilled with bow and arrow. The vila take offense at incursions from other Realms, and so form a vital front in Vyraj’s protection—even if they don’t really mean to.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ad8826d5-e141-4b04-8012-6e8c1eb2d055.webp",
+  "image_zoom": 2.8,
+  "image_focal_x": 19,
+  "image_focal_y": 8,
+  "stats": {
+    "hp": 10076,
+    "acc": 5,
+    "atk": 815,
+    "def": 584,
+    "res": 10,
+    "spd": 80,
+    "init": 77,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF to all allies.",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Divinity Generation +10%"
+    },
+    {
+      "tier": 5,
+      "bonus": "DEF +5%"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Slayer",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Ritual of Youth",
+      "slug": "vila-ritual-of-youth",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy with a 50% chance to place [mechanic:def-down-ii] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vila_Ultimate.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [
+        "DEF Down II"
+      ],
+      "ultimate_cost": 950,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Fae Arrow",
+      "slug": "vila-fae-arrow",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy. If the target is defeated, gain an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vila_Core.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Wilderness Volley",
+      "slug": "vila-wilderness-volley",
+      "skill_type": "Basic",
+      "description": "Attack all enemies. Each Critical hit increase this hero’s Divinity by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vila_Basic.webp",
+      "scaling_formula": "250%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

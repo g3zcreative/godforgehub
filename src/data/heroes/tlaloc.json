@@ -1,0 +1,141 @@
+{
+  "id": "b566c46b-426d-4b44-8dfd-cddc532a3aa2",
+  "name": "Tlaloc",
+  "subtitle": "Rain-Maker",
+  "slug": "tlaloc",
+  "rarity": 5,
+  "description": "Bring the storms of the sea to the battle and cast Ricochet bolts of energy to all enemies.",
+  "lore": "One of Omeyocan’s eldest gods, the Rain-Maker has long worked to influence the natural and cosmic cycles. He wishes to more freely grant his blessings to mortals, and despite his own temper and need for blood sacrifice, he disdains those who revel in the tumult of Ryven. He collaborates with other servants of Order to calm the chaos of the post-Shattering world.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/b566c46b-426d-4b44-8dfd-cddc532a3aa2.webp",
+  "image_zoom": 3,
+  "image_focal_x": 86,
+  "image_focal_y": 33,
+  "stats": {
+    "hp": 17674,
+    "acc": 35,
+    "atk": 1288,
+    "def": 991,
+    "res": 30,
+    "spd": 103,
+    "init": 103,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "35% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting a critical hit.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +20"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Typhoon Cycle"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Ignore DEF +10%, Strong Hit Chance Multiplier +15%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Revered Harbinger"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Static Torrent"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Slayer",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Ceremonial Spear",
+      "slug": "tlaloc-ceremonial-spear",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy. Each hit ignores 5% of the target’s DEF, which is doubled if the target is under [mechanic:hex-ii].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tlaloc_Basic.webp",
+      "scaling_formula": "155%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Typhoon Cycle",
+      "slug": "tlaloc-typhoon-cycle",
+      "skill_type": "Core",
+      "description": "Attack all enemies. Has a 80% chance to place [mechanic:hex-ii] on each target for 2 turns. Also place 2 stacks of [mechanic:banish] on enemies defeated by this ability.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tlaloc_Core.webp",
+      "scaling_formula": "425%ATK",
+      "effects": [
+        "ACC Up II",
+        "Immortal",
+        "Hex II",
+        "Banish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Place [ACC Up II] and [Immortal] for 2 turns on this hero before attacking."
+    },
+    {
+      "name": "Revered Harbinger",
+      "slug": "tlaloc-revered-harbinger",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies. Each enemy hit will also [mechanic:ricochet] to a random enemy inflicting damage and increasing the target’s Divinity Cost by 3%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tlaloc_Ultimate.webp",
+      "scaling_formula": "345%ATK",
+      "effects": [],
+      "ultimate_cost": 1550,
+      "initial_divinity": 350,
+      "awakening_level": 3,
+      "awakening_bonus": "Also increase this hero’s ATK 2% (Max 25 Stacks) for successful [Ricochet]."
+    },
+    {
+      "name": "Static Torrent",
+      "slug": "tlaloc-static-torrent",
+      "skill_type": "Passive",
+      "description": "Each hit from this hero has a 50% chance to inflict additional damage to a random enemy.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tlaloc_Passive.webp",
+      "scaling_formula": "100%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Enemies under [Hex] will always receive the extra damage."
+    }
+  ],
+  "imprint_passive": "Each hit from this hero has a 25% chance to inflict extra damage to a random enemy for 10% of the damage inflicted."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "e9d60c89-a0bf-4f61-87bd-bc736c7b5cd3",
+  "name": "Hoplite",
+  "subtitle": "Phalanx Warrior",
+  "slug": "hoplite",
+  "rarity": 1,
+  "description": "Pierce single enemies inflicting heavy Bleeds.",
+  "lore": "With spear and shield and crested helm, the hoplite is a common sight on the battlefields of Olympus. These citizen-soldiers, drawn from families wealthy enough to afford the best equipment and training, serve as the backbone of the Realm’s military. In the world before, most hoplites served only in times of need, but since the Shattering, many more have become full-time soldiers.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/7774e802-0c0c-41ad-9875-aad7044fa559.webp",
+  "image_zoom": 3,
+  "image_focal_x": 79,
+  "image_focal_y": 16,
+  "stats": {
+    "hp": 7598,
+    "acc": 0,
+    "atk": 606,
+    "def": 462,
+    "res": 0,
+    "spd": 72,
+    "init": 70,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Olympus",
+  "archetype": "Slayer",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Phalanx Thrust",
+      "slug": "hoplite-phalanx-thrust",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 220%ATK. Has a 10% chance to place 1[Bleed].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hoplite_Basic.webp",
+      "scaling_formula": "220%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "No Surrender",
+      "slug": "hoplite-no-surrender",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 400%ATK. Heals by 30% of the damage from the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hoplite_Ultimate.webp",
+      "scaling_formula": "400%ATK",
+      "effects": [],
+      "ultimate_cost": 600,
+      "initial_divinity": 50,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

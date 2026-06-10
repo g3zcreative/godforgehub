@@ -1,0 +1,252 @@
+[
+  {
+    "id": "a3c43797-a273-410a-bebd-cd4d812c74ad",
+    "name": "Avenger",
+    "slug": "avenger",
+    "description": null,
+    "set_bonus": "2-Piece: Heal +15% of damage inflicted when attacking. 4-Piece: Grants +25% chance to counterattack. 6-Piece: Increases damage when counter-attacking by 50%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/5316cbd8-d2f6-41a6-8159-7d7cd99e1078.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:51:09.982793+00:00"
+  },
+  {
+    "id": "04fc5313-2288-46f0-8e6c-11f5297e4b8a",
+    "name": "Bear",
+    "slug": "bear",
+    "description": null,
+    "set_bonus": "2-Piece: DEF +1% on each turn (max 15 stacks). 4-Piece: DEF +30%. 6-Piece: Grants a 15% chance to block attack damage.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/bear.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:11.078885+00:00"
+  },
+  {
+    "id": "1e2c236e-425a-4855-85d5-25c2d208e101",
+    "name": "Body",
+    "slug": "body",
+    "description": null,
+    "set_bonus": "2-Piece: Increase basic ability damage 15%. 4-Piece: Heal all allies 25% of damage inflicted with basic ability. 6-Piece: Grants 15% chance to gain an extra turn after basic ability.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/body.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:11.65399+00:00"
+  },
+  {
+    "id": "525d1829-562d-4ce5-be65-f528c7812607",
+    "name": "Brawler",
+    "slug": "brawler",
+    "description": null,
+    "set_bonus": "2-Piece: HP +15%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/brawler.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:12.144106+00:00"
+  },
+  {
+    "id": "7569eb11-9891-4985-b88d-4865c1bc0d74",
+    "name": "Claw",
+    "slug": "claw",
+    "description": null,
+    "set_bonus": "2-Piece: CRIT% +10%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/claw.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:12.662175+00:00"
+  },
+  {
+    "id": "80a9147b-c8b6-4963-bf77-d1ee813c1590",
+    "name": "Colossus",
+    "slug": "colossus",
+    "description": null,
+    "set_bonus": "2-Piece: Reduce damage from strong hits +15%. 4-Piece: Gain [Ward] for 1 turn at the start of each wave. 6-Piece: Increase chance to be weak hit +10%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/colossus.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:13.151295+00:00"
+  },
+  {
+    "id": "db24732b-a901-499d-8b3c-212ee8b86d3b",
+    "name": "Defender",
+    "slug": "defender",
+    "description": null,
+    "set_bonus": "2-Piece: DEF +15%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/defender.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:13.666232+00:00"
+  },
+  {
+    "id": "b9044c86-a2da-448e-bebb-feb4b3ea62d3",
+    "name": "Disruptor",
+    "slug": "disruptor",
+    "description": null,
+    "set_bonus": "2-Piece: ACC +25.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/disruptor.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:14.354834+00:00"
+  },
+  {
+    "id": "7ba1efd5-a26d-4e83-9730-375a259e0bea",
+    "name": "Dragon",
+    "slug": "dragon",
+    "description": null,
+    "set_bonus": "2-Piece: RES +1% on each turn (max 15 stacks). 4-Piece: RES +50. 6-Piece: Grants a 30% chance to reflect a blocked or resisted [Debuff] or [Disable].",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/dragon.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:14.825265+00:00"
+  },
+  {
+    "id": "470d7d77-a790-4738-8489-2809dbd9fb13",
+    "name": "Duelist",
+    "slug": "duelist",
+    "description": null,
+    "set_bonus": "2-Piece: Decrease damage received from basic ability attacks 20%. 4-Piece: Grants 20% chance to apply [Taunt] for 1 turn when attacking. 6-Piece: Heal (10%HP) when attacked.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/duelist.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:15.457585+00:00"
+  },
+  {
+    "id": "bf4b3d75-ba7b-4586-a0e5-536e0ba3333f",
+    "name": "Eagle",
+    "slug": "eagle",
+    "description": null,
+    "set_bonus": "2-Piece: INIT +15%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/eagle.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:15.957852+00:00"
+  },
+  {
+    "id": "66b70400-7be8-4fc6-9184-a14ae7a8a067",
+    "name": "Falcon",
+    "slug": "falcon",
+    "description": null,
+    "set_bonus": "2-Piece: SPD +15%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/falcon.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:16.381024+00:00"
+  },
+  {
+    "id": "43abb414-4aad-4700-8b4e-3921d4b5d444",
+    "name": "Guardian",
+    "slug": "guardian",
+    "description": null,
+    "set_bonus": "2-Piece: Redirects 5% of damage inflicted on allies. 4-Piece: Place [Intercept] for 2 turns on the ally with the lowest HP at the start of each wave. 6-Piece: Reduces damage from ally redirection +30%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/guardian.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:16.854653+00:00"
+  },
+  {
+    "id": "7006daa4-8c63-469d-82e1-c77ce1fe1a11",
+    "name": "Invoker",
+    "slug": "invoker",
+    "description": null,
+    "set_bonus": "2-Piece: RES +25.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/invoker.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:17.333251+00:00"
+  },
+  {
+    "id": "c6d0bad3-459b-423a-9027-5d7abfe71b4b",
+    "name": "Jaguar",
+    "slug": "jaguar",
+    "description": null,
+    "set_bonus": "2-Piece: CDMG% +15%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/jaguar.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:17.811038+00:00"
+  },
+  {
+    "id": "ba8ba4f6-814f-4542-b615-c6acdb116a65",
+    "name": "Kraken",
+    "slug": "kraken",
+    "description": null,
+    "set_bonus": "2-Piece: HP +1% on each turn (max 15 stacks). 4-Piece: HP +30%. 6-Piece: Reduce damage from attacks +15%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/kraken.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:18.238048+00:00"
+  },
+  {
+    "id": "828c4458-efa8-440b-a619-de3a6f3e82d7",
+    "name": "Parasite",
+    "slug": "parasite",
+    "description": null,
+    "set_bonus": "2-Piece: Heal (5%HP) when placing a [Debuff] on an enemy. 4-Piece: Grants 25% chance to place [Corrupt] for 1 turn when attacked. 6-Piece: Increases Divinity 5% after placing a [Debuff].",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/parasite.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:18.904659+00:00"
+  },
+  {
+    "id": "e79ca669-a6fc-4464-b928-50d27548c489",
+    "name": "Raven",
+    "slug": "raven",
+    "description": null,
+    "set_bonus": "2-Piece: ACC +1% on each turn (max 15 stacks). 4-Piece: ACC +50. 6-Piece: Increase [Debuff] placement chance 10%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/raven.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:19.924062+00:00"
+  },
+  {
+    "id": "61b85a96-819e-4c8e-b0c0-72b00383efbf",
+    "name": "Razor",
+    "slug": "razor",
+    "description": null,
+    "set_bonus": "2-Piece: Inflict 10% increased damage to enemies under a [Debuff]. 4-Piece: Grants 25% chance to place 1 stack of [Bleed] when attacked. 6-Piece: Increase turn meter 5% after placing a [Debuff].",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/razor.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:20.423903+00:00"
+  },
+  {
+    "id": "70bcf57f-f1e0-4fce-878f-2b70b33de6b0",
+    "name": "Shrine",
+    "slug": "shrine",
+    "description": null,
+    "set_bonus": "2-Piece: Increase healing provided 15%. 4-Piece: Heal (10%) at the start of turn. 6-Piece: Heal all allies 5% of their MaxHP at the start of turn.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/shrine.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:20.984984+00:00"
+  },
+  {
+    "id": "c9500fc5-07b7-4df9-bfdf-8f00f499b69c",
+    "name": "Slayer",
+    "slug": "slayer",
+    "description": null,
+    "set_bonus": "2-Piece: ATK +15%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/slayer.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:21.470247+00:00"
+  },
+  {
+    "id": "a870c4ca-ceea-402f-936b-e2dd61ba6eb8",
+    "name": "Soul",
+    "slug": "soul",
+    "description": null,
+    "set_bonus": "2-Piece: Increase Ultimate Ability Damage +15%. 4-Piece: Increase Divinity 10% after ultimate ability. 6-Piece: Reduce ultimate ability Divinity cost +15%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/soul.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:21.929485+00:00"
+  },
+  {
+    "id": "dd78c7c0-b05d-4799-b019-7dc0b3a7960d",
+    "name": "Specter",
+    "slug": "specter",
+    "description": null,
+    "set_bonus": "2-Piece: Reduce damage received from area attacks 15%. 4-Piece: Gain [Vanish] for 2 turns at the start of each wave. 6-Piece: Grants 25% chance to block effects from area abilities.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/specter.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:22.46114+00:00"
+  },
+  {
+    "id": "37560496-b43c-49bb-913a-667f27338b76",
+    "name": "Tremor",
+    "slug": "tremor",
+    "description": null,
+    "set_bonus": "2-Piece: Increase damage inflicted 15% to enemies under a [Disable]. 4-Piece: Grants 20% chance to place [Stun] for 1 turn when attacking. 6-Piece: Increase chance to place [Disables] 10%.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/tremor.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:23.011797+00:00"
+  },
+  {
+    "id": "277c69d2-6dbe-4df4-b64f-c381ea5c9044",
+    "name": "Wolf",
+    "slug": "wolf",
+    "description": null,
+    "set_bonus": "2-Piece: ATK +1% on each turn (max 15 stacks). 4-Piece: ATK +30%. 6-Piece: Attacks inflict +15% increased damage.",
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/armor-sets/wolf.webp",
+    "created_at": "2026-03-08T16:44:09.784991+00:00",
+    "updated_at": "2026-03-08T16:53:23.419003+00:00"
+  }
+]

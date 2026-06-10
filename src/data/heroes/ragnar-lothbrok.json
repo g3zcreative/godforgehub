@@ -1,0 +1,140 @@
+{
+  "id": "08ea64dd-8971-4287-9c9c-b18ebd376004",
+  "name": "Ragnar Lothbrok",
+  "subtitle": "Sire of Heroes",
+  "slug": "ragnar-lothbrok",
+  "rarity": 3,
+  "description": "Fight alongside Lagertha and cripple your foes Defence and Resolve with fearsome strikes.",
+  "lore": "Related to Sigurd via marriage to Aslaug, and father of many heroes with many wives, Ragnar is known foremost for his relations but was a powerful warrior and king in his own right. A kind leader to his soldiers but viciously cruel to enemies, he conducts raids on Asgard’s neighbors, determined to become best known for his own glory—regardless of consequences.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/a60caa93-4d81-4bdb-98e2-32bf598f6454.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 16848,
+    "acc": 15,
+    "atk": 738,
+    "def": 760,
+    "res": 30,
+    "spd": 84,
+    "init": 83,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "15%CDMG",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Nordic Onslaught"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Brawler",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Warlord of Midgard",
+      "slug": "ragnar-lothbrok-warlord-of-midgard",
+      "skill_type": "Passive",
+      "description": "Place 15%HP on this hero when their HP falls below 50%.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/b3746e7d-c255-4a20-90be-f3ea5964ca75.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Frenzied Slash",
+      "slug": "ragnar-lothbrok-frenzied-slash",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (4%HP+50%ATK)3 times. Each hit has a 15% chance to place [mechanic:blunt-i] on the target for 2 turns. If Lagertha is on the team, also joins the attack.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/13e902a0-94fc-4861-acd2-bc1ba32b7a06.webp",
+      "scaling_formula": "4%HP+50%ATK",
+      "effects": [
+        "Blunt I"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Maelstrom of Steel",
+      "slug": "ragnar-lothbrok-maelstrom-of-steel",
+      "skill_type": "Core",
+      "description": "Attack all enemies (8%HP+160%ATK) with a 75% chance to place [mechanic:def-down-i] for 2 turns.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/87c6bd8a-019f-401d-a95a-b340354f6c6b.webp",
+      "scaling_formula": "8%HP+160%ATK",
+      "effects": [
+        "DEF Down I"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Nordic Onslaught",
+      "slug": "ragnar-lothbrok-nordic-onslaught",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (6%HP+90%ATK)2 times. Each hit destroys the target’s Max HP for 5% of the damage inflicted (up to 25% of the target’s Max HP).",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/b94ddfd1-8190-4d50-b604-4f6b5914d40f.webp",
+      "scaling_formula": "6%HP+90%ATK",
+      "effects": [],
+      "ultimate_cost": 1200,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "If this hero’s HP is below 50%, also heals for 20% of the damage inflicted."
+    }
+  ],
+  "imprint_passive": "Place 15%HP on this hero when their HP falls below 25%."
+}

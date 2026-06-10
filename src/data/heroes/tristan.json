@@ -1,0 +1,143 @@
+{
+  "id": "19522f57-db9b-49d0-8d05-a92cb6579a85",
+  "name": "Tristan",
+  "subtitle": "Tortured Heart",
+  "slug": "tristan",
+  "rarity": 3,
+  "description": "Shield your allies from harm whilst devoting your Protection to Isolde.",
+  "lore": "Sent to retrieve Princess Isolde, betrothed of King Mark, Sir Tristan instead found himself bound to her by a love potion. They traveled and adventured together, until the Shattering saved them from Mark’s vengeance. Now Tristan ignores his duties to the land as he works to stop Isolde who—for reasons Tristan cannot comprehend—strives to undo the potion’s effects.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/19522f57-db9b-49d0-8d05-a92cb6579a85.webp",
+  "image_zoom": 3,
+  "image_focal_x": 61,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15526,
+    "acc": 10,
+    "atk": 573,
+    "def": 947,
+    "res": 40,
+    "spd": 85,
+    "init": 83,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DEF +5%, ATK +5%, HP +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DEF +5%, ATK +5%, HP +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DEF +5%, ATK +5%, HP +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Spear Wall"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Defender",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Valiant Thrust",
+      "slug": "tristan-valiant-thrust",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (180%DEF+60%ATK) with a 25% chance to transfer 1[ Debuff] from a random ally to this hero.\nIf Isolde is on the same team, will also transfer all [Debuffs] to this hero from Isolde.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tristan_Basic.webp",
+      "scaling_formula": "180%DEF+60%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Spear Wall",
+      "slug": "tristan-spear-wall",
+      "skill_type": "Core",
+      "description": "Place [mechanic:shield]200%DEF on all allies. If Isolde is on the same team, she receives 50% increased [mechanic:shield].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tristan_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Shield",
+        "Protect I",
+        "Protect II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Place [Protect I] on all allies and [Protect II] on Isolde for 2 turns."
+    },
+    {
+      "name": "Shield of Cornwall",
+      "slug": "tristan-shield-of-cornwall",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (160%DEF+50%ATK), then place [mechanic:radiance-i] on all allies for 2\nIf Isolde is on the same team, place [mechanic:radiance-ii] on her for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tristan_Ultimate.webp",
+      "scaling_formula": "160%DEF+50%ATK",
+      "effects": [
+        "Radiance I",
+        "Radiance II"
+      ],
+      "ultimate_cost": 1200,
+      "initial_divinity": 375,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Lovers Resolve",
+      "slug": "tristan-lovers-resolve",
+      "skill_type": "Passive",
+      "description": "Each [Debuff] on this hero reduces damage taken from attacks by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tristan_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Each [Debuff] on this hero reduces damage taken from attacks by 5%."
+}

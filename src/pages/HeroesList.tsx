@@ -23,6 +23,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { DatabaseBreadcrumb } from "@/components/DatabaseBreadcrumb";
 import { RosterAnalysis } from "@/components/RosterAnalysis";
 import { toast } from "sonner";
+import { getLocalHeroes } from "@/lib/localHeroes";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const ITEMS_PER_PAGE = 24;
 
@@ -77,30 +79,27 @@ export default function HeroesList() {
   const [addingHeroId, setAddingHeroId] = useState<string | null>(null);
 
   const { data: heroes, isLoading } = useQuery({
-    queryKey: ["heroes_all_with_skills"],
+    queryKey: ["heroes_all_with_skills_local"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("heroes")
-        .select("*, factions(name), archetypes(name), skills(name, description, effects)")
-        .order("name");
-      if (error) throw error;
-      return (data || []).map((h: any) => ({
+      const list = getLocalHeroes();
+      return list.map((h: any) => ({
         ...h,
-        faction_name: h.factions?.name || "Unknown",
-        archetype_name: h.archetypes?.name || "Unknown",
+        faction_name: h.faction || "Unknown",
+        archetype_name: h.archetype || "Unknown",
         skills: h.skills || [],
       }));
     },
   });
 
-  // Load reference tables for filter options
-  const { data: factionsList = [] } = useQuery({
-    queryKey: ["ref_factions_list"],
-    queryFn: async () => {
-      const { data } = await supabase.from("factions").select("id, name, slug").order("name");
-      return (data || []) as { id: string; name: string; slug: string }[];
-    },
-  });
+  // Load reference tables for filter options dynamically from local data
+  const factionsList = useMemo(() => {
+    const uniqueFactions = [...new Set(getLocalHeroes().map(h => h.faction))].filter(Boolean) as string[];
+    return uniqueFactions.map(name => ({
+      id: name,
+      name,
+      slug: name.toLowerCase()
+    })).sort((a, b) => a.name.localeCompare(b.name));
+  }, []);
 
   // Sync ?faction= URL param to realm filter
   useEffect(() => {
@@ -113,13 +112,14 @@ export default function HeroesList() {
       }
     }
   }, [searchParams, factionsList]);
-  const { data: archetypesList = [] } = useQuery({
-    queryKey: ["ref_archetypes_list"],
-    queryFn: async () => {
-      const { data } = await (supabase as any).from("archetypes").select("id, name").order("name");
-      return (data || []) as { id: string; name: string }[];
-    },
-  });
+
+  const archetypesList = useMemo(() => {
+    const uniqueArchetypes = [...new Set(getLocalHeroes().map(h => h.archetype))].filter(Boolean) as string[];
+    return uniqueArchetypes.map(name => ({
+      id: name,
+      name
+    })).sort((a, b) => a.name.localeCompare(b.name));
+  }, []);
 
   const { data: affinitiesList = [] } = useQuery({
     queryKey: ["ref_affinities_list"],
@@ -184,40 +184,17 @@ export default function HeroesList() {
   }, [heroes, search, realmFilter, classFilter, rarityFilter]);
 
   // Fetch user's collection to show which heroes are already added
-  const { data: userHeroIds = [] } = useQuery({
-    queryKey: ["user_heroes", user?.id],
-    queryFn: async () => {
-      if (!user) return [];
-      const { data } = await supabase
-        .from("user_heroes")
-        .select("hero_id")
-        .eq("user_id", user.id);
-      return (data || []).map((r) => r.hero_id);
-    },
-    enabled: !!user,
-  });
+  const [userHeroIds, setUserHeroIds] = useLocalStorage<string[]>("godforge_user_heroes", []);
 
-  const addToCollection = async (heroId: string, e: React.MouseEvent) => {
+  const toggleCollection = (heroId: string, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!user) return;
-    setAddingHeroId(heroId);
-    try {
-      const { error } = await supabase.from("user_heroes").insert({ hero_id: heroId, user_id: user.id });
-      if (error) {
-        if (error.code === "23505") {
-          toast.info("Hero already in your collection");
-        } else {
-          throw error;
-        }
-      } else {
-        toast.success("Hero added to your collection!");
-        queryClient.invalidateQueries({ queryKey: ["user_heroes"] });
-      }
-    } catch (err: any) {
-      toast.error(err.message || "Failed to add hero");
-    } finally {
-      setAddingHeroId(null);
+    if (userHeroIds.includes(heroId)) {
+      setUserHeroIds(userHeroIds.filter(id => id !== heroId));
+      toast.success("Hero removed from collection!");
+    } else {
+      setUserHeroIds([...userHeroIds, heroId]);
+      toast.success("Hero added to collection!");
     }
   };
 
@@ -329,19 +306,18 @@ export default function HeroesList() {
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <button
-                              onClick={(e) => isOwned ? (e.preventDefault(), e.stopPropagation()) : addToCollection(hero.id, e)}
+                              onClick={(e) => toggleCollection(hero.id, e)}
                               className={`absolute top-2 right-2 z-10 h-6 w-6 rounded-full flex items-center justify-center transition-colors ${
                                 isOwned
-                                  ? "bg-primary/20 text-primary cursor-default"
+                                  ? "bg-primary/25 text-primary border border-primary/30"
                                   : "bg-muted/80 text-muted-foreground hover:bg-primary/20 hover:text-primary"
                               }`}
-                              disabled={addingHeroId === hero.id}
                             >
                               {isOwned ? <Check className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
                             </button>
                           </TooltipTrigger>
                           <TooltipContent side="left">
-                            {isOwned ? "Already in your collection" : "Add to your collection"}
+                            {isOwned ? "Remove from collection" : "Add to collection"}
                           </TooltipContent>
                         </Tooltip>
                       )}

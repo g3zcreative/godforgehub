@@ -1,0 +1,47 @@
+[
+  {
+    "id": "01e2b8f6-012b-42ad-9834-62b0afaa5b8e",
+    "name": "Golden Guardian",
+    "slug": "golden-guardian",
+    "description": "A formidable golem protector that utilizes Divinity to enhance its power and can instantly defeat all enemies if its HP remains above 1%.",
+    "image_url": "https://www.ravenpyros.com/application/files/2617/5457/7786/Portrait_GoldenGuardian_HUD.png",
+    "location": "Alpha Caverns Floor 120",
+    "difficulty": "Normal",
+    "lore": null,
+    "hp": null,
+    "recommended_level": null,
+    "affinity_id": null,
+    "created_at": "2026-03-08T16:10:46.306645+00:00",
+    "updated_at": "2026-03-08T16:10:46.306645+00:00"
+  },
+  {
+    "id": "4295b9b3-0204-42af-9088-3d190f3dd40c",
+    "name": "Fafnir",
+    "slug": "fafnir",
+    "description": "An Ancient Wyrm that utilizes powerful fire and acid attacks to burn enemies and manipulate divinity through status ailments.",
+    "image_url": "https://www.ravenpyros.com/application/files/3717/5401/8762/Portrait_Fafnir_HUD.png",
+    "location": "Not specified",
+    "difficulty": "Normal",
+    "lore": "An ancient dragon of mythic proportions, known as the Ancient Wyrm, Fafnir wields the destructive power of fire and sorcery to overwhelm those who dare challenge his hoard.",
+    "hp": null,
+    "recommended_level": null,
+    "affinity_id": null,
+    "created_at": "2026-03-08T16:40:30.721597+00:00",
+    "updated_at": "2026-03-08T16:40:30.721597+00:00"
+  },
+  {
+    "id": "ce323d19-7865-4aff-bac3-43efb55f85b4",
+    "name": "Zmey",
+    "slug": "zmey",
+    "description": null,
+    "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/1773277368794-pmuudejckuk.webp",
+    "location": "Svarog's Hoard",
+    "difficulty": "Normal",
+    "lore": null,
+    "hp": null,
+    "recommended_level": 0,
+    "affinity_id": null,
+    "created_at": "2026-03-12T01:02:20.501571+00:00",
+    "updated_at": "2026-03-12T01:02:20.501571+00:00"
+  }
+]

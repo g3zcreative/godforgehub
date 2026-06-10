@@ -1,0 +1,142 @@
+{
+  "id": "6a546f53-237c-4d01-8737-960fece355da",
+  "name": "Enki",
+  "subtitle": "Flood Father",
+  "slug": "enki",
+  "rarity": 5,
+  "description": "Bring the waters of Ekur and Mend your allies Spirit restoring them from death.",
+  "lore": "Lord of the Sweet Waters, Enki is creator of life in Ekur. Stubborn and curmudgeonly, he has isolated himself since the Shattering, which he views as the other gods’ failure. Opposed to both the current Order and Destiny’s view of the future, he is content to see Chaos run rampant until a replacement of which he personally approves should appear.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/6a546f53-237c-4d01-8737-960fece355da.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 19986,
+    "acc": 15,
+    "atk": 914,
+    "def": 1101,
+    "res": 40,
+    "spd": 118,
+    "init": 106,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "35% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [60] Divinity when placing [Mend] on an ally",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Gift of Ingenuity"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +20%, Heal Multiplier +30%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: River’s Blessing"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Temple of Abzu"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Invoker",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Aqua Surge",
+      "slug": "enki-aqua-surge",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 300%ATK. Increase the turn meter of all allies by 5%. If an ally is under [mechanic:mend] increase their turn meter by 10% instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Enki_Basic.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "River’s Blessing",
+      "slug": "enki-river-s-blessing",
+      "skill_type": "Core",
+      "description": "Remove all [Debuff] from all allies then attack all enemies 300%ATK. Also, place [mechanic:mend] on all allies for 3 turns. If an ally is already under [mechanic:mend] increase their Max HP by 4% (up to 5 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Enki_Core.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also remove[Disable] from all allies."
+    },
+    {
+      "name": "Temple of Abzu",
+      "slug": "enki-temple-of-abzu",
+      "skill_type": "Ultimate",
+      "description": "Heal 25% HP all allies then Increase the duration of [mechanic:mend] on all allies by 1 turn. If an ally is below 50% HP, increase their turn meter by 20%. If an ally is above 50% HP, place [mechanic:spd-up-ii] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Enki_Ultimate.webp",
+      "scaling_formula": "25% HP",
+      "effects": [
+        "SPD Up II"
+      ],
+      "ultimate_cost": 1650,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "Also [Revive]1 Ally with 100% Turn Meter and 100% HP."
+    },
+    {
+      "name": "Gift of Ingenuity",
+      "slug": "enki-gift-of-ingenuity",
+      "skill_type": "Passive",
+      "description": "Increase the healing from [mechanic:mend] by 50%. At the start of this hero’s Turn, activate 1[mechanic:mend] on each ally.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Enki_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "At the start of the turn, place [Mend] on all allies for 1 turn."
+    }
+  ],
+  "imprint_passive": "Increase the healing from [Mend] by 25%. At the start of this hero’s Turn, activate 1[Mend] on each ally."
+}

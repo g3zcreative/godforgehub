@@ -313,7 +313,7 @@ Return your response by calling the create_hero function.`,
     if (skills.length > 0) {
       const skillRows = skills.map((s: any) => {
         const skillIconUrl = s.skill_type
-          ? `https://godforge.gg/heroes/assets/ability/ICON_${iconName}_${s.skill_type}.webp`
+          ? `https://godforge.gg/api/media/file/ICON_${iconName}_${s.skill_type}.webp`
           : null;
         return {
           hero_id: insertedHero.id,

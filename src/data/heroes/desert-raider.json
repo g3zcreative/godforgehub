@@ -1,0 +1,90 @@
+{
+  "id": "793d4109-fd46-4ed7-803d-cebc8746108f",
+  "name": "Desert Raider",
+  "subtitle": "Nomadic Warrior",
+  "slug": "desert-raider",
+  "rarity": 1,
+  "description": "Use the knowledge of the desert to poison enemies and strike down your foes.",
+  "lore": "To supplement their own soldiers, nobles of Ekur often hire tribal mercenaries from beyond their borders. These outsiders are skilled warriors with even fiercer reputations, often capable of routing larger forces through blade-skill and intimidation. They are also, however, loyal to their own leaders, and may turn on their employers should greater opportunities present themselves.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/39982e64-5789-46a4-9fd0-32e9cb85bd2c.webp",
+  "image_zoom": 2.9,
+  "image_focal_x": 71,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 7268,
+    "acc": 0,
+    "atk": 650,
+    "def": 474,
+    "res": 0,
+    "spd": 73,
+    "init": 71,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Ekur",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Poison Blades",
+      "slug": "desert-raider-poison-blades",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 150%ATK 2 times with a 15% chance to place [Acid] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_DesertRaider_Basic.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [
+        "Acid"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Nomadic Wisdom",
+      "slug": "desert-raider-nomadic-wisdom",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 370%ATK, then place [ACC Up I] on this hero for 1 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_DesertRaider_Ultimate.webp",
+      "scaling_formula": "370%ATK",
+      "effects": [
+        "ACC Up I"
+      ],
+      "ultimate_cost": 600,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

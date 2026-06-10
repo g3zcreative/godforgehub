@@ -1,0 +1,143 @@
+{
+  "id": "0d1d9194-4e87-48f2-8ec1-9e01c39fa519",
+  "name": "Percival",
+  "subtitle": "Faithful Knight",
+  "slug": "percival",
+  "rarity": 4,
+  "description": "Resilient brawler that excels in resisting enemy debuffs and taunt heroes aligned with Chaos.",
+  "lore": "Known as one of Arthur’s most skilled and virtuous knights, Percival has shifted his methods since the Shattering. He rides Avalon and its surroundings as a knight errant and rogue agent, fighting and questing for the good of his king and Destiny by whatever means he sees fit—without waiting for the approval, or even knowledge, of either.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/0d1d9194-4e87-48f2-8ec1-9e01c39fa519.webp",
+  "image_zoom": 1.6,
+  "image_focal_x": 71,
+  "image_focal_y": 31,
+  "stats": {
+    "hp": 19491,
+    "acc": 20,
+    "atk": 903,
+    "def": 936,
+    "res": 40,
+    "spd": 88,
+    "init": 88,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when this hero resists a debuff.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Vow of Rectification"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Resist Temptation"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Brawler",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Inquisitive Smite",
+      "slug": "percival-inquisitive-smite",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 25% chance to remove a random buff. Will Ignore 20% of the target’s defence when attacking Chaos enemies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Percival_Basic.webp",
+      "scaling_formula": "8%HP+60%ATK+200%RES",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Resist Temptation",
+      "slug": "percival-resist-temptation",
+      "skill_type": "Passive",
+      "description": "Increase this hero’s Resistance by 10% for each buff they are under.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Percival_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Vow of Rectification",
+      "slug": "percival-vow-of-rectification",
+      "skill_type": "Core",
+      "description": "Place [mechanic:res-up-ii] and [mechanic:radiance-ii] on this hero for 2 turns. Has a 50% to place [mechanic:stun] for 1 turn on all enemies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Percival_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "RES Up II",
+        "Radiance II",
+        "Stun"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "If the enemy is aligned with Chaos, increase the chance to place [Stun] by 25% and ignore 25% of their RES."
+    },
+    {
+      "name": "Righteous Retribution",
+      "slug": "percival-righteous-retribution",
+      "skill_type": "Ultimate",
+      "description": "Remove all [Debuffs] and [Disables] from this hero, then attack 1 enemy. If no debuffs are removed, place [mechanic:retaliate] and [mechanic:ward] on this hero for 2 turns before attacking.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Percival_Ultimate.webp",
+      "scaling_formula": "10%HP+75%ATK+200%RES",
+      "effects": [
+        "Retaliate",
+        "Ward"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": 400,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Increase this hero’s Resistance by 5% for each buff they are under."
+}

@@ -1,0 +1,131 @@
+{
+  "id": "c564abb5-b74a-4bf9-b655-98cc6069a70d",
+  "name": "Ninsun",
+  "subtitle": "Mistress of Dreams",
+  "slug": "ninsun",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Ninsun is symbolically mother to Ekur’s rulers, and literally mother of roughly a dozen gods, as well as the great hero Gilgamesh. She interprets dreams and omens for her children and for the Realm’s mortal sovereigns, and intercedes with other gods on their behalf. Recently, however, prayers and petitions have gone unanswered, as if Ninsun were suddenly distracted or unavailable…",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/c564abb5-b74a-4bf9-b655-98cc6069a70d.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18169,
+    "acc": 10,
+    "atk": 760,
+    "def": 958,
+    "res": 35,
+    "spd": 112,
+    "init": 93,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "A powerful attack planned for the future."
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Awaken the ability: Compassionate Spirit"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Nurturing Touch",
+      "slug": "ninsun-nurturing-touch",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ninsun_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Compassionate Spirit",
+      "slug": "ninsun-compassionate-spirit",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ninsun_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Mother’s Embrace",
+      "slug": "ninsun-mother-s-embrace",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ninsun_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Maternal Aura",
+      "slug": "ninsun-maternal-aura",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ninsun_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

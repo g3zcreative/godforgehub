@@ -1,0 +1,142 @@
+{
+  "id": "00dc2b11-0d4b-4b72-b7bb-878270d4b6c4",
+  "name": "Icarus",
+  "subtitle": "Scorched Pride",
+  "slug": "icarus",
+  "rarity": 3,
+  "description": "Scorch the battlefield with flaming arrows and scale to new heights as you defeat foes.",
+  "lore": "Flying on wings invented by his father, Daedalus, young Icarus works as scout and archer for the Olympian forces. Thanks to Ryven’s magics, his wings are no longer susceptible to the sun’s heat, allowing him to soar. Yet ambition renders him susceptible to those who would play to his ego in the ongoing struggle of both politics and war.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/00dc2b11-0d4b-4b72-b7bb-878270d4b6c4.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 12223,
+    "acc": 15,
+    "atk": 969,
+    "def": 705,
+    "res": 15,
+    "spd": 88,
+    "init": 88,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "Campaign"
+  },
+  "divinity_generator": "Gain [40] Divinity when this hero is damaged by [Blaze].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Skybound Barrage"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Scorched Shot",
+      "slug": "icarus-scorched-shot",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Icarus_Basic.webp",
+      "scaling_formula": "260%ATK",
+      "effects": [
+        "Blaze I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Feathered Hubris",
+      "slug": "icarus-feathered-hubris",
+      "skill_type": "Core",
+      "description": "Place [mechanic:sharpen-i] on this hero for 2 turns, then attack all enemies This hero's ATK increases 10% when defeating an enemy (stacking up to 3 times)",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Icarus_Core.webp",
+      "scaling_formula": "350%ATK",
+      "effects": [
+        "Sharpen I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Skybound Barrage",
+      "slug": "icarus-skybound-barrage",
+      "skill_type": "Ultimate",
+      "description": "Attack 3 times at random. Each hit has a 20% chance to extend the duration of any [mechanic:blaze] on the target by 1 turn. Also, places [mechanic:blaze-i] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Icarus_Ultimate.webp",
+      "scaling_formula": "120%ATK",
+      "effects": [
+        "Blaze I"
+      ],
+      "ultimate_cost": 1150,
+      "initial_divinity": 350,
+      "awakening_level": 5,
+      "awakening_bonus": "Increase the number of attacks to 5."
+    },
+    {
+      "name": "Wings of Wax",
+      "slug": "icarus-wings-of-wax",
+      "skill_type": "Passive",
+      "description": "If this hero is under [mechanic:blaze], increase INIT by 6% and decrease SPD by 6%. If this hero is not under [mechanic:blaze], increase SPD by 6% and decrease INIT by 6%",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Icarus_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "If this hero is under [Blaze], increase INIT by 3% and decrease SPD by 3%. If this hero is not under [Blaze], increase SPD by 3% and decrease INIT by 3%"
+}

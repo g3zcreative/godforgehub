@@ -1,0 +1,129 @@
+{
+  "id": "cbf391bb-6275-4bfc-b6a5-db9fea7cade4",
+  "name": "Vampir",
+  "subtitle": "Night’s Hunger",
+  "slug": "vampir",
+  "rarity": 2,
+  "description": "Drain the lifeforce of your enemies and corrupt their souls stealing their buffs.",
+  "lore": "Far and away the most infamous of Vyraj’s creatures, the vampir is a dreadful hunter of the night. Risen from the grave, they feast upon the blood of the living, using their supernatural abilities to hunt, to destroy, to dominate. The strongest of them, Dracula, controls a great many vampir, but many more serve other masters, gods, or their own agendas.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/cbf391bb-6275-4bfc-b6a5-db9fea7cade4.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 10902,
+    "acc": 10,
+    "atk": 727,
+    "def": 551,
+    "res": 10,
+    "spd": 82,
+    "init": 87,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "Campaign"
+  },
+  "divinity_generator": "Gain [30] Divinity when placing a [Debuff] or [Disable] on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +5"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Festering Wounds: +1 Turn Duration."
+    },
+    {
+      "tier": 2,
+      "bonus": "After casting a Basic or Core Skill, reduce Ultimate Skill cooldown by [1] turn (once per turn)."
+    },
+    {
+      "tier": 3,
+      "bonus": "Festering Wounds: Reduce enemy Healing by [75]% instead of [50]%."
+    },
+    {
+      "tier": 4,
+      "bonus": "After casting a Basic or Core Skill, reduce Ultimate Skill cooldown by [1] turn (once per turn)."
+    },
+    {
+      "tier": 5,
+      "bonus": "Festering Wounds: +1 Turn Duration."
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Disruptor",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Insatiable Thirst",
+      "slug": "vampir-insatiable-thirst",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 325%ATK and place [mechanic:curse-i] on the target for 1 turn. If the attack is Critical also steal the target’s Divinity and Turn Meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vampir_Ultimate.webp",
+      "scaling_formula": "325%ATK",
+      "effects": [
+        "Curse I"
+      ],
+      "ultimate_cost": 1175,
+      "initial_divinity": 400,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Open Veins",
+      "slug": "vampir-open-veins",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 245%ATK and place [mechanic:drain-i] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vampir_Basic.webp",
+      "scaling_formula": "245%ATK",
+      "effects": [
+        "Drain I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Blood Bath",
+      "slug": "vampir-blood-bath",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 155%ATK2 times. Each hit has a 30% chance to place [mechanic:despair] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vampir_Core.webp",
+      "scaling_formula": "155%ATK",
+      "effects": [
+        "Despair"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

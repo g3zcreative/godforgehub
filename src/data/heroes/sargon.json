@@ -1,0 +1,136 @@
+{
+  "id": "1bd56312-046f-48fe-894c-87bc9bfef8bc",
+  "name": "Sargon",
+  "subtitle": "The Wise",
+  "slug": "sargon",
+  "rarity": 3,
+  "description": "Full Hero Information▶",
+  "lore": "Sargon may well have been the first to hold the title of emperor anywhere in the old world. Famous for consulting his advisors and considering all angles before each campaign, he now advises the kings of Ekur through Ryven’s many challenges. Slowly, he builds personal allegiances with military leaders, with an eye toward eventually reclaiming his position as emperor over Ekur.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/1bd56312-046f-48fe-894c-87bc9bfef8bc.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14866,
+    "acc": 10,
+    "atk": 584,
+    "def": 892,
+    "res": 50,
+    "spd": 88,
+    "init": 85,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Scepter of Command"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Imperial Strike",
+      "slug": "sargon-imperial-strike",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sargon_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Empire Bastion",
+      "slug": "sargon-empire-bastion",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sargon_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Scepter of Command",
+      "slug": "sargon-scepter-of-command",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sargon_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Unbreakable Command",
+      "slug": "sargon-unbreakable-command",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sargon_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

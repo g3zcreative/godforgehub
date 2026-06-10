@@ -1,0 +1,89 @@
+{
+  "id": "5ff5705e-ab42-4f7d-b138-471ae8f28057",
+  "name": "Jackal",
+  "subtitle": "Sand Scavenger",
+  "slug": "jackal",
+  "rarity": 1,
+  "description": "Slash and Gnaw at enemies stealing their speed and pace.",
+  "lore": "Mistrusted throughout Aaru, the jackal has long been viewed as a creature of deceitfulness and ill fortune, subject of countless tales and myths. Since the Shattering, that reputation has drawn closer to reality. While most jackals remain the mundane animals they have always been, a substantial portion are now something… other, larger and markedly more hostile.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/e63aff5e-cb9b-4bb2-a448-fd1507f7d938.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 71,
+  "image_focal_y": 36,
+  "stats": {
+    "hp": 7433,
+    "acc": 0,
+    "atk": 650,
+    "def": 485,
+    "res": 0,
+    "spd": 71,
+    "init": 73,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Aaru",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Scratch",
+      "slug": "jackal-scratch",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 105% ATK 3 times. If the target is under [SPD Down], decrease their turn meter by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Jackal_Basic.webp",
+      "scaling_formula": "105%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Desert Fury",
+      "slug": "jackal-desert-fury",
+      "skill_type": "Ultimate",
+      "description": "Place [ACC Up l] on this hero for 1 turn then attack 1 enemy 340% ATK with a 50% chance to place [SPD Down I] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Jackal_Ultimate.webp",
+      "scaling_formula": "340%ATK",
+      "effects": [
+        "ACC Up I",
+        "SPD Down I"
+      ],
+      "ultimate_cost": 900,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

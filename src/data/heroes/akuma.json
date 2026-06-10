@@ -1,0 +1,136 @@
+{
+  "id": "ed40262c-d394-4e97-b863-f8f959a3c762",
+  "name": "Akuma",
+  "subtitle": "Raging Demon",
+  "slug": "akuma",
+  "rarity": 3,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "The akuma are demonic entities, beings of confusion, misfortune, and death. In the mortal world, they appear as warriors of steel and flame. While they enjoy the ill luck their mere presence brings to others, they particularly revel in violence. They take the most joy from cutting down skilled warriors, but they readily settle for massacring the helpless.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ed40262c-d394-4e97-b863-f8f959a3c762.webp",
+  "image_zoom": 3,
+  "image_focal_x": 87,
+  "image_focal_y": 2,
+  "stats": {
+    "hp": 12553,
+    "acc": 15,
+    "atk": 980,
+    "def": 727,
+    "res": 15,
+    "spd": 84,
+    "init": 90,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "None",
+    "scope": "None"
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Empyrean’s End"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Adamant Flame",
+      "slug": "akuma-adamant-flame",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Akuma_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Sip of Calamity",
+      "slug": "akuma-sip-of-calamity",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Akuma_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Empyrean’s End",
+      "slug": "akuma-empyrean-s-end",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Akuma_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Blade Kick",
+      "slug": "akuma-blade-kick",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Akuma_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

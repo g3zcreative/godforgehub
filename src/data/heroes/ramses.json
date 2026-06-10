@@ -1,0 +1,140 @@
+{
+  "id": "706d8051-0438-4c55-8046-be9eb4fd20b8",
+  "name": "Ramses",
+  "subtitle": "The Sun-Kissed Conqueror",
+  "slug": "ramses",
+  "rarity": 3,
+  "description": "Erode your foes armor with Acid and strong AoE Attacks",
+  "lore": "Story",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/706d8051-0438-4c55-8046-be9eb4fd20b8.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 12223,
+    "acc": 15,
+    "atk": 936,
+    "def": 771,
+    "res": 15,
+    "spd": 95,
+    "init": 87,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [80] Divinity when defeating an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Health +5%, Defense +5%, Attack +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Health +5%, Defense +5%, Attack +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Health +5%, Defense +5%, Attack +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Accuracy +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "Speed +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Damage Multiplier +5"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5, Armor Multiplier +2.5, Weapon Multiplier +2.5"
+    },
+    {
+      "tier": 3,
+      "bonus": "Damage Multiplier +5"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5, Armor Multiplier +2.5, Weapon Multiplier +2.5"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Serpent Strike"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Curse of Aaru",
+      "slug": "ramses-curse-of-aaru",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 320%ATK with a 35% chance to place [mechanic:acid] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ramses_Basic.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [
+        "Acid"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "General of the Nile",
+      "slug": "ramses-general-of-the-nile",
+      "skill_type": "Passive",
+      "description": "Inflict 20% increased damage to enemies under [mechanic:acid]",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ramses_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Undefeated in Battle",
+      "slug": "ramses-undefeated-in-battle",
+      "skill_type": "Core",
+      "description": "Attack all enemies 420%ATK with a 25% additional chance to strong hit. Has a 80% chance to place [mechanic:acid] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ramses_Core.webp",
+      "scaling_formula": "420%ATK",
+      "effects": [
+        "Acid"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Serpent Strike",
+      "slug": "ramses-serpent-strike",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 500%ATK. If an enemy is defeated, then increase the turn meter of this hero by 30%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ramses_Ultimate.webp",
+      "scaling_formula": "500%ATK",
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": 400,
+      "awakening_level": 5,
+      "awakening_bonus": "If an enemy is defeated, reduce the cooldown of the Core Ability by 1 turn."
+    }
+  ],
+  "imprint_passive": "Inflict10% increased damage to enemies under [Acid]"
+}

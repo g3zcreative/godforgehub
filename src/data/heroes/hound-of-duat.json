@@ -1,0 +1,148 @@
+{
+  "id": "23545d4d-f6ff-4bc6-97d4-62a3bed19ddb",
+  "name": "Hound Of Duat",
+  "subtitle": "Harrier of Souls",
+  "slug": "hound-of-duat",
+  "rarity": 4,
+  "description": "Protect the guardians of the afterlife with powerful shields and protection buffs.",
+  "lore": "Creations of Anubis, the Hounds of Duat aid in corralling lost souls and punishing those who violate the sanctity of tombs and graves. The alterations in magic since the Shattering have, however, driven a small portion of them feral. No longer paying heed to their creator or their assigned duties, they hunt for the pleasure of the kill, spreading death and chaos.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/e9e8b865-4674-4754-946f-9426c38b47f6.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 0,
+  "image_focal_y": 26,
+  "stats": {
+    "hp": 18995,
+    "acc": 15,
+    "atk": 639,
+    "def": 1057,
+    "res": 70,
+    "spd": 96,
+    "init": 91,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Shield Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Barrier Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Feeding Frenzy"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Grave Guardian"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Defender",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Pack Tactics",
+      "slug": "hound-of-duat-pack-tactics",
+      "skill_type": "Basic",
+      "description": "Place [ACC Up l] on this hero for 1 turn then attack 1 enemy (170%DEF+90%ATK) with a 50% chance to place [mechanic:spd-down-i] on the target for 1 turn.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/16f459fb-d94d-4325-beac-4e24923f4b95.webp",
+      "scaling_formula": "170%DEF+90%ATK",
+      "effects": [
+        "ACC Up I",
+        "SPD Down I"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Avert the Afterlife",
+      "slug": "hound-of-duat-avert-the-afterlife",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (220%DEF+120%ATK) and place [mechanic:shield] on all allies for 25% of the damage inflicted. If Jackal or Anubis are on the team, has a 25% chance to refresh the cooldown of this ability when either of them are attacked.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/1e86e001-515c-438f-a3e3-57510c276c6e.webp",
+      "scaling_formula": "220%DEF+120%ATK",
+      "effects": [
+        "Shield"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Grave Guardian",
+      "slug": "hound-of-duat-grave-guardian",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:retaliate] on this hero for 1 turn and [mechanic:protect-ii] on all other allies for 1 turn. If Jackal or Anubis are on the team, also place [mechanic:intercept] on them for 1 turn.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/7c6eb43a-94a1-483f-8a4d-d32bbb396a24.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Retaliate",
+        "Protect II",
+        "Intercept",
+        "Phoenix"
+      ],
+      "ultimate_cost": 1050,
+      "initial_divinity": 325,
+      "awakening_level": 5,
+      "awakening_bonus": "Also, place [Phoenix] on this hero for 1 turn."
+    },
+    {
+      "name": "Feeding Frenzy",
+      "slug": "hound-of-duat-feeding-frenzy",
+      "skill_type": "Passive",
+      "description": "When attacking enemies, place [mechanic:barrier] on this hero for 10% of the damage inflicted.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/b13586d7-0afc-4cd8-8899-00207d3492ec.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 3,
+      "awakening_bonus": "Also heal this hero for 15% of the damage inflicted."
+    }
+  ],
+  "imprint_passive": "When attacking enemies, place [Barrier] on this hero for 5% of the damage inflicted."
+}

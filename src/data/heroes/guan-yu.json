@@ -1,0 +1,140 @@
+{
+  "id": "8ca8620b-bdf7-4821-8624-43c6dae6bffd",
+  "name": "Guan Yu",
+  "subtitle": "Unyielding General",
+  "slug": "guan-yu",
+  "rarity": 3,
+  "description": "Carve through foes dealing damage based on their health and regenerating your health.",
+  "lore": "A brilliant general, Guan Yu gives his all to serve the needs of Tian’s leaders and gods. Yet he fears the plodding Celestial Bureaucracy is ill-suited to the rigors of battle, and will prove insufficient in the event of open war. Thus far he has taken no steps, save to share his concerns, but desperation may soon force some unpleasant choices.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/cb0623bb-a331-4265-afac-e08ccd509611.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 12223,
+    "acc": 15,
+    "atk": 991,
+    "def": 727,
+    "res": 15,
+    "spd": 95,
+    "init": 87,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [80] Divinity when defeating an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Frostfair Blade Dance"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Cold Steel",
+      "slug": "guan-yu-cold-steel",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 320%ATK. If the target is under [Drain] then inflict additional damage equal to 5% of the target’s MAX HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_GuanYu_Basic.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Frostfair Blade Dance",
+      "slug": "guan-yu-frostfair-blade-dance",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 340%ATK. Then attack 2 random enemies 340%ATK. If an enemy is defeated, place [mechanic:init-up-ii] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_GuanYu_Ultimate.webp",
+      "scaling_formula": "340%ATK",
+      "effects": [
+        "INIT Up II"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": 400,
+      "awakening_level": 5,
+      "awakening_bonus": "If an enemy is defeated, reduce the cooldown of the Core Ability by 1 turn."
+    },
+    {
+      "name": "Relentless Resolve",
+      "slug": "guan-yu-relentless-resolve",
+      "skill_type": "Passive",
+      "description": "Inflicts 20% increased damage to enemies under [Drain].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_GuanYu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Crescent Slash",
+      "slug": "guan-yu-crescent-slash",
+      "skill_type": "Core",
+      "description": "Attack all enemies 420%ATK with a 25% additional chance to strong hit. Has a 80% chance to place [mechanic:drain-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_GuanYu_Core.webp",
+      "scaling_formula": "420%ATK",
+      "effects": [
+        "Drain II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Inflict 10% increased damage to enemies under [Drain]."
+}

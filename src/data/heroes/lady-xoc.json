@@ -1,0 +1,142 @@
+{
+  "id": "65123025-83e1-4e17-b4de-08a670f60193",
+  "name": "Lady Xoc",
+  "subtitle": "Consort of Yaxchilan",
+  "slug": "lady-xoc",
+  "rarity": 3,
+  "description": "Sacrifice your enemies dealing additional damage to enemies under Bleed.",
+  "lore": "Xoc was a priestess, beseeching the gods to bless her land’s soldiers. After the Shattering, however, she found Omeyocan’s warriors had no advantage over others—not because her gods failed to heed, but because the enemy’s gods held power just as real. Offended, Lady Xoc now raises weapons of her own, wielding magic and blade against worshipers that she deems “false” gods.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/64eefb20-266f-4366-b021-24ab0e328e33.webp",
+  "image_zoom": 1.9,
+  "image_focal_x": 64,
+  "image_focal_y": 31,
+  "stats": {
+    "hp": 12718,
+    "acc": 15,
+    "atk": 914,
+    "def": 716,
+    "res": 15,
+    "spd": 95,
+    "init": 91,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [80] Divinity when defeating an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Sacrificial Rite"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Bloodletting",
+      "slug": "lady-xoc-bloodletting",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 35% chance to place 1 stack of [mechanic:bleed] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_LadyXoc_Basic.webp",
+      "scaling_formula": "315%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Vision Serpent",
+      "slug": "lady-xoc-vision-serpent",
+      "skill_type": "Core",
+      "description": "Attack all enemies with a 25% additional chance to strong hit. Has a 80% chance to place 1 stack of [mechanic:bleed] on each target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_LadyXoc_Core.webp",
+      "scaling_formula": "420%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Sacrificial Rite",
+      "slug": "lady-xoc-sacrificial-rite",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 2 times. If an enemy is defeated, place [mechanic:spd-up-ii] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_LadyXoc_Ultimate.webp",
+      "scaling_formula": "265%ATK",
+      "effects": [
+        "SPD Up II"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": 400,
+      "awakening_level": 5,
+      "awakening_bonus": "If an enemy is defeated, reduce the cooldown of the Core Ability by 1 turn."
+    },
+    {
+      "name": "Mouth of Thorns",
+      "slug": "lady-xoc-mouth-of-thorns",
+      "skill_type": "Passive",
+      "description": "Increase damage inflicted by 2% for each stack of [mechanic:bleed] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_LadyXoc_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Increase damage inflicted by 1% for each stack of [Bleed] on the target."
+}

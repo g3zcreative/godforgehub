@@ -1,0 +1,139 @@
+{
+  "id": "9c86c145-0067-43aa-8f99-22f9734828f4",
+  "name": "Viviane",
+  "subtitle": "Lady of the Lake",
+  "slug": "viviane",
+  "rarity": 5,
+  "description": "Empower your ally attacks with the waters of Avalon inflicting Damage on every strike.",
+  "lore": "The fey enchantress also called the Lady of the Lake, Viviane appeared throughout the lives of Arthur, Merlin, and Lancelot. She is most famous for bestowing Excalibur upon Arthur, and imprisoning Merlin in stone. Since the Shattering, she has made multiple attempts to influence Arthur and Merlin away from the Morrigan’s cause, though to what purpose remains as yet unclear.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/9c86c145-0067-43aa-8f99-22f9734828f4.webp",
+  "image_zoom": 3,
+  "image_focal_x": 80,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 21142,
+    "acc": 15,
+    "atk": 870,
+    "def": 1101,
+    "res": 40,
+    "spd": 120,
+    "init": 101,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "26% SPD",
+    "scope": "Arena"
+  },
+  "divinity_generator": "Gain [60] Divinity when placing a [buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +9"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Aqueous Benediction"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +20%, DMG Reduction Multiplier +20%, DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Invigorating Mist"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Weapon Multiplier +30%, Armor Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Blessing of the Lake"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Blessing of the Lake",
+      "slug": "viviane-blessing-of-the-lake",
+      "skill_type": "Passive",
+      "description": "Allies inflict 20% increased damage with their Basic Abilities. This is doubled when joining attacks.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Viviane_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Allies have a 100% chance to inflict bonus true damage for 100% of their ATK which cannot critically hit when they attack."
+    },
+    {
+      "name": "Melody of Avalon",
+      "slug": "viviane-melody-of-avalon",
+      "skill_type": "Ultimate",
+      "description": "Remove all [Disable] from all allies. Also, remove all [Debuff] on allies from Avalon then attack 1 enemy (175%ATK+1000%INIT) with all allies joining the attack. If the target is defeated, increase the turn meter of all allies by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Viviane_Ultimate.webp",
+      "scaling_formula": "175%ATK+1000%INIT",
+      "effects": [],
+      "ultimate_cost": 1650,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Aqueous Benediction",
+      "slug": "viviane-aqueous-benediction",
+      "skill_type": "Core",
+      "description": "Place [mechanic:atk-up-ii] and [mechanic:def-up-ii] on all allies for 2 turns then increase the duration of all [buff] on all allies by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Viviane_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "ATK Up II",
+        "DEF Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also place [Sharpen II] for 2 turns."
+    },
+    {
+      "name": "Invigorating Mist",
+      "slug": "viviane-invigorating-mist",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (175%ATK+1000%INIT) and reduce the Divinity Cost of each ally by 15 (stacking up to 10 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Viviane_Basic.webp",
+      "scaling_formula": "175%ATK+1000%INIT",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Stacks up to 20 times."
+    }
+  ],
+  "imprint_passive": "This hero inflicts 10% increased damage with their Basic Abilities. This is doubled when joining attacks."
+}

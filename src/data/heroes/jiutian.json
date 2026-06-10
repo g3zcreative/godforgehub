@@ -1,0 +1,135 @@
+{
+  "id": "2d0ea92e-05b7-4919-b6d9-72a33c229d25",
+  "name": "Jiutian",
+  "subtitle": "Dark Lady",
+  "slug": "jiutian",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Jiutian represents victory and conquest—in war, but also in health and sexuality. She achieves her aims more through magic, cleverness, and skill than strength. Yet Jiutian occasionally hinders her own side, as her need for victory can blind her to other considerations, or to strategies that call for a loss now in order to attain a more significant win later.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/2d0ea92e-05b7-4919-b6d9-72a33c229d25.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 16517,
+    "acc": 35,
+    "atk": 958,
+    "def": 804,
+    "res": 20,
+    "spd": 100,
+    "init": 108,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "A powerful attack planned for the future."
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +11"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Star Flurry"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Mysterious Sabotage"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Enigmatic Power",
+      "slug": "jiutian-enigmatic-power",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Jiutian_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Combat Prowess",
+      "slug": "jiutian-combat-prowess",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Jiutian_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Star Flurry",
+      "slug": "jiutian-star-flurry",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Jiutian_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Mysterious Sabotage",
+      "slug": "jiutian-mysterious-sabotage",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Jiutian_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

@@ -1,0 +1,141 @@
+{
+  "id": "0d728c83-7279-4513-b913-887405276d52",
+  "name": "Mulan",
+  "subtitle": "Honourbound",
+  "slug": "mulan",
+  "rarity": 5,
+  "description": "Strike with Precision and Honour your Family Name whilst also staying Concealed with Vanish.",
+  "lore": "A beloved folk hero of Tian, Mulan’s reappearance after the Shattering was cause for celebration. She fights still, defending not the realm as a whole, but individual communities that might otherwise be lost in the greater struggle. The support of her people seems to empower her, granting her skill and might in excess of even her greatest legends.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/0d728c83-7279-4513-b913-887405276d52.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17178,
+    "acc": 40,
+    "atk": 1288,
+    "def": 991,
+    "res": 30,
+    "spd": 105,
+    "init": 105,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "25% ATK",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when inflicting damage to an enemy. Gain [20] additional Divinity when attacking under [Vanish].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Dark Moon"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Ignore RES +20%, Strong Hit DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Typhoon Force"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Raging Fire Within"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Raging Fire Within",
+      "slug": "mulan-raging-fire-within",
+      "skill_type": "Passive",
+      "description": "Increases the chance to Strong Hit by 20% when inflicting damage under [mechanic:vanish].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mulan_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If this Hero is under [Vanish] and would be defeated, prevents this hero’s death and Gains them an extra turn."
+    },
+    {
+      "name": "Swift River",
+      "slug": "mulan-swift-river",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Critical attacks reduce the target’s DEF by 2% (stacking up to 10 times)",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mulan_Basic.webp",
+      "scaling_formula": "180%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Typhoon Force",
+      "slug": "mulan-typhoon-force",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy. Increases the damage inflicted by 10% for each living enemy. Place [mechanic:vanish] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mulan_Core.webp",
+      "scaling_formula": "370%ATK",
+      "effects": [
+        "Vanish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Dark Moon",
+      "slug": "mulan-dark-moon",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 3 times. Each hit has a 40% chance to place [mechanic:drain-ii] and [mechanic:hex-ii] on the target for 2 turns. If the target is defeated, decrease this hero’s Divinity Cost by 10% (stacking up to 3 times)",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mulan_Ultimate.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [
+        "Drain II",
+        "Hex II"
+      ],
+      "ultimate_cost": 1200,
+      "initial_divinity": 325,
+      "awakening_level": 1,
+      "awakening_bonus": "If this hero is under [Vanish], ignore 30% of the target's RES."
+    }
+  ],
+  "imprint_passive": "Increases the chance to Strong Hit by 10% when inflicting damage under [Vanish]."
+}

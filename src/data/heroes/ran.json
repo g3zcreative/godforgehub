@@ -1,0 +1,167 @@
+{
+  "id": "9fd61e3a-8516-482d-9865-0d910feab23a",
+  "name": "Ran",
+  "subtitle": "The Sea's Net",
+  "slug": "ran",
+  "rarity": 4,
+  "description": "Full Hero Information▶",
+  "lore": "Violent and rapacious, Ran is the sea that takes. She is mother of its grasping waves, ruler of the depths where the bones of drowned sailors come to rest. Since the Shattering she has worked to expand the boundaries of her aquatic dominion, flooding coastlines, dragging ships below, and otherwise taking the worshipers of other Asgardian gods of both the living and the dead.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/9fd61e3a-8516-482d-9865-0d910feab23a.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17013,
+    "acc": 35,
+    "atk": 991,
+    "def": 804,
+    "res": 20,
+    "spd": 99,
+    "init": 105,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when placing a [Debuff] or [Disable] on an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Frozen Waves"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Whirling Riptide"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Disruptor",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Drowning Vigour",
+      "slug": "ran-drowning-vigour",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 35% chance to place [mechanic:lock-ultimate] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ran_Basic.webp",
+      "scaling_formula": "170%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Frozen Waves",
+      "slug": "ran-frozen-waves",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies with a 50% chance to place [mechanic:freeze] on each target for 1 turn. If an enemy is below 50% HP, [mechanic:freeze] cannot be resisted. If [mechanic:freeze] is not placed, place [mechanic:init-down-ii] on the target for 2 turns instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ran_Ultimate.webp",
+      "scaling_formula": "220%ATK",
+      "effects": [
+        "Freeze",
+        "INIT Down II"
+      ],
+      "ultimate_cost": 1500,
+      "initial_divinity": 325,
+      "awakening_level": 3,
+      "awakening_bonus": "Place [Freeze] for 2 turns instead."
+    },
+    {
+      "name": "Cold Depths",
+      "slug": "ran-cold-depths",
+      "skill_type": "Passive",
+      "description": "Attacks decrease 10% of the target’s Turn Meter. If the target is below 50% HP, steal 10% Turn Meter instead and increase the Turn Meter of all allies by the same amount. Allies can only gain turn meter once per attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ran_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Drowning Net",
+      "slug": "ran-drowning-net",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ran_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Whirling Riptide",
+      "slug": "ran-whirling-riptide",
+      "skill_type": "Core",
+      "description": "Attack all enemies with a 75% chance to place [mechanic:spd-down-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ran_Core.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "SPD Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If an enemy is under [SPD Down] after attacking, will activate the Cold Depths on the target."
+    },
+    {
+      "name": "Ice Floes",
+      "slug": "ran-ice-floes",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ran_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Attacks decrease 5% of the target’s Turn Meter. If the target is below 50% HP, steal 5% Turn Meter instead."
+}

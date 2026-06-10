@@ -1,0 +1,139 @@
+{
+  "id": "64fa37f4-6c60-4387-936d-a9212aeb3ca8",
+  "name": "Koshchei",
+  "subtitle": "Soulbound Enchanter",
+  "slug": "koshchei",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Already called “Deathless” for the spells that prolong his life, the sorcerer Koshchei seeks not only greater power but true immortality. He has engaged in conspiracy with Morgan Le Fay of Avalon. If successful, they would reshape the flow of aether itself to their liking—and never mind that it would cost the lives of not merely innocent mortals, but any number of gods.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/64fa37f4-6c60-4387-936d-a9212aeb3ca8.webp",
+  "image_zoom": 2,
+  "image_focal_x": 50,
+  "image_focal_y": 18,
+  "stats": {
+    "hp": 15692,
+    "acc": 30,
+    "atk": 1013,
+    "def": 782,
+    "res": 25,
+    "spd": 94,
+    "init": 109,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [100] Divinity when this hero falls below 51% HP.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +11"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Withering Aura"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Immortal Siphon"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Immortal Siphon",
+      "slug": "koshchei-immortal-siphon",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy. Equalize the HP of all allies equal to the HP of the enemy before attacking. If the target HP falls below 50% HP, also reduce their Divinity by 30%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Koshchei_Ultimate.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [],
+      "ultimate_cost": 750,
+      "initial_divinity": 250,
+      "awakening_level": 5,
+      "awakening_bonus": "If the target is under[RES Down] or [INIT Down], increase their Core ability Cooldown by 2 turns and place Lock Ultimate for 1 turn."
+    },
+    {
+      "name": "Consume the Soul",
+      "slug": "koshchei-consume-the-soul",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 75% chance to steal 10% of the target’s Divinity.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Koshchei_Basic.webp",
+      "scaling_formula": "290%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Soul Nullification",
+      "slug": "koshchei-soul-nullification",
+      "skill_type": "Core",
+      "description": "Attack all enemies with a 50% chance to place [mechanic:res-down-ii] and [mechanic:init-down-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Koshchei_Core.webp",
+      "scaling_formula": "260%ATK",
+      "effects": [
+        "RES Down II",
+        "INIT Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Withering Aura",
+      "slug": "koshchei-withering-aura",
+      "skill_type": "Passive",
+      "description": "Enemies under [RES Down] or [INIT Down] inflict 20% less damage when attacking this hero or allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Koshchei_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "At the start of this hero’s turn, reduce each enemy’s ATK and DEF by 5% (up to 4 times) which remains active whilst this hero is alive."
+    }
+  ],
+  "imprint_passive": "Enemies under [RES Down II] or [INIT Down II] inflict 10% less damage when attacking this hero."
+}

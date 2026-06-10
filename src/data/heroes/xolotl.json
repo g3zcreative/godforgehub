@@ -1,0 +1,138 @@
+{
+  "id": "dd4711a3-720e-4393-9a6a-113449b36bae",
+  "name": "Xolotl",
+  "subtitle": "Emissary of Souls",
+  "slug": "xolotl",
+  "rarity": 4,
+  "description": "Disruptor capable of many attacks and debuffs.",
+  "lore": "Dog-headed Xolotl, vicious twin of Quetzalcoatl, holds mastery over fire, disease, misfortune, and monsters. Believing that the wounds of the Shattering can be healed by a new sun—which requires a multitude of sacrifices—he travels the lands gathering monsters. He means to gain mastery over them all, scatter them across different Realms, and set them loose to claim the victims required.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/dd4711a3-720e-4393-9a6a-113449b36bae.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 16022,
+    "acc": 35,
+    "atk": 1024,
+    "def": 826,
+    "res": 20,
+    "spd": 95,
+    "init": 109,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Path of the Psychopomp"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Empowered Talon Strike"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Invoker",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Empowered Talon Strike",
+      "slug": "xolotl-empowered-talon-strike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy. Increase this hero’s Divinity by 50 and place a random [Buff] on a random ally for 1 turn. Possible buffs are [mechanic:spd-up-ii], [mechanic:atk-up-ii], [mechanic:init-up-ii] or [mechanic:def-up-ii]. Will prioritise allies who trigger Path of the Psychopomp.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xolotl_Basic.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also place a random [Buff] on this hero for 1 turn."
+    },
+    {
+      "name": "Twin’s Benediction",
+      "slug": "xolotl-twin-s-benediction",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy and [Mirror]1 random [Buff] from the target. Also increase the duration of 1 random [Buff] on all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xolotl_Core.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Twin Convergence",
+      "slug": "xolotl-twin-convergence",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy and place [mechanic:sharpen-ii] on all allies for 2 turns. If Quetzalcoatl is on the team, they will join the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xolotl_Ultimate.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [
+        "Sharpen II"
+      ],
+      "ultimate_cost": 950,
+      "initial_divinity": 225,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Path of the Psychopomp",
+      "slug": "xolotl-path-of-the-psychopomp",
+      "skill_type": "Passive",
+      "description": "Has a 20% chance to join an ally in attacking. When joining an attack, will heal 5%MAX HP all allies and increase their Divinity by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xolotl_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Will also increase the Turn Meter of all allies by 5%."
+    }
+  ],
+  "imprint_passive": "Has a 10% chance to join an ally in attacking. When joining an attack, will heal 5%MAX HP all allies and increase their Divinity by 5%."
+}

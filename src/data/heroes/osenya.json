@@ -1,0 +1,88 @@
+{
+  "id": "d1cc86c9-87c7-4b3d-a869-da0f8e7e7b5f",
+  "name": "Osenya",
+  "subtitle": "The Night's Beckon",
+  "slug": "osenya",
+  "rarity": 1,
+  "description": "Seduce your foes to an Endless Slumber.",
+  "lore": "A malicious spirit who stalks the wilds near the settlements and villages of Vyraj, the osenya most frequently manifests as a young woman clad in white. Appearing on bridges, at crossroads, or on hilltops, she entices travelers to follow her across forest or fields, then consumes them either via seduction or simply because they’ve grown too exhausted to resist.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/7550b7b9-02d3-4d6b-b732-4c1f3405bca9.webp",
+  "image_zoom": 2.2,
+  "image_focal_x": 52,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 8259,
+    "acc": 0,
+    "atk": 606,
+    "def": 451,
+    "res": 0,
+    "spd": 73,
+    "init": 79,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [30] Divinity when inflicting damage to an enemy under [Sleep].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +1"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Vyraj",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Until Dawn",
+      "slug": "osenya-until-dawn",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 300%ATK with a 30% chance to increase the duration of [Sleep] on the target by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Osenya_Basic.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Wander Lust",
+      "slug": "osenya-wander-lust",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 320%ATK with a 75% chance to place [Sleep] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Osenya_Ultimate.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [
+        "Sleep"
+      ],
+      "ultimate_cost": 850,
+      "initial_divinity": 200,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

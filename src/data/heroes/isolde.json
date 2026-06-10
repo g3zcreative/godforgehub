@@ -1,0 +1,143 @@
+{
+  "id": "8f83f83d-b209-4cf4-98dd-409095b4a78a",
+  "name": "Isolde",
+  "subtitle": "Cornish Queen",
+  "slug": "isolde",
+  "rarity": 3,
+  "description": "Motivate Cornwall to victory in battle by increase Turn Meter and Healing the Wounds of your Allies.",
+  "lore": "Although betrothed to another, Isolde found herself passionately involved with Sir Tristan, thanks to a love potion they mistakenly consumed. They traveled together for years, but Isolde’s experience since the Shattering has changed her. She seeks to reverse the potion—not because she feels less for Tristan, but because she believes, if their love is real, it will survive the spell’s breaking.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/8f83f83d-b209-4cf4-98dd-409095b4a78a.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14205,
+    "acc": 5,
+    "atk": 650,
+    "def": 870,
+    "res": 20,
+    "spd": 98,
+    "init": 86,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "14% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Turn Meter Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Turn Meter Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Queen of Cornwall"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Invoker",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Queen of Cornwall",
+      "slug": "isolde-queen-of-cornwall",
+      "skill_type": "Core",
+      "description": "Place [mechanic:def-up-i] on all allies for 1 turn then increases the turn meter of all allies by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Isolde_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "DEF Up I",
+        "ATK Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also place [ATK Up I] on all allies for 1 turn."
+    },
+    {
+      "name": "Elixir of Fate",
+      "slug": "isolde-elixir-of-fate",
+      "skill_type": "Ultimate",
+      "description": "Remove 1 random [Debuff] from all allies then Increase the turn meter of all allies by 15%. Increase by a further 5% if a [Debuff] is removed from the ally.\n\nIf Tristan is on the enemy team, has a 75% chance to place [mechanic:charm] on them for 2 turns which cannot be resisted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Isolde_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Charm"
+      ],
+      "ultimate_cost": 1150,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Heart's Echo",
+      "slug": "isolde-heart-s-echo",
+      "skill_type": "Passive",
+      "description": "When an ally Defender is attacked, Heal 10%MAXHP all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Isolde_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Royal Herbs",
+      "slug": "isolde-royal-herbs",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 150%ATK. Place [mechanic:mend] on the ally with the lowest HP for 2 turns. If Tristain is on the team, he will also receive [mechanic:mend].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Isolde_Basic.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an ally Defender is attacked, Heal 5%MAXHP this hero."
+}

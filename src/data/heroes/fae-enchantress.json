@@ -1,0 +1,127 @@
+{
+  "id": "27529ff3-3838-463b-b32f-da347b5dc4d3",
+  "name": "Fae Enchantress",
+  "subtitle": "Woodland Sprite",
+  "slug": "fae-enchantress",
+  "rarity": 2,
+  "description": "Cast dark spells to slow and debuff your foes.",
+  "lore": "While the fae of Avalon encompass a variety of supernatural creatures, these particular tricksters are the epitome of stereotypical fairy imagery. Small, winged, beautiful, and capricious, they can be kind and friendly or maliciously deceptive. They wield their magics against all who offend them, and while that includes most enemies of Avalon, it includes all too many innocent passersby as well.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/1de7d78c-b08b-46aa-8f0f-e20ddcfe042e.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 10736,
+    "acc": 10,
+    "atk": 738,
+    "def": 573,
+    "res": 10,
+    "spd": 77,
+    "init": 91,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when placing a [Debuff].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +5"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "All Stats +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "All Stats +6%"
+    },
+    {
+      "tier": 3,
+      "bonus": "All Stats +7% + Skill 3 Upgrade"
+    },
+    {
+      "tier": 4,
+      "bonus": "All Stats +8%"
+    },
+    {
+      "tier": 5,
+      "bonus": "All Stats +9%"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Faerie Dust",
+      "slug": "fae-enchantress-faerie-dust",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 190%ATK. Increase this Hero's Turn Meter by 15% if the enemy is under a [Debuff].",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/ee550b23-1691-4cb1-82ac-9fdebcca233a.webp",
+      "scaling_formula": "190%ATK",
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Muddle",
+      "slug": "fae-enchantress-muddle",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 300%ATK with a 50% chance to place [mechanic:init-down-i] on the target for 2 turns.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/a16d9d03-b955-40d3-b4a3-0b5185569cce.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [
+        "INIT Down I"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Mischievous Barrage",
+      "slug": "fae-enchantress-mischievous-barrage",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 250%ATK with a 40% chance to place [mechanic:spd-down-i] on each target for 1 turn.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/e6be41cc-a684-419f-80c7-a3325f135d8d.webp",
+      "scaling_formula": "250%ATK",
+      "effects": [
+        "SPD Down I"
+      ],
+      "ultimate_cost": 1050,
+      "initial_divinity": 325,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

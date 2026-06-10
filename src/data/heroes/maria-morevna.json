@@ -1,0 +1,136 @@
+{
+  "id": "82429fb3-72ff-4c02-9366-30de3ed9ca65",
+  "name": "Maria Morevna",
+  "subtitle": "Warrior Princess",
+  "slug": "maria-morevna",
+  "rarity": 3,
+  "description": "Strike through defences and protection buffs and deal significant damage to your foes",
+  "lore": "A warrior queen of Vyraj, Maria fights in defense of the realm and her personal domain, but she is greatly displeased with this new world. The love of her old life has not reappeared since the Shattering, her exploits are largely forgotten, and her greatest enemy—Koshchei—has returned stronger than ever. In response, her methods and temper grow ever more violent.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/c0229f71-03cf-4278-84f0-dd17eab6d0bc.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 12223,
+    "acc": 15,
+    "atk": 914,
+    "def": 705,
+    "res": 15,
+    "spd": 87,
+    "init": 90,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "10% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity whenever an enemy gains a buff. Gain an additional [100] Divinity if it is an [Immortal] buff.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Battle Queen"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Slayer",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Mage Hunter",
+      "slug": "maria-morevna-mage-hunter",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy. Place an [Extra Hit] if the target has 3 or more buffs.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/2a8a0f8d-7945-4d31-be37-d902f934d850.webp",
+      "scaling_formula": "345%ATK",
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Resolute Assault",
+      "slug": "maria-morevna-resolute-assault",
+      "skill_type": "Passive",
+      "description": "Increases damage inflicted by +3% for each [Buff] on the target.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/78662bdc-53de-4b6c-bdda-1225eca76ffc.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Battle Queen",
+      "slug": "maria-morevna-battle-queen",
+      "skill_type": "Core",
+      "description": "Attack all enemies and ignore [mechanic:shield] and [mechanic:barrier] on each target.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/fd8841c2-233f-49ea-a6b7-7d778760f44f.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 5,
+      "awakening_bonus": "Also ignore [Immortal]."
+    },
+    {
+      "name": "Breach the Defences",
+      "slug": "maria-morevna-breach-the-defences",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy. Reduces the DEF of the target by 2% (Stacking up to 5 times).",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/8a82f750-a5ac-48d5-8e73-a087de2825af.webp",
+      "scaling_formula": "400%ATK",
+      "effects": [],
+      "ultimate_cost": 750,
+      "initial_divinity": 250,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Increases damage inflicted by +1.5% for each [Buff] on the target."
+}

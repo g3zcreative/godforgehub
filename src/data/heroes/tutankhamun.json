@@ -1,0 +1,146 @@
+{
+  "id": "5a0a6f92-b027-48e0-9f32-127dcbc50f12",
+  "name": "Tutankhamun",
+  "subtitle": "Curse of the Pharaoh",
+  "slug": "tutankhamun",
+  "rarity": 3,
+  "description": "Spread curses and corrode your foes on the Desert Sands dealing terror to grave robbers and looters!",
+  "lore": "The “boy king,” whose predecessors had turned to other faiths, restored worship of Aaru’s pantheon. Although deathly ill before his eighteenth birthday, Tutankhamun awoke in Ryven rather than dying. Here he mastered the curses meant to protect his tomb, turning them against Aaru’s enemies—but also, in newly inflated zealotry, against some of his own people who he feels are lacking in faith.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/5a0a6f92-b027-48e0-9f32-127dcbc50f12.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 13049,
+    "acc": 15,
+    "atk": 925,
+    "def": 705,
+    "res": 15,
+    "spd": 90,
+    "init": 88,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "12% CRIT%",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [25] Divinity when enemies are damaged by [Acid].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Eternal Curse"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "All Things Must Perish",
+      "slug": "tutankhamun-all-things-must-perish",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 125%ATK3 times. The first hit has a 70% chance to place [mechanic:drain-i] on the target for 2turns. The second hit has 70% chance to place [mechanic:vulnerable-i] on the target for 2 turns. If the target is under [Vulnerable] and [Curse], activate [mechanic:acid] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tutankhamun_Ultimate.webp",
+      "scaling_formula": "125%ATK",
+      "effects": [
+        "Drain I",
+        "Vulnerable I"
+      ],
+      "ultimate_cost": 800,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Eternal Curse",
+      "slug": "tutankhamun-eternal-curse",
+      "skill_type": "Core",
+      "description": "Attack all enemies 300%ATK with a 50% chance to extend the duration of [Curse] and [mechanic:acid] on each target by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tutankhamun_Core.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [
+        "Acid"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also, has a 50% chance to place [Acid] on all targets under [Curse] for 1 turn."
+    },
+    {
+      "name": "Blighted Strike",
+      "slug": "tutankhamun-blighted-strike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 170%ATK2 times with a 30% chance to place [mechanic:acid] on the target for 1 turn. If the target is under [Curse], will place [mechanic:acid] for 2 Turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tutankhamun_Basic.webp",
+      "scaling_formula": "170%ATK",
+      "effects": [
+        "Acid",
+        "Vulnerable I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Curse of the Pharaoh",
+      "slug": "tutankhamun-curse-of-the-pharaoh",
+      "skill_type": "Passive",
+      "description": "Attacks have a 100% chance to place [mechanic:curse-i] on the target for 1 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tutankhamun_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Curse I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Attacks have a 50% chance to place [Curse I] on the target for 1 turns."
+}

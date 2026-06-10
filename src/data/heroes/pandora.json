@@ -1,0 +1,136 @@
+{
+  "id": "919d11e1-01be-484c-886f-7bc2f48b1cc7",
+  "name": "Pandora",
+  "subtitle": "Keeper of Chaos",
+  "slug": "pandora",
+  "rarity": 4,
+  "description": "Unleash chaos upon your enemies with dark spells from the forbidden box of Pandora.",
+  "lore": "Although not entirely recovered from the guilty madness that overcame her after Olympus’s gods used her to inflict evils upon humanity, Pandora now travels Ryven working to right what wrongs she can. Using the divinely crafted box she was given, she traps fragments of the sorrows she released so she can unleash them later upon villains and monsters who most deserve them.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/919d11e1-01be-484c-886f-7bc2f48b1cc7.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15692,
+    "acc": 35,
+    "atk": 969,
+    "def": 793,
+    "res": 25,
+    "spd": 99,
+    "init": 106,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [25] Divinity when placing a [Debuff] or [Disable].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Turmoil Cascade"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Chaotic Diffusion"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Chaotic Diffusion",
+      "slug": "pandora-chaotic-diffusion",
+      "skill_type": "Passive",
+      "description": "Has a 50% chance to transfer 1[Debuff] on this hero when attacking enemies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pandora_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If a [Debuff] is transferred, extend the duration of all [Debuff's] on the target by 1 turn."
+    },
+    {
+      "name": "Whims of Fate",
+      "slug": "pandora-whims-of-fate",
+      "skill_type": "Basic",
+      "description": "Attack 2 enemies at random. Each hit has a 30% chance to steal 1 random [Buff].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pandora_Basic.webp",
+      "scaling_formula": "120%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Turmoil Cascade",
+      "slug": "pandora-turmoil-cascade",
+      "skill_type": "Core",
+      "description": "Attack 3 enemies at random. Each hit has a 40% chance to steal [50] divinity.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pandora_Core.webp",
+      "scaling_formula": "90%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Each hit also steals 5% Turn Meter"
+    },
+    {
+      "name": "Unsealed Chaos",
+      "slug": "pandora-unsealed-chaos",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies with a 75% chance to place a random [Disable] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pandora_Ultimate.webp",
+      "scaling_formula": "270%ATK",
+      "effects": [],
+      "ultimate_cost": 1150,
+      "initial_divinity": 325,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Has a 25% chance to transfer 1[Debuff] on this hero when attacking enemies."
+}

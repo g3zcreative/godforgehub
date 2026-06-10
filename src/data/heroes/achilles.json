@@ -1,0 +1,142 @@
+{
+  "id": "50e13136-dc4c-49e4-8bd3-3480aa112f59",
+  "name": "Achilles",
+  "subtitle": "Myrmidon's Wrath",
+  "slug": "achilles",
+  "rarity": 4,
+  "description": "Single target melee warrior who empowers their damage through Bleeds",
+  "lore": "A great war leader of Olympus, Achilles burns with resentment and rage. The Shattering robbed him of his opportunity for vengeance against the Trojan Prince Hector, and the shift in magics weakened the mystical invulnerability he once enjoyed. Despite his newfound limitations, Achilles has grown more reckless in battle rather than more cautious, driven by seething emotions that make him deeply unpredictable.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/50e13136-dc4c-49e4-8bd3-3480aa112f59.webp",
+  "image_zoom": 3,
+  "image_focal_x": 76,
+  "image_focal_y": 8,
+  "stats": {
+    "hp": 15361,
+    "acc": 25,
+    "atk": 1156,
+    "def": 826,
+    "res": 25,
+    "spd": 93,
+    "init": 99,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% ATK",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [60] Divinity when placing a [Bleed] on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +9"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Rage of the Myrmidon"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Dance of Chiron"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Achilles Heel",
+      "slug": "achilles-achilles-heel",
+      "skill_type": "Passive",
+      "description": "Inflicts 20% increased damage to enemies under [mechanic:bleed] but receives 20% increased damage from enemies under [mechanic:bleed].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Achilles_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Rage of the Myrmidon",
+      "slug": "achilles-rage-of-the-myrmidon",
+      "skill_type": "Core",
+      "description": "Place [mechanic:atk-up-ii] and [mechanic:sharpen-ii] on this hero for 2 turns then gains an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Achilles_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "ATK Up II",
+        "Sharpen II",
+        "Retaliate"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [Retaliate] on this hero for 2 turns."
+    },
+    {
+      "name": "Dance of Chiron",
+      "slug": "achilles-dance-of-chiron",
+      "skill_type": "Ultimate",
+      "description": "Remove all stacks of [mechanic:bleed] on the target then Attack 3 times. Damage inflicted increases by 15% for each stack of [mechanic:bleed] removed.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Achilles_Ultimate.webp",
+      "scaling_formula": "120%ATK",
+      "effects": [],
+      "ultimate_cost": 1500,
+      "initial_divinity": 275,
+      "awakening_level": 5,
+      "awakening_bonus": "ATK increases by 1% up to a maximum of 50% for each stack of [Bleed] removed."
+    },
+    {
+      "name": "Adroit Manoeuver",
+      "slug": "achilles-adroit-manoeuver",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 50% chance to place 3 stacks of [mechanic:bleed].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Achilles_Basic.webp",
+      "scaling_formula": "260%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Inflicts 10% increased damage to enemies under [Bleed] but receives 20% increased damage from enemies under [Bleed]."
+}

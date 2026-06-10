@@ -1,0 +1,142 @@
+{
+  "id": "5d8f86b7-1e58-463b-b7a3-56dea7cdbca6",
+  "name": "Orpheus",
+  "subtitle": "Master of Melody",
+  "slug": "orpheus",
+  "rarity": 3,
+  "description": "Invoker that places many buffs while reviving and increasing divinity.",
+  "lore": "A brilliant poet and musician capable of charming most creatures, Orpheus is most famous for his quest to rescue his wife Eurydice from the underworld—a quest he failed. Since the Shattering, his grief has soured his love for song and frivolity. Now he uses his music to draw souls away from the underworld in an effort to be avenged upon Hades for his failure to retrieve his beloved.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/5d8f86b7-1e58-463b-b7a3-56dea7cdbca6.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14205,
+    "acc": 5,
+    "atk": 683,
+    "def": 804,
+    "res": 25,
+    "spd": 99,
+    "init": 90,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [25] Divinity when placing a [buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +75"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Divinity Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Divinity Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Invigorating Chrord"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Invoker",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Invigorating Chrord",
+      "slug": "orpheus-invigorating-chrord",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 150%ATK, then increase the turn meter of all allies by 3%. If Eurydice is in the team, increase turn meter of all allies by 6% instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Orpheus_Basic.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also increase Divinity of all allies by [40]. If Eurydice is in the team, increase the Divinity by [70]."
+    },
+    {
+      "name": "Melodic Mastery",
+      "slug": "orpheus-melodic-mastery",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 220%ATK, then place [mechanic:atk-up-i] and [mechanic:acc-up-i] for 1 turn on all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Orpheus_Core.webp",
+      "scaling_formula": "220%ATK",
+      "effects": [
+        "ATK Up I",
+        "ACC Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Harmony of Eurydice",
+      "slug": "orpheus-harmony-of-eurydice",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:spd-up-i] and [mechanic:init-up-i] for 1 turn on all allies. If Eurydice is on the team and is defeated, revive her with 50% HP and 50% Turn Meter.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Orpheus_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "SPD Up I",
+        "INIT Up I"
+      ],
+      "ultimate_cost": 1250,
+      "initial_divinity": 325,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Serenade",
+      "slug": "orpheus-serenade",
+      "skill_type": "Passive",
+      "description": "Has a 20% chance to increase the Divinity of all allies by [50] when this hero places a [buff] on any ally.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Orpheus_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Has a 20% chance to increase the Divinity of all allies by [25] when this hero places a [buff] on any ally."
+}

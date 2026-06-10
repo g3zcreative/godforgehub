@@ -13,6 +13,7 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/comp
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useState } from "react";
 import { format } from "date-fns";
+import { getLocalHero, getLocalHeroes } from "@/lib/localHeroes";
 
 const rarityStars = (r: number) => "★".repeat(r) + "☆".repeat(Math.max(0, 5 - r));
 
@@ -37,28 +38,23 @@ export default function HeroDetail() {
   const { data: tpl } = useSeoTemplate("hero");
 
   const { data: hero, isLoading } = useQuery({
-    queryKey: ["hero", slug],
+    queryKey: ["hero_local", slug],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("heroes")
-        .select("*")
-        .eq("slug", slug!)
-        .maybeSingle();
-      if (error) throw error;
+      const data = getLocalHero(slug!);
       if (!data) return null;
 
       const [factionRes, archetypeRes, affinityRes, allegianceRes] = await Promise.all([
-        data.faction_id ? supabase.from("factions").select("name, icon_url").eq("id", data.faction_id).maybeSingle() : { data: null },
-        data.archetype_id ? supabase.from("archetypes").select("name, icon_url").eq("id", data.archetype_id).maybeSingle() : { data: null },
-        data.affinity_id ? supabase.from("affinities").select("name, icon_url").eq("id", data.affinity_id).maybeSingle() : { data: null },
-        data.allegiance_id ? supabase.from("allegiances").select("name, icon_url").eq("id", data.allegiance_id).maybeSingle() : { data: null },
+        data.faction ? supabase.from("factions").select("name, icon_url").ilike("name", data.faction).maybeSingle() : { data: null },
+        data.archetype ? supabase.from("archetypes").select("name, icon_url").ilike("name", data.archetype).maybeSingle() : { data: null },
+        data.affinity ? supabase.from("affinities").select("name, icon_url").ilike("name", data.affinity).maybeSingle() : { data: null },
+        data.allegiance ? supabase.from("allegiances").select("name, icon_url").ilike("name", data.allegiance).maybeSingle() : { data: null },
       ]);
 
       return {
         ...data,
-        faction_name: factionRes?.data?.name || null,
+        faction_name: factionRes?.data?.name || data.faction,
         faction_icon: factionRes?.data?.icon_url || null,
-        archetype_name: archetypeRes?.data?.name || null,
+        archetype_name: archetypeRes?.data?.name || data.archetype,
         archetype_icon: archetypeRes?.data?.icon_url || null,
         affinity_name: affinityRes?.data?.name || data.affinity,
         affinity_icon: affinityRes?.data?.icon_url || null,
@@ -84,31 +80,19 @@ export default function HeroDetail() {
 
   // Fetch all heroes in the same faction for breadcrumb dropdown
   const { data: factionHeroes } = useQuery({
-    queryKey: ["faction_heroes_breadcrumb", hero?.faction_id],
+    queryKey: ["faction_heroes_breadcrumb_local", hero?.faction],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("heroes")
-        .select("name, slug, image_url")
-        .eq("faction_id", hero!.faction_id!)
-        .order("name");
-      if (error) throw error;
-      return data;
+      if (!hero?.faction) return [];
+      const list = getLocalHeroes();
+      return list
+        .filter((h) => h.faction?.toLowerCase() === hero.faction?.toLowerCase())
+        .map((h) => ({ name: h.name, slug: h.slug, image_url: h.image_url }))
+        .sort((a, b) => a.name.localeCompare(b.name));
     },
-    enabled: !!hero?.faction_id,
+    enabled: !!hero?.faction,
   });
 
-  const { data: skills } = useQuery({
-    queryKey: ["hero_skills", hero?.id],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("skills")
-        .select("*")
-        .eq("hero_id", hero!.id);
-      if (error) throw error;
-      return data as any[];
-    },
-    enabled: !!hero?.id,
-  });
+  const skills = hero?.skills || [];
 
   const { data: builds } = useQuery({
     queryKey: ["hero_builds", hero?.id],
@@ -174,7 +158,7 @@ export default function HeroDetail() {
     label: f.name,
     href: `/database/heroes?faction=${f.slug}`,
     iconUrl: f.icon_url,
-    active: hero?.faction_id === f.id,
+    active: hero?.faction?.toLowerCase() === f.name?.toLowerCase(),
   }));
 
   const heroDropdown: DropdownItem[] = (factionHeroes || []).map((h) => ({
@@ -189,7 +173,7 @@ export default function HeroDetail() {
     ...(hero?.faction_name
       ? [{
           label: hero.faction_name,
-          href: `/database/heroes?faction=${allFactions?.find(f => f.id === hero.faction_id)?.slug || ""}`,
+          href: `/database/heroes?faction=${allFactions?.find(f => f.name?.toLowerCase() === hero.faction?.toLowerCase())?.slug || ""}`,
           dropdown: factionDropdown,
         }]
       : []),

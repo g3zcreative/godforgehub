@@ -1,0 +1,140 @@
+{
+  "id": "214a7518-2003-42a3-bc9f-14ae086d5efe",
+  "name": "Belobog",
+  "subtitle": "Bright Fortune",
+  "slug": "belobog",
+  "rarity": 5,
+  "description": "Full Hero Information",
+  "lore": "Manifestation of good fortune, Belobog holds even less interest in the affairs of other gods than most of Vyraj’s pantheon. He focuses on mortals, and if possible he would grant his gifts to all. Alas, he lacked the power to bless most of them even before the Shattering. He responds to what prayers he can, and struggles toward a happier world.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/214a7518-2003-42a3-bc9f-14ae086d5efe.webp",
+  "image_zoom": 3,
+  "image_focal_x": 35,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 20647,
+    "acc": 15,
+    "atk": 925,
+    "def": 1090,
+    "res": 45,
+    "spd": 119,
+    "init": 102,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "25% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [70] Divinity when packing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +16"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Law of Time"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +20%, Stat 41 +20%, Stat 40 +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Light's Protection"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Equilibrium of Power"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Invoker",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Prosperous Light",
+      "slug": "belobog-prosperous-light",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 350%ATK and place [mechanic:atk-up-ii] on all allies for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Belobog_Basic.webp",
+      "scaling_formula": "350%ATK",
+      "effects": [
+        "ATK Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Equilibrium of Power",
+      "slug": "belobog-equilibrium-of-power",
+      "skill_type": "Ultimate",
+      "description": "Increase the rank of all [Buff] on all allies by 1 and decrease the rank of all [Debuff] on all allies by 1. Also equalize the Turn Meter of all allies to the enemy with the highest Turn Meter.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Belobog_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 1850,
+      "initial_divinity": 275,
+      "awakening_level": 5,
+      "awakening_bonus": "Then gain an Extra Turn. If Chernobog is on the team, increase his Turn Meter by 100%."
+    },
+    {
+      "name": "Law of Time",
+      "slug": "belobog-law-of-time",
+      "skill_type": "Passive",
+      "description": "When an ally receives a [Debuff], decrease its duration by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Belobog_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "When an ally receives a [Buff], increase its duration by 1 turn."
+    },
+    {
+      "name": "Light's Protection",
+      "slug": "belobog-light-s-protection",
+      "skill_type": "Core",
+      "description": "Place [Block Debuff] and [mechanic:stalwart] on all allies for 2 turns and attack all enemies 200%ATK. Also decrease the Cooldown of all ally Core Abilities by 1 turn. If Chernobog is on the team, he joins the attack using his Core Ability.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Belobog_Core.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "Stalwart"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Refresh the cooldown of all ally Core Abilities instead."
+    }
+  ],
+  "imprint_passive": "When an ally receives a [Debuff], decrease its duration by 1 turn."
+}

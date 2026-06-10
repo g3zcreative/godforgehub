@@ -1,0 +1,144 @@
+{
+  "id": "ee88f1ec-784d-4253-be7d-8f4120f40d3a",
+  "name": "Shorn One",
+  "subtitle": "Tlaloc's Oathsworn",
+  "slug": "shorn-one",
+  "rarity": 3,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "In the most prestigious warrior society of Omeyocan, the Shorn Ones are battlefield terrors. Easily identified—bald but for a single braid and painted in blues and reds or yellows—they are merciless not only to the enemy but to any of their own who dare retreat. Facing Shorn Ones means death for one side or the other; they permit no other outcome.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/7a9dcc16-7dcd-44f9-be0b-5d7d4e063528.webp",
+  "image_zoom": 3,
+  "image_focal_x": 7,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15361,
+    "acc": 10,
+    "atk": 606,
+    "def": 892,
+    "res": 45,
+    "spd": 83,
+    "init": 88,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% RES",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Reduction Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Reduction Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Loyal Sacrifice"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Defender",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Never Surrender",
+      "slug": "shorn-one-never-surrender",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:def-up-i] on this hero for 1 turn, then attack all enemies (190%DEF+100%ATK) with a 50% chance to place [mechanic:atk-down-i] on each target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_ShornOne_Ultimate.webp",
+      "scaling_formula": "190%DEF+100%ATK",
+      "effects": [
+        "DEF Up I",
+        "ATK Down I"
+      ],
+      "ultimate_cost": 1300,
+      "initial_divinity": 325,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Loyal Sacrifice",
+      "slug": "shorn-one-loyal-sacrifice",
+      "skill_type": "Core",
+      "description": "Place [Protect] on all allies for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_ShornOne_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Protect I",
+        "Barrier"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also place [Barrier]50% DEF on this hero."
+    },
+    {
+      "name": "Tlaloc's Favor",
+      "slug": "shorn-one-tlaloc-s-favor",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (225%DEF+120%ATK) and place [mechanic:mend] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_ShornOne_Basic.webp",
+      "scaling_formula": "225%DEF+120%ATK",
+      "effects": [
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Unshakeable",
+      "slug": "shorn-one-unshakeable",
+      "skill_type": "Passive",
+      "description": "Has a 50% chance to remove 1[Disable] on this hero at the start of their turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_ShornOne_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Has a 25% chance to remove 1[Disable] on this hero at the start of their turn."
+}

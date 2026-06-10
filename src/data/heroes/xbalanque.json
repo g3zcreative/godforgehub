@@ -1,0 +1,138 @@
+{
+  "id": "c2349904-9ab9-421e-ba57-91f650a3f301",
+  "name": "Xbalanque",
+  "subtitle": "The War Twin",
+  "slug": "xbalanque",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Xbalanque and his twin brother Hunahpu are the offspring of Xquic—an underworld goddess—and a slain mortal. Through wits, physical prowess, and divine favors, they adventured against demons and gods, eventually avenging their father on the underworld deities who slew him. In Ryven they continue to oppose the death gods, and to thwart the monsters who threaten Omeyocan’s people.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/c2349904-9ab9-421e-ba57-91f650a3f301.webp",
+  "image_zoom": 3,
+  "image_focal_x": 76,
+  "image_focal_y": 15,
+  "stats": {
+    "hp": 19491,
+    "acc": 20,
+    "atk": 914,
+    "def": 925,
+    "res": 40,
+    "spd": 93,
+    "init": 87,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "15% CRIT",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when this hero or Hunahpu inflict damage to an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Awaken the ability: Xibalba Trickery"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Brawler",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Jaguar Strike",
+      "slug": "xbalanque-jaguar-strike",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (11%HP+160%ATK). If the target has higher MAX HP than this hero, inflict an additional 1% Enemy Max HP. If Hunahpu is on the team, place [mechanic:sharpen-ii] on this hero for 2 turns before attacking.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xbalanque_Core.webp",
+      "scaling_formula": "11%HP+160%ATK",
+      "effects": [
+        "Sharpen II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Xibalba Trickery",
+      "slug": "xbalanque-xibalba-trickery",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (10%HP+120%ATK). If the attack is a Strong hit, has a 50% chance to place [mechanic:stun] on the target for 1 turn. If Hunahpu is on the team, increase his Divinity by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xbalanque_Ultimate.webp",
+      "scaling_formula": "10%HP+120%ATK",
+      "effects": [
+        "Stun"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": 100,
+      "awakening_level": 5,
+      "awakening_bonus": "This attack is always Strong."
+    },
+    {
+      "name": "Moon Javelin",
+      "slug": "xbalanque-moon-javelin",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (9%HP+150%ATK) with a 50% chance to place [mechanic:def-down-ii] on the target for 1 turn. If Hunahpu is on the team, he joins the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xbalanque_Basic.webp",
+      "scaling_formula": "9%HP+150%ATK",
+      "effects": [
+        "DEF Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Twin Duelist",
+      "slug": "xbalanque-twin-duelist",
+      "skill_type": "Passive",
+      "description": "When this hero inflicts a critical attack, the next attack will inflict 20% increased damage. If Hunahpu is on the team, will inflict 40% instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xbalanque_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When this hero inflicts a critical attack, the next attack will inflict 10% increased damage."
+}

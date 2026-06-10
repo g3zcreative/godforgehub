@@ -1,0 +1,139 @@
+{
+  "id": "d48f6c92-e027-46a7-93b4-bc6deaebc423",
+  "name": "Bauk",
+  "subtitle": "Shadow beast",
+  "slug": "bauk",
+  "rarity": 3,
+  "description": "Lurk in the shadows and cast despair on your enemies as you counter the enemies attacks.",
+  "lore": "The bauk, canine entities of shadow and hunger, lurk in abandoned buildings, dark holes, and under beds. From there they strike, dragging their victims away to be consumed. They particularly enjoy the flesh of the weak and helpless. Bauk can be held at bay by light, but they have grown less susceptible, braver, and more numerous since the Shattering.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/d48f6c92-e027-46a7-93b4-bc6deaebc423.webp",
+  "image_zoom": 1.6,
+  "image_focal_x": 50,
+  "image_focal_y": 41,
+  "stats": {
+    "hp": 17343,
+    "acc": 15,
+    "atk": 771,
+    "def": 760,
+    "res": 30,
+    "spd": 85,
+    "init": 81,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "Story & Dungeon"
+  },
+  "divinity_generator": "Gain [60] Divinity when this hero retaliates against an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +75"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore DEF +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore DEF +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Dread Maul"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Brawler",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Shadow Rend",
+      "slug": "bauk-shadow-rend",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (9%HP+80%ATK) with a 75% chance to Increase the duration of 1 random debuff to the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Bauk_Basic.webp",
+      "scaling_formula": "9%HP+80%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Dread Maul",
+      "slug": "bauk-dread-maul",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (13%HP+100%ATK) with a 75% chance to place [mechanic:despair] for 1 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Bauk_Core.webp",
+      "scaling_formula": "13%HP+100%ATK",
+      "effects": [
+        "Despair",
+        "Vanish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Place [Vanish] on this hero for 2 turns after attacking."
+    },
+    {
+      "name": "Lurking Presence",
+      "slug": "bauk-lurking-presence",
+      "skill_type": "Passive",
+      "description": "When this hero receives a [Debuff], he has a 50% chance to [mechanic:retaliate] against the attacker.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Bauk_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Shadow Ambush",
+      "slug": "bauk-shadow-ambush",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (3%HP+60%ATK)3 times with a 75% chance to steal 1 random [buff] from the target. If this hero is under [mechanic:vanish] then steals 2 random [buffs] from the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Bauk_Ultimate.webp",
+      "scaling_formula": "3%HP+60%ATK",
+      "effects": [],
+      "ultimate_cost": 850,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When this hero receives a [Debuff], he has a 25% chance to retaliate against the attacker."
+}

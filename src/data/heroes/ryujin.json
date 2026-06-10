@@ -1,0 +1,154 @@
+{
+  "id": "8a1dae96-29f9-4f21-84ec-0ce1caaf77eb",
+  "name": "Ryujin",
+  "subtitle": "Sea Serpent",
+  "slug": "ryujin",
+  "rarity": 4,
+  "description": "Bring the ocean’s protection to your team whilst freezing your foes on the battlefield.",
+  "lore": "Dragon-god of the seas, Ryujin has always been capricious, and has grown even more so since the Shattering. Although he directs his efforts toward defending Izumo, he often lashes out without forethought, his tempests and tides often causing devastation to his own people nearly as much as they do the realm’s enemies. But Ryujin struggles against his temper, eager to find a purpose.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/8a1dae96-29f9-4f21-84ec-0ce1caaf77eb.webp",
+  "image_zoom": 1.8,
+  "image_focal_x": 0,
+  "image_focal_y": 39,
+  "stats": {
+    "hp": 19160,
+    "acc": 15,
+    "atk": 639,
+    "def": 1112,
+    "res": 60,
+    "spd": 91,
+    "init": 90,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "19% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Shield Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Dragon Patron"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Ebb and Flow"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Defender",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Tidal Surge",
+      "slug": "ryujin-tidal-surge",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies then decrease the rank of each [Debuff] on all allies and Heal 150%DEF them. If an ally has no [Debuff], place 250%DEF on all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ryujin_Ultimate.webp",
+      "scaling_formula": "250%DEF+150%ATK",
+      "effects": [],
+      "ultimate_cost": 1300,
+      "initial_divinity": 400,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Dragon Patron",
+      "slug": "ryujin-dragon-patron",
+      "skill_type": "Core",
+      "description": "Place [mechanic:ward] on this hero for 2 turn on this hero and [mechanic:protect-ii] on all allies except this hero for 2 turns.Gain [30] Divinity when hit by an enemy.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ryujin_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Ward",
+        "Protect II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also increase the duration of all [Buff] on all allies by 1 turn."
+    },
+    {
+      "name": "Storm Surge",
+      "slug": "ryujin-storm-surge",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ryujin_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Rising Tide",
+      "slug": "ryujin-rising-tide",
+      "skill_type": "Basic",
+      "description": "Attack all enemies with a 40% chance to place [mechanic:atk-down-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ryujin_Basic.webp",
+      "scaling_formula": "230%DEF+135%ATK",
+      "effects": [
+        "ATK Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ebb and Flow",
+      "slug": "ryujin-ebb-and-flow",
+      "skill_type": "Passive",
+      "description": "When an ally under [Protect] has their turn meter decreased, increase their Divinity by 10%. When an ally under [Protect] has their Divinity decreased, increase their turn meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ryujin_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This hero also gains the same amount of Turn Meter or Divinity."
+    }
+  ],
+  "imprint_passive": null
+}

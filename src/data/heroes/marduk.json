@@ -1,0 +1,142 @@
+{
+  "id": "077a108b-283a-401e-a41d-8c826ccdb228",
+  "name": "Marduk",
+  "subtitle": "Call of the Sun",
+  "slug": "marduk",
+  "rarity": 5,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "King of Ekur’s gods, Marduk was always a deity of war and of wrath, but always in the service of protecting his world. That wrath has burned unabated since the Shattering, and the obvious cause—the violation of the natural order—can explain only some of it. He schemes with gods of other Realms toward objectives he thus far will not share.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/077a108b-283a-401e-a41d-8c826ccdb228.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 19325,
+    "acc": 15,
+    "atk": 892,
+    "def": 1068,
+    "res": 45,
+    "spd": 117,
+    "init": 104,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "25% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [70] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Cleanse Defilement"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +20%, Turn Meter Multiplier +20%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Ride the Lightning"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Grounded Surge"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Invoker",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Invigorating Jolt",
+      "slug": "marduk-invigorating-jolt",
+      "skill_type": "Ultimate",
+      "description": "Remove all [Disables] from all allies the place [mechanic:stalwart] and [mechanic:spd-up-ii] on all allies for 2 turns. Also increase the Divinity and Turn Meter of all allies by 30%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Marduk_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Stalwart",
+        "SPD Up II"
+      ],
+      "ultimate_cost": 1650,
+      "initial_divinity": 300,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Cleanse Defilement",
+      "slug": "marduk-cleanse-defilement",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 300%ATK then spread 1[buff] from each ally and place it on all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Marduk_Basic.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also increase the duration of 1 random [buff] on each ally by 1 turn."
+    },
+    {
+      "name": "Ride the Lightning",
+      "slug": "marduk-ride-the-lightning",
+      "skill_type": "Core",
+      "description": "Remove all [debuffs] from all allies then attack 1 enemy 300%ATK. All allies will join in the attack. Also, place [Block Debuff] on each ally for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Marduk_Core.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [
+        "Phoenix",
+        "Block Debuff"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [Pheonix] on each ally for 2 turns which cannot be removed."
+    },
+    {
+      "name": "Grounded Surge",
+      "slug": "marduk-grounded-surge",
+      "skill_type": "Passive",
+      "description": "For every 10[debuffs] this hero’s team receives, activate this hero’s Core Ability.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Marduk_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If this passive activates this hero’s Core Ability, increase this hero’s Divinity by 100%."
+    }
+  ],
+  "imprint_passive": "For every 10[debuffs] this hero’s receives, activate their Core Ability."
+}

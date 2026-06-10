@@ -1,0 +1,125 @@
+{
+  "name": "Moctezuma",
+  "awakening_bonuses": [
+    {
+      "bonus": "Awaken the ability: Moctezuma’s Revenge",
+      "tier": 1
+    },
+    {
+      "bonus": "Shield Multiplier +30%, DMG Multiplier +30%, DMG Reduction Multiplier +20%",
+      "tier": 2
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Sacrificial Vow"
+    },
+    {
+      "bonus": "Attunement Multiplier +40%, Armor Multiplier +25%, Weapon Multiplier +25%",
+      "tier": 4
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Dance of Tenochtitlan"
+    }
+  ],
+  "description": "Moctezuma is a powerful Defender who punishes enemies with Barriers and Shields, protecting his allies while reflecting damage back at his foes.",
+  "affinity": "Strength",
+  "element": "Omeyocan",
+  "image_url": "https://godforge.gg/heroes/assets/hero/CO_Character_Moctezuma_main.webp",
+  "class_type": "Defender",
+  "stats": {
+    "hp": 12388,
+    "res": 75,
+    "spd": 103,
+    "init": 93,
+    "crit_dmg": 50,
+    "def": 1112,
+    "atk": 727,
+    "crit_rate": 10,
+    "acc": 25
+  },
+  "allegiance": "Chaos",
+  "lore": "The greatest Aztec Emperor who expanded his kingdom and made Tenochtitlan the jewel of his world. Empowered by the divine aether released after the Shattering, Moctezuma has become akin to a god. He is one of Omeyocan’s staunchest defenders, wary of other Realms and determined to protect his people against invasion.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +6%, DEF +6%, ATK +6%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +6%, DEF +6%, ATK +6%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +6%, DEF +6%, ATK +6%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +14"
+    },
+    {
+      "bonus": "C.DMG +16",
+      "tier": 5
+    },
+    {
+      "tier": 6,
+      "bonus": "Init. Divinity +400"
+    }
+  ],
+  "leader_bonus": {
+    "text": "30% DEF",
+    "scope": "Dungeon Battles"
+  },
+  "imprint_passive": "When an enemy attacks this hero, decrease the damage received by 10% and increase the damage this hero inflicts on their next ability by 2.5%. This is doubled if the enemy is under [Barrier] or [Shield].",
+  "slug": "moctezuma",
+  "skills": [
+    {
+      "image_url": "https://godforge.gg/api/media/file/ICON_Moctezuma_Basic.webp",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (95%DEF+90%ATK) 2 times. Each hit inflicts 50% increased damage to [Barrier] and [Shield]. If the target is not under [Barrier] and [Shield] increase this hero’s Turn Meter by 10% instead.",
+      "scaling_formula": "95%DEF + 90%ATK",
+      "name": "Obsidian Judgement"
+    },
+    {
+      "image_url": "https://godforge.gg/api/media/file/ICON_Moctezuma_Core.webp",
+      "skill_type": "Core",
+      "awakening_bonus": "Place [Taunt] for 2 Turns instead.",
+      "effects": [
+        "Curse II",
+        "Acid",
+        "Taunt"
+      ],
+      "description": "Attack all enemies (80%DEF+75%ATK) 2 times. Before each hit, has a 75% chance to remove [Barrier] and [Shield] from each target. If the target is not under [Barrier] or [Shield] after attacking, has a 75% chance to place [Curse II] on each target for 2 turns otherwise place [Acid] on each target for 2 turns. Also place [Taunt] on each target for 1 turn.",
+      "name": "Moctezuma’s Revenge",
+      "awakening_level": 1,
+      "scaling_formula": "80%DEF + 75%ATK"
+    },
+    {
+      "scaling_formula": "145%DEF + 130%ATK",
+      "name": "Dance of Tenochtitlan",
+      "ultimate_cost": 3375,
+      "effects": [
+        "Ward",
+        "Shield"
+      ],
+      "image_url": "https://godforge.gg/api/media/file/ICON_Moctezuma_Ultimate.webp",
+      "awakening_level": 5,
+      "description": "Place [Ward] on all allies for 2 turns, then attack all enemies (145%DEF+130%ATK). Also place [Shield] on all allies equal to 30% of the damage inflicted. The [Shield] cannot exceed 25,000.",
+      "initial_divinity": 725,
+      "skill_type": "Ultimate",
+      "awakening_bonus": "Increase the [Shield] limit to 50,000 and reflects 100% of the damage inflicted to the shield. This will always be a Normal hit and ignore 100% DEF."
+    },
+    {
+      "description": "When an enemy attacks an ally, decrease the damage received by 20% and increase the damage this hero inflicts on their next ability by 5%. This is doubled if the enemy is under [Barrier] or [Shield].",
+      "awakening_level": 3,
+      "name": "Sacrificial Vow",
+      "awakening_bonus": "If an ally is defeated, activate this hero’s Core Ability.",
+      "skill_type": "Passive",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Moctezuma_Passive.webp"
+    }
+  ],
+  "rarity": 5,
+  "subtitle": "The Conqueror",
+  "id": "5dfcbe25-981a-4376-9c50-f5eedb20e4bc",
+  "faction": "Omeyocan"
+}

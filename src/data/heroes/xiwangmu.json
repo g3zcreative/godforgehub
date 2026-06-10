@@ -1,0 +1,135 @@
+{
+  "id": "c7ec8cec-dd20-4e96-8a73-dd6e55410cf8",
+  "name": "Xiwangmu",
+  "subtitle": "Queen Mother",
+  "slug": "xiwangmu",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "The Queen Mother of the West oversees matters of life and death, prosperity and calamity. Since the Shattering, she is one of Tian’s busiest gods, working to repair the many aspects of Ryven that remain out of balance. She communes with emperors and heroes, granting fortune—and in rare cases, immortality—to those who prove helpful in her efforts.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/c7ec8cec-dd20-4e96-8a73-dd6e55410cf8.webp",
+  "image_zoom": 2.4,
+  "image_focal_x": 68,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18169,
+    "acc": 15,
+    "atk": 672,
+    "def": 1134,
+    "res": 65,
+    "spd": 96,
+    "init": 93,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "A powerful attack planned for the future."
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +9"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "C.DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Graceful Command"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Nurturing Balance"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Graceful Command",
+      "slug": "xiwangmu-graceful-command",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xiwangmu_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Cosmic Burst",
+      "slug": "xiwangmu-cosmic-burst",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xiwangmu_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Orchard Blessing",
+      "slug": "xiwangmu-orchard-blessing",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xiwangmu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Nurturing Balance",
+      "slug": "xiwangmu-nurturing-balance",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Xiwangmu_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

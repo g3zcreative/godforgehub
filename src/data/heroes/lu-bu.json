@@ -1,0 +1,142 @@
+{
+  "id": "174eeb78-8fa8-4605-9925-5434e00d4d89",
+  "name": "Lu Bu",
+  "subtitle": "Flying General",
+  "slug": "lu-bu",
+  "rarity": 3,
+  "description": "Raise Barriers and charge through enemies causing Despair and Havoc!",
+  "lore": "Lu Bu is a skilled warrior, but also a habitual traitor without loyalty. He considers the near paralysis of Tian’s bureaucracy a sign of weakness, and searches for someone to whom he can betray Tian’s gods in exchange for power and authority. He has recently approached Ninurta in Ekur—a visit that has allowed Lillith to ensnare Lu Bu in her schemes.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/90b055fd-7b16-4e3a-b6ee-b3835e1a6055.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17343,
+    "acc": 15,
+    "atk": 738,
+    "def": 749,
+    "res": 30,
+    "spd": 81,
+    "init": 80,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "18% HP",
+    "scope": "Campaign Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when gaining [Barrier].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Barrier Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Weapon Multiplier +2.5%, Armor Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Barrier Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Weapon Multiplier +2.5%, Armor Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Battle Hardened"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Battle Hardened",
+      "slug": "lu-bu-battle-hardened",
+      "skill_type": "Passive",
+      "description": "When this hero has [mechanic:barrier], inflict 20% increased damage and reduce the damage received by 20%.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/f37a449e-f3b6-4046-908a-73407e2a19df.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 5,
+      "awakening_bonus": "Attacks increase this hero’s [Barrier] by 5% of the damage inflicted."
+    },
+    {
+      "name": "Battle Cry",
+      "slug": "lu-bu-battle-cry",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (15%HP+120%ATK). If this hero has [mechanic:barrier], has 50% chance to place [mechanic:despair] on the target for 1 turn.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/7c7b20fb-ea29-4e71-ac46-1057c5b7ba6e.webp",
+      "scaling_formula": "15%HP+120%ATK",
+      "effects": [
+        "Despair"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Martial Power",
+      "slug": "lu-bu-martial-power",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (10%HP+105%ATK). [mechanic:barrier]2%HP on this hero.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/4ad999b7-6eb7-4746-9334-27890e086b32.webp",
+      "scaling_formula": "10%HP+105%ATK",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Impenetrable Fury",
+      "slug": "lu-bu-impenetrable-fury",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (13%HP+110%ATK) with a 80% chance to place [mechanic:blunt-i] for 2 turns. If the hero is under [mechanic:barrier] the attack is always Strong.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/034ad096-212a-423b-9d6e-7dbcb9d0dd1f.webp",
+      "scaling_formula": "13%HP+110%ATK",
+      "effects": [
+        "Blunt I"
+      ],
+      "ultimate_cost": 1450,
+      "initial_divinity": 275,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When this hero has [Barrier], inflict 10% increased damage and reduce the damage received by 10%."
+}

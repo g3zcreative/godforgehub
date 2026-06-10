@@ -1,0 +1,139 @@
+{
+  "id": "f3478fc6-f3d0-4fc6-b79a-4d5bb58e90bf",
+  "name": "Grendel",
+  "subtitle": "Hrothgar's Terror",
+  "slug": "grendel",
+  "rarity": 5,
+  "description": "Devour the Halls of Asgard as you bring Despair and feast on defeated foes.",
+  "lore": "Monstrous Grendel terrorized Hrothgar’s hall, devouring countless people before Beowulf tore the arm from his body. Yet Grendel survived, for the world Shattered as he staggered, bleeding, the currents of aether preserving his life. Now equipped with a mystical prosthetic, he wreaks vengeance upon all humanity, slaying and consuming. Who provided his new arm, and why, only Grendel himself might say.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/f3478fc6-f3d0-4fc6-b79a-4d5bb58e90bf.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 24116,
+    "acc": 30,
+    "atk": 1024,
+    "def": 1035,
+    "res": 55,
+    "spd": 99,
+    "init": 96,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +14"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Monstrous Breath"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, DMG Multiplier +30%, Strong Hit DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Enraged Monster"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Devourer of Heorot"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Endless Rampage",
+      "slug": "grendel-endless-rampage",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times (7%HP+65%ATK). If the target is defeated, this hero gains an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Grendel_Basic.webp",
+      "scaling_formula": "7%HP+65%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Monstrous Breath",
+      "slug": "grendel-monstrous-breath",
+      "skill_type": "Core",
+      "description": "Attack all enemies (14%HP+130%ATK) with a 75% chance to place [mechanic:despair] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Grendel_Core.webp",
+      "scaling_formula": "14%HP+130%ATK",
+      "effects": [
+        "Despair",
+        "INIT Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also place [INIT Down II] on enemies under [Despair] for 2 turns."
+    },
+    {
+      "name": "Enraged Monster",
+      "slug": "grendel-enraged-monster",
+      "skill_type": "Passive",
+      "description": "For every 10% HP this hero is missing, increase their SPD and INIT by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Grendel_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also increase Turn Meter and Divinity Increase Effects on this hero by 5%."
+    },
+    {
+      "name": "Devourer of Heorot",
+      "slug": "grendel-devourer-of-heorot",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (18%HP+200%ATK). After attacking, Instantly defeats heroes below 20% Max HP. Does not work on Bosses. Increase this Hero’s HP by 5% (up to 6 times) for each enemy defeated. Also increase HP when attacking a Boss.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Grendel_Ultimate.webp",
+      "scaling_formula": "18%HP+200%ATK",
+      "effects": [],
+      "ultimate_cost": 1600,
+      "initial_divinity": 275,
+      "awakening_level": 5,
+      "awakening_bonus": "Increase the threshold to 30% and guarantees a Strong Hit if this hero is below 50% HP."
+    }
+  ],
+  "imprint_passive": "For every 20% HP this hero is missing, increase their SPD and INIT by 5%."
+}

@@ -1,0 +1,138 @@
+{
+  "id": "0e2cd70a-7603-4a62-91f2-6368c30551a5",
+  "name": "Cleopatra",
+  "subtitle": "Queen of the Nile",
+  "slug": "cleopatra",
+  "rarity": 4,
+  "description": "Boosts ally speed and sustains the vitality of your team",
+  "lore": "Perhaps the most famous of Aaru’s queens, Cleopatra is underestimated by many who attribute her success to beauty and wiles. In fact, she is a clever politician and a brilliant tactician. Cleopatra orchestrates much of Aaru’s military defense today, though some nobles and generals still mistrust her due to her foreign heritage, a prejudice that weakens the realm’s war effort.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/0e2cd70a-7603-4a62-91f2-6368c30551a5.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17839,
+    "acc": 10,
+    "atk": 804,
+    "def": 969,
+    "res": 30,
+    "spd": 110,
+    "init": 93,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "24% HP",
+    "scope": "Dungeons"
+  },
+  "divinity_generator": "Gain [30] when when inflicting a damage to an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Turn Meter Multiplier +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Viper's Antidote"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Weapon Multiplier +15%, Armor Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Nile's Blessing"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Invoker",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Soothing Sands",
+      "slug": "cleopatra-soothing-sands",
+      "skill_type": "Core",
+      "description": "Heal all allies and restore 10% of their Destroyed MAX HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Cleopatra_Core.webp",
+      "scaling_formula": "1500%SPD",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Royal Mandate",
+      "slug": "cleopatra-royal-mandate",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Each hit increases the turn meter of all allies by 3%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Cleopatra_Basic.webp",
+      "scaling_formula": "180%ATK+300%SPD",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Viper's Antidote",
+      "slug": "cleopatra-viper-s-antidote",
+      "skill_type": "Ultimate",
+      "description": "Revive 1 ally with 30% HP and Turn Meter then attack all enemies. Also place [mechanic:res-up-ii] on all allies for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Cleopatra_Ultimate.webp",
+      "scaling_formula": "180%ATK+400%SPD",
+      "effects": [
+        "RES Up II"
+      ],
+      "ultimate_cost": 1300,
+      "initial_divinity": 350,
+      "awakening_level": 3,
+      "awakening_bonus": "The [RES Up II] cannot be removed."
+    },
+    {
+      "name": "Nile's Blessing",
+      "slug": "cleopatra-nile-s-blessing",
+      "skill_type": "Passive",
+      "description": "When a [Buff] on an ally expires or is removed, restore 5% of their Destroyed MAX HP",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Cleopatra_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also increase their Divinity by 50."
+    }
+  ],
+  "imprint_passive": "When a [Buff] on an ally expires or is removed, restore 2.5% of their Destroyed MAX HP"
+}

@@ -1,0 +1,143 @@
+{
+  "id": "6939e6a6-4d1e-4391-a28e-90052b58f3f5",
+  "name": "Sphinx",
+  "subtitle": "Guardian of the Sands",
+  "slug": "sphinx",
+  "rarity": 5,
+  "description": "Erodes enemies fortitude and excel in longer drawn out battles.",
+  "lore": "Stalking the great deserts at Aaru’s borders, the Sphinx stands sentry against monsters and foreign invaders, any who would bring harm to her lands. None can say where she comes from, or why she does what she does, but many an enemy of the Realm—including countless soldiers of Omeyocan fighting the War of Pyramids—have perished beneath her terrible claws.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/6939e6a6-4d1e-4391-a28e-90052b58f3f5.webp",
+  "image_zoom": 1.8,
+  "image_focal_x": 8,
+  "image_focal_y": 12,
+  "stats": {
+    "hp": 20977,
+    "acc": 25,
+    "atk": 738,
+    "def": 1266,
+    "res": 75,
+    "spd": 98,
+    "init": 100,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "60 RES",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [50] when this hero resists an effect.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +15"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +15"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Mirage"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +20%, Heal Multiplier +30%, Ignore RES +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Veil of Refraction"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Sands of Time"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Defender",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Sands of Time",
+      "slug": "sphinx-sands-of-time",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (220%DEF+110%ATK) then increase the Divinity Cost of each enemy by 5% (stacking up to 10 times). Also, destroy 5% of the target's MAX HP. Cannot destroy more than 50% of a target's MAX HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sphinx_Ultimate.webp",
+      "scaling_formula": "220%DEF+110%ATK",
+      "effects": [],
+      "ultimate_cost": 1600,
+      "initial_divinity": 325,
+      "awakening_level": 5,
+      "awakening_bonus": "Also, reduce the Divinity Cost of each ally’s Ultimate Ability by 5% (stacking up to 10 times) and fully their restore destroyed HP."
+    },
+    {
+      "name": "Giza Gaze",
+      "slug": "sphinx-giza-gaze",
+      "skill_type": "Basic",
+      "description": "Attack all enemies (150%DEF+70%ATK) with a 50%chance to place [mechanic:atk-down-ii] on each enemy for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sphinx_Basic.webp",
+      "scaling_formula": "150%DEF+70%ATK",
+      "effects": [
+        "ATK Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Mirage",
+      "slug": "sphinx-mirage",
+      "skill_type": "Core",
+      "description": "Place [mechanic:res-up-ii] on this hero for 2 turns then place [mechanic:vanish] for 2 turns on all allies except this hero. Then Heal 100%DEF all allies with a 75% chance to place [mechanic:acc-down-ii] for 2 turns on all enemies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sphinx_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "RES Up II",
+        "Vanish",
+        "ACC Down II",
+        "Immortal"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also place [Immortal] on this hero for 2 turns."
+    },
+    {
+      "name": "Veil of Refraction",
+      "slug": "sphinx-veil-of-refraction",
+      "skill_type": "Passive",
+      "description": "If an ally is under [mechanic:vanish], [mechanic:reflect] any [Debuff] placed on them by an enemy.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sphinx_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "When an ally reflects a [Debuff], increase their RES by 10 (stacking up to 200) which stacks across waves."
+    }
+  ],
+  "imprint_passive": "If this hero is under [Vanish], has a 50% chance to reflect any [Debuff] placed on them by an enemy"
+}

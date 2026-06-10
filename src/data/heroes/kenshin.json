@@ -1,0 +1,164 @@
+{
+  "id": "69870743-b53d-4583-b085-53ff56d5f901",
+  "name": "Kenshin",
+  "subtitle": "Dragon of Echigo",
+  "slug": "kenshin",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Uesugi Kenshin stands among the ranks of great samurai and military leaders along with Oda Nobunaga and Takeda Shingen, and is a highly respected administrator as well. Kenshin would prefer to govern his own province in peace, but feels compelled to thwart the ambitions of both those men, even if that means reluctantly ruling the non-divine regions of Izumo himself.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/69870743-b53d-4583-b085-53ff56d5f901.webp",
+  "image_zoom": 3,
+  "image_focal_x": 84,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 21308,
+    "acc": 25,
+    "atk": 881,
+    "def": 969,
+    "res": 40,
+    "spd": 87,
+    "init": 89,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "25% ATK",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when inflicting damage to an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +5"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +12"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Quick Draw"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Fight with the Sword"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Brawler",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Fight with the Sword",
+      "slug": "kenshin-fight-with-the-sword",
+      "skill_type": "Core",
+      "description": "Attack all enemy (8%HP+120%ATK) then decrease each target’s Turn Meter by 10%. If a target is under [DEF Down], will also decrease their Divinity by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Kenshin_Core.webp",
+      "scaling_formula": "(8%HP+120%ATK)",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Will now Steal the Divinity instead."
+    },
+    {
+      "name": "Honour Bound",
+      "slug": "kenshin-honour-bound",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (15%HP+200%ATK) which ignores [mechanic:intercept] and [Protect]. If the target is under a [mechanic:shield] will remove the 50% of the [mechanic:shield] before attacking. If the target is under [mechanic:barrier], will steal 25% before attacking.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Kenshin_Ultimate.webp",
+      "scaling_formula": "(15%HP+200%ATK)",
+      "effects": [],
+      "ultimate_cost": 1275,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Quick Draw",
+      "slug": "kenshin-quick-draw",
+      "skill_type": "Passive",
+      "description": "Increase this hero’s turn meter by 10% when joining an attack or retaliating.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Kenshin_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "If the ally is from Izumo, will use the Core Abilty instead."
+    },
+    {
+      "name": "Meditative Slash",
+      "slug": "kenshin-meditative-slash",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Kenshin_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Fierce Rivalry",
+      "slug": "kenshin-fierce-rivalry",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Kenshin_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Iaijutsu",
+      "slug": "kenshin-iaijutsu",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (12%HP+160%ATK) with 50% chance to place [mechanic:def-down-ii] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Kenshin_Basic.webp",
+      "scaling_formula": "(12%HP+160%ATK)",
+      "effects": [
+        "DEF Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Increase this hero’s turn meter by 5% when joining an attack or retaliating."
+}

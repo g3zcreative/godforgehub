@@ -1,0 +1,136 @@
+{
+  "id": "29622b2b-d922-4be9-9083-4a7bfa661098",
+  "name": "Geri",
+  "subtitle": "Odin's Wrath",
+  "slug": "geri",
+  "rarity": 4,
+  "description": "Full Hero Information▶",
+  "lore": "The Hounds of Odin, Geri and Freki, are a pair of fearsome wolves, often found at the All-Father’s side. They feast upon his leavings in Valhalla, and upon the fallen dead of Asgard’s battles. They also now serve as his fist and his wrath throughout Ryven, sent to rend and tear those who have angered their master beyond Asgard’s borders.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/29622b2b-d922-4be9-9083-4a7bfa661098.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18169,
+    "acc": 15,
+    "atk": 639,
+    "def": 1057,
+    "res": 60,
+    "spd": 91,
+    "init": 93,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF, 15% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Feral Aegis"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Guardian Howl"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Defender",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Guardian Howl",
+      "slug": "geri-guardian-howl",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Geri_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Precision Prowl",
+      "slug": "geri-precision-prowl",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Geri_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Feral Aegis",
+      "slug": "geri-feral-aegis",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Geri_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Pack Bulwark",
+      "slug": "geri-pack-bulwark",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Geri_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}
