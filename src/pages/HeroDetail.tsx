@@ -33,6 +33,81 @@ const rarityLabelColor = (r: number) => {
   return colors[r] || "text-primary";
 };
 
+function getChangeSummary(v: any, vPrev: any): string {
+  if (!vPrev) {
+    return "Initial profile backfill";
+  }
+
+  const changes: string[] = [];
+
+  const snap = v.snapshot || {};
+  const prevSnap = vPrev.snapshot || {};
+
+  // Check stats
+  const stats = snap.stats || {};
+  const prevStats = prevSnap.stats || {};
+  const statsChanged = Object.keys({ ...stats, ...prevStats }).some(
+    (key) => stats[key] !== prevStats[key]
+  );
+  if (statsChanged) {
+    changes.push("Stats adjusted");
+  }
+
+  // Check description, subtitle, lore, etc.
+  if (snap.subtitle !== prevSnap.subtitle) changes.push("Subtitle updated");
+  if (snap.description !== prevSnap.description) changes.push("Description updated");
+  if (snap.lore !== prevSnap.lore) changes.push("Story/Lore updated");
+  if (snap.faction !== prevSnap.faction) changes.push("Faction updated");
+  if (snap.archetype !== prevSnap.archetype) changes.push("Archetype updated");
+  if (snap.affinity !== prevSnap.affinity) changes.push("Affinity updated");
+  if (snap.allegiance !== prevSnap.allegiance) changes.push("Allegiance updated");
+  if (snap.image_url !== prevSnap.image_url) changes.push("Portrait image updated");
+  if (snap.imprint_passive !== prevSnap.imprint_passive) changes.push("Imprint bonus updated");
+
+  // Check skills
+  const skills = v.skills_snapshot || [];
+  const prevSkills = vPrev.skills_snapshot || [];
+
+  const skillNames = Array.from(new Set([
+    ...skills.map((s: any) => s.name),
+    ...prevSkills.map((s: any) => s.name)
+  ])).filter(Boolean);
+
+  let skillChangesCount = 0;
+  let skillAdded = false;
+  let skillRemoved = false;
+
+  for (const name of skillNames) {
+    const s = skills.find((x: any) => x.name === name);
+    const sPrev = prevSkills.find((x: any) => x.name === name);
+
+    if (s && !sPrev) {
+      skillAdded = true;
+    } else if (!s && sPrev) {
+      skillRemoved = true;
+    } else if (s && sPrev) {
+      const descDiff = s.description !== sPrev.description;
+      const typeDiff = s.skill_type !== sPrev.skill_type;
+      const formulaDiff = s.scaling_formula !== sPrev.scaling_formula;
+      const urlDiff = s.image_url !== sPrev.image_url;
+      const awakeDiff = s.awakening_bonus !== sPrev.awakening_bonus || s.awakening_level !== sPrev.awakening_level;
+      const ultDiff = s.ultimate_cost !== sPrev.ultimate_cost || s.initial_divinity !== sPrev.initial_divinity;
+
+      if (descDiff || typeDiff || formulaDiff || urlDiff || awakeDiff || ultDiff) {
+        skillChangesCount++;
+      }
+    }
+  }
+
+  if (skillAdded) changes.push("Skills added");
+  if (skillRemoved) changes.push("Skills removed");
+  if (skillChangesCount > 0) {
+    changes.push(`${skillChangesCount} skill${skillChangesCount > 1 ? "s" : ""} updated`);
+  }
+
+  return changes.length > 0 ? changes.join(", ") : "Metadata updated";
+}
+
 export default function HeroDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { data: tpl } = useSeoTemplate("hero");
@@ -133,7 +208,7 @@ export default function HeroDetail() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("hero_versions")
-        .select("id, version_number, change_source, created_at")
+        .select("id, version_number, change_source, created_at, snapshot, skills_snapshot, imprints_snapshot")
         .eq("hero_id", hero!.id)
         .order("version_number", { ascending: false });
       if (error) throw error;
@@ -510,17 +585,26 @@ export default function HeroDetail() {
                   </CollapsibleTrigger>
                   <CollapsibleContent className="mt-3">
                     <div className="space-y-2 border border-border rounded-lg p-4 bg-card/50">
-                      {versions.map((v: any) => (
-                        <div key={v.id} className="flex items-center justify-between text-sm py-1.5 border-b border-border/50 last:border-0">
-                          <div className="flex items-center gap-3">
-                            <Badge variant="outline" className="text-xs">v{v.version_number}</Badge>
-                            <span className="text-muted-foreground capitalize">{v.change_source}</span>
+                      {versions.map((v: any, index: number) => {
+                        const vPrev = versions[index + 1];
+                        const summary = getChangeSummary(v, vPrev);
+                        return (
+                          <div key={v.id} className="flex items-center justify-between text-sm py-2 border-b border-border/50 last:border-0">
+                            <div className="flex items-start gap-3">
+                              <Badge variant="outline" className="text-xs mt-0.5">v{v.version_number}</Badge>
+                              <div className="flex flex-col">
+                                <span className="text-foreground capitalize font-medium">{v.change_source}</span>
+                                {summary && (
+                                  <span className="text-xs text-muted-foreground/70 mt-0.5">{summary}</span>
+                                )}
+                              </div>
+                            </div>
+                            <span className="text-muted-foreground text-xs whitespace-nowrap ml-4">
+                              {format(new Date(v.created_at), "MMM d, yyyy HH:mm")}
+                            </span>
                           </div>
-                          <span className="text-muted-foreground text-xs">
-                            {format(new Date(v.created_at), "MMM d, yyyy HH:mm")}
-                          </span>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
