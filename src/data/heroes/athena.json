@@ -1,0 +1,144 @@
+{
+  "id": "3830f5e4-bdce-49c2-8043-2e33eb67a7a0",
+  "name": "Athena",
+  "subtitle": "Shield of Wisdom",
+  "slug": "athena",
+  "rarity": 5,
+  "description": "Shield your allies from your foes whilst empowering your Aegis to inflict powerful attacks to your foes.",
+  "lore": "Goddess of wisdom and warfare, Athena finds Ryven to be far too unpredictable, far too steeped in havoc. While her loyalties to Olympus have not lessened, she is focused on allegiance with gods of Order from across the pantheons. She works with them to battle Chaos and impose structure on a world that lacks it—whether it wants that structure or not.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/3830f5e4-bdce-49c2-8043-2e33eb67a7a0.webp",
+  "image_zoom": 3,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 21968,
+    "acc": 25,
+    "atk": 760,
+    "def": 1189,
+    "res": 85,
+    "spd": 102,
+    "init": 100,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "33% DEF",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "ATK +9%, DEF +9%, HP +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +9%, DEF +9%, HP +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +9%, DEF +9%, HP +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Sanctuary of Wisdom"
+    },
+    {
+      "tier": 2,
+      "bonus": "Shield Multiplier +30%, DMG Multiplier +30%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Medusa's Glare"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Weapon Multiplier +30%, Armor Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Gorgon's Wrath"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Sanctuary of Wisdom",
+      "slug": "athena-sanctuary-of-wisdom",
+      "skill_type": "Core",
+      "description": "Place [mechanic:shield]400%DEF on allies and reduces the damage inflicted to allies by 5% (stacking up to 3 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Athena_Core.webp",
+      "scaling_formula": "400%DEF",
+      "effects": [
+        "RES Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Place [RES Up II] on all allies for 2 Turns."
+    },
+    {
+      "name": "Spear of Justice",
+      "slug": "athena-spear-of-justice",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (220%DEF+120%ATK). Place [mechanic:def-up-ii] on all allies for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Athena_Basic.webp",
+      "scaling_formula": "220%DEF+120%ATK",
+      "effects": [
+        "DEF Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Gorgon's Wrath",
+      "slug": "athena-gorgon-s-wrath",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (210%DEF+110%ATK) with a 80% chance to place [mechanic:petrify] on each target for 1 turn. If this hero is under [mechanic:shield], the [mechanic:petrify] cannot be resisted or blocked.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Athena_Ultimate.webp",
+      "scaling_formula": "210%DEF+110%ATK",
+      "effects": [
+        "Petrify"
+      ],
+      "ultimate_cost": 1600,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "Each time an ally is attacked under [Shield], increase the damage of this hero's next  Ultimate by 3%."
+    },
+    {
+      "name": "Medusa's Glare",
+      "slug": "athena-medusa-s-glare",
+      "skill_type": "Passive",
+      "description": "Each time this hero is attacked under [mechanic:shield], Heal for 50% of the damage inflicted to the [mechanic:shield]. If the [mechanic:shield-i]s depleted or removed, has a 50% chance to place [mechanic:petrify] on the enemy for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Athena_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Petrify"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Any attack against a [Shield] now has a 100% chance to place [Petrify] on the enemy for 1 turn which cannot be resisted."
+    }
+  ],
+  "imprint_passive": "Each time this hero is attacked under [Shield], Heal for 25% of the damage inflicted to the Shield. If the Shield is depleted or removed, has a 50% chance to place [Petrify] on the enemy for 1 turn."
+}

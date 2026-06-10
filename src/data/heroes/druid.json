@@ -1,0 +1,129 @@
+{
+  "id": "76d9964b-dbaf-4520-883d-6a480e115736",
+  "name": "Druid",
+  "subtitle": "Forest Sage",
+  "slug": "druid",
+  "rarity": 2,
+  "description": "Summon the roots of the forest to protect your allies from danger.",
+  "lore": "The priestly class of Avalon, druids are religious and community leaders, political advisors, healers, and prophets. They primarily guide local villages, reading omens for signs of the gods’ will or glimpses into the future, but they are equally capable of raising both cudgel and curse against those who would threaten their lands or their people.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/76d9964b-dbaf-4520-883d-6a480e115736.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 11727,
+    "acc": 5,
+    "atk": 496,
+    "def": 782,
+    "res": 30,
+    "spd": 75,
+    "init": 77,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [10] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divine DEF +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Res. +10%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Divine DEF +10%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Divine DMG Res. +10%"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Vine Snap",
+      "slug": "druid-vine-snap",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 25% chance to place [mechanic:atk-down-i] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Druid_Basic.webp",
+      "scaling_formula": "170%DEF+90%ATK",
+      "effects": [
+        "ATK Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Barkskin",
+      "slug": "druid-barkskin",
+      "skill_type": "Core",
+      "description": "Place [Protect] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Druid_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Protect I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Cloak of Thorns",
+      "slug": "druid-cloak-of-thorns",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:radiance-i] on all allies for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Druid_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Radiance I"
+      ],
+      "ultimate_cost": 850,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

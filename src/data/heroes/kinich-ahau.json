@@ -1,0 +1,144 @@
+{
+  "id": "36572aa1-8c47-4504-95b3-b182e83c2746",
+  "name": "Kinich Ahau",
+  "subtitle": "Lord of Judgement",
+  "slug": "kinich-ahau",
+  "rarity": 5,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Kinich Ahau is the sun god of Omeyocan, though he is neither the first sun nor the last. His gaze conveys the right of rulership, including its knowledges, its responsibilities, and—especially now—its judgment. Some believe he assimilates kings after their deaths. Other tales claim his wrath will one day devour the world, a fear that has grown since the Shattering.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/e9ff0ee6-69b0-4276-8f5c-552121697b65.png",
+  "image_zoom": 2.8,
+  "image_focal_x": 31,
+  "image_focal_y": 28,
+  "stats": {
+    "hp": 22299,
+    "acc": 25,
+    "atk": 738,
+    "def": 1189,
+    "res": 70,
+    "spd": 98,
+    "init": 101,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when this hero is inflicted with damage.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +5"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +11"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Scorching Guardian"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Solar Barrier"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Defender",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Sacred Brand",
+      "slug": "kinich-ahau-sacred-brand",
+      "skill_type": "Basic",
+      "description": "Attack all enemies (200%DEF+130%ATK) with a 50% chance to place [mechanic:aetherburn-ii] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_KinichAhau_Basic.webp",
+      "scaling_formula": "200%DEF+130%ATK",
+      "effects": [
+        "Aetherburn II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Unrelenting Authority",
+      "slug": "kinich-ahau-unrelenting-authority",
+      "skill_type": "Core",
+      "description": "Attack all enemies (230%DEF+140%ATK) with a 75% chance to place [mechanic:atk-down-ii] and [mechanic:blunt-ii] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_KinichAhau_Core.webp",
+      "scaling_formula": "230%DEF+140%ATK",
+      "effects": [
+        "ATK Down II",
+        "Blunt II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Solar Barrier",
+      "slug": "kinich-ahau-solar-barrier",
+      "skill_type": "Passive",
+      "description": "When an ally is damaged by an enemy, transfer 50% of the damage to this hero and increase the damage of the ally’s next ability by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_KinichAhau_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Scorching Guardian",
+      "slug": "kinich-ahau-scorching-guardian",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:radiance-ii] and [mechanic:res-up-ii] on all allies for 2 turns then transfer [mechanic:blaze] and [mechanic:aetherburn] from all allies to this hero then attack all enemies (230%DEF+150%ATK). Increase this hero’s DEF by 5% (up to 6 times) if a [Debuff] is transferred.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_KinichAhau_Ultimate.webp",
+      "scaling_formula": "230%DEF+150%ATK",
+      "effects": [
+        "Radiance II",
+        "RES Up II"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Increase all allies DEF when transferring a [debuff] instead"
+    }
+  ],
+  "imprint_passive": "When an ally is damaged by [Blaze] or [Aetherburn], reduce the effectiveness by 25% and increase the damage of the next hero’s ability by 5%."
+}

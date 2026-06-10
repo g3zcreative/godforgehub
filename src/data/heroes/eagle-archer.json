@@ -1,0 +1,127 @@
+{
+  "id": "cddeba9c-4fef-4058-8871-78b3574cf6bc",
+  "name": "Eagle Archer",
+  "subtitle": "Warrior Marksman",
+  "slug": "eagle-archer",
+  "rarity": 2,
+  "description": "Land fatal arrows on your foes extinguishing their life to Xibalba.",
+  "lore": "Eagle archers are members of an elite martial order in Omeyocan, specializing in speed, mobility, and ambush at a distance. Most operate in groups of fellow eagle archers, but some instead serve as commanders of more conventional forces. They specialize in capturing the enemy for later sacrifice, and indeed status in the order is determined by the number of prisoners taken.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ea4d6abb-4456-4543-9291-cdf6e6cbe24a.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 10406,
+    "acc": 5,
+    "atk": 804,
+    "def": 639,
+    "res": 10,
+    "spd": 80,
+    "init": 79,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "+10 Speed"
+    },
+    {
+      "tier": 2,
+      "bonus": "Swift Strike: Basic Attack grants 100 Speed for 2 turns."
+    },
+    {
+      "tier": 3,
+      "bonus": "+10% Critical Rate"
+    },
+    {
+      "tier": 4,
+      "bonus": "Rapid Combo: The cooldown of Core Skill is reduced by 1 turn."
+    },
+    {
+      "tier": 5,
+      "bonus": "+20% Critical Damage"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Vitality Shot",
+      "slug": "eagle-archer-vitality-shot",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 300%ATK. Inflict 150% increased damage to enemies who are full health.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/b2dc56b8-d946-4cbf-b88c-4a5c3adbf106.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Tactical Prowess",
+      "slug": "eagle-archer-tactical-prowess",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 350%ATK. Then place [mechanic:atk-up-i] for 1 turn on this hero.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/11e4cb5d-6e86-4e89-9e36-dbd154a16ce7.webp",
+      "scaling_formula": "350%ATK",
+      "effects": [
+        "ATK Up I"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ritual Sacrifice",
+      "slug": "eagle-archer-ritual-sacrifice",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 140%ATK3 times. Enemies killed by this ability cannot be revived.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/8071aa1b-1a7a-4c83-8add-782c4a77644e.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [
+        "Block Revive"
+      ],
+      "ultimate_cost": 1200,
+      "initial_divinity": 300,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

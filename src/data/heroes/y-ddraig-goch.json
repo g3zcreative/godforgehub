@@ -1,0 +1,142 @@
+{
+  "id": "10489680-36a5-4e20-b717-f069606eb275",
+  "name": "Y Ddraig Goch",
+  "subtitle": "Protector of Avalon",
+  "slug": "y-ddraig-goch",
+  "rarity": 5,
+  "description": "Burn your enemies and Protect your Allies from Harmful Blaze and Burns.",
+  "lore": "The terrible Red Dragon is the fiercest protector Avalon has—and a last resort nobody wants to invoke. When roused to the realm’s defense, Y Ddraig Goch devastates surrounding lands, armies, and communities, and though the bulk of it is inflicted on the enemy, swathes of Avalon also suffer. It seems to wreak such destruction deliberately, as though demanding a sacrifice for its aid.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/62434c34-ef45-4abf-af4a-3f6bb196526a.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17343,
+    "acc": 35,
+    "atk": 1310,
+    "def": 1035,
+    "res": 25,
+    "spd": 102,
+    "init": 105,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when inflicting damage to an enemy. Gain [80] Divinity when inflicting damage to enemies under [Blaze].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +18"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +16"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Call of Cadwaladr"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Ignore RES +20%, Shield Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Ancient Power"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Take Flight"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Slayer",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Call of Cadwaladr",
+      "slug": "y-ddraig-goch-call-of-cadwaladr",
+      "skill_type": "Core",
+      "description": "Attack all enemies 185%ATK2 times. The first attack has a 75% chance to place [mechanic:blaze-ii] on each target for 2 turns. The second attack decreases each target’s DEF by 5% (stacking up to 4 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_YDdraigGoch_Core.webp",
+      "scaling_formula": "185%ATK",
+      "effects": [
+        "Blaze II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Before attacking, increase the duration of any [Blaze] by 1 turn then activate [Blaze]."
+    },
+    {
+      "name": "Take Flight",
+      "slug": "y-ddraig-goch-take-flight",
+      "skill_type": "Ultimate",
+      "description": "Transfers all [mechanic:blaze] and [mechanic:aetherburn] from allies onto all enemies then attacks all enemies 155%ATK3 times. Place [mechanic:shield]150%ATK on all allies. The strength of the [mechanic:shield] is increased by 2% for each [Debuff] transferred to enemies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_YDdraigGoch_Ultimate.webp",
+      "scaling_formula": "155%ATK",
+      "effects": [
+        "Shield"
+      ],
+      "ultimate_cost": 2000,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "Transfers all [Debuffs] from all allies onto all enemies."
+    },
+    {
+      "name": "Searing Jaws",
+      "slug": "y-ddraig-goch-searing-jaws",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 360%ATK. Ignores 15% of the target’s DEF if they are under [mechanic:blaze]. Place [mechanic:atk-up-ii] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_YDdraigGoch_Basic.webp",
+      "scaling_formula": "360%ATK",
+      "effects": [
+        "ATK Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ancient Power",
+      "slug": "y-ddraig-goch-ancient-power",
+      "skill_type": "Passive",
+      "description": "Inflicts 30% more damage and receives 30% less damage from enemies under [mechanic:blaze] or [mechanic:aetherburn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_YDdraigGoch_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Blocks any [Debuff] or [Disable] placed on this hero from enemies under [Blaze] or [Aetherburn]."
+    }
+  ],
+  "imprint_passive": "Inflicts 15% more damage and receives 15% less damage from enemies under [Blaze] or [Aetherburn]."
+}

@@ -1,0 +1,143 @@
+{
+  "id": "f61404ba-bd7b-4300-b715-d749b4516f02",
+  "name": "Hel",
+  "subtitle": "Queen of Helheim",
+  "slug": "hel",
+  "rarity": 5,
+  "description": "Summon the dead to fight for you as your foes fall in battle and empower your attacks.",
+  "lore": "The Lady of Graves rules over the dead of Asgard who perish of illness and old age. Hers is a joyless domain, but then, she is often a cold and pitiless goddess. But in Ryven, as she negotiates with the mysterious \"Shadow Council\" formed by Osiris, the lonely Hel finds herself falling in love with a most unlikely figure…",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/f61404ba-bd7b-4300-b715-d749b4516f02.webp",
+  "image_zoom": 3,
+  "image_focal_x": 22,
+  "image_focal_y": 6,
+  "stats": {
+    "hp": 17674,
+    "acc": 45,
+    "atk": 1233,
+    "def": 1013,
+    "res": 30,
+    "spd": 100,
+    "init": 106,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when placing a [Curse] or [Shade].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Helheim's Hold"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Ignore DEF +10%, Ignore RES +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: The Dead that are Due"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Grim Reception"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Slayer",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Helheim's Hold",
+      "slug": "hel-helheim-s-hold",
+      "skill_type": "Passive",
+      "description": "Defeating an enemy increases Turn Meter Fill effects on this hero by 20% (stacking up to 5 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hel_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also increases Divinity Fill Effects and persists across waves."
+    },
+    {
+      "name": "Grim Reception",
+      "slug": "hel-grim-reception",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 375%ATK. If the target is under [Curse], inflict an additional 5% of the target’s MAX HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hel_Basic.webp",
+      "scaling_formula": "375%ATK",
+      "effects": [
+        "Block Revive"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If the enemy is defeated, has a 50% chance to place [Block Revive]. The chance increases by 25% for each [Shade] in the battle."
+    },
+    {
+      "name": "Roots of Yggrdasil",
+      "slug": "hel-roots-of-yggrdasil",
+      "skill_type": "Core",
+      "description": "Attack all enemies 425%ATK with a 80% chance place [Curse II] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hel_Core.webp",
+      "scaling_formula": "425%ATK",
+      "effects": [
+        "Curse II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "The Dead that are Due",
+      "slug": "hel-the-dead-that-are-due",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 520%ATK. Revive all dead enemies and apply [Shade] on the revived enemy which cannot be resisted or blocked. Does not work on Bosses or Minions. If target is a Bosses or Minion, place [DEF Down II] on the target instead for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hel_Ultimate.webp",
+      "scaling_formula": "520%ATK",
+      "effects": [
+        "Shade",
+        "DEF Down II"
+      ],
+      "ultimate_cost": 1600,
+      "initial_divinity": 250,
+      "awakening_level": 3,
+      "awakening_bonus": "[Shade] inflicts 50% more damage when joining with Hel's Basic Attack."
+    }
+  ],
+  "imprint_passive": "Defeating an enemy increases Turn Meter Fill effects on this hero by 10% (stacking up to 5 times)."
+}

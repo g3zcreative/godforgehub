@@ -1,0 +1,147 @@
+{
+  "id": "8d7d5914-95c4-47e2-ae1e-eb997c8c1b93",
+  "name": "Pangu",
+  "subtitle": "The First Being",
+  "slug": "pangu",
+  "rarity": 5,
+  "description": "Balances Yin and Yang to empower his abilities and crush enemies, especially in the early game.",
+  "lore": "A primordial being older even than Tian’s other gods, Pangu shaped much of reality, and his body itself forms many of the realm’s earth and mountains. Since the Shattering, a portion of him has awakened and manifested, providing aid and advice to gods of Order. Should he awaken in his entirety, the results to Tian could be nothing short of apocalyptic.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/8d7d5914-95c4-47e2-ae1e-eb997c8c1b93.webp",
+  "image_zoom": 2.3,
+  "image_focal_x": 50,
+  "image_focal_y": 27,
+  "stats": {
+    "hp": 24116,
+    "acc": 30,
+    "atk": 980,
+    "def": 1101,
+    "res": 50,
+    "spd": 96,
+    "init": 96,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "35% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when attacking enemies under [Debuff].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +18"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: World Splitter"
+    },
+    {
+      "tier": 2,
+      "bonus": "Strong Hit Chance Multiplier +15%, DMG Reduction Multiplier +20%, Strong Hit DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Heaven and Earth"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Yin and Yang"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Brawler",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Heaven and Earth",
+      "slug": "pangu-heaven-and-earth",
+      "skill_type": "Core",
+      "description": "Place [mechanic:acc-up-ii] on this hero for 2 turns then attack all enemies. If this hero has more INIT than SPD, place [mechanic:def-down-ii] on each target for 2 turns and increase this hero’s SPD by 50. Otherwise, place [mechanic:init-down-ii] on each target hit for 2 turns and decrease this hero’s SPD by 50.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pangu_Core.webp",
+      "scaling_formula": "13%HP+120%ATK",
+      "effects": [
+        "ACC Up II",
+        "DEF Down II",
+        "INIT Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "If this hero has more INIT than SPD, place [ATK Down II] otherwise place a random [Lock] on each target for 2 turns."
+    },
+    {
+      "name": "World Splitter",
+      "slug": "pangu-world-splitter",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy. If this hero has more INIT than SPD, increase their RES by 1%. Otherwise, increase DEF by 1%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pangu_Basic.webp",
+      "scaling_formula": "12%HP+90%ATK",
+      "effects": [
+        "RES Up",
+        "DEF Up"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also, Increase ACC by 1% when INIT is more than SPD and increase ATK by 1% when SPD is more than INIT."
+    },
+    {
+      "name": "Yin and Yang",
+      "slug": "pangu-yin-and-yang",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:res-up-ii] on this hero for 2 turns then attack all enemies. If this hero has more SPD than INIT, then place [mechanic:drain-ii] on each target for 2 turns and increase this hero’s INIT by 50. Otherwise, place [mechanic:spd-down-ii] on each target hit for 2 turns and decrease this hero’s INIT by 50.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pangu_Ultimate.webp",
+      "scaling_formula": "15%HP+130%ATK",
+      "effects": [
+        "RES Up II",
+        "Drain II",
+        "SPD Down II"
+      ],
+      "ultimate_cost": 1150,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "Also Increase this hero’s HP by 10% (stacking up to 5 times)."
+    },
+    {
+      "name": "Balance of Force",
+      "slug": "pangu-balance-of-force",
+      "skill_type": "Passive",
+      "description": "If this hero has more INIT than SPD, attacks steal 10% turn meter from the target. Otherwise, they steal 10% Divinity from the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pangu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "If this hero has more INIT than SPD, attacks steal 5% turn meter from the target. Otherwise, they steal 5% Divinity from the target."
+}

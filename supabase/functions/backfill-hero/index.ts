@@ -388,7 +388,7 @@ Extract ONLY the data present on the page. Do NOT invent or hallucinate any data
         // Generate skill icon URL programmatically
         const iconName = formatHeroNameForIcon(heroName);
         const skillIconUrl = es.skill_type
-          ? `https://godforge.gg/heroes/assets/ability/ICON_${iconName}_${es.skill_type}.webp`
+          ? `https://godforge.gg/api/media/file/ICON_${iconName}_${es.skill_type}.webp`
           : null;
 
         const skillData: Record<string, unknown> = {

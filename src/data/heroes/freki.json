@@ -1,0 +1,136 @@
+{
+  "id": "80f7d136-7c2b-4212-a019-8d8a45a0a524",
+  "name": "Freki",
+  "subtitle": "Odin's Fury",
+  "slug": "freki",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "The Hounds of Odin, Freki and Geri, are a pair of fearsome wolves, often found at the All-Father’s side. They feast upon his leavings in Valhalla, and upon the fallen dead of Asgard’s battles. They also now serve as his fist and his wrath throughout Ryven, sent to rend and tear those who have angered their master beyond Asgard’s borders.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/80f7d136-7c2b-4212-a019-8d8a45a0a524.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 21142,
+    "acc": 25,
+    "atk": 859,
+    "def": 892,
+    "res": 45,
+    "spd": 91,
+    "init": 90,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +11"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Wounding Rend"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Chill of the Hunt"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Chill of the Hunt",
+      "slug": "freki-chill-of-the-hunt",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Freki_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Ravenous Instinct",
+      "slug": "freki-ravenous-instinct",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Freki_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Wounding Rend",
+      "slug": "freki-wounding-rend",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Freki_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Sharp Fangs",
+      "slug": "freki-sharp-fangs",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Freki_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

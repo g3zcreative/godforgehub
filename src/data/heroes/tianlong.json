@@ -1,0 +1,143 @@
+{
+  "id": "cc72735f-b68f-4944-83fc-9d952ea9a72f",
+  "name": "Tianlong",
+  "subtitle": "Heavenly Dragon",
+  "slug": "tianlong",
+  "rarity": 5,
+  "description": "Full Hero Information▶",
+  "lore": "For ages, the Heavenly Dragon guarded the dwellings of the gods, and people believed spotting it in the night sky meant good fortune. Since the merging of divine and mortal realms, Tianlong’s charge now includes guarding Tian as a whole. The dragon’s strength is stretched thin, potentially leaving the gods’ homes vulnerable to dangers they previously were not.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/cc72735f-b68f-4944-83fc-9d952ea9a72f.webp",
+  "image_zoom": 2.3,
+  "image_focal_x": 28,
+  "image_focal_y": 33,
+  "stats": {
+    "hp": 22133,
+    "acc": 20,
+    "atk": 782,
+    "def": 1189,
+    "res": 85,
+    "spd": 102,
+    "init": 103,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +9"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Mandate of Heaven"
+    },
+    {
+      "tier": 2,
+      "bonus": "Shield Multiplier +30%, DMG Reduction Multiplier +20%, C.DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Aerial Aegis"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Skybound Ward"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Defender",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Aerial Aegis",
+      "slug": "tianlong-aerial-aegis",
+      "skill_type": "Core",
+      "description": "Place [mechanic:immortal] on this hero for 2 turns, then place [mechanic:intercept] on all allies except this hero for 2 turns. If an ally already has [mechanic:intercept], increase the duration by 1 turn instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tianlong_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Immortal",
+        "Intercept"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "While under [Immortal], damage received from [Intercept] cannot exceed 15% of this hero’s MAX HP."
+    },
+    {
+      "name": "Dragon's Edict",
+      "slug": "tianlong-dragon-s-edict",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (300%DEF+130%ATK) with a 50% chance to place [mechanic:atk-down-ii] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tianlong_Basic.webp",
+      "scaling_formula": "300%DEF+130%ATK",
+      "effects": [
+        "ATK Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Mandate of Heaven",
+      "slug": "tianlong-mandate-of-heaven",
+      "skill_type": "Ultimate",
+      "description": "Remove all [Debuff] from all allies, and attack all enemies (320%DEF+160%ATK). Also increase the DEF of all allies by 10% (stacking up to 3 times), and increase the duration of [mechanic:intercept] on all allies by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tianlong_Ultimate.webp",
+      "scaling_formula": "320%DEF+160%ATK",
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also resets the cooldown of Aerial Aegis."
+    },
+    {
+      "name": "Skybound Ward",
+      "slug": "tianlong-skybound-ward",
+      "skill_type": "Passive",
+      "description": "When damaged by [mechanic:intercept], [Heal]100%DEF the attacked ally and place [mechanic:barrier]50%DEF on them.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tianlong_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Intercept"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "When this hero [Intercepts] an attack, Heal 100%DEF the attacked ally and place [Barrier]50%DEF on them."
+}

@@ -1,0 +1,91 @@
+{
+  "id": "055bcb35-e1fb-46ad-a316-a7bf2346e0cc",
+  "name": "Shieldbearer",
+  "subtitle": "Gate Guardian",
+  "slug": "shieldbearer",
+  "rarity": 1,
+  "description": "Protect the kingdom of Tian alongside your allies as you Blunt the enemies assault.",
+  "lore": "Professional soldiers rather than conscripts who provide swords and light armor in addition to the equipment for which they are named, shieldbearers form the core of Tian’s military. While they are no manner of elite, they are a well-trained infantry capable of overwhelming larger enemy forces and even some unnatural monsters, as well as achieving most standard tactical objectives.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/bf6aa019-af3f-4de0-a81b-bc3e99188634.webp",
+  "image_zoom": 2,
+  "image_focal_x": 51,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 9250,
+    "acc": 0,
+    "atk": 374,
+    "def": 606,
+    "res": 10,
+    "spd": 66,
+    "init": 60,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [10] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +1"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Tian",
+  "archetype": "Defender",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Weaken the Assault",
+      "slug": "shieldbearer-weaken-the-assault",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (250%DEF+170%ATK) with a 40% chance to place [Blunt I] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shieldbearer_Basic.webp",
+      "scaling_formula": "250%DEF+170%ATK",
+      "effects": [
+        "Blunt I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Loyal Protector",
+      "slug": "shieldbearer-loyal-protector",
+      "skill_type": "Ultimate",
+      "description": "Place [Protect I] and [DEF Up I] on an ally for 1 Turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shieldbearer_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Protect I",
+        "DEF Up I"
+      ],
+      "ultimate_cost": 1100,
+      "initial_divinity": 400,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

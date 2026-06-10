@@ -1,0 +1,142 @@
+{
+  "id": "e4df9b42-2e51-44e4-b4d7-cfd30035f950",
+  "name": "Ceridwen",
+  "subtitle": "Guardian of Secrets",
+  "slug": "ceridwen",
+  "rarity": 3,
+  "description": "Enchant your allies with Turn Meter and Divinity gains whilst casting judgement on their Allegiance.",
+  "lore": "Although believed by some to be a goddess, Ceridwen is a mortal sorceress, albeit a potent one. She can grant mystical wisdom, and transform herself and others. She guards many of Avalon’s secret magics, not only from outsiders but from her countrymen, reserving their powers to benefit her children—of which she has several, both natural and through sorcerous accident.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/e4df9b42-2e51-44e4-b4d7-cfd30035f950.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 13875,
+    "acc": 5,
+    "atk": 661,
+    "def": 870,
+    "res": 20,
+    "spd": 97,
+    "init": 88,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "10% INIT",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Divinity Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Divinity Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Cauldron's Brew"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Blessed Staff",
+      "slug": "ceridwen-blessed-staff",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 140%ATK. Increase 1 random ally’s Turn Meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ceridwen_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Enchantress Elixir",
+      "slug": "ceridwen-enchantress-elixir",
+      "skill_type": "Core",
+      "description": "Heal 10%MAXHP1 ally then place [mechanic:init-up-i] and [mechanic:spd-up-i] on them for 3 turns",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ceridwen_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "INIT Up I",
+        "SPD Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Cauldron's Brew",
+      "slug": "ceridwen-cauldron-s-brew",
+      "skill_type": "Ultimate",
+      "description": "Increase the Divinity of all allies by 10% then place [mechanic:sharpen-i] on Order allies for 1 turn and place [mechanic:retaliate] on Chaos allies for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ceridwen_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Sharpen I",
+        "Retaliate"
+      ],
+      "ultimate_cost": 1600,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "Increase the Turn Meter of all allies by 10%"
+    },
+    {
+      "name": "Judgement's Call",
+      "slug": "ceridwen-judgement-s-call",
+      "skill_type": "Passive",
+      "description": "Damage inflicted on Order allies is decreased by 10%. Damage inflicted by Chaos allies is increased by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ceridwen_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Damage inflicted on Order allies is decreased by 5%. Damage inflicted by Chaos allies is increased by 5%."
+}

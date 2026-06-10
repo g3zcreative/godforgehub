@@ -1,0 +1,143 @@
+{
+  "id": "f40dc9b2-c6e4-408e-b244-76a10d9d16e3",
+  "name": "Odin",
+  "subtitle": "All-Father",
+  "slug": "odin",
+  "rarity": 5,
+  "description": "Drain your foes of their Divinity and bring about Ragnarok with powerful Disables.",
+  "lore": "Odin, the All-Father, King of Asgard, is believed by many to be nearly all-powerful and all-knowing. Yet some strange preoccupation came over him in the years preceding the Shattering, a distance and distraction that have only grown in the time since. He often disappears, leaving governing to others, and none in his pantheon know where he goes, what he does, or why.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/f40dc9b2-c6e4-408e-b244-76a10d9d16e3.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18334,
+    "acc": 40,
+    "atk": 1167,
+    "def": 969,
+    "res": 35,
+    "spd": 104,
+    "init": 119,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "70 ACC",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when placing a [Debuff] or a [Disable] on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +16"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Hunting Party"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, DMG Multiplier +30%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Eternal Trickster"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Ragnarok"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Laying Claim",
+      "slug": "odin-laying-claim",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 80% chance to decrease the target’s Divinity by 10%. If the target is under [mechanic:charm] or [mechanic:confuse], steal 10% of the target’s Divinity instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Odin_Basic.webp",
+      "scaling_formula": "240%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Hunting Party",
+      "slug": "odin-hunting-party",
+      "skill_type": "Core",
+      "description": "Attack all enemies 3 times. The first hit has a 75% chance to place [mechanic:confuse] on each target for 1 turn. The second hit has a 75% chance to place [mechanic:lock-passive] on each target for 2 turns. The third hit has a 75% chance to increase the rank of all [Debuff] on each target by 1. Additionally, if Geri or Frekii are on the team, increase their turn meter by 100%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Odin_Core.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [
+        "Confuse"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Each hit also reduces the duration of all [Buff] on the target by 1 turn"
+    },
+    {
+      "name": "Ragnarok",
+      "slug": "odin-ragnarok",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies and equalize the Divinity of each enemy to the enemy with the lowest Divinity. If there is only 1 enemy, decrease the target’s Divinity by 30% instead.\n\nIf the target’s Divinity is reduced below 50%, has an 80% chance to place [mechanic:confuse] on the target for 1 turn. If the target’s Divinity is above 50% has an 80% chance to place [mechanic:init-down-ii] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Odin_Ultimate.webp",
+      "scaling_formula": "310%ATK",
+      "effects": [
+        "Confuse",
+        "INIT Down II"
+      ],
+      "ultimate_cost": 1850,
+      "initial_divinity": 250,
+      "awakening_level": 5,
+      "awakening_bonus": "If this hero takes the first turn in a battle, activate their Ultimate Ability without consuming Divinity. Triggers once per battle."
+    },
+    {
+      "name": "Eternal Trickster",
+      "slug": "odin-eternal-trickster",
+      "skill_type": "Passive",
+      "description": "At the start of the wave, place [mechanic:charm] on the enemy with the highest ATK for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Odin_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Charm"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Applies at the start of this hero turn instead."
+    }
+  ],
+  "imprint_passive": "At the start of the wave, place [Charm] on the enemy with the highest ATK for 1 turn."
+}

@@ -1,0 +1,123 @@
+{
+  "id": "0e8b68bc-a1b7-4f14-8eb3-fe0af7326d43",
+  "name": "Li Naomasa",
+  "subtitle": "Stalwart General",
+  "slug": "li-naomasa",
+  "rarity": 3,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "A brilliant military tactician who distinguished himself in crucial battles that elevated the Tokugawa Clan to power before the Shattering, Li Naomasa is now one of Izumo’s greatest generals. His skills are prized even by the gods themselves, who have tasked him with preparing the armies of Izumo to face the many looming threats presented by Ryven.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/901329f5-8dbc-4d02-8fc1-0d65133c9ead.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 12553,
+    "acc": 15,
+    "atk": 969,
+    "def": 738,
+    "res": 15,
+    "spd": 90,
+    "init": 87,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "A powerful attack planned for the future."
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "ATK +5%, HP +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +5%, HP +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +5%, HP +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +75"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Slayer",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Bushido",
+      "slug": "li-naomasa-bushido",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_LiNaomasa_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Honed Blade",
+      "slug": "li-naomasa-honed-blade",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_LiNaomasa_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Honor’s Edge",
+      "slug": "li-naomasa-honor-s-edge",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_LiNaomasa_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Powerful Ability",
+      "slug": "li-naomasa-powerful-ability",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_LiNaomasa_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "840b0fcc-0ef2-4e5f-ac54-690ba479112f",
+  "name": "Berserker",
+  "subtitle": "Frenzied Slayer",
+  "slug": "berserker",
+  "rarity": 1,
+  "description": "Single Target Warrior capable of cleaving his foes and causing targets to bleed.",
+  "lore": "Worshiping the strength and ferocity of the bear, these fearsome soldiers are frenzied slayers on the battlefield. Shouting, howling, ignoring the pain of injury, they tear through enemy ranks. Since the Shattering, berserkers have grown more common as Asgard’s warriors turn wherever they can in search not only of strength, but an anchor for their emotions and faith in this unpredictable world.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/61af9828-92a7-48f9-a1e2-28c2a4e3ece8.webp",
+  "image_zoom": 3,
+  "image_focal_x": 64,
+  "image_focal_y": 5,
+  "stats": {
+    "hp": 7268,
+    "acc": 0,
+    "atk": 617,
+    "def": 485,
+    "res": 0,
+    "spd": 71,
+    "init": 70,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Asgard",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Relentless Assault",
+      "slug": "berserker-relentless-assault",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 145%ATK 2 times with a 20% chance to Gain an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Berserker_Basic.webp",
+      "scaling_formula": "145%ATK 2 times",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Skullsplitter",
+      "slug": "berserker-skullsplitter",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 320%ATK. Place [Sharpen I] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Berserker_Ultimate.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [
+        "Sharpen I"
+      ],
+      "ultimate_cost": 500,
+      "initial_divinity": 50,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

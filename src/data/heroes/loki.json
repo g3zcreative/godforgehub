@@ -1,0 +1,146 @@
+{
+  "id": "f7d52c4f-9773-4b34-b63b-157d534d5303",
+  "name": "Loki",
+  "subtitle": "Master of Mischief",
+  "slug": "loki",
+  "rarity": 5,
+  "description": "Direct Mischief and Mayhem in the battle as you weave your Charm and Confusion on your Foes",
+  "lore": "For the infamous trickster of Asgard, Ryvan is ripe with opportunity, mischief and havoc waiting to be unleashed. He acts not only of his own accord, but guided by the whispers of Chaos itself as it works to thwart Destiny and Order. Yet Loki still pursues his own agenda, planning to grow close enough to influence Chaos—or perhaps even usurp it…",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/f7d52c4f-9773-4b34-b63b-157d534d5303.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18169,
+    "acc": 50,
+    "atk": 1145,
+    "def": 925,
+    "res": 30,
+    "spd": 109,
+    "init": 116,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "50 ACC",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when inflicting damage to an enemy under [Sleep].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +14"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Dreamweaver"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, Turn Meter Multiplier +20%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Unending Mischief"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Shadow Step"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Shadow Step",
+      "slug": "loki-shadow-step",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (140%ATK+250%ACC) with an 80% chance to place [mechanic:corrupt] on each target for 2 turns. Then place [mechanic:vanish] and [mechanic:backfire] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Loki_Ultimate.webp",
+      "scaling_formula": "140%ATK+250%ACC",
+      "effects": [
+        "Corrupt",
+        "Vanish",
+        "Backfire"
+      ],
+      "ultimate_cost": 1250,
+      "initial_divinity": 350,
+      "awakening_level": 5,
+      "awakening_bonus": "When attacking under [Vanish], steal a random [Buff] or extend a random [Debuff] by 1 turn"
+    },
+    {
+      "name": "Trickster's Deflection",
+      "slug": "loki-trickster-s-deflection",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (110%ATK+250%ACC) with a 75% chance to place [mechanic:charm] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Loki_Basic.webp",
+      "scaling_formula": "110%ATK+250%ACC",
+      "effects": [
+        "Charm"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Unending Mischief",
+      "slug": "loki-unending-mischief",
+      "skill_type": "Passive",
+      "description": "When [mechanic:sleep] expires or is removed from an enemy, decrease their Turn Meter by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Loki_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "SPD Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [SPD Down II] on the target for 1 turn."
+    },
+    {
+      "name": "Dreamweaver",
+      "slug": "loki-dreamweaver",
+      "skill_type": "Core",
+      "description": "Place [mechanic:sleep] on all enemies for 1 turn. If the target is already under [mechanic:sleep], increase its duration by 1 turn and steal 10% of the target's Turn Meter.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Loki_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Sleep"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "If the target resists [Sleep], blocks or is immune, increase this hero’s turn meter by 20%."
+    }
+  ],
+  "imprint_passive": "When [Sleep] expires or is removed from an enemy, decrease their Turn Meter by 10%."
+}

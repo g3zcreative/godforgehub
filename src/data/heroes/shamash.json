@@ -1,0 +1,142 @@
+{
+  "id": "12c72c0c-ab03-452a-a415-dff146e4292e",
+  "name": "Shamash",
+  "subtitle": "Flames of Truth",
+  "slug": "shamash",
+  "rarity": 5,
+  "description": "Buffs the Divinity of allies and leads them in joint attacks.",
+  "lore": "God of Ekur’s sun, truth, and justice, Shamash is a stalwart fighter for his people, yet he is fiercely torn regarding the Realm’s current wars. He believes in his brethren’s cause, but he knows that many foreign gods are also righteous in their own way. Shamash also fights against Chaos, but often conflicts with Order’s other gods on matters of true justice.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/12c72c0c-ab03-452a-a415-dff146e4292e.webp",
+  "image_zoom": 2,
+  "image_focal_x": 50,
+  "image_focal_y": 38,
+  "stats": {
+    "hp": 20151,
+    "acc": 15,
+    "atk": 925,
+    "def": 1123,
+    "res": 45,
+    "spd": 120,
+    "init": 99,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% INIT",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when causing an ally to join the attack.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Arbiter of Justice"
+    },
+    {
+      "tier": 2,
+      "bonus": "Heal Multiplier +30%, Turn Meter Multiplier +20%, Shield Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Blazing Divination"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Light of the Heavens"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Invoker",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Arbiter of Justice",
+      "slug": "shamash-arbiter-of-justice",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 240%ATK. All allies will join in the attack. Has a 75% chance to place [mechanic:aetherburn-ii] for 2 turns on the enemy.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shamash_Core.webp",
+      "scaling_formula": "240%ATK",
+      "effects": [
+        "Aetherburn II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "The [Aetherburn II] cannot be resisted"
+    },
+    {
+      "name": "Solar Disc",
+      "slug": "shamash-solar-disc",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 150%ATK. The ally with the lowest Divinity will join in the attack. If the target is under [mechanic:aetherburn] increase the turn meter of all allies by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shamash_Basic.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Light of the Heavens",
+      "slug": "shamash-light-of-the-heavens",
+      "skill_type": "Ultimate",
+      "description": "Revive random ally with 30% HP and 30% Turn Meter, then place [mechanic:radiance-ii] and [mechanic:atk-up-ii] for 2 turns on all allies.\nAlso, heal all allies 15% Target HP. Place [mechanic:shield] equal to 50% of overhealing.\nThe first time an ally is killed in battle, gain full divinity and activate Light of the Heavens.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shamash_Ultimate.webp",
+      "scaling_formula": "15% Target HP",
+      "effects": [
+        "Radiance II",
+        "ATK Up II",
+        "Shield"
+      ],
+      "ultimate_cost": 1450,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "If an ally is revived, set their Divinity to 100%."
+    },
+    {
+      "name": "Blazing Divination",
+      "slug": "shamash-blazing-divination",
+      "skill_type": "Passive",
+      "description": "When an ally joins this hero in attack, increase their divinity by [100].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shamash_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [Block Debuff] for 1 turn on allies who join attack."
+    }
+  ],
+  "imprint_passive": "When an ally joins this hero in attack, increase their divinity by [50]."
+}

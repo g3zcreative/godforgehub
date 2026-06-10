@@ -1,0 +1,140 @@
+{
+  "id": "76e8cb49-5065-4935-b4b2-fafc1553d7c1",
+  "name": "Polyphemus",
+  "subtitle": "Blinded Giant",
+  "slug": "polyphemus",
+  "rarity": 4,
+  "description": "Bring Despair to your foes and use brute strength to inflict damage especially to Disruptors.",
+  "lore": "A man-eating cyclops and son of the god Poseidon, Polyphemus seemed a mighty and unbeatable foe until he was tricked and blinded by Odysseus. Although made helpless at the time, Polyphemus has since adapted to his blindness and hunts Odysseus across Olympus, happily slaying whatever other heroes—or innocent travelers—cross his path in the interim.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/76e8cb49-5065-4935-b4b2-fafc1553d7c1.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 20647,
+    "acc": 20,
+    "atk": 914,
+    "def": 936,
+    "res": 45,
+    "spd": 89,
+    "init": 92,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK, 20% DEF, 30% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when inflicting damage to an enemy under [Disable].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +12"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Strong Hit Chance Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Captured Victims"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Titan Power"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Wrathful Hurl",
+      "slug": "polyphemus-wrathful-hurl",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (13%HP+150%ATK) with a 50% chance to place [mechanic:spd-down-ii] for 2 turns. If the target is a Disruptor, has an additional 25% chance to place [mechanic:spd-down-ii] and inflicts 25% increased damage.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Polyphemus_Ultimate.webp",
+      "scaling_formula": "13%HP+150%ATK",
+      "effects": [
+        "SPD Down II"
+      ],
+      "ultimate_cost": 850,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Captured Victims",
+      "slug": "polyphemus-captured-victims",
+      "skill_type": "Passive",
+      "description": "When attacking enemies under [Disable], destroy 5% of their MAX HP. Cannot destroy more than 60% of the target’s MAX HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Polyphemus_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also reduce the target’s Turn Meter by 5% when attacking enemies under Disable."
+    },
+    {
+      "name": "Titan Power",
+      "slug": "polyphemus-titan-power",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (10%HP+120%ATK) with a 75% chance to place [mechanic:despair] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Polyphemus_Basic.webp",
+      "scaling_formula": "10%HP+120%ATK",
+      "effects": [
+        "Despair"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "After placing, [Despair] has a 75% chance to spread the [Despair] to 1 other enemy."
+    },
+    {
+      "name": "Unstoppable Brute",
+      "slug": "polyphemus-unstoppable-brute",
+      "skill_type": "Core",
+      "description": "Remove any [Debuff] from this hero then attack all enemies (8%HP+110%ATK). If an enemy is under [Disable], place [mechanic:barrier]3%DEF on this hero. Also, inflict 25% increased damage to Disruptors.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Polyphemus_Core.webp",
+      "scaling_formula": "8%HP+110%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When attacking enemies under [Disable], destroy 5% of their MAX HP. Cannot destroy more than 30% of the target’s MAX HP."
+}

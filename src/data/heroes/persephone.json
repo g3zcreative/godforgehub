@@ -1,0 +1,139 @@
+{
+  "id": "a9dbb58e-fd06-44ce-a3ae-5dd263441f0d",
+  "name": "Persephone",
+  "subtitle": "Queen of the Dead",
+  "slug": "persephone",
+  "rarity": 4,
+  "description": "Bind with Hades and bring decay to your enemies Speed and Divinity.",
+  "lore": "Queen of the dead and cause of the changing seasons, Persephone may be loyal to her husband Hades, below; her mother Demeter, above; or entirely to her own agenda. She watches Hades negotiate with Osiris’s Shadow Council without comment, and she receives Hel’s romantic overtures without explicitly encouraging or discouraging them. And never has she revealed her own motivations, wants, or plans.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/a9dbb58e-fd06-44ce-a3ae-5dd263441f0d.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 16848,
+    "acc": 35,
+    "atk": 1013,
+    "def": 859,
+    "res": 25,
+    "spd": 101,
+    "init": 109,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "40 ACC",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when this hero places a [Debuff].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Abyssal Summons"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Realm Shift"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Realm Shift",
+      "slug": "persephone-realm-shift",
+      "skill_type": "Passive",
+      "description": "When an enemy gains a [Debuff] decrease their Divinity by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Persephone_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also increase this hero’s turn meter by 5% when an enemy gains a [Debuff]. If Hades is on the team he receives the same amount of turn meter."
+    },
+    {
+      "name": "Temptation Binding",
+      "slug": "persephone-temptation-binding",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 75% chance to increase the duration of 1 random [Debuff] on the target by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Persephone_Basic.webp",
+      "scaling_formula": "250%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Growth Entangle",
+      "slug": "persephone-growth-entangle",
+      "skill_type": "Core",
+      "description": "Attack all enemies with a 75% chance to decrease each target’s turn meter by 10% Decrease the turn meter by a further 3% for each [Debuff] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Persephone_Core.webp",
+      "scaling_formula": "230%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Abyssal Summons",
+      "slug": "persephone-abyssal-summons",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 290%ATK with a 75% chance to remove 2[Buffs] from the target then place [mechanic:aetherburn-ii]for 2 turns. If Hades is on the team also has a 75% chance to place [mechanic:res-down-ii] on the target for 2 Turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Persephone_Ultimate.webp",
+      "scaling_formula": "290%ATK",
+      "effects": [
+        "Aetherburn II",
+        "RES Down II"
+      ],
+      "ultimate_cost": 1150,
+      "initial_divinity": 400,
+      "awakening_level": 3,
+      "awakening_bonus": "Remove all [Buffs] instead."
+    }
+  ],
+  "imprint_passive": "When an enemy gains a [Debuff] decrease their Divinity by 2.5%."
+}

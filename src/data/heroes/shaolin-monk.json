@@ -1,0 +1,127 @@
+{
+  "id": "f92ae086-7e4c-48d7-bdb9-ea6ba40cd7b3",
+  "name": "Shaolin Monk",
+  "subtitle": "Ascetic Warrior",
+  "slug": "shaolin-monk",
+  "rarity": 2,
+  "description": "Strike swift with martial prowess against heroes aligned with Chaos.",
+  "lore": "These ascetic warriors follow an intricate combination of spiritual and martial practices dating back countless centuries. While the monks would prefer to be left alone in their ornate monasteries, pursuing education and enlightenment, when attacked or roused to defend others they swiftly become deadly adversaries. Ever more frequently since the Shattering, they must rise to the defense of Tian as a whole.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/38606ebe-974f-441c-ba51-80113da0fe0a.webp",
+  "image_zoom": 3,
+  "image_focal_x": 90,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 9910,
+    "acc": 5,
+    "atk": 815,
+    "def": 639,
+    "res": 10,
+    "spd": 79,
+    "init": 78,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF to all allies",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "ATK +3%, DEF +3%, HP +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +3%, DEF +3%, HP +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +3%, DEF +3%, HP +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Crit Dam Res +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divine Skill Dam Res +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "When taking damage, has a 30% chance to reduce the damage by 20%."
+    },
+    {
+      "tier": 4,
+      "bonus": "DEF +12%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Divine Skill Def +12%"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Slayer",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Exploding Charge",
+      "slug": "shaolin-monk-exploding-charge",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy. If the target is aligned with Chaos then increase the damage inflicted by 30%.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/701a8fd8-0d05-4813-9f3f-e43c9bc660dd.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Lotus Strike",
+      "slug": "shaolin-monk-lotus-strike",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy. If the target is defeated, Place [mechanic:sharpen-i] on this hero for 2 turns.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/d5a145d9-2484-41c3-add3-d283f20749eb.webp",
+      "scaling_formula": "250%ATK",
+      "effects": [
+        "Sharpen I"
+      ],
+      "ultimate_cost": 750,
+      "initial_divinity": 150,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Staff of Fury",
+      "slug": "shaolin-monk-staff-of-fury",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 2 times. Each hit has a 35% chance to increase this hero’s Divinity by [25]. Place [mechanic:init-up-i] on this hero for 2 turns if the target is aligned with Chaos.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/e643ac90-b043-4ba1-aaf4-800f79a54344.webp",
+      "scaling_formula": "130%ATK",
+      "effects": [
+        "INIT Up I"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

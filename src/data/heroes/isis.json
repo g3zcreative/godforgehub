@@ -1,0 +1,143 @@
+{
+  "id": "fc4f02c1-677c-465a-b621-ecbddd3e6260",
+  "name": "Isis",
+  "subtitle": "Divine Mother",
+  "slug": "isis",
+  "rarity": 5,
+  "description": "Bring your team back from the afterlife and bless them with buffs!",
+  "lore": "Isis is healer, protector, teacher, and sorceress. She prefers to remain uninvolved in the War of Pyramids, instead picking up the slack across Aaru where many of her fellow gods are distracted by the ongoing conflict. She has begun to hear Destiny’s calls, though so far she remains equally allied to Destiny and Order both, rather than choosing one over the other.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/fc4f02c1-677c-465a-b621-ecbddd3e6260.webp",
+  "image_zoom": 2.2,
+  "image_focal_x": 67,
+  "image_focal_y": 11,
+  "stats": {
+    "hp": 21142,
+    "acc": 15,
+    "atk": 914,
+    "def": 1145,
+    "res": 40,
+    "spd": 122,
+    "init": 103,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "70 RES",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Theft of Thebes"
+    },
+    {
+      "tier": 2,
+      "bonus": "Shield Multiplier +30%, Heal Multiplier +30%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Ankh Haven"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Divine Intervention"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Invoker",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Theft of Thebes",
+      "slug": "isis-theft-of-thebes",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 35% chance to steal a random [Buff]. Then spread 1 random [Buff] on this hero to all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Isis_Basic.webp",
+      "scaling_formula": "160%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Steal [Buff] will ignore the target's RES."
+    },
+    {
+      "name": "Ankh Haven",
+      "slug": "isis-ankh-haven",
+      "skill_type": "Core",
+      "description": "Place [mechanic:shield] on all allies then place [mechanic:def-up-ii] on all allies for 3 turns. Grants this hero an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Isis_Core.webp",
+      "scaling_formula": "20%HP",
+      "effects": [
+        "Shield",
+        "DEF Up II",
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Additionally place [Mend] on all allies for 3 turns."
+    },
+    {
+      "name": "Divine Intervention",
+      "slug": "isis-divine-intervention",
+      "skill_type": "Ultimate",
+      "description": "Revive all allies with 50% HP and 50% Turn Meter. If Horus is revived by this ability, place [mechanic:radiance-ii] on him for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Isis_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Radiance II",
+        "Immortal"
+      ],
+      "ultimate_cost": 1650,
+      "initial_divinity": 250,
+      "awakening_level": 5,
+      "awakening_bonus": "After reviving place [Immortal] on all allies for 2 turns."
+    },
+    {
+      "name": "Mother's Embrace",
+      "slug": "isis-mother-s-embrace",
+      "skill_type": "Passive",
+      "description": "At the start of this hero’s turn, remove all [Debuffs] and [Disables] from the ally with the lowest HP, then heal them equal to 10% of this hero’s MAX HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Isis_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "At the start of this hero’s turn, remove all [Debuffs] and [Disables] from the ally with the lowest HP, then heal them equal to 5% of this hero’s MAX HP."
+}

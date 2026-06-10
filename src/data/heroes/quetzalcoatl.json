@@ -1,0 +1,143 @@
+{
+  "id": "a0e1c14b-31c5-4947-9c60-e3d1c399f804",
+  "name": "Quetzalcoatl",
+  "subtitle": "Star of Dawn",
+  "slug": "quetzalcoatl",
+  "rarity": 5,
+  "description": "Bring your allies back from the brink of death and boost their Turn Meters",
+  "lore": "God of light, life, and wisdom, Quetzalcoatl—the Feathered Serpent—stands preeminent in Omeyocan. He understands the War of Pyramids is a waste of effort and lives, but until he figures out how to convince Aaru’s pantheon to adopt the ways of Omeyocan, he believes neither the cosmos nor his brethren would permit him to stop it.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/a0e1c14b-31c5-4947-9c60-e3d1c399f804.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 19986,
+    "acc": 15,
+    "atk": 925,
+    "def": 1134,
+    "res": 50,
+    "spd": 118,
+    "init": 106,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "24% SPD",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [60] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Soaring Currents"
+    },
+    {
+      "tier": 2,
+      "bonus": "Heal Multiplier +30%, Turn Meter Multiplier +20%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Serpent Fangs"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Age of Rebirth"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Serpent Fangs",
+      "slug": "quetzalcoatl-serpent-fangs",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (80%ATK+230%RES) and Heal 10%MAX HP all allies. If the attack is a Strong Hit, place [mechanic:petrify] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Quetzalcoatl_Basic.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Petrify"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Will place [Petrify] on any attack which cannot be resisted."
+    },
+    {
+      "name": "Soaring Currents",
+      "slug": "quetzalcoatl-soaring-currents",
+      "skill_type": "Core",
+      "description": "Increase the Turn Meter of all allies by 20% and then place [mechanic:spd-up-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Quetzalcoatl_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "SPD Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Increase SPD of each target by 10 (stacking up to 3 times)."
+    },
+    {
+      "name": "Light of Knowledge",
+      "slug": "quetzalcoatl-light-of-knowledge",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:init-up-ii], and [mechanic:acc-up-ii] on all allies for 2 turns.\nAlso, Increase the turn meter of the ally with the highest turn meter by 50% when this hero’s Divinity reaches 100%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Quetzalcoatl_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "INIT Up II",
+        "ACC Up II"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Age of Rebirth",
+      "slug": "quetzalcoatl-age-of-rebirth",
+      "skill_type": "Passive",
+      "description": "When this hero is defeated, revive 2 allies with 50% HP and increase their [INIT] by 5% (stacking up to 3 times). Occurs once per wave.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Quetzalcoatl_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Revives all allies instead."
+    }
+  ],
+  "imprint_passive": "When this hero is defeated, revive 2 allies with 25% HP and increase their [INIT] by 5% (stacking up to 3 times). Occurs once per wave."
+}

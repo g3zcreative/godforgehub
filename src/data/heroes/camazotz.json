@@ -1,0 +1,141 @@
+{
+  "id": "a5e71567-23db-4acc-927a-462a441e2f31",
+  "name": "Camazotz",
+  "subtitle": "Shadow of Xibalba",
+  "slug": "camazotz",
+  "rarity": 5,
+  "description": "Strike enemies with feral strikes decreasing and stealing their turn meter bringing them to Despair.",
+  "lore": "The “bat of death” is an agent of Omeyocan’s underworld gods, carrying their words and performing their tasks in the lands of the living. As such, he frequently appears not only throughout Omeyocan but in other realms as well—especially lately, as he has entered into some manner of scheme with the dreaded Count Dracula of Vyraj.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/a5e71567-23db-4acc-927a-462a441e2f31.webp",
+  "image_zoom": 3,
+  "image_focal_x": 69,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18995,
+    "acc": 45,
+    "atk": 1211,
+    "def": 947,
+    "res": 30,
+    "spd": 106,
+    "init": 121,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when decreasing an enemy turn meter.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +14"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Nocturnal Hunger"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +20%, Strong Hit Chance Multiplier +15%, Ignore RES +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Nightmare Theft"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Screech of Doom"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Nightmare Theft",
+      "slug": "camazotz-nightmare-theft",
+      "skill_type": "Passive",
+      "description": "When this hero inflicts a Critical Hit, steal 5% of the target’s Turn Meter. If the attack is Strong Critical, steal a further 5% Turn Meter.\n\nAlso Decrease the target’s INIT and SPD by 5 (stacking up to 50) each time this hero steal’s turn meter.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Camazotz_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also Decrease the target’s INIT and SPD by 5 (stacking up to 50) each time this hero steal’s turn meter."
+    },
+    {
+      "name": "Dreaded Claws",
+      "slug": "camazotz-dreaded-claws",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 3 times. Each hit has a 75% chance to reduce the target’s Turn Meter by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Camazotz_Basic.webp",
+      "scaling_formula": "100%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Nocturnal Hunger",
+      "slug": "camazotz-nocturnal-hunger",
+      "skill_type": "Core",
+      "description": "Attack all enemies with a 80% chance to place [mechanic:drain-ii] on each target for 2 turns.\n\nIf a target is already under [mechanic:drain-ii], also decrease their Turn Meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Camazotz_Core.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "Drain II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "If a target is already under [Drain II], also decrease their Turn Meter by 10%."
+    },
+    {
+      "name": "Screech of Doom",
+      "slug": "camazotz-screech-of-doom",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 2 times. Each hit has a 80% chance to reduce the target’s Turn Meter by 10%. If the target is above 50% Turn Meter, place [mechanic:spd-down-ii] on them for 2 turns, otherwise place [mechanic:despair] on them for 1 turn.\n\nEach hit is a guaranteed Strong Critical.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Camazotz_Ultimate.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [
+        "SPD Down II",
+        "Despair"
+      ],
+      "ultimate_cost": 1500,
+      "initial_divinity": 350,
+      "awakening_level": 5,
+      "awakening_bonus": "Each hit is a guaranteed Strong Critical."
+    }
+  ],
+  "imprint_passive": "When this hero inflicts a Critical Hit, steal 2.5% Turn Meter. If the attack is Strong Critical, steal a further 2.5% Turn Meter."
+}

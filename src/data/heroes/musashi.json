@@ -1,0 +1,144 @@
+{
+  "id": "96448614-b54d-4a47-a35f-f094e1759d1a",
+  "name": "Musashi",
+  "subtitle": "Victorious Duelist",
+  "slug": "musashi",
+  "rarity": 4,
+  "description": "Dual-wielding samurai who specializes in getting enemies to lower their guard in duels.",
+  "lore": "An impossibly skilled and eager swordsman in his youth, Musashi eventually found his taste for violence fading. He retreated to the practice of art, and to penning tomes of technique and philosophy. Now that he finds himself in a world of chaos and conflict, he wanders Izumo, taking in its beauty and hoping to put off his return to violence.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/96448614-b54d-4a47-a35f-f094e1759d1a.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14866,
+    "acc": 30,
+    "atk": 1123,
+    "def": 837,
+    "res": 20,
+    "spd": 96,
+    "init": 95,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "Campaign"
+  },
+  "divinity_generator": "Gain [40] Divinity when hit by an enemy under [Taunt].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +14"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Sword Saint"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Agitating Blow"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Earnest Heart Straight Way",
+      "slug": "musashi-earnest-heart-straight-way",
+      "skill_type": "Passive",
+      "description": "Place [mechanic:ward] on this hero for 2 turn after they place [mechanic:taunt] on an enemy.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Musashi_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Ward"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Sword Saint",
+      "slug": "musashi-sword-saint",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 280%ATK. If the target has [mechanic:taunt] then attacks will Ignore 25% of the target’s DEF.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Musashi_Basic.webp",
+      "scaling_formula": "280%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Has a 50% chance to counterattack when attacked by an enemy that has lower ATK than this hero."
+    },
+    {
+      "name": "Agitating Blow",
+      "slug": "musashi-agitating-blow",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 330%ATK with a 50% chance to place [mechanic:taunt] on the target for 1 turn. If the target has lower ATK than this hero, repeat the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Musashi_Core.webp",
+      "scaling_formula": "330%ATK",
+      "effects": [
+        "Taunt"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Increase ATK by 10% when attacking (stacking up to 5 times)."
+    },
+    {
+      "name": "Two Heavens as One",
+      "slug": "musashi-two-heavens-as-one",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:atk-up-i] on this hero for 2 turns, then attack 4 times at random for 140%ATK. Each hit has a 50% chance to place [mechanic:atk-down-ii] on the target hit for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Musashi_Ultimate.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [
+        "ATK Up I",
+        "ATK Up II",
+        "ATK Down II"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": 200,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Place [Ward] on this hero for 1 turn after they place [Taunt] on an enemy."
+}

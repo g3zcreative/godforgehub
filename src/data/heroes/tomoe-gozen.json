@@ -1,0 +1,136 @@
+{
+  "id": "946dc608-be2a-44f8-8743-2e65e745c1e2",
+  "name": "Tomoe Gozen",
+  "subtitle": "Lady Blade",
+  "slug": "tomoe-gozen",
+  "rarity": 3,
+  "description": "A renowned archer and swordswoman fiercely dedicated to her liege, Tomoe Gozen travels Izumo battling enemies to find a worthy daimyo.",
+  "lore": "A renowned archer and swordswoman even among her fellow samurai, Tomoe Gozen was fiercely dedicated to her liege, commanding some of his most elite forces. As the world Shattered not long after his death, Gozen found herself adrift. She travels Izumo, battling its enemies and studying the competing daimyo to determine which—if any—is worthy of her service.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/b68f01f7-da44-45a8-931a-065cc0fa9742.webp",
+  "image_zoom": 3,
+  "image_focal_x": 31,
+  "image_focal_y": 9,
+  "stats": {
+    "hp": 16352,
+    "acc": 15,
+    "atk": 793,
+    "def": 771,
+    "res": 25,
+    "spd": 80,
+    "init": 81,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "A powerful attack planned for the future.",
+    "scope": "Future"
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Strong Hit DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Strong Hit DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Piercing Volley"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Precision Arrow",
+      "slug": "tomoe-gozen-precision-arrow",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TomoeGozen_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Focused Barrage",
+      "slug": "tomoe-gozen-focused-barrage",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TomoeGozen_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Piercing Volley",
+      "slug": "tomoe-gozen-piercing-volley",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TomoeGozen_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Samurai Fury",
+      "slug": "tomoe-gozen-samurai-fury",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TomoeGozen_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

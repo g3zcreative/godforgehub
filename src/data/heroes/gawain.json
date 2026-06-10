@@ -1,0 +1,141 @@
+{
+  "id": "dd29429d-2383-4907-98e7-04cd23b109d5",
+  "name": "Gawain",
+  "subtitle": "The Stalwart",
+  "slug": "gawain",
+  "rarity": 4,
+  "description": "Protect the knights of Avalon whilst passing the Green Knights Trials.",
+  "lore": "One of the most loyal Knights of the Round Table in the old world, Gawain’s fealty has reached the heights of zealotry in the new. His devotion to Arthur is a religious fervor, and though it is not his first choice, he will take all manner of dishonorable and vicious actions in its defense, even at the cost of his own reputation.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/dd29429d-2383-4907-98e7-04cd23b109d5.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18004,
+    "acc": 15,
+    "atk": 683,
+    "def": 1112,
+    "res": 65,
+    "spd": 91,
+    "init": 95,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "18% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when this hero receives a [Disable]",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "C.DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Honor and Chivalry"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Courageous Devotion"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Noon's Might",
+      "slug": "gawain-noon-s-might",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (180%DEF+130%ATK) with a 50% chance to place [mechanic:atk-down-ii] for 2 turns. Also place [mechanic:shield]200% DEF on all allies",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gawain_Ultimate.webp",
+      "scaling_formula": "(180%DEF+130%ATK)",
+      "effects": [
+        "ATK Down II"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Courageous Devotion",
+      "slug": "gawain-courageous-devotion",
+      "skill_type": "Passive",
+      "description": "When an ally receives a [Disable], there is a 40% chance this hero will receive it instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gawain_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "At the start of this hero’s turn, remove all [Disable]."
+    },
+    {
+      "name": "Honor and Chivalry",
+      "slug": "gawain-honor-and-chivalry",
+      "skill_type": "Core",
+      "description": "Place [mechanic:def-up-ii] on this hero for 2 turns then place [mechanic:protect-ii] on all allies for 2 turns except this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gawain_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "DEF Up II",
+        "Protect II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also, reduce the damage inflicted to allies under Protect by 10%. This is doubled for Avalon allies."
+    },
+    {
+      "name": "Knight's Oath",
+      "slug": "gawain-knight-s-oath",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times and increase this hero’s DEF and RES by 5% (Max 3 Stacks).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gawain_Basic.webp",
+      "scaling_formula": "(80%DEF+60%ATK)",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an ally receives a [Disable], there is a 20% chance this hero will receive it instead."
+}

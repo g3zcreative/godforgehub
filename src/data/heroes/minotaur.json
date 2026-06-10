@@ -1,0 +1,143 @@
+{
+  "id": "b082c19b-fc0c-4056-8480-55120eb2bea4",
+  "name": "Minotaur",
+  "subtitle": "Labyrinth Beast",
+  "slug": "minotaur",
+  "rarity": 3,
+  "description": "Gore, Stun and Rampage your way through Battle as you stop your foes escaping the Maze!",
+  "lore": "This brutal creature, half-bull and half-man, once stalked the corridors of a great labyrinth constructed at the behest of King Minos. Now set free in the chaos of the Shattering, it roams the Realm of Olympus at will, cunning enough to study its new environment in secrecy, bloodthirsty enough to kill whenever a sufficiently safe opportunity presents itself.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/b082c19b-fc0c-4056-8480-55120eb2bea4.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17178,
+    "acc": 15,
+    "atk": 727,
+    "def": 793,
+    "res": 30,
+    "spd": 81,
+    "init": 85,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "Increase the chance to strong hit by 10% while at full Divinity."
+  },
+  "divinity_generator": "Gain [20] when taking damage. Gain [200] when receiving a [Disable].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Strong Hit DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Strong Hit DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Red Haze"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Mess with the Bull, Get the Horns",
+      "slug": "minotaur-mess-with-the-bull-get-the-horns",
+      "skill_type": "Ultimate",
+      "description": "Remove a random [Disable] from this hero and place [mechanic:stalwart] and [mechanic:retaliate] for 2 turns on this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Minotaur_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Stalwart",
+        "Retaliate"
+      ],
+      "ultimate_cost": 700,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Gore",
+      "slug": "minotaur-gore",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (7%HP+150%ATK) with a 35% chance to place 1 stack of [mechanic:bleed]. If this hero is under a [mechanic:stalwart] buff, has a chance to place 2 stacks of [mechanic:bleed] instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Minotaur_Basic.webp",
+      "scaling_formula": "7%HP+150%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Locked Horns",
+      "slug": "minotaur-locked-horns",
+      "skill_type": "Core",
+      "description": "Attack (6%HP+50%ATK)3 times at random with a 25% chance to place [mechanic:stun] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Minotaur_Core.webp",
+      "scaling_formula": "6%HP+50%ATK",
+      "effects": [
+        "ACC Up I",
+        "Stun"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Red Haze",
+      "slug": "minotaur-red-haze",
+      "skill_type": "Passive",
+      "description": "Increase the chance to strong hit by 20% while at full Divinity.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Minotaur_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Increases the chance by 5% per stack of [Bleed] on the target."
+    }
+  ],
+  "imprint_passive": "Increase the chance to strong hit by 10% while at full Divinity."
+}

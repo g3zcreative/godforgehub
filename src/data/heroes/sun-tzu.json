@@ -1,0 +1,142 @@
+{
+  "id": "d2f307f8-00b3-47ed-93cd-6bcdcbfb66b5",
+  "name": "Sun Tzu",
+  "subtitle": "Master of War",
+  "slug": "sun-tzu",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "As Tian’s most famous general and martial philosopher, Sun Tzu swiftly obtained a position of authority in the realm’s largest post-Shattering army. Yet he is wise enough to recognize that war between realms should be avoided. He has recently become aware of Odysseus’s efforts in Tian, and works to make contact with the Olympian hero in hopes of cementing an alliance.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/8d7380b2-1a51-48f8-9edd-f4f1a4e390b7.jpg",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18169,
+    "acc": 10,
+    "atk": 760,
+    "def": 1002,
+    "res": 30,
+    "spd": 106,
+    "init": 93,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% INIT",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when placing a [Buff] on an ally",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Philosophy Scroll"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Practical Teachings"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Invoker",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Philosophy Scroll",
+      "slug": "sun-tzu-philosophy-scroll",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (150%ATK+500%INIT) with a 35% chance to [Mirror]1 random [Buff] from the target onto this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_SunTzu_Basic.webp",
+      "scaling_formula": "150%ATK+500%INIT",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "[Mirror] to all allies instead."
+    },
+    {
+      "name": "Practical Teachings",
+      "slug": "sun-tzu-practical-teachings",
+      "skill_type": "Core",
+      "description": "Place [mechanic:acc-up-ii] and [mechanic:init-up-ii] on all allies for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_SunTzu_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "ACC Up II",
+        "INIT Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also increase the ACC of all allies 5% (stacking up to 3 times)."
+    },
+    {
+      "name": "Win Without Fighting",
+      "slug": "sun-tzu-win-without-fighting",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:vanish] on all allies except this hero for 2 turns then increase the Divinity of all allies by 20% then place [mechanic:backfire] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_SunTzu_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Vanish",
+        "Backfire"
+      ],
+      "ultimate_cost": 950,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Art of War",
+      "slug": "sun-tzu-art-of-war",
+      "skill_type": "Passive",
+      "description": "When an enemy's Turn Meter or Divinity is increased, all allies gain 50% of the amount increased. Occurs once per enemy turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_SunTzu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an enemy's Turn Meter or Divinity is increased, all allies gain 25% of the amount increased."
+}

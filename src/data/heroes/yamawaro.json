@@ -1,0 +1,90 @@
+{
+  "id": "884e6a39-9bed-4dcd-a987-a0afd40bb942",
+  "name": "Yamawaro",
+  "subtitle": "Mountain Kappa",
+  "slug": "yamawaro",
+  "rarity": 1,
+  "description": "Swing Wildly and Stun your Foes whilst decreasing their ACC",
+  "lore": "These peculiar one-eyed beings dwell in and around the mountains of Izumo. While they normally keep their distance from humans, they are happy to assist in lumberjacking and physical labor when offered rewards such as alcohol and food. If a promised payment is withheld or substituted—or if they are otherwise offended—their tempers erupt in gruesome violence.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/5d1ba42c-b354-47f0-9cb0-c6851bb711b9.webp",
+  "image_zoom": 3,
+  "image_focal_x": 71,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 10076,
+    "acc": 0,
+    "atk": 496,
+    "def": 529,
+    "res": 5,
+    "spd": 67,
+    "init": 68,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Izumo",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Heavy Swing",
+      "slug": "yamawaro-heavy-swing",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (18%HP+125%ATK) with a 25% chance to place [Stun] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Yamawaro_Basic.webp",
+      "scaling_formula": "18%HP+125%ATK",
+      "effects": [
+        "Stun"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Equinox Slam",
+      "slug": "yamawaro-equinox-slam",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (10%HP+60%ATK) with a 25% chance to place [ACC Down I] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Yamawaro_Ultimate.webp",
+      "scaling_formula": "10%HP+60%ATK",
+      "effects": [
+        "ACC Down I"
+      ],
+      "ultimate_cost": 1250,
+      "initial_divinity": 375,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

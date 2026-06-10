@@ -1,0 +1,142 @@
+{
+  "id": "0cc6410e-34e9-4daa-8769-f7f84b4396fd",
+  "name": "Volkodlak",
+  "subtitle": "Winter's Howl",
+  "slug": "volkodlak",
+  "rarity": 3,
+  "description": "Cast Despair and Inflict Savage Wounds on your Foes from the Shadows.",
+  "lore": "The werewolves of Vyraj, volkodlak are either sorcerers and witches who have adopted monstrous form, or the victims of curses cast by such occultists. The resulting half-lupine being is savage and bestial, but cunning and clever, able to scheme, to trap, and to lure. They possess supernatural abilities beyond the obvious ferocity and strength, making them highly dangerous and unpredictable",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/0cc6410e-34e9-4daa-8769-f7f84b4396fd.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14040,
+    "acc": 25,
+    "atk": 837,
+    "def": 683,
+    "res": 15,
+    "spd": 86,
+    "init": 99,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF, 10% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when placing a [Debuff] on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Health +5%, Attack +5%, Defense +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Health +5%, Attack +5%, Defense +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Health +5%, Attack +5%, Defense +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Accuracy +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "Critical Damage +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore Resistance +2.5"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5, Armor Multiplier +2.5, Weapon Multiplier +2.5"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore Resistance +2.5"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5, Armor Multiplier +2.5, Weapon Multiplier +2.5"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Shadow Pounce"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Disruptor",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Primal Howl",
+      "slug": "volkodlak-primal-howl",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 250%ATK with a 50% chance to place [mechanic:despair] on each target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Volkodlak_Ultimate.webp",
+      "scaling_formula": "250%ATK",
+      "effects": [
+        "Despair",
+        "Vulnerable I"
+      ],
+      "ultimate_cost": 1650,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Rabid Bite",
+      "slug": "volkodlak-rabid-bite",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 180%ATK2 times. Each hit has a 20% chance to place [mechanic:lock-core] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Volkodlak_Core.webp",
+      "scaling_formula": "180%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Shadow Pounce",
+      "slug": "volkodlak-shadow-pounce",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 230%ATK with a 40% chance to place 2 stacks of [mechanic:bleed] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Volkodlak_Basic.webp",
+      "scaling_formula": "230%ATK",
+      "effects": [
+        "Bleed",
+        "Vanish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also place [Vanish] on this hero for 1 turn when attacking an enemy under [Bleed]."
+    },
+    {
+      "name": "Mark of the Predator",
+      "slug": "volkodlak-mark-of-the-predator",
+      "skill_type": "Passive",
+      "description": "Increase damage inflicted by this hero on enemies under [mechanic:despair] by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Volkodlak_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Increase damage inflicted by this hero on enemies under [Despair] by 5%."
+}

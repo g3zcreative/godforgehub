@@ -256,7 +256,7 @@ Return your response by calling the create_hero function.`,
       const iconName = formatHeroNameForIcon(hero.name);
       for (const skill of hero.skills) {
         if (!skill.image_url && skill.skill_type) {
-          skill.image_url = `https://godforge.gg/heroes/assets/ability/ICON_${iconName}_${skill.skill_type}.webp`;
+          skill.image_url = `https://godforge.gg/api/media/file/ICON_${iconName}_${skill.skill_type}.webp`;
         }
       }
     }

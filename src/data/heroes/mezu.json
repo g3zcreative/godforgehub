@@ -1,0 +1,132 @@
+{
+  "id": "ccb2a517-d3ed-4a08-ad33-22d3081eb721",
+  "name": "Mezu",
+  "subtitle": "Horse-Face",
+  "slug": "mezu",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Mezu and Gozu—or Horse-Face and Ox-Head—are guardians of Izumo’s underworld, Yomi. They once performed identical duties, working together, but the Shattering changed things. Leaving Gozu behind as guard, Mezu frequently travels out into Izumo to guide deceased souls to Yomi if they are lost—or, if they are trying to escape their fate, to subdue them and drag them back.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ccb2a517-d3ed-4a08-ad33-22d3081eb721.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17674,
+    "acc": 15,
+    "atk": 650,
+    "def": 1046,
+    "res": 65,
+    "spd": 96,
+    "init": 91,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Awaken the ability: Execute Sentencing"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Defender",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Punishing Lash",
+      "slug": "mezu-punishing-lash",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mezu_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Strip Flesh",
+      "slug": "mezu-strip-flesh",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mezu_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Execute Sentencing",
+      "slug": "mezu-execute-sentencing",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mezu_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Gate Guardian",
+      "slug": "mezu-gate-guardian",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mezu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

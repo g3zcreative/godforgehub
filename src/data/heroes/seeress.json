@@ -1,0 +1,135 @@
+{
+  "id": "f6f42b1a-0807-42ab-bf9b-da9551a9e05e",
+  "name": "Seeress",
+  "subtitle": "Wyrd-Weaver",
+  "slug": "seeress",
+  "rarity": 3,
+  "description": "Cast prophetic spells and predict the future gaining Extra Turns and casting Hex to your foes.",
+  "lore": "In the old world, these witches could peer along the strands of fate, telling fortunes and reading omens. Heroes, rulers, and even gods consulted them. Alas, when time Shattered along with the world, most seeresses of Asgard went mad. Some now spout nonsense, while others phrase their prophecies to trick their listeners—yet the clever can still find truth in their words.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/f6f42b1a-0807-42ab-bf9b-da9551a9e05e.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 12553,
+    "acc": 15,
+    "atk": 980,
+    "def": 760,
+    "res": 15,
+    "spd": 86,
+    "init": 88,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [100] Divinity when gaining an [Extra Turn].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Strong Hit Chance Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Strong Hit Chance Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Runic Echo"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Slayer",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Temporal Distortion",
+      "slug": "seeress-temporal-distortion",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy. If the enemy is not defeated, decrease the target’s Divinity by 10%. If the enemy is defeated, increase this hero’s Divinity by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Seeress_Basic.webp",
+      "scaling_formula": "310%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Runic Echo",
+      "slug": "seeress-runic-echo",
+      "skill_type": "Core",
+      "description": "Attack all enemies with a 75% chance to place [mechanic:hex-i] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Seeress_Core.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [
+        "Hex I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If all enemies receive [Hex I], gain an [Extra Turn]."
+    },
+    {
+      "name": "Butterfly Effect",
+      "slug": "seeress-butterfly-effect",
+      "skill_type": "Ultimate",
+      "description": "Place either [mechanic:sharpen-i] or [mechanic:acc-up-i] on this hero for 1 turn, then attack all enemies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Seeress_Ultimate.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [],
+      "ultimate_cost": 900,
+      "initial_divinity": 200,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Clairvoyance",
+      "slug": "seeress-clairvoyance",
+      "skill_type": "Passive",
+      "description": "Has a 20% chance to gain an [Extra Turn] when inflicting a Strong Hit.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Seeress_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Has a 10% chance to gain an [Extra Turn] when inflicting a Strong Hit."
+}

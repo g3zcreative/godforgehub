@@ -1,0 +1,140 @@
+{
+  "id": "b1ad968e-0b13-486c-b307-0094596a4adb",
+  "name": "Sigurd",
+  "subtitle": "Dragons Bane",
+  "slug": "sigurd",
+  "rarity": 3,
+  "description": "Quintessential Brawler that dishes out big damage when taking damage.",
+  "lore": "Sigurd is most famous as a dragon-slayer, but his greatest challenge lay in the jealous machinations of Brynhild. Any relief Sigurd may find from those schemes since the Shattering, however, is tempered by the return of Fafnir the dragon. Sigurd takes the reversal of his greatest triumph as a personal affront, and seeks to regain his former glory at any cost.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/b1ad968e-0b13-486c-b307-0094596a4adb.webp",
+  "image_zoom": 3,
+  "image_focal_x": 81,
+  "image_focal_y": 7,
+  "stats": {
+    "hp": 17178,
+    "acc": 15,
+    "atk": 727,
+    "def": 771,
+    "res": 30,
+    "spd": 81,
+    "init": 85,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when inflicting damage to an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "ATK +5%, HP +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +5%, HP +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +5%, HP +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +75"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Reduction Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Reduction Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Dragonhorn Skin"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Brawler",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Fateful Desire",
+      "slug": "sigurd-fateful-desire",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (7%HP+110%ATK) and place [mechanic:barrier] [mechanic:barrier] equal to 5% of the damage inflicted. If Brynhild is on the team, also place the [mechanic:barrier] on her.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sigurd_Basic.webp",
+      "scaling_formula": "7%HP+110%ATK",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Majestic Leap",
+      "slug": "sigurd-majestic-leap",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (10%HP+130%ATK) then place [mechanic:init-up-i] on this hero for 1 turn. If Brynhild is on the team, also place [mechanic:init-up-i]on her. Will always Strong Hit against Bosses.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sigurd_Core.webp",
+      "scaling_formula": "10%HP+130%ATK",
+      "effects": [
+        "INIT Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Dragonslayer",
+      "slug": "sigurd-dragonslayer",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (12%HP+140%ATK). Inflicts 20% increased damage to Bosses. If the target is defeated, decrease the damage this hero receives by 10% (stacking up to 3 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sigurd_Ultimate.webp",
+      "scaling_formula": "12%HP+140%ATK",
+      "effects": [],
+      "ultimate_cost": 850,
+      "initial_divinity": 200,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Dragonhorn Skin",
+      "slug": "sigurd-dragonhorn-skin",
+      "skill_type": "Passive",
+      "description": "When this hero is attacked, Heal for 30% of the damage inflicted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Sigurd_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Has a 50% chance to counterattack when this hero is attacked with a weak hit."
+    }
+  ],
+  "imprint_passive": "When this hero is attacked, Heal for 15% of the damage inflicted."
+}

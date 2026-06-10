@@ -1,0 +1,145 @@
+{
+  "id": "eed69d58-879b-4f60-ad4f-ed2f9dbd8549",
+  "name": "Anubis",
+  "subtitle": "Shepherd of Shadows",
+  "slug": "anubis",
+  "rarity": 5,
+  "description": "Balance the scales as you defeat your foes and drain their Turn Meter and Divinity.",
+  "lore": "Guide to the dead of Aaru and guardian of the underworld’s gates, Anubis has always been a grim deity, but he grew ever more distant in the years preceding the Shattering. Yet he seems, peculiarly, to have regained a new sense of purpose since the world was remade, though it is one that often keeps him traveling, away from his sacred duties.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/eed69d58-879b-4f60-ad4f-ed2f9dbd8549.webp",
+  "image_zoom": 3,
+  "image_focal_x": 77,
+  "image_focal_y": 17,
+  "stats": {
+    "hp": 23455,
+    "acc": 35,
+    "atk": 1035,
+    "def": 1057,
+    "res": 45,
+    "spd": 101,
+    "init": 99,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [100] Divinity whenever an enemy is defeated. Gain [200] if they were defeated by Soul Guide.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Embalming Blast"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, Barrier Multiplier +30%, Heal Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Soul Guide"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Weigh the Scales"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Brawler",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Soul Guide",
+      "slug": "anubis-soul-guide",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (6%HP+60%ATK)2 times. If the enemy is defeated, has 75% chance to place [mechanic:despair] for 1 turn on all enemies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Anubis_Basic.webp",
+      "scaling_formula": "(6%HP+60%ATK)",
+      "effects": [
+        "Despair"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "If the enemy is defeated, also steal 20% Divinity from all enemies."
+    },
+    {
+      "name": "Embalming Blast",
+      "slug": "anubis-embalming-blast",
+      "skill_type": "Core",
+      "description": "Attack all enemies (13%HP+85%ATK) with a 75% chance to place [mechanic:corrupt] and [mechanic:init-down-ii] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Anubis_Core.webp",
+      "scaling_formula": "(13%HP+85%ATK)",
+      "effects": [
+        "Corrupt",
+        "INIT Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "If an enemy is defeated, Decrease the cooldown of this ability by 1 turn."
+    },
+    {
+      "name": "Weigh the Scales",
+      "slug": "anubis-weigh-the-scales",
+      "skill_type": "Passive",
+      "description": "When a hero is defeated, increase this hero’s turn meter by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Anubis_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Banish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If the hero is an enemy, place [Banish] for 1 turn. If the hero is an ally, gain [200] Divinity."
+    },
+    {
+      "name": "Tomb Watcher",
+      "slug": "anubis-tomb-watcher",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (17%HP+100%ATK). If this hero’s HP is below 50%, heals this hero by 30% of the damage inflicted. If this Hero’s HP is above 50%, place [mechanic:barrier] for 30% of the damage inflicted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Anubis_Ultimate.webp",
+      "scaling_formula": "(17%HP+100%ATK)",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": 1600,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When a hero is defeated, Increase this hero’s turn meter by 10%."
+}

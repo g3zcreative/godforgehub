@@ -1,0 +1,133 @@
+{
+  "id": "cf06ddc8-978b-44b1-a94d-aa9c286f05b5",
+  "name": "Apollo",
+  "subtitle": "Light of Olympus",
+  "slug": "apollo",
+  "rarity": 5,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "A deity of broad influence—light and the sun, art and poetry, song and prophesy, archery and disease—Apollo has become a vital element of Olympus’s diplomatic efforts. He is considered most likely to find common ground with, or at least charm, neighboring pantheons, while also being able to spot danger in advance and to defend himself if negotiations go sour.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/cf06ddc8-978b-44b1-a94d-aa9c286f05b5.webp",
+  "image_zoom": 2.5,
+  "image_focal_x": 36,
+  "image_focal_y": 1,
+  "stats": {
+    "hp": 20647,
+    "acc": 15,
+    "atk": 892,
+    "def": 1167,
+    "res": 45,
+    "spd": 117,
+    "init": 103,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF & 15% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [70] Divinity when placing a [buff] on an ally",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Prophetic Wisdom"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Solar Mandate"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Equinox of Purity and Rot",
+      "slug": "apollo-equinox-of-purity-and-rot",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 150%ATK. Reduce the cooldown of each ally Core Ability by 1 turn. For each ally under [mechanic:mend], increase their Divinity by 15%. For each enemy under [mechanic:acid], decrease their Divinity by 15%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Apollo_Ultimate.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Prophetic Wisdom",
+      "slug": "apollo-prophetic-wisdom",
+      "skill_type": "Passive",
+      "description": "Whenever an ally uses a Core Ability, increases the damage of their Core Ability by 10%. Stacks resets on each wave.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Apollo_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also increase the ally’s Turn Meter by 15% after using their Core Ability."
+    },
+    {
+      "name": "Solar Mandate",
+      "slug": "apollo-solar-mandate",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 300%ATK then place [mechanic:atk-up-ii] on all allies for 2 turns. Also, equalize the Divinity of the ally with the lowest Divinity to this hero’s Divinity. If Artemis is on the team, also equalize her Divinity.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Apollo_Core.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [
+        "ATK Up III"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "When an ally’s Divinity is Equalized, their next attack will ignore 15% DEF."
+    },
+    {
+      "name": "Twin Arrows of Delphi",
+      "slug": "apollo-twin-arrows-of-delphi",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 140%ATK 2 times. The first hit places [mechanic:mend] on all allies for 1 Turn. The second hit has a 50% chance to place [mechanic:acid] on the target for 2 turns. If Artemis is on the team, she will join in the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Apollo_Basic.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [
+        "Mend",
+        "Acid"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Whenever an ally uses a Core Ability, increases the damage of their Core Ability by 5%. Stacks resets on each wave"
+}

@@ -1,0 +1,140 @@
+{
+  "id": "55778fd5-e67f-425f-852a-46f55a5ee16d",
+  "name": "Zeus",
+  "subtitle": "King of Olympus",
+  "slug": "zeus",
+  "rarity": 5,
+  "description": "Vaporize enemies with powerful single target attacks joining with fellow Olympians with his divine powers.",
+  "lore": "The king of Olympus initially kept his focus at home after the Shattering, several romantic “attachments” beyond his borders notwithstanding. Once he engaged with the rest of Ryven, he discovered other pantheons with a stricter hierarchical nature. He has begun reshaping Olympus to match, as he believes such a change, and devotion to Order, is better for the Realm—and for him.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/55778fd5-e67f-425f-852a-46f55a5ee16d.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18830,
+    "acc": 40,
+    "atk": 1244,
+    "def": 947,
+    "res": 30,
+    "spd": 105,
+    "init": 104,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when damaging an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "ATK +9%, DEF +9%, HP +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +9%, DEF +9%, HP +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +9%, DEF +9%, HP +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +20"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Strike from the Heavens"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Ignore RES +20%, Ignore DEF +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Assemble the Council"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: King of the Gods"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Slayer",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Strike from the Heavens",
+      "slug": "zeus-strike-from-the-heavens",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 400%ATK. Then, attacks all other enemies 400%ATK.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Zeus_Core.webp",
+      "scaling_formula": "400%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Place [Sharpen II] on this hero for 2 turns before attacking."
+    },
+    {
+      "name": "Assemble the Council",
+      "slug": "zeus-assemble-the-council",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:atk-up-ii] on this hero for 2 turns, then attack 1 enemy 470%ATK. All allies will team up and join the attack.\n\nIf the target enemy is defeated, increase this hero’s ATK and CDMG by 10% (stacking up to 5 times). The stat gains carry over waves.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Zeus_Ultimate.webp",
+      "scaling_formula": "470%ATK",
+      "effects": [
+        "ATK Up II"
+      ],
+      "ultimate_cost": 1550,
+      "initial_divinity": 350,
+      "awakening_level": 3,
+      "awakening_bonus": "If the initial target was defeated, also increase the Divinity of all allies by 20%."
+    },
+    {
+      "name": "Thunderstrike",
+      "slug": "zeus-thunderstrike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Each hit will [mechanic:ricochet] to a random enemy inflicting damage 200%ATK and apply [mechanic:def-down-ii] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Zeus_Basic.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "Sharpen II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "King of the Gods",
+      "slug": "zeus-king-of-the-gods",
+      "skill_type": "Passive",
+      "description": "When this hero defeats an enemy, the next attack of each ally will inflict +30% increased damage.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Zeus_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "When this hero defeats an enemy, the next attack of each ally will inflict +15% increased damage."
+}

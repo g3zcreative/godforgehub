@@ -1,0 +1,140 @@
+{
+  "id": "07851797-0670-4c5e-a229-96250a289956",
+  "name": "Chernobog",
+  "subtitle": "Bleak Anathema",
+  "slug": "chernobog",
+  "rarity": 5,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Chernobog is the avatar of disaster and ill fortune. Harm follows in his wake, and he delights in the suffering he brings. Fighting for Vyraj in his own way, Chernobog extends his hand into other Realms. Bad luck surges beneath his gaze, and he has raised monsters and spirits to sally forth in his name, carrying his powers of mischance with them.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/07851797-0670-4c5e-a229-96250a289956.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17509,
+    "acc": 40,
+    "atk": 1244,
+    "def": 991,
+    "res": 30,
+    "spd": 104,
+    "init": 105,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [40] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +20"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +16"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Extinguish Light"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Ignore RES +20%, Strong Hit DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Dark Assault"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Imposing Presence"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Slayer",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Law of Misfortune",
+      "slug": "chernobog-law-of-misfortune",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 400%ATK with a 50% chance to place [mechanic:terrify] on the target for 2 turns. If this hero joins an attack or [mechanic:retaliate]'s, attack all enemies 400%ATK instead. Attacks ignore [mechanic:intercept] and [mechanic:charm].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Chernobog_Basic.webp",
+      "scaling_formula": "400%ATK",
+      "effects": [
+        "Terrify"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Dark Assault",
+      "slug": "chernobog-dark-assault",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 135%ATK3 times. Place [mechanic:retaliate] on this hero for 2 turns. If Belobog is on the team, [Buff] cannot be removed or reduced. Also, if the enemy is defeated, Increase this hero's Divinity by 100%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Chernobog_Core.webp",
+      "scaling_formula": "135%ATK",
+      "effects": [
+        "Retaliate",
+        "Phoenix"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Place [Phoenix] on this hero for 1 turn which does not reduce on turn."
+    },
+    {
+      "name": "Extinguish Light",
+      "slug": "chernobog-extinguish-light",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 160%ATK3 times. If the target's MAX HP is greater than this hero, each hit will inflict an additional 5% of the target's MAX HP. If the target's MAX HP is lower than this hero, each hit will always Strong Hit.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Chernobog_Ultimate.webp",
+      "scaling_formula": "160%ATK",
+      "effects": [
+        "Banish"
+      ],
+      "ultimate_cost": 1250,
+      "initial_divinity": 300,
+      "awakening_level": 1,
+      "awakening_bonus": "Place [Banish] on enemies defeated by this ability for 2."
+    },
+    {
+      "name": "Imposing Presence",
+      "slug": "chernobog-imposing-presence",
+      "skill_type": "Passive",
+      "description": "After this hero joins an attack, gains an Extra Turn or [mechanic:retaliate]'s, this hero's next ability will ignore 15% of the target's DEF and ignore [mechanic:shield], [mechanic:barrier], [mechanic:immortal], [mechanic:ward] and [DEF Up].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Chernobog_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "After 5 enemy turns, if this hero is defeated, revive this Hero with 100% HP and Turn Meter. If Belobog is on the team, remove [Banish] and [Block Revive] before reviving."
+    }
+  ],
+  "imprint_passive": "After this hero joins an attack, gains an Extra Turn or Retaliate's, this hero's next ability will ignore 15% of the target's DEF and ignore [Shield], [Barrier], [Immortal], [Ward] and [DEF Up]."
+}

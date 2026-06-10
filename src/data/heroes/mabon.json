@@ -1,0 +1,139 @@
+{
+  "id": "94c1060e-33f3-498c-afd0-b7b2ab780e1a",
+  "name": "Mabon",
+  "subtitle": "Rescued Huntmaster",
+  "slug": "mabon",
+  "rarity": 3,
+  "description": "Veil and Resist the elements as you Hunt your Foes in the Wilds of Avalon.",
+  "lore": "Son of a goddess, Mabon ap Modron is not merely a knight of King Arthur’s Round Table but the greatest tracker in their ranks. Few creatures exist, mundane or supernatural, that he cannot hunt down. Mabon recently departed Camelot on a hunt he considers vital, yet he has told none what he seeks—or what dire consequence he fears should he fail.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/94c1060e-33f3-498c-afd0-b7b2ab780e1a.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 13875,
+    "acc": 5,
+    "atk": 694,
+    "def": 793,
+    "res": 20,
+    "spd": 100,
+    "init": 87,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when placing a buff on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Turn Meter Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Turn Meter Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Knight of the Hunt"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Knight of the Hunt",
+      "slug": "mabon-knight-of-the-hunt",
+      "skill_type": "Passive",
+      "description": "When an ally receives a [Disable] has a 30% chance to increase their turn meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mabon_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also has a 30% chance to reduce the duration by 1 turn."
+    },
+    {
+      "name": "Hunter's Resilience",
+      "slug": "mabon-hunter-s-resilience",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy and place [mechanic:res-up-i] on all allies for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mabon_Core.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "RES Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Tracker's Strike",
+      "slug": "mabon-tracker-s-strike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy and place [Block Debuff] on the ally with the lowest HP for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mabon_Basic.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "Block Debuff"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Rescue From Despair",
+      "slug": "mabon-rescue-from-despair",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy and place [mechanic:vanish] on the ally with the lowest HP for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Mabon_Ultimate.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "Vanish"
+      ],
+      "ultimate_cost": 900,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an ally receives a [Disable] has a 30% chance to increase their turn meter by 5%."
+}

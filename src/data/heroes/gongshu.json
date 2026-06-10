@@ -1,0 +1,88 @@
+{
+  "id": "687a8aad-7f66-44bc-b5ab-57cc217aac96",
+  "name": "Gongshu",
+  "subtitle": "Jade Archer",
+  "slug": "gongshu",
+  "rarity": 1,
+  "description": "Decrease your foes Divine power and reduce their Initiative with precise arrows.",
+  "lore": "The gongshu are skilled crossbowmen, normally assembled in units that serve as vital elements in Tian’s disparate armies. Their massive weapons, though slow and strenuous to operate, deliver brutal force with astonishing accuracy. Specially trained gongshu learn to operate their unwieldy weapons even from horseback or chariot, offering a startling degree of mobility.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/5c8eefff-7046-43fd-9edb-25328a02d6b2.webp",
+  "image_zoom": 2.8,
+  "image_focal_x": 43,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 8094,
+    "acc": 0,
+    "atk": 562,
+    "def": 440,
+    "res": 0,
+    "spd": 71,
+    "init": 82,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Tian",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Jade Arrow",
+      "slug": "gongshu-jade-arrow",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 340%ATK with a 35% chance to place [INIT Down I] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gongshu_Basic.webp",
+      "scaling_formula": "340%ATK",
+      "effects": [
+        "INIT Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Precision Volley",
+      "slug": "gongshu-precision-volley",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 200%ATK with a 25% chance to reduce the Divinity of each target by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gongshu_Ultimate.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [],
+      "ultimate_cost": 1050,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

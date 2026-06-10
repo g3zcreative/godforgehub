@@ -1,0 +1,126 @@
+{
+  "id": "154cac9f-95d2-43aa-9380-bbf22eea5f37",
+  "name": "Knight",
+  "subtitle": "Realm Defender",
+  "slug": "knight",
+  "rarity": 2,
+  "description": "A resilient fighter who deals more damage the more buffs he receives.",
+  "lore": "Vassals to the crown and defenders of the land, knights are meant to be among Avalon’s fiercest fighters, a goal most of them achieve; and to be embodiments of bravery, chivalry, and virtue, a goal of which many fall short. Whether a knight is warrior-saint or titled ruffian, however, makes little difference to an enemy on the wrong end of a charge.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/154cac9f-95d2-43aa-9380-bbf22eea5f37.webp",
+  "image_zoom": 3,
+  "image_focal_x": 75,
+  "image_focal_y": 28,
+  "stats": {
+    "hp": 13214,
+    "acc": 5,
+    "atk": 639,
+    "def": 617,
+    "res": 15,
+    "spd": 72,
+    "init": 73,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "10% HP for all allies",
+    "scope": "Guild Trials"
+  },
+  "divinity_generator": "Gain [20] Divinity when dealing damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "HP +5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "ATK +5%"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Resolute Blow",
+      "slug": "knight-resolute-blow",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (8%HP+40%ATK) then heal this hero equal to 25% of the damage dealt, increase this heal by 100% if the target is aligned with Chaos.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Knight_Basic.webp",
+      "scaling_formula": "8%HP+40%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Defensive Stance",
+      "slug": "knight-defensive-stance",
+      "skill_type": "Core",
+      "description": "Place [mechanic:def-up-i] and [mechanic:res-up-i] for 2 turns on this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Knight_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "DEF Up I",
+        "RES Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Oathbound Strike",
+      "slug": "knight-oathbound-strike",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (13%HP+80%ATK). If the target is under any buffs then Increase the damage inflicted by 25%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Knight_Ultimate.webp",
+      "scaling_formula": "13%HP+80%ATK",
+      "effects": [],
+      "ultimate_cost": 750,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

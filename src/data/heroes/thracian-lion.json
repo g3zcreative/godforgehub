@@ -1,0 +1,129 @@
+{
+  "id": "c9965ed8-5360-4808-9488-4345eb44467f",
+  "name": "Thracian Lion",
+  "subtitle": "Hellenic Beast",
+  "slug": "thracian-lion",
+  "rarity": 2,
+  "description": "Protect your pride and Taunt enemies to attack you as thrash through enemies.",
+  "lore": "A fearsome predator stalking the wilds of Olympus, the mighty Thracian lion is a symbol of kingly and divine power. Possessing fur the color of burnished gold, the lion uses both stealth and the element of surprise to hunt, springing upon its prey with a heart-stopping roar. It is said that kings capture and train these beasts to stand guard over palaces and tombs.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/19fd94f4-96e8-460b-83be-02620274440b.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 0,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 11727,
+    "acc": 5,
+    "atk": 485,
+    "def": 738,
+    "res": 30,
+    "spd": 77,
+    "init": 76,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% HP",
+    "scope": "In all battles for allies with a Fire element."
+  },
+  "divinity_generator": "Gain [10] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Skill 1 (Blaze Sword) gains its Awakening Bonus."
+    },
+    {
+      "tier": 2,
+      "bonus": "DEF +12%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Skill 2 (Fire Strike) gains its Awakening Bonus."
+    },
+    {
+      "tier": 4,
+      "bonus": "Damage Reduction +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Skill 3 (Flame Burst) gains its Awakening Bonus."
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Defender",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Steel Claws",
+      "slug": "thracian-lion-steel-claws",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with (90%DEF+80%ATK)2 times with a 30% chance to place [mechanic:atk-down-i] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_ThracianLion_Basic.webp",
+      "scaling_formula": "90%DEF+80%ATK",
+      "effects": [
+        "ATK Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Impenetrable Hide",
+      "slug": "thracian-lion-impenetrable-hide",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (180%DEF+130%ATK) then place [mechanic:ward] on this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_ThracianLion_Core.webp",
+      "scaling_formula": "180%DEF+130%ATK",
+      "effects": [
+        "Ward"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Territorial Roar",
+      "slug": "thracian-lion-territorial-roar",
+      "skill_type": "Ultimate",
+      "description": "Heal this hero by 20% of their MAX HP, then has a 50% chance to place [mechanic:taunt] on 2 random enemies for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_ThracianLion_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Taunt"
+      ],
+      "ultimate_cost": 750,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

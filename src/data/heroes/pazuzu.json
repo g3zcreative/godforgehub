@@ -1,0 +1,145 @@
+{
+  "id": "54f7cd82-0dec-4a50-9551-14ca2972f30b",
+  "name": "Pazuzu",
+  "subtitle": "Wint Tyrant",
+  "slug": "pazuzu",
+  "rarity": 5,
+  "description": "Counter enemy buffs with Corrupt and Debuff whilst and manipulating their Turn Meter in your favour.",
+  "lore": "Pazuzu is among the most puzzling of Ekur’s deities. He is a demonic, destructive god, rider of plague-bearing winds. Yet, when properly invoked, he serves also as protector—not merely against those same plagues, but against other evils such as Lamashtu. Nobody knows whether this is due to ego and rivalry, or if his true nature is as contradictory as his behavior.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/54f7cd82-0dec-4a50-9551-14ca2972f30b.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 19325,
+    "acc": 40,
+    "atk": 1123,
+    "def": 958,
+    "res": 35,
+    "spd": 108,
+    "init": 116,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK, 20% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when placing a [Debuff] or [Disable] on an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +14"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +9"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Withering Storms"
+    },
+    {
+      "tier": 2,
+      "bonus": "Turn Meter Multiplier +20%, Ignore RES +20%, Divinity Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Tempest Winds"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Demon King's Command"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Disruptor",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Blinding Gale",
+      "slug": "pazuzu-blinding-gale",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 320%ATK with a 75% chance to place [mechanic:acc-down-ii] for 2 turns and a 75% chance to remove 1 random buff.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pazuzu_Basic.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [
+        "ACC Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Withering Storms",
+      "slug": "pazuzu-withering-storms",
+      "skill_type": "Core",
+      "description": "Attack all enemies 230%ATK with a 75% chance to place [mechanic:corrupt] on each target for 2 turns. If the target is aligned with Order, Place [mechanic:despair] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pazuzu_Core.webp",
+      "scaling_formula": "230%ATK",
+      "effects": [
+        "Corrupt",
+        "Despair"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "If the target is under any [Buff], decrease the target’s turn meter by 10% and increase this hero’s Divinity by 10%."
+    },
+    {
+      "name": "Demon King's Command",
+      "slug": "pazuzu-demon-king-s-command",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 120%ATK3 times. Each hit has a 50% chance to place [mechanic:vulnerable-ii], [mechanic:acid] and [mechanic:curse-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pazuzu_Ultimate.webp",
+      "scaling_formula": "120%ATK",
+      "effects": [
+        "Vulnerable II",
+        "Acid",
+        "Curse II"
+      ],
+      "ultimate_cost": 1550,
+      "initial_divinity": 300,
+      "awakening_level": 5,
+      "awakening_bonus": "If all debuffs are placed on an enemy, steal [20%] of their turn meter."
+    },
+    {
+      "name": "Tempest Winds",
+      "slug": "pazuzu-tempest-winds",
+      "skill_type": "Passive",
+      "description": "When an enemy gains a [Buff], increase this hero’s turn meter by 10%. If the enemy gains 3[Buff] in one turn, this hero gains an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Pazuzu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also, increase this hero’s ACC by 5 (up to 100) when an enemy gains a [Buff]"
+    }
+  ],
+  "imprint_passive": "When an enemy gains a [Buff], increase this hero’s turn meter by 5%. If the enemy gains 3[Buff] in one turn, this hero gains an [Extra Turn]."
+}

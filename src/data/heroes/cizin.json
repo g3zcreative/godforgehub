@@ -1,0 +1,144 @@
+{
+  "id": "13473c92-9c7b-4451-b1e4-92b95e96d8f7",
+  "name": "Cizin",
+  "subtitle": "Lord of Death",
+  "slug": "cizin",
+  "rarity": 5,
+  "description": "Bring the plague and fires of Xibalba as you cut through waves of enemies.",
+  "lore": "The dominant of Omeyocan’s many underworld powers, god of earthquakes and the dead, Cizin resents the fact that, for most souls, his torments are only temporary until they pass on to their proper afterlives. His ambition and sadism drive him to revel in mass death. He encourages the War of Pyramids, and has steadfastly refused to cooperate with Osiris’s Shadow Council.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/13473c92-9c7b-4451-b1e4-92b95e96d8f7.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17674,
+    "acc": 35,
+    "atk": 1233,
+    "def": 991,
+    "res": 30,
+    "spd": 102,
+    "init": 109,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK",
+    "scope": "Dungeon"
+  },
+  "divinity_generator": "Gain [50] Divinity when attacking an enemy under [Acid] or [Blaze].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DEF +9%, HP +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DEF +9%, HP +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DEF +9%, HP +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +18"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Ground Quake"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Ignore RES +20%, Strong Hit DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Rite of Flame and Decay"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Ashes of Decay"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Ground Quake",
+      "slug": "cizin-ground-quake",
+      "skill_type": "Core",
+      "description": "Attack all enemies 410%ATK with a 75% chance to place [mechanic:blaze-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Cizin_Core.webp",
+      "scaling_formula": "410%ATK",
+      "effects": [
+        "Blaze II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "If the target is under [Acid] also activate [Blaze] without reducing its duration."
+    },
+    {
+      "name": "Rite of Flame and Decay",
+      "slug": "cizin-rite-of-flame-and-decay",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 430%ATK then activate [mechanic:acid] and [mechanic:blaze] on each target. Also place [mechanic:precision] on this hero for 1 Turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Cizin_Ultimate.webp",
+      "scaling_formula": "430%ATK",
+      "effects": [
+        "Precision",
+        "Acid",
+        "Blaze"
+      ],
+      "ultimate_cost": 1600,
+      "initial_divinity": 275,
+      "awakening_level": 3,
+      "awakening_bonus": "Place [Precision] on all allies instead."
+    },
+    {
+      "name": "Pestilence Sweep",
+      "slug": "cizin-pestilence-sweep",
+      "skill_type": "Basic",
+      "description": "Attack all enemies 380%ATK with a 40% chance to place [mechanic:acid] on each target for 2 turns",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Cizin_Basic.webp",
+      "scaling_formula": "380%ATK",
+      "effects": [
+        "Acid"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ashes of Decay",
+      "slug": "cizin-ashes-of-decay",
+      "skill_type": "Passive",
+      "description": "If an enemy is under [mechanic:acid], reduce their incoming Healing by 50%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Cizin_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "When an enemy receives damage from [Acid], has a 50% chance to increase the duration of [Acid] and [Blaze] on the target by 1 turn."
+    }
+  ],
+  "imprint_passive": "If an enemy is under [Acid], reduce their incoming Healing by 25%."
+}

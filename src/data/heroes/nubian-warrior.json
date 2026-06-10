@@ -1,0 +1,101 @@
+{
+  "id": "853dfcec-2bdc-4ad7-af74-ac4838e320ac",
+  "name": "Nubian Warrior",
+  "subtitle": "Bowmaster",
+  "slug": "nubian-warrior",
+  "rarity": 2,
+  "description": "Slay your enemies from afar with critical strikes and lethal accuracy.",
+  "lore": "The lands from which the Nubian warriors originally came were lost in the Shattering, but while they most certainly mourn for their missing homelands, that grief has in no way impeded their ability or willingness to fight. These expert archers now make up a vital segment of Aaru’s military, bringing death from a distance to the enemies of their adopted Realm.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/19bc215d-6928-4db4-8ed3-6f48176f36f5.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 10406,
+    "acc": 5,
+    "atk": 771,
+    "def": 628,
+    "res": 10,
+    "spd": 80,
+    "init": 77,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [25] Divinity when critical hitting an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Aaru",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Quickdraw",
+      "slug": "nubian-warrior-quickdraw",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 3 times with a 25% additional critical hit chance. Each critical hit increases this hero’s turn meter by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_NubianWarrior_Core.webp",
+      "scaling_formula": "130%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Desert Bow",
+      "slug": "nubian-warrior-desert-bow",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 25% additional critical hit chance.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_NubianWarrior_Basic.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Scion of Sands",
+      "slug": "nubian-warrior-scion-of-sands",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies with a 25% additional critical hit chance. Gain an [Extra Turn] if this ability defeats an enemy.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_NubianWarrior_Ultimate.webp",
+      "scaling_formula": "385%ATK",
+      "effects": [
+        "Extra Turn"
+      ],
+      "ultimate_cost": 1150,
+      "initial_divinity": 300,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

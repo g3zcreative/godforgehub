@@ -1,0 +1,139 @@
+{
+  "id": "4708b123-ce12-47c5-9e78-79c667b3913b",
+  "name": "Oda Nobunaga",
+  "subtitle": "Demon Daimyo",
+  "slug": "oda-nobunaga",
+  "rarity": 5,
+  "description": "Lead your clan to victory with powerful self-buffs, stat gains and joint Attacks",
+  "lore": "A great daimyo before the Shattering, Oda Nobunaga led a series of wars that largely unified the provinces. Now he is a figure around which much of Izumo’s mortal population has rallied—but some lords of the realm choose to remain independent. Believing only a united Izumo can survive Ryven, Oda Nobunaga again readies himself to lead a war of unification.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/a15b72b9-c0b5-46b7-b490-3d598f2bef90.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 23290,
+    "acc": 35,
+    "atk": 1013,
+    "def": 1079,
+    "res": 50,
+    "spd": 102,
+    "init": 97,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% INIT",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when this hero has their Divinity or Turn Meter increased.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +9"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Unify the Realms"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +20%, C.DMG Reduction Multiplier +20%, Divinity Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Imperial Conquest"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Daimyo Claim"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Brawler",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Unify the Realms",
+      "slug": "oda-nobunaga-unify-the-realms",
+      "skill_type": "Passive",
+      "description": "Increase the damage inflicted by this hero by 10% and reduces the damage received by 10% each time this hero defeats an enemy (stacking up to 5 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_OdaNobunaga_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Stacks are not reset across each wave."
+    },
+    {
+      "name": "Unyielding Ambition",
+      "slug": "oda-nobunaga-unyielding-ambition",
+      "skill_type": "Core",
+      "description": "Attacks all enemies then place [mechanic:spd-up-ii] and [mechanic:init-up-ii] on this hero for 2 turns. If this attack defeats an enemy, the buffs cannot be removed.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_OdaNobunaga_Core.webp",
+      "scaling_formula": "11%HP+120%ATK",
+      "effects": [
+        "SPD Up II",
+        "INIT Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Daimyo Claim",
+      "slug": "oda-nobunaga-daimyo-claim",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy then increase this hero's Divinity by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_OdaNobunaga_Basic.webp",
+      "scaling_formula": "12%HP+130%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Increase an additional 2% Divinity for each enemy this hero has defeated in the battle."
+    },
+    {
+      "name": "Imperial Conquest",
+      "slug": "oda-nobunaga-imperial-conquest",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy. All allies join the attack with their basic abilities. Izumo allies inflict 30% increased damage. Increase Turn Meter of this hero by 50% if an enemy is defeated.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_OdaNobunaga_Ultimate.webp",
+      "scaling_formula": "14%HP+140%ATK",
+      "effects": [],
+      "ultimate_cost": 1400,
+      "initial_divinity": 300,
+      "awakening_level": 3,
+      "awakening_bonus": "Turn Meter increase is now 100% when defeating an Enemy."
+    }
+  ],
+  "imprint_passive": "Increase the damage inflicted by this hero by 5% and reduces the damage received by 5% each time this hero defeats an enemy (stacking up to 5 times)."
+}

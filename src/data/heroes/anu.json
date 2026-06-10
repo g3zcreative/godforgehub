@@ -1,0 +1,144 @@
+{
+  "id": "73932091-412a-4e54-b3b0-58db61040fd1",
+  "name": "Anu",
+  "subtitle": "God of Kings",
+  "slug": "anu",
+  "rarity": 5,
+  "description": "Anu, manifestation of the sky itself, is not currently king of Ekur’s gods, but he is the deity of kingship itself and the source of royal authority. He watches impassively as Ekur struggles to find its place in the new world, and many believe it is only a matter of time until he feels compelled to step in and retake control.",
+  "lore": "Anu, manifestation of the sky itself, is not currently king of Ekur’s gods, but he is the deity of kingship itself and the source of royal authority. He watches impassively as Ekur struggles to find its place in the new world, and many believe it is only a matter of time until he feels compelled to step in and retake control.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/73932091-412a-4e54-b3b0-58db61040fd1.webp",
+  "image_zoom": 2.5,
+  "image_focal_x": 72,
+  "image_focal_y": 12,
+  "stats": {
+    "hp": 21473,
+    "acc": 20,
+    "atk": 804,
+    "def": 1266,
+    "res": 80,
+    "spd": 99,
+    "init": 103,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% DEF",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when this hero is hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +16"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Astral Burst"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +20%, Shield Multiplier +30%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Cosmic Salvation"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Grace of the Heavens"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Cosmic Salvation",
+      "slug": "anu-cosmic-salvation",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:phoenix] on all allies for 2 turns, then all allies except this hero will attack 1 target enemy. If an ally is under [mechanic:protect-ii], they will Heal for 30% of the damage inflicted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Anu_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Phoenix"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Allies will convert 100% of the excess healing into a [Shield]."
+    },
+    {
+      "name": "Celestial Ward",
+      "slug": "anu-celestial-ward",
+      "skill_type": "Passive",
+      "description": "For every 10% Divinity on this hero, reduce the damage allies receives by 3%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Anu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Grace of the Heavens",
+      "slug": "anu-grace-of-the-heavens",
+      "skill_type": "Core",
+      "description": "Place [mechanic:def-up-ii] on all allies for 2 turns and [mechanic:protect-ii] on all allies except this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Anu_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "DEF Up II",
+        "Protect II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Allies under [Protect] cannot receive critical hits."
+    },
+    {
+      "name": "Astral Burst",
+      "slug": "anu-astral-burst",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (200%DEF+100%ATK). Place [mechanic:vanish] on the ally with the lowest current HP for 1 Turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Anu_Basic.webp",
+      "scaling_formula": "200%DEF+100%ATK",
+      "effects": [
+        "Vanish",
+        "Stalwart"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Also place [Stalwart] on the ally with the lowest current HP for 2 turns."
+    }
+  ],
+  "imprint_passive": "For every 10% Divinity on this hero, reduce the damage this hero receives by 1.5%."
+}

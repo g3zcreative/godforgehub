@@ -1,0 +1,139 @@
+{
+  "id": "7169630f-4cea-4433-803f-10a3727c8490",
+  "name": "Aya",
+  "subtitle": "Morning-Maker",
+  "slug": "aya",
+  "rarity": 4,
+  "description": "Bring a new dawn to your allies with healing and regenerative power",
+  "lore": "Goddess of the dawn, Aya is the wife of Shamash and possesses a gentler temperament than her husband. Where Shamash, though just, can be wrathful, Aya is merciful and remembers the details and the individuals often lost in Shamash’s stricter view. She frequently intercedes on mortals’ behalf, tempering the decrees of Shamash and other gods of Ekur.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/7169630f-4cea-4433-803f-10a3727c8490.webp",
+  "image_zoom": 2.7,
+  "image_focal_x": 34,
+  "image_focal_y": 2,
+  "stats": {
+    "hp": 16848,
+    "acc": 10,
+    "atk": 815,
+    "def": 991,
+    "res": 35,
+    "spd": 112,
+    "init": 96,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "18% SPD",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when placing a [Buff] on an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Turn Meter Multiplier +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Luminescence"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Equinox"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Luminescence",
+      "slug": "aya-luminescence",
+      "skill_type": "Ultimate",
+      "description": "Remove 1[Debuff] from all allies, then Heal 15%HP all allies. The Heal is doubled for Order allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aya_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 1450,
+      "initial_divinity": 300,
+      "awakening_level": 3,
+      "awakening_bonus": "Converts 20% of excess healing into [Barrier] on the target."
+    },
+    {
+      "name": "Radiant Flares",
+      "slug": "aya-radiant-flares",
+      "skill_type": "Basic",
+      "description": "Attack",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aya_Basic.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Equinox",
+      "slug": "aya-equinox",
+      "skill_type": "Core",
+      "description": "Equalize the HP of all allies to this hero’s current HP, then place [mechanic:spd-up-ii] on allies for 1 turn if they are above 50% HP. Then place [mechanic:mend] for 1 turn on allies if their HP is below 50%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aya_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "SPD Up II",
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Heal 20%HP this hero before equalizing HP."
+    },
+    {
+      "name": "Guiding Light",
+      "slug": "aya-guiding-light",
+      "skill_type": "Passive",
+      "description": "At the start of battle increase all allies [INIT] by 20% of this hero’s [SPD].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aya_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "At the start of battle increase this hero’s [INIT] by 10% of this hero’s [SPD]."
+}

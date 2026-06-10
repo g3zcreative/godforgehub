@@ -1,0 +1,143 @@
+{
+  "id": "d180d349-17a3-49b3-a40c-42410072bf2d",
+  "name": "Cait Sith",
+  "subtitle": "Veiled Terror",
+  "slug": "cait-sith",
+  "rarity": 3,
+  "description": "Leap from the shadows, debuffing and maim your foes before Vanishing back into the darkness.",
+  "lore": "Fae spirits in feline form, cait sith are takers of souls. They stalk the recently dead, snagging spirits that have not yet moved on and dragging them away to fates unknown. Prior to the Shattering, the cait sith were content to scavenge, but now the influence of Chaos inspires some to make fresh corpses, if none are otherwise available.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/afff89ec-4cc7-42ae-8c51-1b96bad8f42a.webp",
+  "image_zoom": 1.6,
+  "image_focal_x": 50,
+  "image_focal_y": 24,
+  "stats": {
+    "hp": 13049,
+    "acc": 25,
+    "atk": 870,
+    "def": 716,
+    "res": 15,
+    "spd": 92,
+    "init": 99,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when placing a debuff on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Shadow Prowess"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Disruptor",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Furious Claws",
+      "slug": "cait-sith-furious-claws",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 65%ATK3 times, has a 25% chance to place [mechanic:acc-down-i] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_CaitSith_Basic.webp",
+      "scaling_formula": "65%ATK",
+      "effects": [
+        "ACC Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Shadow Prowess",
+      "slug": "cait-sith-shadow-prowess",
+      "skill_type": "Passive",
+      "description": "At the start of the round, Place [mechanic:vanish] on this hero for 2 turn. While under [mechanic:vanish], this hero has 20% increased ACC.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_CaitSith_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Vanish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Place [Vanish] on this hero for 1 turn at the start of this hero’s turn instead."
+    },
+    {
+      "name": "Lurking Menace",
+      "slug": "cait-sith-lurking-menace",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 370%ATK with a 50% to decrease the target's turn meter by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_CaitSith_Core.webp",
+      "scaling_formula": "370%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Mischievous Omen",
+      "slug": "cait-sith-mischievous-omen",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 140%ATK2 times. Each hit has a 40% chance to place [mechanic:spd-down-i] and [mechanic:init-down-i] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_CaitSith_Ultimate.webp",
+      "scaling_formula": "140%ATK",
+      "effects": [
+        "SPD Down I",
+        "INIT Down I"
+      ],
+      "ultimate_cost": 1050,
+      "initial_divinity": 300,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "At the start of the round, Place [Vanish] on this hero for 2 turns. While under [Vanish], this hero has 10% increased ACC."
+}

@@ -1,0 +1,136 @@
+{
+  "id": "6588148d-69bb-461d-b1ab-72bc29314af5",
+  "name": "Lamashtu",
+  "subtitle": "Devourer of Souls",
+  "slug": "lamashtu",
+  "rarity": 5,
+  "description": "Slay multiple enemies and consume their souls for powerful damage and create eruptions from defeated foes.",
+  "lore": "The Mother of Monsters, though demonic, is a true goddess. She brings plague and the deaths of children, feeds on blood, and spawns other evils to stalk the world. Lamashtu has no great agenda, no allies among the pantheon. She exists only to cause misery, and now she sees whole new realms through which to spread her afflictions.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/6588148d-69bb-461d-b1ab-72bc29314af5.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18334,
+    "acc": 40,
+    "atk": 1299,
+    "def": 958,
+    "res": 30,
+    "spd": 104,
+    "init": 104,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF & 15% HP for Fire Allies.",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [100] Divinity when defeating an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +18"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Unholy Birth"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, DMG Multiplier +30%, Strong Hit Chance Multiplier +15%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Soul Eruption"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Feast of the Unborn"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Unholy Birth",
+      "slug": "lamashtu-unholy-birth",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 200%ATK2 times. For each enemy already defeated, summon a Demon of Pestilence which explodes triggering Soul Eruption with a 50% chance to place [mechanic:vulnerable-ii] and [mechanic:acid] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lamashtu_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 1650,
+      "initial_divinity": 325,
+      "awakening_level": 1,
+      "awakening_bonus": "Also 50% chance to place [Curse II] on each target for 2 turns."
+    },
+    {
+      "name": "Demon Daggers",
+      "slug": "lamashtu-demon-daggers",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 250%ATK2 times. If the target is defeated, increase the damage of the next AoE Attack by 50%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lamashtu_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Feast of the Unborn",
+      "slug": "lamashtu-feast-of-the-unborn",
+      "skill_type": "Core",
+      "description": "Attack all enemies 370%ATK. If this ability defeats 3 or more enemies, reset the cooldown and increase this hero’s Divinity by 200.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lamashtu_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "For each enemy defeated, increase this hero's ATK and CDMG by 5% (stacking up to 20 times), and SPD by 5 (stacking up to 100). Does not reset each wave."
+    },
+    {
+      "name": "Soul Eruption",
+      "slug": "lamashtu-soul-eruption",
+      "skill_type": "Passive",
+      "description": "When this hero defeats an enemy, they explode inflicting damage 100%ATK to all enemies which ignores 100% DEF but cannot be Critical.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lamashtu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "After defeating 10 enemies, the explosion can now be Critical."
+    }
+  ],
+  "imprint_passive": "When this hero defeats an enemy, they explode inflicting damage 50%ATK100% DEF but cannot be Critical."
+}

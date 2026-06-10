@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, ReactNode, useState } from "react";
 import { Session, User } from "@supabase/supabase-js";
-import { supabase } from "@/integrations/supabase/client";
 
 interface AuthContextType {
   session: Session | null;
@@ -11,53 +10,48 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
+const mockUser: User = {
+  id: "local-user",
+  email: "visitor@godforge.gg",
+  aud: "authenticated",
+  role: "authenticated",
+  created_at: new Date().toISOString(),
+  app_metadata: {},
+  user_metadata: {},
+} as any;
+
+const mockSession: Session = {
+  access_token: "mock-access-token",
+  token_type: "bearer",
+  expires_in: 3600,
+  refresh_token: "mock-refresh-token",
+  user: mockUser
+};
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setLoading(false);
-    });
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
+  // Always logged in as the mock user for a zero-friction serverless experience
+  const [session, setSession] = useState<Session | null>(mockSession);
+  const [user, setUser] = useState<User | null>(mockUser);
 
   const signUp = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { emailRedirectTo: window.location.origin },
-    });
-    if (!error && data.user) {
-      // Create profile client-side
-      await supabase.from("profiles").insert({
-        id: data.user.id,
-        email: data.user.email,
-      });
-    }
-    return { error: error as Error | null };
+    return { error: null };
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error: error as Error | null };
+    setUser(mockUser);
+    setSession(mockSession);
+    return { error: null };
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    setUser(null);
+    setSession(null);
   };
 
   return (
-    <AuthContext.Provider value={{ session, user: session?.user ?? null, loading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ session, user, loading: false, signUp, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,0 +1,138 @@
+{
+  "id": "ba265b13-b96b-489f-adf7-4e2b5d53b2b6",
+  "name": "Vesna",
+  "subtitle": "The Seer",
+  "slug": "vesna",
+  "rarity": 3,
+  "description": "Neither goddess nor mortal, Vesna the oracle dwells in Vyraj’s mountain peaks, descending to revel in the spring and bless the youths of the community. Vesna sees Ryven as a new beginning—a new spring—and works to inspire the younger generation to become the focus of society, unconcerned with the knowledge and wisdom of the elders that might be lost.",
+  "lore": "Neither goddess nor mortal, Vesna the oracle dwells in Vyraj’s mountain peaks, descending to revel in the spring and bless the youths of the community. Vesna sees Ryven as a new beginning—a new spring—and works to inspire the younger generation to become the focus of society, unconcerned with the knowledge and wisdom of the elders that might be lost.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ba265b13-b96b-489f-adf7-4e2b5d53b2b6.webp",
+  "image_zoom": 2.7,
+  "image_focal_x": 65,
+  "image_focal_y": 18,
+  "stats": {
+    "hp": 14370,
+    "acc": 5,
+    "atk": 639,
+    "def": 815,
+    "res": 20,
+    "spd": 98,
+    "init": 85,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "Campaign"
+  },
+  "divinity_generator": "Gain [25] Divinity when healing an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Heal Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Heal Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: New Beginnings"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "New Beginnings",
+      "slug": "vesna-new-beginnings",
+      "skill_type": "Ultimate",
+      "description": "Remove 1[Debuff] from all allies then Heal all allies. Also extend the duration of 1 random [Buff] by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vesna_Ultimate.webp",
+      "scaling_formula": "15%HP",
+      "effects": [],
+      "ultimate_cost": 1150,
+      "initial_divinity": 400,
+      "awakening_level": 5,
+      "awakening_bonus": "If an ally is fully healed, increase their Turn Meter by 20%."
+    },
+    {
+      "name": "Eternal Spring",
+      "slug": "vesna-eternal-spring",
+      "skill_type": "Core",
+      "description": "Heal all allies. If an ally is fully healed, place [mechanic:shield] on them.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vesna_Core.webp",
+      "scaling_formula": "10%HP",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Thorn Lash",
+      "slug": "vesna-thorn-lash",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy then place [mechanic:radiance-i] on the ally with the lowest HP for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vesna_Basic.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [
+        "Radiance I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Harmony of Growth",
+      "slug": "vesna-harmony-of-growth",
+      "skill_type": "Passive",
+      "description": "For each [Buff] on an ally, Increase this hero’s healing output by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Vesna_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "For each [Buff] on an ally, Increase this hero’s healing output by 2.5%."
+}

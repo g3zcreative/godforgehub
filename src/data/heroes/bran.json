@@ -1,0 +1,143 @@
+{
+  "id": "29d6d19b-27c1-4acb-ba37-e724ffdd9e6d",
+  "name": "Bran",
+  "subtitle": "The Blessed",
+  "slug": "bran",
+  "rarity": 4,
+  "description": "Sacrifice your health for the survival of your Allies providing Shields and Restoring their Life.",
+  "lore": "A giant of immense physical might and necromantic magics, Bran the Blessed fought multiple wars waged over the hurt feelings of others. Now he is hesitant to act on the urgings of anyone else, relying solely on his own judgment. While this prevents unnecessary bloodshed, it also makes him slow to rise in Avalon’s defense, leaving his neighbors’ lands vulnerable to attack.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/29d6d19b-27c1-4acb-ba37-e724ffdd9e6d.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18830,
+    "acc": 15,
+    "atk": 650,
+    "def": 1090,
+    "res": 60,
+    "spd": 89,
+    "init": 94,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Shield Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Heal Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Guardian Giant"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Noble Martyr"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Noble Martyr",
+      "slug": "bran-noble-martyr",
+      "skill_type": "Passive",
+      "description": "Transfers 20% of the damage inflicted on allies to this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Bran_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Heals this hero for 100% of the damage transferred from allies."
+    },
+    {
+      "name": "Regal Bulwark",
+      "slug": "bran-regal-bulwark",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (180%DEF+110%ATK) then place [mechanic:def-up-ii] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Bran_Basic.webp",
+      "scaling_formula": "180%DEF+110%ATK",
+      "effects": [
+        "DEF Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Guardian Giant",
+      "slug": "bran-guardian-giant",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (220%DEF+130%ATK). Place [mechanic:protect-ii] on all allies except this hero for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Bran_Core.webp",
+      "scaling_formula": "220%DEF+130%ATK",
+      "effects": [
+        "Protect II",
+        "Phoenix"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Place [Phoenix] on any ally below 20% HP for 1 turn."
+    },
+    {
+      "name": "Mystical Cauldron",
+      "slug": "bran-mystical-cauldron",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:shield]200%DEF on all allies above 50% HP and 100%DEF all allies below 50% HP then revive 1 dead ally with 40% HP and Turn Meter. Also place [mechanic:intercept] on any ally below 20% HP for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Bran_Ultimate.webp",
+      "scaling_formula": "200%DEF",
+      "effects": [
+        "Intercept"
+      ],
+      "ultimate_cost": 1500,
+      "initial_divinity": 100,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Transfers 10% of the damage inflicted on allies to this hero."
+}

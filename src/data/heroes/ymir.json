@@ -1,0 +1,146 @@
+{
+  "id": "fc7dd9f5-6b47-40f0-8315-38958c4edeac",
+  "name": "Ymir",
+  "subtitle": "Worldbringer",
+  "slug": "ymir",
+  "rarity": 5,
+  "description": "Cast avalanches and bring down the mountain on your foes with Freeze and Speed Debuffs.",
+  "lore": "Ancestor of the jotnar, Ymir is a primal being who predates the gods and even the realm of Asgard. It is said the first gods crafted the world from Ymir’s flesh. He has largely slumbered since, and the Ymir encountered in Ryven represents only a sliver of this primordial power’s body and mind. His full awakening at the hands of the Primal Powers could end Asgard.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/fc7dd9f5-6b47-40f0-8315-38958c4edeac.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 23290,
+    "acc": 30,
+    "atk": 980,
+    "def": 1046,
+    "res": 50,
+    "spd": 97,
+    "init": 101,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "50 RES",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when this hero places [Freeze].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +15"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Avalanche"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, Barrier Multiplier +30%, DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Frozen Blood"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Mountainfall"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Brawler",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Avalanche",
+      "slug": "ymir-avalanche",
+      "skill_type": "Core",
+      "description": "Attack all enemies (10%HP+120%ATK)+(10%HP+120%ATK). Reduces each target’s SPD by 10 (Stacking up to 3 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ymir_Core.webp",
+      "scaling_formula": "10%HP+120%ATK",
+      "effects": [
+        "Freeze"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "At max stacks, will place [Freeze] on each target for 1 turn which cannot be blocked or resisted."
+    },
+    {
+      "name": "Mountainfall",
+      "slug": "ymir-mountainfall",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (7%HP+100%ATK) with a 80% chance to place [mechanic:spd-down-ii] on each target for 2 turns. Then attack all enemies (7%HP+100%ATK) with a 80% to place [mechanic:freeze] on enemies under [mechanic:spd-down-ii] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ymir_Ultimate.webp",
+      "scaling_formula": "7%HP+100%ATK",
+      "effects": [
+        "SPD Down II",
+        "Freeze"
+      ],
+      "ultimate_cost": 1250,
+      "initial_divinity": 325,
+      "awakening_level": 5,
+      "awakening_bonus": "Each time this hero places [Freeze], reduce this hero's Divinity Cost by 10 (stacking up to 30 times) and increase the damage this hero inflicts on their next Ultimate Ability by 3%."
+    },
+    {
+      "name": "Chilling Breach",
+      "slug": "ymir-chilling-breach",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (11%HP+130%ATK) with a 75% chance to place [mechanic:def-down-ii] for 2 turns. If the target is under [mechanic:freeze], place [mechanic:barrier] on this hero equal to 5% of the damage inflicted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ymir_Basic.webp",
+      "scaling_formula": "11%HP+130%ATK",
+      "effects": [
+        "DEF Down II",
+        "Barrier"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Frozen Blood",
+      "slug": "ymir-frozen-blood",
+      "skill_type": "Passive",
+      "description": "When this hero is attacked, has a 50% chance to place[mechanic:freeze] the enemy for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ymir_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Freeze"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also has a 50% chance to place [Freeze] if any [Disable] or [Debuff]"
+    }
+  ],
+  "imprint_passive": "When this hero is attacked, has a 25% chance to place [Freeze] the enemy for 1 turn."
+}

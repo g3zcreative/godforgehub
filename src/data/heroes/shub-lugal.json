@@ -1,0 +1,129 @@
+{
+  "id": "afdbf0bf-a53b-4f43-b74a-64b46531cc81",
+  "name": "Shub-Lugal",
+  "subtitle": "Soldier of Sargon",
+  "slug": "shub-lugal",
+  "rarity": 2,
+  "description": "Protect Sargon by redirecting ally damage and reducing the Attack from your foes.",
+  "lore": "These servants of ruler, nobles, and temples of Ekur perform a variety of duties, but one of the most important is that of “king’s guard.” They are household soldiers answering directly to the lord of their house or institution. All are ultimately at the disposal of the king himself, and indeed these soldiers form the core of armies such as Sargon’s.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/772f1887-b00a-4514-a4f7-faa9168f6a16.png",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 12058,
+    "acc": 5,
+    "atk": 474,
+    "def": 727,
+    "res": 25,
+    "spd": 78,
+    "init": 75,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [10] Divinity when hit by an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Crit Rate +4%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Crit Damge +8%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Crit Rate +4%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Crit Damage +8%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Crit Rate +4%"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Defender",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Legacy Safeguard",
+      "slug": "shub-lugal-legacy-safeguard",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (180%DEF+125%ATK) with a 50% chance to place [mechanic:acc-down-i] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shublugal_Core.webp",
+      "scaling_formula": "180%DEF+125%ATK",
+      "effects": [
+        "ACC Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Loyal Service",
+      "slug": "shub-lugal-loyal-service",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:stalwart] this hero and 1 random ally for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shublugal_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Stalwart"
+      ],
+      "ultimate_cost": 950,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Vigilant Stand",
+      "slug": "shub-lugal-vigilant-stand",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (170%DEF+110%ATK) then place [mechanic:radiance-i] for 1 turn on a random ally.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Shublugal_Basic.webp",
+      "scaling_formula": "170%DEF+110%ATK",
+      "effects": [
+        "Radiance I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

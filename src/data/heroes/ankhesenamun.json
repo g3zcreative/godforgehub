@@ -1,0 +1,142 @@
+{
+  "id": "69a3e77a-cdec-42b4-b7c1-7139bffb3da2",
+  "name": "Ankhesenamun",
+  "subtitle": "Sunrise Redeemer",
+  "slug": "ankhesenamun",
+  "rarity": 3,
+  "description": "Attempts to save allies from dying. Cleanses negative effects from the team.",
+  "lore": "A largely forgotten queen, Ankhesenamun is known for her marriage to multiple pharaohs—including Tutankhamen—but little else, as she was deliberately stricken from most of Aaru’s histories along with her third husband, Tutankhamen’s successor. She has now taken advantage of the cultural, mystical, and spiritual repercussions of that partial anonymity, studying magical secrets that would previously have been unavailable to her.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/69a3e77a-cdec-42b4-b7c1-7139bffb3da2.webp",
+  "image_zoom": 2.9,
+  "image_focal_x": 44,
+  "image_focal_y": 4,
+  "stats": {
+    "hp": 14535,
+    "acc": 5,
+    "atk": 661,
+    "def": 870,
+    "res": 25,
+    "spd": 98,
+    "init": 89,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [75] Divinity when an ally uses an Ultimate ability.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Ankh Reversal"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Queen's Faith",
+      "slug": "ankhesenamun-queen-s-faith",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ankhesenamun_Basic.webp",
+      "scaling_formula": "150%ATK and place [INIT Up I] on this hero for 1 turn.",
+      "effects": [
+        "INIT Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ankh Reversal",
+      "slug": "ankhesenamun-ankh-reversal",
+      "skill_type": "Core",
+      "description": "Remove 1 random [Debuff] from all allies then place [mechanic:block-debuffs] on all allies for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ankhesenamun_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also Heal 10%HP all allies. If at least 1[Debuff] was removed, increase the Heal by 25%."
+    },
+    {
+      "name": "Surviving Regent",
+      "slug": "ankhesenamun-surviving-regent",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:shield]20%HP on all allies and increases the duration of 1 random buff on each ally by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ankhesenamun_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Shield"
+      ],
+      "ultimate_cost": 1100,
+      "initial_divinity": 375,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Praise the Sun",
+      "slug": "ankhesenamun-praise-the-sun",
+      "skill_type": "Passive",
+      "description": "Place [mechanic:phoenix] on an ally for 2 turns when they fall below 50% HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ankhesenamun_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Phoenix"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Place [Phoenix] on this hero for 1 turns when they fall below 50% HP."
+}

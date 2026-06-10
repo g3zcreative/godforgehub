@@ -1,0 +1,123 @@
+{
+  "id": "89b32cd5-2046-497c-ae29-f9eb2e1d72fe",
+  "name": "Valkyrie",
+  "subtitle": "Warrior Maiden",
+  "slug": "valkyrie",
+  "rarity": 2,
+  "description": "Smite the hordes of chaos with the might of Asgard dealing repeat attacks.",
+  "lore": "These winged women warriors of Asgard guide the souls of those who perish in battle to Valhalla. While they still fulfill this purpose, the chaos of Ryven requires them to take on other duties as well. Odin, Freya, and other gods now also direct them to raise swords in defending the Realm against supernatural threats that mundane soldiers are ill-equipped to handle.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/89b32cd5-2046-497c-ae29-f9eb2e1d72fe.webp",
+  "image_zoom": 3,
+  "image_focal_x": 18,
+  "image_focal_y": 16,
+  "stats": {
+    "hp": 10241,
+    "acc": 5,
+    "atk": 826,
+    "def": 584,
+    "res": 10,
+    "spd": 78,
+    "init": 83,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "15% CRIT",
+    "scope": "All Allies"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Crit. Rate +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "When taking damage, has a 20% chance to reduce damage taken by 50% for 1 turn."
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +15%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Has a 50% chance to grant Random Buff to 1 Ally for 1 turn when using Basic Skill."
+    },
+    {
+      "tier": 5,
+      "bonus": "Crit. DMG +25%"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Aerial Assault",
+      "slug": "valkyrie-aerial-assault",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy DMG_03 times. If the attack defeats the target then Increase this hero’s Divinity by [100].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Valkyrie_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Wrath of Valhalla",
+      "slug": "valkyrie-wrath-of-valhalla",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 300%ATK. If the attack defeats the target, Gains an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Valkyrie_Ultimate.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Flight of the Valkyrie",
+      "slug": "valkyrie-flight-of-the-valkyrie",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 340%ATK. Increase the damage inflicted by 50% to targets aligned with Chaos.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Valkyrie_Core.webp",
+      "scaling_formula": "340%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

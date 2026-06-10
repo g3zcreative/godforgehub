@@ -1,0 +1,140 @@
+{
+  "id": "81138f15-7f32-462c-a95f-a1fa7235d1f3",
+  "name": "Dracula",
+  "subtitle": "The Impaler",
+  "slug": "dracula",
+  "rarity": 5,
+  "description": "Summon the darkness and drain the life essence as you cast forth tides of Bleeds onto your foes.",
+  "lore": "Even before the Shattering, the undead prince Dracula possessed enormous supernatural power. When the world broke, that power grew greater still, until he found himself equal to some of Vyraj’s gods. While he still defends the Realm, he works to expand his power over its mortal population, and engages in multiple schemes—including a conspiracy with Omeyocan’s Camazotz—toward his own ends.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/81138f15-7f32-462c-a95f-a1fa7235d1f3.webp",
+  "image_zoom": 3,
+  "image_focal_x": 82,
+  "image_focal_y": 15,
+  "stats": {
+    "hp": 23124,
+    "acc": 30,
+    "atk": 991,
+    "def": 1090,
+    "res": 50,
+    "spd": 97,
+    "init": 98,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [60] Divinity when damaging an enemy under [Bleed].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +14"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Transfusion"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Heal Multiplier +30%, Ignore RES +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Blood Mist"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Sanguine Tides"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Brawler",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Sanguine Tides",
+      "slug": "dracula-sanguine-tides",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 4 times. Before attacking, consumes all stacks of [mechanic:bleed] on each target and increases the damage inflicted by 8% per stack of [mechanic:bleed] consumed.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dracula_Ultimate.webp",
+      "scaling_formula": "(4%HP+50%ATK)",
+      "effects": [],
+      "ultimate_cost": 2100,
+      "initial_divinity": 250,
+      "awakening_level": 5,
+      "awakening_bonus": "Also, Destroy each target's HP for 10% of the damage inflicted (up to 60% of the target's HP)"
+    },
+    {
+      "name": "Blood Mist",
+      "slug": "dracula-blood-mist",
+      "skill_type": "Core",
+      "description": "Place 2 stacks of [mechanic:bleed] on all enemies and remove 1 random [Buff] from each target. If a [Buff] was removed place 3 stacks of [mechanic:bleed] instead. gains an [Extra Turn].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dracula_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Symphony of the Night",
+      "slug": "dracula-symphony-of-the-night",
+      "skill_type": "Passive",
+      "description": "At the start of an enemy’s turn, if they are under [mechanic:bleed] increase the damage of this hero’s next attack by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dracula_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Transfusion",
+      "slug": "dracula-transfusion",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Each hit has a 75% chance to place 1 stack of [mechanic:bleed] on the target. Alos, Heal 5%HP this hero if the target under [mechanic:bleed].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dracula_Basic.webp",
+      "scaling_formula": "(7%HP+40%ATK)",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Place 1 stack of [Bleed] on all enemies instead."
+    }
+  ],
+  "imprint_passive": "At the start of an enemy’s turn, if they are under [Bleed] increase the damage of this hero’s next attack by 5%."
+}

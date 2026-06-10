@@ -1,0 +1,136 @@
+{
+  "id": "ab30369d-bd88-4fec-924f-dfa71e74933e",
+  "name": "Hunahpu",
+  "subtitle": "The Hero Twin",
+  "slug": "hunahpu",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Hunahpu and his twin brother Xbalanque are the offspring of Xquick—an underworld goddess—and a slain mortal. Through wits, physical prowess, and divine favors, they adventured against demons and gods, eventually avenging their father on the underworld deities who slew him. In Ryven they continue to oppose the death gods, and to thwart the monsters who threaten Omeyocan’s people.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ab30369d-bd88-4fec-924f-dfa71e74933e.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 20317,
+    "acc": 20,
+    "atk": 903,
+    "def": 914,
+    "res": 40,
+    "spd": 89,
+    "init": 92,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when this hero or Xbalanque inflict damage to an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Awaken the ability: Panther's Guile"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Brawler",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Panther's Guile",
+      "slug": "hunahpu-panther-s-guile",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (13%HP+160%ATK) with a 50% to decrease the target’s Turn Meter by 20%. If Xbalanque is on the team, increase his turn meter by the same amount.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hunahpu_Core.webp",
+      "scaling_formula": "13%HP+160%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Steal the turn meter instead."
+    },
+    {
+      "name": "Xibalba Slumber",
+      "slug": "hunahpu-xibalba-slumber",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (8%HP+150%ATK). If the target has higher HP than this hero, has a 50% chance to place [mechanic:sleep] on the target for 1 turn otherwise increase this hero’s Turn Meter by 20%. If Xbalanque is on the team, increase his Divinity by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hunahpu_Ultimate.webp",
+      "scaling_formula": "8%HP+150%ATK",
+      "effects": [
+        "Sleep"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": 100,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Twin Motivation",
+      "slug": "hunahpu-twin-motivation",
+      "skill_type": "Passive",
+      "description": "When this hero receives a critical attack, increase this hero’s turn meter by 5%. If Xbalanque is on the team, also increase his turn meter by the same amount.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hunahpu_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Sun Javelin",
+      "slug": "hunahpu-sun-javelin",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (9%HP+140%ATK) with a 50% chance to place [mechanic:atk-down-ii] on the target for 1 turn. If Xbalanque is on the team, he joins the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Hunahpu_Basic.webp",
+      "scaling_formula": "9%HP+140%ATK",
+      "effects": [
+        "ATK Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When this hero receives a critical attack, increase this hero’s turn meter by 2.5%."
+}

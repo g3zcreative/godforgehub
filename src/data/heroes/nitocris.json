@@ -1,0 +1,136 @@
+{
+  "id": "5297ee22-50fe-4689-a4b8-8e7560e4c6e9",
+  "name": "Nitocris",
+  "subtitle": "Hand of Vengeance",
+  "slug": "nitocris",
+  "rarity": 3,
+  "description": "Steals buffs from enemies and transfers debuffs back.",
+  "lore": "Nitocris served for decades as Wife of Amun, a high priestly office that also granted political authority—authority that allowed her father, the pharaoh, to unite a divided kingdom. Now a determined woman in a Shattered world, Nitocris continues to combine ecclesiastical and secular power, working to grant the priesthood direct control over the various provinces and communities of Aaru.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/5297ee22-50fe-4689-a4b8-8e7560e4c6e9.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14040,
+    "acc": 20,
+    "atk": 848,
+    "def": 694,
+    "res": 15,
+    "spd": 91,
+    "init": 95,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30 ACC",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when dealing damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +75"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Divinity Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Divinity Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Drowned Banquet"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Queen’s Vengeance",
+      "slug": "nitocris-queen-s-vengeance",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with a 75% chance to steal 1 random [Buff].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nitocris_Basic.webp",
+      "scaling_formula": "250%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Reclaim Glory",
+      "slug": "nitocris-reclaim-glory",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy with a 75% chance to transfer all [debuff] from this hero to the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nitocris_Core.webp",
+      "scaling_formula": "300%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Drowned Banquet",
+      "slug": "nitocris-drowned-banquet",
+      "skill_type": "Ultimate",
+      "description": "Transfer 1 random [debuff] from all allies to this hero then attack all enemies. Increase this hero’s Turn meter by 10% for each [debuff] transferred to this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nitocris_Ultimate.webp",
+      "scaling_formula": "230%ATK",
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also Heal 10%HP this hero for each [debuff] transferred."
+    },
+    {
+      "name": "Unwilling Usurper",
+      "slug": "nitocris-unwilling-usurper",
+      "skill_type": "Passive",
+      "description": "At the start of this hero’s turn steal 10% Divinity from the enemy with the highest Turn Meter.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nitocris_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "At the start of this hero’s turn steal 5% Divinity from the enemy with the highest Turn Meter."
+}

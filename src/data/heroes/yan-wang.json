@@ -1,0 +1,147 @@
+{
+  "id": "23ac9686-8b27-4c55-8d62-51e5451631cd",
+  "name": "Yan Wang",
+  "subtitle": "Damned King of Diyu",
+  "slug": "yan-wang",
+  "rarity": 5,
+  "description": "Lockout your enemies abilities whilst stealing their divine powers",
+  "lore": "Merciless judge of Diyu, Tian’s underworld, Yan Wang oversees the disposition of the dead. He views Ryven as an affront, for Destiny’s reordering removed some souls from his domain through resurrection, and prevented others from dying when they should have. He has petitioned the Celestial Bureaucracy to correct this wrongdoing, an endeavor that might see his influence spread far beyond Diyu.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/81f9ef22-2f50-44fb-98b8-3ca2f71837e2.webp",
+  "image_zoom": 2.4,
+  "image_focal_x": 52,
+  "image_focal_y": 7,
+  "stats": {
+    "hp": 19656,
+    "acc": 50,
+    "atk": 1134,
+    "def": 980,
+    "res": 35,
+    "spd": 105,
+    "init": 121,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "19% INIT",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when placing a [Debuff] on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "INIT +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +14"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Spirit Shackles"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, DMG Multiplier +30%, DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Judgement of Diyu"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Dreadful Omen"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Disruptor",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Judgement of Diyu",
+      "slug": "yan-wang-judgement-of-diyu",
+      "skill_type": "Passive",
+      "description": "Increase this hero’s INIT by 2% (stacking up to 30%) after placing a [Debuff].",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/1c775af1-ce6d-40f9-8043-f3212c776806.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 3,
+      "awakening_bonus": "For each [Debuff] on an enemy, reduce the damage they inflict by 5%, up to a maximum of 25%."
+    },
+    {
+      "name": "Dreadful Omen",
+      "slug": "yan-wang-dreadful-omen",
+      "skill_type": "Core",
+      "description": "Attack all enemies (280%ATK+250%INIT) with a 75% chance to place a random [mechanic:def-down-ii], [mechanic:atk-down-ii], [mechanic:acc-down-ii], or [mechanic:res-down-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_YanWang_Core.webp",
+      "scaling_formula": "280%ATK+250%INIT",
+      "effects": [
+        "DEF Down II",
+        "ATK Down II",
+        "ACC Down II",
+        "RES Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "If an enemy is already under [SPD Down II] has a 75% chance to place an additional [Debuff]."
+    },
+    {
+      "name": "Infernal Silence",
+      "slug": "yan-wang-infernal-silence",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (220%ATK+220%INIT), then has a 50% chance to place [mechanic:lock-core], and [mechanic:lock-ultimate] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_YanWang_Ultimate.webp",
+      "scaling_formula": "220%ATK+220%INIT",
+      "effects": [
+        "Lock Core",
+        "Lock Ultimate"
+      ],
+      "ultimate_cost": 1700,
+      "initial_divinity": 275,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Spirit Shackles",
+      "slug": "yan-wang-spirit-shackles",
+      "skill_type": "Basic",
+      "description": "Attack all enemies (120%ATK+120%INIT) with a 35% chance to place [mechanic:spd-down-ii] on each target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_YanWang_Basic.webp",
+      "scaling_formula": "120%ATK+120%INIT",
+      "effects": [
+        "Sleep",
+        "SPD Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "If an enemy is already under [SPD Down II], has a 35% chance to place [Sleep] for 1 turn instead."
+    }
+  ],
+  "imprint_passive": "Increase this hero’s INIT by 1% (stacking up to 15%) after placing a [Debuff]."
+}

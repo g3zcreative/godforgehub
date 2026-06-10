@@ -1,0 +1,142 @@
+{
+  "id": "3db1964f-2b52-4673-98ae-962ec5710831",
+  "name": "Lada",
+  "subtitle": "The Protector",
+  "slug": "lada",
+  "rarity": 3,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Once Vyraj’s traditional goddess of love and fertility, Lada’s focus has shifted since the Shattering. She still represents love, but this now includes love of one’s home and culture—and the steps necessary to defend them. She has become… not a war goddess, precisely, but a goddess of protection; of love, but also what one does for the sake of that love.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/3db1964f-2b52-4673-98ae-962ec5710831.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14205,
+    "acc": 5,
+    "atk": 683,
+    "def": 793,
+    "res": 20,
+    "spd": 98,
+    "init": 88,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF to all allies",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [25] Divinity when healing an ally.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Heal Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Heal Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Renewal Bonds"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Devoted Prosperity",
+      "slug": "lada-devoted-prosperity",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:vanish] on 1 ally for 2 turns, then increase their Divinity and Turn Meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lada_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Vanish"
+      ],
+      "ultimate_cost": 950,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Harmonious Light",
+      "slug": "lada-harmonious-light",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy then place [mechanic:init-up-i] on the ally with the lowest Divinity for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lada_Basic.webp",
+      "scaling_formula": "230%ATK",
+      "effects": [
+        "INIT Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Calming Presence",
+      "slug": "lada-calming-presence",
+      "skill_type": "Core",
+      "description": "Place [mechanic:def-up-i] on all allies for 1 turn then Heal the ally with lowest HP by 15% of their MAX HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lada_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "DEF Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Renewal Bonds",
+      "slug": "lada-renewal-bonds",
+      "skill_type": "Passive",
+      "description": "When an ally is healed, all allies receive 10% of the healed amount.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lada_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also place [Shield] for the same amount."
+    }
+  ],
+  "imprint_passive": "When an ally is healed, all allies receive 5% of the healed amount."
+}

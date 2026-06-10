@@ -1,0 +1,143 @@
+{
+  "id": "d5cef58b-b607-4747-b3d1-f5f52166d86a",
+  "name": "Thorkell",
+  "subtitle": "Jomsviking Commander",
+  "slug": "thorkell",
+  "rarity": 4,
+  "description": "Towering Brawler that deals increased damage while injured.",
+  "lore": "A ferocious war-leader, Thorkell the Tall engaged in multiple battles on multiple sides. He was a raider, mercenary, and conqueror, feared by many, trusted by few. While he currently defends Asgard and conducts raids on its rivals, other Asgardians watch for the day Thorkell turns on them, whether because someone makes him a better offer or due to his own ambitions.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/d5cef58b-b607-4747-b3d1-f5f52166d86a.webp",
+  "image_zoom": 3,
+  "image_focal_x": 58,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 19491,
+    "acc": 25,
+    "atk": 903,
+    "def": 914,
+    "res": 35,
+    "spd": 91,
+    "init": 89,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "25% CDMG",
+    "scope": "Arena Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when inflicting damage to an enemy under [Bleed].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +12"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Whirlwind Fury"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Bloodlust"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Mighty Cleave",
+      "slug": "thorkell-mighty-cleave",
+      "skill_type": "Core",
+      "description": "Place [mechanic:sharpen-ii] on this hero for 2 turns, then attack all enemies (15%HP+120%ATK) with 80% chance to place 2 stacks of [mechanic:bleed] on each target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Thorkell_Core.webp",
+      "scaling_formula": "15%HP+120%ATK",
+      "effects": [
+        "Sharpen II",
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Whirlwind Fury",
+      "slug": "thorkell-whirlwind-fury",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (5%HP+50%ATK)3 times. Each hit has a 80% chance to place 1 stacks of [mechanic:bleed] on each target. If the target has more than 5 stacks of [mechanic:bleed] also Heal this hero for 20% of the damage inflicted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Thorkell_Ultimate.webp",
+      "scaling_formula": "5%HP+50%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": 1300,
+      "initial_divinity": 375,
+      "awakening_level": 3,
+      "awakening_bonus": "Converts 10% of overhealing into [Barrier]."
+    },
+    {
+      "name": "Double Swing",
+      "slug": "thorkell-double-swing",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (8%HP+90%ATK)2 times. Each hit as a 50% to place 1 stack of [mechanic:bleed] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Thorkell_Basic.webp",
+      "scaling_formula": "8%HP+90%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Bloodlust",
+      "slug": "thorkell-bloodlust",
+      "skill_type": "Passive",
+      "description": "This hero gains effects depending on the stacks of [mechanic:bleed] on the enemy team:\nAt 5 Stacks: +20% Increased Damage\nAt 10 Stacks: Steals +10% Turn Meter when attacking\nAt 20 Stacks: -30% Damage Received",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Thorkell_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "At 20 Stacks: Also attacks inflict additional damage 200%ATK to all enemies under [Bleed] which cannot critical hit."
+    }
+  ],
+  "imprint_passive": "This hero gains effects depending on the stacks of [Bleed] on the enemy team:\nAt 5 Stacks: +10% Increased Damage\nAt 10 Stacks: Steals +5% Turn Meter when attacking\nAt 20 Stacks: -15% Damage Received"
+}

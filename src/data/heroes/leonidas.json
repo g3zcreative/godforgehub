@@ -1,0 +1,143 @@
+{
+  "id": "84ce6d26-048c-4e40-b494-f82bedc5761e",
+  "name": "Leonidas",
+  "subtitle": "Shield of Olympus",
+  "slug": "leonidas",
+  "rarity": 4,
+  "description": "Unstoppable melee bruiser capable of executing foes and gaining vigour as the battle ensues.",
+  "lore": "A fierce warrior and brilliant tactician, King Leonidas eagerly defends Olympus against its enemies, yet he finds himself dissatisfied. His legend in Ryven exaggerates his feats in the old world, and while he hungers for glory, he wishes fame that accurately reflects his accomplishments without stealing credit from others. He has begun violently challenging allies who spread inaccurate tales of his past.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/84ce6d26-048c-4e40-b494-f82bedc5761e.webp",
+  "image_zoom": 3,
+  "image_focal_x": 74,
+  "image_focal_y": 12,
+  "stats": {
+    "hp": 20317,
+    "acc": 20,
+    "atk": 859,
+    "def": 936,
+    "res": 35,
+    "spd": 92,
+    "init": 87,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Barrier Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Spear Thrust"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Spartan Resolve"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Battle Fervour",
+      "slug": "leonidas-battle-fervour",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:sharpen-ii] on this hero for 2 turns, then attack all enemies (15%HP+100%ATK). If Leonidas has a [mechanic:barrier], will consume 100% of the [mechanic:barrier] to deal additional damage equal to 20% of the [mechanic:barrier] amount.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Leonidas_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Sharpen II"
+      ],
+      "ultimate_cost": 1100,
+      "initial_divinity": 325,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Spear Thrust",
+      "slug": "leonidas-spear-thrust",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (12%HP+90%ATK) with a 50% chance to place [mechanic:def-down-ii] for 1 turns.\nIf Spartan is on the same team, will heal this hero and Spartan by 30% of the damage dealt.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Leonidas_Basic.webp",
+      "scaling_formula": null,
+      "effects": [
+        "DEF Down II",
+        "ATK Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Will also place [ATK Down II] for 1 turn."
+    },
+    {
+      "name": "Spartan Resolve",
+      "slug": "leonidas-spartan-resolve",
+      "skill_type": "Passive",
+      "description": "Has a 30% chance to convert 100% of damage inflicted on this hero into [mechanic:barrier]. The [mechanic:barrier] cannot exceed more than 10% of this hero’s health.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Leonidas_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Converts 15% of damage inflicted on an ally into [Barrier]"
+    },
+    {
+      "name": "No Mercy",
+      "slug": "leonidas-no-mercy",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (8%HP+70%ATK) with a 50% chance to place [mechanic:stun] for 2 turns. The second hit will instantly defeat the target if their HP is below 10% HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Leonidas_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Stun"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Has a 30% chance to convert 50% of incoming damage from attacks into [Barrier]. The [Barrier] cannot exceed more than 10% of this hero’s health."
+}

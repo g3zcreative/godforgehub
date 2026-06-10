@@ -1,0 +1,141 @@
+{
+  "id": "58ab4f6f-9004-49a5-a1f5-820453a7f478",
+  "name": "Ra",
+  "subtitle": "Divine Eclipse",
+  "slug": "ra",
+  "rarity": 5,
+  "description": "Bring the power of the sun to burn your foes increasing your own power in battle.",
+  "lore": "He is the sun, master of the heavens. For all his might, however, Ra’s immense age and responsibilities have begun to catch up with him. Although one would never guess it, witnessing his efforts on Aaru’s behalf in the War of Pyramids, Ra grows tired—and that exhaustion has rendered him angry, even tyrannical in his need to solve the realm’s problems now.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/58ab4f6f-9004-49a5-a1f5-820453a7f478.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 18334,
+    "acc": 40,
+    "atk": 1255,
+    "def": 1035,
+    "res": 25,
+    "spd": 103,
+    "init": 109,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% ATK",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when enemies are damaged by [Blaze].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +16"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Fires of Creation"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore DEF +10%, Ignore RES +20%, DMG Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Solar Convergence"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Eye of Ra"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Slayer",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Sun Crescent Sweep",
+      "slug": "ra-sun-crescent-sweep",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (300%ATK+200%ACC) with a 75% chance to increase the duration of [mechanic:blaze] by 1 turn. If the attack is critical, activate [mechanic:blaze] on the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ra_Basic.webp",
+      "scaling_formula": "300%ATK+200%ACC",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Eye of Ra",
+      "slug": "ra-eye-of-ra",
+      "skill_type": "Passive",
+      "description": "When [mechanic:blaze] on allies or enemies activates, expires, or is removed, increase the damage of the next Ultimate by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ra_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also has a 50% chance to activate [Blaze] on any attack"
+    },
+    {
+      "name": "Fires of Creation",
+      "slug": "ra-fires-of-creation",
+      "skill_type": "Core",
+      "description": "Attack all enemies (360%ATK+230%ACC) with a 75% chance to place [mechanic:blaze-ii] for 3 turns. If this ability defeats an enemy, decrease its cooldown by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ra_Core.webp",
+      "scaling_formula": "360%ATK+230%ACC",
+      "effects": [
+        "Blaze II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Then increase C.DMG by 3% for each [Blaze II] placed (stacking up to 15 times)"
+    },
+    {
+      "name": "Solar Convergence",
+      "slug": "ra-solar-convergence",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (125%ATK+75%ACC)3 times. Each hit has a 35% chance to place [mechanic:def-down-ii] and [mechanic:vulnerable-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ra_Ultimate.webp",
+      "scaling_formula": "125%ATK+75%ACC",
+      "effects": [
+        "DEF Down II",
+        "Vulnerable II"
+      ],
+      "ultimate_cost": 1450,
+      "initial_divinity": 250,
+      "awakening_level": 3,
+      "awakening_bonus": "If an enemy is defeated, increase the duration of [Blaze] on all enemies by 1 turn."
+    }
+  ],
+  "imprint_passive": "When any [Blaze] on allies or enemies activates, expires, or is removed, increase the damage of the next Ultimate by 2.5%."
+}

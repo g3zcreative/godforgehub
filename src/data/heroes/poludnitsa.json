@@ -1,0 +1,128 @@
+{
+  "id": "915770a6-f9e4-40e3-a0a0-4a724326a352",
+  "name": "Poludnitsa",
+  "subtitle": "Lady Midday",
+  "slug": "poludnitsa",
+  "rarity": 4,
+  "description": "Full Hero Information▶",
+  "lore": "The name of Lady Midday is spoken with reverence and fear by field-workers. As protector goddess of crops and of custom, she strikes down, with heat or sickle, those who work when it is time to rest, or otherwise flout tradition. She cares little that other realms practice customs different from Vyraj’s, and now takes out her wrath on other pantheons’ worshipers.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/915770a6-f9e4-40e3-a0a0-4a724326a352.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 16022,
+    "acc": 30,
+    "atk": 1068,
+    "def": 870,
+    "res": 20,
+    "spd": 92,
+    "init": 99,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF, 20% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +11"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Restless Pursuit"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Maiden’s Wrath"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Midday Madness",
+      "slug": "poludnitsa-midday-madness",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Poludnitsa_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Oppressive Heat",
+      "slug": "poludnitsa-oppressive-heat",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Poludnitsa_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Restless Pursuit",
+      "slug": "poludnitsa-restless-pursuit",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Poludnitsa_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Maiden’s Wrath",
+      "slug": "poludnitsa-maiden-s-wrath",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Poludnitsa_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

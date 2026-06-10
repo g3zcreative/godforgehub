@@ -1,0 +1,145 @@
+{
+  "id": "e149770c-d3d6-406d-9876-512408288e71",
+  "name": "Morgan Le Fay",
+  "subtitle": "Fae Sorceress",
+  "slug": "morgan-le-fay",
+  "rarity": 5,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Ambitious half-sister of Arthur, rival of Merlin, Morgan le Fay stands among Avalon’s most potent sorcerers. Between her magics and her many plots, she has nearly overthrown Camelot countless times, and even the Shattering has not blunted her efforts. Her most intricate plan has her cooperating with Koshchei the Deathless across realms, but even this represents but one of many ongoing schemes.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/e8319527-928d-49d8-b06d-29e6904e102d.webp",
+  "image_zoom": 2.6,
+  "image_focal_x": 71,
+  "image_focal_y": 17,
+  "stats": {
+    "hp": 17343,
+    "acc": 45,
+    "atk": 1310,
+    "def": 1002,
+    "res": 30,
+    "spd": 99,
+    "init": 106,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "Increase Cunning Ally ACC by 25 and ATK by 25%",
+    "scope": "All Allies"
+  },
+  "divinity_generator": "Gain [20] Divinity when placing a [Debuff] on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, DEF +9%, ATK +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +20"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Spellbook of Corruption"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +20%, DMG Multiplier +30%, Divinity Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Ruin of Avalon"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Sorceress Edict"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Spellbook of Corruption",
+      "slug": "morgan-le-fay-spellbook-of-corruption",
+      "skill_type": "Core",
+      "description": "Attack all enemies (50%ATK+400%ACC)3 times. Each hit has a 50% chance to place at random [mechanic:aetherburn-ii], [mechanic:blaze-ii], [mechanic:acid] on the target for 2 turns, or 1 stack of [mechanic:bleed].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_MorganLeFay_Core.webp",
+      "scaling_formula": "50%ATK",
+      "effects": [
+        "Aetherburn II",
+        "Blaze II",
+        "Acid",
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Dark Magicks",
+      "slug": "morgan-le-fay-dark-magicks",
+      "skill_type": "Basic",
+      "description": "Attack all enemies (150%ATK+1000%ACC) with a 35% chance to place [mechanic:vulnerable-ii] on each target for 2 turns. Then activate a random [Debuff] on each target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_MorganLeFay_Basic.webp",
+      "scaling_formula": "150%ATK",
+      "effects": [
+        "Vulnerable II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ruin of Avalon",
+      "slug": "morgan-le-fay-ruin-of-avalon",
+      "skill_type": "Ultimate",
+      "description": "Before attacking remove all [mechanic:aetherburn], [mechanic:bleed] stacks, [mechanic:acid] and [mechanic:blaze] from all enemies, then attack all enemies (200%ATK+1200%ACC).\nFor every 5[Debuffs] removed, increase the damage dealt by 25%. If 20 or more [Debuffs] were removed, increase this hero’s Turn Meter by 100%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_MorganLeFay_Ultimate.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "Banish"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Sorceress Edict",
+      "slug": "morgan-le-fay-sorceress-edict",
+      "skill_type": "Passive",
+      "description": "This hero gains bonus effects when a [Debuff] activates:\n[mechanic:aetherburn] Increase this hero’s Divinity by [50][mechanic:blaze] Increase this hero’s next Core Ability damage by 5%[mechanic:acid] Increase this hero’s Turn Meter by 10%[mechanic:bleed] Heal this hero 1000%ACC.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_MorganLeFay_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Each time an enemy [Debuff] activates, increase this hero’s ACC by 10 (up to 20 times)."
+    }
+  ],
+  "imprint_passive": "This hero gains bonus effects when a [Debuff] activates:\n[Aetherburn] Increase this hero’s Divinity by [25][Blaze] Increase this hero’s next Core Ability damage by 2.5%[Acid] Increase this hero’s Turn Meter by 5%[Bleed] Heal this hero 500%ACC."
+}

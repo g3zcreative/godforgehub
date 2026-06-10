@@ -1,0 +1,125 @@
+{
+  "id": "bdfd1cb9-c2af-4473-a677-f74119b5fc18",
+  "name": "Amazon",
+  "subtitle": "Sister of Themiscyra",
+  "slug": "amazon",
+  "rarity": 2,
+  "description": "Front Line Bruiser who can control turn meter and support Olympus Heroes.",
+  "lore": "A tribe made up entirely of women, the Amazons are warriors of fearsome skill. Led by Queen Hippolyta, they fight in defense of Olympus, yet their spears and shields must often turn toward the rest of the Realm. Ancient rivalries, false rumors, and cultural prejudices drive some other domains of Olympus to consider the Amazons as enemies, and to treat them accordingly.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/bdfd1cb9-c2af-4473-a677-f74119b5fc18.webp",
+  "image_zoom": 3,
+  "image_focal_x": 76,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 9910,
+    "acc": 5,
+    "atk": 782,
+    "def": 584,
+    "res": 10,
+    "spd": 77,
+    "init": 79,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting a damage to an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Crit. Damage +15%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DEF +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +15%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Swiftness +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "Resilience +10"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Dance of the Wilderness",
+      "slug": "amazon-dance-of-the-wilderness",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 200%ATK. If the attack is Critical, place [mechanic:acc-up-i] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Amazon_Basic.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Ride of the Amazons",
+      "slug": "amazon-ride-of-the-amazons",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 200%ATK. If this hero defeats a target, Increase this Hero’s Turn Meter by 20%. If Hippolyta is on the team, she will join the attack.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Amazon_Ultimate.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [],
+      "ultimate_cost": 1100,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Blessing of the Sisterhood",
+      "slug": "amazon-blessing-of-the-sisterhood",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy 200%ATK2 times. Each hit decreases the target’s Turn Meter by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Amazon_Core.webp",
+      "scaling_formula": "200%ATK",
+      "effects": [
+        "ATK Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

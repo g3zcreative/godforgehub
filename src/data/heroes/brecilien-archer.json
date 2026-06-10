@@ -1,0 +1,90 @@
+{
+  "id": "17a2e526-9a4d-4a4a-bcdf-477e4d1c0d0a",
+  "name": "Brecilien Archer",
+  "subtitle": "Watcher of the Woods",
+  "slug": "brecilien-archer",
+  "rarity": 1,
+  "description": "Unleash volleys of arrows to take down your foes.",
+  "lore": "Hailing from a forested region of Avalon, Brecilien warriors practice a form of archery improved from that of the Realm’s already elite longbowmen. Wielding bows taller than themselves, they draw their bowstrings with impossible strength to deliver death at unimaginable distances. When fighting in units, they can fell entire battalions. On their own, a single Brecilien archer serves as a deadly sniper.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/b7aba793-2651-44b2-bbe2-4de2045dd205.webp",
+  "image_zoom": 2.4,
+  "image_focal_x": 27,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 7433,
+    "acc": 0,
+    "atk": 628,
+    "def": 474,
+    "res": 0,
+    "spd": 73,
+    "init": 70,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +4"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Avalon",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Swift Shot",
+      "slug": "brecilien-archer-swift-shot",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 140%ATK 3 times. Place [Sharpen I] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_BrecilienArcher_Basic.webp",
+      "scaling_formula": "140%ATK 3 times",
+      "effects": [
+        "Sharpen I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Woodland Volley",
+      "slug": "brecilien-archer-woodland-volley",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies 260%ATK. Increase the duration of [Sharpen] on this hero by 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_BrecilienArcher_Ultimate.webp",
+      "scaling_formula": "260%ATK",
+      "effects": [
+        "Sharpen"
+      ],
+      "ultimate_cost": 900,
+      "initial_divinity": 150,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

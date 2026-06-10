@@ -1,0 +1,127 @@
+{
+  "id": "54c6dfe2-5c98-4bc7-8057-e51112067321",
+  "name": "Spartan",
+  "subtitle": "Royal Guard",
+  "slug": "spartan",
+  "rarity": 2,
+  "description": "Stand resolute in the Olympus Ranks and face down your foes with fearsome ally attacks.",
+  "lore": "Soldiers of a highly militant pre-Shattering city-state, Spartan warriors are readily mistaken for other hoplites. Those who face them on the battlefield, however, discover that these are no ordinary soldiers. The mention of their name can break some enemies’ resolve, and while Spartans aren’t quite so potent as their mythical reputation suggests, they are indeed among the most elite fighters of Olympus.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/54c6dfe2-5c98-4bc7-8057-e51112067321.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 13710,
+    "acc": 5,
+    "atk": 617,
+    "def": 650,
+    "res": 15,
+    "spd": 76,
+    "init": 72,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when damaging an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +5"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DEF +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +10%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Crit. Damage +20%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Speed +15"
+    }
+  ],
+  "faction": "Olympus",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "For Sparta!",
+      "slug": "spartan-for-sparta",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies. Place [mechanic:barrier]10%HP on this hero. If Leonidas or Hoplite are on the same team, they will join the attack using their Basic ability.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Spartan_Ultimate.webp",
+      "scaling_formula": "13%HP + 65%ATK",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": 1300,
+      "initial_divinity": 300,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Phalanx Strike",
+      "slug": "spartan-phalanx-strike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (8%HP+60%ATK). If Leonidas or Hoplite are on the same team, increases the damage inflicted by 30%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Spartan_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "No Surrender",
+      "slug": "spartan-no-surrender",
+      "skill_type": "Core",
+      "description": "Heals this hero for 15% of their MAX HP, then place [mechanic:res-up-i] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Spartan_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "RES Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

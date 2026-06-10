@@ -1,0 +1,139 @@
+{
+  "id": "f6b4b2fb-cf47-4be8-8482-58e9bd167f7e",
+  "name": "Dagonet",
+  "subtitle": "Jester Knight",
+  "slug": "dagonet",
+  "rarity": 3,
+  "description": "Fool your foes as you lock their abilities and weaken their defenses whilst joining your allies in attacks.",
+  "lore": "Elevated to knighthood by King Arthur, Dagonet served as jester and advisor more often than warrior, partly for his particular skills, but in part because he never seemed entirely stable. That madness has only grown since the Shattering, causing episodes of incomprehension—and more rarely, of murder. His king may have no choice but to take drastic steps, and soon.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/f6b4b2fb-cf47-4be8-8482-58e9bd167f7e.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 13049,
+    "acc": 25,
+    "atk": 826,
+    "def": 705,
+    "res": 15,
+    "spd": 86,
+    "init": 98,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when placing a [Debuff] on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +7"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +75"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Ignore RES +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Jester Dance"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Jester Dance",
+      "slug": "dagonet-jester-dance",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy 240%ATK, then attack 240%ATK each enemy under [DEF Down]. Each hit has a 50% chance to steal 1 random [Buff] from the target.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dagonet_Ultimate.webp",
+      "scaling_formula": "240%ATK",
+      "effects": [],
+      "ultimate_cost": 1050,
+      "initial_divinity": 275,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Disappearing Act",
+      "slug": "dagonet-disappearing-act",
+      "skill_type": "Core",
+      "description": "Place [mechanic:vanish] on this hero for 1 turn, then has a 75% chance to place [mechanic:def-down-i] on all enemies for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dagonet_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Vanish",
+        "DEF Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Fools Courage",
+      "slug": "dagonet-fools-courage",
+      "skill_type": "Passive",
+      "description": "When an enemy [Buff] activates or is removed, decrease 10% of their Turn Meter. When an enemy [Debuff] expires or is removed, decrease 10% of their Divinity.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dagonet_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Opportunity Knocks",
+      "slug": "dagonet-opportunity-knocks",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 180%ATK with a 50% chance to place either [mechanic:lock-core] or [mechanic:lock-ultimate] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dagonet_Basic.webp",
+      "scaling_formula": "180%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an enemy [Buff] expires or is removed, decrease 5% of their Turn Meter. When an enemy [Debuff] expires or is removed, decrease 5% of their Divinity."
+}

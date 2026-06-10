@@ -1,0 +1,96 @@
+{
+  "id": "b36dbe9d-2eab-4268-b0f2-a011cba65690",
+  "name": "Ixchel",
+  "subtitle": "null",
+  "slug": "ixchel",
+  "rarity": 3,
+  "description": "null",
+  "lore": "null",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/b36dbe9d-2eab-4268-b0f2-a011cba65690.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 0,
+    "acc": 0,
+    "atk": 0,
+    "def": 0,
+    "res": 0,
+    "spd": 0,
+    "init": 0,
+    "crit_dmg": 0,
+    "crit_rate": 0
+  },
+  "leader_bonus": {
+    "text": "null",
+    "scope": "null"
+  },
+  "divinity_generator": "null",
+  "ascension_bonuses": [],
+  "awakening_bonuses": [],
+  "faction": "Omeyocan",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Storm Strike",
+      "slug": "ixchel-storm-strike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Place [mechanic:mend] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ixchel_Basic.webp",
+      "scaling_formula": "230%ATK",
+      "effects": [
+        "Mend"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Torrential Remedy",
+      "slug": "ixchel-torrential-remedy",
+      "skill_type": "Core",
+      "description": "Remove 1 random [Debuff] from all allies then place [mechanic:stalwart] on each ally for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ixchel_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Stalwart"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Medicinal Moon",
+      "slug": "ixchel-medicinal-moon",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:mend] for 1 turn on all allies. If an ally is below 50% HP also place increase their Turn Meter by 10% otherwise increase their Divinity by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ixchel_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Mend"
+      ],
+      "ultimate_cost": 1250,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Sacrificial Rite",
+      "slug": "ixchel-sacrificial-rite",
+      "skill_type": "Passive",
+      "description": "At the start of this hero’s turn, sacrifice 10% of this hero’s current HP and heal all allies equal to the amount of HP lost.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Ixchel_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Each turn increases this hero’s healing by 3% (up to 10% times)."
+    }
+  ],
+  "imprint_passive": "null"
+}

@@ -1,0 +1,138 @@
+{
+  "id": "93e40256-39d4-4c0e-b172-7abe6ba56875",
+  "name": "Gilgamesh",
+  "subtitle": "King of Heroes",
+  "slug": "gilgamesh",
+  "rarity": 5,
+  "description": "Defy fate and unleash powerful attacks against your foes",
+  "lore": "King and champion of ancient Ekur, Gilgamesh undertook countless famous adventures—and through most of them, his beloved companion Enkidu stood beside him. Enkidu’s death drove Gilgamesh nearly mad, leaving him open to manipulations that ultimately resulted in the destruction of the Aetherwell and the Shattering itself. Gilgamesh now wanders aimlessly, a mentally broken shell of the hero he once was.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ae5502ea-a064-4ede-9f11-2c61d04b63e0.webp",
+  "image_zoom": 1.8,
+  "image_focal_x": 74,
+  "image_focal_y": 31,
+  "stats": {
+    "hp": 20482,
+    "acc": 20,
+    "atk": 925,
+    "def": 958,
+    "res": 35,
+    "spd": 88,
+    "init": 92,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [200] Divinity when an ally is killed. Gain an additional [400] Divinity if Enkidu dies.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +18"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Strong Hit DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Divinity Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Mortal Reminder"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Defy the Netherworld"
+    }
+  ],
+  "faction": "Ekur",
+  "archetype": "Brawler",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Defy the Netherworld",
+      "slug": "gilgamesh-defy-the-netherworld",
+      "skill_type": "Core",
+      "description": "Attack all enemies. Increase the damage inflicted by 1% for each 1% of missing HP on this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gilgamesh_Core.webp",
+      "scaling_formula": "8%HP+105%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "The first time this hero takes fatal damage in battle, prevent the damage and activate this ability."
+    },
+    {
+      "name": "Heroic Charge",
+      "slug": "gilgamesh-heroic-charge",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy with an additional 20% chance to strong hit if this target’s divinity is above 50%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gilgamesh_Basic.webp",
+      "scaling_formula": "11%HP+90%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Mortal Reminder",
+      "slug": "gilgamesh-mortal-reminder",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies. If the target’s divinity is above 50%, then increase the damage inflicted by 50%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gilgamesh_Ultimate.webp",
+      "scaling_formula": "12%HP+120%ATK",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": 1100,
+      "initial_divinity": 300,
+      "awakening_level": 3,
+      "awakening_bonus": "Place Barrier on this hero equal to 15% of the damage inflicted."
+    },
+    {
+      "name": "Confrontation of Fate",
+      "slug": "gilgamesh-confrontation-of-fate",
+      "skill_type": "Passive",
+      "description": "When an ally or enemy activates their Ultimate Ability, increase this hero's Divinity by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Gilgamesh_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an ally or enemy activates their Ultimate Ability, increase this hero's Divinity by 5%."
+}

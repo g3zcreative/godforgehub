@@ -1,0 +1,265 @@
+{
+  "id": "887d762b-d228-4167-822a-f2b8084e4d5d",
+  "name": "Nuwa",
+  "subtitle": "Creator of Mankind",
+  "slug": "nuwa",
+  "rarity": 5,
+  "description": "Nuwa is a formidable support hero who can protect her allies with powerful barriers and heal them. She can also deal damage to enemies and remove their buffs.",
+  "lore": "Born from the fragments of the universe, Nuwa is a primordial deity, a being of immense cosmic power and serene wisdom. In the dawn of creation, when chaos reigned and the very fabric of existence was yet unformed, Nuwa emerged, a gentle force amidst the maelstrom. She is the mother of all creation, believed to have molded humanity from clay, breathing life into them with her divine breath. Her presence brought order to the nascent world, shaping mountains, rivers, and stars with her ethereal hands. As a guardian of balance, Nuwa intervenes when the cosmos teeters on the brink of destruction, her compassion limitless, her power absolute. She is the embodiment of patience and creativity, forever weaving the tapestry of existence, ensuring harmony prevails in the grand cosmic symphony.",
+  "image_url": "https://godforge.gg/_next/image?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FGodforge-Hub%2Fgodforge-assets%40main%2Fheroes%2Fnuwa%2Frender.png&w=1920&q=75",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15361,
+    "acc": 0,
+    "atk": 1123,
+    "def": 1289,
+    "res": 15,
+    "spd": 103,
+    "init": 20,
+    "crit_dmg": 150,
+    "crit_rate": 15
+  },
+  "leader_bonus": {
+    "text": "Increases Max HP by 25%",
+    "scope": "All allies, all content"
+  },
+  "divinity_generator": "Nuwa generates 10 Divinity at the start of each of her turns and 1 Divinity whenever an ally takes damage.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Health +7%, Attack +7%, Defense +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Health +7%, Attack +7%, Defense +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Health +7%, Attack +7%, Defense +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Health +7%, Attack +7%, Defense +7%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Health +7%, Attack +7%, Defense +7%"
+    },
+    {
+      "tier": 6,
+      "bonus": "Health +7%, Attack +7%, Defense +7%"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Max HP +15%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Barrier strength for all skills +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Critical Rate +10%"
+    },
+    {
+      "tier": 4,
+      "bonus": "World Mender: Cooldown -1"
+    },
+    {
+      "tier": 5,
+      "bonus": "Cosmic Genesis: Initial Divinity +1"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Serpent's Curse",
+      "slug": "nuwa-serpent-s-curse",
+      "skill_type": "Core",
+      "description": "Applies [mechanic:atk-down-ii] for 2 turns and deals 180%ATK magic damage to all enemies. Has a 70% chance to apply.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/skill-f9b7c506-ae81-498e-844b-0216c48605bd.webp",
+      "scaling_formula": "180%ATK",
+      "effects": [
+        "ATK Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Increases chance to apply ATK Down by 20%."
+    },
+    {
+      "name": "Dragon's Breath",
+      "slug": "nuwa-dragon-s-breath",
+      "skill_type": "Basic",
+      "description": "Deals 260%ATK magic damage to a single enemy.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/skill-a82403fd-79ed-40a6-9885-af7cf497a071.webp",
+      "scaling_formula": "260%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Dragon's Fury",
+      "slug": "nuwa-dragon-s-fury",
+      "skill_type": "Ultimate",
+      "description": "Summons a Dragon Spirit to deal 320%ATK magic damage to all enemies. Applies [mechanic:def-down-ii] for 2 turns to all enemies.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/skill-e68a1eed-8b90-4d10-b235-294adf159de6.webp",
+      "scaling_formula": "320%ATK",
+      "effects": [
+        "DEF Down II"
+      ],
+      "ultimate_cost": 3,
+      "initial_divinity": 2,
+      "awakening_level": 1,
+      "awakening_bonus": "Increases damage by 20%."
+    },
+    {
+      "name": "Empowered Curses",
+      "slug": "nuwa-empowered-curses",
+      "skill_type": "Passive",
+      "description": "Increases the chance of applying debuffs by 20% on all skills.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons/skill-d523c941-f652-43b0-b01b-187860e51e7f.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Increases Accuracy by 20%."
+    },
+    {
+      "name": "Life Weave",
+      "slug": "nuwa-life-weave",
+      "skill_type": "Basic",
+      "description": "Deals 100%ATK damage to an enemy and grants a [mechanic:barrier] to the ally with the lowest HP for 2 turns. The [mechanic:barrier] absorbs damage equal to 10% of Nuwa's Max HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nuwa_Basic.webp",
+      "scaling_formula": "100%ATK",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "World Mender",
+      "slug": "nuwa-world-mender",
+      "skill_type": "Core",
+      "description": "Restores HP to all allies equal to 20% of Nuwa's Max HP and grants them a [mechanic:barrier] for 2 turns. The [mechanic:barrier] absorbs damage equal to 15% of Nuwa's Max HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nuwa_Core.webp",
+      "scaling_formula": "20%Max HP",
+      "effects": [
+        "Barrier",
+        "Heal"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Cosmic Genesis",
+      "slug": "nuwa-cosmic-genesis",
+      "skill_type": "Ultimate",
+      "description": "Deals 260%ATK damage to all enemies, removes all their buffs, and grants all allies a [mechanic:barrier] for 3 turns. The [mechanic:barrier] absorbs damage equal to 20% of Nuwa's Max HP.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nuwa_Ultimate.webp",
+      "scaling_formula": "260%ATK",
+      "effects": [
+        "Barrier",
+        "Buff Removal"
+      ],
+      "ultimate_cost": 5,
+      "initial_divinity": 2,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Primordial Essence",
+      "slug": "nuwa-primordial-essence",
+      "skill_type": "Passive",
+      "description": "At the start of combat, Nuwa gains a [mechanic:barrier] equal to 30% of her Max HP for 3 turns. Whenever an ally takes damage, Nuwa has a 25% chance to grant them a [mechanic:barrier] equal to 5% of her Max HP for 1 turn. This effect can only trigger once per turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Nuwa_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Serpent's Blessing",
+      "slug": "nuwa-serpent-s-blessing",
+      "skill_type": "Core",
+      "description": "Heals all allies for 15% of this unit's Max Health. Has a 100% chance to remove 1 random debuff from all allies. Grants all allies a Regeneration for 2 turns.",
+      "image_url": null,
+      "scaling_formula": "15%Max Health",
+      "effects": [
+        "Heal",
+        "Cleanse",
+        "Regeneration"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Grants 1 less Divinity."
+    },
+    {
+      "name": "All-Mother's Care",
+      "slug": "nuwa-all-mother-s-care",
+      "skill_type": "Passive",
+      "description": "When an ally takes damage, has a 25% chance to grant them a [mechanic:barrier] equal to 10% of this unit's Max Health for 2 turns.",
+      "image_url": null,
+      "scaling_formula": "10%Max Health",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Chance and Shield amount are increased."
+    },
+    {
+      "name": "Shield of the All-Mother",
+      "slug": "nuwa-shield-of-the-all-mother",
+      "skill_type": "Ultimate",
+      "description": "Grants all allies a [mechanic:barrier] equal to 25% of this unit's Max Health for 2 turns. Has a 100% chance to grant 1 random ally a [mechanic:barrier] equal to 25% of this unit's Max Health for 2 turns if the target is already suffering from a [mechanic:barrier].",
+      "image_url": null,
+      "scaling_formula": "25%Max Health",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": 50,
+      "initial_divinity": 20,
+      "awakening_level": 1,
+      "awakening_bonus": "Shields grant 10% more Max Health."
+    },
+    {
+      "name": "Life Beam",
+      "slug": "nuwa-life-beam",
+      "skill_type": "Basic",
+      "description": "Deals 100% ATK damage to 1 enemy. If the target is suffering from Nuwa's Mark, has a 100% chance to grant all allies a Critical Rate Up II for 2 turns.",
+      "image_url": null,
+      "scaling_formula": "100%ATK",
+      "effects": [
+        "Critical Rate Up II",
+        "Nuwa's Mark"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Increases HP by 10% and restores 5% of max HP at the start of Nuwa's turn."
+}

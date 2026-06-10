@@ -1,0 +1,200 @@
+{
+  "id": "9810c0ef-f7c6-4bda-bc68-55dd5c2b7784",
+  "name": "Oni",
+  "subtitle": "Yokai Warrior",
+  "slug": "oni",
+  "rarity": 3,
+  "description": "Full Hero Information▶",
+  "lore": "These monstrous entities, demonic and ogrish, are among Izumo’s most widespread terrors. Able to crush grown men to a pulp or swallow them in a few quick bites, oni are the stuff of nightmares and fairy tales—and, unfortunately, an ever-growing number of genuine accounts. With the gods distracted by larger affairs, the oni grow ever bolder and more dangerous.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/9810c0ef-f7c6-4bda-bc68-55dd5c2b7784.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17343,
+    "acc": 15,
+    "atk": 727,
+    "def": 804,
+    "res": 30,
+    "spd": 81,
+    "init": 81,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "Increases Attack by 20% in all game modes.",
+    "scope": "All allies"
+  },
+  "divinity_generator": "Gain [30] Divinity when damaging an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, DEF +5%, ATK +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Strong Hit DMG Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Strong Hit DMG Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Yokai's Hex"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Demonic Slash",
+      "slug": "oni-demonic-slash",
+      "skill_type": "Basic",
+      "description": "Deals 260%ATK damage to a single enemy. Has a 30% chance to apply [mechanic:bleed] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Oni_Basic.webp",
+      "scaling_formula": "260%ATK",
+      "effects": [
+        "Bleed"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "Increases Bleed chance to 50%."
+    },
+    {
+      "name": "Warlord's Rage",
+      "slug": "oni-warlord-s-rage",
+      "skill_type": "Core",
+      "description": "Gains [mechanic:atk-up-ii] for 2 turns. If Oni has [mechanic:bleed] on an enemy, he also gains an extra turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Oni_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "ATK Up II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 2,
+      "awakening_bonus": "Increases ATK Up II duration to 3 turns."
+    },
+    {
+      "name": "Soul Rend",
+      "slug": "oni-soul-rend",
+      "skill_type": "Ultimate",
+      "description": "Deals 400%ATK damage to a single enemy, ignoring 30% of their Defense. If the target is [mechanic:bleed]ing, this skill deals an additional 100%ATK damage.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Oni_Ultimate.webp",
+      "scaling_formula": "400%ATK",
+      "effects": [],
+      "ultimate_cost": 4,
+      "initial_divinity": 2,
+      "awakening_level": 3,
+      "awakening_bonus": "Increases Defense ignored to 50%."
+    },
+    {
+      "name": "Demonic Presence",
+      "slug": "oni-demonic-presence",
+      "skill_type": "Passive",
+      "description": "Oni's attacks have a 20% chance to apply [mechanic:atk-down-i] for 1 turn. This chance is doubled if the target is [mechanic:bleed]ing.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Oni_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "ATK Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 4,
+      "awakening_bonus": "Increases ATK Down I chance to 30%."
+    },
+    {
+      "name": "Flesh Feast",
+      "slug": "oni-flesh-feast",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (8%HP+110%ATK) with a 50% chance to place [mechanic:drain-i] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Oni_Basic.webp",
+      "scaling_formula": "8%HP+110%ATK",
+      "effects": [
+        "Drain I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Monstrous Pummel",
+      "slug": "oni-monstrous-pummel",
+      "skill_type": "Core",
+      "description": "Attack (90%ATK+6%HP)4 times at random. Each hit has a 50% chance to place [mechanic:hex-i] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Oni_Core.webp",
+      "scaling_formula": "90%ATK+6%HP",
+      "effects": [
+        "Hex I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Yokai's Hex",
+      "slug": "oni-yokai-s-hex",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (10%HP+130%ATK). If the target is under [mechanic:hex], has a 35% chance to spread [mechanic:hex] to all enemies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Oni_Ultimate.webp",
+      "scaling_formula": "10%HP+130%ATK",
+      "effects": [
+        "Despair"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Mark of the Wicked",
+      "slug": "oni-mark-of-the-wicked",
+      "skill_type": "Passive",
+      "description": "[mechanic:reflect] 20% of damage inflicted on this hero to all enemies under [mechanic:hex].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Oni_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Reflect 10% of damage inflicted on this hero to all enemies under [Hex]."
+}

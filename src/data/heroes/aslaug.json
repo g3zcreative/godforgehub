@@ -1,0 +1,142 @@
+{
+  "id": "67f25dd2-4912-40e5-9460-606174d9cb72",
+  "name": "Aslaug",
+  "subtitle": "The Clever",
+  "slug": "aslaug",
+  "rarity": 3,
+  "description": "Divine the future as you Reflect effects back to the enemy and protect against Disables.",
+  "lore": "Born the daughter of Sigurd but raised as a peasant, Aslaug eventually became one of Ragnar Lothbrok’s wives for a time. Although capable as a warrior, she is particularly well known for her wit, cleverness, and trickery. She serves as advisor to many of Asgard’s heroes and military leaders—as well as, on occasion, a courier, saboteur, and spy in neighboring realms.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/67f25dd2-4912-40e5-9460-606174d9cb72.webp",
+  "image_zoom": 2.3,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15031,
+    "acc": 5,
+    "atk": 661,
+    "def": 859,
+    "res": 20,
+    "spd": 97,
+    "init": 84,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when placing a [Buff] on an ally",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +4"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Turn Meter Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Turn Meter Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Nordic Foresight"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Invoker",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Nordic Foresight",
+      "slug": "aslaug-nordic-foresight",
+      "skill_type": "Passive",
+      "description": "Whenever an ally [Block Debuff] activates, increase their Turn Meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aslaug_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Also Increase their Divinity by 10%."
+    },
+    {
+      "name": "Premonition",
+      "slug": "aslaug-premonition",
+      "skill_type": "Core",
+      "description": "Place [Block Debuff] on all allies for 1 turn and then increase their Turn Meter by 10%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aslaug_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Block Debuff"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Temporal Seeress",
+      "slug": "aslaug-temporal-seeress",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:stalwart] on allies from Asgard for 1 Turn then increase the Turn Meter of all allies by 15%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aslaug_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Stalwart"
+      ],
+      "ultimate_cost": 1150,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Inspiring Rush",
+      "slug": "aslaug-inspiring-rush",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 2 times. Each hit will place [mechanic:spd-up-i] on a random ally for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Aslaug_Basic.webp",
+      "scaling_formula": "240%ATK",
+      "effects": [
+        "SPD Up I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "Whenever an ally [Block Debuff] activates, increase their Turn Meter by 5%."
+}

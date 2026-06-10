@@ -1,0 +1,141 @@
+{
+  "id": "063b9816-86c2-400f-8dd2-af99e4f1c822",
+  "name": "Devana",
+  "subtitle": "Woodland Huntress",
+  "slug": "devana",
+  "rarity": 4,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Goddess of the wilds, the hunt, and the moon, Devana is a figure of both veneration and fear, protection and terror. Her skills would prove a powerful advantage for Vyraj’s pantheon, but she has ignored Perun’s efforts at unification, focused instead on proving her superiority over other realms’ hunter deities—especially Artemis, whom Devana despises as a pretender to her own renown.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/063b9816-86c2-400f-8dd2-af99e4f1c822.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15857,
+    "acc": 30,
+    "atk": 1046,
+    "def": 837,
+    "res": 25,
+    "spd": 96,
+    "init": 107,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "40 ACC",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when placing a [debuff] on an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, DEF +7%, ATK +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +150"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Reduction Multiplier +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Lingering Omen"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Weapon Multiplier +15%, Armor Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Verdant Silence"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Disruptor",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Huntress Omen",
+      "slug": "devana-huntress-omen",
+      "skill_type": "Basic",
+      "description": "Attack all enemies with a 35% chance to decrease the turn meter of each target by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Devana_Basic.webp",
+      "scaling_formula": "210%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Verdant Silence",
+      "slug": "devana-verdant-silence",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy with a 75% chance to place [mechanic:lock-core] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Devana_Ultimate.webp",
+      "scaling_formula": "360%ATK",
+      "effects": [
+        "Sleep"
+      ],
+      "ultimate_cost": 1550,
+      "initial_divinity": 325,
+      "awakening_level": 5,
+      "awakening_bonus": "Has a 75% chance to place [Sleep] on all other enemies for 1 turn."
+    },
+    {
+      "name": "Lingering Omen",
+      "slug": "devana-lingering-omen",
+      "skill_type": "Passive",
+      "description": "When an enemy receives a Turn Meter increase, this hero [Retaliates].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Devana_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also [Retaliates] when an enemy decreases this hero’s Turn Meter."
+    },
+    {
+      "name": "Storm of Arrows",
+      "slug": "devana-storm-of-arrows",
+      "skill_type": "Core",
+      "description": "Attack all enemies 2 times with a 75% chance to place [mechanic:atk-down-ii] and [mechanic:spd-down-ii] on each target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Devana_Core.webp",
+      "scaling_formula": "130%ATK",
+      "effects": [
+        "ATK Down II",
+        "SPD Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an enemy increases a turn meter, this hero has a 50% chance to counter-attack with their basic ability."
+}

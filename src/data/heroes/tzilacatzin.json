@@ -1,0 +1,138 @@
+{
+  "id": "2d7785d9-23b0-49b5-9d4e-95d1b28b6236",
+  "name": "Tzilacatzin",
+  "subtitle": "Obsidean Claw",
+  "slug": "tzilacatzin",
+  "rarity": 3,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "One of the most cunning of Omeyocan’s warriors, Tzilacatzin earned the reputation of utilizing deception, devious stratagems, and an array of deadly weapons to overwhelm his foes. An inspiration to his fellow jaguar and eagle warriors, this hero can rally his Realm’s troops nearly as effectively as the presence of the gods themselves.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/2d7785d9-23b0-49b5-9d4e-95d1b28b6236.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 12884,
+    "acc": 20,
+    "atk": 848,
+    "def": 683,
+    "res": 15,
+    "spd": 86,
+    "init": 102,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "35 ACC",
+    "scope": "Dungeon Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when defeating an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +3"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Otomi Fortitude"
+    }
+  ],
+  "faction": "Omeyocan",
+  "archetype": "Disruptor",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Macuahuitl Slash",
+      "slug": "tzilacatzin-macuahuitl-slash",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (5%HP+65%ATK)2 times. Each hit has a 50% chance to place [mechanic:spd-down-i] on the target for 1 turn. If this hero is under [mechanic:vanish] will place [mechanic:spd-down-ii] instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tzilacatzin_Core.webp",
+      "scaling_formula": "5%HP+65%ATK",
+      "effects": [
+        "SPD Down I",
+        "SPD Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Otomi Fortitude",
+      "slug": "tzilacatzin-otomi-fortitude",
+      "skill_type": "Passive",
+      "description": "If this hero is under [mechanic:vanish], attacks have a 50% chance to place a random [Disable] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tzilacatzin_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Vanish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "At the end of this hero’s turn, place [Vanish] on this hero for 1 turn if a [Disable] was placed on an enemy."
+    },
+    {
+      "name": "Stealth Ambush",
+      "slug": "tzilacatzin-stealth-ambush",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (6%HP+90%ATK), then place [mechanic:vanish] on this hero for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tzilacatzin_Basic.webp",
+      "scaling_formula": "6%HP+90%ATK",
+      "effects": [
+        "Vanish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Sacrificial Wrath",
+      "slug": "tzilacatzin-sacrificial-wrath",
+      "skill_type": "Ultimate",
+      "description": "Attack all enemies (10%HP+130%ATK) with a 50% chance to place [mechanic:init-down-i] on each target for 1 turn. If this hero is under [mechanic:vanish] will place [mechanic:init-down-ii] instead.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Tzilacatzin_Ultimate.webp",
+      "scaling_formula": "10%HP+130%ATK",
+      "effects": [
+        "INIT Down I",
+        "INIT Down II"
+      ],
+      "ultimate_cost": 950,
+      "initial_divinity": 200,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "If this hero is under [Vanish], attacks have a 25% chance to place a random [Disable] on the target for 1 turn."
+}

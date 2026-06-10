@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GodforgeHero",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "description": "Stable database UUID key for the hero"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the hero"
+    },
+    "subtitle": {
+      "type": ["string", "null"],
+      "description": "Epithet or title of the hero"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly slug for the hero (lowercase with hyphens)"
+    },
+    "rarity": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Rarity rating from 1 (Common) to 5 (Legendary)"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Brief summary or introduction of the hero"
+    },
+    "lore": {
+      "type": ["string", "null"],
+      "description": "Historical story or lore of the hero"
+    },
+    "image_url": {
+      "type": ["string", "null"],
+      "format": "uri-reference",
+      "description": "Main portrait image URL for the hero"
+    },
+    "image_zoom": {
+      "type": ["number", "null"],
+      "description": "Optional zoom scale factor for rendering the portrait"
+    },
+    "image_focal_x": {
+      "type": ["number", "null"],
+      "description": "Optional focal horizontal percentage for rendering"
+    },
+    "image_focal_y": {
+      "type": ["number", "null"],
+      "description": "Optional focal vertical percentage for rendering"
+    },
+    "stats": {
+      "type": ["object", "null"],
+      "properties": {
+        "hp": { "type": "number" },
+        "atk": { "type": "number" },
+        "def": { "type": "number" },
+        "spd": { "type": "number" },
+        "init": { "type": "number" },
+        "crit_rate": { "type": "number" },
+        "crit_dmg": { "type": "number" },
+        "res": { "type": "number" },
+        "acc": { "type": "number" }
+      },
+      "additionalProperties": false,
+      "description": "Base statistics of the character"
+    },
+    "leader_bonus": {
+      "type": ["object", "null"],
+      "properties": {
+        "text": { "type": "string" },
+        "scope": { "type": ["string", "null"] }
+      },
+      "required": ["text"],
+      "additionalProperties": false,
+      "description": "Details of the leader ability bonus"
+    },
+    "divinity_generator": {
+      "type": ["string", "null"],
+      "description": "Divinity generator description"
+    },
+    "ascension_bonuses": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "tier": { "type": "integer", "minimum": 1, "maximum": 6 },
+          "bonus": { "type": "string" }
+        },
+        "required": ["tier", "bonus"],
+        "additionalProperties": false
+      },
+      "description": "Ascension star upgrades (tiers 1-6)"
+    },
+    "awakening_bonuses": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "tier": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "bonus": { "type": "string" }
+        },
+        "required": ["tier", "bonus"],
+        "additionalProperties": false
+      },
+      "description": "Awakening levels (tiers 1-5)"
+    },
+    "faction": {
+      "type": ["string", "null"],
+      "description": "Faction/Realm (e.g. Aaru, Asgard, Avalon)"
+    },
+    "archetype": {
+      "type": ["string", "null"],
+      "description": "Archetype/Class (e.g. Slayer, Defender, Invoker)"
+    },
+    "affinity": {
+      "type": ["string", "null"],
+      "description": "Affinity type (e.g. Strength, Cunning, Wisdom)"
+    },
+    "allegiance": {
+      "type": ["string", "null"],
+      "description": "Moral alignment (e.g. Chaos, Order)"
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": ["string", "null"] },
+          "skill_type": {
+            "type": "string",
+            "enum": ["Basic", "Core", "Ultimate", "Passive"]
+          },
+          "description": { "type": ["string", "null"] },
+          "image_url": { "type": ["string", "null"], "format": "uri-reference" },
+          "scaling_formula": { "type": ["string", "null"] },
+          "effects": {
+            "type": ["array", "null"],
+            "items": { "type": "string" }
+          },
+          "ultimate_cost": { "type": ["integer", "null"] },
+          "initial_divinity": { "type": ["integer", "null"] },
+          "awakening_level": { "type": ["integer", "null"] },
+          "awakening_bonus": { "type": ["string", "null"] }
+        },
+        "required": ["name", "skill_type"],
+        "additionalProperties": false
+      },
+      "description": "Active and passive skills of the character"
+    },
+    "imprint_passive": {
+      "type": ["string", "null"],
+      "description": "Imprint passive bonus description"
+    }
+  },
+  "required": ["id", "name", "slug", "rarity", "skills"],
+  "additionalProperties": false
+}

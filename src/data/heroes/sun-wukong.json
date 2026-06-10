@@ -1,0 +1,138 @@
+{
+  "id": "e5800a22-c770-4df9-91cd-042663a94ff6",
+  "name": "Sun Wukong",
+  "subtitle": "Monkey King",
+  "slug": "sun-wukong",
+  "rarity": 5,
+  "description": "Summon Clones of Sun Wukong and Mirror the Power of your Foes with Cyclonic Attacks.",
+  "lore": "The famous Monkey King, central figure of countless myths, spends more time outside Tian than within. Ever curious and ever mischievous, he engages the people and gods of other realms in all manner of games, schemes, and pranks, many of which are ill-appreciated by their unwilling participants. His antics threaten to cause dangerous enmity between these realms and his own.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/e650bdf9-e879-4359-8949-c23c912af38e.webp",
+  "image_zoom": 3,
+  "image_focal_x": 78,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17674,
+    "acc": 45,
+    "atk": 1288,
+    "def": 1024,
+    "res": 25,
+    "spd": 106,
+    "init": 105,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "24% SPD",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [40] Divinity when inflicting damage to an enemy",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "ATK +9%, HP +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +9%, HP +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +9%, HP +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +8"
+    },
+    {
+      "tier": 5,
+      "bonus": "C.DMG +17"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +200"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Unyielding Trickster"
+    },
+    {
+      "tier": 2,
+      "bonus": "DMG Multiplier +30%, Divinity Multiplier +20%, Heal Multiplier +30%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Spinning Gale"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Clone Rampage"
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Slayer",
+  "affinity": "Cunning",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Ruyi Jingu Bang",
+      "slug": "sun-wukong-ruyi-jingu-bang",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 310%ATK, then increase this hero’s Divinity by 5%. If joining an attack, Increase Divinity by an additional 5%. Also, [Mirror]1 random [Buff] from the target.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons//ICON_Sunwukong_Basic.webp",
+      "scaling_formula": "310%ATK",
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Spinning Gale",
+      "slug": "sun-wukong-spinning-gale",
+      "skill_type": "Core",
+      "description": "Attack all enemies 180%ATK2 times. For each [Buff] on this hero, Increase the damage inflicted by 10%.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons//ICON_Sunwukong_Core.webp",
+      "scaling_formula": "180%ATK",
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 3,
+      "awakening_bonus": "Each hit has a 50 chance to [Mirror]1 random [Buff] from the target."
+    },
+    {
+      "name": "Clone Rampage",
+      "slug": "sun-wukong-clone-rampage",
+      "skill_type": "Ultimate",
+      "description": "Attack 72%ATK8 times at random. Each hit has a 35% chance to heal this hero for 8% of the damage inflicted and decrease the target’s turn meter by 8%. If a target is hit more than 5 times, additional hits inflict 50% reduced damage.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons//ICON_Sunwukong_Ultimate.webp",
+      "scaling_formula": "72%ATK",
+      "effects": [],
+      "ultimate_cost": 1200,
+      "initial_divinity": 100,
+      "awakening_level": 5,
+      "awakening_bonus": "If a clone strikes the same target more than once, inflict additional damage 72%ATK to all other enemies. If there are no other enemies has a 30% chance to inflict the damage to the initial target instead."
+    },
+    {
+      "name": "Unyielding Trickster",
+      "slug": "sun-wukong-unyielding-trickster",
+      "skill_type": "Passive",
+      "description": "Place [mechanic:immortal] on this hero for 1 turn when receiving fatal damage for the first time. Also, has a 50% chance to join an ally’s attack.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/icons//ICON_Sunwukong_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Immortal"
+      ],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 1,
+      "awakening_bonus": "Will always join the attack with a hero from Tian."
+    }
+  ],
+  "imprint_passive": "Place [Immortal] on this hero for 1 turn when receiving fatal damage for the first time. Also, has a 25% chance to join an ally’s attack."
+}

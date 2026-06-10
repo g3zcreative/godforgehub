@@ -1,0 +1,88 @@
+{
+  "id": "74ae70dc-6361-40df-be73-859778fbd89b",
+  "name": "Chantress",
+  "subtitle": "Ritual Singer",
+  "slug": "chantress",
+  "rarity": 1,
+  "description": "Awaken your allies from their slumber and enhances their divinity generation.",
+  "lore": "These priestesses of Hathor are ritual singers, their voices granted power through long practice and mystical tattoos on their bodies. In days of old, their songs were meant only for religious ceremony and perhaps the recording of history or doctrine, but now it grants them a degree of genuine magical ability, which they use in both administration and war.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/ccbb308c-299b-461c-a93f-48efa5c10ba7.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 8259,
+    "acc": 0,
+    "atk": 451,
+    "def": 518,
+    "res": 5,
+    "spd": 80,
+    "init": 68,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": null,
+  "divinity_generator": "Gain [50] Divinity when an ally uses an Ultimate ability.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, DEF +3%, ATK +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "SPD +2"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +2"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [],
+  "faction": "Aaru",
+  "archetype": "Invoker",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Festive Liturgy",
+      "slug": "chantress-festive-liturgy",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy 170%ATK, then increase the Divinity of this hero by 5%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Chantress_Basic.webp",
+      "scaling_formula": "170%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Awaken the Gods",
+      "slug": "chantress-awaken-the-gods",
+      "skill_type": "Ultimate",
+      "description": "Increase the Divinity of all allies by 100 then has a 25% chance to remove [Sleep] from all allies.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Chantress_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Sleep"
+      ],
+      "ultimate_cost": 1500,
+      "initial_divinity": 250,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}

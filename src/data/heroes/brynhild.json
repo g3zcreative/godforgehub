@@ -1,0 +1,159 @@
+{
+  "id": "4c495a72-bbc2-42d5-bc84-72a1b0bb1b85",
+  "name": "Brynhild",
+  "subtitle": "Exiled Valkyrie",
+  "slug": "brynhild",
+  "rarity": 5,
+  "description": "Protect your allies with Radiant Power whilst reflecting Blaze back upon your foes.",
+  "lore": "Banished from the ranks of the Valkyrie, Brynhild proved a fearsome warrior, but the anger that drove her grew only greater as she was deceived and manipulated by various mortal factions. In Ryven, she has been restored to her former glory, but her greatest battles are not against Asgard’s foes, but against her own rage and jealous pride.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/b7779f48-9632-49d4-ac5d-09b0fa1e0251.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 17674,
+    "acc": 15,
+    "atk": 661,
+    "def": 1112,
+    "res": 55,
+    "spd": 89,
+    "init": 92,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when hit by an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Shield Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Ring of Flames"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Reading the Runes"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Defender",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Power Lance",
+      "slug": "brynhild-power-lance",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (175%DEF+80%ATK). Has a 50% chance to place [mechanic:atk-down-ii] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Brynhild_Basic.webp",
+      "scaling_formula": "175%DEF+80%ATK",
+      "effects": [
+        "ATK Down II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Reading the Runes",
+      "slug": "brynhild-reading-the-runes",
+      "skill_type": "Core",
+      "description": "Place [mechanic:def-up-ii] for 2 turns on all allies, then place [mechanic:intercept] on the ally with the lowest HP for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Brynhild_Core.webp",
+      "scaling_formula": null,
+      "effects": [
+        "DEF Up II",
+        "Intercept"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "Place [Intercept] on all allies except this hero instead."
+    },
+    {
+      "name": "Ring of Flames",
+      "slug": "brynhild-ring-of-flames",
+      "skill_type": "Ultimate",
+      "description": "Removes all [Disables] from this hero, then place [mechanic:radiance-ii] on all allies for 2 turns. Can be used while under a [Disable].",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Brynhild_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Radiance II",
+        "Shield"
+      ],
+      "ultimate_cost": 750,
+      "initial_divinity": 200,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [Shield]15%HP on all allies."
+    },
+    {
+      "name": "Vengeful Valkyrie",
+      "slug": "brynhild-vengeful-valkyrie",
+      "skill_type": "Passive",
+      "description": "While under a [Radiance] buff, place [mechanic:blaze-ii] for 1 turn on any enemy that attacks this hero.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Brynhild_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Blaze II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Valkyrie's Aegis",
+      "slug": "brynhild-valkyrie-s-aegis",
+      "skill_type": "Passive",
+      "description": "When an ally's HP falls below 50%, place [mechanic:shield]20%HP on them.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Brynhild_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When this hero's HP falls below 50%, place [Shield]10%HP on them."
+}

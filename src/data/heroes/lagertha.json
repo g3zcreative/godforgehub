@@ -1,0 +1,145 @@
+{
+  "id": "2beb558f-df79-4940-a669-b69231f31de2",
+  "name": "Lagertha",
+  "subtitle": "Warrior Queen",
+  "slug": "lagertha",
+  "rarity": 3,
+  "description": "Taunt your foes whilst protecting your allies from incoming damage.",
+  "lore": "A fierce warrior, Lagertha fought alongside Ragnar Lothbrok when his forces attacked the king who had conquered her homeland. She and Ragnar were married for a time, but after he divorced her for another, Lagertha returned home and eventually rose to become queen. In Ryven Asgard, she defends the borders of her lands, but shows little interest in larger conflicts, having tired of battle.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/2beb558f-df79-4940-a669-b69231f31de2.webp",
+  "image_zoom": 3,
+  "image_focal_x": 87,
+  "image_focal_y": 21,
+  "stats": {
+    "hp": 15031,
+    "acc": 10,
+    "atk": 595,
+    "def": 892,
+    "res": 50,
+    "spd": 84,
+    "init": 88,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% DEF & 10% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when hit by an enemy. Gain an additional [40] when intercepting an attack.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "ATK +5%, DEF +5%, HP +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "ATK +5%, DEF +5%, HP +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "ATK +5%, DEF +5%, HP +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Weapon Multiplier +2.5%, Armor Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Shield Multiplier +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Weapon Multiplier +2.5%, Armor Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Maiden of Midgard"
+    }
+  ],
+  "faction": "Asgard",
+  "archetype": "Defender",
+  "affinity": "Cunning",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Maiden of Midgard",
+      "slug": "lagertha-maiden-of-midgard",
+      "skill_type": "Passive",
+      "description": "When an ally’s [mechanic:shield] is removed or depleted, has a 50% chance to place [mechanic:intercept] on them for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lagertha_Passive.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Intercept"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Victory Assured",
+      "slug": "lagertha-victory-assured",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (230%DEF+130%ATK) with a 20% chance to place [mechanic:stun] for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lagertha_Basic.webp",
+      "scaling_formula": "230%DEF+130%ATK",
+      "effects": [
+        "Stun"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Battle Maiden",
+      "slug": "lagertha-battle-maiden",
+      "skill_type": "Core",
+      "description": "Place [mechanic:shield]150%DEF on all allies. If Ragnar Lothbrok is on the same team, place [mechanic:intercept] for 1 turn on him.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lagertha_Core.webp",
+      "scaling_formula": "150%DEF",
+      "effects": [
+        "Intercept",
+        "Shield"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Scorned Retribution",
+      "slug": "lagertha-scorned-retribution",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (250%DEF+150%ATK) with a 75% chance to place [mechanic:taunt] on the target for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Lagertha_Ultimate.webp",
+      "scaling_formula": "250%DEF+150%ATK",
+      "effects": [
+        "Taunt"
+      ],
+      "ultimate_cost": 1300,
+      "initial_divinity": 325,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When an ally’s [Shield] is removed or depleted, has a 25% chance to place [Intercept] on them for 1 turn"
+}

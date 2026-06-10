@@ -1,0 +1,135 @@
+{
+  "id": "24c386ed-f9aa-4099-b43c-458ff6212425",
+  "name": "Hattori Hanzo",
+  "subtitle": "Second Hanzo",
+  "slug": "hattori-hanzo",
+  "rarity": 4,
+  "description": "Hattori Hanzo is a master Cunning hero whose skills focus on swift movement and debilitating strikes. His unique ability to manipulate enemy turn meters, coupled with his high critical damage output, makes him a formidable assassin on the battlefield. Hanzo excels at singling out high-priority targets and eliminating them quickly.",
+  "lore": "Samurai and shinobi, swordsman and spy, Hattori Hanzo can purportedly enter any stronghold and slay any foe. Since the Shattering, he divides his efforts between Izumo and other realms. In the latter he targets any who threaten Izumo, but when in his home Realm he devotes his time to thwarting Oda Nobunaga, against whom he holds a longstanding vendetta.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/026e13a7-afbb-4cc4-abde-67ab277a0192.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 14701,
+    "acc": 25,
+    "atk": 1123,
+    "def": 892,
+    "res": 25,
+    "spd": 95,
+    "init": 99,
+    "crit_dmg": 60,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "A  powerful attack planned for the future."
+  },
+  "divinity_generator": "This ability is still under review - please check back later.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +12"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +7"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Toxic Stars"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Silent Assassin"
+    }
+  ],
+  "faction": "Izumo",
+  "archetype": "Slayer",
+  "affinity": "Strength",
+  "allegiance": "Chaos",
+  "skills": [
+    {
+      "name": "Shadow Ambush",
+      "slug": "hattori-hanzo-shadow-ambush",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_HattoriHanzo_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Shuriken Barrage",
+      "slug": "hattori-hanzo-shuriken-barrage",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/images/d97cf583-4d61-4b28-b2ea-6e33e379f75e.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 0,
+      "initial_divinity": 0,
+      "awakening_level": 0,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Toxic Stars",
+      "slug": "hattori-hanzo-toxic-stars",
+      "skill_type": "Core",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_HattoriHanzo_Core.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    },
+    {
+      "name": "Silent Assassin",
+      "slug": "hattori-hanzo-silent-assassin",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_HattoriHanzo_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "This ability is still under review - please check back later."
+    }
+  ],
+  "imprint_passive": "This ability is still under review - please check back later."
+}

@@ -1,0 +1,141 @@
+{
+  "id": "54b329c2-bd7d-459d-9828-1b0b18e7df6b",
+  "name": "Fisher King",
+  "subtitle": "Grail Knight",
+  "slug": "fisher-king",
+  "rarity": 5,
+  "description": "Grant Immortality to your Allies and Sustain their Life over the centuries of battle.",
+  "lore": "Suffering a wound that will not heal, King Pellam stood eternal guard over… something. A cauldron to revive the dead? The Holy Grail? Legends differ. He spent his time fishing a nearby river, wracked with pain but ready to defend his charge. Now something has driven him from his duties. He wanders in despair, unable to escape his agony or even to die.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/92b7f1ae-e68e-42b0-88bc-c36e610d734a.png",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 21638,
+    "acc": 20,
+    "atk": 738,
+    "def": 1244,
+    "res": 75,
+    "spd": 100,
+    "init": 98,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% DEF",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [30] Divinity when placing [Immortal]. Gain [60] when this hero is attacked when under [Immortal].",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +9%, ATK +9%, DEF +9%"
+    },
+    {
+      "tier": 4,
+      "bonus": "RES +15"
+    },
+    {
+      "tier": 5,
+      "bonus": "INIT +10"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +250"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Awaken the ability: Gift of Immortality"
+    },
+    {
+      "tier": 2,
+      "bonus": "Shield Multiplier +30%, DMG Reduction Multiplier +20%, C.DMG Reduction Multiplier +20%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Keeper of the Grail"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +50%, Armor Multiplier +30%, Weapon Multiplier +30%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Trial of Worth"
+    }
+  ],
+  "faction": "Avalon",
+  "archetype": "Defender",
+  "affinity": "Eternal",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Trial of Worth",
+      "slug": "fisher-king-trial-of-worth",
+      "skill_type": "Ultimate",
+      "description": "Equalize the HP of all allies to the ally with the most HP. If allies are above 50% HP, then permanently increase the damage they inflict to enemies by 10% (stacks up to 3 times). If allies are below 50% HP then permanently decrease the damage they receive by 10% (stacks up to 3 times). Will persist across each wave.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_FisherKing_Ultimate.webp",
+      "scaling_formula": "200%DEF",
+      "effects": [],
+      "ultimate_cost": 1450,
+      "initial_divinity": 350,
+      "awakening_level": 5,
+      "awakening_bonus": "Heal 200%DEF the ally with the Highest HP and increases the stacks limit by 2."
+    },
+    {
+      "name": "Grail Veil",
+      "slug": "fisher-king-grail-veil",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (190%DEF+120%ATK). Place [mechanic:vanish] on the ally with the lowest HP for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_FisherKing_Basic.webp",
+      "scaling_formula": "190%DEF+120%ATK",
+      "effects": [
+        "Vanish"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Gift of Immortality",
+      "slug": "fisher-king-gift-of-immortality",
+      "skill_type": "Core",
+      "description": "Place [mechanic:immortal] and [mechanic:shield] 300% DEF on all allies for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_FisherKing_Core.webp",
+      "scaling_formula": "300% DEF",
+      "effects": [
+        "Immortal",
+        "Shield"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 1,
+      "awakening_bonus": "[Immortal] and [Shield] cannot be removed when placed by this ability."
+    },
+    {
+      "name": "Keeper of the Grail",
+      "slug": "fisher-king-keeper-of-the-grail",
+      "skill_type": "Passive",
+      "description": "When [mechanic:immortal] prevents an ally’s death increases their HP, ATK and DEF by 5% (stacks up to 6 times).",
+      "image_url": "https://godforge.gg/api/media/file/ICON_FisherKing_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Prevents the duration of [Immortal] from being reduced when preventing death."
+    }
+  ],
+  "imprint_passive": "When [Immortal] prevents an ally’s death increases their HP, ATK and DEF by 2.5% (stacks up to 6 times)."
+}

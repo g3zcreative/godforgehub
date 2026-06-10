@@ -1,0 +1,143 @@
+{
+  "id": "dfffb1a1-3693-4c3e-91ea-5127b92e916f",
+  "name": "Osiris",
+  "subtitle": "Lord of Silence",
+  "slug": "osiris",
+  "rarity": 4,
+  "description": "Balance the scales in the battle with powerful attacks and health scaling.",
+  "lore": "Once a deity of agriculture, it was his murder at the hands of Set that transformed Osiris into King of Duat, god of Aaru’s dead. In the aftermath of the Shattering, Osiris reaches out to other pantheons’ underworld gods, hoping to form a network to share information and work together to repair Ryven, using the souls of the deceased as unseen messengers.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/dfffb1a1-3693-4c3e-91ea-5127b92e916f.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 19656,
+    "acc": 25,
+    "atk": 859,
+    "def": 925,
+    "res": 35,
+    "spd": 92,
+    "init": 88,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "20% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [100] Divinity when an enemy falls below 50% HP.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +7%, ATK +7%, DEF +7%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +10"
+    },
+    {
+      "tier": 5,
+      "bonus": "SPD +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +100"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "Barrier Multiplier +20%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Ignore RES +10%"
+    },
+    {
+      "tier": 3,
+      "bonus": "Awaken the ability: Cycle of Life"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +25%, Armor Multiplier +15%, Weapon Multiplier +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Underworld Judgement"
+    }
+  ],
+  "faction": "Aaru",
+  "archetype": "Brawler",
+  "affinity": "Wisdom",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Pharaoh's Grasp",
+      "slug": "osiris-pharaoh-s-grasp",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (9%HP+80%ATK) with a 50% chance to place [mechanic:drain-ii] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Osiris_Basic.webp",
+      "scaling_formula": "(9%HP+80%ATK)",
+      "effects": [
+        "Drain II"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Cycle of Life",
+      "slug": "osiris-cycle-of-life",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (12%HP+120%ATK) with a 50% chance to place [mechanic:curse-ii] on the target for 2 turns. Then heal this hero for 20% of the damage inflicted.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Osiris_Core.webp",
+      "scaling_formula": "(12%HP+120%ATK)",
+      "effects": [
+        "Curse II",
+        "Phoenix"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 3,
+      "awakening_bonus": "Also place [Phoenix] on this hero for 2 turns."
+    },
+    {
+      "name": "Underworld Judgement",
+      "slug": "osiris-underworld-judgement",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (13%HP+110%ATK). If the target is aligned with Order place [mechanic:barrier] on this hero equal to 50% of damage dealt, otherwise destroy their max HP equal to 10% of damage dealt.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Osiris_Ultimate.webp",
+      "scaling_formula": "(13%HP+110%ATK)",
+      "effects": [
+        "Barrier"
+      ],
+      "ultimate_cost": 750,
+      "initial_divinity": 250,
+      "awakening_level": 5,
+      "awakening_bonus": "Heal this hero to full HP if this ability defeats the target."
+    },
+    {
+      "name": "Balance of Ma'at",
+      "slug": "osiris-balance-of-ma-at",
+      "skill_type": "Passive",
+      "description": "When above 50% HP, increase damage this hero inflicts by 20%. Otherwise decrease damage inflicted on this hero by 20%.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Osiris_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When above 50% HP, increase damage this hero inflicts by 10%. Otherwise decrease damage inflicted on this hero by 10%."
+}

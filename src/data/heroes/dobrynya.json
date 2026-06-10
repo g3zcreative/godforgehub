@@ -1,0 +1,182 @@
+{
+  "id": "5901b932-cb96-4d23-80f1-923db5985649",
+  "name": "Dobrynya",
+  "subtitle": "The Bold",
+  "slug": "dobrynya",
+  "rarity": 3,
+  "description": "This hero story is yet to be revealed.",
+  "lore": "Though born of modest peasants, Dobrynya Nikitich rose to become one of Vyraj’s greatest knights. Slayer of dragons, rescuer of princesses, there is no traditional quest he has not undertaken—often complaining throughout, yet succeeding all the same. He performs frequent tasks for Vyraj’s princess, but still they treat him as a commoner, a circumstance he is slowly coming to resent…",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/5901b932-cb96-4d23-80f1-923db5985649.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 15196,
+    "acc": 10,
+    "atk": 584,
+    "def": 969,
+    "res": 50,
+    "spd": 84,
+    "init": 85,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "18% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [50] Divinity when intercepting or protecting damage from an ally",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +5%, ATK +5%, DEF +5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "ACC +6"
+    },
+    {
+      "tier": 5,
+      "bonus": "RES +8"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +50"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "DMG Reduction Multiplier +2.5%"
+    },
+    {
+      "tier": 2,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DMG Reduction Multiplier +2.5%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Attunement Multiplier +5%, Armor Multiplier +2.5%, Weapon Multiplier +2.5%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Awaken the ability: Daring Rescue"
+    }
+  ],
+  "faction": "Vyraj",
+  "archetype": "Defender",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Sanguine Whirlpool",
+      "slug": "dobrynya-sanguine-whirlpool",
+      "skill_type": "Ultimate",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dobrynya_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Daring Rescue",
+      "slug": "dobrynya-daring-rescue",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (240%DEF+100%ATK) and remove 1 random [Disable] from each ally. If a [Disable] is removed, place [mechanic:intercept] on the ally for 1 turn.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dobrynya_Core.webp",
+      "scaling_formula": "240%DEF+100%ATK",
+      "effects": [
+        "Intercept"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": 5,
+      "awakening_bonus": "No longer requires [Disable] to be removed and Place [Intercept] on each ally instead."
+    },
+    {
+      "name": "Fire and Sword",
+      "slug": "dobrynya-fire-and-sword",
+      "skill_type": "Basic",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dobrynya_Basic.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Powerful Ability",
+      "slug": "dobrynya-powerful-ability",
+      "skill_type": "Passive",
+      "description": "This ability is still under review - please check back later.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dobrynya_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Heroic Strike",
+      "slug": "dobrynya-heroic-strike",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (240%DEF+100%ATK) with a 50% chance to place [mechanic:atk-down-i] on the target for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dobrynya_Basic.webp",
+      "scaling_formula": "240%DEF+100%ATK",
+      "effects": [
+        "ATK Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Trusted Agent",
+      "slug": "dobrynya-trusted-agent",
+      "skill_type": "Ultimate",
+      "description": "Place [mechanic:protect-i] each ally except this hero for 3 turns. Also place [Block Debuff] on each ally for 2 Turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dobrynya_Ultimate.webp",
+      "scaling_formula": null,
+      "effects": [
+        "Protect I",
+        "Block Debuff"
+      ],
+      "ultimate_cost": 1000,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Oath of the Bogatyr",
+      "slug": "dobrynya-oath-of-the-bogatyr",
+      "skill_type": "Passive",
+      "description": "When this hero [mechanic:intercept]s an attack, Heal the protected ally for 10% of their MAX HP. If the ally is below 50% HP, prevent the [mechanic:intercept] from reducing its duration when activated.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_Dobrynya_Passive.webp",
+      "scaling_formula": null,
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": "When this hero intercepts an attack, Heal the protected ally for 5% of their MAX HP. If the ally is below 50% HP, prevent the [Intercept] from reducing its duration when activated."
+}

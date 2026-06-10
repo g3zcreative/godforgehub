@@ -1,0 +1,125 @@
+{
+  "id": "dac9e905-a3cb-4447-afe2-07595099b362",
+  "name": "Terracotta Warrior",
+  "subtitle": "Living Statue",
+  "slug": "terracotta-warrior",
+  "rarity": 2,
+  "description": "Full Hero Information▶",
+  "lore": "When first created, the army of terracotta warriors made up some of the funeral goods buried with an ancient emperor, intended to symbolically protect him in the afterlife. In Ryven, the changes in aether have rendered such figures susceptible to magical animation. They are now sculpted as mindless but mighty soldiers of Tian’s military leaders, serving as perfectly obedient shock troops.",
+  "image_url": "https://yawfmtkrnewpdxjdypmc.supabase.co/storage/v1/object/public/hero-images/24b8c82f-4458-4d6a-882b-282e576a2f1e.webp",
+  "image_zoom": 1.5,
+  "image_focal_x": 50,
+  "image_focal_y": 0,
+  "stats": {
+    "hp": 13049,
+    "acc": 5,
+    "atk": 650,
+    "def": 628,
+    "res": 15,
+    "spd": 77,
+    "init": 73,
+    "crit_dmg": 50,
+    "crit_rate": 10
+  },
+  "leader_bonus": {
+    "text": "30% HP",
+    "scope": "All Battles"
+  },
+  "divinity_generator": "Gain [20] Divinity when inflicting damage to an enemy.",
+  "ascension_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 3,
+      "bonus": "HP +3%, ATK +3%, DEF +3%"
+    },
+    {
+      "tier": 4,
+      "bonus": "C.DMG +5"
+    },
+    {
+      "tier": 5,
+      "bonus": "ACC +5"
+    },
+    {
+      "tier": 6,
+      "bonus": "Initial Divinity +25"
+    }
+  ],
+  "awakening_bonuses": [
+    {
+      "tier": 1,
+      "bonus": "All Basic, Core, and Ultimate Skills gain bonus effects."
+    },
+    {
+      "tier": 2,
+      "bonus": "HP +15%"
+    },
+    {
+      "tier": 3,
+      "bonus": "DEF +15%"
+    },
+    {
+      "tier": 4,
+      "bonus": "Crit Evasion +15%"
+    },
+    {
+      "tier": 5,
+      "bonus": "Whenever this unit is attacked, the attacking enemy takes damage equal to 50% of this unit's Defense. The damage cannot be critical."
+    }
+  ],
+  "faction": "Tian",
+  "archetype": "Brawler",
+  "affinity": "Strength",
+  "allegiance": "Order",
+  "skills": [
+    {
+      "name": "Ancient Vanguard",
+      "slug": "terracotta-warrior-ancient-vanguard",
+      "skill_type": "Core",
+      "description": "Attack 1 enemy (7%HP+80%ATK)2 times. Each hit has a 35% to place [mechanic:spd-down-i] for 2 turns.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TerracottaWarrior_Core.webp",
+      "scaling_formula": "7%HP+80%ATK",
+      "effects": [
+        "SPD Down I"
+      ],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Eternal Mandate",
+      "slug": "terracotta-warrior-eternal-mandate",
+      "skill_type": "Ultimate",
+      "description": "Attack 1 enemy (5%HP+50%ATK)3 times. Each hit decreases the target’s turn meter by 10% if the attack is critical.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TerracottaWarrior_Ultimate.webp",
+      "scaling_formula": "5%HP+50%ATK",
+      "effects": [],
+      "ultimate_cost": 1450,
+      "initial_divinity": 350,
+      "awakening_level": null,
+      "awakening_bonus": null
+    },
+    {
+      "name": "Shattered Wrath",
+      "slug": "terracotta-warrior-shattered-wrath",
+      "skill_type": "Basic",
+      "description": "Attack 1 enemy (6%HP+65%ATK)2 times. Each hit heals this hero for 10% of the damage inflicted if the attack is critical.",
+      "image_url": "https://godforge.gg/api/media/file/ICON_TerracottaWarrior_Basic.webp",
+      "scaling_formula": "6%HP+65%ATK",
+      "effects": [],
+      "ultimate_cost": null,
+      "initial_divinity": null,
+      "awakening_level": null,
+      "awakening_bonus": null
+    }
+  ],
+  "imprint_passive": null
+}
