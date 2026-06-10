@@ -16,7 +16,7 @@ export interface NewsArticle {
 const newsModules = import.meta.glob<{ default: string }>('/src/data/news/*.md', { query: '?raw', eager: true });
 
 function parseArticle(raw: string): Omit<NewsArticle, 'slug'> {
-  const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
+  const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---([^\n]*)(?:\r?\n)?([\s\S]*)$/;
   const match = raw.match(frontmatterRegex);
   
   if (!match) {
@@ -31,7 +31,9 @@ function parseArticle(raw: string): Omit<NewsArticle, 'slug'> {
   }
   
   const yamlBlock = match[1];
-  const content = match[2];
+  const sameLineContent = match[2] || '';
+  const restContent = match[3] || '';
+  const content = sameLineContent.trim() ? (sameLineContent + '\n' + restContent) : restContent;
   const metadata: any = {};
   
   const lines = yamlBlock.split(/\r?\n/);
