@@ -6,6 +6,7 @@ import { RefreshCw, Copy, Check, Send, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Textarea } from "@/components/ui/textarea";
+import { getLocalNewsArticles } from "@/data/news";
 
 const columns: ColumnConfig[] = [
   {
@@ -106,7 +107,7 @@ export default function AdminSeo() {
           supabase.from("weapons").select("slug").order("slug"),
           supabase.from("armor_sets").select("slug").order("slug"),
           supabase.from("bosses").select("slug").order("slug"),
-          supabase.from("news_articles").select("slug").eq("published", true).order("slug"),
+          Promise.resolve({ data: getLocalNewsArticles().filter(n => n.published).map(n => ({ slug: n.slug })) }),
           supabase.from("guides").select("slug").eq("published", true).order("slug"),
           supabase.from("mechanics").select("slug").order("slug"),
         ]);
