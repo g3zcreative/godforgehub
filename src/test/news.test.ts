@@ -4,7 +4,6 @@ import { getLocalNewsArticles } from "../data/news";
 describe("news sorting", () => {
   it("should sort articles by published_at in descending order (newest to oldest)", () => {
     const articles = getLocalNewsArticles();
-    console.log("Articles:", articles.map(a => ({ title: a.title, published_at: a.published_at })));
     expect(articles.length).toBeGreaterThan(1);
     
     for (let i = 0; i < articles.length - 1; i++) {
