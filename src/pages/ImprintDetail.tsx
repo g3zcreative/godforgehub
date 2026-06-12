@@ -68,7 +68,7 @@ export default function ImprintDetail() {
           </div>
         ) : (
           <>
-            <SEO rawTitle={seoTitle || `${imprint.name} | Godforge Imprint Database | GodforgeHub`} description={seoDesc || `${imprint.name} ${rarityLabel(imprint.rarity)} imprint in Godforge — ${imprint.passive?.slice(0, 120) || 'passive effect, linked weapons, and best builds.'}`} image={imprint.image_url || undefined} url={`/database/imprints/${imprint.slug}`} />
+            <SEO rawTitle={seoTitle || `${imprint.name} Imprint Guide & Stats - Godforge`} description={seoDesc || `${imprint.name} imprint guide for Godforge. Learn about passive effects, linked weapons, and best hero builds.`} image={imprint.image_url || undefined} url={`/database/imprints/${imprint.slug}`} />
 
             <div className="flex flex-col md:flex-row gap-6 mb-8">
               <div className="flex-1 min-w-0">

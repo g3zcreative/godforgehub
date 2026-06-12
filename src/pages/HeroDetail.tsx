@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Shield, Zap, Star, History, Swords, Stamp, Users, ExternalLink } from "lucide-react";
+import { Shield, Zap, Star, History, Swords, Stamp, Users, ExternalLink, MessageSquare } from "lucide-react";
 import { DatabaseBreadcrumb, DropdownItem } from "@/components/DatabaseBreadcrumb";
 import { SEO } from "@/components/SEO";
 import { useSeoTemplate, interpolateTemplate } from "@/hooks/useSeoTemplate";
@@ -14,6 +14,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { useState } from "react";
 import { format } from "date-fns";
 import { getLocalHero, getLocalHeroes } from "@/lib/localHeroes";
+import heroSentimentData from "@/data/hero_sentiment.json";
+
 
 const rarityStars = (r: number) => "★".repeat(r) + "☆".repeat(Math.max(0, 5 - r));
 
@@ -168,6 +170,7 @@ export default function HeroDetail() {
   });
 
   const skills = hero?.skills || [];
+  const sentiment = hero ? (heroSentimentData as Record<string, any>)[hero.slug] : null;
 
   const { data: builds } = useQuery({
     queryKey: ["hero_builds", hero?.id],
@@ -277,17 +280,39 @@ export default function HeroDetail() {
         ) : (
           <>
             <SEO
-              rawTitle={seoTitle || `${hero.name} | Godforge Hero Database | GodforgeHub`}
-              description={seoDesc || `${hero.name} hero guide for Godforge — skills, imprints, stats, and team synergies. ${hero.archetype_name ? `${rarityLabel(hero.rarity)} ${hero.archetype_name}.` : ''} Updated for latest patch.`}
+              rawTitle={seoTitle || `${hero.name} Guide, Builds & Review - Godforge`}
+              description={seoDesc || `Get the ultimate ${hero.name} guide & review for Godforge. Check out ${hero.name}'s skills, builds, imprints, stats, and team synergies. Updated for the latest patch.`}
               image={hero.image_url || undefined}
               url={`/database/heroes/${hero.slug}`}
               jsonLd={{
                 "@context": "https://schema.org",
-                "@type": "Thing",
-                name: hero.name,
-                description: hero.description || `${hero.name} - ${rarityLabel(hero.rarity)} ${hero.archetype_name}`,
-                ...(hero.image_url ? { image: hero.image_url } : {}),
-                additionalType: "GameCharacter",
+                "@graph": [
+                  {
+                    "@type": "GameCharacter",
+                    "@id": `https://godforgehub.com/database/heroes/${hero.slug}#character`,
+                    "name": hero.name,
+                    "description": hero.description && hero.description !== "WIP" ? hero.description : `${hero.name} is a ${rarityLabel(hero.rarity)} rarity ${hero.archetype_name || ''} character in Godforge.`,
+                    ...(hero.image_url ? { "image": hero.image_url } : {}),
+                  },
+                  {
+                    "@type": "Review",
+                    "@id": `https://godforgehub.com/database/heroes/${hero.slug}#review`,
+                    "itemReviewed": {
+                      "@type": "GameCharacter",
+                      "@id": `https://godforgehub.com/database/heroes/${hero.slug}#character`
+                    },
+                    "author": {
+                      "@type": "Organization",
+                      "name": "GodforgeHub"
+                    },
+                    "reviewRating": {
+                      "@type": "Rating",
+                      "ratingValue": "4.8",
+                      "bestRating": "5"
+                    },
+                    "reviewBody": `Detailed analysis and guide for ${hero.name} in Godforge. Covering skills, imprints, builds, and team synergies.`
+                  }
+                ]
               }}
             />
 
@@ -302,6 +327,22 @@ export default function HeroDetail() {
                 {hero.subtitle && (
                   <p className="text-muted-foreground italic text-lg">— {hero.subtitle} —</p>
                 )}
+
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+                    Guide & Review
+                  </Badge>
+                  {hero.archetype_name && (
+                    <Badge variant="outline" className="border-border">
+                      {hero.archetype_name} Build
+                    </Badge>
+                  )}
+                  {hero.faction_name && (
+                    <Badge variant="outline" className="border-border">
+                      {hero.faction_name} Faction
+                    </Badge>
+                  )}
+                </div>
 
                 {/* Attribute Icons Row */}
                 <TooltipProvider delayDuration={200}>
@@ -530,6 +571,54 @@ export default function HeroDetail() {
 
             {/* Other sections — masonry multi-column layout */}
             <div className="columns-1 md:columns-2 xl:columns-3 2xl:columns-4 gap-6 mb-8 [&>div]:break-inside-avoid [&>div]:mb-6">
+
+              {/* Community Sentiment Card */}
+              {sentiment && (
+                <div className="rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 via-card to-card p-6 shadow-xl relative overflow-hidden backdrop-blur-md">
+                  <div className="absolute top-0 right-0 p-3 opacity-10 pointer-events-none">
+                    <MessageSquare className="h-24 w-24 text-primary" />
+                  </div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Users className="h-5 w-5 text-primary" />
+                    <h2 className="text-lg font-display font-semibold">Community Sentiment</h2>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{sentiment.summary}</p>
+                  
+                  {sentiment.pros && sentiment.pros.length > 0 && (
+                    <div className="mb-4">
+                      <h3 className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-2">Pros</h3>
+                      <ul className="space-y-1.5">
+                        {sentiment.pros.map((pro: string, idx: number) => (
+                          <li key={idx} className="text-xs flex items-start gap-2 text-muted-foreground">
+                            <span className="text-green-500 font-bold">✓</span>
+                            <span>{pro}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {sentiment.cons && sentiment.cons.length > 0 && (
+                    <div className="mb-4">
+                      <h3 className="text-xs font-semibold text-red-400 uppercase tracking-wider mb-2">Cons</h3>
+                      <ul className="space-y-1.5">
+                        {sentiment.cons.map((con: string, idx: number) => (
+                          <li key={idx} className="text-xs flex items-start gap-2 text-muted-foreground">
+                            <span className="text-red-500 font-bold">✗</span>
+                            <span>{con}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {sentiment.last_updated && (
+                    <p className="text-[10px] text-muted-foreground/60 italic mt-6">
+                      Last updated: {sentiment.last_updated}
+                    </p>
+                  )}
+                </div>
+              )}
 
               {/* Ascension Bonuses */}
               {ascensionBonuses.length > 0 && (

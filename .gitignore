@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Scraper / Monitor caches and logs
+scripts/data/
+
