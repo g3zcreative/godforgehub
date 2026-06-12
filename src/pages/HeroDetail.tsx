@@ -171,6 +171,8 @@ export default function HeroDetail() {
 
   const skills = hero?.skills || [];
   const sentiment = hero ? (heroSentimentData as Record<string, any>)[hero.slug] : null;
+  const passiveSkill = skills.find((s) => s.skill_type?.toLowerCase() === "passive");
+  const imprintImageUrl = passiveSkill?.image_url;
 
   const { data: builds } = useQuery({
     queryKey: ["hero_builds", hero?.id],
@@ -483,6 +485,24 @@ export default function HeroDetail() {
                         </div>
                       </div>
                     )}
+                    {hero.imprint_passive && (
+                      <div className="flex items-start gap-3 rounded-lg border border-border p-4 bg-card">
+                        {imprintImageUrl ? (
+                          <img src={imprintImageUrl} alt="Imprint Passive" className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border" />
+                        ) : (
+                          <div className="h-10 w-10 rounded-full bg-muted flex-shrink-0 flex items-center justify-center border-2 border-border">
+                            <Stamp className="h-5 w-5 text-muted-foreground" />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-baseline gap-2 mb-1">
+                            <h3 className="font-display font-bold uppercase tracking-wide text-sm">Imprint Passive</h3>
+                            <span className="text-xs text-muted-foreground font-semibold uppercase">(Passive)</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.imprint_passive) }} />
+                        </div>
+                      </div>
+                    )}
                     {hero.divinity_generator && (
                       <div className="rounded-lg border border-border p-4 bg-card">
                         <div className="flex items-baseline gap-2 mb-1">
@@ -544,6 +564,25 @@ export default function HeroDetail() {
                         </div>
                       </Link>
                     ))}
+                    {/* Imprint Passive as a skill-style card */}
+                    {hero.imprint_passive && (
+                      <div className="flex items-start gap-3 rounded-lg border border-border p-4 bg-card">
+                        {imprintImageUrl ? (
+                          <img src={imprintImageUrl} alt="Imprint Passive" className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border" />
+                        ) : (
+                          <div className="h-10 w-10 rounded-full bg-muted flex-shrink-0 flex items-center justify-center border-2 border-border">
+                            <Stamp className="h-5 w-5 text-muted-foreground" />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-baseline gap-2 mb-1">
+                            <h3 className="font-display font-bold uppercase tracking-wide text-sm">Imprint Passive</h3>
+                            <span className="text-xs text-muted-foreground font-semibold uppercase">(Passive)</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: preprocessMarkup(hero.imprint_passive) }} />
+                        </div>
+                      </div>
+                    )}
                     {/* Divinity Generator as a skill-style card */}
                     {hero.divinity_generator && (
                       <div className="rounded-lg border border-border p-4 bg-card">
