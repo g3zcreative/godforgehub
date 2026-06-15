@@ -431,7 +431,7 @@ id: "{post_uuid}"
 title: "{title}"
 slug: "{slug}"
 category: "Community"
-published: false
+published: true
 published_at: "{pub_time}"
 author: "Xsunami"
 excerpt: "{excerpt.replace('"', '\\"')}"

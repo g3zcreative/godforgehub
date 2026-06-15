@@ -7,5 +7,20 @@
     ],
     "cons": [],
     "last_updated": "2026-06-12"
+  },
+  "isolde": {
+    "summary": "Isolde is consistently regarded as an exceptionally powerful healer capable of single-handedly carrying players through Story Mode and much of early Adventure content. Her strength trivializes most encounters, allowing for extensive autoplay. However, this power level is so high that it prompts discussions about either nerfing her passive or significantly buffing almost all other healers to create better game balance.",
+    "pros": [
+      "Carries players through Story Mode",
+      "Trivializes most content until a good chunk into adventure mode",
+      "Enables extensive autoplay for early and mid-game content",
+      "Makes teams nearly unkillable in story mode with reasonable gear and level"
+    ],
+    "cons": [
+      "Considered overtly strong and potentially in need of a nerf to her passive",
+      "Her power level highlights the weakness and imbalance of most other healers",
+      "Can make early game content too easy, potentially reducing player engagement by removing the need for manual play"
+    ],
+    "last_updated": "2026-06-15"
   }
 }
