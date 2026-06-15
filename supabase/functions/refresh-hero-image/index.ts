@@ -49,13 +49,22 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Construct direct image URL: /heroes/assets/hero/CO_Character_{Name}_main.webp
+    // Construct direct image URL: /api/media/file/CO_Character_{Name}_main.webp (with fallback to assets/hero path)
     // Spaces in names become underscores
     const nameForUrl = heroData.name.replace(/\s+/g, "_");
-    const imgUrl = `https://godforge.gg/heroes/assets/hero/CO_Character_${nameForUrl}_main.webp`;
+    let imgUrl = `https://godforge.gg/api/media/file/CO_Character_${nameForUrl}_main.webp`;
     console.log(`Downloading hero image: ${imgUrl}`);
 
-    const imgRes = await fetch(imgUrl);
+    let imgRes = await fetch(imgUrl);
+    if (!imgRes.ok) {
+      const fallbackUrl = `https://godforge.gg/heroes/assets/hero/CO_Character_${nameForUrl}_main.webp`;
+      console.log(`Failed to fetch from primary URL. Retrying with fallback URL: ${fallbackUrl}`);
+      imgRes = await fetch(fallbackUrl);
+      if (imgRes.ok) {
+        imgUrl = fallbackUrl;
+      }
+    }
+
     if (!imgRes.ok) {
       return new Response(JSON.stringify({ error: `Image download failed: ${imgRes.status} from ${imgUrl}` }), {
         status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },

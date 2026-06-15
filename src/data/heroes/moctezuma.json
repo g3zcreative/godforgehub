@@ -25,7 +25,7 @@
   "description": "Moctezuma is a powerful Defender who punishes enemies with Barriers and Shields, protecting his allies while reflecting damage back at his foes.",
   "affinity": "Strength",
   "element": "Omeyocan",
-  "image_url": "https://godforge.gg/heroes/assets/hero/CO_Character_Moctezuma_main.webp",
+  "image_url": "https://godforge.gg/api/media/file/CO_Character_Moctezuma_main.webp",
   "class_type": "Defender",
   "stats": {
     "hp": 12388,

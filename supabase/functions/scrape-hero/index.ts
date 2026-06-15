@@ -107,7 +107,7 @@ Map the data to these fields:
 - allegiance: The hero's ALLEGIANCE — their moral alignment. Valid values: "Chaos", "Order"
 - description: The hero summary text (1-2 sentences)
 - lore: The Story/Lore text from the page if present
-- image_url: The hero's main portrait image URL. IMPORTANT: Do NOT use any placehold.co URLs. Instead, construct the URL as: https://godforge.gg/heroes/assets/hero/CO_Character_{Name}_main.webp where {Name} is the hero name with spaces replaced by underscores (e.g. CO_Character_Sun_Wukong_main.webp). If you cannot determine the name, leave image_url empty.
+- image_url: The hero's main portrait image URL. IMPORTANT: Do NOT use any placehold.co URLs. Instead, construct the URL as: https://godforge.gg/api/media/file/CO_Character_{Name}_main.webp where {Name} is the hero name with spaces replaced by underscores (e.g. CO_Character_Sun_Wukong_main.webp). If you cannot determine the name, leave image_url empty.
 - stats: JSON object with base stats. Include keys: hp, atk, def, spd, init, crit_rate, crit_dmg, res, acc. Use numeric values.
 - leader_bonus: JSON object with "text" (e.g. "20% DEF") and "scope" (e.g. "All Battles")
 - divinity_generator: The divinity generation text (e.g. "Gain [50] Divinity when hit by an enemy. Gain [500] divinity when this hero gains a [Disable]")
@@ -247,7 +247,7 @@ Return your response by calling the create_hero function.`,
     if (!hero.image_url || hero.image_url.includes("placehold.co")) {
       const nameForUrl = (hero.name || "").replace(/\s+/g, "_");
       hero.image_url = nameForUrl
-        ? `https://godforge.gg/heroes/assets/hero/CO_Character_${nameForUrl}_main.webp`
+        ? `https://godforge.gg/api/media/file/CO_Character_${nameForUrl}_main.webp`
         : null;
     }
 
