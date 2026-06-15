@@ -274,7 +274,7 @@ spartan,olympus,2,https://godforge.gg/heroes/spartan
 amazon,olympus,2,https://godforge.gg/heroes/amazon
 tlaloc,omeyocan,5,https://godforge.gg/heroes/tlaloc
 quetzalcoatl,omeyocan,5,https://godforge.gg/heroes/quetzalcoatl
-moctezuma,omeyocan,5,https://godforge.gg/heroes/moctezuma
+moctezuma,omeyocan,5,https://godforge.gg/heroes/omeyocan/moctezuma
 metztli,omeyocan,5,https://godforge.gg/heroes/metztli
 kinich-ahau,omeyocan,5,https://godforge.gg/heroes/kinich-ahau
 cizin,omeyocan,5,https://godforge.gg/heroes/cizin
