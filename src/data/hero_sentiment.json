@@ -22,5 +22,28 @@
       "Can make early game content too easy, potentially reducing player engagement by removing the need for manual play"
     ],
     "last_updated": "2026-06-15"
+  },
+  "heimdall": {
+    "summary": "Players largely agree that Heimdall's 'Intercept' skill was negatively altered from its Alpha version, now blocking entire AoE attacks instead of just targeted ones, which feels problematic and less effective. There's a strong consensus that the current interaction between 'Intercept' and 'Retaliate' is frustrating, as 'Retaliate' does not proc when 'Intercept' negates damage, leading to poor synergy within his kit.",
+    "pros": [
+      "Intercept was effective and felt good in its Alpha state when it only blocked targeted attacks"
+    ],
+    "cons": [
+      "Current Intercept blocks entire AoE attacks, which is considered 'nonsense' and 'feels really bad'",
+      "Retaliate does not proc when Intercept negates damage, leading to a lack of synergy and frustrating interactions",
+      "Players would avoid combining Retaliate and Intercept due to their poor interaction",
+      "The kit is seen as needing a rework or a reversion of the Intercept change to its Alpha behavior"
+    ],
+    "last_updated": "2026-06-17"
+  },
+  "quetzalcoatl": {
+    "summary": "Quetzalcoatl is appreciated for its significant speed buff aura, which was reverted to a favorable state. However, a specific design element\u2014its post-battle screaming animation\u2014is widely considered annoying and detracts from the player experience.",
+    "pros": [
+      "Provides a strong 21% speed aura in all battles, a change that was appreciated by players"
+    ],
+    "cons": [
+      "Its screaming animation after every battle is annoying and disruptive"
+    ],
+    "last_updated": "2026-06-17"
   }
 }
