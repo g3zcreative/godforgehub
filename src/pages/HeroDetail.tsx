@@ -15,7 +15,38 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { getLocalHero, getLocalHeroes } from "@/lib/localHeroes";
 import heroSentimentData from "@/data/hero_sentiment.json";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+function SafeImage({
+  src,
+  alt,
+  className,
+  fallbackIcon: FallbackIcon,
+}: {
+  src?: string | null;
+  alt: string;
+  className?: string;
+  fallbackIcon: React.ComponentType<{ className?: string }>;
+}) {
+  const [error, setError] = useState(!src);
+
+  if (error || !src) {
+    return (
+      <div className={`flex items-center justify-center bg-muted border border-border flex-shrink-0 ${className}`}>
+        <FallbackIcon className="h-5 w-5 text-muted-foreground" />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      onError={() => setError(true)}
+    />
+  );
+}
 
 const rarityStars = (r: number) => "★".repeat(r) + "☆".repeat(Math.max(0, 5 - r));
 
@@ -228,6 +259,124 @@ export default function HeroDetail() {
   const ascensionBonuses = (hero?.ascension_bonuses || []) as { tier: number; bonus: string }[];
   const awakeningBonuses = (hero?.awakening_bonuses || []) as { tier: number; bonus: string }[];
   const hasBuilds = (builds?.length || 0) > 0;
+  const hasSidebarContent = hasBuilds || !!sentiment;
+
+  const renderBuilds = () => {
+    if (!builds || builds.length === 0) return null;
+    return (
+      <div className="space-y-4">
+        {builds.map((build: any) => (
+          <div key={build.id} className="space-y-6">
+            <div className="flex items-center justify-between border-b border-border/30 pb-2">
+              <h3 className="text-sm font-display font-semibold text-muted-foreground">{build.title}</h3>
+              <Link
+                to={`/database/heroes/${hero.slug}/builds/${build.slug}`}
+                className="text-xs text-primary hover:underline flex items-center gap-1"
+              >
+                Full Guide <ExternalLink className="h-3 w-3" />
+              </Link>
+            </div>
+            {build.weapon && (
+              <Link to={`/database/weapons/${build.weapon.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-3 hover:border-primary/30 transition-colors bg-card group">
+                <SafeImage src={build.weapon.image_url} alt={build.weapon.name} className="h-10 w-10 rounded object-cover border border-border" fallbackIcon={Swords} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5"><Swords className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Weapon</span></div>
+                  <p className="font-display font-semibold text-sm truncate">{build.weapon.name}</p>
+                  {build.weapon.passive && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.weapon.passive}</p>}
+                </div>
+              </Link>
+            )}
+            {build.imprint && (
+              <Link to={`/database/imprints/${build.imprint.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-3 hover:border-primary/30 transition-colors bg-card group">
+                <SafeImage src={build.imprint.image_url} alt={build.imprint.name} className="h-10 w-10 rounded object-cover border border-border" fallbackIcon={Stamp} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5"><Stamp className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Imprint</span></div>
+                  <p className="font-display font-semibold text-sm truncate">{build.imprint.name}</p>
+                  {build.imprint.passive && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.imprint.passive}</p>}
+                </div>
+              </Link>
+            )}
+            {build.armor_set && (
+              <div className="flex items-center gap-3 rounded-lg border border-border p-3 bg-card">
+                <SafeImage src={build.armor_set.image_url} alt={build.armor_set.name} className="h-10 w-10 rounded object-cover border border-border" fallbackIcon={Shield} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5"><Shield className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Armor Set</span></div>
+                  <p className="font-display font-semibold text-sm truncate">{build.armor_set.name}</p>
+                  {build.armor_set.set_bonus && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.armor_set.set_bonus}</p>}
+                </div>
+              </div>
+            )}
+            {build.synergies.length > 0 && (
+              <div className="pt-2">
+                <p className="text-xs text-muted-foreground uppercase font-semibold mb-2 flex items-center gap-1"><Users className="h-3.5 w-3.5 text-primary" /> Synergies</p>
+                <div className="space-y-2">
+                  {build.synergies.map((s: any) => (
+                    <Link key={s.id} to={`/database/heroes/${s.heroes?.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-2.5 hover:border-primary/30 transition-colors bg-card">
+                      <SafeImage src={s.heroes?.image_url} alt={s.heroes?.name || "Hero"} className="h-8 w-8 rounded object-cover border border-border" fallbackIcon={Users} />
+                      <div>
+                        <p className="font-display font-semibold text-sm">{s.heroes?.name}</p>
+                        {s.note && <p className="text-xs text-muted-foreground">{s.note}</p>}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const renderSentiment = () => {
+    if (!sentiment) return null;
+    return (
+      <div className="rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 via-card to-card p-6 shadow-xl relative overflow-hidden backdrop-blur-md">
+        <div className="absolute top-0 right-0 p-3 opacity-10 pointer-events-none">
+          <MessageSquare className="h-24 w-24 text-primary" />
+        </div>
+        <div className="flex items-center gap-2 mb-4">
+          <Users className="h-5 w-5 text-primary" />
+          <h2 className="text-lg font-display font-semibold">Community Sentiment</h2>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4">{sentiment.summary}</p>
+        
+        {sentiment.pros && sentiment.pros.length > 0 && (
+          <div className="mb-4">
+            <h3 className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-2">Pros</h3>
+            <ul className="space-y-1.5">
+              {sentiment.pros.map((pro: string, idx: number) => (
+                <li key={idx} className="text-xs flex items-start gap-2 text-muted-foreground">
+                  <span className="text-green-500 font-bold">✓</span>
+                  <span>{pro}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        
+        {sentiment.cons && sentiment.cons.length > 0 && (
+          <div className="mb-4">
+            <h3 className="text-xs font-semibold text-red-400 uppercase tracking-wider mb-2">Cons</h3>
+            <ul className="space-y-1.5">
+              {sentiment.cons.map((con: string, idx: number) => (
+                <li key={idx} className="text-xs flex items-start gap-2 text-muted-foreground">
+                  <span className="text-red-500 font-bold">✗</span>
+                  <span>{con}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        
+        {sentiment.last_updated && (
+          <p className="text-[10px] text-muted-foreground/60 italic mt-6">
+            Last updated: {sentiment.last_updated}
+          </p>
+        )}
+      </div>
+    );
+  };
 
   const heroSeoVars = hero ? { name: hero.name, element: hero.faction_name, class_type: hero.archetype_name, faction: hero.faction_name, archetype: hero.archetype_name, rarity: hero.rarity, rarity_label: rarityLabel(hero.rarity), description: hero.description, subtitle: hero.subtitle } : {};
   const seoTitle = interpolateTemplate(tpl?.title_template, heroSeoVars);
@@ -392,69 +541,38 @@ export default function HeroDetail() {
                 )}
               </div>
 
-              {/* Right Column: Recommendations or Skills fallback */}
+              {/* Right Column: Recommendations, Sentiment, or Skills fallback */}
               <div className="lg:col-span-2 space-y-6">
-                {hasBuilds ? (
+                {hasSidebarContent ? (
                   <>
-                    {builds!.map((build: any) => (
-                      <div key={build.id} className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <h2 className="text-base font-display font-semibold">{build.title}</h2>
-                          <Link
-                            to={`/database/heroes/${hero.slug}/builds/${build.slug}`}
-                            className="text-xs text-primary hover:underline flex items-center gap-1"
-                          >
-                            Full Guide <ExternalLink className="h-3 w-3" />
-                          </Link>
-                        </div>
-                        {build.weapon && (
-                          <Link to={`/database/weapons/${build.weapon.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-3 hover:border-primary/30 transition-colors bg-card group">
-                            {build.weapon.image_url && <img src={build.weapon.image_url} alt={build.weapon.name} className="h-10 w-10 rounded object-cover border border-border" />}
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2 mb-0.5"><Swords className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Weapon</span></div>
-                              <p className="font-display font-semibold text-sm truncate">{build.weapon.name}</p>
-                              {build.weapon.passive && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.weapon.passive}</p>}
-                            </div>
-                          </Link>
-                        )}
-                        {build.imprint && (
-                          <Link to={`/database/imprints/${build.imprint.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-3 hover:border-primary/30 transition-colors bg-card group">
-                            {build.imprint.image_url && <img src={build.imprint.image_url} alt={build.imprint.name} className="h-10 w-10 rounded object-cover border border-border" />}
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2 mb-0.5"><Stamp className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Imprint</span></div>
-                              <p className="font-display font-semibold text-sm truncate">{build.imprint.name}</p>
-                              {build.imprint.passive && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.imprint.passive}</p>}
-                            </div>
-                          </Link>
-                        )}
-                        {build.armor_set && (
-                          <div className="flex items-center gap-3 rounded-lg border border-border p-3 bg-card">
-                            {build.armor_set.image_url && <img src={build.armor_set.image_url} alt={build.armor_set.name} className="h-10 w-10 rounded object-cover border border-border" />}
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2 mb-0.5"><Shield className="h-3.5 w-3.5 text-primary" /><span className="text-[10px] text-muted-foreground uppercase font-semibold">Armor Set</span></div>
-                              <p className="font-display font-semibold text-sm truncate">{build.armor_set.name}</p>
-                              {build.armor_set.set_bonus && <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{build.armor_set.set_bonus}</p>}
-                            </div>
-                          </div>
-                        )}
-                        {build.synergies.length > 0 && (
-                          <div>
-                            <p className="text-xs text-muted-foreground uppercase font-semibold mb-2 flex items-center gap-1"><Users className="h-3.5 w-3.5 text-primary" /> Synergies</p>
-                            <div className="space-y-2">
-                              {build.synergies.map((s: any) => (
-                                <Link key={s.id} to={`/database/heroes/${s.heroes?.slug}`} className="flex items-center gap-3 rounded-lg border border-border p-2.5 hover:border-primary/30 transition-colors bg-card">
-                                  {s.heroes?.image_url && <img src={s.heroes.image_url} alt={s.heroes.name} className="h-8 w-8 rounded object-cover border border-border" />}
-                                  <div>
-                                    <p className="font-display font-semibold text-sm">{s.heroes?.name}</p>
-                                    {s.note && <p className="text-xs text-muted-foreground">{s.note}</p>}
-                                  </div>
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                    {hasBuilds && sentiment ? (
+                      <Tabs defaultValue="build" className="w-full">
+                        <TabsList className="grid w-full grid-cols-2 mb-6 bg-muted/30 p-1 border border-border/50 rounded-lg">
+                          <TabsTrigger value="build" className="text-sm font-semibold rounded-md py-1.5 transition-all data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
+                            Recommended Build
+                          </TabsTrigger>
+                          <TabsTrigger value="sentiment" className="text-sm font-semibold rounded-md py-1.5 transition-all data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
+                            Community Sentiment
+                          </TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="build" className="space-y-4 outline-none">
+                          {renderBuilds()}
+                        </TabsContent>
+                        <TabsContent value="sentiment" className="outline-none">
+                          {renderSentiment()}
+                        </TabsContent>
+                      </Tabs>
+                    ) : hasBuilds ? (
+                      <div className="space-y-4">
+                        <h2 className="text-base font-display font-semibold border-b border-border/30 pb-2 flex items-center gap-2">
+                          <Swords className="h-4.5 w-4.5 text-primary" />
+                          Recommended Build
+                        </h2>
+                        {renderBuilds()}
                       </div>
-                    ))}
+                    ) : (
+                      renderSentiment()
+                    )}
                   </>
                 ) : (
                   <>
@@ -464,9 +582,7 @@ export default function HeroDetail() {
                         <div className="space-y-3">
                           {skills.map((skill) => (
                             <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="flex items-start gap-3 rounded-lg border border-border p-3 hover:border-primary/30 transition-colors group bg-card">
-                              {skill.image_url && (
-                                <img src={skill.image_url} alt={skill.name} className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border group-hover:border-primary/40 transition-colors" />
-                              )}
+                              <SafeImage src={skill.image_url} alt={skill.name} className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border group-hover:border-primary/40 transition-colors" fallbackIcon={Star} />
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-baseline gap-2 mb-1 flex-wrap">
                                   <h3 className="font-display font-bold uppercase tracking-wide text-sm">{skill.name}</h3>
@@ -487,13 +603,7 @@ export default function HeroDetail() {
                     )}
                     {hero.imprint_passive && (
                       <div className="flex items-start gap-3 rounded-lg border border-border p-4 bg-card">
-                        {imprintImageUrl ? (
-                          <img src={imprintImageUrl} alt="Imprint Passive" className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border" />
-                        ) : (
-                          <div className="h-10 w-10 rounded-full bg-muted flex-shrink-0 flex items-center justify-center border-2 border-border">
-                            <Stamp className="h-5 w-5 text-muted-foreground" />
-                          </div>
-                        )}
+                        <SafeImage src={imprintImageUrl} alt="Imprint Passive" className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border" fallbackIcon={Stamp} />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-baseline gap-2 mb-1">
                             <h3 className="font-display font-bold uppercase tracking-wide text-sm">Imprint Passive</h3>
@@ -529,15 +639,13 @@ export default function HeroDetail() {
 
             {/* ===== BELOW THE FOLD: Masonry-style sections ===== */}
             {/* Skills row first (full width) */}
-            {hasBuilds && skills && skills.length > 0 && (
+            {hasSidebarContent && skills && skills.length > 0 && (
               <div className="mb-8">
                 <h2 className="text-xl font-display font-semibold mb-4">Hero Skills</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
                     {skills.map((skill) => (
                       <Link key={skill.id} to={`/database/skills/${skill.slug}`} className="flex items-start gap-3 rounded-lg border border-border p-4 hover:border-primary/30 transition-colors group bg-card">
-                        {skill.image_url && (
-                          <img src={skill.image_url} alt={skill.name} className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border group-hover:border-primary/40 transition-colors" />
-                        )}
+                        <SafeImage src={skill.image_url} alt={skill.name} className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border group-hover:border-primary/40 transition-colors" fallbackIcon={Star} />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-baseline gap-2 mb-1 flex-wrap">
                             <h3 className="font-display font-bold uppercase tracking-wide text-sm">{skill.name}</h3>
@@ -567,13 +675,7 @@ export default function HeroDetail() {
                     {/* Imprint Passive as a skill-style card */}
                     {hero.imprint_passive && (
                       <div className="flex items-start gap-3 rounded-lg border border-border p-4 bg-card">
-                        {imprintImageUrl ? (
-                          <img src={imprintImageUrl} alt="Imprint Passive" className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border" />
-                        ) : (
-                          <div className="h-10 w-10 rounded-full bg-muted flex-shrink-0 flex items-center justify-center border-2 border-border">
-                            <Stamp className="h-5 w-5 text-muted-foreground" />
-                          </div>
-                        )}
+                        <SafeImage src={imprintImageUrl} alt="Imprint Passive" className="h-10 w-10 rounded-full object-cover flex-shrink-0 border-2 border-border" fallbackIcon={Stamp} />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-baseline gap-2 mb-1">
                             <h3 className="font-display font-bold uppercase tracking-wide text-sm">Imprint Passive</h3>
@@ -610,54 +712,6 @@ export default function HeroDetail() {
 
             {/* Other sections — masonry multi-column layout */}
             <div className="columns-1 md:columns-2 xl:columns-3 2xl:columns-4 gap-6 mb-8 [&>div]:break-inside-avoid [&>div]:mb-6">
-
-              {/* Community Sentiment Card */}
-              {sentiment && (
-                <div className="rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 via-card to-card p-6 shadow-xl relative overflow-hidden backdrop-blur-md">
-                  <div className="absolute top-0 right-0 p-3 opacity-10 pointer-events-none">
-                    <MessageSquare className="h-24 w-24 text-primary" />
-                  </div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <Users className="h-5 w-5 text-primary" />
-                    <h2 className="text-lg font-display font-semibold">Community Sentiment</h2>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{sentiment.summary}</p>
-                  
-                  {sentiment.pros && sentiment.pros.length > 0 && (
-                    <div className="mb-4">
-                      <h3 className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-2">Pros</h3>
-                      <ul className="space-y-1.5">
-                        {sentiment.pros.map((pro: string, idx: number) => (
-                          <li key={idx} className="text-xs flex items-start gap-2 text-muted-foreground">
-                            <span className="text-green-500 font-bold">✓</span>
-                            <span>{pro}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  {sentiment.cons && sentiment.cons.length > 0 && (
-                    <div className="mb-4">
-                      <h3 className="text-xs font-semibold text-red-400 uppercase tracking-wider mb-2">Cons</h3>
-                      <ul className="space-y-1.5">
-                        {sentiment.cons.map((con: string, idx: number) => (
-                          <li key={idx} className="text-xs flex items-start gap-2 text-muted-foreground">
-                            <span className="text-red-500 font-bold">✗</span>
-                            <span>{con}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  {sentiment.last_updated && (
-                    <p className="text-[10px] text-muted-foreground/60 italic mt-6">
-                      Last updated: {sentiment.last_updated}
-                    </p>
-                  )}
-                </div>
-              )}
 
               {/* Ascension Bonuses */}
               {ascensionBonuses.length > 0 && (
